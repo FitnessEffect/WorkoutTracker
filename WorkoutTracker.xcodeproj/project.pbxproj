@@ -7,21 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5251F28F1C92139C004F376E /* FE_Logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5251F28E1C92139C004F376E /* FE_Logo.jpeg */; };
+		5251F2911C9213A3004F376E /* FE_Image_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5251F2901C9213A3004F376E /* FE_Image_1.jpeg */; };
+		5283E0751C7E37CB00FB716B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0741C7E37CB00FB716B /* Client.swift */; };
+		5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0781C88E09E00FB716B /* NewClientViewController.swift */; };
+		5283E07B1C890A8300FB716B /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E07A1C890A8300FB716B /* WorkoutsViewController.swift */; };
+		5283E07D1C890D5D00FB716B /* WorkoutNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E07C1C890D5D00FB716B /* WorkoutNameViewController.swift */; };
+		5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E07E1C890E6200FB716B /* ExercisesViewController.swift */; };
+		5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0831C89F53200FB716B /* ClientViewController.swift */; };
+		5283E0861C8B8B1100FB716B /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0851C8B8B1100FB716B /* Workout.swift */; };
+		5283E0881C8B998600FB716B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0871C8B998600FB716B /* Exercise.swift */; };
+		5283E08A1C8BA46B00FB716B /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0891C8BA46B00FB716B /* ExerciseDetailViewController.swift */; };
 		52F6A89F1C5F0036000FD7B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */; };
-		52F6A8A11C5F0036000FD7B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A8A01C5F0036000FD7B0 /* ViewController.swift */; };
 		52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A21C5F0036000FD7B0 /* Main.storyboard */; };
 		52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */; };
 		52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */; };
+		52F6A8B11C5F0145000FD7B0 /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A8B01C5F0145000FD7B0 /* NewExerciseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5251F28E1C92139C004F376E /* FE_Logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FE_Logo.jpeg; sourceTree = "<group>"; };
+		5251F2901C9213A3004F376E /* FE_Image_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FE_Image_1.jpeg; sourceTree = "<group>"; };
+		5283E0741C7E37CB00FB716B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		5283E0781C88E09E00FB716B /* NewClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientViewController.swift; path = ../NewClientViewController.swift; sourceTree = "<group>"; };
+		5283E07A1C890A8300FB716B /* WorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
+		5283E07C1C890D5D00FB716B /* WorkoutNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutNameViewController.swift; sourceTree = "<group>"; };
+		5283E07E1C890E6200FB716B /* ExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisesViewController.swift; sourceTree = "<group>"; };
+		5283E0831C89F53200FB716B /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientViewController.swift; path = ../ClientViewController.swift; sourceTree = "<group>"; };
+		5283E0851C8B8B1100FB716B /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		5283E0871C8B998600FB716B /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		5283E0891C8BA46B00FB716B /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExerciseDetailViewController.swift; path = ../ExerciseDetailViewController.swift; sourceTree = "<group>"; };
 		52F6A89B1C5F0036000FD7B0 /* WorkoutTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		52F6A8A01C5F0036000FD7B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52F6A8A31C5F0036000FD7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52F6A8A81C5F0036000FD7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52F6A8AA1C5F0036000FD7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52F6A8B01C5F0145000FD7B0 /* NewExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +57,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5283E0801C89130500FB716B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5283E0831C89F53200FB716B /* ClientViewController.swift */,
+				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
+				5283E07A1C890A8300FB716B /* WorkoutsViewController.swift */,
+				5283E07C1C890D5D00FB716B /* WorkoutNameViewController.swift */,
+				5283E07E1C890E6200FB716B /* ExercisesViewController.swift */,
+				5283E0891C8BA46B00FB716B /* ExerciseDetailViewController.swift */,
+				52F6A8B01C5F0145000FD7B0 /* NewExerciseViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		52F6A8921C5F0036000FD7B0 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +90,17 @@
 		52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
-				52F6A8A01C5F0036000FD7B0 /* ViewController.swift */,
+				5283E0741C7E37CB00FB716B /* Client.swift */,
+				5283E0851C8B8B1100FB716B /* Workout.swift */,
+				5283E0871C8B998600FB716B /* Exercise.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,
 				52F6A8AA1C5F0036000FD7B0 /* Info.plist */,
+				5251F28E1C92139C004F376E /* FE_Logo.jpeg */,
+				5251F2901C9213A3004F376E /* FE_Image_1.jpeg */,
 			);
 			path = WorkoutTracker;
 			sourceTree = "<group>";
@@ -96,6 +137,7 @@
 				TargetAttributes = {
 					52F6A89A1C5F0036000FD7B0 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = JE9824DC59;
 					};
 				};
 			};
@@ -123,8 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */,
+				5251F2911C9213A3004F376E /* FE_Image_1.jpeg in Resources */,
 				52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */,
 				52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */,
+				5251F28F1C92139C004F376E /* FE_Logo.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +179,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52F6A8A11C5F0036000FD7B0 /* ViewController.swift in Sources */,
+				5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */,
+				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
+				52F6A8B11C5F0145000FD7B0 /* NewExerciseViewController.swift in Sources */,
+				5283E08A1C8BA46B00FB716B /* ExerciseDetailViewController.swift in Sources */,
+				5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */,
+				5283E07B1C890A8300FB716B /* WorkoutsViewController.swift in Sources */,
+				5283E0861C8B8B1100FB716B /* Workout.swift in Sources */,
+				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
+				5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */,
+				5283E07D1C890D5D00FB716B /* WorkoutNameViewController.swift in Sources */,
 				52F6A89F1C5F0036000FD7B0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,10 +300,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WorkoutTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.stefan.auvergne.WorkoutTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -258,10 +314,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WorkoutTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.stefan.auvergne.WorkoutTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -284,6 +343,7 @@
 				52F6A8AF1C5F0036000FD7B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
