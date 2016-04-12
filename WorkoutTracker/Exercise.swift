@@ -32,22 +32,11 @@ class Exercise: NSCoder {
         self.result = result
     }
     
-    //initializer that converts a dictionary item to a Client object
-//    convenience init(dict:[String:String]){
-//        self.init()
-//        if let a = dict[exerciseNameKey], b = dict[resultKey], c = dict[descriptionKey]{
-//            name = a
-//            result = b
-//            exerciseDescription = c
-//        }
-//    }
-    
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(name, forKey:"name")
         aCoder.encodeObject(exerciseDescription, forKey: "description")
         aCoder.encodeObject(result, forKey: "result")
     }
-    
     
     init (coder aDecoder: NSCoder!) {
         self.name = aDecoder.decodeObjectForKey("name") as! String

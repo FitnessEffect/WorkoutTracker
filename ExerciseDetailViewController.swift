@@ -5,7 +5,7 @@
 //  Created by Stefan Auvergne on 3/5/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-// Exercise Detail View Controller displays the exerise description and 
+// Exercise Detail View Controller displays the exercise description and
 // allows the user to input a result.
 
 import UIKit
@@ -33,6 +33,6 @@ class ExerciseDetailViewController: UIViewController {
     @IBAction func addResult(sender: UIButton) {
         exercise.result = resultOutlet.text!
         delegate.passExercise(exercise)
-    navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true)
     }
 }

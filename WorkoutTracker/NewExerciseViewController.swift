@@ -90,5 +90,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     @IBAction func back(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)    }
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

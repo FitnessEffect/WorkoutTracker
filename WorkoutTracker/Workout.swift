@@ -11,10 +11,11 @@ import Foundation
 let workoutNameKey = "name"
 let workoutDateKey = "date"
 let exerciseArrayKey = "exercise array"
-
+let workoutTypeKey = "type"
 
 class Workout: NSCoder {
     
+    var type:String
     var name:String
     var date:String
     var exerciseArray:[Exercise]
@@ -22,40 +23,31 @@ class Workout: NSCoder {
     
     //default initializer
      override init(){
+         type = ""
          name = ""
          date = ""
         exerciseArray = []
     }
     
     //overload initializer
-    @objc init(name:String, date:String, exerciseArray:[Exercise]){
+    @objc init(type:String, name:String, date:String, exerciseArray:[Exercise]){
+        self.type = type
         self.name = name
         self.date = date
         self.exerciseArray = []
     }
     
-    //initializer that converts a dictionary item to a Client object
-//    convenience init(dict:[String:String]){
-//        self.init()
-//        if let a = dict[workoutNameKey], b = dict[workoutDateKey] {
-//            name = a
-//            date = b
-//        }
-//    }
-    
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(name, forKey:"name")
         aCoder.encodeObject(date, forKey: "date")
         aCoder.encodeObject(exerciseArray, forKey:  "exercise array")
-        
+        aCoder.encodeObject(type, forKey: "type")
     }
     
-    
     init (coder aDecoder: NSCoder!) {
+        self.type = aDecoder.decodeObjectForKey("type") as! String
         self.name = aDecoder.decodeObjectForKey("name") as! String
         self.date = aDecoder.decodeObjectForKey("date") as! String
         self.exerciseArray = aDecoder.decodeObjectForKey("exercise array") as! [Exercise]
-        
-        
     }
 }

@@ -16,6 +16,7 @@ protocol createWorkoutDelegate{
 
 class WorkoutNameViewController: UIViewController {
 
+    @IBOutlet weak var segmentedTypeOutlet: UISegmentedControl!
     @IBOutlet weak var workoutNameOutlet: UITextField!
     @IBOutlet weak var dateOutlet: UIDatePicker!
     
@@ -26,9 +27,16 @@ class WorkoutNameViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    //returns information to the delegate method addWorkout
     @IBAction func CreateWorkout(sender: UIButton) {
         let workoutName = workoutNameOutlet.text
         let workoutDate = dateOutlet.date
+        
+        if segmentedTypeOutlet.selectedSegmentIndex == 0 {
+            myWorkout.type = "Crossfit"
+        }else if segmentedTypeOutlet.selectedSegmentIndex == 1 {
+            myWorkout.type = "Bodybuilding"
+        }
         
         myWorkout.name = workoutName!
         myWorkout.date = String(workoutDate)

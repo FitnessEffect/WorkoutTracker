@@ -20,15 +20,12 @@ class Client: NSCoder {
     var age:String
     var workoutArray:[Workout]
     
-    
     //default initializer
     override init(){
         firstName = ""
         lastName = ""
         age = ""
         workoutArray = []
-        
-        
     }
     
     //overload initializer
@@ -37,19 +34,7 @@ class Client: NSCoder {
         self.lastName = lastName
         self.age = age
         self.workoutArray = []
-        
-}
-    
-    //initializer that converts a dictionary item to a Client object
-//    convenience init(dict:[String:String]){
-//        self.init()
-//        if let a = dict[firstNameKey], b = dict[lastNameKey], c = dict[age] {
-//            firstName = a
-//            lastName = b
-//            age = c
-//            
-//        }
-//    }
+    }
     
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(firstName, forKey:"first name")
@@ -64,7 +49,5 @@ class Client: NSCoder {
         self.lastName = aDecoder.decodeObjectForKey("last name") as! String
         self.age = aDecoder.decodeObjectForKey("age") as! String
         self.workoutArray = aDecoder.decodeObjectForKey("workout array") as! [Workout]
-        
-        
     }
 }
