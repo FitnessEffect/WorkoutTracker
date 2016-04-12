@@ -18,9 +18,9 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var client = Client()
     var selectedRow:Int = 0
-
-    @IBOutlet weak var tableViewOutlet: UITableView!
     var delegate:WorkoutsDelegate!
+    
+    @IBOutlet weak var tableViewOutlet: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,26 +29,33 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableViewOutlet.reloadData()
     }
     
+    //TableView
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return client.workoutArray.count
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WorkoutCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("WorkoutCell", forIndexPath: indexPath) as! WorkoutCustomCell
         
         let workout = client.workoutArray[indexPath.row]
-        cell.textLabel?.text = workout.name
-        cell.detailTextLabel?.text = workout.date
+       
+        cell.nameOutlet.text = workout.name
+        cell.dateOutlet.text = workout.date
+        
+        if workout.type == "Crossfit" {
+            cell.imageOutlet.image = UIImage(named: "Kettlebell.jpeg")
+        }else if workout.type == "Bodybuilding" {
+            cell.imageOutlet.image = UIImage(named: "dumbbell")
+        }
+        
         return cell
     }
     
-    //adds new workout from WorkoutNameViewController
+    //Adds new workout created in WorkoutNameViewControllers to WorkoutsViewController and saves it.
     func addWorkout(workout:Workout){
         
         client.workoutArray.append(workout)
@@ -56,7 +63,7 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableViewOutlet.reloadData()
     }
     
-    //saves new Exercises from ExercisesViewController
+    //Saves new Exercises from ExercisesViewController
     func saveExercises(workout:Workout){
        
         client.workoutArray[selectedRow] = workout

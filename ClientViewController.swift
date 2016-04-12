@@ -45,7 +45,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NSKeyedArchiver.archiveRootObject(clientArray, toFile: arrPath)
     }
     
-    //retrieve clients from file
+    //Retrieve clients from file
     func retrieveClients(){
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
         let path: AnyObject = paths[0]
@@ -80,6 +80,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableViewOutlet.reloadData()
     }
     
+    //TableView
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

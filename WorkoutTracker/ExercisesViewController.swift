@@ -28,12 +28,10 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return workout.exerciseArray.count
     }
     
@@ -62,31 +60,25 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableViewOutlet.reloadData()
     }
     
-    //Saves the result from the ExerciseDetailViewController of the exercise
+    //Saves the result from the ExerciseDetailViewController
     func passExercise(exercise:Exercise){
         workout.exerciseArray[selectedRow] = exercise
         delegate.saveExercises(workout)
         tableViewOutlet.reloadData()
     }
     
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "newExercisesSegue"){
-            
             let ncv:NewExerciseViewController = segue.destinationViewController as! NewExerciseViewController
                 ncv.delegate = self
         }
+        
         if(segue.identifier == "detailExerciseSegue"){
-            
             let edv:ExerciseDetailViewController = segue.destinationViewController as! ExerciseDetailViewController
             edv.delegate = self
             
-           selectedRow = tableViewOutlet.indexPathForSelectedRow!.row
+            selectedRow = tableViewOutlet.indexPathForSelectedRow!.row
             edv.exercise = workout.exerciseArray[selectedRow]
-            
         }
-    
     }
 }
