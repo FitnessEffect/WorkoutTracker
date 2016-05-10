@@ -12,6 +12,7 @@ let workoutNameKey = "name"
 let workoutDateKey = "date"
 let exerciseArrayKey = "exercise array"
 let workoutTypeKey = "type"
+let workoutNumberKey = "number"
 
 class Workout: NSCoder {
     
@@ -30,7 +31,7 @@ class Workout: NSCoder {
     }
     
     //overload initializer
-    @objc init(type:String, name:String, date:String, exerciseArray:[Exercise]){
+    @objc init(type:String, name:String, date:String, number:Int, exerciseArray:[Exercise]){
         self.type = type
         self.name = name
         self.date = date

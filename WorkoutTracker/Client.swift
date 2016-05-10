@@ -8,6 +8,7 @@
 
 import Foundation
 
+let gender = "gender"
 let firstNameKey = "first name"
 let lastNameKey = "last name"
 let ageKey = "age"
@@ -15,6 +16,7 @@ let workoutArrayKey = "workout array"
 
 class Client: NSCoder {
     
+    var gender:String
     var firstName:String
     var lastName:String
     var age:String
@@ -22,6 +24,7 @@ class Client: NSCoder {
     
     //default initializer
     override init(){
+        gender = ""
         firstName = ""
         lastName = ""
         age = ""
@@ -29,7 +32,8 @@ class Client: NSCoder {
     }
     
     //overload initializer
-    init(firstName:String, lastName:String, age:String, workoutArray:[Workout]){
+    init(gender:String, firstName:String, lastName:String, age:String, workoutArray:[Workout]){
+        self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
@@ -37,7 +41,8 @@ class Client: NSCoder {
     }
     
     func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(firstName, forKey:"first name")
+        aCoder.encodeObject(gender, forKey: "gender")
+        aCoder.encodeObject(firstName, forKey: "first name")
         aCoder.encodeObject(lastName, forKey: "last name")
         aCoder.encodeObject(age, forKey: "age")
         aCoder.encodeObject(workoutArray, forKey:  "workout array")
@@ -45,6 +50,7 @@ class Client: NSCoder {
     
     
     init (coder aDecoder: NSCoder!) {
+        self.gender = aDecoder.decodeObjectForKey("gender") as! String
         self.firstName = aDecoder.decodeObjectForKey("first name") as! String
         self.lastName = aDecoder.decodeObjectForKey("last name") as! String
         self.age = aDecoder.decodeObjectForKey("age") as! String

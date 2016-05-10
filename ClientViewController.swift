@@ -90,11 +90,30 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath) as! ClientCustomCell
         
         let client = clientArray[indexPath.row]
-        cell.textLabel?.text = client.firstName + " " + client.lastName
-        cell.detailTextLabel?.text = client.age
+        
+       // var myMutableString = NSMutableAttributedString()
+//        let ln:String = client.lastName
+//        let att = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+//        
+//        let boldName = NSMutableAttributedString(string:ln, attributes:att)
+       // let stringLength = NSString(string: ln).length
+//        myMutableString = NSMutableAttributedString(
+//            string: ln)
+        
+//        myMutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Optima-Bold", size: 10.0)!, range: NSRange(location:0, length: stringLength))
+        
+        cell.nameOutlet.text = client.firstName + " " + client.lastName
+        cell.ageOutlet?.text = client.age
+        
+        if client.gender == "Male" {
+            cell.nameOutlet.textColor = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        }else if client.gender == "Female" {
+            cell.nameOutlet.textColor = UIColor(red: 255.0/255.0, green: 140.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        }
+        
         return cell
     }
     
