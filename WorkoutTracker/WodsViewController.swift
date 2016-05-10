@@ -46,8 +46,6 @@ class WodsViewController: UIViewController {
     
     @IBAction func addWod(sender: UIButton) {
         
-        //call pickerView for element 0
-        
         myExercise.name = stringExercise
         
         if stringExercise == "Fran"{
