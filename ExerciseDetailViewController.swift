@@ -26,8 +26,17 @@ class ExerciseDetailViewController: UIViewController {
         title = exercise.name
         super.viewDidLoad()
 
-        descriptionOutlet.text = exercise.exerciseDescription
-        resultOutlet.text = exercise.result
+        
+        let desStr:String = exercise.exerciseDescription
+        let stringParts = desStr.componentsSeparatedByString("|")
+        
+        resultOutlet.textColor = UIColor(red: 115.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
+        var newString:String = ""
+        for part in stringParts{
+            newString.appendContentsOf(part)
+            newString.appendContentsOf("\n")
+        }
+        descriptionOutlet.text = newString
     }
     
     @IBAction func addResult(sender: UIButton) {

@@ -1,21 +1,18 @@
 //
-//  WorkoutCustomCell.swift
+//  ExerciseCustomCell.swift
 //  WorkoutTracker
 //
-//  Created by Stefan Auvergne on 4/4/16.
+//  Created by Stefan Auvergne on 4/25/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-//  WorkoutCustomCell holds the custome cell for the TableView in workoutsViewController
 
 import UIKit
 
-class WorkoutCustomCell: UITableViewCell {
+class ExerciseCustomCell: UITableViewCell {
 
-    
-    @IBOutlet weak var nameOutlet: UILabel!
-    @IBOutlet weak var dateOutlet: UILabel!
-    @IBOutlet weak var imageOutlet: UIImageView!
+    @IBOutlet weak var descriptionOutlet: UILabel!
     @IBOutlet weak var numberOutlet: UILabel!
+    @IBOutlet weak var titleOutlet: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +21,7 @@ class WorkoutCustomCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
 

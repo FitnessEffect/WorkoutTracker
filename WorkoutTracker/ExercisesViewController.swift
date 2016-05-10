@@ -14,7 +14,7 @@ protocol ExercisesDelegate{
     func saveExercises(workout:Workout)
 }
 
-class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, createExerciseDelegate, ExerciseResultDelegate {
+class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateExerciseDelegate, ExerciseResultDelegate {
 
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -24,7 +24,15 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         title = workout.name
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: "getExerciseID", object: nil)
         super.viewDidLoad()
+    }
+    
+    //Receiving exercises and adding them to Exercises View Controller
+    func getExercise(notification: NSNotification){
+        let info:[String:Exercise] = notification.userInfo as! [String:Exercise]
+        let myExercise = info["exerciseKey"]
+        addExercise(myExercise!)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -36,11 +44,12 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell", forIndexPath: indexPath) as! ExerciseCustomCell
         
        let exercise = workout.exerciseArray[indexPath.row]
-       cell.textLabel?.text = exercise.name
-       cell.detailTextLabel?.text = exercise.exerciseDescription
+       cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+       cell.descriptionOutlet.text = exercise.exerciseDescription
+        cell.numberOutlet.text = String(indexPath.row + 1)
        return cell
     }
     
@@ -68,11 +77,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "newExercisesSegue"){
-            let ncv:NewExerciseViewController = segue.destinationViewController as! NewExerciseViewController
-                ncv.delegate = self
-        }
-        
         if(segue.identifier == "detailExerciseSegue"){
             let edv:ExerciseDetailViewController = segue.destinationViewController as! ExerciseDetailViewController
             edv.delegate = self

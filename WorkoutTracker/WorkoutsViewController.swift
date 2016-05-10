@@ -16,6 +16,7 @@ protocol WorkoutsDelegate{
 
 class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,createWorkoutDelegate, ExercisesDelegate{
     
+    var workoutCount:Int = 0
     var client = Client()
     var selectedRow:Int = 0
     var delegate:WorkoutsDelegate!
@@ -45,16 +46,19 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
        
         cell.nameOutlet.text = workout.name
         cell.dateOutlet.text = workout.date
+        workoutCount = (indexPath.row + 1)
+        cell.numberOutlet.text = String(workoutCount)
         
         if workout.type == "Crossfit" {
-            cell.imageOutlet.image = UIImage(named: "Kettlebell.jpeg")
+            cell.imageOutlet.image = UIImage(named: "Kettlebell.png")
+            cell.nameOutlet.textColor = UIColor(red: 200.0/255.0, green: 170.0/255.0, blue: 0.0/255.0, alpha: 1.0)
         }else if workout.type == "Bodybuilding" {
-            cell.imageOutlet.image = UIImage(named: "dumbbell")
+            cell.imageOutlet.image = UIImage(named: "Dumbbell.png")
+            cell.nameOutlet.textColor = UIColor(red: 255.0/255.0, green: 150.0/255.0, blue: 0.0/255.0, alpha: 1.0)
         }
-        
         return cell
     }
-    
+
     //Adds new workout created in WorkoutNameViewControllers to WorkoutsViewController and saves it.
     func addWorkout(workout:Workout){
         
