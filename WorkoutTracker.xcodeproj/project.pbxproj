@@ -105,7 +105,6 @@
 				5291C4551CE13ECB00DF8C0C /* Crossfit Controllers */,
 				52192ACC1CD5452100A311A1 /* CustomCells */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
-				52192AC01CC034CF00A311A1 /* CrossfitWorkoutTableViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
 				5283E07A1C890A8300FB716B /* WorkoutsViewController.swift */,
@@ -119,6 +118,8 @@
 		5291C4551CE13ECB00DF8C0C /* Crossfit Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52192AC01CC034CF00A311A1 /* CrossfitWorkoutTableViewController.swift */,
+				52192AC81CC1962A00A311A1 /* MetconViewController.swift */,
 				52192AC21CC1815700A311A1 /* OneRMViewController.swift */,
 				52192AC61CC1929E00A311A1 /* AmrapViewController.swift */,
 				52192AC41CC186A300A311A1 /* TabataViewController.swift */,
@@ -130,6 +131,7 @@
 		5291C4561CE13EED00DF8C0C /* Bodybuilding Controller */ = {
 			isa = PBXGroup;
 			children = (
+				527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */,
 				52F6A8B01C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift */,
 				5291C45D1CE144B900DF8C0C /* BackViewController.swift */,
 				5291C4571CE13F1400DF8C0C /* ArmViewController.swift */,
@@ -163,8 +165,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */,
-				52192AC81CC1962A00A311A1 /* MetconViewController.swift */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,
 				52F6A8AA1C5F0036000FD7B0 /* Info.plist */,

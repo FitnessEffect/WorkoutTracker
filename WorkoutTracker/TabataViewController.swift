@@ -15,6 +15,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var textFieldOutlet2: UITextField!
     @IBOutlet weak var textFieldOutlet3: UITextField!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var stringExercise:String = ""
@@ -22,7 +23,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var clickCount:Int = 0
     var exerciseNumber:Int = 1
     var exerciseList:[Int] = [1]
-    
     
     let rest = ["Rest", "5 seconds", "10 seconds", "15 seconds", "20 seconds", "25 seconds", "30 seconds"]
     let work = ["Work", "15 seconds", "30 seconds", "45 seconds", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes"]
@@ -32,6 +32,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         super.viewDidLoad()
         textFieldOutlet2.hidden = true
         textFieldOutlet3.hidden = true
+        backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     override func didReceiveMemoryWarning() {

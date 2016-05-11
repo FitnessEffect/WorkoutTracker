@@ -15,6 +15,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var exTwoOutlet: UITextField!
     @IBOutlet weak var exOneOutlet: UITextField!
     @IBOutlet weak var pickerOutlet: UIPickerView!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     var clickCount:Int = 0
     let exerciseKey:String = "exerciseKey"
@@ -27,6 +28,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         super.viewDidLoad()
         exTwoOutlet.hidden = true
         exTreeOutlet.hidden = true
+        backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     override func didReceiveMemoryWarning() {

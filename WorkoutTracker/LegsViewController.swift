@@ -11,6 +11,8 @@ import UIKit
 
 class LegsViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
+    
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var stringExercise:String = ""
@@ -19,6 +21,7 @@ class LegsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
     
     override func didReceiveMemoryWarning() {

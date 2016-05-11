@@ -11,6 +11,8 @@ import UIKit
 
 class ArmViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
+    
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var stringExercise:String = ""
@@ -19,6 +21,7 @@ class ArmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,11 +45,9 @@ class ArmViewController: UIViewController {
         let exercise = armExercises[row]
         let temp = (exercise)
         stringExercise = String(temp)
-        
     }
     
     @IBAction func addExercise(sender: UIButton) {
-        
         
         myExercise.name = stringExercise
         myExercise.exerciseDescription = "4 sets | 12 reps"

@@ -12,6 +12,7 @@ import UIKit
 class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var picketOutlet: UIPickerView!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var stringExercise:String = ""
@@ -21,6 +22,7 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
