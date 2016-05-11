@@ -15,6 +15,7 @@ class MetconViewController: UIViewController {
     @IBOutlet weak var exTwoOutlet: UITextField!
     @IBOutlet weak var exTreeOutlet: UITextField!
     @IBOutlet weak var pickerOutlet: UIPickerView!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     var clickCount:Int = 0
     let exerciseKey:String = "exerciseKey"
@@ -27,6 +28,7 @@ class MetconViewController: UIViewController {
         super.viewDidLoad()
         exTwoOutlet.hidden = true
         exTreeOutlet.hidden = true
+        backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,15 +74,4 @@ class MetconViewController: UIViewController {
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

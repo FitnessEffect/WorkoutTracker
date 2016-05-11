@@ -18,6 +18,7 @@ class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataS
     
     @IBOutlet weak var workout: UIPickerView!
     @IBOutlet weak var nameOutlet: UITextField!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -30,6 +31,7 @@ class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataS
    
     override func viewDidLoad() {
         super.viewDidLoad()
+         backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

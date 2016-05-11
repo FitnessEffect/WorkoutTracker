@@ -16,9 +16,11 @@ class WodsViewController: UIViewController {
     var myExercise = Exercise()
     
     @IBOutlet weak var pickerOutlet: UIPickerView!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     override func didReceiveMemoryWarning() {

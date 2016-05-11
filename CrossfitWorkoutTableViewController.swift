@@ -15,6 +15,9 @@ class CrossfitWorkoutTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
+        self.tableView.backgroundView?.alpha = 0.1
+      
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,20 +37,22 @@ class CrossfitWorkoutTableViewController: UITableViewController {
         
         let x = indexPath.row
         
+        
         if x == 0 {
         let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell1", forIndexPath: indexPath)
 
         let exercise = crossfitWorkouts[indexPath.row]
         cell.textLabel?.text = exercise
-
-        return cell
+        cell.backgroundColor = UIColor.clearColor()
+        
+            return cell
             
         }else if x == 1{
             let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell2", forIndexPath: indexPath)
             
             let exercise = crossfitWorkouts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
             
         }else if x == 2{
@@ -55,7 +60,7 @@ class CrossfitWorkoutTableViewController: UITableViewController {
             
             let exercise = crossfitWorkouts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
             
         }else if x == 3{
@@ -63,14 +68,15 @@ class CrossfitWorkoutTableViewController: UITableViewController {
             
             let exercise = crossfitWorkouts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
+            
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell5", forIndexPath: indexPath)
             
             let exercise = crossfitWorkouts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
         }
     }

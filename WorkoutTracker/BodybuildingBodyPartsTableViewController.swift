@@ -15,6 +15,8 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
+        self.tableView.backgroundView?.alpha = 0.1
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +41,7 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             
             let exercise = bodyParts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
             
         }else if x == 1{
@@ -47,7 +49,7 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             
             let exercise = bodyParts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
             
         }else if x == 2{
@@ -55,7 +57,7 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             
             let exercise = bodyParts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
             
         }else if x == 3{
@@ -63,21 +65,23 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             
             let exercise = bodyParts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
+            
         }else if x == 4{
             let cell = tableView.dequeueReusableCellWithIdentifier("LegsCell", forIndexPath: indexPath)
             
             let exercise = bodyParts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
+            
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("CustomWorkoutCell", forIndexPath: indexPath)
             
             let exercise = bodyParts[indexPath.row]
             cell.textLabel?.text = exercise
-            
+            cell.backgroundColor = UIColor.clearColor()
             return cell
         }
     }
