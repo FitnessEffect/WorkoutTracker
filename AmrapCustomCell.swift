@@ -1,31 +1,26 @@
 //
-//  TabataCustomCell.swift
+//  AmrapCustomCell.swift
 //  WorkoutTracker
 //
-//  Created by Stefan Auvergne on 5/2/16.
+//  Created by Stefan Auvergne on 5/19/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
 
 import UIKit
 
-class TabataCustomCell: UITableViewCell {
+class AmrapCustomCell: UITableViewCell {
 
+    @IBOutlet weak var exTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-   
-    @IBOutlet weak var exTextField: UITextField!
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func getExercise() -> String{
-        let exercise:String = exTextField.text!
-        return exercise
     }
 
 }

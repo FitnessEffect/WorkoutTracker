@@ -11,13 +11,13 @@ import UIKit
 
 class ArmViewController: UIViewController {
     
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var stringExercise:String = ""
     
-     let armExercises = ["-- Biceps --", "Barbell Curls", "Preacher Curl", "Standing Curls", " ", "-- Triceps --", "Extensions", "Pulldowns", "Skull Crushers", " ", "-- Shoulders --", "Front Raises", "Lateral Raises", "Reverse Flies", "Seated Barbell Raises", "Shrugs"]
+     let armExercises = ["Barbell Curls", "Preacher Curl", "Standing Curls", " ", "-- Triceps --", "Extensions", "Pulldowns", "Skull Crushers", " ", "-- Shoulders --", "Front Raises", "Lateral Raises", "Reverse Flies", "Seated Barbell Raises", "Shrugs"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,10 @@ class ArmViewController: UIViewController {
         return armExercises[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let exercise = armExercises[row]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-    
     @IBAction func addExercise(sender: UIButton) {
-        
-        myExercise.name = stringExercise
-        myExercise.exerciseDescription = "4 sets | 12 reps"
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = armExercises[id]
+        myExercise.exerciseDescription = "4 sets - 12 reps"
     
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         

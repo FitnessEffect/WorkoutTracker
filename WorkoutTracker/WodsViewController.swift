@@ -10,9 +10,8 @@ import UIKit
 
 class WodsViewController: UIViewController {
     
-    let wods = ["-- Wods --", "Fran", "Grace", "Murph"]
+    let wods = ["Fran", "Grace", "Murph"]
     let exerciseKey:String = "exerciseKey"
-    var stringExercise:String = ""
     var myExercise = Exercise()
     
     @IBOutlet weak var pickerOutlet: UIPickerView!
@@ -38,23 +37,17 @@ class WodsViewController: UIViewController {
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return wods[row]
     }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let exercise = wods[row]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-    
+
     @IBAction func addWod(sender: UIButton) {
         
-        myExercise.name = stringExercise
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = wods[id]
         
-        if stringExercise == "Fran"{
+        if myExercise.name == "Fran"{
            myExercise.exerciseDescription = ("21-15-9 reps for time | thrusters (95lbs) | pull-ups")
-        }else if stringExercise == "Grace"{
+        }else if myExercise.name == "Grace"{
             myExercise.exerciseDescription = ("30 reps for time | 135lbs clean and jerk")
-        }else if stringExercise == "Murph"{
+        }else if myExercise.name == "Murph"{
             myExercise.exerciseDescription = ("1 mile run | 100 pull-ups | 200 push-ups | 300 air squats | 1 mile run")
         }
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])

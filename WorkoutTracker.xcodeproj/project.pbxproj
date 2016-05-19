@@ -32,6 +32,8 @@
 		5291C45C1CE1439F00DF8C0C /* ChestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45B1CE1439F00DF8C0C /* ChestViewController.swift */; };
 		5291C45E1CE144B900DF8C0C /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45D1CE144B900DF8C0C /* BackViewController.swift */; };
 		5291C4601CE145CF00DF8C0C /* AbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45F1CE145CF00DF8C0C /* AbsViewController.swift */; };
+		52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */; };
+		52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */; };
 		52F6A89F1C5F0036000FD7B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */; };
 		52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A21C5F0036000FD7B0 /* Main.storyboard */; };
 		52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		5291C45B1CE1439F00DF8C0C /* ChestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChestViewController.swift; sourceTree = "<group>"; };
 		5291C45D1CE144B900DF8C0C /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 		5291C45F1CE145CF00DF8C0C /* AbsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsViewController.swift; sourceTree = "<group>"; };
+		52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetconCustomCell.swift; sourceTree = "<group>"; };
+		52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmrapCustomCell.swift; path = ../AmrapCustomCell.swift; sourceTree = "<group>"; };
 		52F6A89B1C5F0036000FD7B0 /* WorkoutTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52F6A8A31C5F0036000FD7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		52192ACC1CD5452100A311A1 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */,
+				52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */,
 				52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */,
 				52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */,
 				52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */,
@@ -260,6 +266,8 @@
 				52192AC51CC186A300A311A1 /* TabataViewController.swift in Sources */,
 				5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */,
 				52192AC11CC034CF00A311A1 /* CrossfitWorkoutTableViewController.swift in Sources */,
+				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
+				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
 				52F6A8B11C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,

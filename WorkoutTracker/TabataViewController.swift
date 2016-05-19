@@ -10,28 +10,23 @@
 import UIKit
 
 class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
-    
-    @IBOutlet weak var picketOutlet: UIPickerView!
-    @IBOutlet weak var textFieldOutlet: UITextField!
-    @IBOutlet weak var textFieldOutlet2: UITextField!
-    @IBOutlet weak var textFieldOutlet3: UITextField!
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
-    var stringExercise:String = ""
     var myExercise = Exercise()
-    var clickCount:Int = 0
     var exerciseNumber:Int = 1
     var exerciseList:[Int] = [1]
+    var textViews:[UITextField] = []
     
-    let rest = ["Rest", "5 seconds", "10 seconds", "15 seconds", "20 seconds", "25 seconds", "30 seconds"]
-    let work = ["Work", "15 seconds", "30 seconds", "45 seconds", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes"]
-    let totalTime = ["Time", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "15 minutes"]
+    let rest = ["-- Rest --", "5 seconds", "10 seconds", "15 seconds", "20 seconds", "25 seconds", "30 seconds"]
+    let work = ["-- Work --", "15 seconds", "30 seconds", "45 seconds", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes"]
+    let totalTime = ["-- Time -- ", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "15 minutes"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldOutlet2.hidden = true
-        textFieldOutlet3.hidden = true
         backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
@@ -40,13 +35,9 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func add(sender: UIBarButtonItem) {
-        clickCount += 1
-        if clickCount == 1{
-            textFieldOutlet2.hidden = false
-        }
-        if clickCount == 2{
-            textFieldOutlet3.hidden = false
-        }
+        exerciseNumber += 1
+        exerciseList.append(exerciseNumber)
+        tableView.reloadData()
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -75,24 +66,17 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-           let pickerRest = rest[pickerView.selectedRowInComponent(0)]
-            print(pickerRest)
-           let pickerWork = work[pickerView.selectedRowInComponent(1)]
-        print(pickerWork)
-           let pickerTotalTime = totalTime[pickerView.selectedRowInComponent(2)]
-        print(pickerTotalTime)
-        
-        let temp = (pickerRest + " rest - " + pickerWork + " work - " + pickerTotalTime + " total")
-        stringExercise = String(temp)
-    }
-
     @IBAction func addTabata(sender: UIButton) {
-        myExercise.name = "Tabata"
         
-       
-         myExercise.exerciseDescription = (textFieldOutlet.text! + " | " + textFieldOutlet2.text! + " | " + textFieldOutlet3.text! + " (" + stringExercise + ")")
+        myExercise.name = "Tabata"
+        let id:Int = pickerOutlet.selectedRowInComponent(2)
+        var str = ""
+        for textField in textViews{
+            str.appendContentsOf(textField.text!)
+            str.appendContentsOf(" | ")
+        }
+        
+        myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + str
         
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         
@@ -110,9 +94,13 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TabataCell", forIndexPath: indexPath) as! TabataCustomCell
-            
-        let exercise = exerciseList[indexPath.row]
-            cell.exLabel.text = "Exercise " + String(exercise) + ":"
+        
+        if textViews.count < indexPath.row + 1 {
+            textViews.append(cell.exTextField)
+        }
+
+        let exerciseCount = indexPath.row + 1
+        cell.exTextField.text = "Exercise " + String(exerciseCount) + ":"
         return cell
     }
 }

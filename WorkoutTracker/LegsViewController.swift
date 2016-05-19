@@ -11,13 +11,13 @@ import UIKit
 
 class LegsViewController: UIViewController {
 
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var stringExercise:String = ""
     
-    let legExercises = ["-- Quadriceps --", "Leg Press", "Seated Leg Extensions", "Smith Machine Squats", "Squats", " ", "-- Hamstrings --", "Leg Curls", "Summo Deadlift", " ", "-- Glutes --", "Donkey Kicks", "Kick Back", "Lunges", ]
+    let legExercises = ["Leg Press", "Seated Leg Extensions", "Smith Machine Squats", "Squats", " ", "-- Hamstrings --", "Leg Curls", "Summo Deadlift", " ", "-- Glutes --", "Donkey Kicks", "Kick Back", "Lunges", ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,11 @@ class LegsViewController: UIViewController {
         return legExercises[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let exercise = legExercises[row]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-    
     @IBAction func addExercise(sender: UIButton) {
         
-        myExercise.name = stringExercise
-        myExercise.exerciseDescription = "4 sets | 12 reps"
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = legExercises[id]
+        myExercise.exerciseDescription = "4 sets - 12 reps"
         
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         

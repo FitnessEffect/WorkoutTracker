@@ -11,13 +11,13 @@ import UIKit
 
 class AbsViewController: UIViewController {
 
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var stringExercise:String = ""
     
-    let absExercises = ["-- Abs --", "Bicycle Crunches", "Crunches", "Decline Crunches","Knee Raises", "Planch", "Russian Twists", "Sit-ups", "V-ups"]
+    let absExercises = ["Bicycle Crunches", "Crunches", "Decline Crunches","Knee Raises", "Planch", "Russian Twists", "Sit-ups", "V-ups"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,11 @@ class AbsViewController: UIViewController {
         return absExercises[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let exercise = absExercises[row]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-    
     @IBAction func addExercise(sender: UIButton) {
         
-        myExercise.name = stringExercise
-        myExercise.exerciseDescription = "4 sets | 20 reps"
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = absExercises[id]
+        myExercise.exerciseDescription = "4 sets - 20 reps"
         
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         
