@@ -10,24 +10,23 @@
 import UIKit
 
 class MetconViewController: UIViewController {
-    
-    @IBOutlet weak var exOneOutlet: UITextField!
-    @IBOutlet weak var exTwoOutlet: UITextField!
-    @IBOutlet weak var exTreeOutlet: UITextField!
+
     @IBOutlet weak var pickerOutlet: UIPickerView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     var clickCount:Int = 0
     let exerciseKey:String = "exerciseKey"
-    var stringExercise:String = ""
     var myExercise = Exercise()
+    var exerciseNumber:Int = 1
+    var exerciseList:[Int] = [1]
+    var textViews:[UITextField] = []
     
-    let rounds = ["Rounds", "1 round", "2 rounds", "3 rounds", "4 rounds", "5 rounds", "6 rounds", "7 rounds", "8 rounds", "9 rounds", "10 rounds"]
+    let rounds = ["1 round", "2 rounds", "3 rounds", "4 rounds", "5 rounds", "6 rounds", "7 rounds", "8 rounds", "9 rounds", "10 rounds"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exTwoOutlet.hidden = true
-        exTreeOutlet.hidden = true
+
         backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
@@ -36,13 +35,9 @@ class MetconViewController: UIViewController {
     }
     
     @IBAction func addExercise(sender: UIBarButtonItem) {
-        clickCount += 1
-        if clickCount == 1{
-            exTwoOutlet.hidden = false
-        }
-        if clickCount == 2{
-            exTreeOutlet.hidden = false
-        }
+        exerciseNumber += 1
+        exerciseList.append(exerciseNumber)
+        tableView.reloadData()
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -53,25 +48,44 @@ class MetconViewController: UIViewController {
         return rounds.count
     }
     
-    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return rounds[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let pickerRound = rounds[pickerView.selectedRowInComponent(0)]
-        
-        let temp = pickerRound
-        stringExercise = String(temp)
-    }
-    
     @IBAction func addMetcon(sender: UIButton) {
+        
         myExercise.name = "Metcon"
-        myExercise.exerciseDescription = (stringExercise + " | " + exOneOutlet.text! + " | " + exTwoOutlet.text! + " | " + exTreeOutlet.text!)
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        var str = ""
+        for textField in textViews{
+            str.appendContentsOf(textField.text!)
+            str.appendContentsOf(" | ")
+        }
+        myExercise.exerciseDescription = (rounds[id] + " | " + str)
         
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return exerciseList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("MetconCell", forIndexPath: indexPath) as! MetconCustomCell
+        
+        if textViews.count < indexPath.row + 1 {
+            textViews.append(cell.exTextField)
+        }
+        
+        let exerciseCount = indexPath.row + 1
+        cell.exTextField.text = "Exercise " + String(exerciseCount) + ":"
+        return cell
     }
 }

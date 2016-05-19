@@ -11,14 +11,14 @@ import UIKit
 
 class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var picketOutlet: UIPickerView!
+
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
-    var stringExercise:String = ""
     var myExercise = Exercise()
     
-    let OneRM = ["-- 1 Rep Back --", "Back Squat", "Front Squat", "Overhead Squat", "Snatch", "Clean & Jerk", "Clean", "Deadlift", "Bench Press"]
+    let OneRM = ["Back Squat", "Front Squat", "Overhead Squat", "Snatch", "Clean & Jerk", "Clean", "Deadlift", "Bench Press"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +37,16 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             return OneRM[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
-        let exercise = OneRM[pickerView.selectedRowInComponent(0)]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func addExercise(sender: UIButton) {
-        myExercise.name = ("1RM " + stringExercise)
-        myExercise.exerciseDescription = ("1 Rep Max")
+        
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = ("1RM" + OneRM[id])
+        myExercise.exerciseDescription = ("1 Rep Max" + " | " + OneRM[id])
+        
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         
         dismissViewControllerAnimated(true, completion: nil)

@@ -11,13 +11,13 @@ import UIKit
 
 class BackViewController: UIViewController {
 
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var stringExercise:String = ""
     
-    let backExercises = ["-- Back --", "Back Extensions", "Bent Over Row", "Lat PullDown", "Seated Cable Row"]
+    let backExercises = ["Back Extensions", "Bent Over Row", "Lat PullDown", "Seated Cable Row"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,11 @@ class BackViewController: UIViewController {
         return backExercises[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let exercise = backExercises[row]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-    
     @IBAction func addExercise(sender: UIButton) {
         
-        myExercise.name = stringExercise
-        myExercise.exerciseDescription = "4 sets | 12 reps"
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = backExercises[id]
+        myExercise.exerciseDescription = "4 sets , 12 reps"
         
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         

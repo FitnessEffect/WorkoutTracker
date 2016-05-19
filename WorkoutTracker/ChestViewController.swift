@@ -11,13 +11,13 @@ import UIKit
 
 class ChestViewController: UIViewController {
 
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var stringExercise:String = ""
     
-    let chestExercises = ["-- Chest --", "Bench Press", "Cable Cross overs", "Cable Flies", "Cable Press", "Dumbell Press", "Incline Flies", "Seated Flies"]
+    let chestExercises = ["Bench Press", "Cable Cross overs", "Cable Flies", "Cable Press", "Dumbell Press", "Incline Flies", "Seated Flies"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,11 @@ class ChestViewController: UIViewController {
         return chestExercises[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let exercise = chestExercises[row]
-        let temp = (exercise)
-        stringExercise = String(temp)
-    }
-    
     @IBAction func addExercise(sender: UIButton) {
         
-        myExercise.name = stringExercise
-        myExercise.exerciseDescription = "4 sets | 20 reps"
+        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        myExercise.name = chestExercises[id]
+        myExercise.exerciseDescription = "4 sets - 12 reps"
         
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
         

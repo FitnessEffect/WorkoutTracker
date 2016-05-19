@@ -16,13 +16,13 @@ protocol CreateExerciseDelegate{
 
 class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var workout: UIPickerView!
     @IBOutlet weak var nameOutlet: UITextField!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var stringWorkout:String = ""
     var incomingExerciseArray:[String] = []
     
     let reps = ["Reps", "1 rep", "5 reps", "6 reps", "7 reps", "8 reps", "9 reps", "10 reps", "11 reps", "12 reps", "13 reps", "14 reps", "15 reps", "16 reps", "17 reps", "18 reps", "19 reps", "20 reps", "21 reps", "25 reps", "30 reps", "100 reps"]
@@ -56,19 +56,11 @@ class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataS
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let pickerElementReps = reps[pickerView.selectedRowInComponent(0)]
-        
-        let pickerElementSets = sets[pickerView.selectedRowInComponent(1)]
-        
-         let temp = pickerElementReps + " | " + pickerElementSets
-            stringWorkout = String(temp)
-    }
-    
     @IBAction func addExercise(sender: UIButton) {
     
+        let id:Int = pickerOutlet.selectedRowInComponent(1)
         myExercise.name = nameOutlet.text!
-        myExercise.exerciseDescription = stringWorkout
+        myExercise.exerciseDescription = reps[id] + " - " + sets[id]
         NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
        
         dismissViewControllerAnimated(true, completion: nil)
