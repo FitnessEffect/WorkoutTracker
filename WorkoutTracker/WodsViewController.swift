@@ -26,21 +26,21 @@ class WodsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return wods.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return wods[row]
     }
 
-    @IBAction func addWod(sender: UIButton) {
+    @IBAction func addWod(_ sender: UIButton) {
         
-        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         myExercise.name = wods[id]
         
         if myExercise.name == "Fran"{
@@ -50,8 +50,8 @@ class WodsViewController: UIViewController {
         }else if myExercise.name == "Murph"{
             myExercise.exerciseDescription = ("1 mile run | 100 pull-ups | 200 push-ups | 300 air squats | 1 mile run")
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

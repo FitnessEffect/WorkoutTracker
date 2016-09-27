@@ -11,7 +11,7 @@
 import UIKit
 
 protocol ExercisesDelegate{
-    func saveExercises(workout:Workout)
+    func saveExercises(_ workout:Workout)
 }
 
 class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateExerciseDelegate, ExerciseResultDelegate {
@@ -24,64 +24,64 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         title = workout.name
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: "getExerciseID", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         super.viewDidLoad()
     }
     
     //Receiving exercises and adding them to Exercises View Controller
-    func getExercise(notification: NSNotification){
-        let info:[String:Exercise] = notification.userInfo as! [String:Exercise]
+    func getExercise(_ notification: Notification){
+        let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         let myExercise = info["exerciseKey"]
         addExercise(myExercise!)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workout.exerciseArray.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell", forIndexPath: indexPath) as! ExerciseCustomCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
         
-       let exercise = workout.exerciseArray[indexPath.row]
+       let exercise = workout.exerciseArray[(indexPath as NSIndexPath).row]
        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
        cell.descriptionOutlet.text = exercise.exerciseDescription
-        cell.numberOutlet.text = String(indexPath.row + 1)
+        cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
        return cell
     }
     
     //Allows exercise cell to be deleted
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            workout.exerciseArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            workout.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             delegate.saveExercises(workout)
         }
     }
     
     //Add exercise to workout and saves to file
-    func addExercise(exercise:Exercise){
+    func addExercise(_ exercise:Exercise){
         workout.exerciseArray.append(exercise)
         delegate.saveExercises(workout)
         tableViewOutlet.reloadData()
     }
     
     //Saves the result from the ExerciseDetailViewController
-    func passExercise(exercise:Exercise){
+    func passExercise(_ exercise:Exercise){
         workout.exerciseArray[selectedRow] = exercise
         delegate.saveExercises(workout)
         tableViewOutlet.reloadData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detailExerciseSegue"){
-            let edv:ExerciseDetailViewController = segue.destinationViewController as! ExerciseDetailViewController
+            let edv:ExerciseDetailViewController = segue.destination as! ExerciseDetailViewController
             edv.delegate = self
             
-            selectedRow = tableViewOutlet.indexPathForSelectedRow!.row
+            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             edv.exercise = workout.exerciseArray[selectedRow]
         }
     }

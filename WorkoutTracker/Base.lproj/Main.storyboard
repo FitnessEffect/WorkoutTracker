@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Hn-31-EIQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Hn-31-EIQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Workouts View Controller-->
@@ -20,42 +21,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE_Logo_NoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Y31-bP-E55">
-                                <rect key="frame" x="117" y="72" width="140" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="7Nt-Qs-fEc"/>
                                     <constraint firstAttribute="width" constant="140" id="U3V-21-mqu"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V3c-ri-dXK">
-                                <rect key="frame" x="-4" y="182" width="383" height="485"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkoutCell" rowHeight="60" id="Slu-Ea-pG0" customClass="WorkoutCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Slu-Ea-pG0" id="1lZ-NA-A8f">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="59.5"/>
+                                            <frame key="frameInset" width="350" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRv-xx-svZ">
-                                                    <rect key="frame" x="34" y="6" width="48" height="48"/>
+                                                    <frame key="frameInset" minX="34" minY="6" width="48" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-g1-yyj">
-                                                    <rect key="frame" x="90" y="31" width="146" height="21"/>
+                                                    <frame key="frameInset" minX="90" minY="31" width="146" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNx-pa-aCc">
-                                                    <rect key="frame" x="8" y="15" width="23" height="29"/>
+                                                    <frame key="frameInset" minX="8" minY="15" width="23" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6I-TN-6NL">
-                                                    <rect key="frame" x="90" y="0.0" width="160" height="37"/>
+                                                    <frame key="frameInset" minX="90" width="160" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -76,7 +79,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="V3c-ri-dXK" secondAttribute="trailing" constant="-20" id="1hX-zK-1ap"/>
                             <constraint firstItem="V3c-ri-dXK" firstAttribute="top" secondItem="Y31-bP-E55" secondAttribute="bottom" constant="30" id="4DJ-KT-UMH"/>
@@ -93,14 +96,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableViewOutlet" destination="V3c-ri-dXK" id="Yq0-6F-1wh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5n-LJ-xgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1236.5" y="-86.5"/>
+            <point key="canvasLocation" x="684" y="-90"/>
         </scene>
         <!--Exercises View Controller-->
         <scene sceneID="gnM-dE-azX">
@@ -115,44 +117,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE_Logo_NoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-jb-tax">
-                                <rect key="frame" x="117" y="72" width="140" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="9gk-hn-WhG"/>
                                     <constraint firstAttribute="height" constant="80" id="ex9-gY-gsd"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qa9-l7-3zd">
-                                <rect key="frame" x="-4" y="182" width="383" height="485"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="60" id="U6W-Vg-5n7" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U6W-Vg-5n7" id="dQF-5z-hNo">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="59.5"/>
+                                            <frame key="frameInset" width="350" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIL-DG-pSo">
-                                                    <rect key="frame" x="37" y="29" width="318" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIL-DG-pSo">
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrL-FT-9OZ">
-                                                    <rect key="frame" x="8" y="19" width="23" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrL-FT-9OZ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="23" id="TIU-XY-TRV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqZ-Ox-rSt">
-                                                    <rect key="frame" x="38" y="8" width="312" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqZ-Ox-rSt">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="dLG-GC-wLX"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cIL-DG-pSo" firstAttribute="top" secondItem="CqZ-Ox-rSt" secondAttribute="bottom" id="D0I-jc-plR"/>
+                                                <constraint firstItem="CqZ-Ox-rSt" firstAttribute="top" secondItem="dQF-5z-hNo" secondAttribute="topMargin" id="FKt-EX-xAQ"/>
+                                                <constraint firstItem="jrL-FT-9OZ" firstAttribute="leading" secondItem="dQF-5z-hNo" secondAttribute="leadingMargin" id="STS-cM-lMZ"/>
+                                                <constraint firstItem="jrL-FT-9OZ" firstAttribute="top" secondItem="dQF-5z-hNo" secondAttribute="topMargin" constant="11" id="apR-8F-Hka"/>
+                                                <constraint firstItem="CqZ-Ox-rSt" firstAttribute="leading" secondItem="jrL-FT-9OZ" secondAttribute="trailing" constant="7" id="lQo-IM-pKu"/>
+                                                <constraint firstItem="jrL-FT-9OZ" firstAttribute="centerY" secondItem="dQF-5z-hNo" secondAttribute="centerY" id="pED-Yf-4xV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="cIL-DG-pSo" secondAttribute="trailing" constant="-13" id="qD2-MK-d9Y"/>
+                                                <constraint firstItem="cIL-DG-pSo" firstAttribute="leading" secondItem="jrL-FT-9OZ" secondAttribute="trailing" constant="6" id="vOA-UO-Qdi"/>
+                                                <constraint firstAttribute="trailing" secondItem="CqZ-Ox-rSt" secondAttribute="trailing" id="wVn-b0-2wf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cIL-DG-pSo" secondAttribute="bottom" constant="1" id="wYf-XV-NQ1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionOutlet" destination="cIL-DG-pSo" id="bAv-TW-7AO"/>
@@ -168,7 +183,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qa9-l7-3zd" firstAttribute="top" secondItem="dpC-ay-kW7" secondAttribute="bottom" constant="118" id="4Zc-6K-QX4"/>
                             <constraint firstItem="qa9-l7-3zd" firstAttribute="top" secondItem="O2E-jb-tax" secondAttribute="bottom" constant="30" id="Kbl-fU-Eo6"/>
@@ -185,14 +200,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableViewOutlet" destination="qa9-l7-3zd" id="Qay-AH-k7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f86-Si-z0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1758.5" y="-86.5"/>
+            <point key="canvasLocation" x="1538" y="-88"/>
         </scene>
         <!--Exercise Detail View Controller-->
         <scene sceneID="wAm-cI-nNl">
@@ -207,20 +221,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE_Logo_NoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="BfU-Gn-GxW">
-                                <rect key="frame" x="117" y="72" width="140" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="ElT-k6-gU8"/>
                                     <constraint firstAttribute="width" constant="140" id="bOa-NM-LpE"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Result:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5NT-QL-i44">
-                                <rect key="frame" x="47" y="301" width="288" height="30"/>
-                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X9-Lb-vRy">
-                                <rect key="frame" x="130" y="354" width="122" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Add Result"/>
                                 <connections>
@@ -228,8 +239,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-oj-JL8">
-                                <rect key="frame" x="-4" y="166" width="383" height="119"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="119" id="zi4-wf-KA8"/>
                                 </constraints>
@@ -238,7 +248,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BfU-Gn-GxW" firstAttribute="centerX" secondItem="Qpv-0T-1YC" secondAttribute="centerX" id="3FO-cD-QJu"/>
                             <constraint firstItem="bJi-oj-JL8" firstAttribute="top" secondItem="BfU-Gn-GxW" secondAttribute="bottom" constant="14" id="Aiu-mv-Rsz"/>
@@ -256,7 +266,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wez-5S-iKW"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="descriptionOutlet" destination="bJi-oj-JL8" id="X9H-1g-FVJ"/>
                         <outlet property="resultOutlet" destination="5NT-QL-i44" id="3pU-86-ZAs"/>
@@ -264,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSN-or-D2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2271.5" y="-86.5"/>
+            <point key="canvasLocation" x="2438" y="-90"/>
         </scene>
         <!--New Client View Controller-->
         <scene sceneID="obZ-7F-rcF">
@@ -279,28 +288,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Last Name:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vU0-WF-gNw">
-                                <rect key="frame" x="96" y="173" width="182" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="182" id="3dY-eR-kz6"/>
                                     <constraint firstAttribute="height" constant="30" id="95T-O5-jU8"/>
                                 </constraints>
-                                <color key="textColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Age:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xG8-bU-5E4">
-                                <rect key="frame" x="96" y="234" width="182" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="182" id="I7O-kW-CAC"/>
                                     <constraint firstAttribute="height" constant="30" id="MW2-IQ-dqf"/>
                                 </constraints>
-                                <color key="textColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-kM-Xid">
-                                <rect key="frame" x="12" y="20" width="42" height="30"/>
+                                <frame key="frameInset" minX="12" minY="20" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
@@ -308,21 +316,17 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="First Name:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-yI-eKo">
-                                <rect key="frame" x="96" y="112" width="182" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="182" id="G6c-4B-nii"/>
                                     <constraint firstAttribute="height" constant="30" id="gES-NM-Qbg"/>
                                 </constraints>
-                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NaK-j4-pmd">
-                                <rect key="frame" x="100" y="93" width="279" height="574"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NaK-j4-pmd"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lla-uv-X9k">
-                                <rect key="frame" x="130" y="296" width="114" height="33"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                 <state key="normal" title="Create Client"/>
                                 <connections>
@@ -330,8 +334,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-pf-AUz">
-                                <rect key="frame" x="96" y="57" width="182" height="29"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="182" id="aSu-7h-Eak"/>
                                 </constraints>
@@ -344,7 +347,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vU0-WF-gNw" firstAttribute="top" secondItem="8pZ-yI-eKo" secondAttribute="bottom" constant="31" id="15t-rT-C0C"/>
                             <constraint firstItem="xG8-bU-5E4" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="E7N-1j-Z4L"/>
@@ -363,7 +366,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="lla-uv-X9k" secondAttribute="trailing" constant="115" id="wBv-hN-Z6w"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ageOutlet" destination="xG8-bU-5E4" id="6qa-HY-9pk"/>
                         <outlet property="firstNameOutlet" destination="8pZ-yI-eKo" id="4vJ-xS-fOW"/>
@@ -374,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrW-6C-DOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686.5" y="760.5"/>
+            <point key="canvasLocation" x="-215" y="674"/>
         </scene>
         <!--Client View Controller-->
         <scene sceneID="5ma-vL-iKk">
@@ -389,7 +391,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE_Logo_NoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="iQi-p0-a1S">
-                                <rect key="frame" x="117" y="72" width="140" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="PXe-Tj-ecQ"/>
                                     <constraint firstAttribute="height" constant="80" id="QFi-fQ-2q4"/>
@@ -402,33 +403,34 @@
                                 </variation>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PhY-tN-TJF">
-                                <rect key="frame" x="-4" y="182" width="383" height="485"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="separatorColor" red="0.83842147435897441" green="0.83842147435897441" blue="0.83842147435897441" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.83842147435897441" green="0.83842147435897441" blue="0.83842147435897441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClientCell" rowHeight="56" id="dIm-N0-Ih3" customClass="ClientCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dIm-N0-Ih3" id="hQO-DR-DrM">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="55.5"/>
+                                            <frame key="frameInset" width="350" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLQ-DC-gRT">
-                                                    <rect key="frame" x="17" y="3" width="131" height="21"/>
+                                                    <frame key="frameInset" minX="17" minY="3" width="131" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vae-BF-NdA">
-                                                    <rect key="frame" x="17" y="26" width="131" height="21"/>
+                                                    <frame key="frameInset" minX="17" minY="26" width="131" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="ageOutlet" destination="Vae-BF-NdA" id="p77-CE-QfA"/>
                                             <outlet property="nameOutlet" destination="DLQ-DC-gRT" id="AcX-zS-6c2"/>
@@ -442,8 +444,8 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PhY-tN-TJF" firstAttribute="leading" secondItem="xlr-Eh-bU2" secondAttribute="leadingMargin" constant="-20" id="9Qy-bx-12j"/>
                             <constraint firstItem="iQi-p0-a1S" firstAttribute="centerX" secondItem="PhY-tN-TJF" secondAttribute="centerX" id="Hf5-d7-NV7"/>
@@ -466,14 +468,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableViewOutlet" destination="PhY-tN-TJF" id="oFC-yc-uwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOI-mo-IRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692.5" y="-86.5"/>
+            <point key="canvasLocation" x="-215" y="-87"/>
         </scene>
         <!--Workout Name View Controller-->
         <scene sceneID="LKb-ba-7z1">
@@ -488,7 +489,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8q-Hc-i6c">
-                                <rect key="frame" x="12" y="19" width="34" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
@@ -496,7 +496,6 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ks2-Ef-QQ0">
-                                <rect key="frame" x="121" y="354" width="132" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Create Workout"/>
                                 <connections>
@@ -504,14 +503,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Workout Name:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-c7-BGO">
-                                <rect key="frame" x="103" y="124" width="190" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J2F-7P-FXH">
-                                <rect key="frame" x="103" y="66" width="190" height="29"/>
                                 <segments>
                                     <segment title="Crossfit"/>
                                     <segment title="Bodybuilding"/>
@@ -521,7 +518,6 @@
                                 </connections>
                             </segmentedControl>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="O6E-J0-Vo2">
-                                <rect key="frame" x="-4" y="180" width="383" height="155"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="155" id="Itl-Kc-BX8"/>
                                 </constraints>
@@ -529,11 +525,9 @@
                                     <!--2016-03-04 00:23:12 +0000-->
                                 </date>
                             </datePicker>
-                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wpr-qY-P6z">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wpr-qY-P6z"/>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.98332634228187921" blue="0.70210255872483207" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.98332634228187921" blue="0.70210255872483207" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="J2F-7P-FXH" firstAttribute="top" secondItem="N8q-Hc-i6c" secondAttribute="bottom" constant="16" id="2rZ-pG-hFy"/>
                             <constraint firstItem="O6E-J0-Vo2" firstAttribute="top" secondItem="S4R-c7-BGO" secondAttribute="bottom" constant="26" id="32T-c7-5wO"/>
@@ -555,7 +549,6 @@
                             <constraint firstItem="J2F-7P-FXH" firstAttribute="trailing" secondItem="rH3-jU-nNC" secondAttribute="trailingMargin" constant="-66" id="tr7-xZ-419"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="SegmentedTypeOutlet" destination="J2F-7P-FXH" id="f33-2g-Ka0"/>
                         <outlet property="dateOutlet" destination="O6E-J0-Vo2" id="dH3-aO-8Wt"/>
@@ -566,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uyh-Kg-dg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1236.5" y="736.5"/>
+            <point key="canvasLocation" x="684" y="673"/>
         </scene>
         <!--Exercise Type Table View Controller-->
         <scene sceneID="vuR-lo-XDL">
@@ -575,25 +568,25 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kkh-SS-Zhv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BodybuildingCell" textLabel="dqH-WC-U1r" imageView="eDP-ww-SPW" style="IBUITableViewCellStyleDefault" id="svO-Sk-qQr">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="svO-Sk-qQr" id="7fd-5b-P6n">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bodybuilding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dqH-WC-U1r">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="eDP-ww-SPW">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -607,18 +600,18 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G7c-c1-6N1" id="pKa-iK-4kD">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Crossfit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e5r-ix-PzJ">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="qeN-UR-CGq">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -635,11 +628,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Mux-LS-iUd"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNj-M2-Sfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355.5" y="744.5"/>
+            <point key="canvasLocation" x="2380" y="673"/>
         </scene>
         <!--Abs View Controller-->
         <scene sceneID="Fc7-zd-yjz">
@@ -654,14 +646,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-oh-1eD">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="w13-wb-QF8" id="KC8-Rg-F8Z"/>
                                     <outlet property="delegate" destination="w13-wb-QF8" id="SWw-UM-r6m"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0db-bK-kRl">
-                                <rect key="frame" x="139" y="290" width="96" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="add Exercise"/>
                                 <connections>
@@ -669,10 +659,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-Bi-b3y">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GNU-oh-1eD" firstAttribute="leading" secondItem="xJA-6U-6oc" secondAttribute="leadingMargin" constant="-20" id="2cs-zs-Aox"/>
                             <constraint firstItem="GNU-oh-1eD" firstAttribute="top" secondItem="GEe-rk-kGn" secondAttribute="bottom" id="PPL-Kb-zoB"/>
@@ -682,7 +673,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0db-bK-kRl" secondAttribute="trailing" constant="124" id="wTE-yb-Ptf"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="nqm-Bi-b3y" id="z7j-oY-KN8"/>
                         <outlet property="pickerOutlet" destination="GNU-oh-1eD" id="tVG-bW-Qyu"/>
@@ -690,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESJ-i9-ELy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4354.5" y="-1457.5"/>
+            <point key="canvasLocation" x="4958" y="-846"/>
         </scene>
         <!--Back View Controller-->
         <scene sceneID="sHM-TW-6xj">
@@ -705,15 +695,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7K-bV-kuU">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="nyg-zS-dKd" id="2V1-nd-tXO"/>
                                     <outlet property="delegate" destination="nyg-zS-dKd" id="mhD-8F-6w4"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-do-szN">
-                                <rect key="frame" x="139" y="290" width="96" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="add Exercise"/>
                                 <connections>
@@ -721,10 +709,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNH-F9-XQs">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="OUC-do-szN" firstAttribute="leading" secondItem="rQ3-oo-kgh" secondAttribute="leadingMargin" constant="123" id="8rE-fJ-KYP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P7K-bV-kuU" secondAttribute="trailing" constant="-20" id="LsX-WM-SaH"/>
@@ -734,7 +723,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="OUC-do-szN" secondAttribute="trailing" constant="124" id="wYZ-gV-6MM"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="LNH-F9-XQs" id="uUd-b9-lwd"/>
                         <outlet property="pickerOutlet" destination="P7K-bV-kuU" id="eDb-lK-7oW"/>
@@ -742,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKY-DY-Igh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3415.5" y="-1480.5"/>
+            <point key="canvasLocation" x="3542" y="-1191"/>
         </scene>
         <!--Bodybuilding Body Parts Table View Controller-->
         <scene sceneID="aZc-0z-f5u">
@@ -751,25 +739,25 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6cF-Il-f9J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ArmsCell" textLabel="Jju-UM-cDi" imageView="0Tm-uu-Bow" style="IBUITableViewCellStyleDefault" id="qF5-WA-Njx">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qF5-WA-Njx" id="Y7k-9T-BbK">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Arms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jju-UM-cDi">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="0Tm-uu-Bow">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -783,18 +771,18 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fkh-Qd-Vhe" id="tOB-5f-brI">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Chest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jgu-zb-Kbb">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="y1h-8S-P5T">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -807,18 +795,18 @@
                                 <rect key="frame" x="0.0" y="180" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FTh-IG-SsI" id="lfk-3l-skq">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4rk-fy-mWN">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="GuH-Fg-tiK">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -831,18 +819,18 @@
                                 <rect key="frame" x="0.0" y="224" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aUv-if-8Nm" id="Z4q-TW-vUY">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Abs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hZa-RR-QFO">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="LKc-RB-wbh">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -855,18 +843,18 @@
                                 <rect key="frame" x="0.0" y="268" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bjg-aB-tfb" id="t50-Tw-ggo">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Legs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M5j-ZW-bos">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="ZKE-SN-q3R">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -879,18 +867,18 @@
                                 <rect key="frame" x="0.0" y="312" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HN5-Gf-beh" id="9g5-WV-lnF">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Custom Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WeT-rc-11E">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="JYe-uO-BJq">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -905,11 +893,10 @@
                             <outlet property="delegate" destination="gv5-wy-y8G" id="tpK-KX-Vyt"/>
                         </connections>
                     </tableView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHa-ey-aaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3388.5" y="176.5"/>
+            <point key="canvasLocation" x="3241" y="673"/>
         </scene>
         <!--Legs View Controller-->
         <scene sceneID="Ud7-mE-8OB">
@@ -924,14 +911,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-Sj-Oqz">
-                                <rect key="frame" x="-3" y="64" width="383" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mMa-us-Bom" id="tyY-pd-Pww"/>
                                     <outlet property="delegate" destination="mMa-us-Bom" id="XPI-g9-DMm"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pn-2w-nGT">
-                                <rect key="frame" x="140" y="290" width="96" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="add Exercise"/>
                                 <connections>
@@ -939,10 +924,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73P-Vh-OeK">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5pn-2w-nGT" firstAttribute="leading" secondItem="eX3-5A-pj3" secondAttribute="leadingMargin" constant="124" id="A2v-el-eLb"/>
                             <constraint firstItem="Tbc-Sj-Oqz" firstAttribute="leading" secondItem="eX3-5A-pj3" secondAttribute="leadingMargin" constant="-19" id="A51-lU-afX"/>
@@ -953,7 +939,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Tbc-Sj-Oqz" secondAttribute="trailing" constant="-21" id="b7F-be-87E"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="73P-Vh-OeK" id="6jL-cu-1rL"/>
                         <outlet property="pickerOutlet" destination="Tbc-Sj-Oqz" id="ukX-fF-vuO"/>
@@ -961,7 +946,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLR-j5-8JL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3929.5" y="-1480.5"/>
+            <point key="canvasLocation" x="4311" y="-1191"/>
         </scene>
         <!--Arm View Controller-->
         <scene sceneID="Zer-dr-eQg">
@@ -976,14 +961,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpb-xJ-L48">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="i40-sf-a9m" id="yeI-N4-Y1j"/>
                                     <outlet property="delegate" destination="i40-sf-a9m" id="UZm-1g-R61"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adr-j6-Fws">
-                                <rect key="frame" x="139" y="290" width="97" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Add Exercise"/>
                                 <connections>
@@ -991,10 +974,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXI-DD-CjQ">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="xpb-xJ-L48" secondAttribute="trailing" constant="-20" id="2LD-xq-cKB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="adr-j6-Fws" secondAttribute="trailing" constant="123" id="2g1-Bl-MqV"/>
@@ -1004,7 +988,6 @@
                             <constraint firstItem="adr-j6-Fws" firstAttribute="top" secondItem="xpb-xJ-L48" secondAttribute="bottom" constant="10" id="dzA-58-SK6"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="jXI-DD-CjQ" id="2A1-gd-6pE"/>
                         <outlet property="pickerOutlet" destination="xpb-xJ-L48" id="7AG-5J-s0L"/>
@@ -1012,7 +995,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkA-vY-5ap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4345.5" y="-720.5"/>
+            <point key="canvasLocation" x="4958" y="-185"/>
         </scene>
         <!--Chest View Controller-->
         <scene sceneID="dHJ-RF-Nrq">
@@ -1027,14 +1010,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfz-el-k8a">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="RpR-Gf-GV8" id="prB-vz-ffi"/>
                                     <outlet property="delegate" destination="RpR-Gf-GV8" id="Jys-LZ-5tM"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9q-Lw-3p8">
-                                <rect key="frame" x="139" y="290" width="96" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="add Exercise"/>
                                 <connections>
@@ -1042,10 +1023,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-vG-9iR">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="mfz-el-k8a" secondAttribute="trailing" constant="-20" id="2hq-AE-45B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D9q-Lw-3p8" secondAttribute="trailing" constant="124" id="LFW-QA-eSD"/>
@@ -1055,7 +1037,6 @@
                             <constraint firstItem="D9q-Lw-3p8" firstAttribute="top" secondItem="mfz-el-k8a" secondAttribute="bottom" constant="10" id="t43-kZ-lC5"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="hHg-vG-9iR" id="ak5-q8-AIx"/>
                         <outlet property="pickerOutlet" destination="mfz-el-k8a" id="HXE-4b-IBh"/>
@@ -1063,7 +1044,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1c-1w-YDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4345.5" y="744.5"/>
+            <point key="canvasLocation" x="4958" y="1239"/>
         </scene>
         <!--New Bodybuilding Exercise View Controller-->
         <scene sceneID="e79-9t-WUG">
@@ -1078,27 +1059,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYr-EK-ebC">
-                                <rect key="frame" x="13" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="back:" destination="Cft-6a-Tyx" eventType="touchUpInside" id="n47-vX-ckI"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SwT-Ta-Jo2">
-                                <rect key="frame" x="0.0" y="107" width="370" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Cft-6a-Tyx" id="mlW-kZ-gIC"/>
                                     <outlet property="delegate" destination="Cft-6a-Tyx" id="Fui-W3-UYp"/>
                                 </connections>
                             </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7WC-hG-wcJ">
-                                <rect key="frame" x="87" y="81" width="196" height="30"/>
-                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKn-xD-CNM">
-                                <rect key="frame" x="135" y="333" width="104" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="e0V-Pm-NVY"/>
                                     <constraint firstAttribute="width" constant="88" id="ejT-fx-A1h"/>
@@ -1116,10 +1093,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-pS-S7z">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="h6W-Cc-SWS" firstAttribute="top" secondItem="nKn-xD-CNM" secondAttribute="bottom" constant="304" id="GfQ-KI-1Da"/>
                             <constraint firstItem="fYr-EK-ebC" firstAttribute="leading" secondItem="Db8-Mi-S5E" secondAttribute="leadingMargin" constant="-3" id="H6i-cs-JkG"/>
@@ -1148,7 +1126,6 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="k19-lB-KMh"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="qtc-pS-S7z" id="mqQ-ag-ZaT"/>
                         <outlet property="nameOutlet" destination="7WC-hG-wcJ" id="MtF-AI-2g2"/>
@@ -1158,7 +1135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMR-I9-XkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4364.5" y="30.5"/>
+            <point key="canvasLocation" x="4958" y="550"/>
         </scene>
         <!--Crossfit Workout Table View Controller-->
         <scene sceneID="WjX-ye-Wdf">
@@ -1167,24 +1144,24 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aPV-5R-7jw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell1" textLabel="JXs-RF-QdH" imageView="gro-i0-mEf" style="IBUITableViewCellStyleDefault" id="08S-m2-WsS">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="08S-m2-WsS" id="2by-ln-R2K">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 RM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXs-RF-QdH">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" highlightedImage="Background1" id="gro-i0-mEf">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1198,23 +1175,23 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="irY-z1-0L2" id="nmY-I5-ddi">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Amrap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bXT-sJ-mba">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="tMd-SQ-pSV">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <segue destination="amZ-mI-WTt" kind="show" id="ltI-O4-XW0"/>
@@ -1224,18 +1201,18 @@
                                 <rect key="frame" x="0.0" y="180" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b3S-e3-CoI" id="EBt-cv-hco">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Metcon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="66h-BT-Ge7">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="JEm-VB-Hzu">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1249,18 +1226,18 @@
                                 <rect key="frame" x="0.0" y="224" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7bU-4L-lrA" id="Bwc-0L-Nkc">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tabata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XVD-pd-3sA">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="V92-DE-u2H">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1274,18 +1251,18 @@
                                 <rect key="frame" x="0.0" y="268" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ilg-SC-PK9" id="pNi-5p-eBN">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7hW-Gt-Xou">
-                                            <rect key="frame" x="54" y="0.0" width="286" height="43.5"/>
+                                            <frame key="frameInset" minX="54" width="286" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="IWX-Oo-ojq">
-                                            <rect key="frame" x="15" y="0.0" width="24" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="24" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1302,11 +1279,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="QWI-7X-MxT"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abA-Gs-OZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355.5" y="1527.5"/>
+            <point key="canvasLocation" x="2380" y="1464"/>
         </scene>
         <!--OneRM View Controller-->
         <scene sceneID="S6o-ul-c55">
@@ -1321,7 +1297,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5d-BA-rcv">
-                                <rect key="frame" x="137" y="290" width="101" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Add Exercise"/>
                                 <connections>
@@ -1329,10 +1304,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kG8-dJ-b8N">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ecv-W4-OYP">
-                                <rect key="frame" x="-4" y="64" width="383" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="Ey2-e9-8BH"/>
                                 </constraints>
@@ -1342,7 +1317,7 @@
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Y5d-BA-rcv" firstAttribute="top" secondItem="Ecv-W4-OYP" secondAttribute="bottom" constant="8" id="Bth-dA-NiF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ecv-W4-OYP" secondAttribute="trailing" constant="-20" id="JM7-pz-spi"/>
@@ -1353,7 +1328,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ki4-f4-EtS"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="kG8-dJ-b8N" id="IpA-8U-O4l"/>
                         <outlet property="pickerOutlet" destination="Ecv-W4-OYP" id="Smm-sA-Pnw"/>
@@ -1361,7 +1335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wv-0r-WMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2984.5" y="2409.5"/>
+            <point key="canvasLocation" x="3242" y="2409"/>
         </scene>
         <!--Wods View Controller-->
         <scene sceneID="9w3-KE-bMe">
@@ -1376,14 +1350,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMI-Pe-gjj">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="rcG-z7-cRk" id="RGu-6E-I5H"/>
                                     <outlet property="delegate" destination="rcG-z7-cRk" id="Ur5-Cv-G74"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC2-Dt-8RF">
-                                <rect key="frame" x="143" y="290" width="89" height="31"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                 <state key="normal" title="Add Wod"/>
                                 <connections>
@@ -1391,10 +1363,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y9X-9w-9xH">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YMI-Pe-gjj" firstAttribute="leading" secondItem="f7w-Kk-XW4" secondAttribute="leadingMargin" constant="-20" id="G8g-oc-hpX"/>
                             <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="10" id="MNd-bt-7BB"/>
@@ -1404,7 +1377,6 @@
                             <constraint firstItem="YMI-Pe-gjj" firstAttribute="top" secondItem="tIq-Z7-Se3" secondAttribute="bottom" id="tSG-04-7At"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="Y9X-9w-9xH" id="mY3-I8-bxd"/>
                         <outlet property="pickerOutlet" destination="YMI-Pe-gjj" id="duE-L9-kZg"/>
@@ -1412,7 +1384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-hc-F45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3397.5" y="2409.5"/>
+            <point key="canvasLocation" x="3895" y="2409"/>
         </scene>
         <!--Tabata View Controller-->
         <scene sceneID="hs6-xD-zH2">
@@ -1427,17 +1399,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O04-vp-vQv">
-                                <rect key="frame" x="144" y="378" width="86" height="30"/>
                                 <state key="normal" title="Add Tabata"/>
                                 <connections>
                                     <action selector="addTabata:" destination="1Ts-N7-NBp" eventType="touchUpInside" id="NXz-I7-Ezw"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebg-wM-fcE">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehZ-Db-OgB">
-                                <rect key="frame" x="-4" y="247" width="383" height="121"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="121" id="Coa-Gx-IPr"/>
                                 </constraints>
@@ -1447,27 +1418,30 @@
                                 </connections>
                             </pickerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BQh-eU-hxM">
-                                <rect key="frame" x="-4" y="64" width="383" height="183"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="183" id="461-7z-V5j"/>
                                 </constraints>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TabataCell" id="G3L-Aj-VYj" customClass="TabataCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3L-Aj-VYj" id="dwg-U2-qFf">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <frame key="frameInset" width="383" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise 1:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-Kx-4Cf">
-                                                    <rect key="frame" x="70" y="5" width="235" height="30"/>
-                                                    <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise 1:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-Kx-4Cf">
+                                                    <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9gQ-Kx-4Cf" firstAttribute="leading" secondItem="dwg-U2-qFf" secondAttribute="leadingMargin" constant="62" id="RQt-fV-66t"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9gQ-Kx-4Cf" secondAttribute="trailing" constant="70" id="jty-4F-ip3"/>
+                                                <constraint firstItem="9gQ-Kx-4Cf" firstAttribute="bottom" secondItem="dwg-U2-qFf" secondAttribute="bottomMargin" id="xTT-0c-NWG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="exTextField" destination="9gQ-Kx-4Cf" id="bSW-47-M9b"/>
@@ -1480,7 +1454,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BQh-eU-hxM" firstAttribute="top" secondItem="XtG-Kh-JC0" secondAttribute="bottom" id="38r-Jj-DPT"/>
                             <constraint firstItem="ehZ-Db-OgB" firstAttribute="leading" secondItem="VWn-ST-UOW" secondAttribute="leadingMargin" constant="-20" id="A2a-Sl-L9H"/>
@@ -1490,7 +1464,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="BQh-eU-hxM" secondAttribute="trailing" constant="-20" id="KLC-HF-vdq"/>
                             <constraint firstItem="O04-vp-vQv" firstAttribute="top" secondItem="ehZ-Db-OgB" secondAttribute="bottom" constant="10" id="Nva-NK-DQ0"/>
                             <constraint firstItem="BQh-eU-hxM" firstAttribute="leading" secondItem="VWn-ST-UOW" secondAttribute="leadingMargin" constant="-20" id="Q1y-pU-CkT"/>
-                            <constraint firstItem="O04-vp-vQv" firstAttribute="centerX" secondItem="VWn-ST-UOW" secondAttribute="centerX" id="XLa-Ro-LQo"/>
                             <constraint firstItem="ehZ-Db-OgB" firstAttribute="top" secondItem="BQh-eU-hxM" secondAttribute="bottom" id="zoo-YT-XGp"/>
                         </constraints>
                     </view>
@@ -1501,7 +1474,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="ebg-wM-fcE" id="SeM-Fd-wJs"/>
                         <outlet property="pickerOutlet" destination="ehZ-Db-OgB" id="0Or-vA-qZf"/>
@@ -1510,7 +1482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oye-aT-vFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1781.5" y="2409.5"/>
+            <point key="canvasLocation" x="1282" y="2409"/>
         </scene>
         <!--Metcon View Controller-->
         <scene sceneID="sKU-ve-HCz">
@@ -1525,14 +1497,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0u-tX-gNu">
-                                <rect key="frame" x="137" y="376" width="100" height="30"/>
                                 <state key="normal" title="Add Metcon  "/>
                                 <connections>
                                     <action selector="addMetcon:" destination="L6G-hK-Tej" eventType="touchUpInside" id="dez-tg-f1H"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mC3-re-lC9">
-                                <rect key="frame" x="-8" y="247" width="387" height="121"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="121" id="oxY-b0-qJ6"/>
                                 </constraints>
@@ -1542,27 +1512,30 @@
                                 </connections>
                             </pickerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-9X-ca5">
-                                <rect key="frame" x="-4" y="64" width="383" height="184"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="184" id="jMS-gK-mHF"/>
                                 </constraints>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MetconCell" id="g0c-Qa-chH" customClass="MetconCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g0c-Qa-chH" id="a9g-TB-vwW">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <frame key="frameInset" width="383" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise 1:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-nJ-ltt">
-                                                    <rect key="frame" x="70" y="5" width="235" height="30"/>
-                                                    <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise 1:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-nJ-ltt">
+                                                    <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ojc-nJ-ltt" secondAttribute="trailing" constant="70" id="TKT-7X-1yC"/>
+                                                <constraint firstItem="Ojc-nJ-ltt" firstAttribute="bottom" secondItem="a9g-TB-vwW" secondAttribute="bottomMargin" id="YVv-zq-mQ0"/>
+                                                <constraint firstItem="Ojc-nJ-ltt" firstAttribute="leading" secondItem="a9g-TB-vwW" secondAttribute="leadingMargin" constant="62" id="Yf7-ib-Sqy"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="exTextField" destination="Ojc-nJ-ltt" id="um8-Ut-hzH"/>
@@ -1575,12 +1548,12 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EuT-Hu-q38">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="M0u-tX-gNu" firstAttribute="centerX" secondItem="FPY-Bg-kD4" secondAttribute="centerX" id="JZc-On-zx9"/>
                             <constraint firstItem="dcK-9X-ca5" firstAttribute="leading" secondItem="FPY-Bg-kD4" secondAttribute="leadingMargin" constant="-20" id="P5x-Wj-NWa"/>
                             <constraint firstItem="dcK-9X-ca5" firstAttribute="top" secondItem="alh-MI-d7o" secondAttribute="bottom" id="U18-OE-rso"/>
                             <constraint firstItem="mC3-re-lC9" firstAttribute="top" secondItem="dcK-9X-ca5" secondAttribute="bottom" constant="-1" id="bCk-KZ-KFm"/>
@@ -1599,7 +1572,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="EuT-Hu-q38" id="jIT-Cu-Yhu"/>
                         <outlet property="pickerOutlet" destination="mC3-re-lC9" id="zTM-je-g8N"/>
@@ -1608,7 +1580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcB-TO-PVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2195.5" y="2409.5"/>
+            <point key="canvasLocation" x="1935" y="2409"/>
         </scene>
         <!--Amrap View Controller-->
         <scene sceneID="g0t-dc-Dei">
@@ -1623,7 +1595,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-2c-CyR">
-                                <rect key="frame" x="-4" y="247" width="383" height="121"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="121" id="PbR-aG-wFI"/>
                                 </constraints>
@@ -1633,7 +1604,6 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihm-wr-0JO">
-                                <rect key="frame" x="145" y="378" width="85" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NVx-qN-UQ4"/>
                                     <constraint firstAttribute="width" constant="85" id="ri7-h5-gjz"/>
@@ -1644,27 +1614,30 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eH5-Wu-1fM">
-                                <rect key="frame" x="-4" y="64" width="383" height="184"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="184" id="Nl7-ub-yE4"/>
                                 </constraints>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AmrapCell" id="qlw-UJ-9N9" customClass="AmrapCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qlw-UJ-9N9" id="1jV-S2-zKy">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <frame key="frameInset" width="383" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise 1:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-F9-vVf">
-                                                    <rect key="frame" x="70" y="5" width="235" height="30"/>
-                                                    <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise 1:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-F9-vVf">
+                                                    <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kZf-F9-vVf" secondAttribute="trailing" constant="70" id="KzN-D5-SuZ"/>
+                                                <constraint firstItem="kZf-F9-vVf" firstAttribute="leading" secondItem="1jV-S2-zKy" secondAttribute="leadingMargin" constant="62" id="oGE-9P-S3p"/>
+                                                <constraint firstItem="kZf-F9-vVf" firstAttribute="bottom" secondItem="1jV-S2-zKy" secondAttribute="bottomMargin" id="pF8-AZ-jHX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="exTextField" destination="kZf-F9-vVf" id="lKS-bS-0TT"/>
@@ -1677,10 +1650,11 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUI-4u-MNJ">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
+                                <frame key="frameInset" minX="88" minY="272" width="375" height="639"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Bp9-2c-CyR" firstAttribute="top" secondItem="eH5-Wu-1fM" secondAttribute="bottom" constant="-1" id="50D-f6-u4d"/>
                             <constraint firstItem="Ihm-wr-0JO" firstAttribute="centerX" secondItem="Yhl-pe-upv" secondAttribute="centerX" id="K4H-L5-0SP"/>
@@ -1699,7 +1673,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageOutlet" destination="VUI-4u-MNJ" id="cuI-Th-od5"/>
                         <outlet property="pickerOutlet" destination="Bp9-2c-CyR" id="3jQ-Jk-VwS"/>
@@ -1715,7 +1688,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Hn-31-EIQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rGc-DX-Vd6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1727,7 +1699,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUn-sn-aqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.5" y="-86.5"/>
+            <point key="canvasLocation" x="-1089" y="-87"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mY4-3X-fix">
@@ -1745,7 +1717,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvZ-E6-lN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1758.5" y="744.5"/>
+            <point key="canvasLocation" x="1537" y="672"/>
         </scene>
     </scenes>
     <resources>

@@ -28,25 +28,25 @@ class ArmViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return armExercises.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return armExercises[row]
     }
     
-    @IBAction func addExercise(sender: UIButton) {
-        let id:Int = pickerOutlet.selectedRowInComponent(0)
+    @IBAction func addExercise(_ sender: UIButton) {
+        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         myExercise.name = armExercises[id]
         myExercise.exerciseDescription = "4 sets - 12 reps"
     
-        NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

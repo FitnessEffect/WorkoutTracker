@@ -11,7 +11,7 @@
 import UIKit
 
 protocol ExerciseResultDelegate{
-    func passExercise(exercise:Exercise)
+    func passExercise(_ exercise:Exercise)
 }
 
 class ExerciseDetailViewController: UIViewController {
@@ -26,22 +26,21 @@ class ExerciseDetailViewController: UIViewController {
         title = exercise.name
         super.viewDidLoad()
 
-        
         let desStr:String = exercise.exerciseDescription
-        let stringParts = desStr.componentsSeparatedByString("|")
+        let stringParts = desStr.components(separatedBy: "|")
         
         resultOutlet.textColor = UIColor(red: 115.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
         var newString:String = ""
         for part in stringParts{
-            newString.appendContentsOf(part)
-            newString.appendContentsOf("\n")
+            newString.append(part)
+            newString.append("\n")
         }
         descriptionOutlet.text = newString
     }
     
-    @IBAction func addResult(sender: UIButton) {
+    @IBAction func addResult(_ sender: UIButton) {
         exercise.result = resultOutlet.text!
         delegate.passExercise(exercise)
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
 }

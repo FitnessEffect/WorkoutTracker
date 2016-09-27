@@ -24,59 +24,59 @@ class CrossfitWorkoutTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return crossfitWorkouts.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let x = indexPath.row
+        let x = (indexPath as NSIndexPath).row
         
         
         if x == 0 {
-        let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell1", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell1", for: indexPath)
 
-        let exercise = crossfitWorkouts[indexPath.row]
+        let exercise = crossfitWorkouts[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = exercise
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         
             return cell
             
         }else if x == 1{
-            let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell2", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell2", for: indexPath)
             
-            let exercise = crossfitWorkouts[indexPath.row]
+            let exercise = crossfitWorkouts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else if x == 2{
-            let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell3", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell3", for: indexPath)
             
-            let exercise = crossfitWorkouts[indexPath.row]
+            let exercise = crossfitWorkouts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else if x == 3{
-            let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell4", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell4", for: indexPath)
             
-            let exercise = crossfitWorkouts[indexPath.row]
+            let exercise = crossfitWorkouts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("crossfitCell5", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell5", for: indexPath)
             
-            let exercise = crossfitWorkouts[indexPath.row]
+            let exercise = crossfitWorkouts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
         }
     }

@@ -22,30 +22,30 @@ class ExerciseTypeTableViewController: UITableViewController{
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exerciseType.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let x = indexPath.row
+        let x = (indexPath as NSIndexPath).row
         
         if x == 0 {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BodybuildingCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BodybuildingCell", for: indexPath)
         
-        let exercise = exerciseType[indexPath.row]
+        let exercise = exerciseType[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = exercise
-        cell.backgroundColor = UIColor.clearColor()            
+        cell.backgroundColor = UIColor.clear            
         return cell
             
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("CrossfitCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CrossfitCell", for: indexPath)
             
-            let exercise = exerciseType[indexPath.row]
+            let exercise = exerciseType[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
             
             return cell

@@ -23,65 +23,65 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bodyParts.count
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let x = indexPath.row
+        let x = (indexPath as NSIndexPath).row
         
         if x == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("ArmsCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArmsCell", for: indexPath)
             
-            let exercise = bodyParts[indexPath.row]
+            let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else if x == 1{
-            let cell = tableView.dequeueReusableCellWithIdentifier("ChestCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChestCell", for: indexPath)
             
-            let exercise = bodyParts[indexPath.row]
+            let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else if x == 2{
-            let cell = tableView.dequeueReusableCellWithIdentifier("BackCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BackCell", for: indexPath)
             
-            let exercise = bodyParts[indexPath.row]
+            let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else if x == 3{
-            let cell = tableView.dequeueReusableCellWithIdentifier("AbsCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AbsCell", for: indexPath)
             
-            let exercise = bodyParts[indexPath.row]
+            let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else if x == 4{
-            let cell = tableView.dequeueReusableCellWithIdentifier("LegsCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LegsCell", for: indexPath)
             
-            let exercise = bodyParts[indexPath.row]
+            let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
             
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("CustomWorkoutCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomWorkoutCell", for: indexPath)
             
-            let exercise = bodyParts[indexPath.row]
+            let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
             return cell
         }
     }

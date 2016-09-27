@@ -18,8 +18,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var exerciseNumber:Int = 1
-    var exerciseList:[Int] = [1]
-    var textViews:[UITextField] = []
+    var exerciseList:[String] = [""]
     
     let rest = ["-- Rest --", "5 seconds", "10 seconds", "15 seconds", "20 seconds", "25 seconds", "30 seconds"]
     let work = ["-- Work --", "15 seconds", "30 seconds", "45 seconds", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes"]
@@ -34,17 +33,17 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func add(sender: UIBarButtonItem) {
+    @IBAction func add(_ sender: UIBarButtonItem) {
         exerciseNumber += 1
-        exerciseList.append(exerciseNumber)
+        exerciseList.append("")
         tableView.reloadData()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if component == 0 {
             return rest.count
@@ -55,7 +54,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if component == 0 {
             return rest[row]
@@ -66,42 +65,52 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
     }
     
-    @IBAction func addTabata(sender: UIButton) {
+    @IBAction func addTabata(_ sender: UIButton) {
         
         myExercise.name = "Tabata"
-        let id:Int = pickerOutlet.selectedRowInComponent(2)
-        var str = ""
-        for textField in textViews{
-            str.appendContentsOf(textField.text!)
-            str.appendContentsOf(" | ")
+        let id:Int = pickerOutlet.selectedRow(inComponent: 2)
+        var tabataString = ""
+        for exercise in exerciseList{
+            if !exercise.isEmpty {
+                tabataString.append(exercise)
+                tabataString.append(" | ")
+            }
         }
         
-        myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + str
+        myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + tabataString
         
-        NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exerciseList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("TabataCell", forIndexPath: indexPath) as! TabataCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TabataCell", for: indexPath) as! TabataCustomCell
         
-        if textViews.count < indexPath.row + 1 {
-            textViews.append(cell.exTextField)
+        var text = exerciseList[(indexPath as NSIndexPath).row]
+        if text.isEmpty{
+            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
         }
 
-        let exerciseCount = indexPath.row + 1
-        cell.exTextField.text = "Exercise " + String(exerciseCount) + ":"
+        cell.exTextField.text = text
+        cell.exTextField.tag = (indexPath as NSIndexPath).row
+        cell.exTextField.addTarget(self, action: #selector(TabataViewController.textFieldDidChange(_:)), for:UIControlEvents.editingChanged)
+        
         return cell
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        let index = textField.tag
+        exerciseList[index] = textField.text!
     }
 }
 

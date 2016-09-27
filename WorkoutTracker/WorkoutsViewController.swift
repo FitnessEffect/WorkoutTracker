@@ -11,7 +11,7 @@
 import UIKit
 
 protocol WorkoutsDelegate{
-    func saveWorkoutFromExercise(client:Client)
+    func saveWorkoutFromExercise(_ client:Client)
 }
 
 class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,createWorkoutDelegate, ExercisesDelegate{
@@ -31,22 +31,22 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //TableView
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return client.workoutArray.count
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WorkoutCell", forIndexPath: indexPath) as! WorkoutCustomCell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutCustomCell
         
-        let workout = client.workoutArray[indexPath.row]
+        let workout = client.workoutArray[(indexPath as NSIndexPath).row]
        
         cell.nameOutlet.text = workout.name
         cell.dateOutlet.text = workout.date
-        workoutCount = (indexPath.row + 1)
+        workoutCount = ((indexPath as NSIndexPath).row + 1)
         cell.numberOutlet.text = String(workoutCount)
         
         if workout.type == "Crossfit" {
@@ -60,7 +60,7 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     //Adds new workout created in WorkoutNameViewControllers to WorkoutsViewController and saves it.
-    func addWorkout(workout:Workout){
+    func addWorkout(_ workout:Workout){
         
         client.workoutArray.append(workout)
         delegate.saveWorkoutFromExercise(client)
@@ -68,33 +68,33 @@ class WorkoutsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //Saves new Exercises from ExercisesViewController
-    func saveExercises(workout:Workout){
+    func saveExercises(_ workout:Workout){
        
         client.workoutArray[selectedRow] = workout
         delegate.saveWorkoutFromExercise(client)
         tableViewOutlet.reloadData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "newWorkoutSegue"){
             
-            let ncv:WorkoutNameViewController = segue.destinationViewController as! WorkoutNameViewController
+            let ncv:WorkoutNameViewController = segue.destination as! WorkoutNameViewController
             ncv.delegate = self
         }
         if(segue.identifier == "exercisesSegue"){
             
-            selectedRow = tableViewOutlet.indexPathForSelectedRow!.row
-            let evc:ExercisesViewController = segue.destinationViewController as! ExercisesViewController
+            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
+            let evc:ExercisesViewController = segue.destination as! ExercisesViewController
             evc.delegate = self
             evc.workout = client.workoutArray[selectedRow]
         }
     }
     
     //Allows workout cells to be deleted
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            client.workoutArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            client.workoutArray.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             delegate.saveWorkoutFromExercise(client)
         }
     }

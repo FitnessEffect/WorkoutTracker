@@ -11,7 +11,7 @@
 import UIKit
 
 protocol createWorkoutDelegate{
-    func addWorkout(workout:Workout)
+    func addWorkout(_ workout:Workout)
 }
 
 class WorkoutNameViewController: UIViewController {
@@ -30,7 +30,7 @@ class WorkoutNameViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 255.0/255.0, green: 250.0/255.0, blue: 180.0/255.0, alpha: 1.0)
     }
 
-    @IBAction func typeSegmentedBar(sender: UISegmentedControl){
+    @IBAction func typeSegmentedBar(_ sender: UISegmentedControl){
         if segmentedTypeOutlet.selectedSegmentIndex == 0 {
             imageOutlet.image = UIImage(named: "rings.png")
             self.view.backgroundColor = UIColor(red: 255.0/255.0, green: 250.0/255.0, blue: 180.0/255.0, alpha: 1.0)
@@ -40,14 +40,14 @@ class WorkoutNameViewController: UIViewController {
         }
     }
     //returns information to the delegate method addWorkout
-    @IBAction func CreateWorkout(sender: UIButton) {
+    @IBAction func CreateWorkout(_ sender: UIButton) {
         
         let workoutName = workoutNameOutlet.text
         let rawDate = dateOutlet.date
     
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        let dateStr = dateFormatter.stringFromDate(rawDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        let dateStr = dateFormatter.string(from: rawDate)
        
         if segmentedTypeOutlet.selectedSegmentIndex == 0 {
             myWorkout.type = "Crossfit"
@@ -59,10 +59,10 @@ class WorkoutNameViewController: UIViewController {
         myWorkout.date = dateStr
         
         delegate.addWorkout(myWorkout)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
    
-    @IBAction func back(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func back(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }

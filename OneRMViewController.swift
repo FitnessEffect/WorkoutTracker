@@ -25,15 +25,15 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             return OneRM.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
             return OneRM[row]
     }
     
@@ -41,14 +41,14 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func addExercise(sender: UIButton) {
+    @IBAction func addExercise(_ sender: UIButton) {
         
-        let id:Int = pickerOutlet.selectedRowInComponent(0)
+        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         myExercise.name = ("1RM" + OneRM[id])
         myExercise.exerciseDescription = ("1 Rep Max" + " | " + OneRM[id])
         
-        NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

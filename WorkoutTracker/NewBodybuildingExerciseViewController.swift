@@ -11,7 +11,7 @@
 import UIKit
 
 protocol CreateExerciseDelegate{
-   func addExercise(exercise:Exercise)
+   func addExercise(_ exercise:Exercise)
 }
 
 class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
@@ -34,11 +34,11 @@ class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataS
          backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if component == 0 {
             return reps.count
@@ -47,7 +47,7 @@ class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataS
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if component == 0 {
             return reps[row]
@@ -56,17 +56,17 @@ class NewBodybuildingExerciseViewController: UIViewController, UIPickerViewDataS
         }
     }
     
-    @IBAction func addExercise(sender: UIButton) {
+    @IBAction func addExercise(_ sender: UIButton) {
     
-        let id:Int = pickerOutlet.selectedRowInComponent(1)
+        let id:Int = pickerOutlet.selectedRow(inComponent: 1)
         myExercise.name = nameOutlet.text!
         myExercise.exerciseDescription = reps[id] + " - " + sets[id]
-        NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
        
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func back(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func back(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }

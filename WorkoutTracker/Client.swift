@@ -40,20 +40,20 @@ class Client: NSCoder {
         self.workoutArray = []
     }
     
-    func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(gender, forKey: "gender")
-        aCoder.encodeObject(firstName, forKey: "first name")
-        aCoder.encodeObject(lastName, forKey: "last name")
-        aCoder.encodeObject(age, forKey: "age")
-        aCoder.encodeObject(workoutArray, forKey:  "workout array")
+    func encodeWithCoder(_ aCoder: NSCoder!) {
+        aCoder.encode(gender, forKey: "gender")
+        aCoder.encode(firstName, forKey: "first name")
+        aCoder.encode(lastName, forKey: "last name")
+        aCoder.encode(age, forKey: "age")
+        aCoder.encode(workoutArray, forKey:  "workout array")
     }
     
     
     init (coder aDecoder: NSCoder!) {
-        self.gender = aDecoder.decodeObjectForKey("gender") as! String
-        self.firstName = aDecoder.decodeObjectForKey("first name") as! String
-        self.lastName = aDecoder.decodeObjectForKey("last name") as! String
-        self.age = aDecoder.decodeObjectForKey("age") as! String
-        self.workoutArray = aDecoder.decodeObjectForKey("workout array") as! [Workout]
+        self.gender = aDecoder.decodeObject(forKey: "gender") as! String
+        self.firstName = aDecoder.decodeObject(forKey: "first name") as! String
+        self.lastName = aDecoder.decodeObject(forKey: "last name") as! String
+        self.age = aDecoder.decodeObject(forKey: "age") as! String
+        self.workoutArray = aDecoder.decodeObject(forKey: "workout array") as! [Workout]
     }
 }
