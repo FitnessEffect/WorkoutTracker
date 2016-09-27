@@ -38,17 +38,17 @@ class Workout: NSCoder {
         self.exerciseArray = []
     }
     
-    func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(name, forKey:"name")
-        aCoder.encodeObject(date, forKey: "date")
-        aCoder.encodeObject(exerciseArray, forKey:  "exercise array")
-        aCoder.encodeObject(type, forKey: "type")
+    func encodeWithCoder(_ aCoder: NSCoder!) {
+        aCoder.encode(name, forKey:"name")
+        aCoder.encode(date, forKey: "date")
+        aCoder.encode(exerciseArray, forKey:  "exercise array")
+        aCoder.encode(type, forKey: "type")
     }
     
     init (coder aDecoder: NSCoder!) {
-        self.type = aDecoder.decodeObjectForKey("type") as! String
-        self.name = aDecoder.decodeObjectForKey("name") as! String
-        self.date = aDecoder.decodeObjectForKey("date") as! String
-        self.exerciseArray = aDecoder.decodeObjectForKey("exercise array") as! [Exercise]
+        self.type = aDecoder.decodeObject(forKey: "type") as! String
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.date = aDecoder.decodeObject(forKey: "date") as! String
+        self.exerciseArray = aDecoder.decodeObject(forKey: "exercise array") as! [Exercise]
     }
 }

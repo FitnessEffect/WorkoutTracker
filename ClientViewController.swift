@@ -25,21 +25,21 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableViewOutlet.reloadData()
     }
     
-    func saveWorkouts(client:Client){
+    func saveWorkouts(_ client:Client){
         clientArray[selectedRow] = client
         saveClients()
     }
     
-    func saveWorkoutFromExercise(client:Client){
+    func saveWorkoutFromExercise(_ client:Client){
         saveWorkouts(client)
     }
     
     //Save clients to file
     func saveClients(){
         
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
-        let path: AnyObject = paths[0]
-        let arrPath = path.stringByAppendingString("/clients.plist")
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
+        let path: AnyObject = paths[0] as AnyObject
+        let arrPath = path.appending("/clients.plist")
         
         print(path)
         NSKeyedArchiver.archiveRootObject(clientArray, toFile: arrPath)
@@ -47,63 +47,52 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //Retrieve clients from file
     func retrieveClients(){
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
-        let path: AnyObject = paths[0]
-        let arrPath = path.stringByAppendingString("/clients.plist")
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
+        let path: AnyObject = paths[0] as AnyObject
+        let arrPath = path.appending("/clients.plist")
         
        clientArray = [Client]()
         
-        if let tempArr: [Client] = NSKeyedUnarchiver.unarchiveObjectWithFile(arrPath) as? [Client] {
+        if let tempArr: [Client] = NSKeyedUnarchiver.unarchiveObject(withFile: arrPath) as? [Client] {
             clientArray = tempArr
         }
     }
     
-       override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "NewClientSegue"){
           
-            let ncv:NewClientViewController = segue.destinationViewController as! NewClientViewController
+            let ncv:NewClientViewController = segue.destination as! NewClientViewController
             ncv.delegate = self
         }
         
         if(segue.identifier == "workoutsSegue"){
-            let wvc:WorkoutsViewController = segue.destinationViewController as! WorkoutsViewController
+            let wvc:WorkoutsViewController = segue.destination as! WorkoutsViewController
             wvc.delegate = self
-            selectedRow = tableViewOutlet.indexPathForSelectedRow!.row
+            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             wvc.client = clientArray[selectedRow]
         }
     }
 
     //add created client from NewClientViewController
-     func addClient(client:Client){
+     func addClient(_ client:Client){
         clientArray.append(client)
         saveClients()
         tableViewOutlet.reloadData()
     }
     
     //TableView
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clientArray.count
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath) as! ClientCustomCell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCustomCell
         
-        let client = clientArray[indexPath.row]
-        
-       // var myMutableString = NSMutableAttributedString()
-//        let ln:String = client.lastName
-//        let att = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
-//        
-//        let boldName = NSMutableAttributedString(string:ln, attributes:att)
-       // let stringLength = NSString(string: ln).length
-//        myMutableString = NSMutableAttributedString(
-//            string: ln)
-        
-//        myMutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Optima-Bold", size: 10.0)!, range: NSRange(location:0, length: stringLength))
+        let client = clientArray[(indexPath as NSIndexPath).row]
         
         cell.nameOutlet.text = client.firstName + " " + client.lastName
         cell.ageOutlet?.text = client.age
@@ -118,10 +107,10 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     //Allows client cells to be deleted
-     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            clientArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            clientArray.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             saveClients()
         }
     }

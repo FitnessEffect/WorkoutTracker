@@ -10,7 +10,7 @@
 import UIKit
 
 protocol createClientDelegate{
-    func addClient(client:Client)
+    func addClient(_ client:Client)
 }
 
 class NewClientViewController: UIViewController {
@@ -30,11 +30,11 @@ class NewClientViewController: UIViewController {
     @IBOutlet weak var ageOutlet: UITextField!
     @IBOutlet weak var imageOutlet: UIImageView!
     
-    @IBAction func back(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func back(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func genderSelection(sender: UISegmentedControl) {
+    @IBAction func genderSelection(_ sender: UISegmentedControl) {
     
         if genderSegmentedControl.selectedSegmentIndex == 0 {
              imageOutlet.image = UIImage(named: "curl.png")
@@ -45,7 +45,7 @@ class NewClientViewController: UIViewController {
         }
     }
     
-    @IBAction func createClient(sender: UIButton) {
+    @IBAction func createClient(_ sender: UIButton) {
     
         if genderSegmentedControl.selectedSegmentIndex == 0{
         myClient.gender = "Male"
@@ -57,6 +57,6 @@ class NewClientViewController: UIViewController {
         myClient.age = ageOutlet.text!
        
         delegate.addClient(myClient)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

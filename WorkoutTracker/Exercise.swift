@@ -32,15 +32,15 @@ class Exercise: NSCoder {
         self.result = result
     }
     
-    func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(name, forKey:"name")
-        aCoder.encodeObject(exerciseDescription, forKey: "description")
-        aCoder.encodeObject(result, forKey: "result")
+    func encodeWithCoder(_ aCoder: NSCoder!) {
+        aCoder.encode(name, forKey:"name")
+        aCoder.encode(exerciseDescription, forKey: "description")
+        aCoder.encode(result, forKey: "result")
     }
     
     init (coder aDecoder: NSCoder!) {
-        self.name = aDecoder.decodeObjectForKey("name") as! String
-        self.exerciseDescription = aDecoder.decodeObjectForKey("description") as! String
-        self.result = aDecoder.decodeObjectForKey("result") as! String
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.exerciseDescription = aDecoder.decodeObject(forKey: "description") as! String
+        self.result = aDecoder.decodeObject(forKey: "result") as! String
     }
 }

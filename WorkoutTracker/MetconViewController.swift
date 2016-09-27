@@ -15,12 +15,10 @@ class MetconViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
-    var clickCount:Int = 0
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var exerciseNumber:Int = 1
-    var exerciseList:[Int] = [1]
-    var textViews:[UITextField] = []
+    var exerciseList:[String] = [""]
     
     let rounds = ["1 round", "2 rounds", "3 rounds", "4 rounds", "5 rounds", "6 rounds", "7 rounds", "8 rounds", "9 rounds", "10 rounds"]
     
@@ -34,58 +32,68 @@ class MetconViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func addExercise(sender: UIBarButtonItem) {
+    @IBAction func addExercise(_ sender: UIBarButtonItem) {
         exerciseNumber += 1
-        exerciseList.append(exerciseNumber)
+        exerciseList.append("")
         tableView.reloadData()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return rounds.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return rounds[row]
     }
     
-    @IBAction func addMetcon(sender: UIButton) {
+    @IBAction func addMetcon(_ sender: UIButton) {
         
         myExercise.name = "Metcon"
-        let id:Int = pickerOutlet.selectedRowInComponent(0)
-        var str = ""
-        for textField in textViews{
-            str.appendContentsOf(textField.text!)
-            str.appendContentsOf(" | ")
+        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+        var metconString = ""
+        for exercise in exerciseList{
+            if !exercise.isEmpty {
+                metconString.append(exercise)
+                metconString.append(" | ")
+            }
         }
-        myExercise.exerciseDescription = (rounds[id] + " | " + str)
+        myExercise.exerciseDescription = (rounds[id] + " | " + metconString)
         
-        NSNotificationCenter.defaultCenter().postNotificationName("getExerciseID", object: nil, userInfo: [exerciseKey:myExercise])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exerciseList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("MetconCell", forIndexPath: indexPath) as! MetconCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MetconCell", for: indexPath) as! MetconCustomCell
         
-        if textViews.count < indexPath.row + 1 {
-            textViews.append(cell.exTextField)
+        var text = exerciseList[(indexPath as NSIndexPath).row]
+        if text.isEmpty{
+            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
         }
         
-        let exerciseCount = indexPath.row + 1
-        cell.exTextField.text = "Exercise " + String(exerciseCount) + ":"
+        cell.exTextField.text = text
+        cell.exTextField.tag = (indexPath as NSIndexPath).row
+        cell.exTextField.addTarget(self, action: #selector(MetconViewController.textFieldDidChange(_:)), for:UIControlEvents.editingChanged)
+        
         return cell
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        let index = textField.tag
+        exerciseList[index] = textField.text!
     }
 }
