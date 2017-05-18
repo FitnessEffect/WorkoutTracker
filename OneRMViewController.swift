@@ -44,7 +44,7 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBAction func addExercise(_ sender: UIButton) {
         
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        myExercise.name = ("1RM" + OneRM[id])
+        myExercise.name = ("1RM " + OneRM[id])
         myExercise.exerciseDescription = ("1 Rep Max" + " | " + OneRM[id])
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])

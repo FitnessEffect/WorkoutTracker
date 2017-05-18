@@ -10,24 +10,44 @@
 //  client to a file
 
 import UIKit
+import Firebase
 
 class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, createClientDelegate, WorkoutsDelegate{
     
     var clientArray:[Client] = []
     var clientKey:String = "clients"
     var selectedRow:Int = 0
+    var ref:FIRDatabaseReference!
+    var currentClient:Client!
+    var menuView:MenuView!
+    var overlayView: OverlayView!
+    var challengeOverlay = true
+    var menuShowing = false
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        retrieveClients()
+        ref = FIRDatabase.database().reference()
         tableViewOutlet.reloadData()
+
+        overlayView = OverlayView.instanceFromNib() as! OverlayView
+        menuView = MenuView.instanceFromNib() as! MenuView
+        view.addSubview(overlayView)
+        view.addSubview(menuView)
+        overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        overlayView.alpha = 0
+        menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        retrieveClients()
+        //tableViewOutlet.reloadData()
     }
     
     func saveWorkouts(_ client:Client){
         clientArray[selectedRow] = client
-        saveClients()
+        //saveClients()
     }
     
     func saveWorkoutFromExercise(_ client:Client){
@@ -35,27 +55,40 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     //Save clients to file
-    func saveClients(){
-        
-        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
-        let path: AnyObject = paths[0] as AnyObject
-        let arrPath = path.appending("/clients.plist")
-        
-        print(path)
-        NSKeyedArchiver.archiveRootObject(clientArray, toFile: arrPath)
-    }
+//    func saveClients(){
+//        
+//        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
+//        let path: AnyObject = paths[0] as AnyObject
+//        let arrPath = path.appending("/clients.plist")
+//        
+//        print(path)
+//        NSKeyedArchiver.archiveRootObject(clientArray, toFile: arrPath)
+//    }
     
     //Retrieve clients from file
     func retrieveClients(){
-        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
-        let path: AnyObject = paths[0] as AnyObject
-        let arrPath = path.appending("/clients.plist")
-        
-       clientArray = [Client]()
-        
-        if let tempArr: [Client] = NSKeyedUnarchiver.unarchiveObject(withFile: arrPath) as? [Client] {
-            clientArray = tempArr
+        clientArray.removeAll()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            // let value = snapshot.value as! NSDictionary
+            if let clientsVal = snapshot.value as? [String: [String: AnyObject]] {
+                for client in clientsVal {
+                    let tempClient = Client()
+                    tempClient.age = client.value["age"] as! String
+                    tempClient.firstName = client.value["firstName"] as! String
+                    tempClient.lastName = client.value["lastName"] as! String
+                    tempClient.gender = client.value["gender"] as! String
+                    
+                    self.clientArray.append(tempClient)
+
+                }
+            }
+            self.tableViewOutlet.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
         }
+        
     }
     
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,7 +109,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //add created client from NewClientViewController
      func addClient(_ client:Client){
         clientArray.append(client)
-        saveClients()
+        //saveClients()
         tableViewOutlet.reloadData()
     }
     
@@ -111,7 +144,46 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if editingStyle == UITableViewCellEditingStyle.delete {
             clientArray.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            saveClients()
+            //saveClients()
+        }
+    }
+    
+    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+        addSelector()
+    }
+    
+    func addSelector() {
+        //slide view in here
+        if menuShowing == false{
+            menuView.addFx()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
+                self.view.isHidden = false
+                self.overlayView.alpha = 1
+            })
+            menuShowing = true
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+                self.overlayView.alpha = 0
+            })
+            menuShowing = false
+        }
+        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+    }
+    
+    func btnAction(_ sender: UIButton) {
+        if sender.tag == 1{
+            
+        }else if sender.tag == 2{
+            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            self.present(clientVC, animated: true, completion: nil)
+        }else if sender.tag == 3{
+            print("Hit history")
         }
     }
 }

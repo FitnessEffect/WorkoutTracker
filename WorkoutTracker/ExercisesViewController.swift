@@ -26,7 +26,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         title = workout.name
-        NotificationCenter.default.addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         super.viewDidLoad()
     }
     

@@ -8,6 +8,7 @@
 //  Creates a new Client and returns it to the ClientViewController.
 
 import UIKit
+import Firebase
 
 protocol createClientDelegate{
     func addClient(_ client:Client)
@@ -17,11 +18,16 @@ class NewClientViewController: UIViewController {
     
     var delegate:createClientDelegate! = nil
     var myClient = Client()
+    var ref:FIRDatabaseReference!
+     var user:FIRUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageOutlet.image = UIImage(named: "curl.png")
          self.view.backgroundColor = UIColor(red: 185.0/255.0, green: 230.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        
+        ref = FIRDatabase.database().reference()
+        user = FIRAuth.auth()?.currentUser
     }
     
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
@@ -56,7 +62,20 @@ class NewClientViewController: UIViewController {
         myClient.lastName = lastNameOutlet.text!
         myClient.age = ageOutlet.text!
        
-        delegate.addClient(myClient)
+        var clientDictionary = [String:Any]()
+        clientDictionary["firstName"] = myClient.firstName
+        clientDictionary["lastName"] = myClient.lastName
+        clientDictionary["age"] = myClient.age
+        clientDictionary["gender"] = myClient.gender
+    
+        //let fullName = myClient.firstName + " " + myClient.lastName
+        
+        let clientKey = self.ref.child("users").child(user.uid).child("Clients").childByAutoId().key
+        self.ref.child("users").child(user.uid).child("Clients").child(clientKey).setValue(clientDictionary)
+        //update only values that changed
+        // self.ref.child("users").child(user.uid).child("Clients").child(clientKey).updateChildValues(myClient)
+        
+        //delegate.addClient(myClient)
         dismiss(animated: true, completion: nil)
     }
 }
