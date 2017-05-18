@@ -12,7 +12,7 @@
 import UIKit
 import Firebase
 
-class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, createClientDelegate, WorkoutsDelegate{
+class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, createClientDelegate{
     
     var clientArray:[Client] = []
     var clientKey:String = "clients"
@@ -98,11 +98,13 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             ncv.delegate = self
         }
         
-        if(segue.identifier == "workoutsSegue"){
-            let wvc:WorkoutsViewController = segue.destination as! WorkoutsViewController
-            wvc.delegate = self
+        if(segue.identifier == "exercisesSegue"){
+            let evc:ExercisesViewController = segue.destination as! ExercisesViewController
+            //evc.delegate = self
             selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
-            wvc.client = clientArray[selectedRow]
+             print(clientArray[selectedRow])
+            evc.client = clientArray[selectedRow]
+           
         }
     }
 
