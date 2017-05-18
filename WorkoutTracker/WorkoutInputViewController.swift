@@ -38,11 +38,16 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var buttonItemView:Any!
     var menuView:MenuView!
     var overlayView: OverlayView!
+    var clientPassed = Client()
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Personal"
+        if clientPassed.firstName != "" {
+            title = clientPassed.firstName
+        }else{
+            title = "Personal"
+        }
         
         email.isHidden = true
         xForEmail.isHidden = true
@@ -142,9 +147,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             descriptionTextView.isHidden = false
             erase.isHidden = false
             exerciseLabel.isHidden = true
-
             result.isHidden = false
-        
+    }
+    
+    func setClient(client:Client){
+        clientPassed = client
     }
     
     @IBAction func result(_ sender: UITextField) {
@@ -152,45 +159,44 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         weight.isHidden = false
     }
     
-    
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
     }
     
-        func addSelector() {
-            //slide view in here
-             if menuShowing == false{
-                menuView.addFx()
+    func addSelector() {
+        //slide view in here
+        if menuShowing == false{
+            menuView.addFx()
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuView.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
                 self.view.isHidden = false
                 self.overlayView.alpha = 1
             })
-                menuShowing = true
-             }else{
-                UIView.animate(withDuration: 0.3, animations: {
-                   self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
-                    self.overlayView.alpha = 0
-                })
-                menuShowing = false
-            }
-            menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-            menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-            menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-            menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-            menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+            menuShowing = true
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+                self.overlayView.alpha = 0
+            })
+            menuShowing = false
         }
+        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+    }
     
-        func btnAction(_ sender: UIButton) {
-            if sender.tag == 1{
+    func btnAction(_ sender: UIButton) {
+        if sender.tag == 1{
             
-            }else if sender.tag == 2{
-                let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
-                self.present(clientVC, animated: true, completion: nil)
-            }else if sender.tag == 3{
-                print("Hit history")
-            }
+        }else if sender.tag == 2{
+            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            self.present(clientVC, animated: true, completion: nil)
+        }else if sender.tag == 3{
+            print("Hit history")
         }
+    }
     
     func hitTest(_ sender:UITapGestureRecognizer){
         

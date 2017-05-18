@@ -11,104 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Workouts View Controller-->
-        <scene sceneID="fDQ-m7-IbQ">
-            <objects>
-                <viewController id="5Ke-ak-F8J" customClass="WorkoutsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UGN-EX-OP2"/>
-                        <viewControllerLayoutGuide type="bottom" id="lZm-4l-4vW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZFX-Hq-Bz2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE_Logo_NoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Y31-bP-E55">
-                                <rect key="frame" x="117.5" y="72" width="140" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="7Nt-Qs-fEc"/>
-                                    <constraint firstAttribute="width" constant="140" id="U3V-21-mqu"/>
-                                </constraints>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V3c-ri-dXK">
-                                <rect key="frame" x="-4" y="182" width="383" height="485"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkoutCell" rowHeight="60" id="Slu-Ea-pG0" customClass="WorkoutCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="383" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Slu-Ea-pG0" id="1lZ-NA-A8f">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRv-xx-svZ">
-                                                    <rect key="frame" x="34" y="6" width="48" height="48"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-g1-yyj">
-                                                    <rect key="frame" x="90" y="31" width="146" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNx-pa-aCc">
-                                                    <rect key="frame" x="8" y="15" width="23" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6I-TN-6NL">
-                                                    <rect key="frame" x="90" y="0.0" width="160" height="37"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateOutlet" destination="5tb-g1-yyj" id="imC-gr-Bir"/>
-                                            <outlet property="imageOutlet" destination="fRv-xx-svZ" id="XyI-Da-y4u"/>
-                                            <outlet property="nameOutlet" destination="j6I-TN-6NL" id="Bga-fk-8Ta"/>
-                                            <outlet property="numberOutlet" destination="gNx-pa-aCc" id="a5x-WN-3Dy"/>
-                                            <segue destination="ozA-DP-u6Y" kind="show" identifier="exercisesSegue" id="NZp-tR-n4o"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="5Ke-ak-F8J" id="V7s-Iw-DxB"/>
-                                    <outlet property="delegate" destination="5Ke-ak-F8J" id="6p4-55-Wvp"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="V3c-ri-dXK" secondAttribute="trailing" constant="-20" id="1hX-zK-1ap"/>
-                            <constraint firstItem="V3c-ri-dXK" firstAttribute="top" secondItem="Y31-bP-E55" secondAttribute="bottom" constant="30" id="4DJ-KT-UMH"/>
-                            <constraint firstItem="lZm-4l-4vW" firstAttribute="top" secondItem="V3c-ri-dXK" secondAttribute="bottom" id="4jT-Ja-Sef"/>
-                            <constraint firstItem="Y31-bP-E55" firstAttribute="centerX" secondItem="V3c-ri-dXK" secondAttribute="centerX" id="MkF-EZ-vli"/>
-                            <constraint firstItem="V3c-ri-dXK" firstAttribute="leading" secondItem="ZFX-Hq-Bz2" secondAttribute="leadingMargin" constant="-20" id="OK4-oR-M8z"/>
-                            <constraint firstItem="V3c-ri-dXK" firstAttribute="top" secondItem="UGN-EX-OP2" secondAttribute="bottom" constant="118" id="cpZ-s7-04b"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="GMF-iO-2IM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ivQ-Yq-mou">
-                            <connections>
-                                <segue destination="Lpm-pt-fvU" kind="presentation" identifier="newWorkoutSegue" id="JRq-b5-wDr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableViewOutlet" destination="V3c-ri-dXK" id="Yq0-6F-1wh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i5n-LJ-xgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="871" y="-107"/>
-        </scene>
         <!--Exercises View Controller-->
         <scene sceneID="gnM-dE-azX">
             <objects>
@@ -183,7 +85,7 @@
                                             <outlet property="descriptionOutlet" destination="cIL-DG-pSo" id="bAv-TW-7AO"/>
                                             <outlet property="numberOutlet" destination="jrL-FT-9OZ" id="uL5-tk-upD"/>
                                             <outlet property="titleOutlet" destination="CqZ-Ox-rSt" id="xWx-lN-ibP"/>
-                                            <segue destination="l8s-L4-TAw" kind="show" identifier="detailExerciseSegue" id="1JQ-sc-M6u"/>
+                                            <segue destination="pzd-PZ-fvb" kind="show" identifier="editExerciseSegue" id="upx-F9-NsM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -206,7 +108,7 @@
                     <navigationItem key="navigationItem" id="4TP-d2-gcd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="i3A-tX-LXQ">
                             <connections>
-                                <segue destination="bAR-Af-Bzn" kind="presentation" identifier="newExerciseSegue" id="PNh-Hm-BFE"/>
+                                <segue destination="pzd-PZ-fvb" kind="show" identifier="addExerciseSegue" id="Gad-eZ-XXh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -216,78 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f86-Si-z0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="-107"/>
-        </scene>
-        <!--Exercise Detail View Controller-->
-        <scene sceneID="wAm-cI-nNl">
-            <objects>
-                <viewController id="l8s-L4-TAw" customClass="ExerciseDetailViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dC4-IF-bMb"/>
-                        <viewControllerLayoutGuide type="bottom" id="dGZ-tA-ePf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qpv-0T-1YC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE_Logo_NoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="BfU-Gn-GxW">
-                                <rect key="frame" x="117.5" y="72" width="140" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="ElT-k6-gU8"/>
-                                    <constraint firstAttribute="width" constant="140" id="bOa-NM-LpE"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Result:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5NT-QL-i44">
-                                <rect key="frame" x="47" y="301" width="288" height="30"/>
-                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X9-Lb-vRy">
-                                <rect key="frame" x="130" y="354" width="122" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="Add Result"/>
-                                <connections>
-                                    <action selector="addResult:" destination="l8s-L4-TAw" eventType="touchUpInside" id="h2f-8p-s8a"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-oj-JL8">
-                                <rect key="frame" x="-4" y="166" width="383" height="119"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="zi4-wf-KA8"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="BfU-Gn-GxW" firstAttribute="centerX" secondItem="Qpv-0T-1YC" secondAttribute="centerX" id="3FO-cD-QJu"/>
-                            <constraint firstItem="bJi-oj-JL8" firstAttribute="top" secondItem="BfU-Gn-GxW" secondAttribute="bottom" constant="14" id="Aiu-mv-Rsz"/>
-                            <constraint firstItem="5NT-QL-i44" firstAttribute="leading" secondItem="Qpv-0T-1YC" secondAttribute="leadingMargin" constant="31" id="DTn-qD-l9Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bJi-oj-JL8" secondAttribute="trailing" constant="-20" id="F7e-ib-1z7"/>
-                            <constraint firstItem="bJi-oj-JL8" firstAttribute="leading" secondItem="Qpv-0T-1YC" secondAttribute="leadingMargin" constant="-20" id="P6V-ec-T2k"/>
-                            <constraint firstItem="bJi-oj-JL8" firstAttribute="top" secondItem="dC4-IF-bMb" secondAttribute="bottom" constant="102" id="Wds-Th-Cnw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5NT-QL-i44" secondAttribute="trailing" constant="24" id="WyN-xW-mJc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6X9-Lb-vRy" secondAttribute="trailing" constant="107" id="X39-JT-aSp"/>
-                            <constraint firstItem="6X9-Lb-vRy" firstAttribute="top" secondItem="5NT-QL-i44" secondAttribute="bottom" constant="23" id="a2n-n9-FPb"/>
-                            <constraint firstItem="6X9-Lb-vRy" firstAttribute="centerX" secondItem="Qpv-0T-1YC" secondAttribute="centerX" constant="3.5" id="hTg-Uu-siX"/>
-                            <constraint firstItem="BfU-Gn-GxW" firstAttribute="top" secondItem="dC4-IF-bMb" secondAttribute="bottom" constant="8" id="jxO-bu-PnD"/>
-                            <constraint firstItem="5NT-QL-i44" firstAttribute="top" secondItem="bJi-oj-JL8" secondAttribute="bottom" constant="16" id="nCT-Cv-BnM"/>
-                            <constraint firstItem="6X9-Lb-vRy" firstAttribute="leading" secondItem="Qpv-0T-1YC" secondAttribute="leadingMargin" constant="114" id="pti-DL-lKM"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="wez-5S-iKW"/>
-                    <connections>
-                        <outlet property="descriptionOutlet" destination="bJi-oj-JL8" id="X9H-1g-FVJ"/>
-                        <outlet property="resultOutlet" destination="5NT-QL-i44" id="3pU-86-ZAs"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VSN-or-D2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2711" y="-107"/>
+            <point key="canvasLocation" x="2705" y="-21"/>
         </scene>
         <!--Workout Input View Controller-->
         <scene sceneID="Xf1-ha-tus">
@@ -441,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afE-Yn-JNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1087.2" y="672.41379310344837"/>
+            <point key="canvasLocation" x="724" y="758"/>
         </scene>
         <!--New Client View Controller-->
         <scene sceneID="obZ-7F-rcF">
@@ -551,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrW-6C-DOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215" y="674"/>
+            <point key="canvasLocation" x="1596" y="759"/>
         </scene>
         <!--Client View Controller-->
         <scene sceneID="5ma-vL-iKk">
@@ -611,7 +442,7 @@
                                         <connections>
                                             <outlet property="ageOutlet" destination="Vae-BF-NdA" id="p77-CE-QfA"/>
                                             <outlet property="nameOutlet" destination="DLQ-DC-gRT" id="AcX-zS-6c2"/>
-                                            <segue destination="5Ke-ak-F8J" kind="show" identifier="workoutsSegue" id="Xbd-oH-39U"/>
+                                            <segue destination="ozA-DP-u6Y" kind="show" identifier="exercisesSegue" id="Arw-MT-NSE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -656,99 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOI-mo-IRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215.19999999999999" y="-106.59670164917542"/>
-        </scene>
-        <!--Workout Name View Controller-->
-        <scene sceneID="LKb-ba-7z1">
-            <objects>
-                <viewController id="Lpm-pt-fvU" customClass="WorkoutNameViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HmE-Os-38V"/>
-                        <viewControllerLayoutGuide type="bottom" id="FE6-QL-iDF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rH3-jU-nNC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8q-Hc-i6c">
-                                <rect key="frame" x="12" y="19" width="34" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="back:" destination="Lpm-pt-fvU" eventType="touchUpInside" id="5oc-LP-4ro"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ks2-Ef-QQ0">
-                                <rect key="frame" x="121" y="354" width="132" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="Create Workout"/>
-                                <connections>
-                                    <action selector="CreateWorkout:" destination="Lpm-pt-fvU" eventType="touchUpInside" id="7Rb-3h-ort"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Workout Name:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-c7-BGO">
-                                <rect key="frame" x="103" y="124" width="190" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J2F-7P-FXH">
-                                <rect key="frame" x="103" y="66" width="190" height="29"/>
-                                <segments>
-                                    <segment title="Crossfit"/>
-                                    <segment title="Bodybuilding"/>
-                                </segments>
-                                <connections>
-                                    <action selector="typeSegmentedBar:" destination="Lpm-pt-fvU" eventType="valueChanged" id="dQm-lc-oog"/>
-                                </connections>
-                            </segmentedControl>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="O6E-J0-Vo2">
-                                <rect key="frame" x="-4" y="180" width="383" height="155"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="155" id="Itl-Kc-BX8"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="478743792.27268702">
-                                    <!--2016-03-04 00:23:12 +0000-->
-                                </date>
-                            </datePicker>
-                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wpr-qY-P6z">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.98332634228187921" blue="0.70210255872483207" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="J2F-7P-FXH" firstAttribute="top" secondItem="N8q-Hc-i6c" secondAttribute="bottom" constant="16" id="2rZ-pG-hFy"/>
-                            <constraint firstItem="O6E-J0-Vo2" firstAttribute="top" secondItem="S4R-c7-BGO" secondAttribute="bottom" constant="26" id="32T-c7-5wO"/>
-                            <constraint firstItem="N8q-Hc-i6c" firstAttribute="leading" secondItem="rH3-jU-nNC" secondAttribute="leadingMargin" constant="-4" id="3HX-Sz-KkA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ks2-Ef-QQ0" secondAttribute="trailing" constant="106" id="4U3-dG-Oog"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="O6E-J0-Vo2" secondAttribute="trailing" constant="-20" id="BLK-qw-99j"/>
-                            <constraint firstItem="O6E-J0-Vo2" firstAttribute="leading" secondItem="rH3-jU-nNC" secondAttribute="leadingMargin" constant="-20" id="Eoe-Up-tpE"/>
-                            <constraint firstItem="ks2-Ef-QQ0" firstAttribute="leading" secondItem="rH3-jU-nNC" secondAttribute="leadingMargin" constant="105" id="Eyz-3F-SvZ"/>
-                            <constraint firstItem="Wpr-qY-P6z" firstAttribute="top" secondItem="rH3-jU-nNC" secondAttribute="topMargin" id="TGd-84-7Py"/>
-                            <constraint firstItem="S4R-c7-BGO" firstAttribute="leading" secondItem="rH3-jU-nNC" secondAttribute="leadingMargin" constant="87" id="VLa-F0-k6m"/>
-                            <constraint firstItem="Wpr-qY-P6z" firstAttribute="leading" secondItem="rH3-jU-nNC" secondAttribute="leadingMargin" constant="-20" id="Vcq-fS-pg0"/>
-                            <constraint firstItem="J2F-7P-FXH" firstAttribute="top" secondItem="HmE-Os-38V" secondAttribute="bottom" constant="46" id="Ytc-WN-Q9u"/>
-                            <constraint firstItem="FE6-QL-iDF" firstAttribute="top" secondItem="Wpr-qY-P6z" secondAttribute="bottom" id="kJV-5o-Qt8"/>
-                            <constraint firstItem="S4R-c7-BGO" firstAttribute="top" secondItem="J2F-7P-FXH" secondAttribute="bottom" constant="30" id="kh5-ag-j3f"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Wpr-qY-P6z" secondAttribute="trailing" constant="-20" id="p5e-3O-zOh"/>
-                            <constraint firstItem="ks2-Ef-QQ0" firstAttribute="top" secondItem="O6E-J0-Vo2" secondAttribute="bottom" constant="19" id="s0J-uD-4tb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="S4R-c7-BGO" secondAttribute="trailing" constant="66" id="tEi-TG-9rn"/>
-                            <constraint firstItem="J2F-7P-FXH" firstAttribute="leading" secondItem="rH3-jU-nNC" secondAttribute="leadingMargin" constant="87" id="tG1-l3-yBe"/>
-                            <constraint firstItem="J2F-7P-FXH" firstAttribute="trailing" secondItem="rH3-jU-nNC" secondAttribute="trailingMargin" constant="-66" id="tr7-xZ-419"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="SegmentedTypeOutlet" destination="J2F-7P-FXH" id="f33-2g-Ka0"/>
-                        <outlet property="dateOutlet" destination="O6E-J0-Vo2" id="dH3-aO-8Wt"/>
-                        <outlet property="imageOutlet" destination="Wpr-qY-P6z" id="HYy-8f-ASo"/>
-                        <outlet property="segmentedTypeOutlet" destination="J2F-7P-FXH" id="ZSN-5H-XrA"/>
-                        <outlet property="workoutNameOutlet" destination="S4R-c7-BGO" id="Rtx-Gz-62z"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uyh-Kg-dg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="870" y="673"/>
+            <point key="canvasLocation" x="1596" y="-21"/>
         </scene>
         <!--Exercise Type Table View Controller-->
         <scene sceneID="vuR-lo-XDL">
@@ -820,7 +559,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNj-M2-Sfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2502" y="673"/>
+            <point key="canvasLocation" x="5388" y="311"/>
         </scene>
         <!--Abs View Controller-->
         <scene sceneID="Fc7-zd-yjz">
@@ -871,7 +610,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESJ-i9-ELy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4958" y="-846"/>
+            <point key="canvasLocation" x="7273" y="-842"/>
         </scene>
         <!--Back View Controller-->
         <scene sceneID="sHM-TW-6xj">
@@ -923,7 +662,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKY-DY-Igh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3542" y="-1191"/>
+            <point key="canvasLocation" x="5857" y="-1187"/>
         </scene>
         <!--Bodybuilding Body Parts Table View Controller-->
         <scene sceneID="aZc-0z-f5u">
@@ -1089,7 +828,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHa-ey-aaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="673"/>
+            <point key="canvasLocation" x="6127" y="311"/>
         </scene>
         <!--Legs View Controller-->
         <scene sceneID="Ud7-mE-8OB">
@@ -1141,7 +880,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLR-j5-8JL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4311" y="-1191"/>
+            <point key="canvasLocation" x="6625" y="-1187"/>
         </scene>
         <!--Arm View Controller-->
         <scene sceneID="Zer-dr-eQg">
@@ -1192,7 +931,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkA-vY-5ap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5896.8000000000002" y="-185.75712143928038"/>
+            <point key="canvasLocation" x="7273" y="-187"/>
         </scene>
         <!--Chest View Controller-->
         <scene sceneID="dHJ-RF-Nrq">
@@ -1243,7 +982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1c-1w-YDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5896.8000000000002" y="1238.2308845577213"/>
+            <point key="canvasLocation" x="7273" y="1237"/>
         </scene>
         <!--New Bodybuilding Exercise View Controller-->
         <scene sceneID="e79-9t-WUG">
@@ -1338,7 +1077,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMR-I9-XkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5896.8000000000002" y="549.17541229385313"/>
+            <point key="canvasLocation" x="7273" y="548"/>
         </scene>
         <!--Crossfit Workout Table View Controller-->
         <scene sceneID="WjX-ye-Wdf">
@@ -1485,7 +1224,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abA-Gs-OZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319.1999999999998" y="1463.1184407796104"/>
+            <point key="canvasLocation" x="5388" y="1283"/>
         </scene>
         <!--OneRM View Controller-->
         <scene sceneID="S6o-ul-c55">
@@ -1540,7 +1279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wv-0r-WMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3242" y="2409"/>
+            <point key="canvasLocation" x="6617" y="2158"/>
         </scene>
         <!--Wods View Controller-->
         <scene sceneID="9w3-KE-bMe">
@@ -1591,7 +1330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-hc-F45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3895" y="2409"/>
+            <point key="canvasLocation" x="7372" y="2158"/>
         </scene>
         <!--Tabata View Controller-->
         <scene sceneID="hs6-xD-zH2">
@@ -1693,7 +1432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oye-aT-vFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="2409"/>
+            <point key="canvasLocation" x="4526" y="2158"/>
         </scene>
         <!--Metcon View Controller-->
         <scene sceneID="sKU-ve-HCz">
@@ -1795,7 +1534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcB-TO-PVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="2409"/>
+            <point key="canvasLocation" x="5177" y="2158"/>
         </scene>
         <!--Amrap View Controller-->
         <scene sceneID="g0t-dc-Dei">
@@ -1900,7 +1639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bx-u8-NWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2585.5" y="2409.5"/>
+            <point key="canvasLocation" x="5868" y="2158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mY4-3X-fix">
@@ -1918,7 +1657,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvZ-E6-lN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="673"/>
+            <point key="canvasLocation" x="4527" y="311"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="RP9-Oa-aDV">
@@ -1946,7 +1685,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daZ-B1-ce6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1917" y="1402"/>
+            <point key="canvasLocation" x="-106" y="1488"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GxR-g9-zJT">
@@ -1964,7 +1703,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZ6-0u-0C1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1969" y="673"/>
+            <point key="canvasLocation" x="-159" y="758"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="9OG-3v-MNu">
@@ -2057,7 +1796,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdr-ZL-or6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2983" y="673"/>
+            <point key="canvasLocation" x="-1172" y="758"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="pco-mc-Ao6">
@@ -2174,7 +1913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3D-5o-tjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2983" y="1397"/>
+            <point key="canvasLocation" x="-1172" y="1483"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vwt-ZB-tHn">
@@ -2192,11 +1931,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBa-nN-zDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1113" y="-107"/>
+            <point key="canvasLocation" x="772" y="-21"/>
         </scene>
     </scenes>
     <resources>
         <image name="Background1" width="690" height="1230"/>
         <image name="FE_Logo_NoBackground" width="2361" height="1431"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Gad-eZ-XXh"/>
+    </inferredMetricsTieBreakers>
 </document>

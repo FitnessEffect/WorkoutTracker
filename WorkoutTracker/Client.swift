@@ -12,7 +12,7 @@ let gender = "gender"
 let firstNameKey = "first name"
 let lastNameKey = "last name"
 let ageKey = "age"
-let workoutArrayKey = "workout array"
+let exercisesKey = "exercise array"
 
 class Client: NSCoder {
     
@@ -20,7 +20,7 @@ class Client: NSCoder {
     var firstName:String
     var lastName:String
     var age:String
-    var workoutArray:[Workout]
+    var exerciseArray:[Exercise]
     
     //default initializer
     override init(){
@@ -28,16 +28,16 @@ class Client: NSCoder {
         firstName = ""
         lastName = ""
         age = ""
-        workoutArray = []
+        exerciseArray = []
     }
     
     //overload initializer
-    init(gender:String, firstName:String, lastName:String, age:String, workoutArray:[Workout]){
+    init(gender:String, firstName:String, lastName:String, age:String, exerciseArray:[Exercise]){
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
-        self.workoutArray = []
+        self.exerciseArray = []
     }
     
     func encodeWithCoder(_ aCoder: NSCoder!) {
@@ -45,7 +45,7 @@ class Client: NSCoder {
         aCoder.encode(firstName, forKey: "first name")
         aCoder.encode(lastName, forKey: "last name")
         aCoder.encode(age, forKey: "age")
-        aCoder.encode(workoutArray, forKey:  "workout array")
+        aCoder.encode(exerciseArray, forKey:  "exercise array")
     }
     
     
@@ -54,6 +54,6 @@ class Client: NSCoder {
         self.firstName = aDecoder.decodeObject(forKey: "first name") as! String
         self.lastName = aDecoder.decodeObject(forKey: "last name") as! String
         self.age = aDecoder.decodeObject(forKey: "age") as! String
-        self.workoutArray = aDecoder.decodeObject(forKey: "workout array") as! [Workout]
+        self.exerciseArray = aDecoder.decodeObject(forKey: "exercise array") as! [Exercise]
     }
 }

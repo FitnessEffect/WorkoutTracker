@@ -16,39 +16,40 @@ protocol ExercisesDelegate{
     func saveExercises(_ workout:Workout)
 }
 
-class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateExerciseDelegate, ExerciseResultDelegate {
+class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tableViewOutlet: UITableView!
     
-    var workout = Workout()
+    //var workout = Workout()
     var selectedRow:Int = 0
     var delegate:ExercisesDelegate!
+    var client = Client()
     
     override func viewDidLoad() {
-        title = workout.name
-//        NotificationCenter.default.addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         super.viewDidLoad()
+        title = client.firstName
     }
     
     //Receiving exercises and adding them to Exercises View Controller
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         let myExercise = info["exerciseKey"]
-        addExercise(myExercise!)
+        
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workout.exerciseArray.count
+        return client.exerciseArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
         
-       let exercise = workout.exerciseArray[(indexPath as NSIndexPath).row]
+       let exercise = client.exerciseArray[(indexPath as NSIndexPath).row]
        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
        cell.descriptionOutlet.text = exercise.exerciseDescription
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
@@ -58,33 +59,21 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            workout.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
+            client.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            delegate.saveExercises(workout)
+            //delegate.saveExercises(workout)
         }
     }
-    
-    //Add exercise to workout and saves to file
-    func addExercise(_ exercise:Exercise){
-        workout.exerciseArray.append(exercise)
-        delegate.saveExercises(workout)
-        tableViewOutlet.reloadData()
-    }
-    
-    //Saves the result from the ExerciseDetailViewController
-    func passExercise(_ exercise:Exercise){
-        workout.exerciseArray[selectedRow] = exercise
-        delegate.saveExercises(workout)
-        tableViewOutlet.reloadData()
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "detailExerciseSegue"){
-            let edv:ExerciseDetailViewController = segue.destination as! ExerciseDetailViewController
-            edv.delegate = self
-            
-            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
-            edv.exercise = workout.exerciseArray[selectedRow]
+        if(segue.identifier == "editExerciseSegue"){
+            let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            edv.setClient(client: client)
+        }
+        if(segue.identifier == "addExerciseSegue"){
+            let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            edv.setClient(client: client)
         }
     }
 }
