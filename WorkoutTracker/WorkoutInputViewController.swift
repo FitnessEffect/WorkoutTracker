@@ -39,7 +39,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var menuView:MenuView!
     var overlayView: OverlayView!
     var clientPassed = Client()
-  
+    var tempKey:String!
+    var exercisePassed:Exercise!
+    var exerciseDictionary = [String:Any]()
+    var edit = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,9 +63,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         weight.isHidden = true
         
        //  registerForKeyboardNotifications()
-        
 
-        
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
         
@@ -88,7 +90,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor.black.cgColor
         
-         NotificationCenter.default.addObserver(self, selector: #selector(ExercisesViewController.getExercise), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
         dateSelected = DateConverter.getCurrentDate()
         date.text = dateSelected
@@ -152,6 +154,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func setClient(client:Client){
         clientPassed = client
+    }
+    
+    func setExercise(exercise:Exercise){
+        exercisePassed = exercise
     }
     
     @IBAction func result(_ sender: UITextField) {
@@ -283,21 +289,65 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
+        
+        
+        if self.title == "Personal"{
         currentExercise.date = date.text!
         currentExercise.creator = user.email!
-        currentExercise.result = result.text!
+        currentExercise.result = weight.text!
         
         //move currentExercise to exerciseDictionary for firebase
-        var exerciseDictionary = [String:Any]()
         exerciseDictionary["name"] = currentExercise.name 
         exerciseDictionary["description"] = currentExercise.exerciseDescription
         exerciseDictionary["date"] = currentExercise.date
         exerciseDictionary["result"] = currentExercise.result
-    self.ref.child("users").child(user.uid).child("Exercises").child(currentExercise.name).setValue(exerciseDictionary)
+        exerciseDictionary["exerciseKey"] = currentExercise.exerciseKey
+        let exerciseKey = self.ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
+    self.ref.child("users").child(user.uid).child("Exercises").child(exerciseKey).setValue(exerciseDictionary)
+        }else{
+           currentExercise.date = date.text!
+           currentExercise.creator = user.email!
+           currentExercise.result = weight.text!
+            exerciseDictionary["name"] = currentExercise.name
+            exerciseDictionary["description"] = currentExercise.exerciseDescription
+            exerciseDictionary["date"] = currentExercise.date
+            exerciseDictionary["result"] = currentExercise.result
+            exerciseDictionary["exerciseKey"] = currentExercise.exerciseKey
+            
+            retrieveClientID(clientObj: clientPassed)
         
+            //need to get exercise key
+            //self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
+        }
     }
     
 
+    
+    func retrieveClientID(clientObj:Client){
+
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            // let value = snapshot.value as! NSDictionary
+            if let clientsVal = snapshot.value as? [String: [String: AnyObject]] {
+                for client in clientsVal {
+                    if client.value["lastName"] as! String == clientObj.lastName && client.value["age"] as! String == clientObj.age{
+                        self.tempKey = client.key
+                        if self.edit == false{
+                            let exerciseKey = self.ref.child("users").child(self.user.uid).child("Exercises").childByAutoId().key
+                          self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(exerciseKey).setValue(self.exerciseDictionary)
+                        }else if self.edit == true{
+                            self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
+                        }
+                        
+                        return
+                    }
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
     
     func selectPicker(tag: Int){
         var xPosition:CGFloat = 0
@@ -331,7 +381,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
         // present the popover
         self.present(popController, animated: true, completion: nil)
-
     }
     
     func selectExercise() {
@@ -350,8 +399,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.sourceView = self.view
         popController.preferredContentSize = CGSize(width: 300, height: 416)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        
-       
         
         // present the popover
         self.present(popController, animated: true, completion: nil)
@@ -380,16 +427,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
-    @IBAction func challengeBtn(_ sender: UIButton) {
-   
-    }
-    
     func challengeBtn(){
         email.isHidden = false
         challenge.isHidden = true
         xForEmail.isHidden = false
     }
-    
     
     func setNewDate(dateStr:String){
         dateSelected = dateStr
@@ -425,7 +467,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     @IBAction func save(_ sender: UIButton) {
-        launchEmail(sendTo: email.text!)
+        
+        //launchEmail(sendTo: email.text!)
         //use email 
         //query the db to all the emails
         //find correct one and get user id key

@@ -19,7 +19,7 @@ class NewClientViewController: UIViewController {
     var delegate:createClientDelegate! = nil
     var myClient = Client()
     var ref:FIRDatabaseReference!
-     var user:FIRUser!
+    var user:FIRUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
