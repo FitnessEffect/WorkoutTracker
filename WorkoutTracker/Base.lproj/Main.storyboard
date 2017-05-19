@@ -174,7 +174,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="save:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="ztd-nv-UOY"/>
+                                    <action selector="saveBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="bnW-8F-Q3a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-XL-Hjl">
@@ -208,9 +208,6 @@
                                 <state key="normal" title="Challenge A friend">
                                     <color key="titleColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="challengeBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="K1I-00-mSq"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OpB-zl-GNr">
                                 <rect key="frame" x="63" y="552" width="248" height="30"/>

@@ -84,7 +84,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        let presenter = self.presentingViewController?.childViewControllers[0] as! WorkoutInputViewController
+        
+        let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
         if tagPassed == 1{
         let pickerName = namesPassed[row]
         presenter.savePickerName(name: pickerName)
