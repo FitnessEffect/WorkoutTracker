@@ -22,11 +22,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var segmentedOutlet: UISegmentedControl!
     
     let prefs = UserDefaults.standard
+    var ref:FIRDatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        ref = FIRDatabase.database().reference()
+        
         
         register.isHidden = true
         login.layer.cornerRadius = 10.0
@@ -55,7 +60,11 @@ class LoginViewController: UIViewController {
                 }
             }
             if user != nil{
-            self.performSegue(withIdentifier: "workoutSegue", sender: self)
+                if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
+                    print(deviceTokenString)
+                     self.ref.child("token").updateChildValues([user!.uid:deviceTokenString])
+                }
+                self.performSegue(withIdentifier: "workoutSegue", sender: self)
             }
         })
         // Do any additional setup after loading the view.
