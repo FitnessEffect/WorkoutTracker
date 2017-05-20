@@ -200,7 +200,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
             self.present(clientVC, animated: true, completion: nil)
         }else if sender.tag == 3{
-            print("Hit history")
+            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
+            self.present(historyVC, animated: true, completion: nil)
         }
     }
     

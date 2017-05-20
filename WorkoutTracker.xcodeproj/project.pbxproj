@@ -19,6 +19,7 @@
 		52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
+		523470681ED0E6480079D03E /* ExercisesHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */; };
 		526A3F0E1EC52C64001BF557 /* WorkoutInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */; };
 		526A3F111EC60D61001BF557 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F101EC60D61001BF557 /* CalendarViewController.swift */; };
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
@@ -65,6 +66,7 @@
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		523470651ED099F90079D03E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisesHistoryViewController.swift; sourceTree = "<group>"; };
 		526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputViewController.swift; sourceTree = "<group>"; };
 		526A3F101EC60D61001BF557 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
+				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470651ED099F90079D03E /* GoogleService-Info.plist */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,
@@ -383,6 +386,7 @@
 				526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */,
 				5291C45E1CE144B900DF8C0C /* BackViewController.swift in Sources */,
 				5291C45A1CE141E700DF8C0C /* LegsViewController.swift in Sources */,
+				523470681ED0E6480079D03E /* ExercisesHistoryViewController.swift in Sources */,
 				526A3F111EC60D61001BF557 /* CalendarViewController.swift in Sources */,
 				52192AC31CC1815700A311A1 /* OneRMViewController.swift in Sources */,
 				52EB1DEF1ECA77F2004CA561 /* MenuView.swift in Sources */,
