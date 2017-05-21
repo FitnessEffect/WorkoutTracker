@@ -49,8 +49,8 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     tempExercise.name = exercise.value["name"] as! String
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
                     tempExercise.result = exercise.value["result"] as! String
-                    //tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
-                    
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
                     self.exerciseArray.append(tempExercise)
                     
                 }
@@ -88,7 +88,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
             let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
@@ -103,5 +102,4 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             edv.edit = false
         }
     }
-
 }

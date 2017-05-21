@@ -29,7 +29,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var challengeOverlay = true
     var menuShowing = false
     var dateSelected:String!
-    var currentExercise = Exercise()
     var bodybuildingExercises = [String]()
     var crossfitExercises = [String]()
     var user:FIRUser!
@@ -43,6 +42,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var exercisePassed:Exercise!
     var exerciseDictionary = [String:Any]()
     var edit = false
+    let currentExercise = Exercise()
+    var exerciseKey:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +120,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }) { (error) in
             print(error.localizedDescription)
         }
+        
+        if edit == true{
+            fillInExercisePassed()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,9 +131,21 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         // Dispose of any resources that can be recreated.
     }
     
+    func fillInExercisePassed(){
+        date.text = exercisePassed.date
+        exerciseLabel.isHidden = true
+        erase.isHidden = false
+        weight.isHidden = false
+        weight.text = exercisePassed.result
+        time.isHidden = false
+        descriptionTextView.isHidden = false
+        descriptionTextView.text = exercisePassed.exerciseDescription
+    }
+    
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         let myExercise = info["exerciseKey"]
+
         currentExercise.name = (myExercise?.name)!
         currentExercise.exerciseDescription = (myExercise?.exerciseDescription)!
         descriptionTextView.text = myExercise?.exerciseDescription
@@ -290,42 +307,78 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
-        
-        
-        if self.title == "Personal"{
-        currentExercise.date = date.text!
-        currentExercise.creator = user.email!
-        currentExercise.result = weight.text!
-        
-        //move currentExercise to exerciseDictionary for firebase
-        exerciseDictionary["name"] = currentExercise.name 
-        exerciseDictionary["description"] = currentExercise.exerciseDescription
-        exerciseDictionary["date"] = currentExercise.date
-        exerciseDictionary["result"] = currentExercise.result
-        exerciseDictionary["exerciseKey"] = currentExercise.exerciseKey
-        let exerciseKey = self.ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
-    self.ref.child("users").child(user.uid).child("Exercises").child(exerciseKey).setValue(exerciseDictionary)
+        exerciseKey = self.ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
+        if edit == false{
+            if self.title == "Personal"{
+                currentExercise.date = date.text!
+                currentExercise.creator = user.email!
+                currentExercise.result = weight.text!
+                currentExercise.exerciseDescription = descriptionTextView.text!
+                currentExercise.exerciseKey = exerciseKey
+                
+                //move currentExercise to exerciseDictionary for firebase
+                exerciseDictionary["name"] =  currentExercise.name
+                exerciseDictionary["description"] =  currentExercise.exerciseDescription
+                exerciseDictionary["date"] =  currentExercise.date
+                exerciseDictionary["result"] =  currentExercise.result
+                exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
+                
+                self.ref.child("users").child(user.uid).child("Exercises").child(exerciseKey).setValue(exerciseDictionary)
+            }else{
+                currentExercise.date = date.text!
+                currentExercise.creator = user.email!
+                currentExercise.result = weight.text!
+                currentExercise.exerciseDescription = descriptionTextView.text!
+                currentExercise.exerciseKey = exerciseKey
+                
+                exerciseDictionary["name"] =  currentExercise.name
+                exerciseDictionary["description"] =  currentExercise.exerciseDescription
+                exerciseDictionary["date"] =  currentExercise.date
+                exerciseDictionary["result"] =  currentExercise.result
+                exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
+                
+                retrieveClientID(clientObj: clientPassed)
+            }
         }else{
-           currentExercise.date = date.text!
-           currentExercise.creator = user.email!
-           currentExercise.result = weight.text!
-            exerciseDictionary["name"] = currentExercise.name
-            exerciseDictionary["description"] = currentExercise.exerciseDescription
-            exerciseDictionary["date"] = currentExercise.date
-            exerciseDictionary["result"] = currentExercise.result
-            exerciseDictionary["exerciseKey"] = currentExercise.exerciseKey
-            
-            retrieveClientID(clientObj: clientPassed)
-        
-            //need to get exercise key
-            //self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
+            if self.title == "Personal"{
+                currentExercise.date = date.text!
+                currentExercise.creator = user.email!
+                currentExercise.result = weight.text!
+                currentExercise.exerciseDescription = descriptionTextView.text!
+                if currentExercise.name == ""{
+                    exerciseDictionary["name"] = exercisePassed.name
+                }else{
+                    exerciseDictionary["name"] =  currentExercise.name
+                }
+                exerciseDictionary["description"] =  currentExercise.exerciseDescription
+                exerciseDictionary["date"] =  currentExercise.date
+                exerciseDictionary["result"] =  currentExercise.result
+                exerciseDictionary["exerciseKey"] =  exercisePassed.exerciseKey
+                
+                self.ref.child("users").child(user.uid).child("Exercises").child(exercisePassed.exerciseKey).updateChildValues(exerciseDictionary)
+            }else{
+                currentExercise.date = date.text!
+                currentExercise.creator = user.email!
+                currentExercise.result = weight.text!
+                currentExercise.exerciseDescription = descriptionTextView.text!
+                if currentExercise.name == ""{
+                    exerciseDictionary["name"] = exercisePassed.name
+                }else{
+                    exerciseDictionary["name"] =  currentExercise.name
+                }
+                exerciseDictionary["description"] =  currentExercise.exerciseDescription
+                exerciseDictionary["date"] =  currentExercise.date
+                exerciseDictionary["result"] =  currentExercise.result
+                exerciseDictionary["exerciseKey"] =  exercisePassed.exerciseKey
+                
+                retrieveClientID(clientObj: clientPassed)
+            }
         }
     }
     
 
     
     func retrieveClientID(clientObj:Client){
-
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -335,12 +388,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     if client.value["lastName"] as! String == clientObj.lastName && client.value["age"] as! String == clientObj.age{
                         self.tempKey = client.key
                         if self.edit == false{
-                            let exerciseKey = self.ref.child("users").child(self.user.uid).child("Exercises").childByAutoId().key
-                          self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(exerciseKey).setValue(self.exerciseDictionary)
+                        self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exerciseKey).setValue(self.exerciseDictionary)
                         }else if self.edit == true{
-                            self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
+                    self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
                         }
-                        
                         return
                     }
                 }

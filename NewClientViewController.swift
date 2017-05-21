@@ -54,7 +54,7 @@ class NewClientViewController: UIViewController {
     @IBAction func createClient(_ sender: UIButton) {
     
         if genderSegmentedControl.selectedSegmentIndex == 0{
-        myClient.gender = "Male"
+            myClient.gender = "Male"
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
             myClient.gender = "Female"
         }
