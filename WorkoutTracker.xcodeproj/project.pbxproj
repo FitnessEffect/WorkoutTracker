@@ -143,6 +143,7 @@
 				526A3F101EC60D61001BF557 /* CalendarViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
+				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -212,7 +213,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470651ED099F90079D03E /* GoogleService-Info.plist */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,

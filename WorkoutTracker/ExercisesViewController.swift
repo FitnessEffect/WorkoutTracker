@@ -58,6 +58,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
                     tempExercise.result = exercise.value["result"] as! String
                     tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
                     
                     self.exerciseArray.append(tempExercise)
                     
@@ -80,7 +81,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
                     if client.value["lastName"] as! String == clientObj.lastName && client.value["age"] as! String == clientObj.age{
                         self.tempKey = client.key
                         self.retrieveExercisesForClient()
-                       
                     }
                 }
             }
