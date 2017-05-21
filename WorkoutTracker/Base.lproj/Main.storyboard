@@ -1765,6 +1765,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qbx-sJ-b4M">
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="mUq-xk-Umt">
+                            <connections>
+                                <action selector="openMenu:" destination="y7H-dD-F6s" id="C9q-2a-emL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Par-8X-GZa">
                             <connections>
                                 <segue destination="pzd-PZ-fvb" kind="show" identifier="addExerciseSegue" id="9Os-F2-dTk"/>

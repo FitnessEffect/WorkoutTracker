@@ -20,12 +20,22 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!
     var tempKey:String!
+    var menuShowing = false
+    var menuView:MenuView!
+    var overlayView: OverlayView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
         //retrieveClientID(clientObj: client)
         title = "History"
+        overlayView = OverlayView.instanceFromNib() as! OverlayView
+        menuView = MenuView.instanceFromNib() as! MenuView
+        view.addSubview(overlayView)
+        view.addSubview(menuView)
+        overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        overlayView.alpha = 0
+        menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +43,46 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         
     }
     
-    //Receiving exercises and adding them to Exercises View Controller
+    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+        addSelector()
+    }
+    
+    func addSelector() {
+        //slide view in here
+        if menuShowing == false{
+            menuView.addFx()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
+                self.view.isHidden = false
+                self.overlayView.alpha = 1
+            })
+            menuShowing = true
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+                self.overlayView.alpha = 0
+            })
+            menuShowing = false
+        }
+        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+    }
+    
+    func btnAction(_ sender: UIButton) {
+        if sender.tag == 1{
+            
+        }else if sender.tag == 2{
+            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            self.present(clientVC, animated: true, completion: nil)
+        }else if sender.tag == 3{
+            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
+            self.present(historyVC, animated: true, completion: nil)
+        }
+    }
+
     
     func retrieveExercises(){
         exerciseArray.removeAll()
