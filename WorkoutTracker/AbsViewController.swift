@@ -42,8 +42,8 @@ class AbsViewController: UIViewController {
     
     @IBAction func addExercise(_ sender: UIButton) {
         
-        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        myExercise.name = absExercises[id]
+        //let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+        myExercise.name = "Abs"
         myExercise.exerciseDescription = "4 sets - 20 reps"
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])

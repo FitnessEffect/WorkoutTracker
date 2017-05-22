@@ -60,8 +60,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         descriptionTextView.isHidden = true
         
         erase.isHidden = true
-        time.isHidden = true
-        weight.isHidden = true
+        //time.isHidden = true
+        //weight.isHidden = true
         
        //  registerForKeyboardNotifications()
 
@@ -177,11 +177,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         exercisePassed = exercise
     }
     
-    @IBAction func result(_ sender: UITextField) {
-        time.isHidden = false
-        weight.isHidden = false
-    }
-    
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
     }
@@ -244,20 +239,19 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     selectExercise()
                 }
                 
-                if result.isHidden == false{
-                    if result.frame.contains(sender.location(in: view)){
-                        result.isHidden = true
-                        time.isHidden = false
-                        weight.isHidden = false
-                        return
+                if result.frame.contains(sender.location(in: view)){
+                    //compare
+                    if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
+                        selectPicker(tag: 3)
                     }
-                }
-                
-                if time.frame.contains(sender.location(in: view)){
-                    selectPicker(tag: time.tag)
-                }
-                if weight.frame.contains(sender.location(in: view)){
-                    selectPicker(tag: weight.tag)
+                    if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
+                        selectPicker(tag: 2)
+                    }
+                    if currentExercise.name == "Amrap"{
+                        selectPicker(tag: 4)
+                    }
+                    
+                    return
                 }
                 
                 if challengeOverlay == false{
@@ -282,10 +276,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.isHidden = true
         result.isHidden = true
         challengeOverlay = true
-            time.text = ""
-            time.isHidden = true
-            weight.text = ""
-            weight.isHidden = true
+            //time.text = ""
+            //time.isHidden = true
+            //weight.text = ""
+            //weight.isHidden = true
         }else if sender.tag == 1{
             email.text = ""
             email.isHidden = true
@@ -312,7 +306,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             if self.title == "Personal"{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = weight.text!
+                currentExercise.result = result.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 currentExercise.exerciseKey = exerciseKey
                 
@@ -327,7 +321,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }else{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = weight.text!
+                currentExercise.result = result.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 currentExercise.exerciseKey = exerciseKey
                 
@@ -343,7 +337,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             if self.title == "Personal"{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = weight.text!
+                currentExercise.result = result.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 if currentExercise.name == ""{
                     exerciseDictionary["name"] = exercisePassed.name
@@ -359,7 +353,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }else{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = weight.text!
+                currentExercise.result = result.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 if currentExercise.name == ""{
                     exerciseDictionary["name"] = exercisePassed.name
@@ -408,12 +402,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             xPosition = (buttonItemView as AnyObject).frame.minX + ((buttonItemView as AnyObject).frame.width/2)
             yPosition = (buttonItemView as AnyObject).frame.maxY
 
-        }else if tag == 2{
-            xPosition = time.frame.minX + (time.frame.width/2)
-            yPosition = time.frame.maxY
-        }else if tag == 3{
-            xPosition = weight.frame.minX + (weight.frame.width/2)
-            yPosition = weight.frame.maxY
+        }else if tag == 2 || tag == 3 || tag == 4{
+            xPosition = result.frame.minX + (result.frame.width/2)
+            yPosition = result.frame.maxY
         }
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
@@ -494,12 +485,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.title = name
     }
     
-    func saveTime(time:String){
-        self.time.text = time
-    }
-    
-    func saveWeight(weight:String){
-        self.weight.text = weight
+    func saveResult(str:String){
+        self.result.text = str
     }
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
