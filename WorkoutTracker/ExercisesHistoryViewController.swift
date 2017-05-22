@@ -29,13 +29,16 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         ref = FIRDatabase.database().reference()
         //retrieveClientID(clientObj: client)
         title = "History"
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
         view.addSubview(overlayView)
         view.addSubview(menuView)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
-        menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +62,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             menuShowing = true
         }else{
             UIView.animate(withDuration: 0.3, animations: {
-                self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
@@ -70,6 +73,25 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
+        
+        if menuShowing == true{
+            //remove menu view
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+                self.overlayView.alpha = 0
+            })
+            menuShowing = false
+            
+        }else{
+          if tableViewOutlet.frame.contains(sender.location(in: view)){
+            performSegue(withIdentifier: "editExerciseSegue", sender: sender)
+            }
+        }
+    }
+
     
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
@@ -139,10 +161,10 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
+            let s = sender as! UITapGestureRecognizer
             let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
-            //wivc.setClient(client: client)
-            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
-            wivc.setExercise(exercise: exerciseArray[selectedRow])
+            let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
+            wivc.setExercise(exercise: exerciseArray[selectedRow!])
             wivc.edit = true
         }
         if(segue.identifier == "addExerciseSegue"){
