@@ -156,16 +156,6 @@
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Result" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PX5-jk-mC6">
-                                <rect key="frame" x="0.0" y="306" width="375" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="result:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="HRy-ca-xfZ"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-aE-emQ">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -215,6 +205,16 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Result" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PX5-jk-mC6">
+                                <rect key="frame" x="0.0" y="308" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="result:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="HRy-ca-xfZ"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -548,44 +548,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-oh-1eD">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-oh-1eD">
+                                <rect key="frame" x="-4" y="64" width="383" height="105"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="w13-wb-QF8" id="KC8-Rg-F8Z"/>
                                     <outlet property="delegate" destination="w13-wb-QF8" id="SWw-UM-r6m"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0db-bK-kRl">
-                                <rect key="frame" x="139" y="290" width="96" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="add Exercise"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0db-bK-kRl">
+                                <rect key="frame" x="96" y="545" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addExercise:" destination="w13-wb-QF8" eventType="touchUpInside" id="ynw-IO-DZ5"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-Bi-b3y">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-Lj-Uai">
+                                <rect key="frame" x="0.0" y="318" width="375" height="115"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="w13-wb-QF8" id="c9C-gC-RI5"/>
+                                    <outlet property="delegate" destination="w13-wb-QF8" id="qsY-u3-cjU"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="GNU-oh-1eD" firstAttribute="leading" secondItem="xJA-6U-6oc" secondAttribute="leadingMargin" constant="-20" id="2cs-zs-Aox"/>
-                            <constraint firstItem="GNU-oh-1eD" firstAttribute="top" secondItem="GEe-rk-kGn" secondAttribute="bottom" id="PPL-Kb-zoB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GNU-oh-1eD" secondAttribute="trailing" constant="-20" id="ScP-IP-spu"/>
-                            <constraint firstItem="0db-bK-kRl" firstAttribute="top" secondItem="GNU-oh-1eD" secondAttribute="bottom" constant="10" id="mdZ-vC-Y3I"/>
-                            <constraint firstItem="0db-bK-kRl" firstAttribute="leading" secondItem="xJA-6U-6oc" secondAttribute="leadingMargin" constant="123" id="pJz-kX-eFs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0db-bK-kRl" secondAttribute="trailing" constant="124" id="wTE-yb-Ptf"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageOutlet" destination="nqm-Bi-b3y" id="z7j-oY-KN8"/>
+                        <outlet property="add" destination="0db-bK-kRl" id="39R-m8-IvL"/>
                         <outlet property="pickerOutlet" destination="GNU-oh-1eD" id="tVG-bW-Qyu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESJ-i9-ELy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7273" y="-842"/>
+            <point key="canvasLocation" x="7279" y="-968"/>
         </scene>
         <!--Back View Controller-->
         <scene sceneID="sHM-TW-6xj">
@@ -599,45 +599,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7K-bV-kuU">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7K-bV-kuU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="105"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="nyg-zS-dKd" id="2V1-nd-tXO"/>
-                                    <outlet property="delegate" destination="nyg-zS-dKd" id="mhD-8F-6w4"/>
+                                    <outlet property="dataSource" destination="nyg-zS-dKd" id="54J-EN-Hvq"/>
+                                    <outlet property="delegate" destination="nyg-zS-dKd" id="U3V-E7-fZd"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-do-szN">
-                                <rect key="frame" x="139" y="290" width="96" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="add Exercise"/>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-2P-INX">
+                                <rect key="frame" x="0.0" y="278" width="375" height="115"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nyg-zS-dKd" id="fUB-1e-VNJ"/>
+                                    <outlet property="delegate" destination="nyg-zS-dKd" id="XcF-Ka-FFt"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-do-szN">
+                                <rect key="frame" x="92" y="545" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addExercise:" destination="nyg-zS-dKd" eventType="touchUpInside" id="Cf3-Lm-dGo"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNH-F9-XQs">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="OUC-do-szN" firstAttribute="leading" secondItem="rQ3-oo-kgh" secondAttribute="leadingMargin" constant="123" id="8rE-fJ-KYP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="P7K-bV-kuU" secondAttribute="trailing" constant="-20" id="LsX-WM-SaH"/>
-                            <constraint firstItem="OUC-do-szN" firstAttribute="top" secondItem="P7K-bV-kuU" secondAttribute="bottom" constant="10" id="fxI-rF-H7v"/>
-                            <constraint firstItem="P7K-bV-kuU" firstAttribute="top" secondItem="o3Q-vA-gnP" secondAttribute="bottom" id="jIc-75-jO7"/>
-                            <constraint firstItem="P7K-bV-kuU" firstAttribute="leading" secondItem="rQ3-oo-kgh" secondAttribute="leadingMargin" constant="-20" id="vgm-ar-ZXY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OUC-do-szN" secondAttribute="trailing" constant="124" id="wYZ-gV-6MM"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageOutlet" destination="LNH-F9-XQs" id="uUd-b9-lwd"/>
+                        <outlet property="add" destination="OUC-do-szN" id="USp-HC-IXh"/>
                         <outlet property="pickerOutlet" destination="P7K-bV-kuU" id="eDb-lK-7oW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKY-DY-Igh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5857" y="-1187"/>
+            <point key="canvasLocation" x="5906" y="-1321"/>
         </scene>
         <!--Bodybuilding Body Parts Table View Controller-->
         <scene sceneID="aZc-0z-f5u">
@@ -790,9 +791,6 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Cft-6a-Tyx" kind="show" id="Vqa-fI-SXf"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -817,45 +815,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-Sj-Oqz">
-                                <rect key="frame" x="-3" y="64" width="383" height="216"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-Sj-Oqz">
+                                <rect key="frame" x="-3" y="64" width="383" height="105"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mMa-us-Bom" id="tyY-pd-Pww"/>
                                     <outlet property="delegate" destination="mMa-us-Bom" id="XPI-g9-DMm"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pn-2w-nGT">
-                                <rect key="frame" x="140" y="290" width="96" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="add Exercise"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pn-2w-nGT">
+                                <rect key="frame" x="93" y="545" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addExercise:" destination="mMa-us-Bom" eventType="touchUpInside" id="XQK-je-BSx"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73P-Vh-OeK">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh0-fe-FD5">
+                                <rect key="frame" x="0.0" y="288" width="375" height="115"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mMa-us-Bom" id="n2H-TC-lhL"/>
+                                    <outlet property="delegate" destination="mMa-us-Bom" id="krg-b4-7Ld"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="5pn-2w-nGT" firstAttribute="leading" secondItem="eX3-5A-pj3" secondAttribute="leadingMargin" constant="124" id="A2v-el-eLb"/>
-                            <constraint firstItem="Tbc-Sj-Oqz" firstAttribute="leading" secondItem="eX3-5A-pj3" secondAttribute="leadingMargin" constant="-19" id="A51-lU-afX"/>
-                            <constraint firstItem="Tbc-Sj-Oqz" firstAttribute="top" secondItem="knL-xr-tbv" secondAttribute="bottom" id="FDF-ss-rHp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5pn-2w-nGT" secondAttribute="trailing" constant="123" id="FrQ-no-fG1"/>
-                            <constraint firstItem="Tbc-Sj-Oqz" firstAttribute="top" secondItem="knL-xr-tbv" secondAttribute="bottom" id="LHv-WD-ObK"/>
-                            <constraint firstItem="5pn-2w-nGT" firstAttribute="top" secondItem="Tbc-Sj-Oqz" secondAttribute="bottom" constant="10" id="UE3-lb-fWU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Tbc-Sj-Oqz" secondAttribute="trailing" constant="-21" id="b7F-be-87E"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageOutlet" destination="73P-Vh-OeK" id="6jL-cu-1rL"/>
+                        <outlet property="add" destination="5pn-2w-nGT" id="Vax-sn-8ur"/>
                         <outlet property="pickerOutlet" destination="Tbc-Sj-Oqz" id="ukX-fF-vuO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLR-j5-8JL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6625" y="-1187"/>
+            <point key="canvasLocation" x="6624.8000000000002" y="-1187.8560719640182"/>
         </scene>
         <!--Arm View Controller-->
         <scene sceneID="Zer-dr-eQg">
@@ -869,44 +866,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpb-xJ-L48">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpb-xJ-L48">
+                                <rect key="frame" x="-4" y="64" width="383" height="105"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="i40-sf-a9m" id="yeI-N4-Y1j"/>
                                     <outlet property="delegate" destination="i40-sf-a9m" id="UZm-1g-R61"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adr-j6-Fws">
-                                <rect key="frame" x="139" y="290" width="97" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="Add Exercise"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adr-j6-Fws">
+                                <rect key="frame" x="92" y="545" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addExercise:" destination="i40-sf-a9m" eventType="touchUpInside" id="Pax-An-QaA"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXI-DD-CjQ">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klE-lq-wBa">
+                                <rect key="frame" x="0.0" y="304" width="375" height="115"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="i40-sf-a9m" id="sHr-Mz-iyh"/>
+                                    <outlet property="delegate" destination="i40-sf-a9m" id="0Ed-X4-rRK"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="xpb-xJ-L48" secondAttribute="trailing" constant="-20" id="2LD-xq-cKB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="adr-j6-Fws" secondAttribute="trailing" constant="123" id="2g1-Bl-MqV"/>
-                            <constraint firstItem="adr-j6-Fws" firstAttribute="leading" secondItem="3Jh-Tk-rHq" secondAttribute="leadingMargin" constant="123" id="GBu-oB-XaX"/>
-                            <constraint firstItem="xpb-xJ-L48" firstAttribute="leading" secondItem="3Jh-Tk-rHq" secondAttribute="leadingMargin" constant="-20" id="X06-ox-gjM"/>
-                            <constraint firstItem="xpb-xJ-L48" firstAttribute="top" secondItem="0CV-Mz-wtz" secondAttribute="bottom" id="cSA-Wh-DBY"/>
-                            <constraint firstItem="adr-j6-Fws" firstAttribute="top" secondItem="xpb-xJ-L48" secondAttribute="bottom" constant="10" id="dzA-58-SK6"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageOutlet" destination="jXI-DD-CjQ" id="2A1-gd-6pE"/>
+                        <outlet property="add" destination="adr-j6-Fws" id="7QT-U0-ia4"/>
                         <outlet property="pickerOutlet" destination="xpb-xJ-L48" id="7AG-5J-s0L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkA-vY-5ap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7273" y="-187"/>
+            <point key="canvasLocation" x="7950" y="-777"/>
         </scene>
         <!--Chest View Controller-->
         <scene sceneID="dHJ-RF-Nrq">
@@ -920,139 +917,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfz-el-k8a">
-                                <rect key="frame" x="-4" y="64" width="383" height="216"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mfz-el-k8a">
+                                <rect key="frame" x="-4" y="64" width="383" height="105"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="RpR-Gf-GV8" id="prB-vz-ffi"/>
                                     <outlet property="delegate" destination="RpR-Gf-GV8" id="Jys-LZ-5tM"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9q-Lw-3p8">
-                                <rect key="frame" x="139" y="290" width="96" height="31"/>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="add Exercise"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9q-Lw-3p8">
+                                <rect key="frame" x="92" y="545" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addExercise:" destination="RpR-Gf-GV8" eventType="touchUpInside" id="hCj-eC-eYZ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-vG-9iR">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKj-61-207">
+                                <rect key="frame" x="4" y="275" width="375" height="115"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RpR-Gf-GV8" id="ZSl-RZ-thk"/>
+                                    <outlet property="delegate" destination="RpR-Gf-GV8" id="KCy-ai-SYn"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="mfz-el-k8a" secondAttribute="trailing" constant="-20" id="2hq-AE-45B"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D9q-Lw-3p8" secondAttribute="trailing" constant="124" id="LFW-QA-eSD"/>
-                            <constraint firstItem="mfz-el-k8a" firstAttribute="leading" secondItem="FMk-xg-25V" secondAttribute="leadingMargin" constant="-20" id="YmM-Ni-j8r"/>
-                            <constraint firstItem="D9q-Lw-3p8" firstAttribute="leading" secondItem="FMk-xg-25V" secondAttribute="leadingMargin" constant="123" id="ilN-rA-23b"/>
-                            <constraint firstItem="mfz-el-k8a" firstAttribute="top" secondItem="Jeu-CJ-ZG9" secondAttribute="bottom" id="q5o-Vs-J34"/>
-                            <constraint firstItem="D9q-Lw-3p8" firstAttribute="top" secondItem="mfz-el-k8a" secondAttribute="bottom" constant="10" id="t43-kZ-lC5"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageOutlet" destination="hHg-vG-9iR" id="ak5-q8-AIx"/>
+                        <outlet property="add" destination="D9q-Lw-3p8" id="IxU-p6-FwD"/>
                         <outlet property="pickerOutlet" destination="mfz-el-k8a" id="HXE-4b-IBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1c-1w-YDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8212" y="1236.4317841079462"/>
-        </scene>
-        <!--New Bodybuilding Exercise View Controller-->
-        <scene sceneID="e79-9t-WUG">
-            <objects>
-                <viewController id="Cft-6a-Tyx" customClass="NewBodybuildingExerciseViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v8M-FU-XNR"/>
-                        <viewControllerLayoutGuide type="bottom" id="h6W-Cc-SWS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Db8-Mi-S5E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYr-EK-ebC">
-                                <rect key="frame" x="13" y="20" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="back:" destination="Cft-6a-Tyx" eventType="touchUpInside" id="n47-vX-ckI"/>
-                                </connections>
-                            </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SwT-Ta-Jo2">
-                                <rect key="frame" x="0.0" y="107" width="370" height="216"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Cft-6a-Tyx" id="mlW-kZ-gIC"/>
-                                    <outlet property="delegate" destination="Cft-6a-Tyx" id="Fui-W3-UYp"/>
-                                </connections>
-                            </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Exercise:" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7WC-hG-wcJ">
-                                <rect key="frame" x="87" y="81" width="196" height="30"/>
-                                <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKn-xD-CNM">
-                                <rect key="frame" x="135.5" y="333" width="104" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="e0V-Pm-NVY"/>
-                                    <constraint firstAttribute="width" constant="88" id="ejT-fx-A1h"/>
-                                    <constraint firstAttribute="width" constant="104" id="pFv-2a-Lqz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
-                                <state key="normal" title="Add exercise"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ejT-fx-A1h"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="addExercise:" destination="Cft-6a-Tyx" eventType="touchUpInside" id="h7c-Bt-ZC9"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-pS-S7z">
-                                <rect key="frame" x="88" y="272" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="h6W-Cc-SWS" firstAttribute="top" secondItem="nKn-xD-CNM" secondAttribute="bottom" constant="304" id="GfQ-KI-1Da"/>
-                            <constraint firstItem="fYr-EK-ebC" firstAttribute="leading" secondItem="Db8-Mi-S5E" secondAttribute="leadingMargin" constant="-3" id="H6i-cs-JkG"/>
-                            <constraint firstItem="fYr-EK-ebC" firstAttribute="top" secondItem="Db8-Mi-S5E" secondAttribute="top" constant="20" symbolic="YES" id="Haz-sc-7c7"/>
-                            <constraint firstItem="nKn-xD-CNM" firstAttribute="leading" secondItem="Db8-Mi-S5E" secondAttribute="leadingMargin" constant="123" id="Imr-Ui-7oZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SwT-Ta-Jo2" secondAttribute="trailing" constant="-11" id="IwY-za-Ks3"/>
-                            <constraint firstItem="nKn-xD-CNM" firstAttribute="centerX" secondItem="Db8-Mi-S5E" secondAttribute="centerX" id="Ojb-5y-a0C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SwT-Ta-Jo2" secondAttribute="trailing" constant="-20" id="RDX-zh-lqN"/>
-                            <constraint firstItem="7WC-hG-wcJ" firstAttribute="trailing" secondItem="Db8-Mi-S5E" secondAttribute="trailingMargin" constant="-76" id="RJ5-2M-JsY"/>
-                            <constraint firstItem="7WC-hG-wcJ" firstAttribute="leading" secondItem="Db8-Mi-S5E" secondAttribute="leadingMargin" constant="71" id="WDt-x3-4uJ"/>
-                            <constraint firstItem="nKn-xD-CNM" firstAttribute="top" secondItem="SwT-Ta-Jo2" secondAttribute="bottom" constant="10" id="afu-Jk-RmC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nKn-xD-CNM" secondAttribute="trailing" constant="124" id="jCC-qZ-vQt"/>
-                            <constraint firstItem="SwT-Ta-Jo2" firstAttribute="leading" secondItem="Db8-Mi-S5E" secondAttribute="leading" id="kt4-pU-vqQ"/>
-                            <constraint firstItem="SwT-Ta-Jo2" firstAttribute="leading" secondItem="Db8-Mi-S5E" secondAttribute="leadingMargin" constant="-20" id="m2y-cE-rwn"/>
-                            <constraint firstItem="SwT-Ta-Jo2" firstAttribute="top" secondItem="7WC-hG-wcJ" secondAttribute="bottom" constant="-4" id="sp1-QG-iZM"/>
-                            <constraint firstItem="nKn-xD-CNM" firstAttribute="centerX" secondItem="SwT-Ta-Jo2" secondAttribute="centerX" id="ytZ-yr-hmu"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="RDX-zh-lqN"/>
-                                <exclude reference="m2y-cE-rwn"/>
-                                <exclude reference="Imr-Ui-7oZ"/>
-                                <exclude reference="jCC-qZ-vQt"/>
-                                <exclude reference="ytZ-yr-hmu"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" id="k19-lB-KMh"/>
-                    <connections>
-                        <outlet property="backgroundImageOutlet" destination="qtc-pS-S7z" id="mqQ-ag-ZaT"/>
-                        <outlet property="nameOutlet" destination="7WC-hG-wcJ" id="MtF-AI-2g2"/>
-                        <outlet property="pickerOutlet" destination="SwT-Ta-Jo2" id="HhD-0D-YH9"/>
-                        <outlet property="workout" destination="SwT-Ta-Jo2" id="oi5-Ad-6yl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TMR-I9-XkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7273" y="548"/>
+            <point key="canvasLocation" x="8602" y="-526"/>
         </scene>
         <!--Crossfit Workout Table View Controller-->
         <scene sceneID="WjX-ye-Wdf">

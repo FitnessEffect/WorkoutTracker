@@ -48,7 +48,6 @@
 		52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A21C5F0036000FD7B0 /* Main.storyboard */; };
 		52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */; };
 		52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */; };
-		52F6A8B11C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A8B01C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift */; };
 		52FCD5B51CB2C44E008B0472 /* WorkoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +96,6 @@
 		52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52F6A8A81C5F0036000FD7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52F6A8AA1C5F0036000FD7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52F6A8B01C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBodybuildingExerciseViewController.swift; sourceTree = "<group>"; };
 		52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCustomCell.swift; sourceTree = "<group>"; };
 		9A9AE9780A33CCB231F00403 /* Pods-WorkoutTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		ECBD1F8CB1C946F17950D606 /* Pods_WorkoutTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */,
-				52F6A8B01C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift */,
 				5291C45D1CE144B900DF8C0C /* BackViewController.swift */,
 				5291C4571CE13F1400DF8C0C /* ArmViewController.swift */,
 				5291C4591CE141E700DF8C0C /* LegsViewController.swift */,
@@ -396,7 +393,6 @@
 				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
-				52F6A8B11C5F0145000FD7B0 /* NewBodybuildingExerciseViewController.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				52FCD5B51CB2C44E008B0472 /* WorkoutCustomCell.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* WodsViewController.swift in Sources */,
