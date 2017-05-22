@@ -11,7 +11,7 @@ import UIKit
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var namesPassed:[String]!
-    var weights = ["1", "2", "3", "4", "5", "10", "15", "25", "35", "45"]
+    var weights = [String]()
     var minutes = ["minutes","1","2","3", "4", "5", "6", "7", "8", "9", "10", "15"]
     var hours = ["hours","1", "2"]
     var seconds = ["seconds","1", "2"]
@@ -23,6 +23,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        for i in 0...500{
+            weights.append(String(i))
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,10 +102,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 tempSeconds = seconds[row]
             }
             let tempTime = tempHours + "h " + tempMinutes + "m " + tempSeconds + "s"
-            presenter.saveTime(time:tempTime)
+            presenter.saveResult(str: tempTime)
         }else if tagPassed == 3{
             let tempWeight = weights[row]
-            presenter.saveWeight(weight:tempWeight)
+            presenter.saveResult(str: tempWeight)
         }
     }
 

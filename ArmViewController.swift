@@ -41,8 +41,8 @@ class ArmViewController: UIViewController {
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        myExercise.name = armExercises[id]
+        //let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+        myExercise.name = "Arms"
         myExercise.exerciseDescription = "4 sets - 12 reps"
     
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
