@@ -103,7 +103,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         view.addSubview(menuView)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
-        menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
         // Do any additional setup after loading the view.
     }
     
@@ -135,11 +135,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         date.text = exercisePassed.date
         exerciseLabel.isHidden = true
         erase.isHidden = false
-        weight.isHidden = false
-        weight.text = exercisePassed.result
-        time.isHidden = false
         descriptionTextView.isHidden = false
         descriptionTextView.text = exercisePassed.exerciseDescription
+        result.isHidden = false
+        result.text = exercisePassed.result
     }
     
     func getExercise(_ notification: Notification){
@@ -193,7 +192,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             menuShowing = true
         }else{
             UIView.animate(withDuration: 0.3, animations: {
-                self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
@@ -223,7 +222,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             //remove menu view
             
             UIView.animate(withDuration: 0.3, animations: {
-            self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+            self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false

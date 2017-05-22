@@ -31,13 +31,15 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         ref = FIRDatabase.database().reference()
         tableViewOutlet.reloadData()
 
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
         view.addSubview(overlayView)
         view.addSubview(menuView)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
-        menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,16 +56,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         saveWorkouts(client)
     }
     
-    //Save clients to file
-//    func saveClients(){
-//        
-//        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
-//        let path: AnyObject = paths[0] as AnyObject
-//        let arrPath = path.appending("/clients.plist")
-//        
-//        print(path)
-//        NSKeyedArchiver.archiveRootObject(clientArray, toFile: arrPath)
-//    }
     
     //Retrieve clients from file
     func retrieveClients(){
@@ -91,23 +83,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "NewClientSegue"){
-          
-            let ncv:NewClientViewController = segue.destination as! NewClientViewController
-            ncv.delegate = self
-        }
-        
-        if(segue.identifier == "exercisesSegue"){
-            let evc:ExercisesViewController = segue.destination as! ExercisesViewController
-            //evc.delegate = self
-            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
-             print(clientArray[selectedRow])
-            evc.client = clientArray[selectedRow]
-           
-        }
-    }
-
     //add created client from NewClientViewController
      func addClient(_ client:Client){
         clientArray.append(client)
@@ -166,7 +141,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             menuShowing = true
         }else{
             UIView.animate(withDuration: 0.3, animations: {
-                self.menuView.frame = CGRect(x: -130, y: 0, width: 126, height: 500)
+                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
@@ -177,6 +152,23 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
+        
+        if menuShowing == true{
+            //remove menu view
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+                self.overlayView.alpha = 0
+            })
+            menuShowing = false
+            
+        }else{
+            performSegue(withIdentifier: "exercisesSegue", sender: sender)
+            }
+    }
+
     
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
@@ -189,4 +181,23 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.present(historyVC, animated: true, completion: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "NewClientSegue"){
+            
+            
+            let ncv:NewClientViewController = segue.destination as! NewClientViewController
+            ncv.delegate = self
+        }
+        
+        if(segue.identifier == "exercisesSegue"){
+            let s = sender as! UITapGestureRecognizer
+            let evc:ExercisesViewController = segue.destination as! ExercisesViewController
+             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
+            print(clientArray[selectedRow!])
+            evc.client = clientArray[selectedRow!]
+            
+        }
+    }
+
 }
