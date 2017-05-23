@@ -12,21 +12,20 @@ import MessageUI
 
 class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate {
 
+    @IBOutlet weak var emailTextView: UITextView!
+    @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var exerciseLabel: UILabel!
     @IBOutlet weak var date: UITextField!
     @IBOutlet weak var erase: UIButton!
+    @IBOutlet weak var eraseResult: UIButton!
+    @IBOutlet weak var eraseEmail: UIButton!
     @IBOutlet weak var result: UITextField!
     @IBOutlet weak var save: UIButton!
-    @IBOutlet weak var email: UITextField!
     @IBOutlet weak var challenge: UIButton!
-    @IBOutlet weak var xForEmail: UIButton!
     @IBOutlet weak var client: UIBarButtonItem!
-    @IBOutlet weak var time: UITextField!
-    @IBOutlet weak var weight: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var challengeOverlay = true
     var menuShowing = false
     var dateSelected:String!
     var bodybuildingExercises = [String]()
@@ -54,14 +53,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             title = "Personal"
         }
         
-        email.isHidden = true
-        xForEmail.isHidden = true
-        result.isHidden = true
-        descriptionTextView.isHidden = true
-        
-        erase.isHidden = true
-        //time.isHidden = true
-        //weight.isHidden = true
+        //result.isHidden = true
+        resultTextView.alpha = 0
+        descriptionTextView.alpha = 0
+        emailTextView.alpha = 0
+        erase.alpha = 0
+        eraseResult.alpha = 0
+        eraseEmail.alpha = 0
         
        //  registerForKeyboardNotifications()
 
@@ -79,6 +77,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.layer.borderWidth = 1
         erase.layer.borderColor = UIColor.black.cgColor
         
+        eraseResult.layer.borderWidth = 1
+        eraseResult.layer.borderColor = UIColor.black.cgColor
+        
+        eraseEmail.layer.borderWidth = 1
+        eraseEmail.layer.borderColor = UIColor.black.cgColor
+        
         exerciseLabel.layer.borderWidth = 1
         exerciseLabel.layer.borderColor = UIColor.black.cgColor
         
@@ -90,6 +94,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor.black.cgColor
+        
+        resultTextView.layer.borderWidth = 1
+        resultTextView.layer.borderColor = UIColor.black.cgColor
+        
+        emailTextView.layer.borderWidth = 1
+        emailTextView.layer.borderColor = UIColor.black.cgColor
         
          NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
@@ -104,7 +114,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,12 +142,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func fillInExercisePassed(){
         date.text = exercisePassed.date
-        exerciseLabel.isHidden = true
-        erase.isHidden = false
-        descriptionTextView.isHidden = false
+        exerciseLabel.alpha = 0
+        result.alpha = 0
+        
+        erase.alpha = 1
+        descriptionTextView.alpha = 1
         descriptionTextView.text = exercisePassed.exerciseDescription
-        result.isHidden = false
-        result.text = exercisePassed.result
+        resultTextView.alpha = 1
+        resultTextView.text = exercisePassed.result
     }
     
     func getExercise(_ notification: Notification){
@@ -162,10 +173,19 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
         descriptionTextView.text = (myExercise?.name)! + newString
         
-            descriptionTextView.isHidden = false
-            erase.isHidden = false
-            exerciseLabel.isHidden = true
-            result.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.result.frame = CGRect(x: 0, y: 355, width: self.result.frame.width, height: self.result.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: 413, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.save.frame = CGRect(x: 0, y: 472, width: self.save.frame.width, height: self.save.frame.height)
+           //result.isHidden = false
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+            self.descriptionTextView.alpha = 1
+            self.erase.alpha = 1
+            self.exerciseLabel.alpha = 0
+            })
+        }))
+        
     }
     
     func setClient(client:Client){
@@ -217,85 +237,102 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-        
         if menuShowing == true{
             //remove menu view
             
             UIView.animate(withDuration: 0.3, animations: {
-            self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
             
         }else{
-            if email.isFirstResponder {
-                email.resignFirstResponder()
-            }else{
-                if date.frame.contains(sender.location(in: view)){
-                    changeDate(date)
+            if date.frame.contains(sender.location(in: view)){
+                changeDate(date)
+            }
+            if exerciseLabel.frame.contains(sender.location(in: view)){
+                selectExercise()
+            }
+            
+            if result.frame.contains(sender.location(in: view)){
+                //compare
+                if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
+                    selectPicker(tag: 3)
                 }
-                if exerciseLabel.frame.contains(sender.location(in: view)){
-                    selectExercise()
+                if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
+                    selectPicker(tag: 2)
                 }
-                
-                if result.frame.contains(sender.location(in: view)){
-                    //compare
-                    if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
-                        selectPicker(tag: 3)
-                    }
-                    if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
-                        selectPicker(tag: 2)
-                    }
-                    if currentExercise.name == "Amrap"{
-                        selectPicker(tag: 4)
-                    }
-                    
-                    return
+                if currentExercise.name == "Amrap"{
+                    selectPicker(tag: 4)
                 }
-                
-                if challengeOverlay == false{
-                    if email.frame.contains(sender.location(in: view)){
-                        email.becomeFirstResponder()
-                    }
-                }
-                if challenge.frame.contains(sender.location(in: view)){
-                    challengeBtn()
-                    challengeOverlay = false
-                }
-
+                return
             }
         }
     }
     
     @IBAction func eraseBtn(_ sender: UIButton) {
+        //erase exercise
         if sender.tag == 0{
-        descriptionTextView.text = ""
-        descriptionTextView.isHidden = true
-        exerciseLabel.isHidden = false
-        erase.isHidden = true
-        result.isHidden = true
-        challengeOverlay = true
-            //time.text = ""
-            //time.isHidden = true
-            //weight.text = ""
-            //weight.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.descriptionTextView.text = ""
+                self.descriptionTextView.alpha = 0
+                self.erase.alpha = 0
+                self.resultTextView.text = ""
+                self.resultTextView.alpha = 0
+                self.emailTextView.text = ""
+                self.emailTextView.alpha = 0
+                self.eraseResult.alpha = 0
+                self.eraseEmail.alpha = 0
+                self.result.frame = CGRect(x: 0, y: 180, width: self.result.frame.width, height: self.result.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 238, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 297, width: self.save.frame.width, height: self.save.frame.height)
+            }, completion: ( {success in
+                UIView.animate(withDuration: 0.3, animations: {
+                    
+                    self.exerciseLabel.alpha = 1
+                    self.result.alpha = 1
+                    self.challenge.alpha = 1
+                    
+                })
+            }))
+ 
+        //erase result
         }else if sender.tag == 1{
-            email.text = ""
-            email.isHidden = true
-            challenge.isHidden = false
-            xForEmail.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.resultTextView.text = ""
+                self.resultTextView.alpha = 0
+                self.emailTextView.text = ""
+                self.emailTextView.alpha = 0
+                self.eraseResult.alpha = 0
+                self.eraseEmail.alpha = 0
+                self.result.frame = CGRect(x: 0, y: 355, width: self.result.frame.width, height: self.result.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 413, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 472, width: self.save.frame.width, height: self.save.frame.height)
+            }, completion: ( {success in
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.result.alpha = 1
+                    self.challenge.alpha = 1
+                })
+            }))
+            //erase email
+        }else if sender.tag == 2{
+            UIView.animate(withDuration: 0.5, animations: {
+                self.emailTextView.text = ""
+                self.emailTextView.alpha = 0
+                self.eraseEmail.alpha = 0
+                //self.result.frame = CGRect(x: 0, y: 355, width: self.result.frame.width, height: self.result.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 473, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                
+                self.save.frame = CGRect(x: 0, y: 532, width: self.save.frame.width, height: self.save.frame.height)
+            }, completion: ( {success in
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.challenge.alpha = 1
+                })
+            }))
         }
     }
     
     @IBAction func client(_ sender: UIBarButtonItem) {
-        selectPicker(tag: sender.tag)
-    }
-    
-    @IBAction func time(_ sender: UITextField) {
-        selectPicker(tag: sender.tag)
-    }
-    
-    @IBAction func weight(_ sender: UITextField) {
         selectPicker(tag: sender.tag)
     }
     
@@ -305,7 +342,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             if self.title == "Personal"{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = result.text!
+                currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 currentExercise.exerciseKey = exerciseKey
                 
@@ -320,7 +357,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }else{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = result.text!
+                currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 currentExercise.exerciseKey = exerciseKey
                 
@@ -336,7 +373,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             if self.title == "Personal"{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = result.text!
+                currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 if currentExercise.name == ""{
                     exerciseDictionary["name"] = exercisePassed.name
@@ -352,7 +389,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }else{
                 currentExercise.date = date.text!
                 currentExercise.creator = user.email!
-                currentExercise.result = result.text!
+                currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 if currentExercise.name == ""{
                     exerciseDictionary["name"] = exercisePassed.name
@@ -368,8 +405,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }
         }
     }
-    
-
     
     func retrieveClientID(clientObj:Client){
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -469,10 +504,39 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
-    func challengeBtn(){
-        email.isHidden = false
-        challenge.isHidden = true
-        xForEmail.isHidden = false
+    @IBAction func challengeBtn(_ sender: UIButton) {
+        let xPosition = challenge.frame.minX + (challenge.frame.width/2)
+        let yPosition = challenge.frame.maxY
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 200)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+    }
+    
+    func saveEmail(emailStr:String){
+        emailTextView.text = emailStr
+        UIView.animate(withDuration: 0.3, animations: {
+            self.challenge.alpha = 0
+            
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.emailTextView.alpha = 1
+                self.save.frame = CGRect(x: 0, y: 597, width: self.save.frame.width, height: self.save.frame.height)
+                self.eraseEmail.alpha = 1
+            })
+        }))
     }
     
     func setNewDate(dateStr:String){
@@ -485,8 +549,30 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func saveResult(str:String){
-        self.result.text = str
+         self.resultTextView.text = str
+        UIView.animate(withDuration: 0.3, animations: {
+            self.result.alpha = 0
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.resultTextView.alpha = 1
+                self.eraseResult.alpha = 1
+                self.challenge.frame = CGRect(x: 0, y: 473, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 532, width: self.save.frame.width, height: self.save.frame.height)
+            })
+        }))
     }
+    
+//    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController){
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.result.alpha = 0
+//        }, completion: ( {success in
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.resultTextView.alpha = 1
+//                self.challenge.frame = CGRect(x: 0, y: 393, width: self.challenge.frame.width, height: self.challenge.frame.height)
+//                self.save.frame = CGRect(x: 0, y: 452, width: self.save.frame.width, height: self.save.frame.height)
+//            })
+//        }))
+//    }
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
