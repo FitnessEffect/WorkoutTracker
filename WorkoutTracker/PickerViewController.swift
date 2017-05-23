@@ -12,6 +12,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     var namesPassed:[String]!
     var weights = [String]()
+    var reps = [String]()
     var minutes = ["minutes","1","2","3", "4", "5", "6", "7", "8", "9", "10", "15"]
     var hours = ["hours","1", "2"]
     var seconds = ["seconds","1", "2"]
@@ -23,9 +24,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         for i in 0...500{
             weights.append(String(i))
+            reps.append(String(i))
         }
     }
 
@@ -63,8 +65,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }else{
                  return seconds.count
             }
-        }else{
+        }else if tagPassed == 3{
             return weights.count
+        }else{
+            return reps.count
         }
     }
     
@@ -80,8 +84,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }else{
                return seconds[row]
             }
-        }else{
+        }else if tagPassed == 3{
             return weights[row]
+        }else{
+            return reps[row]
         }
     }
 
@@ -106,6 +112,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 3{
             let tempWeight = weights[row]
             tempResult = tempWeight
+        }else if tagPassed == 4{
+            let tempReps = reps[row]
+            tempResult = tempReps
         }
     }
 
@@ -119,6 +128,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             presenter.saveResult(str: tempResult)
         }else if tagPassed == 3{
             
+            presenter.saveResult(str: tempResult)
+        }else if tagPassed == 4{
             presenter.saveResult(str: tempResult)
         }
         
