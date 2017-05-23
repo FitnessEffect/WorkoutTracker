@@ -19,6 +19,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var tempHours = ""
     var tempMinutes = ""
     var tempSeconds = ""
+    var tempResult = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,11 +88,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        
-        let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
+
         if tagPassed == 1{
         let pickerName = namesPassed[row]
-        presenter.savePickerName(name: pickerName)
+        tempResult = pickerName
         }else if tagPassed == 2{
  
             if component == 0{
@@ -102,11 +102,27 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 tempSeconds = seconds[row]
             }
             let tempTime = tempHours + "h " + tempMinutes + "m " + tempSeconds + "s"
-            presenter.saveResult(str: tempTime)
+            tempResult = tempTime
         }else if tagPassed == 3{
             let tempWeight = weights[row]
-            presenter.saveResult(str: tempWeight)
+            tempResult = tempWeight
         }
+    }
+
+    @IBAction func saveBtn(_ sender: UIButton) {
+        let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
+        if tagPassed == 1{
+            
+            presenter.savePickerName(name: tempResult)
+        }else if tagPassed == 2{
+            
+            presenter.saveResult(str: tempResult)
+        }else if tagPassed == 3{
+            
+            presenter.saveResult(str: tempResult)
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
 
     /*
