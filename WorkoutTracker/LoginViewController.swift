@@ -62,12 +62,22 @@ class LoginViewController: UIViewController {
             if user != nil{
                 if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
                     print(deviceTokenString)
-                     self.ref.child("token").updateChildValues([user!.uid:deviceTokenString])
+                    //use email
+                    let formattedEmail = self.formateEmail(email: (user?.email)!)
+                    self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
+                    
                 }
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
             }
         })
         // Do any additional setup after loading the view.
+    }
+    
+    func formateEmail(email:String) -> String{
+        var tempEmail = ""
+        tempEmail = email.replacingOccurrences(of: "@", with: "%40")
+        tempEmail = tempEmail.replacingOccurrences(of: ".", with: "%2E")
+        return tempEmail
     }
     
     override func didReceiveMemoryWarning() {
