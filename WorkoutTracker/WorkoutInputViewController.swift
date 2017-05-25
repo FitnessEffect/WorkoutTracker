@@ -60,6 +60,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.alpha = 0
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
+        exerciseLabel.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
         
        //  registerForKeyboardNotifications()
 
@@ -140,6 +141,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         // Dispose of any resources that can be recreated.
     }
     
+    
     func fillInExercisePassed(){
         date.text = exercisePassed.date
         exerciseLabel.alpha = 0
@@ -165,6 +167,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         let stringParts = desStr.components(separatedBy: "|")
         
       //  descriptionTextView.textColor = UIColor(red: 115.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
+        
         var newString:String = ""
         newString.append("\n")
         for part in stringParts{
@@ -174,15 +177,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         descriptionTextView.text = (myExercise?.name)! + newString
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.result.frame = CGRect(x: 0, y: 355, width: self.result.frame.width, height: self.result.frame.height)
-            self.challenge.frame = CGRect(x: 0, y: 413, width: self.challenge.frame.width, height: self.challenge.frame.height)
-            self.save.frame = CGRect(x: 0, y: 472, width: self.save.frame.width, height: self.save.frame.height)
-           //result.isHidden = false
+            self.result.frame = CGRect(x: 0, y: (168+182), width: self.result.frame.width, height: self.result.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: (220+182), width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.save.frame = CGRect(x: 0, y: (272+182), width: self.save.frame.width, height: self.save.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
             self.descriptionTextView.alpha = 1
             self.erase.alpha = 1
             self.exerciseLabel.alpha = 0
+            self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
         
@@ -283,16 +286,18 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.result.frame = CGRect(x: 0, y: 180, width: self.result.frame.width, height: self.result.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 238, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 297, width: self.save.frame.width, height: self.save.frame.height)
+                self.result.frame = CGRect(x: 0, y: 168, width: self.result.frame.width, height: self.result.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 220, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 272, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
-                    
                     self.exerciseLabel.alpha = 1
                     self.result.alpha = 1
                     self.challenge.alpha = 1
-                    
+                    self.challenge.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                    self.save.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                    self.result.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                    self.exerciseLabel.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 })
             }))
  
@@ -305,13 +310,17 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.result.frame = CGRect(x: 0, y: 355, width: self.result.frame.width, height: self.result.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 413, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 472, width: self.save.frame.width, height: self.save.frame.height)
+                self.result.frame = CGRect(x: 0, y: 350, width: self.result.frame.width, height: self.result.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 402, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 454, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.result.alpha = 1
                     self.challenge.alpha = 1
+                    self.challenge.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                    self.save.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                    self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                    
                 })
             }))
             //erase email
@@ -320,13 +329,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.text = ""
                 self.emailTextView.alpha = 0
                 self.eraseEmail.alpha = 0
-                //self.result.frame = CGRect(x: 0, y: 355, width: self.result.frame.width, height: self.result.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 473, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                
-                self.save.frame = CGRect(x: 0, y: 532, width: self.save.frame.width, height: self.save.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 467, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 519, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
+//                    self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                    self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                    self.save.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
                 })
             }))
         }
@@ -525,19 +535,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
-    func saveEmail(emailStr:String){
-        emailTextView.text = emailStr
-        UIView.animate(withDuration: 0.3, animations: {
-            self.challenge.alpha = 0
-            
-        }, completion: ( {success in
-            UIView.animate(withDuration: 0.3, animations: {
-                self.emailTextView.alpha = 1
-                self.save.frame = CGRect(x: 0, y: 597, width: self.save.frame.width, height: self.save.frame.height)
-                self.eraseEmail.alpha = 1
-            })
-        }))
-    }
+
     
     func setNewDate(dateStr:String){
         dateSelected = dateStr
@@ -551,17 +549,34 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func saveResult(str:String){
          self.resultTextView.text = str
         UIView.animate(withDuration: 0.3, animations: {
+            self.result.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             self.result.alpha = 0
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.resultTextView.alpha = 1
                 self.eraseResult.alpha = 1
-                self.challenge.frame = CGRect(x: 0, y: 473, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 532, width: self.save.frame.width, height: self.save.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: (402 + 65), width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: (454 + 65), width: self.save.frame.width, height: self.save.frame.height)
+                self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.result.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             })
         }))
     }
     
+        func saveEmail(emailStr:String){
+        emailTextView.text = emailStr
+        UIView.animate(withDuration: 0.3, animations: {
+            self.challenge.alpha = 0
+            
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.emailTextView.alpha = 1
+                self.save.frame = CGRect(x: 0, y: (519+65), width: self.save.frame.width, height: self.save.frame.height)
+                self.eraseEmail.alpha = 1
+                self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+            })
+        }))
+    }
 //    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController){
 //        UIView.animate(withDuration: 0.3, animations: {
 //            self.result.alpha = 0
