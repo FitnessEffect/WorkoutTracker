@@ -62,6 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         print("Push notification received: \(data)")
+        
+        //handle challenge notification
+        //save to firebase or nsuserdefault
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
