@@ -15,12 +15,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var exerciseLabel: UILabel!
-    @IBOutlet weak var date: UITextField!
+    
+    @IBOutlet weak var exerciseBtn: UIButton!
+
+    @IBOutlet weak var dateBtn: UIButton!
     @IBOutlet weak var erase: UIButton!
     @IBOutlet weak var eraseResult: UIButton!
     @IBOutlet weak var eraseEmail: UIButton!
-    @IBOutlet weak var result: UITextField!
+
+    @IBOutlet weak var resultBtn: UIButton!
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var challenge: UIButton!
     @IBOutlet weak var client: UIBarButtonItem!
@@ -63,21 +66,20 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.alpha = 0
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
-        exerciseLabel.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+        exerciseBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
         
        //  registerForKeyboardNotifications()
 
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
-        
-//        let barButtonTitle = self.navigationItem.title!
-//        titleView = barButtonTitle.value(forKey: "view")
+
         
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         
-//        erase.layer.cornerRadius = 5.0
-//        erase.clipsToBounds = true
+        dateBtn.layer.borderWidth = 1
+        dateBtn.layer.borderColor = UIColor.black.cgColor
+        
         erase.layer.borderWidth = 1
         erase.layer.borderColor = UIColor.black.cgColor
         
@@ -87,11 +89,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         eraseEmail.layer.borderWidth = 1
         eraseEmail.layer.borderColor = UIColor.black.cgColor
         
-        exerciseLabel.layer.borderWidth = 1
-        exerciseLabel.layer.borderColor = UIColor.black.cgColor
+        exerciseBtn.layer.borderWidth = 1
+        exerciseBtn.layer.borderColor = UIColor.black.cgColor
         
         challenge.layer.borderWidth = 1
         challenge.layer.borderColor = UIColor.black.cgColor
+        
+        resultBtn.layer.borderWidth = 1
+        resultBtn.layer.borderColor = UIColor.black.cgColor
         
         save.layer.borderWidth = 1
         save.layer.borderColor = UIColor.black.cgColor
@@ -108,7 +113,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
          NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
         dateSelected = DateConverter.getCurrentDate()
-        date.text = dateSelected
+        dateBtn.setTitle(dateSelected, for: .normal)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -146,9 +151,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     
     func fillInExercisePassed(){
-        date.text = exercisePassed.date
-        exerciseLabel.alpha = 0
-        result.alpha = 0
+        dateBtn.titleLabel?.text = exercisePassed.date
+        exerciseBtn.alpha = 0
+        resultBtn.alpha = 0
         
         erase.alpha = 1
         descriptionTextView.alpha = 1
@@ -180,15 +185,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         descriptionTextView.text = (myExercise?.name)! + newString
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.result.frame = CGRect(x: 0, y:(168 + self.translation1), width: self.result.frame.width, height: self.result.frame.height)
+            self.resultBtn.frame = CGRect(x: 0, y:(168 + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
             self.challenge.frame = CGRect(x: 0, y:(220+self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
             self.save.frame = CGRect(x: 0, y:(272+self.translation1), width: self.save.frame.width, height: self.save.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
             self.descriptionTextView.alpha = 1
             self.erase.alpha = 1
-            self.exerciseLabel.alpha = 0
-            self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+            self.exerciseBtn.alpha = 0
+            self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
         
@@ -253,26 +258,26 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             menuShowing = false
             
         }else{
-            if date.frame.contains(sender.location(in: view)){
-                changeDate(date)
-            }
-            if exerciseLabel.frame.contains(sender.location(in: view)){
-                selectExercise()
-            }
+//            if dateBtn.frame.contains(sender.location(in: view)){
+//                changeDate(date)
+//            }
+//            if exerciseBtn.frame.contains(sender.location(in: view)){
+//                selectExercise()
+//            }
             
-            if result.frame.contains(sender.location(in: view)){
-                //compare
-                if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
-                    selectPicker(tag: 3)
-                }
-                if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
-                    selectPicker(tag: 2)
-                }
-                if currentExercise.name == "Amrap"{
-                    selectPicker(tag: 4)
-                }
-                return
-            }
+//            if resultBtn.frame.contains(sender.location(in: view)){
+//                //compare
+//                if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
+//                    selectPicker(tag: 3)
+//                }
+//                if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
+//                    selectPicker(tag: 2)
+//                }
+//                if currentExercise.name == "Amrap"{
+//                    selectPicker(tag: 4)
+//                }
+//                return
+//            }
         }
     }
     
@@ -289,18 +294,19 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.result.frame = CGRect(x: 0, y: 168, width: self.result.frame.width, height: self.result.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: 168, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
                 self.challenge.frame = CGRect(x: 0, y: 220, width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: 272, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.exerciseLabel.alpha = 1
-                    self.result.alpha = 1
+                    self.exerciseBtn.alpha = 1
+                    self.resultBtn.alpha = 1
                     self.challenge.alpha = 1
-                    self.challenge.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                    self.save.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                    self.result.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                    self.exerciseLabel.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.resultBtn.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.exerciseBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                    //self.exerciseBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 })
             }))
  
@@ -313,16 +319,17 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.result.frame = CGRect(x: 0, y: 350, width: self.result.frame.width, height: self.result.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: 350, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
                 self.challenge.frame = CGRect(x: 0, y: 402, width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: 454, width: self.save.frame.width, height: self.save.frame.height)
+                
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.result.alpha = 1
+                    self.resultBtn.alpha = 1
                     self.challenge.alpha = 1
-                    self.challenge.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                    self.save.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                    self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                     
                 })
             }))
@@ -339,21 +346,48 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.challenge.alpha = 1
 //                    self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                     self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-                    self.save.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
+
                 })
             }))
         }
     }
     
     @IBAction func client(_ sender: UIBarButtonItem) {
-        selectPicker(tag: sender.tag)
+        var xPosition:CGFloat = 0
+        var yPosition:CGFloat = 0
+        
+        xPosition = (buttonItemView as AnyObject).frame.minX + ((buttonItemView as AnyObject).frame.width/2)
+        yPosition = (buttonItemView as AnyObject).frame.maxY
+        
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 416)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        if sender.tag == 1{
+            popController.setClients(clients: nameArray)
+        }
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+        
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
         exerciseKey = self.ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
         if edit == false{
             if self.title == "Personal"{
-                currentExercise.date = date.text!
+                currentExercise.date = (dateBtn.titleLabel?.text!)!
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
@@ -368,7 +402,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 
                 self.ref.child("users").child(user.uid).child("Exercises").child(exerciseKey).setValue(exerciseDictionary)
             }else{
-                currentExercise.date = date.text!
+                currentExercise.date = (dateBtn.titleLabel?.text)!
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
@@ -384,7 +418,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }
         }else{
             if self.title == "Personal"{
-                currentExercise.date = date.text!
+                currentExercise.date = (dateBtn.titleLabel?.text)!
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
@@ -400,7 +434,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 
                 self.ref.child("users").child(user.uid).child("Exercises").child(exercisePassed.exerciseKey).updateChildValues(exerciseDictionary)
             }else{
-                currentExercise.date = date.text!
+                currentExercise.date = (dateBtn.titleLabel?.text)!
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
@@ -442,17 +476,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
     }
     
-    func selectPicker(tag: Int){
+    @IBAction func selectResult(_ sender: UIButton) {
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
-        if tag == 1{
-            xPosition = (buttonItemView as AnyObject).frame.minX + ((buttonItemView as AnyObject).frame.width/2)
-            yPosition = (buttonItemView as AnyObject).frame.maxY
-
-        }else if tag == 2 || tag == 3 || tag == 4{
-            xPosition = result.frame.minX + (result.frame.width/2)
-            yPosition = result.frame.maxY
-        }
+        
+        xPosition = resultBtn.frame.minX + (resultBtn.frame.width/2)
+        yPosition = resultBtn.frame.maxY
+        
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
         
@@ -465,17 +495,25 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.sourceView = self.view
         popController.preferredContentSize = CGSize(width: 300, height: 416)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        popController.setTag(tag: tag)
-        if tag == 1{
-         popController.setClients(clients: nameArray)
+        
+        if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
+            popController.setTag(tag: 3)
+            
+        }else if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
+            popController.setTag(tag: 2)
+            
+        }else if currentExercise.name == "Amrap"{
+            popController.setTag(tag: 4)
         }
+        
         // present the popover
         self.present(popController, animated: true, completion: nil)
     }
+
     
-    func selectExercise() {
-        let xPosition = exerciseLabel.frame.minX + (exerciseLabel.frame.width/2)
-        let yPosition = exerciseLabel.frame.maxY
+    @IBAction func selectExercise(_ sender: UIButton) {
+        let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
+        let yPosition = exerciseBtn.frame.maxY
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseNavID") as! UINavigationController
@@ -494,9 +532,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
-    @IBAction func changeDate(_ sender: UITextField) {
-        let xPosition = date.frame.minX + (date.frame.width/2)
-        let yPosition = date.frame.maxY
+    @IBAction func selectDate(_ sender: UIButton) {
+        let xPosition = dateBtn.frame.minX + (dateBtn.frame.width/2)
+        let yPosition = dateBtn.frame.maxY
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendar") as! CalendarViewController
@@ -542,7 +580,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func setNewDate(dateStr:String){
         dateSelected = dateStr
-        date.text = dateSelected
+        dateBtn.setTitle(dateSelected,for: .normal)
     }
     
     func savePickerName(name:String){
@@ -552,8 +590,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func saveResult(str:String){
          self.resultTextView.text = str
         UIView.animate(withDuration: 0.3, animations: {
-            self.result.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-            self.result.alpha = 0
+            self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+            self.resultBtn.alpha = 0
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.resultTextView.alpha = 1
@@ -561,7 +599,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.challenge.frame = CGRect(x: 0, y: (402 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: (454 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
                 self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-                self.result.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             })
         }))
     }
