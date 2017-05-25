@@ -11,18 +11,18 @@ import Firebase
 import MessageUI
 
 class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate {
-
+    
     @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBOutlet weak var exerciseBtn: UIButton!
-
+    
     @IBOutlet weak var dateBtn: UIButton!
     @IBOutlet weak var erase: UIButton!
     @IBOutlet weak var eraseResult: UIButton!
     @IBOutlet weak var eraseEmail: UIButton!
-
+    
     @IBOutlet weak var resultBtn: UIButton!
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var challenge: UIButton!
@@ -49,7 +49,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var translation1:CGFloat = 182
     var translation2:CGFloat = 65
     var transaltion3:CGFloat = 65
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +59,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             title = "Personal"
         }
         
-        //result.isHidden = true
         resultTextView.alpha = 0
         descriptionTextView.alpha = 0
         emailTextView.alpha = 0
@@ -68,11 +67,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         eraseEmail.alpha = 0
         exerciseBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
         
-       //  registerForKeyboardNotifications()
-
+        //  registerForKeyboardNotifications()
+        
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
-
         
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
@@ -110,7 +108,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         emailTextView.layer.borderWidth = 1
         emailTextView.layer.borderColor = UIColor.black.cgColor
         
-         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
         dateSelected = DateConverter.getCurrentDate()
         dateBtn.setTitle(dateSelected, for: .normal)
@@ -133,7 +131,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             if value != nil{
                 self.nameArray = value?.allKeys as! [String]
             }
-          self.nameArray.insert("Personal", at: 0)
+            self.nameArray.insert("Personal", at: 0)
             
         }) { (error) in
             print(error.localizedDescription)
@@ -148,7 +146,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func fillInExercisePassed(){
         dateBtn.titleLabel?.text = exercisePassed.date
@@ -165,7 +162,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         let myExercise = info["exerciseKey"]
-
+        
         currentExercise.name = (myExercise?.name)!
         currentExercise.exerciseDescription = (myExercise?.exerciseDescription)!
         descriptionTextView.text = myExercise?.exerciseDescription
@@ -174,7 +171,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         let desStr:String = myExercise!.exerciseDescription
         let stringParts = desStr.components(separatedBy: "|")
         
-      //  descriptionTextView.textColor = UIColor(red: 115.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
+        //  descriptionTextView.textColor = UIColor(red: 115.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
         
         var newString:String = ""
         newString.append("\n")
@@ -190,13 +187,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             self.save.frame = CGRect(x: 0, y:(272+self.translation1), width: self.save.frame.width, height: self.save.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
-            self.descriptionTextView.alpha = 1
-            self.erase.alpha = 1
-            self.exerciseBtn.alpha = 0
-            self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.descriptionTextView.alpha = 1
+                self.erase.alpha = 1
+                self.exerciseBtn.alpha = 0
+                self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
-        
     }
     
     func setClient(client:Client){
@@ -237,7 +233,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
-            
         }else if sender.tag == 2{
             let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
             self.present(clientVC, animated: true, completion: nil)
@@ -250,34 +245,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-            
-        }else{
-//            if dateBtn.frame.contains(sender.location(in: view)){
-//                changeDate(date)
-//            }
-//            if exerciseBtn.frame.contains(sender.location(in: view)){
-//                selectExercise()
-//            }
-            
-//            if resultBtn.frame.contains(sender.location(in: view)){
-//                //compare
-//                if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
-//                    selectPicker(tag: 3)
-//                }
-//                if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
-//                    selectPicker(tag: 2)
-//                }
-//                if currentExercise.name == "Amrap"{
-//                    selectPicker(tag: 4)
-//                }
-//                return
-//            }
         }
     }
     
@@ -306,11 +278,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.save.setTitleColor(UIColor.lightGray, for: .normal)
                     self.resultBtn.setTitleColor(UIColor.lightGray, for: .normal)
                     self.exerciseBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
-                    //self.exerciseBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 })
             }))
- 
-        //erase result
+            
+            //erase result
         }else if sender.tag == 1{
             UIView.animate(withDuration: 0.5, animations: {
                 self.resultTextView.text = ""
@@ -344,10 +315,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
-//                    self.result.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                     self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                     self.save.setTitleColor(UIColor.lightGray, for: .normal)
-
+                    
                 })
             }))
         }
@@ -359,7 +329,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         xPosition = (buttonItemView as AnyObject).frame.minX + ((buttonItemView as AnyObject).frame.width/2)
         yPosition = (buttonItemView as AnyObject).frame.maxY
-        
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
@@ -380,7 +349,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         // present the popover
         self.present(popController, animated: true, completion: nil)
-        
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
@@ -463,9 +431,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     if client.value["lastName"] as! String == clientObj.lastName && client.value["age"] as! String == clientObj.age{
                         self.tempKey = client.key
                         if self.edit == false{
-                        self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exerciseKey).setValue(self.exerciseDictionary)
+                            self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exerciseKey).setValue(self.exerciseDictionary)
                         }else if self.edit == true{
-                    self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
+                            self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
                         }
                         return
                     }
@@ -509,7 +477,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         // present the popover
         self.present(popController, animated: true, completion: nil)
     }
-
     
     @IBAction func selectExercise(_ sender: UIButton) {
         let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
@@ -576,8 +543,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
-
-    
     func setNewDate(dateStr:String){
         dateSelected = dateStr
         dateBtn.setTitle(dateSelected,for: .normal)
@@ -588,7 +553,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func saveResult(str:String){
-         self.resultTextView.text = str
+        self.resultTextView.text = str
         UIView.animate(withDuration: 0.3, animations: {
             self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             self.resultBtn.alpha = 0
@@ -602,9 +567,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             })
         }))
+        
+        //launchEmail(sendTo: email.text!)
+        //use email
+        //query the db to all the emails
+        //find correct one and get user id key
+        //send using the key to the correct spot in db
     }
     
-        func saveEmail(emailStr:String){
+    func saveEmail(emailStr:String){
         emailTextView.text = emailStr
         UIView.animate(withDuration: 0.3, animations: {
             self.challenge.alpha = 0
@@ -618,18 +589,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             })
         }))
     }
-//    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController){
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.result.alpha = 0
-//        }, completion: ( {success in
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.resultTextView.alpha = 1
-//                self.challenge.frame = CGRect(x: 0, y: 393, width: self.challenge.frame.width, height: self.challenge.frame.height)
-//                self.save.frame = CGRect(x: 0, y: 452, width: self.save.frame.width, height: self.save.frame.height)
-//            })
-//        }))
-//    }
-
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
@@ -644,15 +604,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         } else {
             print("no go")
         }
-    }
-    
-    @IBAction func save(_ sender: UIButton) {
-        
-        //launchEmail(sendTo: email.text!)
-        //use email 
-        //query the db to all the emails
-        //find correct one and get user id key
-        //send using the key to the correct spot in db
     }
     
     func keyboardWasShown(notification: NSNotification){
@@ -687,18 +638,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-           print(error)
+        print(error)
         controller.dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
