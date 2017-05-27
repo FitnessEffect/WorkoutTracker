@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MessageUI
 
-class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate {
+class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate{
     
     @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var resultTextView: UITextView!
@@ -49,6 +49,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var translation1:CGFloat = 182
     var translation2:CGFloat = 65
     var transaltion3:CGFloat = 65
+    var activeField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         eraseEmail.alpha = 0
         exerciseBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
         
-        //  registerForKeyboardNotifications()
+        //registerForKeyboardNotifications()
         
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
@@ -250,6 +251,18 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.overlayView.alpha = 0
             })
             menuShowing = false
+        }else{
+            if dateBtn.frame.contains(sender.location(in: view)){
+                selectDate(dateBtn)
+            }else if exerciseBtn.frame.contains(sender.location(in: view)){
+                selectExercise(exerciseBtn)
+            }else if resultBtn.frame.contains(sender.location(in: view)){
+                selectResult(resultBtn)
+            }else if challenge.frame.contains(sender.location(in: view)){
+                challengeBtn(challenge)
+            }else if save.frame.contains(sender.location(in: view)){
+                saveBtn(save)
+            }
         }
     }
     
@@ -293,7 +306,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.resultBtn.frame = CGRect(x: 0, y: 350, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
                 self.challenge.frame = CGRect(x: 0, y: 402, width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: 454, width: self.save.frame.width, height: self.save.frame.height)
-                
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.resultBtn.alpha = 1
@@ -301,7 +313,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.save.setTitleColor(UIColor.lightGray, for: .normal)
                     self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
                     self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-                    
                 })
             }))
             //erase email
@@ -317,7 +328,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.challenge.alpha = 1
                     self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                     self.save.setTitleColor(UIColor.lightGray, for: .normal)
-                    
                 })
             }))
         }
@@ -375,12 +385,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
                 currentExercise.exerciseKey = exerciseKey
+                currentExercise.client = self.title!
                 
                 exerciseDictionary["name"] =  currentExercise.name
                 exerciseDictionary["description"] =  currentExercise.exerciseDescription
                 exerciseDictionary["date"] =  currentExercise.date
                 exerciseDictionary["result"] =  currentExercise.result
                 exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
+                exerciseDictionary["client"] = currentExercise.client
                 
                 retrieveClientID(clientObj: clientPassed)
             }
@@ -406,6 +418,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
                 currentExercise.exerciseDescription = descriptionTextView.text!
+                currentExercise.client = self.title!
                 if currentExercise.name == ""{
                     exerciseDictionary["name"] = exercisePassed.name
                 }else{
@@ -415,9 +428,46 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 exerciseDictionary["date"] =  currentExercise.date
                 exerciseDictionary["result"] =  currentExercise.result
                 exerciseDictionary["exerciseKey"] =  exercisePassed.exerciseKey
+                exerciseDictionary["client"] = currentExercise.client
                 
                 retrieveClientID(clientObj: clientPassed)
             }
+        }
+        
+        //launchEmail(sendTo: email.text!)
+        //use email
+        //query the db to all the emails
+        //find correct one and get user id key
+        //send using the key to the correct spot in db
+        
+        //post request for notification if challenge is on!!!
+        if (emailTextView.text?.characters.contains("@"))!{
+            
+            currentExercise.creator = user.email!
+            currentExercise.opponent = (emailTextView.text)!
+            
+            var request = URLRequest(url: URL(string: "http://192.168.0.5:3001/challenges")!)
+            request.httpMethod = "POST"
+            //send email / ex id etc
+            let postString = "exerciseKey=\(currentExercise.exerciseKey)&opponentEmail=\(currentExercise.opponent)&userID=\(user.uid)&userEmail=\(user.email!)"
+            request.httpBody = postString.data(using: .utf8)
+            print(postString)
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(String(describing: response))")
+                }
+                
+                let responseString = String(data: data, encoding: .utf8)
+                print("responseString = \(String(describing: responseString))")
+            }
+            task.resume()
         }
     }
     
@@ -522,9 +572,18 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
+//    let alert = UIAlertController(title: "Verify", message: "Enter your existing passcode.", preferredStyle: .alert)
+//    alert.addTextField(configurationHandler: { (textField) -> Void in
+//    textField.placeholder = "Current Passcode"
+//    textField.keyboardType = .numberPad
+//    textField.keyboardAppearance = .dark
+//    textField.isSecureTextEntry = true
+//    })
+
+    
     @IBAction func challengeBtn(_ sender: UIButton) {
-        let xPosition = challenge.frame.minX + (challenge.frame.width/2)
-        let yPosition = challenge.frame.maxY
+        let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
+        let yPosition = exerciseBtn.frame.maxY
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
@@ -566,13 +625,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             })
+            
         }))
-        
-        //launchEmail(sendTo: email.text!)
-        //use email
-        //query the db to all the emails
-        //find correct one and get user id key
-        //send using the key to the correct spot in db
     }
     
     func saveEmail(emailStr:String){
@@ -605,40 +659,41 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             print("no go")
         }
     }
+
     
-    func keyboardWasShown(notification: NSNotification){
-        //Need to calculate keyboard exact size due to Apple suggestions
-        let info: NSDictionary  = notification.userInfo! as NSDictionary
-        let keyboardSize = (info.value(forKey: UIKeyboardFrameEndUserInfoKey) as AnyObject).cgRectValue.size
-        let contentInsets:UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-        self.scrollView.setContentOffset(CGPoint(x:0, y:(keyboardSize.height)), animated: true)
-    }
-    
-    func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-    }
-    
-    func registerForKeyboardNotifications(){
-        //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func deregisterFromKeyboardNotifications(){
-        //Removing notifies on keyboard appearing
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
+//    func keyboardWasShown(notification: NSNotification){
+//        //Need to calculate keyboard exact size due to Apple suggestions
+//        let info: NSDictionary  = notification.userInfo! as NSDictionary
+//        let keyboardSize = (info.value(forKey: UIKeyboardFrameEndUserInfoKey) as AnyObject).cgRectValue.size
+//        let contentInsets:UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+//        scrollView.contentInset = contentInsets
+//        scrollView.scrollIndicatorInsets = contentInsets
+//        self.scrollView.setContentOffset(CGPoint(x:0, y:(keyboardSize.height)), animated: true)
+//    }
+//    
+//    func keyboardWillBeHidden(notification: NSNotification){
+//        //Once keyboard disappears, restore original positions
+//        var info = notification.userInfo!
+//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+//        self.scrollView.contentInset = contentInsets
+//        self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
+//    }
+//    
+//    func registerForKeyboardNotifications(){
+//        //Adding notifies on keyboard appearing
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+//    
+//    func deregisterFromKeyboardNotifications(){
+//        //Removing notifies on keyboard appearing
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        print(error)
+        print(error!)
         controller.dismiss(animated: true, completion: nil)
     }
 }
