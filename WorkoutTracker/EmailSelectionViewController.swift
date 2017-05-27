@@ -30,6 +30,8 @@ class EmailSelectionViewController: UIViewController {
         presenter.saveEmail(emailStr: emailTextField.text!)
         dismiss(animated: true, completion: nil)
     }
+    
+    
     /*
     // MARK: - Navigation
 

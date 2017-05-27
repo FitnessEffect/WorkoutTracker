@@ -62,9 +62,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         print("Push notification received: \(data)")
+        let challenger = data["challenger"]!
+        var exerciseDictionary = data["exercise"]! as! [String:Any]
+        exerciseDictionary["challenger"] = challenger as! String
+        
         
         //handle challenge notification
         //save to firebase or nsuserdefault
+        
+        self.ref.child("users").child(user.uid).child("Challenges").setValue(exerciseDictionary)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
