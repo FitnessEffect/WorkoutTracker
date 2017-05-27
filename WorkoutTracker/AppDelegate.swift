@@ -69,8 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //handle challenge notification
         //save to firebase or nsuserdefault
-        
-        self.ref.child("users").child(user.uid).child("Challenges").setValue(exerciseDictionary)
+        let exKey = exerciseDictionary["exerciseKey"] as! String
+        self.ref.child("users").child(user.uid).child("Challenges").child(exKey).setValue(exerciseDictionary)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -1,19 +1,19 @@
 //
-//  ExercisesHistoryViewController.swift
+//  ChallengesViewController.swift
 //  WorkoutTracker
 //
-//  Created by Stefan Auvergne on 5/20/17.
+//  Created by Stefan Auvergne on 5/27/17.
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     @IBOutlet weak var tableViewOutlet: UITableView!
     
-    //var workout = Workout()
     var selectedRow:Int = 0
     var delegate:ExercisesDelegate!
     var client = Client()
@@ -23,12 +23,14 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     var menuShowing = false
     var menuView:MenuView!
     var overlayView: OverlayView!
-    
+
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
         //retrieveClientID(clientObj: client)
-        title = "History"
+        title = "Challenges"
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -39,12 +41,44 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         retrieveExercises()
-        
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func retrieveExercises(){
+        exerciseArray.removeAll()
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).child("Challenges").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            // let value = snapshot.value as! NSDictionary
+            if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
+                for exercise in exercisesVal {
+                    
+                    let tempExercise = Exercise()
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    self.exerciseArray.append(tempExercise)
+                    
+                }
+            }
+            self.tableViewOutlet.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
@@ -86,12 +120,12 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             menuShowing = false
             
         }else{
-          if tableViewOutlet.frame.contains(sender.location(in: view)){
-            performSegue(withIdentifier: "editExerciseSegue", sender: sender)
+            if tableViewOutlet.frame.contains(sender.location(in: view)){
+                performSegue(withIdentifier: "editExerciseSegue", sender: sender)
             }
         }
     }
-
+    
     
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
@@ -107,33 +141,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
-    
-    func retrieveExercises(){
-        exerciseArray.removeAll()
-        
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            // let value = snapshot.value as! NSDictionary
-            if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
-                for exercise in exercisesVal {
-                    
-                    let tempExercise = Exercise()
-                    tempExercise.name = exercise.value["name"] as! String
-                    tempExercise.exerciseDescription = exercise.value["description"] as! String
-                    tempExercise.result = exercise.value["result"] as! String
-                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
-                    tempExercise.date = exercise.value["date"] as! String
-                    self.exerciseArray.append(tempExercise)
-                    
-                }
-            }
-            self.tableViewOutlet.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -160,19 +167,14 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             //delegate.saveExercises(workout)
         }
     }
-    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "editExerciseSegue"){
-            let s = sender as! UITapGestureRecognizer
-            let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
-            let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
-            wivc.setExercise(exercise: exerciseArray[selectedRow!])
-            wivc.edit = true
-        }
-        if(segue.identifier == "addExerciseSegue"){
-            let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
-            edv.setClient(client: client)
-            edv.edit = false
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
+
 }
