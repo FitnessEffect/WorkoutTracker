@@ -172,13 +172,17 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
-            
+            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
+            self.present(inputVC, animated: true, completion: nil)
         }else if sender.tag == 2{
-            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
-            self.present(clientVC, animated: true, completion: nil)
-        }else if sender.tag == 3{
             let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
             self.present(historyVC, animated: true, completion: nil)
+        }else if sender.tag == 3{
+            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            self.present(clientVC, animated: true, completion: nil)
+        }else if sender.tag == 4{
+            let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
+            self.present(challengesVC, animated: true, completion: nil)
         }
     }
     

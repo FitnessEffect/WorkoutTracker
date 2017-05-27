@@ -276,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afE-Yn-JNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2704.8000000000002" y="1591.7541229385308"/>
+            <point key="canvasLocation" x="2743" y="1592"/>
         </scene>
         <!--Email Selection View Controller-->
         <scene sceneID="BuZ-F9-6gx">
@@ -1837,7 +1837,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GxR-g9-zJT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="inputNavVC" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFa-KB-lpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
