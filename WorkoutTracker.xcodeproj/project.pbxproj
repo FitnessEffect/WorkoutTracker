@@ -37,6 +37,7 @@
 		5291C45C1CE1439F00DF8C0C /* ChestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45B1CE1439F00DF8C0C /* ChestViewController.swift */; };
 		5291C45E1CE144B900DF8C0C /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45D1CE144B900DF8C0C /* BackViewController.swift */; };
 		5291C4601CE145CF00DF8C0C /* AbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45F1CE145CF00DF8C0C /* AbsViewController.swift */; };
+		52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */; };
 		52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7D1611EC8BEAB00585964 /* LoginViewController.swift */; };
 		52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */; };
 		52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */; };
@@ -84,6 +85,7 @@
 		5291C45B1CE1439F00DF8C0C /* ChestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChestViewController.swift; sourceTree = "<group>"; };
 		5291C45D1CE144B900DF8C0C /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 		5291C45F1CE145CF00DF8C0C /* AbsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsViewController.swift; sourceTree = "<group>"; };
+		52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		52C7D1611EC8BEAB00585964 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetconCustomCell.swift; sourceTree = "<group>"; };
 		52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmrapCustomCell.swift; path = ../AmrapCustomCell.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
+				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
+				52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */,
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
 				5291C4601CE145CF00DF8C0C /* AbsViewController.swift in Sources */,
 				5291C4581CE13F1400DF8C0C /* ArmViewController.swift in Sources */,
