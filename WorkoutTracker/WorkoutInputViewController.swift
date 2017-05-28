@@ -30,6 +30,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     @IBOutlet weak var scrollView: UIScrollView!
     
     var menuShowing = false
+    var emailViewShowing = false
     var dateSelected:String!
     var bodybuildingExercises = [String]()
     var crossfitExercises = [String]()
@@ -39,6 +40,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var buttonItemView:Any!
     var menuView:MenuView!
     var overlayView: OverlayView!
+    var emailView:EmailView!
     var clientPassed = Client()
     var tempKey:String!
     var exercisePassed:Exercise!
@@ -117,11 +119,16 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
+        emailView = EmailView.instanceFromNib() as! EmailView
         view.addSubview(overlayView)
         view.addSubview(menuView)
+        view.addSubview(emailView)
+        //initialize position of views
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+        emailView.alpha = 0
+        emailView.frame = CGRect(x: 60, y: 230, width: 250, height: 200)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -242,7 +249,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-         menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
     
     func btnAction(_ sender: UIButton) {
@@ -273,6 +280,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.overlayView.alpha = 0
             })
             menuShowing = false
+        
+        }else if emailViewShowing == true{
+            if emailView.frame.contains(sender.location(in: view)){
+                //nothing
+            }else{
+                emailView.alpha = 0
+                emailViewShowing = false
+                self.overlayView.alpha = 0
+            }
         }else{
             if dateBtn.frame.contains(sender.location(in: view)){
                 selectDate(dateBtn)
@@ -610,24 +626,57 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
 
     
     @IBAction func challengeBtn(_ sender: UIButton) {
-        let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
-        let yPosition = exerciseBtn.frame.maxY
+//        let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
+//        let yPosition = exerciseBtn.frame.maxY
+//        
+//        // get a reference to the view controller for the popover
+//        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
+//        
+//        // set the presentation style
+//        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+//        
+//        // set up the popover presentation controller
+//        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+//        popController.popoverPresentationController?.delegate = self
+//        popController.popoverPresentationController?.sourceView = self.view
+//        popController.preferredContentSize = CGSize(width: 300, height: 200)
+//        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+//        
+//        // present the popover
+//        self.present(popController, animated: true, completion: nil)
         
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 200)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
+        //menuView.addFx()
+        if emailViewShowing == false{
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.isHidden = false
+            self.emailView.alpha = 1
+            self.overlayView.alpha = 1
+        })
+            emailViewShowing = true
+        }
+        emailView.email.addTarget(self, action: #selector(emailBtnAction(_:)), for: .touchUpInside)
+    }
+    
+    func emailBtnAction(_ sender: UIButton){
+        emailViewShowing = false
+        emailView.alpha = 0
+        overlayView.alpha = 0
+        saveEmail(emailStr: emailView.emailTextField.text!)
+    }
+    
+    func saveEmail(emailStr:String){
+        emailTextView.text = emailStr
+        UIView.animate(withDuration: 0.3, animations: {
+            self.challenge.alpha = 0
+            
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.emailTextView.alpha = 1
+                self.save.frame = CGRect(x: 0, y: (519+self.transaltion3), width: self.save.frame.width, height: self.save.frame.height)
+                self.eraseEmail.alpha = 1
+                self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+            })
+        }))
     }
     
     func setNewDate(dateStr:String){
@@ -652,21 +701,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.save.frame = CGRect(x: 0, y: (454 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
                 self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-            })
-        }))
-    }
-    
-    func saveEmail(emailStr:String){
-        emailTextView.text = emailStr
-        UIView.animate(withDuration: 0.3, animations: {
-            self.challenge.alpha = 0
-            
-        }, completion: ( {success in
-            UIView.animate(withDuration: 0.3, animations: {
-                self.emailTextView.alpha = 1
-                self.save.frame = CGRect(x: 0, y: (519+self.transaltion3), width: self.save.frame.width, height: self.save.frame.height)
-                self.eraseEmail.alpha = 1
                 self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
