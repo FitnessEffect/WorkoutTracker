@@ -150,14 +150,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func fillInExercisePassed(){
         dateBtn.titleLabel?.text = exercisePassed.date
-        exerciseBtn.alpha = 0
-        resultBtn.alpha = 0
+        let tempStr = exercisePassed.name + " " + exercisePassed.exerciseDescription
+        saveExercise(exStr: tempStr)
         
-        erase.alpha = 1
-        descriptionTextView.alpha = 1
-        descriptionTextView.text = exercisePassed.exerciseDescription
-        resultTextView.alpha = 1
-        resultTextView.text = exercisePassed.result
+        saveResult(str: exercisePassed.result)
     }
     
     func getExercise(_ notification: Notification){
@@ -180,8 +176,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             newString.append(part)
             newString.append("\n")
         }
-        descriptionTextView.text = (myExercise?.name)! + newString
+        let formattedStr = (myExercise?.name)! + newString
         
+        saveExercise(exStr: formattedStr)
+    }
+    
+    func saveExercise(exStr:String){
+        descriptionTextView.text = exStr
+        //exerice Btn disappears first
+        self.exerciseBtn.alpha = 0
         UIView.animate(withDuration: 0.5, animations: {
             self.resultBtn.frame = CGRect(x: 0, y:(168 + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
             self.challenge.frame = CGRect(x: 0, y:(220+self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
@@ -190,7 +193,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
                 self.erase.alpha = 1
-                self.exerciseBtn.alpha = 0
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
@@ -331,8 +333,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
-                    self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+                    self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
                 })
             }))
         }
@@ -627,8 +629,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.eraseResult.alpha = 1
                 self.challenge.frame = CGRect(x: 0, y: (402 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: (454 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
-                self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
             
         }))

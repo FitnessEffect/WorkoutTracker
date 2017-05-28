@@ -69,6 +69,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                     tempExercise.result = exercise.value["result"] as! String
                     tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
                     tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.creator = exercise.value["challenger"] as! String
                     self.exerciseArray.append(tempExercise)
                     
                 }
@@ -121,7 +122,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             
         }else{
             if tableViewOutlet.frame.contains(sender.location(in: view)){
-                performSegue(withIdentifier: "editExerciseSegue", sender: sender)
+                performSegue(withIdentifier: "editChallengeSegue", sender: sender)
             }
         }
     }
@@ -152,11 +153,11 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ChallengeCustomCell
         
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-        cell.descriptionOutlet.text = exercise.exerciseDescription
+        cell.challenger.text = exercise.creator
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
         return cell
     }
@@ -169,14 +170,13 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             //delegate.saveExercises(workout)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "editChallengeSegue"){
+            let s = sender as! UITapGestureRecognizer
+            let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
+            wivc.setExercise(exercise: exerciseArray[selectedRow!])
+            wivc.edit = true
+        }
     }
-    */
-
 }
