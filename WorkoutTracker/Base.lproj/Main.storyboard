@@ -1857,7 +1857,7 @@
         <!--Login View Controller-->
         <scene sceneID="9OG-3v-MNu">
             <objects>
-                <viewController id="nji-W8-ZX0" customClass="LoginViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="nji-W8-ZX0" customClass="LoginViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S3H-7w-nGc"/>
                         <viewControllerLayoutGuide type="bottom" id="6kp-nB-wqI"/>

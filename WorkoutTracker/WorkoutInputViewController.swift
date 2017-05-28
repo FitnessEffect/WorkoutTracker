@@ -232,9 +232,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+         menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
     
     func btnAction(_ sender: UIButton) {
+        
         if sender.tag == 1{
             let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
             self.present(inputVC, animated: true, completion: nil)
@@ -247,6 +249,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }else if sender.tag == 4{
             let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
             self.present(challengesVC, animated: true, completion: nil)
+        }else if sender.tag == 5{
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            self.present(loginVC, animated: true, completion: nil)
         }
     }
     

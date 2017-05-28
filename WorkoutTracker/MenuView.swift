@@ -16,6 +16,7 @@ class MenuView: UIView {
     @IBOutlet weak var historyBtn: UIButton!
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var settingsBtn: UIButton!
+    @IBOutlet weak var logoutBtn: UIButton!
     
     
     class func instanceFromNib() -> UIView {
@@ -48,6 +49,11 @@ class MenuView: UIView {
         settingsBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         settingsBtn.layer.shadowOpacity = 0.6
         settingsBtn.layer.shadowRadius = 5
+        
+        logoutBtn.layer.shadowColor = UIColor.black.cgColor
+        logoutBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
+        logoutBtn.layer.shadowOpacity = 0.6
+        logoutBtn.layer.shadowRadius = 5
     }
     
     func dismissMenu() {
