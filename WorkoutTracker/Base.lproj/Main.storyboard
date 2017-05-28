@@ -253,7 +253,7 @@
                                 <action selector="openMenu:" destination="pzd-PZ-fvb" id="Ewn-ot-ULL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Client" id="AZl-xc-mvw">
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="Client" id="AZl-xc-mvw">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                             <connections>
                                 <action selector="client:" destination="pzd-PZ-fvb" id="9dU-NQ-j4u"/>
