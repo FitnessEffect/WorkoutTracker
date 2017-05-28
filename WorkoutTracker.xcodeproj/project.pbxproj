@@ -24,6 +24,7 @@
 		526A3F0E1EC52C64001BF557 /* WorkoutInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */; };
 		526A3F111EC60D61001BF557 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F101EC60D61001BF557 /* CalendarViewController.swift */; };
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
+		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
 		527D07E61CE11E2E00F46B57 /* WodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E51CE11E2E00F46B57 /* WodsViewController.swift */; };
 		527D07E81CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */; };
 		5283E0751C7E37CB00FB716B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0741C7E37CB00FB716B /* Client.swift */; };
@@ -72,6 +73,7 @@
 		526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputViewController.swift; sourceTree = "<group>"; };
 		526A3F101EC60D61001BF557 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
 		527D07E51CE11E2E00F46B57 /* WodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WodsViewController.swift; sourceTree = "<group>"; };
 		527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodybuildingBodyPartsTableViewController.swift; sourceTree = "<group>"; };
 		5283E0741C7E37CB00FB716B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
+				5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
 				52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */,
+				5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */,
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
 				5291C4601CE145CF00DF8C0C /* AbsViewController.swift in Sources */,
 				5291C4581CE13F1400DF8C0C /* ArmViewController.swift in Sources */,
