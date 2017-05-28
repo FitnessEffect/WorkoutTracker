@@ -60,12 +60,22 @@
                         <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
+                <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ET5-8a-P6H">
+                    <rect key="frame" x="0.0" y="366" width="125" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                    <state key="normal" title="Logout">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="challengeBtn" destination="DzF-Lh-Xw6" id="a4N-e4-XYA"/>
                 <outlet property="clientBtn" destination="YZT-6u-cDX" id="KaE-Ym-kO1"/>
                 <outlet property="historyBtn" destination="x47-gG-DUO" id="CMu-rN-s1A"/>
+                <outlet property="logoutBtn" destination="ET5-8a-P6H" id="1hb-wg-6yE"/>
                 <outlet property="profileBtn" destination="1pl-4H-5a3" id="G8p-kC-11U"/>
                 <outlet property="settingsBtn" destination="b98-Rt-Jxs" id="6w6-jV-nsS"/>
             </connections>

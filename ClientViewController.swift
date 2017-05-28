@@ -151,6 +151,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
         menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -183,6 +184,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else if sender.tag == 4{
             let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
             self.present(challengesVC, animated: true, completion: nil)
+        }else if sender.tag == 5{
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            self.present(loginVC, animated: true, completion: nil)
         }
     }
     
