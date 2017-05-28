@@ -130,7 +130,17 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil{
-                self.nameArray = value?.allKeys as! [String]
+                let keyArray = value?.allKeys as! [String]
+                for client in keyArray{
+                    self.ref.child("users").child(userID!).child("Clients").child(client).observeSingleEvent(of: .value, with: { (snapshot) in
+                       let client = snapshot.value as? NSDictionary
+                        let fName = client?["firstName"] as! String
+                        let lName = client?["lastName"] as! String
+                        let tempStr = fName + " " + lName
+                        self.nameArray.append(tempStr)
+                    })
+  
+                }
             }
             self.nameArray.insert("Personal", at: 0)
             
@@ -372,6 +382,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         if sender.tag == 1{
             popController.setClients(clients: nameArray)
+            popController.setTag(tag: 1)
         }
         
         // present the popover
