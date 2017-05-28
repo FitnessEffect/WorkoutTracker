@@ -79,14 +79,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         dateBtn.layer.borderWidth = 1
         dateBtn.layer.borderColor = UIColor.black.cgColor
         
-        erase.layer.borderWidth = 1
-        erase.layer.borderColor = UIColor.black.cgColor
-        
-        eraseResult.layer.borderWidth = 1
-        eraseResult.layer.borderColor = UIColor.black.cgColor
-        
-        eraseEmail.layer.borderWidth = 1
-        eraseEmail.layer.borderColor = UIColor.black.cgColor
+//        erase.layer.borderWidth = 1
+//        erase.layer.borderColor = UIColor.black.cgColor
+//        
+//        eraseResult.layer.borderWidth = 1
+//        eraseResult.layer.borderColor = UIColor.black.cgColor
+//        
+//        eraseEmail.layer.borderWidth = 1
+//        eraseEmail.layer.borderColor = UIColor.black.cgColor
         
         exerciseBtn.layer.borderWidth = 1
         exerciseBtn.layer.borderColor = UIColor.black.cgColor
@@ -375,7 +375,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 currentExercise.date = (dateBtn.titleLabel?.text!)!
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
-                currentExercise.exerciseDescription = descriptionTextView.text!
+                //currentExercise.exerciseDescription = descriptionTextView.text!
                 currentExercise.exerciseKey = exerciseKey
                 
                 //move currentExercise to exerciseDictionary for firebase
@@ -633,7 +633,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
                 self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
-            
         }))
     }
     

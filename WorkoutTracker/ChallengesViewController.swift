@@ -41,7 +41,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
