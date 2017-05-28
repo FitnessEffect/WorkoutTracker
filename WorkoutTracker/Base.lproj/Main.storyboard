@@ -246,19 +246,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="IVz-K0-uwO">
-                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="g6X-Me-JFN">
                             <connections>
                                 <action selector="openMenu:" destination="pzd-PZ-fvb" id="Ewn-ot-ULL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" tag="1" title="Logout" style="plain" id="ulL-2q-Rc0">
+                        <barButtonItem key="rightBarButtonItem" title="Client" id="AZl-xc-mvw">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                             <connections>
-                                <action selector="logoutBtn:" destination="pzd-PZ-fvb" id="Aho-Vp-h3A"/>
+                                <action selector="client:" destination="pzd-PZ-fvb" id="9dU-NQ-j4u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="challenge" destination="rA8-gv-R0v" id="0Dg-W1-vhC"/>
                         <outlet property="dateBtn" destination="Bsg-o6-oRT" id="LCK-Rm-crI"/>
