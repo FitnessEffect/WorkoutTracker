@@ -340,6 +340,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
     }
     
+    @IBAction func logoutBtn(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func client(_ sender: UIBarButtonItem) {
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
@@ -650,6 +655,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             })
         }))
     }
+    
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none

@@ -253,15 +253,14 @@
                                 <action selector="openMenu:" destination="pzd-PZ-fvb" id="Ewn-ot-ULL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" tag="1" style="plain" systemItem="edit" id="ulL-2q-Rc0">
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="Logout" style="plain" id="ulL-2q-Rc0">
                             <connections>
-                                <action selector="client:" destination="pzd-PZ-fvb" id="gNC-Ks-RWH"/>
+                                <action selector="logoutBtn:" destination="pzd-PZ-fvb" id="Aho-Vp-h3A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="challenge" destination="rA8-gv-R0v" id="0Dg-W1-vhC"/>
-                        <outlet property="client" destination="ulL-2q-Rc0" id="Ngh-1k-mxj"/>
                         <outlet property="dateBtn" destination="Bsg-o6-oRT" id="LCK-Rm-crI"/>
                         <outlet property="descriptionTextView" destination="7hE-Sh-Eqt" id="qPP-iP-laW"/>
                         <outlet property="emailTextView" destination="Xd9-VW-xci" id="uHW-YN-SB1"/>
