@@ -9,8 +9,9 @@
 
 import UIKit
 
-class MetconViewController: UIViewController {
+class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
@@ -24,8 +25,12 @@ class MetconViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        add.layer.cornerRadius = 10.0
+        add.clipsToBounds = true
+        add.layer.borderWidth = 1
+        add.layer.borderColor = UIColor.black.cgColor
 
-        backgroundImageOutlet.image = UIImage(named: "Background1.png")
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +43,7 @@ class MetconViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
@@ -81,9 +86,9 @@ class MetconViewController: UIViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MetconCell", for: indexPath) as! MetconCustomCell
         
         var text = exerciseList[(indexPath as NSIndexPath).row]
-        if text.isEmpty{
-            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
-        }
+//        if text.isEmpty{
+//            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
+//        }
         
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
@@ -95,5 +100,18 @@ class MetconViewController: UIViewController {
     func textFieldDidChange(_ textField: UITextField) {
         let index = textField.tag
         exerciseList[index] = textField.text!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        
+       
+        label.text = rounds[row]
+        
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 
 class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var add: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
@@ -25,7 +26,10 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backgroundImageOutlet.image = UIImage(named: "Background1.png")
+        add.layer.cornerRadius = 10.0
+        add.clipsToBounds = true
+        add.layer.borderWidth = 1
+        add.layer.borderColor = UIColor.black.cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,9 +86,9 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "AmrapCell", for: indexPath) as! AmrapCustomCell
         
         var text = exerciseList[(indexPath as NSIndexPath).row]
-        if text.isEmpty{
-            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
-        }
+//        if text.isEmpty{
+//            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
+//        }
         
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
@@ -96,5 +100,17 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     func textFieldDidChange(_ textField: UITextField) {
         let index = textField.tag
         exerciseList[index] = textField.text!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+      
+        label.text = time[row]
+        
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 }

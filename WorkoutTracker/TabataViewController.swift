@@ -11,6 +11,7 @@ import UIKit
 
 class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
 
+    @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
@@ -26,7 +27,11 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundImageOutlet.image = UIImage(named: "Background1.png")
+        
+        addBtn.layer.cornerRadius = 10.0
+        addBtn.clipsToBounds = true
+        addBtn.layer.borderWidth = 1
+        addBtn.layer.borderColor = UIColor.black.cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,9 +102,9 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "TabataCell", for: indexPath) as! TabataCustomCell
         
         var text = exerciseList[(indexPath as NSIndexPath).row]
-        if text.isEmpty{
-            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
-        }
+//        if text.isEmpty{
+//            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
+//        }
 
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
@@ -112,5 +117,26 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         let index = textField.tag
         exerciseList[index] = textField.text!
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+
+                if component == 0 {
+                    label.text = rest[row]
+                }else if component == 1{
+                    label.text = work[row]
+                }else{
+                    label.text = totalTime[row]
+                }
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
+    }
+    
+//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+//        return 20.0
+//    }
 }
 

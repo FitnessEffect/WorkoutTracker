@@ -12,6 +12,7 @@ import UIKit
 class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
 
+    @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
@@ -22,7 +23,11 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundImageOutlet.image = UIImage(named: "Background1.png")
+        
+        add.layer.cornerRadius = 10.0
+        add.clipsToBounds = true
+        add.layer.borderWidth = 1
+        add.layer.borderColor = UIColor.black.cgColor
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -50,5 +55,18 @@ class OneRMViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        
+       
+        label.text = OneRM[row]
+        
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 }

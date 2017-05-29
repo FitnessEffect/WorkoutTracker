@@ -8,25 +8,30 @@
 
 import UIKit
 
-class WodsViewController: UIViewController {
+class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @IBOutlet weak var add: UIButton!
+    @IBOutlet weak var pickerOutlet: UIPickerView!
+    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let wods = ["Fran", "Grace", "Murph"]
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     
-    @IBOutlet weak var pickerOutlet: UIPickerView!
-    @IBOutlet weak var backgroundImageOutlet: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundImageOutlet.image = UIImage(named: "Background1.png")
+        
+        add.layer.cornerRadius = 10.0
+        add.clipsToBounds = true
+        add.layer.borderWidth = 1
+        add.layer.borderColor = UIColor.black.cgColor
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
@@ -53,5 +58,18 @@ class WodsViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        
+    
+        label.text = wods[row]
+        
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 }

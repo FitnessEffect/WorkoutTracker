@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "clientIcon.png",
+      "filename" : "clientTabIcon.png",
       "scale" : "1x"
     },
     {
