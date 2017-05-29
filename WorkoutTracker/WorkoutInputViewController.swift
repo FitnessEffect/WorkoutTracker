@@ -81,15 +81,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         dateBtn.layer.borderWidth = 1
         dateBtn.layer.borderColor = UIColor.black.cgColor
         
-//        erase.layer.borderWidth = 1
-//        erase.layer.borderColor = UIColor.black.cgColor
-//        
-//        eraseResult.layer.borderWidth = 1
-//        eraseResult.layer.borderColor = UIColor.black.cgColor
-//        
-//        eraseEmail.layer.borderWidth = 1
-//        eraseEmail.layer.borderColor = UIColor.black.cgColor
-        
         exerciseBtn.layer.borderWidth = 1
         exerciseBtn.layer.borderColor = UIColor.black.cgColor
         
@@ -662,6 +653,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         emailView.alpha = 0
         overlayView.alpha = 0
         saveEmail(emailStr: emailView.emailTextField.text!)
+        emailView.emailTextField.resignFirstResponder()
     }
     
     func saveEmail(emailStr:String){
@@ -722,7 +714,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             print("no go")
         }
     }
-
+    
     
 //    func keyboardWasShown(notification: NSNotification){
 //        //Need to calculate keyboard exact size due to Apple suggestions
