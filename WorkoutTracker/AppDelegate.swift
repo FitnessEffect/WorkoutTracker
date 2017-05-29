@@ -71,6 +71,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //save to firebase or nsuserdefault
         let exKey = exerciseDictionary["exerciseKey"] as! String
         self.ref.child("users").child(user.uid).child("Challenges").child(exKey).setValue(exerciseDictionary)
+        
+        
+        
+//            let alert = UIAlertController(title: "You've Been Challenged", message: "Username challenges you!!", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
+//        alert.dismiss(animated: true, completion: nil)
+//        }))
+//        self.present(alert, animated:true, completion:nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
