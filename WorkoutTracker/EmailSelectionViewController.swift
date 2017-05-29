@@ -17,6 +17,10 @@ class EmailSelectionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        email.layer.cornerRadius = 10.0
+        email.clipsToBounds = true
+        email.layer.borderWidth = 1
+        email.layer.borderColor = UIColor.black.cgColor
     }
 
     override func didReceiveMemoryWarning() {
