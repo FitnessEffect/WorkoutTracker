@@ -10,6 +10,8 @@ import UIKit
 
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var saveBtn: UIButton!
+    
     var namesPassed:[String]!
     var weights = [String]()
     var reps = [String]()
@@ -24,6 +26,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        saveBtn.layer.cornerRadius = 10.0
+        saveBtn.clipsToBounds = true
+        saveBtn.layer.borderWidth = 1
+        saveBtn.layer.borderColor = UIColor.black.cgColor
         
         for i in 0...500{
             weights.append(String(i))
