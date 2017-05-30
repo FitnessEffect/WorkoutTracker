@@ -30,6 +30,13 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
         tableViewOutlet.reloadData()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
 
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -40,6 +47,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

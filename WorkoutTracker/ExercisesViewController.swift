@@ -34,6 +34,15 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         ref = FIRDatabase.database().reference()
         //retrieveClientID(clientObj: client)
         title = client.firstName
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
+        tableViewOutlet.backgroundColor = UIColor(patternImage: UIImage(named:"background-1")!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
