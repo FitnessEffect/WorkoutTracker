@@ -42,6 +42,7 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
             cell.backgroundColor = UIColor.clear
+            
             return cell
             
         }else if x == 1{

@@ -27,6 +27,9 @@
 		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
 		5276515F1EDB3CA2006814AD /* EmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5276515E1EDB3CA2006814AD /* EmailView.xib */; };
 		527651611EDB3CB6006814AD /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527651601EDB3CB6006814AD /* EmailView.swift */; };
+		527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */; };
+		5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */; };
+		5276516F1EDDC75E006814AD /* Have a Great Day Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */; };
 		527D07E61CE11E2E00F46B57 /* WodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E51CE11E2E00F46B57 /* WodsViewController.swift */; };
 		527D07E81CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */; };
 		5283E0751C7E37CB00FB716B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0741C7E37CB00FB716B /* Client.swift */; };
@@ -78,6 +81,9 @@
 		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
 		5276515E1EDB3CA2006814AD /* EmailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailView.xib; sourceTree = "<group>"; };
 		527651601EDB3CB6006814AD /* EmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Cool Crayon.ttf"; sourceTree = "<group>"; };
+		5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BasicSharpie.ttf; sourceTree = "<group>"; };
+		5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Have a Great Day Demo.ttf"; sourceTree = "<group>"; };
 		527D07E51CE11E2E00F46B57 /* WodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WodsViewController.swift; sourceTree = "<group>"; };
 		527D07E71CE12D4D00F46B57 /* BodybuildingBodyPartsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodybuildingBodyPartsTableViewController.swift; sourceTree = "<group>"; };
 		5283E0741C7E37CB00FB716B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -225,6 +231,9 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
+				5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */,
+				527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */,
+				5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470651ED099F90079D03E /* GoogleService-Info.plist */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,
@@ -334,9 +343,12 @@
 				52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */,
 				52EB1DF11ECA7902004CA561 /* OverlayView.xib in Resources */,
 				52EB1DED1ECA77A2004CA561 /* MenuView.xib in Resources */,
+				5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */,
 				52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */,
 				5276515F1EDB3CA2006814AD /* EmailView.xib in Resources */,
 				52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */,
+				527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */,
+				5276516F1EDDC75E006814AD /* Have a Great Day Demo.ttf in Resources */,
 				523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

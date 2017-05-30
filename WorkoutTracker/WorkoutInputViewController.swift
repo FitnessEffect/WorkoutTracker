@@ -12,6 +12,7 @@ import MessageUI
 
 class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate{
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -56,7 +57,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+ 
         if clientPassed.firstName != "" {
+            
             title = clientPassed.firstName
         }else{
             title = "Personal"
@@ -78,29 +82,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         
-        dateBtn.layer.borderWidth = 1
-        dateBtn.layer.borderColor = UIColor.black.cgColor
-        
-        exerciseBtn.layer.borderWidth = 1
-        exerciseBtn.layer.borderColor = UIColor.black.cgColor
-        
-        challenge.layer.borderWidth = 1
-        challenge.layer.borderColor = UIColor.black.cgColor
-        
-        resultBtn.layer.borderWidth = 1
-        resultBtn.layer.borderColor = UIColor.black.cgColor
-        
-        save.layer.borderWidth = 1
-        save.layer.borderColor = UIColor.black.cgColor
-        
-        descriptionTextView.layer.borderWidth = 1
-        descriptionTextView.layer.borderColor = UIColor.black.cgColor
-        
-        resultTextView.layer.borderWidth = 1
-        resultTextView.layer.borderColor = UIColor.black.cgColor
-        
-        emailTextView.layer.borderWidth = 1
-        emailTextView.layer.borderColor = UIColor.black.cgColor
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
@@ -308,9 +293,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: 168, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 220, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 272, width: self.save.frame.width, height: self.save.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: 202, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 254, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 306, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.exerciseBtn.alpha = 1

@@ -32,14 +32,15 @@ class ExerciseTypeTableViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         let x = (indexPath as NSIndexPath).row
         
         if x == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BodybuildingCell", for: indexPath)
-        
+        //cell.textLabel?.font = UIFont(name: "BasicSharpie", size: 12)
         let exercise = exerciseType[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = exercise
-        cell.backgroundColor = UIColor.clear            
+        cell.backgroundColor = UIColor.clear
         return cell
             
         }else{
@@ -47,6 +48,7 @@ class ExerciseTypeTableViewController: UITableViewController{
             
             let exercise = exerciseType[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
+
             
             return cell
         }
