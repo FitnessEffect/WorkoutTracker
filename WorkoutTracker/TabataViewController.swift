@@ -21,17 +21,17 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
     
-    let rest = ["-- Rest --", "5 seconds", "10 seconds", "15 seconds", "20 seconds", "25 seconds", "30 seconds"]
-    let work = ["-- Work --", "15 seconds", "30 seconds", "45 seconds", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes"]
-    let totalTime = ["-- Time -- ", "1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "15 minutes"]
+    let rest = ["-- Rest --", "5 sec", "10 sec", "15 sec", "20 sec", "25 sec", "30 sec"]
+    let work = ["-- Work --", "15 sec", "30 sec", "45 sec", "1 min", "1m 30s", "2 min", "2m 30s", "3 min"]
+    let totalTime = ["-- Time -- ", "1 min", "1m 30s", "2 min", "2m 30s", "3 min", "4 min", "5 min", "6 min", "7 min", "8 min", "9 min", "10 min", "15 min"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addBtn.layer.cornerRadius = 10.0
-        addBtn.clipsToBounds = true
-        addBtn.layer.borderWidth = 1
-        addBtn.layer.borderColor = UIColor.black.cgColor
+//        addBtn.layer.cornerRadius = 10.0
+//        addBtn.clipsToBounds = true
+//        addBtn.layer.borderWidth = 1
+//        addBtn.layer.borderColor = UIColor.black.cgColor
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -91,6 +91,8 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             }
         }
         
+        myExercise.category = "Tabata"
+        
         myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + tabataString
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
@@ -137,7 +139,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                 }else{
                     label.text = totalTime[row]
                 }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         

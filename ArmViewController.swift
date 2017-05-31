@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ArmViewController: UIViewController {
+class ArmViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var add: UIButton!
@@ -35,7 +35,7 @@ class ArmViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if pickerView.tag == 0{
             return 1
         }else{
@@ -71,9 +71,27 @@ class ArmViewController: UIViewController {
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         myExercise.name = "Arms"
         myExercise.exerciseDescription = armExercises[id] + "|" + reps[id] + " - " + sets[id]
+        myExercise.category = "Arms"
     
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        
+        if pickerView.tag == 0 {
+            label.text = armExercises[row]
+        }else if component == 0{
+            label.text = sets[row]
+        }else{
+            label.text = reps[row]
+        }
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 }

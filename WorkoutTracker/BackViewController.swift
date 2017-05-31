@@ -72,9 +72,27 @@ class BackViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         myExercise.name = "Back"
         myExercise.exerciseDescription = backExercises[id] + "|" + reps[id] + " - " + sets[id]
+        myExercise.category = "Back"
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        
+        if pickerView.tag == 0 {
+            label.text = backExercises[row]
+        }else if component == 0{
+            label.text = sets[row]
+        }else{
+            label.text = reps[row]
+        }
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 }

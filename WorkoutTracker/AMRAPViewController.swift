@@ -74,6 +74,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 metconString.append(" | ")
             }
         }
+        
+        myExercise.category = "Amrap"
 
         myExercise.exerciseDescription = (time[id] + " | " + metconString)
         
@@ -113,7 +115,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
       
         label.text = time[row]
         
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 18.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         

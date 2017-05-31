@@ -32,6 +32,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         saveBtn.layer.borderWidth = 1
         saveBtn.layer.borderColor = UIColor.black.cgColor
         
+        weights.append("lbs")
+        reps.append("reps")
+        
         for i in 0...500{
             weights.append(String(i))
             reps.append(String(i))
@@ -141,6 +144,32 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        
+        if tagPassed == 1{
+            label.text = namesPassed[row]
+        }else if tagPassed == 2{
+            if component == 0{
+                label.text = hours[row]
+            }else if component == 1{
+                label.text = minutes[row]
+            }else{
+                label.text = seconds[row]
+            }
+        }else if tagPassed == 3{
+            label.text = weights[row]
+        }else{
+            label.text = reps[row]
+        }
+        
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        
+        return label
     }
 
     /*
