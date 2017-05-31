@@ -30,10 +30,19 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         add.clipsToBounds = true
         add.layer.borderWidth = 1
         add.layer.borderColor = UIColor.black.cgColor
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
+        if tableView.frame.contains(sender.location(in: view)){
+            self.view.endEditing(true)
+        }
     }
     
     @IBAction func addExercise(_ sender: UIBarButtonItem) {
@@ -86,9 +95,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "AmrapCell", for: indexPath) as! AmrapCustomCell
         
         var text = exerciseList[(indexPath as NSIndexPath).row]
-//        if text.isEmpty{
-//            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
-//        }
         
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
@@ -113,4 +119,5 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         return label
     }
+    
 }

@@ -32,6 +32,9 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         addBtn.clipsToBounds = true
         addBtn.layer.borderWidth = 1
         addBtn.layer.borderColor = UIColor.black.cgColor
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +45,12 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         exerciseNumber += 1
         exerciseList.append("")
         tableView.reloadData()
+    }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
+        if tableView.frame.contains(sender.location(in: view)){
+            self.view.endEditing(true)
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
