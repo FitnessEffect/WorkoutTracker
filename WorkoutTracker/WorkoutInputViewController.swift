@@ -266,6 +266,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.overlayView.alpha = 0
             }
         }else{
+            
             if dateBtn.frame.contains(sender.location(in: view)){
                 selectDate(dateBtn)
             }else if exerciseBtn.frame.contains(sender.location(in: view)){
@@ -531,7 +532,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 416)
+        popController.preferredContentSize = CGSize(width: 300, height: 250)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
