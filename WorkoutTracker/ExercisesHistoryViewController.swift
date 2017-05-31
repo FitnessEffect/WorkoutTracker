@@ -15,7 +15,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     //var workout = Workout()
     var selectedRow:Int = 0
-    var delegate:ExercisesDelegate!
+    //var delegate:ExercisesDelegate!
     var client = Client()
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!

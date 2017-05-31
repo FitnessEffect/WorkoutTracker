@@ -15,7 +15,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
-    var delegate:ExercisesDelegate!
+    //var delegate:ExercisesDelegate!
     var client = Client()
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!

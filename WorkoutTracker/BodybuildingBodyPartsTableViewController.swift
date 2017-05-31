@@ -11,7 +11,7 @@ import UIKit
 
 class BodybuildingBodyPartsTableViewController: UITableViewController {
 
-    let bodyParts = ["Arms", "Chest", "Back", "Abs", "Legs", "Custom Workout"]
+    let bodyParts = ["Arms", "Chest", "Back", "Abs", "Legs", "Custom"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             return cell
             
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomWorkoutCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
             
             let exercise = bodyParts[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
