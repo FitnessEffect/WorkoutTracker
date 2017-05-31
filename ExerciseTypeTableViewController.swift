@@ -41,6 +41,7 @@ class ExerciseTypeTableViewController: UITableViewController{
         let exercise = exerciseType[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = exercise
         cell.backgroundColor = UIColor.clear
+            
         return cell
             
         }else{

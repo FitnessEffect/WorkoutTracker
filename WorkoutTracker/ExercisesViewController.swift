@@ -13,9 +13,9 @@
 import UIKit
 import Firebase
 
-protocol ExercisesDelegate{
-    func saveExercises(_ workout:Workout)
-}
+//protocol ExercisesDelegate{
+//    func saveExercises(_ workout:Workout)
+//}
 
 class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
@@ -23,7 +23,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //var workout = Workout()
     var selectedRow:Int = 0
-    var delegate:ExercisesDelegate!
+    //var delegate:ExercisesDelegate!
     var client = Client()
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!
