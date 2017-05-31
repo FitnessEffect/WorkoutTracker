@@ -145,6 +145,16 @@
 			name = CustomCells;
 			sourceTree = "<group>";
 		};
+		527651721EDE5280006814AD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */,
+				5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */,
+				5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		5283E0801C89130500FB716B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 				5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */,
+				527651701EDE4ACC006814AD /* CustomBodybuildingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -233,10 +244,7 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				527651701EDE4ACC006814AD /* CustomBodybuildingViewController.swift */,
-				5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */,
-				527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */,
-				5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */,
+				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470651ED099F90079D03E /* GoogleService-Info.plist */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,
