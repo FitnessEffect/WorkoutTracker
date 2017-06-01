@@ -192,7 +192,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
                 self.erase.alpha = 1
-                self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.resultBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
     }
@@ -557,7 +558,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     @IBAction func selectExercise(_ sender: UIButton) {
         let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
-        let yPosition = exerciseBtn.frame.maxY
+        let yPosition = exerciseBtn.frame.midY + 15
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseNavID") as! UINavigationController
@@ -683,9 +684,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.eraseResult.alpha = 1
                 self.challenge.frame = CGRect(x: 0, y: (402 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: (454 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
-                self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+                self.challenge.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+               
             })
         }))
     }
