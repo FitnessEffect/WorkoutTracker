@@ -105,6 +105,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
         emailView.alpha = 0
         emailView.frame = CGRect(x: 60, y: 230, width: 250, height: 200)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +148,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         saveExercise(exStr: tempStr)
         
         saveResult(str: exercisePassed.result)
+    }
+    
+    func passExercise(exercise:Exercise){
+        exercisePassed = exercise
+        
     }
     
     func getExercise(_ notification: Notification){
@@ -266,7 +272,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.overlayView.alpha = 0
             }
         }else{
-            
             if dateBtn.frame.contains(sender.location(in: view)){
                 selectDate(dateBtn)
             }else if exerciseBtn.frame.contains(sender.location(in: view)){
@@ -294,9 +299,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: 202, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 254, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 306, width: self.save.frame.width, height: self.save.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: 235, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 287, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 339, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.exerciseBtn.alpha = 1
@@ -467,6 +472,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             currentExercise.creator = user.email!
             currentExercise.opponent = (emailTextView.text)!
             
+            //does not work on different network?
             var request = URLRequest(url: URL(string: "http://192.168.0.5:3001/challenges")!)
             request.httpMethod = "POST"
             //send email / ex id etc
