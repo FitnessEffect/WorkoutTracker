@@ -71,8 +71,8 @@ class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     @IBAction func addExercise(_ sender: UIButton) {
         
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        let idReps = repsSetsOutlet.selectedRow(inComponent: 1)
-        let idSets = repsSetsOutlet.selectedRow(inComponent: 0)
+        let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
+        let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
         myExercise.name = "Abs"
         myExercise.exerciseDescription = absExercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
         myExercise.category = "Abs"
