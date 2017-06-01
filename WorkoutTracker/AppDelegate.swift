@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var ref:FIRDatabaseReference!
     var user:FIRUser!
+    var myEx = Exercise()
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -72,13 +73,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let exKey = exerciseDictionary["exerciseKey"] as! String
         self.ref.child("users").child(user.uid).child("Challenges").child(exKey).setValue(exerciseDictionary)
         
+       
+        myEx.name = exerciseDictionary["name"] as! String
+        myEx.exerciseDescription = exerciseDictionary["description"] as! String
+        myEx.result = exerciseDictionary["result"] as! String
         
+        //grab reference to vc on screen. Do not instantiate
+         let vc = window?.rootViewController?.presentedViewController?.childViewControllers[0] as! WorkoutInputViewController
+        vc.passExercise(exercise:myEx)
+        vc.fillInExercisePassed()
         
-//            let alert = UIAlertController(title: "You've Been Challenged", message: "Username challenges you!!", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-//        alert.dismiss(animated: true, completion: nil)
-//        }))
-//        self.present(alert, animated:true, completion:nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
