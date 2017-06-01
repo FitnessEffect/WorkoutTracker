@@ -13,6 +13,7 @@ class ChestViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var add: UIButton!
+    @IBOutlet weak var repsSetsOutlet: UIPickerView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -70,8 +71,10 @@ class ChestViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBAction func addExercise(_ sender: UIButton) {
         
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+        let idReps = repsSetsOutlet.selectedRow(inComponent: 1)
+        let idSets = repsSetsOutlet.selectedRow(inComponent: 0)
         myExercise.name = "Chest"
-        myExercise.exerciseDescription = chestExercises[id] + "|" + reps[id] + " - " + sets[id]
+        myExercise.exerciseDescription = chestExercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         myExercise.category = "Chest"
@@ -85,9 +88,9 @@ class ChestViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         if pickerView.tag == 0 {
             label.text = chestExercises[row]
         }else if component == 0{
-            label.text = sets[row]
-        }else{
             label.text = reps[row]
+        }else{
+            label.text = sets[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
