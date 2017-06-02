@@ -117,13 +117,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }else if component == 2{
                 tempSeconds = seconds[row]
             }
-            let tempTime = tempHours + "h " + tempMinutes + "m " + tempSeconds + "s"
+            let tempTime = tempHours + "hour(s) " + tempMinutes + "minute(s) " + tempSeconds + "second(s)"
             tempResult = tempTime
         }else if tagPassed == 3{
-            let tempWeight = weights[row]
+            let tempWeight = weights[row] + " lbs"
             tempResult = tempWeight
         }else if tagPassed == 4{
-            let tempReps = reps[row]
+            
+            let tempReps = reps[row] + " rep(s)"
             tempResult = tempReps
         }
     }
