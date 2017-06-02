@@ -365,8 +365,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
         
-        xPosition = (buttonItemView as AnyObject).frame.minX + ((buttonItemView as AnyObject).frame.width/2)
-        yPosition = (buttonItemView as AnyObject).frame.maxY
+        
+        xPosition = self.view.frame.width/2
+        yPosition = (buttonItemView as AnyObject).frame.maxY + 20
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
@@ -378,7 +379,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 416)
+        popController.preferredContentSize = CGSize(width: 300, height: 300)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if sender.tag == 1{
@@ -613,7 +614,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     @IBAction func challengeBtn(_ sender: UIButton) {
         let xPosition = challenge.frame.minX + (challenge.frame.width/2)
-        let yPosition = challenge.frame.maxY - 50
+        let yPosition = challenge.frame.maxY - 60
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
@@ -640,7 +641,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.emailTextView.alpha = 1
-                self.save.frame = CGRect(x: 0, y: (462+self.translation3), width: self.save.frame.width, height: self.save.frame.height)
+                self.save.frame = CGRect(x: 0, y: (472+self.translation3), width: self.save.frame.width, height: self.save.frame.height)
                 self.eraseEmail.alpha = 1
                 //self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
