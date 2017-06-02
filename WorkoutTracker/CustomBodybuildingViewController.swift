@@ -21,10 +21,7 @@ class CustomBodybuildingViewController: UIViewController, UIPickerViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        add.layer.cornerRadius = 10.0
-        add.clipsToBounds = true
-        add.layer.borderWidth = 1
-        add.layer.borderColor = UIColor.black.cgColor
+
     }
     
     override func didReceiveMemoryWarning() {

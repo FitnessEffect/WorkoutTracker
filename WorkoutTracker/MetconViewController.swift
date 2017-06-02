@@ -26,11 +26,6 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        add.layer.cornerRadius = 10.0
-        add.clipsToBounds = true
-        add.layer.borderWidth = 1
-        add.layer.borderColor = UIColor.black.cgColor
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
 
