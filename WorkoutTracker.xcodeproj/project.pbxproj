@@ -25,8 +25,6 @@
 		526A3F111EC60D61001BF557 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F101EC60D61001BF557 /* CalendarViewController.swift */; };
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
 		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
-		5276515F1EDB3CA2006814AD /* EmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5276515E1EDB3CA2006814AD /* EmailView.xib */; };
-		527651611EDB3CB6006814AD /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527651601EDB3CB6006814AD /* EmailView.swift */; };
 		527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */; };
 		5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */; };
 		5276516F1EDDC75E006814AD /* Have a Great Day Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */; };
@@ -80,8 +78,6 @@
 		526A3F101EC60D61001BF557 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
-		5276515E1EDB3CA2006814AD /* EmailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailView.xib; sourceTree = "<group>"; };
-		527651601EDB3CB6006814AD /* EmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Cool Crayon.ttf"; sourceTree = "<group>"; };
 		5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BasicSharpie.ttf; sourceTree = "<group>"; };
 		5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Have a Great Day Demo.ttf"; sourceTree = "<group>"; };
@@ -209,8 +205,6 @@
 			children = (
 				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
 				52EB1DEE1ECA77F2004CA561 /* MenuView.swift */,
-				5276515E1EDB3CA2006814AD /* EmailView.xib */,
-				527651601EDB3CB6006814AD /* EmailView.swift */,
 				52EB1DF01ECA7902004CA561 /* OverlayView.xib */,
 				52EB1DF41ECA7949004CA561 /* OverlayView.swift */,
 			);
@@ -356,7 +350,6 @@
 				52EB1DED1ECA77A2004CA561 /* MenuView.xib in Resources */,
 				5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */,
 				52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */,
-				5276515F1EDB3CA2006814AD /* EmailView.xib in Resources */,
 				52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */,
 				527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */,
 				5276516F1EDDC75E006814AD /* Have a Great Day Demo.ttf in Resources */,
@@ -451,7 +444,6 @@
 				526A3F0E1EC52C64001BF557 /* WorkoutInputViewController.swift in Sources */,
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,
 				52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */,
-				527651611EDB3CB6006814AD /* EmailView.swift in Sources */,
 				5291C45C1CE1439F00DF8C0C /* ChestViewController.swift in Sources */,
 				52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */,
 				52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */,
