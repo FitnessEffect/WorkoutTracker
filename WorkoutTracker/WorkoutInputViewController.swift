@@ -47,9 +47,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var edit = false
     let currentExercise = Exercise()
     var exerciseKey:String!
-    var translation1:CGFloat = 182
-    var translation2:CGFloat = 65
-    var transaltion3:CGFloat = 65
+    var translation1:CGFloat = 170
+    var translation2:CGFloat = 100
+    var translation3:CGFloat = 100
     var activeField: UITextField?
     
     override func viewDidLoad() {
@@ -185,9 +185,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         //exerice Btn disappears first
         self.exerciseBtn.alpha = 0
         UIView.animate(withDuration: 0.5, animations: {
-            self.resultBtn.frame = CGRect(x: 0, y:(168 + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-            self.challenge.frame = CGRect(x: 0, y:(220+self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
-            self.save.frame = CGRect(x: 0, y:(272+self.translation1), width: self.save.frame.width, height: self.save.frame.height)
+            self.resultBtn.frame = CGRect(x: 0, y:(157 + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y:(239+self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.save.frame = CGRect(x: 0, y:(321+self.translation1), width: self.save.frame.width, height: self.save.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
@@ -293,9 +293,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: 235, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 287, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 339, width: self.save.frame.width, height: self.save.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: 232, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 314, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 396, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.exerciseBtn.alpha = 1
@@ -321,9 +321,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: 350, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 402, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 454, width: self.save.frame.width, height: self.save.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: 327, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 409, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 491, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.resultBtn.alpha = 1
@@ -342,8 +342,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.text = ""
                 self.emailTextView.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.challenge.frame = CGRect(x: 0, y: 467, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: 519, width: self.save.frame.width, height: self.save.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: 409, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: 491, width: self.save.frame.width, height: self.save.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
@@ -640,7 +640,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.emailTextView.alpha = 1
-                self.save.frame = CGRect(x: 0, y: (519+self.transaltion3), width: self.save.frame.width, height: self.save.frame.height)
+                self.save.frame = CGRect(x: 0, y: (462+self.translation3), width: self.save.frame.width, height: self.save.frame.height)
                 self.eraseEmail.alpha = 1
                 //self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
@@ -660,18 +660,18 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func saveResult(str:String){
         self.resultTextView.text = str
         UIView.animate(withDuration: 0.3, animations: {
-            self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+            //self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             self.resultBtn.alpha = 0
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.resultTextView.alpha = 1
                 self.eraseResult.alpha = 1
-                self.challenge.frame = CGRect(x: 0, y: (402 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.save.frame = CGRect(x: 0, y: (454 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: (329 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.save.frame = CGRect(x: 0, y: (411 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
                 //self.challenge.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
                 self.challenge.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                 
-                self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
+                //self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
                 //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
                 self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                
