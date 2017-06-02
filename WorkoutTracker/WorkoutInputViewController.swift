@@ -626,35 +626,35 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
 
     
     @IBAction func challengeBtn(_ sender: UIButton) {
-//        let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
-//        let yPosition = exerciseBtn.frame.maxY
-//        
-//        // get a reference to the view controller for the popover
-//        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
-//        
-//        // set the presentation style
-//        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-//        
-//        // set up the popover presentation controller
-//        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-//        popController.popoverPresentationController?.delegate = self
-//        popController.popoverPresentationController?.sourceView = self.view
-//        popController.preferredContentSize = CGSize(width: 300, height: 200)
-//        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-//        
-//        // present the popover
-//        self.present(popController, animated: true, completion: nil)
+        let xPosition = challenge.frame.minX + (challenge.frame.width/2)
+        let yPosition = challenge.frame.maxY - 50
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 200)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
         
         //menuView.addFx()
-        if emailViewShowing == false{
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.isHidden = false
-            self.emailView.alpha = 1
-            self.overlayView.alpha = 1
-        })
-            emailViewShowing = true
-        }
-        emailView.email.addTarget(self, action: #selector(emailBtnAction(_:)), for: .touchUpInside)
+//        if emailViewShowing == false{
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.view.isHidden = false
+//            self.emailView.alpha = 1
+//            self.overlayView.alpha = 1
+//        })
+//            emailViewShowing = true
+//        }
+//        emailView.email.addTarget(self, action: #selector(emailBtnAction(_:)), for: .touchUpInside)
     }
     
     func emailBtnAction(_ sender: UIButton){

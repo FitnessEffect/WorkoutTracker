@@ -12,6 +12,7 @@ class EmailSelectionViewController: UIViewController {
 
     @IBOutlet weak var email: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,9 @@ class EmailSelectionViewController: UIViewController {
         email.clipsToBounds = true
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.black.cgColor
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +37,13 @@ class EmailSelectionViewController: UIViewController {
     
         presenter.saveEmail(emailStr: emailTextField.text!)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
+       if backgroundImage.frame.contains(sender.location(in: view)){
+                self.view.endEditing(true)
+            
+        }
     }
     
     
