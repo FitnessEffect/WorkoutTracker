@@ -522,7 +522,7 @@
                                 <action selector="openMenu:" destination="U4l-CF-NEd" id="Cm9-Lx-eaN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TzB-d4-ZvD">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" id="TzB-d4-ZvD">
                             <connections>
                                 <segue destination="BiS-Xy-g6B" kind="presentation" identifier="NewClientSegue" id="uma-oP-RIO"/>
                             </connections>
@@ -639,9 +639,7 @@
                                     <constraint firstAttribute="height" constant="50" id="odn-jr-2xf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="w13-wb-QF8" eventType="touchUpInside" id="ynw-IO-DZ5"/>
                                 </connections>
@@ -720,9 +718,7 @@
                                     <constraint firstAttribute="height" constant="50" id="hE0-NZ-NDE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="nyg-zS-dKd" eventType="touchUpInside" id="Cf3-Lm-dGo"/>
                                 </connections>
@@ -945,9 +941,7 @@
                                     <constraint firstAttribute="width" constant="190" id="IYQ-JZ-0CQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="mMa-us-Bom" eventType="touchUpInside" id="XQK-je-BSx"/>
                                 </connections>
@@ -1014,9 +1008,7 @@
                                     <constraint firstAttribute="height" constant="50" id="uYM-sE-r8g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="i40-sf-a9m" eventType="touchUpInside" id="Pax-An-QaA"/>
                                 </connections>
@@ -1083,9 +1075,7 @@
                                     <constraint firstAttribute="height" constant="50" id="nyE-vi-u1C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="RpR-Gf-GV8" eventType="touchUpInside" id="hCj-eC-eYZ"/>
                                 </connections>
@@ -1142,9 +1132,7 @@
                                     <constraint firstAttribute="width" constant="190" id="gO7-Lz-lDO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="yWh-5C-aB9" eventType="touchUpInside" id="vuE-aH-0ab"/>
                                 </connections>
@@ -1358,13 +1346,13 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5d-BA-rcv">
-                                <rect key="frame" x="93" y="390" width="190" height="50"/>
+                                <rect key="frame" x="93" y="381" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="7vt-Pg-XJs"/>
                                     <constraint firstAttribute="height" constant="50" id="nuZ-ZP-blX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="kr6-qP-Cfq" eventType="touchUpInside" id="Fyh-a7-vkr"/>
                                 </connections>
@@ -1375,7 +1363,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ecv-W4-OYP" secondAttribute="trailing" constant="-16" id="JM7-pz-spi"/>
                             <constraint firstItem="Ecv-W4-OYP" firstAttribute="leading" secondItem="ikH-9r-wUf" secondAttribute="leadingMargin" constant="-16" id="SI1-2i-613"/>
                             <constraint firstItem="Y5d-BA-rcv" firstAttribute="centerX" secondItem="ikH-9r-wUf" secondAttribute="centerX" id="YLe-UG-cpo"/>
-                            <constraint firstItem="Y5d-BA-rcv" firstAttribute="top" secondItem="Ecv-W4-OYP" secondAttribute="bottom" constant="49" id="lqf-Eg-5d5"/>
+                            <constraint firstItem="Y5d-BA-rcv" firstAttribute="top" secondItem="Ecv-W4-OYP" secondAttribute="bottom" constant="40" id="lqf-Eg-5d5"/>
                             <constraint firstItem="Ecv-W4-OYP" firstAttribute="top" secondItem="L2Q-eZ-wO2" secondAttribute="bottom" id="vio-kp-NRX"/>
                         </constraints>
                     </view>
@@ -1412,13 +1400,13 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC2-Dt-8RF">
-                                <rect key="frame" x="93" y="390" width="190" height="50"/>
+                                <rect key="frame" x="93" y="381" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Vn6-Jq-dkD"/>
                                     <constraint firstAttribute="width" constant="190" id="jDY-LY-aC6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addWod:" destination="rcG-z7-cRk" eventType="touchUpInside" id="b5m-JK-iD1"/>
                                 </connections>
@@ -1429,7 +1417,7 @@
                             <constraint firstItem="YMI-Pe-gjj" firstAttribute="leading" secondItem="f7w-Kk-XW4" secondAttribute="leadingMargin" constant="-16" id="G8g-oc-hpX"/>
                             <constraint firstItem="NC2-Dt-8RF" firstAttribute="centerX" secondItem="f7w-Kk-XW4" secondAttribute="centerX" id="Luw-Gg-YL5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YMI-Pe-gjj" secondAttribute="trailing" constant="-16" id="S1Q-Yf-6Ii"/>
-                            <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="49" id="nlY-PD-4RY"/>
+                            <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="40" id="nlY-PD-4RY"/>
                             <constraint firstItem="YMI-Pe-gjj" firstAttribute="top" secondItem="tIq-Z7-Se3" secondAttribute="bottom" id="tSG-04-7At"/>
                         </constraints>
                     </view>
@@ -1566,7 +1554,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ZXT-U1-81Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addTabata:" destination="1Ts-N7-NBp" eventType="touchUpInside" id="NXz-I7-Ezw"/>
                                 </connections>
@@ -1633,7 +1621,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="teJ-29-cT9">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="qJQ-e7-8LL">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" style="done" id="qJQ-e7-8LL">
                             <connections>
                                 <action selector="add:" destination="1Ts-N7-NBp" id="Dlu-Y5-gZ8"/>
                             </connections>
@@ -1716,7 +1704,7 @@
                                     <constraint firstAttribute="width" constant="190" id="rkC-aC-dxM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addMetcon:" destination="L6G-hK-Tej" eventType="touchUpInside" id="dez-tg-f1H"/>
                                 </connections>
@@ -1735,7 +1723,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dvD-r9-Lan">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="g4l-hH-Ssp">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" style="done" id="g4l-hH-Ssp">
                             <connections>
                                 <action selector="addExercise:" destination="L6G-hK-Tej" id="rYA-7p-23K"/>
                             </connections>
@@ -1818,7 +1806,7 @@
                                     <constraint firstAttribute="width" constant="190" id="ri7-h5-gjz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addMetcon:" destination="amZ-mI-WTt" eventType="touchUpInside" id="Z75-Sy-cyG"/>
                                 </connections>
@@ -1837,7 +1825,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tOb-d5-fo9">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="sVL-2J-s6h">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" style="done" id="sVL-2J-s6h">
                             <connections>
                                 <action selector="addExercise:" destination="amZ-mI-WTt" id="Mid-3Z-bzq"/>
                             </connections>
@@ -2019,7 +2007,7 @@
                                 <action selector="openMenu:" destination="y7H-dD-F6s" id="C9q-2a-emL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Par-8X-GZa">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" id="Par-8X-GZa">
                             <connections>
                                 <segue destination="pzd-PZ-fvb" kind="show" identifier="addExerciseSegue" id="9Os-F2-dTk"/>
                             </connections>
@@ -2415,9 +2403,11 @@
     <resources>
         <image name="Background1" width="690" height="1230"/>
         <image name="FE_Logo_NoBackground" width="2361" height="1431"/>
+        <image name="addIcon" width="44" height="44"/>
         <image name="background-1" width="375" height="667"/>
         <image name="clientIcon" width="44" height="44"/>
         <image name="dirtChalk" width="241" height="117"/>
+        <image name="markerBackground" width="363" height="265"/>
         <image name="menuIcon" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>

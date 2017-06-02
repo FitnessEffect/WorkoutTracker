@@ -28,11 +28,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addBtn.layer.cornerRadius = 10.0
-//        addBtn.clipsToBounds = true
-//        addBtn.layer.borderWidth = 1
-//        addBtn.layer.borderColor = UIColor.black.cgColor
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
