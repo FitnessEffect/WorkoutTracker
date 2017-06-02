@@ -72,7 +72,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.alpha = 0
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
-        exerciseBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+        self.exerciseBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
         
         //registerForKeyboardNotifications()
         
@@ -133,6 +133,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
         
         if edit == true{
+            //format exercise description string
+            exercisePassed.exerciseDescription = formatExerciseDescription(desStr: exercisePassed.exerciseDescription)
+            
             fillInExercisePassed()
         }
     }
@@ -146,13 +149,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         dateBtn.titleLabel?.text = exercisePassed.date
         let tempStr = exercisePassed.name + " " + exercisePassed.exerciseDescription
         saveExercise(exStr: tempStr)
-        
         saveResult(str: exercisePassed.result)
     }
     
     func passExercise(exercise:Exercise){
         exercisePassed = exercise
-        
     }
     
     func getExercise(_ notification: Notification){
@@ -165,9 +166,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         //format response
         let desStr:String = myExercise!.exerciseDescription
-        let stringParts = desStr.components(separatedBy: "|")
         
-        //  descriptionTextView.textColor = UIColor(red: 115.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
+        let formatExerciseDesStr = formatExerciseDescription(desStr: desStr)
+        let formattedStr = (myExercise?.name)! + formatExerciseDesStr
+        
+        saveExercise(exStr: formattedStr)
+    }
+    
+    func formatExerciseDescription(desStr:String) -> String{
+        let stringParts = desStr.components(separatedBy: "|")
         
         var newString:String = ""
         newString.append("\n")
@@ -175,9 +182,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             newString.append(part)
             newString.append("\n")
         }
-        let formattedStr = (myExercise?.name)! + newString
-        
-        saveExercise(exStr: formattedStr)
+       
+        return newString
     }
     
     func saveExercise(exStr:String){
@@ -192,7 +198,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
                 self.erase.alpha = 1
-                self.resultBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                //self.resultBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                self.resultBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                 //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
@@ -308,10 +315,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.exerciseBtn.alpha = 1
                     self.resultBtn.alpha = 1
                     self.challenge.alpha = 1
-                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
-                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
-                    self.resultBtn.setTitleColor(UIColor.lightGray, for: .normal)
-                    self.exerciseBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+//                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
+//                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
+//                    self.resultBtn.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                    self.save.setBackgroundImage(UIImage(named:""), for: .normal)
+                    self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
+                    //self.exerciseBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                    self.exerciseBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                 })
             }))
             
@@ -331,9 +342,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 UIView.animate(withDuration: 0.3, animations: {
                     self.resultBtn.alpha = 1
                     self.challenge.alpha = 1
-                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
-                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
-                    self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+//                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
+//                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
+                    self.save.setBackgroundImage(UIImage(named:""), for: .normal)
+                    self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                    //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                    self.resultBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                 })
             }))
             //erase email
@@ -347,8 +361,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
-                    self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-                    self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                    //self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+                     self.challenge.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                    //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                    self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                 })
             }))
         }
@@ -542,7 +558,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.preferredContentSize = CGSize(width: 300, height: 250)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
-        if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arm" || currentExercise.name == "Chest"{
+        if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arms" || currentExercise.name == "Chest"{
             popController.setTag(tag: 3)
             
         }else if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
@@ -659,7 +675,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 1
                 self.save.frame = CGRect(x: 0, y: (519+self.transaltion3), width: self.save.frame.width, height: self.save.frame.height)
                 self.eraseEmail.alpha = 1
-                self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                //self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
             })
         }))
     }
@@ -684,10 +701,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.eraseResult.alpha = 1
                 self.challenge.frame = CGRect(x: 0, y: (402 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: (454 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
-                self.challenge.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-
+                //self.challenge.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+                self.challenge.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                
                 self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
+                self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
                
             })
         }))
