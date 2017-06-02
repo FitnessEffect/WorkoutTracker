@@ -12,7 +12,6 @@ class EmailSelectionViewController: UIViewController {
 
     @IBOutlet weak var email: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,7 @@ class EmailSelectionViewController: UIViewController {
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-       if backgroundImage.frame.contains(sender.location(in: view)){
+       if !emailTextField.frame.contains(sender.location(in: view)){
                 self.view.endEditing(true)
             
         }
