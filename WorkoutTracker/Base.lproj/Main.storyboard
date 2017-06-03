@@ -604,7 +604,13 @@
                             <outlet property="delegate" destination="RjY-wQ-OQ9" id="GVZ-Yt-XVS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Mux-LS-iUd"/>
+                    <navigationItem key="navigationItem" id="Mux-LS-iUd">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" id="kiC-Hb-co4">
+                            <connections>
+                                <segue destination="yWh-5C-aB9" kind="show" id="b6b-cR-FGU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNj-M2-Sfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -877,40 +883,116 @@
                                     <segue destination="mMa-us-Bom" kind="show" id="slL-Sr-kDn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CustomCell" textLabel="hvb-dC-PlT" imageView="UmE-C7-WeW" style="IBUITableViewCellStyleDefault" id="3jD-H0-xek">
-                                <rect key="frame" x="0.0" y="248" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3jD-H0-xek" id="6mK-xt-st9">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Custom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hvb-dC-PlT">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="22"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="UmE-C7-WeW">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="yWh-5C-aB9" kind="show" id="Qn1-yT-WQ2"/>
-                                </connections>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="gv5-wy-y8G" id="mqu-XH-oMw"/>
                             <outlet property="delegate" destination="gv5-wy-y8G" id="tpK-KX-Vyt"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHa-ey-aaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5430" y="-273"/>
+        </scene>
+        <!--Create Bodybuilding Category View Controller-->
+        <scene sceneID="K1G-vi-Hqm">
+            <objects>
+                <viewController storyboardIdentifier="createCategoryID" id="DFe-GM-gQq" customClass="CreateBodybuildingCategoryViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jt9-DC-0SV"/>
+                        <viewControllerLayoutGuide type="bottom" id="26h-ei-cDD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Is-OG-0Ut">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CcS-jo-N54">
+                                <rect key="frame" x="71" y="66" width="233" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZx-CE-cmR">
+                                <rect key="frame" x="92" y="183" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="9Nq-hp-4bP"/>
+                                    <constraint firstAttribute="height" constant="50" id="DT4-IF-J85"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="addExercise:" destination="DFe-GM-gQq" eventType="touchUpInside" id="jH0-l2-3tN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CcS-jo-N54" firstAttribute="top" secondItem="Jt9-DC-0SV" secondAttribute="bottom" constant="46" id="7Fn-Wa-7Vp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CcS-jo-N54" secondAttribute="trailing" constant="55" id="B4l-7W-dSl"/>
+                            <constraint firstItem="QZx-CE-cmR" firstAttribute="centerX" secondItem="0Is-OG-0Ut" secondAttribute="centerX" id="OaI-ko-fY3"/>
+                            <constraint firstItem="QZx-CE-cmR" firstAttribute="top" secondItem="CcS-jo-N54" secondAttribute="bottom" constant="87" id="PfY-Bv-2to"/>
+                            <constraint firstItem="CcS-jo-N54" firstAttribute="leading" secondItem="0Is-OG-0Ut" secondAttribute="leadingMargin" constant="55" id="tZE-yw-KDs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="add" destination="QZx-CE-cmR" id="VvG-yI-05j"/>
+                        <outlet property="exCategory" destination="CcS-jo-N54" id="Wgk-CV-QEK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldL-aK-XAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6194" y="509"/>
+        </scene>
+        <!--Create Bodybuilding Exercise View Controller-->
+        <scene sceneID="vNP-pm-gyb">
+            <objects>
+                <viewController id="YFt-B7-chI" customClass="CreateBodybuildingExerciseViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oCP-WY-abZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ya3-Gg-Jxx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pi4-ZW-EF9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exercise Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E27-0T-66N">
+                                <rect key="frame" x="71" y="73" width="233" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5I-i8-Wtr">
+                                <rect key="frame" x="92" y="187" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8g7-fy-AAD"/>
+                                    <constraint firstAttribute="width" constant="190" id="XM5-RF-ARe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="addExercise:" destination="YFt-B7-chI" eventType="touchUpInside" id="8IL-eK-npp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="E27-0T-66N" secondAttribute="trailing" constant="55" id="4wj-4z-Fbk"/>
+                            <constraint firstItem="E27-0T-66N" firstAttribute="top" secondItem="oCP-WY-abZ" secondAttribute="bottom" constant="53" id="CoR-Vl-g6O"/>
+                            <constraint firstItem="E27-0T-66N" firstAttribute="leading" secondItem="Pi4-ZW-EF9" secondAttribute="leadingMargin" constant="55" id="bf5-sW-x4r"/>
+                            <constraint firstItem="E5I-i8-Wtr" firstAttribute="centerX" secondItem="Pi4-ZW-EF9" secondAttribute="centerX" id="dWk-cP-UzO"/>
+                            <constraint firstItem="E5I-i8-Wtr" firstAttribute="top" secondItem="E27-0T-66N" secondAttribute="bottom" constant="84" id="rmG-rf-fEo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="add" destination="E5I-i8-Wtr" id="afg-pg-tHZ"/>
+                        <outlet property="exName" destination="E27-0T-66N" id="QSy-eH-hlC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jNy-Si-t16" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7028" y="509"/>
         </scene>
         <!--Legs View Controller-->
         <scene sceneID="Ud7-mE-8OB">
@@ -1125,8 +1207,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfs-Cb-UsU">
+                                <rect key="frame" x="71" y="114" width="233" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnW-Qe-sch">
-                                <rect key="frame" x="92" y="390" width="190" height="50"/>
+                                <rect key="frame" x="92" y="218" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eQ7-ao-bij"/>
                                     <constraint firstAttribute="width" constant="190" id="gO7-Lz-lDO"/>
@@ -1137,31 +1225,12 @@
                                     <action selector="addExercise:" destination="yWh-5C-aB9" eventType="touchUpInside" id="vuE-aH-0ab"/>
                                 </connections>
                             </button>
-                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bm0-WL-1RF">
-                                <rect key="frame" x="0.0" y="196" width="375" height="115"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="115" id="xhv-wc-Vc3"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="yWh-5C-aB9" id="WGr-hg-NvU"/>
-                                    <outlet property="delegate" destination="yWh-5C-aB9" id="Byj-lH-43a"/>
-                                </connections>
-                            </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exercise Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfs-Cb-UsU">
-                                <rect key="frame" x="71" y="114" width="233" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gfs-Cb-UsU" firstAttribute="top" secondItem="jHC-2O-mR6" secondAttribute="bottom" constant="50" id="20a-AC-lO4"/>
                             <constraint firstItem="VnW-Qe-sch" firstAttribute="centerX" secondItem="cKo-5X-ZbR" secondAttribute="centerX" id="3zY-Xr-ywr"/>
-                            <constraint firstItem="VnW-Qe-sch" firstAttribute="top" secondItem="bm0-WL-1RF" secondAttribute="bottom" constant="79" id="H6c-Ho-g78"/>
-                            <constraint firstAttribute="trailing" secondItem="bm0-WL-1RF" secondAttribute="trailing" id="NhA-hp-jIi"/>
-                            <constraint firstItem="bm0-WL-1RF" firstAttribute="leading" secondItem="cKo-5X-ZbR" secondAttribute="leading" id="R83-Ee-LM3"/>
-                            <constraint firstItem="bm0-WL-1RF" firstAttribute="top" secondItem="gfs-Cb-UsU" secondAttribute="bottom" constant="52" id="Wtv-ii-HAE"/>
+                            <constraint firstItem="VnW-Qe-sch" firstAttribute="top" secondItem="gfs-Cb-UsU" secondAttribute="bottom" constant="74" id="UD3-5K-lnC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gfs-Cb-UsU" secondAttribute="trailing" constant="55" id="dSJ-z3-i4d"/>
                             <constraint firstItem="gfs-Cb-UsU" firstAttribute="leading" secondItem="cKo-5X-ZbR" secondAttribute="leadingMargin" constant="55" id="lXg-Zn-LdA"/>
                         </constraints>
@@ -1169,12 +1238,11 @@
                     <connections>
                         <outlet property="add" destination="VnW-Qe-sch" id="GL9-r1-7g0"/>
                         <outlet property="exName" destination="gfs-Cb-UsU" id="dXs-WG-T8O"/>
-                        <outlet property="pickerOutlet" destination="bm0-WL-1RF" id="va2-fe-wTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvx-rm-FpH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9342" y="-646"/>
+            <point key="canvasLocation" x="5487" y="509"/>
         </scene>
         <!--Crossfit Workout Table View Controller-->
         <scene sceneID="WjX-ye-Wdf">
@@ -1321,7 +1389,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abA-Gs-OZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4492" y="509"/>
+            <point key="canvasLocation" x="4492" y="592"/>
         </scene>
         <!--OneRM View Controller-->
         <scene sceneID="S6o-ul-c55">
