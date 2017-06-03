@@ -9,18 +9,33 @@
 
 import UIKit
 
-class BodybuildingBodyPartsTableViewController: UITableViewController {
+class BodybuildingBodyPartsTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate{
 
-    let bodyParts = ["Arms", "Chest", "Back", "Abs", "Legs", "Custom"]
+    let bodyParts = ["Arms", "Chest", "Back", "Abs", "Legs"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
+        
+        let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingBodyPartsTableViewController.rightSideBarButtonItemTapped(_:)))
+        rightBarButton.image = UIImage(named:"addIcon")
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCategoryID") as! CreateBodybuildingCategoryViewController
+        self.navigationController?.pushViewController(popController, animated: true)
+        
+        // present the popover
+        //self.present(popController, animated: true, completion: nil)
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,7 +84,7 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             cell.backgroundColor = UIColor.clear
             return cell
             
-        }else if x == 4{
+        }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LegsCell", for: indexPath)
             
             let exercise = bodyParts[(indexPath as NSIndexPath).row]
@@ -77,13 +92,6 @@ class BodybuildingBodyPartsTableViewController: UITableViewController {
             cell.backgroundColor = UIColor.clear
             return cell
             
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
-            
-            let exercise = bodyParts[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clear
-            return cell
         }
     }
 }
