@@ -14,24 +14,20 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var rememberMeSwitch: UISwitch!
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var register: UIButton!
-    
     @IBOutlet weak var segmentedOutlet: UISegmentedControl!
     
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
         ref = FIRDatabase.database().reference()
-        
         
         register.isHidden = true
         login.layer.cornerRadius = 10.0
@@ -73,6 +69,19 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func hitTest(_ sender:UITapGestureRecognizer){
+        if !emailTF.frame.contains(sender.location(in: view)){
+            if emailTF.isEditing{
+                self.view.endEditing(true)
+            }
+        }
+        if !passwordTF.frame.contains(sender.location(in: view)){
+            if passwordTF.isEditing{
+                self.view.endEditing(true)
+            }
+        }
+    }
+    
     func formateEmail(email:String) -> String{
         var tempEmail = ""
         tempEmail = email.replacingOccurrences(of: "@", with: "%40")
@@ -85,62 +94,20 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func dismissKeyboard(){
-        usernameTF.resignFirstResponder()
-        passwordTF.resignFirstResponder()
-        emailTF.resignFirstResponder()
-    }
-    
-    func keyboardWasShown(notification: NSNotification){
-        //let info: NSDictionary  = notification.userInfo! as NSDictionary
-        //let keyboardSize = (info.value(forKey: UIKeyboardFrameEndUserInfoKey) as AnyObject).cgRectValue.size
-        //let contentInsets:UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
-        //scrollView.contentInset = contentInsets
-        //scrollView.scrollIndicatorInsets = contentInsets
-    }
-    
-    func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        //        var info = notification.userInfo!
-        //        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        //        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        //        self.scrollView.contentInset = contentInsets
-        //        self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-    }
-    
-    func registerForKeyboardNotifications(){
-        //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func deregisterFromKeyboardNotifications(){
-        //Removing notifies on keyboard appearing
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         //Register btn
         if segmentedOutlet.selectedSegmentIndex == 1{
-            usernameTF.isHidden = true
             login.isHidden = true
             register.isHidden = false
         }
         if segmentedOutlet.selectedSegmentIndex == 0{
-            usernameTF.isHidden = false
             register.isHidden = true
             login.isHidden = false
         }
     }
     
     @IBAction func login(_ sender: UIButton) {
-        if(usernameTF.text?.characters.count) == 0{
-            print("Invalid Username")
-            let alert = UIAlertController(title: "Invalid Username", message: "Please enter a username", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }else if (passwordTF.text?.characters.count) == 0{
+       if (passwordTF.text?.characters.count) == 0{
             print("Invalid Password")
             let alert = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
