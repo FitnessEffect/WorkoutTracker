@@ -315,7 +315,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Z5s-am-5vS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addEmail:" destination="djE-2V-Y4b" eventType="touchUpInside" id="6Ig-hC-Ys6"/>
                                 </connections>
@@ -539,6 +539,7 @@
         <!--Exercise Type Table View Controller-->
         <scene sceneID="vuR-lo-XDL">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNj-M2-Sfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="exercisesVC" id="RjY-wQ-OQ9" customClass="ExerciseTypeTableViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kkh-SS-Zhv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -606,7 +607,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Mux-LS-iUd"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TNj-M2-Sfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4492" y="-475"/>
         </scene>
@@ -1500,9 +1500,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FaO-rX-9dF">
-                                <rect key="frame" x="0.0" y="9" width="375" height="145"/>
+                                <rect key="frame" x="0.0" y="9" width="375" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="145" id="99f-r2-YYK"/>
+                                    <constraint firstAttribute="height" constant="140" id="99f-r2-YYK"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="R3g-3K-scy" id="MgY-zM-uI7"/>
@@ -1510,13 +1510,13 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-x7-kbS">
-                                <rect key="frame" x="92.5" y="194" width="190" height="50"/>
+                                <rect key="frame" x="92.5" y="174" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="a2I-KD-At9"/>
                                     <constraint firstAttribute="height" constant="50" id="id2-l4-wtw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="saveBtn:" destination="R3g-3K-scy" eventType="touchUpInside" id="iZ2-6M-cSc"/>
                                 </connections>
@@ -1527,7 +1527,7 @@
                             <constraint firstItem="RWt-x7-kbS" firstAttribute="centerX" secondItem="yWm-8P-ui9" secondAttribute="centerX" id="465-an-1du"/>
                             <constraint firstAttribute="trailing" secondItem="FaO-rX-9dF" secondAttribute="trailing" id="8bh-yE-qtX"/>
                             <constraint firstItem="FaO-rX-9dF" firstAttribute="top" secondItem="yWm-8P-ui9" secondAttribute="top" constant="9" id="HvQ-qz-lie"/>
-                            <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="40" id="KLC-2a-bdn"/>
+                            <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="25" id="KLC-2a-bdn"/>
                             <constraint firstItem="FaO-rX-9dF" firstAttribute="leading" secondItem="yWm-8P-ui9" secondAttribute="leading" id="s3S-wm-gXh"/>
                         </constraints>
                     </view>
