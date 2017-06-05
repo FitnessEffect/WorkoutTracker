@@ -11,7 +11,7 @@ import Firebase
 
 class ExerciseTypeTableViewController: UITableViewController{
 
-    var exerciseType = [String]()
+    var exerciseType = ["Bodybuilding", "Crossfit"]
     var user:FIRUser!
     var ref:FIRDatabaseReference!
     
@@ -28,22 +28,22 @@ class ExerciseTypeTableViewController: UITableViewController{
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Types").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil{
-                let keyArray = value?.allKeys as! [String]
-                self.exerciseType = keyArray
-                self.tableView.reloadData()
-            }
-           // self.exerciseType.insert("Personal", at: 0)
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        let userID = FIRAuth.auth()?.currentUser?.uid
+//        ref.child("users").child(userID!).child("Types").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            if value != nil{
+//                let keyArray = value?.allKeys as! [String]
+//                self.exerciseType = keyArray
+//                self.tableView.reloadData()
+//            }
+//           // self.exerciseType.insert("Personal", at: 0)
+//            
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//    }
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,6 +56,7 @@ class ExerciseTypeTableViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if indexPath.row == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "BodybuildingCell", for: indexPath)
         //cell.textLabel?.font = UIFont(name: "BasicSharpie", size: 12)
         let exercise = exerciseType[(indexPath as NSIndexPath).row]
@@ -63,16 +64,25 @@ class ExerciseTypeTableViewController: UITableViewController{
         cell.backgroundColor = UIColor.clear
             
         return cell
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "bodybuildingSegue"{
-            let destinationVC = segue.destination as! BodybuildingCategoryTableViewController
-            destinationVC.setType(type:"Bodybuilding")
-            //destinationVC.typePassed = "Bodybuilding"
         }else{
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CrossfitCell", for: indexPath)
+            //cell.textLabel?.font = UIFont(name: "BasicSharpie", size: 12)
+            let exercise = exerciseType[(indexPath as NSIndexPath).row]
+            cell.textLabel?.text = exercise
+            cell.backgroundColor = UIColor.clear
+            return cell
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "bodybuildingSegue"{
+//            //let destinationVC = segue.destination as! BodybuildingCategoryTableViewController
+//            //destinationVC.setType(type:"Bodybuilding")
+//            //destinationVC.typePassed = "Bodybuilding"
+//        }else if segue.identifier == "crossfitSegue"{
+////            let destinationVC = segue.destination as! CrossfitCategoryTableViewController
+////            destinationVC.setType(type:"Crossfit")
+//        }
+//    }
 }

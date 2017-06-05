@@ -20,6 +20,8 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var myExercise = Exercise()
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
+    var categoryPassed:String!
+    
     
     let rounds = ["1 round", "2 rounds", "3 rounds", "4 rounds", "5 rounds", "6 rounds", "7 rounds", "8 rounds", "9 rounds", "10 rounds"]
     
@@ -77,6 +79,10 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setCategory(category:String){
+        categoryPassed = category
     }
     
     func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {

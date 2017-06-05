@@ -21,6 +21,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        typePassed = "Bodybuilding"
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         
@@ -97,8 +98,6 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     func cellClicked(x:CGPoint){
-        
-        
         let index = tableView.indexPathForRow(at: x)
         let cell = tableView.cellForRow(at: index!)!
         
