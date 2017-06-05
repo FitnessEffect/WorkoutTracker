@@ -26,11 +26,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveBtn.layer.cornerRadius = 10.0
-        saveBtn.clipsToBounds = true
-        saveBtn.layer.borderWidth = 1
-        saveBtn.layer.borderColor = UIColor.black.cgColor
+
         
         weights.append("lbs")
         reps.append("reps")
