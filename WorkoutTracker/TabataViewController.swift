@@ -14,12 +14,12 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
-    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
+    var categoryPassed:String!
     
     let rest = ["-- Rest --", "5 sec", "10 sec", "15 sec", "20 sec", "25 sec", "30 sec"]
     let work = ["-- Work --", "15 sec", "30 sec", "45 sec", "1 min", "1m 30s", "2 min", "2m 30s", "3 min"]
@@ -46,6 +46,10 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         if tableView.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }
+    }
+    
+    func setCategory(category:String){
+        categoryPassed = category
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -107,10 +111,8 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TabataCell", for: indexPath) as! TabataCustomCell
         
-        var text = exerciseList[(indexPath as NSIndexPath).row]
-//        if text.isEmpty{
-//            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
-//        }
+        let text = exerciseList[(indexPath as NSIndexPath).row]
+
 
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row

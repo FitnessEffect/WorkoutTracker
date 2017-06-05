@@ -20,6 +20,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var myExercise = Exercise()
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
+    var categoryPassed:String!
     
     let time = ["1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "15 minutes"]
     
@@ -39,6 +40,10 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         if tableView.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }
+    }
+    
+    func setCategory(category:String){
+        categoryPassed = category
     }
     
     @IBAction func addExercise(_ sender: UIBarButtonItem) {
