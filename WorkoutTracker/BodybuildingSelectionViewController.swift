@@ -1,15 +1,16 @@
 //
-//  AbsViewController.swift
+//  BackViewController.swift
 //  WorkoutTracker
 //
 //  Created by Stefan Auvergne on 5/9/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-// Displays a list of Ab exercises
+// Displays a list of Back exercises
 
 import UIKit
+import Firebase
 
-class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var add: UIButton!
@@ -17,8 +18,12 @@ class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
+    var backExercises = [String]()
+    var user:FIRUser!
+    var ref:FIRDatabaseReference!
+    var categoryPassed = ""
     
-    let absExercises = ["Bicycle Crunches", "Crunches", "Decline Crunches","Knee Raises", "Planch", "Russian Twists", "Sit-ups", "V-ups"]
+        //["Back Extensions", "Bent Over Row", "Lat PullDown", "Seated Cable Row"]
     
     let reps = ["Reps", "1 rep", "5 reps", "6 reps", "7 reps", "8 reps", "9 reps", "10 reps", "11 reps", "12 reps", "13 reps", "14 reps", "15 reps", "16 reps", "17 reps", "18 reps", "19 reps", "20 reps", "21 reps", "25 reps", "30 reps", "100 reps"]
     
@@ -27,11 +32,51 @@ class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
+        rightBarButton.image = UIImage(named:"addIcon")
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        user = FIRAuth.auth()?.currentUser
+        ref = FIRDatabase.database().reference()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).child("Types").child("Bodybuilding").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let keyArray = value?.allKeys as! [String]
+                self.backExercises = keyArray
+                self.pickerOutlet.reloadAllComponents()
+            }
+            // self.exerciseType.insert("Personal", at: 0)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createExerciseID") as! CreateBodybuildingExerciseViewController
+        popController.setCategory(category:categoryPassed)
+        self.navigationController?.pushViewController(popController, animated: true)
+        
+        // present the popover
+        //self.present(popController, animated: true, completion: nil)
+        
+    }
+    
+    func setCategory(category:String){
+        categoryPassed = category
+    }
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if pickerView.tag == 0{
@@ -43,19 +88,19 @@ class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0{
-            return absExercises.count
+            return backExercises.count
         }else{
             if component == 0 {
                 return reps.count
             }else{
                 return sets.count
-            }
+            }  
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0{
-            return absExercises[row]
+            return backExercises[row]
         }else{
             if component == 0 {
                 return reps[row]
@@ -66,13 +111,14 @@ class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
         let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
-        myExercise.name = "Abs"
-        myExercise.exerciseDescription = absExercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
-        myExercise.category = "Abs"
+        
+        
+        myExercise.name = "Back"
+        myExercise.exerciseDescription = backExercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
+        myExercise.category = "Back"
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
@@ -83,7 +129,7 @@ class AbsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         let label = UILabel()
         
         if pickerView.tag == 0 {
-            label.text = absExercises[row]
+            label.text = backExercises[row]
         }else if component == 0{
             label.text = reps[row]
         }else{
