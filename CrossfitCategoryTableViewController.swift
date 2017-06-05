@@ -43,6 +43,7 @@ class CrossfitCategoryTableViewController: UITableViewController {
             if value != nil{
                 let keyArray = value?.allKeys as! [String]
                 self.categories = keyArray
+                self.categories.sort()
                 self.tableView.reloadData()
             }
             // self.exerciseType.insert("Personal", at: 0)
