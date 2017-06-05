@@ -48,8 +48,6 @@ class CreateBodybuildingCategoryViewController: UIViewController{
         dictionary[categoryName.text!.capitalized] = ""
        
         self.ref.child("users").child(user.uid).child("Types").child(typePassed).updateChildValues(dictionary)
-        
-        
         self.navigationController?.popViewController(animated: true)
     }
 

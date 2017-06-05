@@ -18,7 +18,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var backExercises = [String]()
+    var exercises = [String]()
     var user:FIRUser!
     var ref:FIRDatabaseReference!
     var categoryPassed = ""
@@ -51,7 +51,8 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             let value = snapshot.value as? NSDictionary
             if value != nil{
                 let keyArray = value?.allKeys as! [String]
-                self.backExercises = keyArray
+                self.exercises = keyArray
+                self.exercises.sort()
                 self.pickerOutlet.reloadAllComponents()
             }
             // self.exerciseType.insert("Personal", at: 0)
@@ -88,7 +89,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0{
-            return backExercises.count
+            return exercises.count
         }else{
             if component == 0 {
                 return reps.count
@@ -100,7 +101,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0{
-            return backExercises[row]
+            return exercises[row]
         }else{
             if component == 0 {
                 return reps[row]
@@ -116,9 +117,9 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
         
         
-        myExercise.name = "Back"
-        myExercise.exerciseDescription = backExercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
-        myExercise.category = "Back"
+        myExercise.name = categoryPassed
+        myExercise.exerciseDescription = exercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
+        myExercise.category = categoryPassed
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
@@ -129,7 +130,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         let label = UILabel()
         
         if pickerView.tag == 0 {
-            label.text = backExercises[row]
+            label.text = exercises[row]
         }else if component == 0{
             label.text = reps[row]
         }else{

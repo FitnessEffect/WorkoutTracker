@@ -51,8 +51,10 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
                     let keyArray = value?.allKeys as! [String]
                     if self.categoryPassed == "1 Rep Max"{
                        self.oneRM = keyArray
+                        self.oneRM.sort()
                     }else{
                         self.wods = keyArray
+                        self.wods.sort()
                     }
                     
                     self.pickerOutlet.reloadAllComponents()
