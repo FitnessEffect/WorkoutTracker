@@ -42,7 +42,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        tableViewOutlet.backgroundColor = UIColor(patternImage: UIImage(named:"background-1")!)
     }
     
     override func viewWillAppear(_ animated: Bool) {

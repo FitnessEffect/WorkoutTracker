@@ -30,15 +30,15 @@ class LoginViewController: UIViewController {
         ref = FIRDatabase.database().reference()
         
         register.isHidden = true
-        login.layer.cornerRadius = 10.0
-        login.clipsToBounds = true
-        login.layer.borderWidth = 1
-        login.layer.borderColor = UIColor.black.cgColor
-        
-        register.layer.cornerRadius = 10.0
-        register.clipsToBounds = true
-        register.layer.borderWidth = 1
-        register.layer.borderColor = UIColor.black.cgColor
+//        login.layer.cornerRadius = 10.0
+//        login.clipsToBounds = true
+//        login.layer.borderWidth = 1
+//        login.layer.borderColor = UIColor.black.cgColor
+//        
+//        register.layer.cornerRadius = 10.0
+//        register.clipsToBounds = true
+//        register.layer.borderWidth = 1
+//        register.layer.borderColor = UIColor.black.cgColor
         
         FIRAuth.auth()?.addStateDidChangeListener({auth, user in
             //check if remember me is true
