@@ -41,6 +41,7 @@ class Exercise: NSCoder {
         client = ""
         exerciseKey = ""
         category = ""
+        
     }
     
     //overload initializer

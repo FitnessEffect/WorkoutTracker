@@ -127,7 +127,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            // let value = snapshot.value as! NSDictionary
+            
+            //correct order
+            print(snapshot)
+            //order changed when changed to dictionary
+            
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
                     
@@ -141,6 +145,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     
                 }
             }
+          
             self.tableViewOutlet.reloadData()
         }) { (error) in
             print(error.localizedDescription)

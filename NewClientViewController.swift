@@ -16,6 +16,11 @@ protocol createClientDelegate{
 
 class NewClientViewController: UIViewController {
     
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var firstNameOutlet: UITextField!
+    @IBOutlet weak var lastNameOutlet: UITextField!
+    @IBOutlet weak var ageOutlet: UITextField!
+    
     var delegate:createClientDelegate! = nil
     var myClient = Client()
     var ref:FIRDatabaseReference!
@@ -23,31 +28,28 @@ class NewClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageOutlet.image = UIImage(named: "curl.png")
-         self.view.backgroundColor = UIColor(red: 185.0/255.0, green: 230.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         
         ref = FIRDatabase.database().reference()
         user = FIRAuth.auth()?.currentUser
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(gesture)
     }
     
-    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var firstNameOutlet: UITextField!
-    @IBOutlet weak var lastNameOutlet: UITextField!
-    @IBOutlet weak var ageOutlet: UITextField!
-    @IBOutlet weak var imageOutlet: UIImageView!
-    
-    @IBAction func back(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
 
     @IBAction func genderSelection(_ sender: UISegmentedControl) {
     
         if genderSegmentedControl.selectedSegmentIndex == 0 {
-             imageOutlet.image = UIImage(named: "curl.png")
-            self.view.backgroundColor = UIColor(red: 185.0/255.0, green: 230.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            
+            
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
-             imageOutlet.image = UIImage(named: "woman.png")
-            self.view.backgroundColor = UIColor(red: 255.0/255.0, green: 235.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            
+        }
+    }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
+        if !firstNameOutlet.frame.contains(sender.location(in: view)){
+            self.view.endEditing(true)
         }
     }
     
@@ -75,7 +77,10 @@ class NewClientViewController: UIViewController {
         //update only values that changed
         // self.ref.child("users").child(user.uid).child("Clients").child(clientKey).updateChildValues(myClient)
         
-        //delegate.addClient(myClient)
-        dismiss(animated: true, completion: nil)
+    let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
+        presenter.viewWillAppear(true)
+        
+        dismiss(animated: true, completion: {})
+    
     }
 }

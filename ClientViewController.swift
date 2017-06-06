@@ -12,7 +12,7 @@
 import UIKit
 import Firebase
 
-class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, createClientDelegate{
+class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     var clientArray:[Client] = []
     var clientKey:String = "clients"
@@ -52,12 +52,10 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         retrieveClients()
-        //tableViewOutlet.reloadData()
     }
     
     func saveWorkouts(_ client:Client){
         clientArray[selectedRow] = client
-        //saveClients()
     }
     
     func saveWorkoutFromExercise(_ client:Client){
@@ -65,7 +63,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    //Retrieve clients from file
+    //Retrieve clients from firebase
     func retrieveClients(){
         clientArray.removeAll()
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -84,6 +82,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
                 }
             }
+            
             self.tableViewOutlet.reloadData()
         }) { (error) in
             print(error.localizedDescription)
@@ -132,6 +131,30 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             //saveClients()
         }
     }
+    @IBAction func createClient(_ sender: UIBarButtonItem) {
+        var xPosition:CGFloat = 0
+        var yPosition:CGFloat = 0
+        
+        xPosition = self.view.frame.width/2
+        yPosition = self.view.frame.minY + 60
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 400)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
@@ -177,6 +200,10 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             performSegue(withIdentifier: "exercisesSegue", sender: sender)
             }
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
 
     
     func btnAction(_ sender: UIButton) {
@@ -199,12 +226,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "NewClientSegue"){
-            
-            
-            let ncv:NewClientViewController = segue.destination as! NewClientViewController
-            ncv.delegate = self
-        }
         
         if(segue.identifier == "exercisesSegue"){
             let s = sender as! UITapGestureRecognizer

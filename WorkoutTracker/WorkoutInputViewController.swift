@@ -70,7 +70,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.alpha = 0
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
-        self.exerciseBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+        self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         
         //registerForKeyboardNotifications()
         
@@ -193,7 +193,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.descriptionTextView.alpha = 1
                 self.erase.alpha = 1
                 //self.resultBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
-                self.resultBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                self.resultBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
             })
         }))
@@ -308,7 +308,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.save.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
                     //self.exerciseBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
-                    self.exerciseBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                    self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 })
             }))
             
@@ -333,7 +333,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.save.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
                     //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-                    self.resultBtn.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                    self.resultBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 })
             }))
             //erase email
@@ -348,9 +348,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
                     //self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-                     self.challenge.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                     self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                     //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
-                    self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                    self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 })
             }))
         }
@@ -603,15 +603,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
-//    let alert = UIAlertController(title: "Verify", message: "Enter your existing passcode.", preferredStyle: .alert)
-//    alert.addTextField(configurationHandler: { (textField) -> Void in
-//    textField.placeholder = "Current Passcode"
-//    textField.keyboardType = .numberPad
-//    textField.keyboardAppearance = .dark
-//    textField.isSecureTextEntry = true
-//    })
-
-    
     @IBAction func challengeBtn(_ sender: UIButton) {
         let xPosition = challenge.frame.minX + (challenge.frame.width/2)
         let yPosition = challenge.frame.maxY - 60
@@ -644,7 +635,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.save.frame = CGRect(x: 0, y: (472+self.translation3), width: self.save.frame.width, height: self.save.frame.height)
                 self.eraseEmail.alpha = 1
                 //self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
-                self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
             })
         }))
     }
@@ -670,11 +661,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.challenge.frame = CGRect(x: 0, y: (329 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: (411 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
                 //self.challenge.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-                self.challenge.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 
                 //self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
                 //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
-                self.save.setBackgroundImage(UIImage(named:"dirtChalk"), for: .normal)
+                self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                
             })
         }))
