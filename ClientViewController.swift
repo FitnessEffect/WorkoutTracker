@@ -23,11 +23,14 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var overlayView: OverlayView!
     var challengeOverlay = true
     var menuShowing = false
+    var user:FIRUser!
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         tableViewOutlet.reloadData()
         
@@ -54,14 +57,30 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         retrieveClients()
     }
     
-    func saveWorkouts(_ client:Client){
-        clientArray[selectedRow] = client
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+
+        if editingStyle == .delete {
+            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this client?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                let x = indexPath.row
+                let id = self.clientArray[x].clientKey
+                
+                self.ref.child("users").child(self.user.uid).child("Clients").child(id).removeValue { (error, ref) in
+                    if error != nil {
+                        print("error \(String(describing: error))")
+                    }
+                }
+                self.clientArray.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
     }
-    
-    func saveWorkoutFromExercise(_ client:Client){
-        saveWorkouts(client)
-    }
-    
+
     
     //Retrieve clients from firebase
     func retrieveClients(){
@@ -77,7 +96,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     tempClient.firstName = client.value["firstName"] as! String
                     tempClient.lastName = client.value["lastName"] as! String
                     tempClient.gender = client.value["gender"] as! String
-                    
+                    tempClient.clientKey = client.value["clientKey"] as! String
                     self.clientArray.append(tempClient)
 
                 }
@@ -123,14 +142,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    //Allows client cells to be deleted
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            clientArray.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            //saveClients()
-        }
-    }
+
     @IBAction func createClient(_ sender: UIBarButtonItem) {
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
