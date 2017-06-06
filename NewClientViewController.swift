@@ -54,7 +54,8 @@ class NewClientViewController: UIViewController {
     }
     
     @IBAction func createClient(_ sender: UIButton) {
-    
+        let uniqueClientKey = self.ref.child("users").child(user.uid).child("Clients").childByAutoId().key
+        
         if genderSegmentedControl.selectedSegmentIndex == 0{
             myClient.gender = "Male"
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
@@ -63,17 +64,18 @@ class NewClientViewController: UIViewController {
         myClient.firstName = firstNameOutlet.text!
         myClient.lastName = lastNameOutlet.text!
         myClient.age = ageOutlet.text!
+        myClient.clientKey = uniqueClientKey
        
         var clientDictionary = [String:Any]()
         clientDictionary["firstName"] = myClient.firstName
         clientDictionary["lastName"] = myClient.lastName
         clientDictionary["age"] = myClient.age
         clientDictionary["gender"] = myClient.gender
-    
+        clientDictionary["clientKey"] = myClient.clientKey
         //let fullName = myClient.firstName + " " + myClient.lastName
         
-        let clientKey = self.ref.child("users").child(user.uid).child("Clients").childByAutoId().key
-        self.ref.child("users").child(user.uid).child("Clients").child(clientKey).setValue(clientDictionary)
+       
+        self.ref.child("users").child(user.uid).child("Clients").child(uniqueClientKey).setValue(clientDictionary)
         //update only values that changed
         // self.ref.child("users").child(user.uid).child("Clients").child(clientKey).updateChildValues(myClient)
         
