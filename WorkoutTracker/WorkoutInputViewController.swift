@@ -51,6 +51,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var translation2:CGFloat = 100
     var translation3:CGFloat = 100
     var activeField: UITextField?
+    var clients = [Client]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,10 +114,20 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 for client in keyArray{
                     self.ref.child("users").child(userID!).child("Clients").child(client).observeSingleEvent(of: .value, with: { (snapshot) in
                        let client = snapshot.value as? NSDictionary
+                        let c = Client()
                         let fName = client?["firstName"] as! String
                         let lName = client?["lastName"] as! String
+                        
+                        c.firstName = fName
+                        c.lastName = lName
+                        c.gender = client?["gender"] as! String
+                        c.age = client?["age"] as! String
+                        c.clientKey = client?["clientKey"] as! String
+                        
+                        
                         let tempStr = fName + " " + lName
                         self.nameArray.append(tempStr)
+                        self.clients.append(c)
                     })
   
                 }
@@ -301,13 +313,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.exerciseBtn.alpha = 1
                     self.resultBtn.alpha = 1
                     self.challenge.alpha = 1
-//                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
-//                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
-//                    self.resultBtn.setTitleColor(UIColor.lightGray, for: .normal)
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.save.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
-                    //self.exerciseBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
                     self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 })
             }))
@@ -347,9 +355,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
-                    //self.challenge.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
                      self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                    //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
                     self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 })
             }))
@@ -393,6 +399,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     @IBAction func saveBtn(_ sender: UIButton) {
         exerciseKey = self.ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
+        
+        
         if edit == false{
             if self.title == "Personal"{
                 currentExercise.date = (dateBtn.titleLabel?.text!)!
@@ -444,6 +452,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 
                 self.ref.child("users").child(user.uid).child("Exercises").child(exercisePassed.exerciseKey).updateChildValues(exerciseDictionary)
             }else{
+                
                 currentExercise.date = (dateBtn.titleLabel?.text)!
                 currentExercise.creator = user.email!
                 currentExercise.result = resultTextView.text!
@@ -634,7 +643,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.emailTextView.alpha = 1
                 self.save.frame = CGRect(x: 0, y: (472+self.translation3), width: self.save.frame.width, height: self.save.frame.height)
                 self.eraseEmail.alpha = 1
-                //self.save.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                 self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
             })
         }))
@@ -647,12 +655,24 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func savePickerName(name:String){
         self.title = name
+        clientPassed = getClientFromName(n:name)
+    }
+    
+    func getClientFromName(n:String) -> Client{
+        
+       
+        for client in clients{
+            if n == client.firstName + " " + client.lastName{
+                return client
+            }
+        }
+        //should never reach this statement
+        return Client()
     }
     
     func saveResult(str:String){
         self.resultTextView.text = str
         UIView.animate(withDuration: 0.3, animations: {
-            //self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
             self.resultBtn.alpha = 0
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
@@ -660,13 +680,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.eraseResult.alpha = 1
                 self.challenge.frame = CGRect(x: 0, y: (329 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.save.frame = CGRect(x: 0, y: (411 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
-                //self.challenge.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                
-                //self.resultBtn.titleLabel?.textColor = UIColor(red: 179, green: 179, blue: 179, alpha: 1)
-                //self.save.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
                 self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-               
             })
         }))
     }
