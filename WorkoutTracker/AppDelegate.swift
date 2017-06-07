@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func setBadgeNumber(_ delta: Int){
+        UIApplication.shared.applicationIconBadgeNumber += delta
+    }
+    
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Convert token to string
