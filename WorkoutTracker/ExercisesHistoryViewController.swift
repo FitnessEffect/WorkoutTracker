@@ -23,11 +23,13 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     var menuShowing = false
     var menuView:MenuView!
     var overlayView: OverlayView!
+    var user:FIRUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        //retrieveClientID(clientObj: client)
+      
         title = "History"
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
@@ -183,9 +185,23 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            //delegate.saveExercises(workout)
+            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                let x = indexPath.row
+                let id = self.exerciseArray[x].exerciseKey
+                
+                self.ref.child("users").child(self.user.uid).child("Exercises").child(id).removeValue { (error, ref) in
+                    if error != nil {
+                        print("error \(String(describing: error))")
+                    }
+                }
+                self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                //delegate.saveExercises(workout)
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(deleteAlert, animated: true, completion: nil)
         }
     }
     

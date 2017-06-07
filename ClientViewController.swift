@@ -57,39 +57,10 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         retrieveClients()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-
-        if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this client?", preferredStyle: UIAlertControllerStyle.alert)
-            
-            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                let x = indexPath.row
-                let id = self.clientArray[x].clientKey
-                
-                self.ref.child("users").child(self.user.uid).child("Clients").child(id).removeValue { (error, ref) in
-                    if error != nil {
-                        print("error \(String(describing: error))")
-                    }
-                }
-                self.clientArray.remove(at: (indexPath as NSIndexPath).row)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            }))
-            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-            
-            self.present(deleteAlert, animated: true, completion: nil)
-        }
-    }
-
-    
     //Retrieve clients from firebase
     func retrieveClients(){
         clientArray.removeAll()
         let userID = FIRAuth.auth()?.currentUser?.uid
-//        let clientQuery = (ref.child("users").child(userID!).child("Clients").queryOrderedByKey())
-//        clientQuery.observeSingleEvent(of: .value, with: {(snapshot) in
-//        print(snapshot)
-//        })
         ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             // let value = snapshot.value as! NSDictionary
@@ -125,7 +96,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //add created client from NewClientViewController
      func addClient(_ client:Client){
         clientArray.append(client)
-        //saveClients()
         tableViewOutlet.reloadData()
     }
     
@@ -153,6 +123,28 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this client?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                let x = indexPath.row
+                let id = self.clientArray[x].clientKey
+                
+                self.ref.child("users").child(self.user.uid).child("Clients").child(id).removeValue { (error, ref) in
+                    if error != nil {
+                        print("error \(String(describing: error))")
+                    }
+                }
+                self.clientArray.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
     }
     
 
@@ -257,7 +249,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let evc:ExercisesViewController = segue.destination as! ExercisesViewController
              let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             print(clientArray[selectedRow!])
-            evc.client = clientArray[selectedRow!]
+            evc.clientPassed = clientArray[selectedRow!]
             
         }
     }
