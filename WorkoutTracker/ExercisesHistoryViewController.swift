@@ -129,7 +129,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             // Get user value
             
             //correct order
-            print(snapshot)
+            print(snapshot.value!)
             //order changed when changed to dictionary
             
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
@@ -145,7 +145,17 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     
                 }
             }
-          
+
+            self.exerciseArray.sort(by: {a, b in
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                let dateA = dateFormatter.date(from: a.date)!
+                let dateB = dateFormatter.date(from: b.date)!
+                if dateA > dateB {
+                    return true
+                }
+                return false
+            })
             self.tableViewOutlet.reloadData()
         }) { (error) in
             print(error.localizedDescription)

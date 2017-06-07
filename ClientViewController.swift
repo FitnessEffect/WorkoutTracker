@@ -86,9 +86,14 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func retrieveClients(){
         clientArray.removeAll()
         let userID = FIRAuth.auth()?.currentUser?.uid
+//        let clientQuery = (ref.child("users").child(userID!).child("Clients").queryOrderedByKey())
+//        clientQuery.observeSingleEvent(of: .value, with: {(snapshot) in
+//        print(snapshot)
+//        })
         ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             // let value = snapshot.value as! NSDictionary
+
             if let clientsVal = snapshot.value as? [String: [String: AnyObject]] {
                 for client in clientsVal {
                     let tempClient = Client()
@@ -101,6 +106,14 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
                 }
             }
+            
+            self.clientArray.sort(by: {a, b in
+
+                if a.firstName < b.firstName {
+                    return true
+                }
+                return false
+            })
             
             self.tableViewOutlet.reloadData()
         }) { (error) in
