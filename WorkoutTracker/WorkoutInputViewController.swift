@@ -417,6 +417,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
                 
                 self.ref.child("users").child(user.uid).child("Exercises").child(exerciseKey).setValue(exerciseDictionary)
+                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    // Put your code which should be executed with a delay here
+                    self.dismiss(animated: true, completion: nil)
+                })})
             }else{
                 currentExercise.date = (dateBtn.titleLabel?.text)!
                 currentExercise.creator = user.email!
@@ -433,6 +438,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 exerciseDictionary["client"] = currentExercise.client
                 
                 retrieveClientID(clientObj: clientPassed)
+                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    // Put your code which should be executed with a delay here
+                    self.dismiss(animated: true, completion: nil)
+                })})
             }
         }else{
             if self.title == "Personal"{
@@ -451,6 +461,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 exerciseDictionary["exerciseKey"] =  exercisePassed.exerciseKey
                 
                 self.ref.child("users").child(user.uid).child("Exercises").child(exercisePassed.exerciseKey).updateChildValues(exerciseDictionary)
+                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    // Put your code which should be executed with a delay here
+                    self.dismiss(animated: true, completion: nil)
+                })})
             }else{
                 
                 currentExercise.date = (dateBtn.titleLabel?.text)!
@@ -470,14 +485,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 exerciseDictionary["client"] = currentExercise.client
                 
                 retrieveClientID(clientObj: clientPassed)
+                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    // Put your code which should be executed with a delay here
+                    self.dismiss(animated: true, completion: nil)
+                })})
             }
         }
-        
-        //launchEmail(sendTo: email.text!)
-        //use email
-        //query the db to all the emails
-        //find correct one and get user id key
-        //send using the key to the correct spot in db
         
         //post request for notification if challenge is on!!!
         if (emailTextView.text?.characters.contains("@"))!{
@@ -493,7 +507,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             request.httpBody = postString.data(using: .utf8)
             print(postString)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                print(response)
+                print(response!)
                 guard let data = data, error == nil else {                                                 // check for fundamental networking error
                     print("error=\(String(describing: error))")
                     return
@@ -659,8 +673,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func getClientFromName(n:String) -> Client{
-        
-       
         for client in clients{
             if n == client.firstName + " " + client.lastName{
                 return client
