@@ -101,6 +101,7 @@ class MenuView: UIView {
         if sender.tag == 1{
             let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! WorkoutInputViewController
             //self.present(inputVC, animated: true, completion: nil)
+            
             inputVC.handleSelection(type: "home")
             
         }else if sender.tag == 2{
