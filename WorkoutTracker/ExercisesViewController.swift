@@ -28,8 +28,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        title = clientPassed.firstName + clientPassed.lastName
-        
+        title = clientPassed.firstName        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

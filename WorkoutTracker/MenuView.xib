@@ -31,6 +31,9 @@
                     <state key="normal" title="Challenges">
                         <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ugX-NK-6Zn"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pl-4H-5a3">
                     <rect key="frame" x="0.0" y="92" width="125" height="50"/>
@@ -52,6 +55,9 @@
                     <state key="normal" title="Clients">
                         <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="bjU-w8-fuu"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b98-Rt-Jxs">
                     <rect key="frame" x="0.0" y="325" width="125" height="49"/>
@@ -61,6 +67,9 @@
                     <state key="normal" title="Settings">
                         <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="sIj-TA-A0P"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x47-gG-DUO">
                     <rect key="frame" x="0.0" y="150" width="125" height="48"/>
@@ -82,6 +91,9 @@
                     <state key="normal" title="Logout">
                         <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VUZ-F8-ABs"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
