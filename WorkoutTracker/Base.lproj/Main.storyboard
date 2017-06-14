@@ -138,11 +138,11 @@
                                     <action selector="eraseBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="QJ6-AM-R4v"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsg-o6-oRT">
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsg-o6-oRT">
                                 <rect key="frame" x="0.0" y="67" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="25"/>
                                 <state key="normal" title="Date" backgroundImage="chalkBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -969,7 +969,7 @@
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" restorationIdentifier="exerciseCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="60" id="Rh4-a2-OfQ" customClass="ChallengeCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" restorationIdentifier="exerciseCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChallengeCell" rowHeight="60" id="Rh4-a2-OfQ" customClass="ChallengeCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rh4-a2-OfQ" id="MQZ-Zu-s0H">
@@ -1000,6 +1000,13 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1V4-Fq-Idb">
+                                                    <rect key="frame" x="198" y="15" width="123" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="11"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="urM-h9-6ih" firstAttribute="leading" secondItem="MQZ-Zu-s0H" secondAttribute="leadingMargin" id="8qF-0K-WlP"/>
@@ -1017,6 +1024,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="challenger" destination="35X-SR-Rb7" id="5lb-5V-b4Q"/>
+                                            <outlet property="date" destination="1V4-Fq-Idb" id="PMJ-s1-Lcf"/>
                                             <outlet property="numberOutlet" destination="urM-h9-6ih" id="O20-gu-j3b"/>
                                             <outlet property="titleOutlet" destination="Wze-Xm-2Wm" id="vkK-Ls-MRA"/>
                                             <segue destination="pzd-PZ-fvb" kind="show" identifier="editChallengeSegue" id="OuF-iy-fzI"/>
@@ -1942,6 +1950,6 @@
         <image name="menuIcon" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJO-pp-3SY"/>
+        <segue reference="OuF-iy-fzI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -41,6 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func resetBadgeNumber(){
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+    
     func setBadgeNumber(_ delta: Int){
         UIApplication.shared.applicationIconBadgeNumber += delta
     }
@@ -68,9 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         print("Push notification received: \(data)")
-        let challenger = data["challenger"]!
+        setBadgeNumber(-1)
+        //let challenger = data["challenger"]!
         var exerciseDictionary = data["exercise"]! as! [String:Any]
-        exerciseDictionary["challenger"] = challenger as! String
+        //exerciseDictionary["challenger"] = challenger as! String
         
         
         //handle challenge notification
@@ -128,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
         print(options)
         print(url)
         return false

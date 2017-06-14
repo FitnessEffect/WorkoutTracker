@@ -207,6 +207,8 @@ class DBService {
                     tempExercise.opponent = exercise.value["opponent"] as! String
                     tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
                     tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
                     self._exercisesForUser.append(tempExercise)
                     completion()
                 }
@@ -337,6 +339,8 @@ class DBService {
                     tempExercise.opponent = exercise.value["opponent"] as! String
                     tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
                     tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
                     self._exercisesForClient.append(tempExercise)
                     completion()
                 }
@@ -362,7 +366,13 @@ class DBService {
                     tempExercise.result = exercise.value["result"] as! String
                     tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
                     tempExercise.date = exercise.value["date"] as! String
-                    tempExercise.creatorID = exercise.value["challenger"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
                     self._challengeExercises.append(tempExercise)
                     completion()
                 }
