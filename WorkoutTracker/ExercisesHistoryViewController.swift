@@ -13,9 +13,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
 
     @IBOutlet weak var tableViewOutlet: UITableView!
     
-    //var workout = Workout()
     var selectedRow:Int = 0
-    //var delegate:ExercisesDelegate!
     var client = Client()
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!
@@ -51,8 +49,10 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        retrieveExercises()
-        
+        DBService.shared.retrieveExercisesForUser {
+            self.exerciseArray = DBService.shared.exercisesForUser
+            self.tableViewOutlet.reloadData()
+        }
     }
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
@@ -85,16 +85,13 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-        
         if menuShowing == true{
             //remove menu view
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-            
         }else{
           if tableViewOutlet.frame.contains(sender.location(in: view)){
             performSegue(withIdentifier: "editExerciseSegue", sender: sender)
@@ -102,7 +99,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
-    
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
             let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
@@ -119,48 +115,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }else if sender.tag == 5{
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
             self.present(loginVC, animated: true, completion: nil)
-        }
-    }
-
-    
-    func retrieveExercises(){
-        exerciseArray.removeAll()
-        
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            
-            //correct order
-            print(snapshot.value!)
-            //order changed when changed to dictionary
-            
-            if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
-                for exercise in exercisesVal {
-                    
-                    let tempExercise = Exercise()
-                    tempExercise.name = exercise.value["name"] as! String
-                    tempExercise.exerciseDescription = exercise.value["description"] as! String
-                    tempExercise.result = exercise.value["result"] as! String
-                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
-                    tempExercise.date = exercise.value["date"] as! String
-                    self.exerciseArray.append(tempExercise)
-                    
-                }
-            }
-
-            self.exerciseArray.sort(by: {a, b in
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM/dd/yyyy"
-                let dateA = dateFormatter.date(from: a.date)!
-                let dateB = dateFormatter.date(from: b.date)!
-                if dateA > dateB {
-                    return true
-                }
-                return false
-            })
-            self.tableViewOutlet.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
         }
     }
     
@@ -191,14 +145,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 let x = indexPath.row
                 let id = self.exerciseArray[x].exerciseKey
                 
-                self.ref.child("users").child(self.user.uid).child("Exercises").child(id).removeValue { (error, ref) in
-                    if error != nil {
-                        print("error \(String(describing: error))")
-                    }
-                }
+                DBService.shared.deleteExerciseForUser(id: id)
+
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                //delegate.saveExercises(workout)
+                tableView.reloadData()
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion: nil)
@@ -210,12 +161,12 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             let s = sender as! UITapGestureRecognizer
             let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
-            wivc.setExercise(exercise: exerciseArray[selectedRow!])
+            DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
             wivc.edit = true
         }
         if(segue.identifier == "addExerciseSegue"){
             let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
-            edv.setClient(client: client)
+            DBService.shared.setPassedClient(client: client)
             edv.edit = false
         }
     }

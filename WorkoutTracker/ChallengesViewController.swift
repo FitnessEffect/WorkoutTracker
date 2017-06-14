@@ -10,15 +10,12 @@ import UIKit
 import Firebase
 
 class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
-    //var delegate:ExercisesDelegate!
     var client = Client()
     var exerciseArray = [Exercise]()
-    var ref:FIRDatabaseReference!
     var tempKey:String!
     var menuShowing = false
     var menuView:MenuView!
@@ -26,10 +23,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        super.viewDidLoad()
-        ref = FIRDatabase.database().reference()
-        //retrieveClientID(clientObj: client)
+        
         title = "Challenges"
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
@@ -48,11 +42,13 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        retrieveExercises()
+        DBService.shared.retrieveChallengesExercises {
+            self.exerciseArray = DBService.shared.challengeExercises
+            self.tableViewOutlet.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,34 +56,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
 
-    func retrieveExercises(){
-        exerciseArray.removeAll()
-        
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Challenges").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            // let value = snapshot.value as! NSDictionary
-            if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
-                for exercise in exercisesVal {
-                    
-                    let tempExercise = Exercise()
-                    tempExercise.name = exercise.value["name"] as! String
-                    tempExercise.exerciseDescription = exercise.value["description"] as! String
-                    tempExercise.result = exercise.value["result"] as! String
-                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
-                    tempExercise.date = exercise.value["date"] as! String
-                    tempExercise.creator = exercise.value["challenger"] as! String
-                    self.exerciseArray.append(tempExercise)
-                    
-                }
-            }
-            self.tableViewOutlet.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
     }
@@ -168,7 +136,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-        cell.challenger.text = exercise.creator
+        cell.challenger.text = exercise.creatorEmail
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
         return cell
     }
@@ -176,9 +144,20 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            //delegate.saveExercises(workout)
+            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                let x = indexPath.row
+                let id = self.exerciseArray[x].exerciseKey
+                
+                DBService.shared.deleteExerciseForClient(id:id)
+                
+                self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                tableView.reloadData()
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(deleteAlert, animated: true, completion:nil)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,7 +165,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             let s = sender as! UITapGestureRecognizer
             let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
-            wivc.setExercise(exercise: exerciseArray[selectedRow!])
+            DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
             wivc.edit = true
         }
     }

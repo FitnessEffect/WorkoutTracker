@@ -54,10 +54,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if tagPassed == 2{
             return 3
         }else{
-        return 1
+            return 1
         }
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
@@ -96,7 +95,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return reps[row]
         }
     }
-
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {

@@ -23,6 +23,9 @@
 		526A3F0E1EC52C64001BF557 /* WorkoutInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */; };
 		526A3F111EC60D61001BF557 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F101EC60D61001BF557 /* CalendarViewController.swift */; };
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
+		52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE31EE8DBA800DBD8DE /* DBService.swift */; };
+		52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE51EE8DBB100DBD8DE /* APIService.swift */; };
+		52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */; };
 		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
 		527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */; };
 		5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */; };
@@ -73,6 +76,9 @@
 		526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputViewController.swift; sourceTree = "<group>"; };
 		526A3F101EC60D61001BF557 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		52717FE31EE8DBA800DBD8DE /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		52717FE51EE8DBB100DBD8DE /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputView.swift; sourceTree = "<group>"; };
 		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
 		527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Cool Crayon.ttf"; sourceTree = "<group>"; };
 		5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BasicSharpie.ttf; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		52192ACC1CD5452100A311A1 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */,
 				52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */,
 				52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */,
 				52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */,
@@ -133,6 +140,15 @@
 				52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */,
 			);
 			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		52717FE21EE8DB7A00DBD8DE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52717FE31EE8DBA800DBD8DE /* DBService.swift */,
+				52717FE51EE8DBB100DBD8DE /* APIService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		527651721EDE5280006814AD /* Fonts */ = {
@@ -148,10 +164,9 @@
 		5283E0801C89130500FB716B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5291C4561CE13EED00DF8C0C /* Bodybuilding Controller */,
-				5291C4551CE13ECB00DF8C0C /* Crossfit Controllers */,
 				52192ACC1CD5452100A311A1 /* CustomCells */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
+				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 				522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
@@ -162,25 +177,24 @@
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
-				5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */,
-				5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		5291C4551CE13ECB00DF8C0C /* Crossfit Controllers */ = {
+		5291C4551CE13ECB00DF8C0C /* Crossfit Views */ = {
 			isa = PBXGroup;
 			children = (
 				52192AC01CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift */,
+				5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */,
 				52192AC81CC1962A00A311A1 /* MetconViewController.swift */,
 				52192AC61CC1929E00A311A1 /* AmrapViewController.swift */,
 				52192AC41CC186A300A311A1 /* TabataViewController.swift */,
 				527D07E51CE11E2E00F46B57 /* WodsViewController.swift */,
 			);
-			name = "Crossfit Controllers";
+			name = "Crossfit Views";
 			sourceTree = "<group>";
 		};
-		5291C4561CE13EED00DF8C0C /* Bodybuilding Controller */ = {
+		5291C4561CE13EED00DF8C0C /* Bodybuilding Views */ = {
 			isa = PBXGroup;
 			children = (
 				527D07E71CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift */,
@@ -188,12 +202,14 @@
 				5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */,
 				527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */,
 			);
-			name = "Bodybuilding Controller";
+			name = "Bodybuilding Views";
 			sourceTree = "<group>";
 		};
 		52EB1DEB1ECA778C004CA561 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5291C4561CE13EED00DF8C0C /* Bodybuilding Views */,
+				5291C4551CE13ECB00DF8C0C /* Crossfit Views */,
 				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
 				52EB1DEE1ECA77F2004CA561 /* MenuView.swift */,
 				52EB1DF01ECA7902004CA561 /* OverlayView.xib */,
@@ -223,6 +239,7 @@
 		52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */ = {
 			isa = PBXGroup;
 			children = (
+				52717FE21EE8DB7A00DBD8DE /* Services */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
 				52EB1DEB1ECA778C004CA561 /* Views */,
 				52FCD5C21CB59F87008B0472 /* Models */,
@@ -414,12 +431,15 @@
 				52192AC11CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift in Sources */,
 				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
+				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
+				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				52FCD5B51CB2C44E008B0472 /* WorkoutCustomCell.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* WodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */,
 				5283E0861C8B8B1100FB716B /* Workout.swift in Sources */,
+				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,

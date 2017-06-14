@@ -16,11 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var ref:FIRDatabaseReference!
     var user:FIRUser!
-    var myEx = Exercise()
+
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 18)!], for: .normal) // your textattributes here
         
         FIRApp.configure()
         ref = FIRDatabase.database().reference()
@@ -74,17 +75,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //handle challenge notification
         //save to firebase or nsuserdefault
-        let exKey = exerciseDictionary["exerciseKey"] as! String
-        self.ref.child("users").child(user.uid).child("Challenges").child(exKey).setValue(exerciseDictionary)
+        DBService.shared.saveChallengeExercise(exerciseDictionary: exerciseDictionary)
+//        self.ref.child("users").child(user.uid).child("Challenges").child(exKey).setValue(exerciseDictionary)
         
-       
+           let myEx = Exercise()
         myEx.name = exerciseDictionary["name"] as! String
         myEx.exerciseDescription = exerciseDictionary["description"] as! String
         myEx.result = exerciseDictionary["result"] as! String
+        myEx.date = exerciseDictionary["date"] as! String
+        myEx.exerciseKey = exerciseDictionary["exerciseKey"] as! String
+        myEx.client = exerciseDictionary["client"] as! String
+        myEx.opponent = exerciseDictionary["opponent"] as! String
+        myEx.creatorEmail = exerciseDictionary["creatorEmail"] as! String
+        myEx.creatorID = exerciseDictionary["creatorID"] as! String
+        myEx.type = exerciseDictionary["type"] as! String
+        myEx.category = exerciseDictionary["category"] as! String
         
+        DBService.shared.setPassedExercise(exercise:myEx)
+
         //grab reference to vc on screen. Do not instantiate
          let vc = window?.rootViewController?.presentedViewController?.childViewControllers[0] as! WorkoutInputViewController
-        vc.passExercise(exercise:myEx)
+        
         vc.fillInExercisePassed()
         
     }

@@ -23,14 +23,9 @@ class NewClientViewController: UIViewController {
     
     var delegate:createClientDelegate! = nil
     var myClient = Client()
-    var ref:FIRDatabaseReference!
-    var user:FIRUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref = FIRDatabase.database().reference()
-        user = FIRAuth.auth()?.currentUser
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -54,7 +49,7 @@ class NewClientViewController: UIViewController {
     }
     
     @IBAction func createClient(_ sender: UIButton) {
-        let uniqueClientKey = self.ref.child("users").child(user.uid).child("Clients").childByAutoId().key
+        myClient.clientKey = DBService.shared.createClientID()
         
         if genderSegmentedControl.selectedSegmentIndex == 0{
             myClient.gender = "Male"
@@ -64,25 +59,21 @@ class NewClientViewController: UIViewController {
         myClient.firstName = firstNameOutlet.text!
         myClient.lastName = lastNameOutlet.text!
         myClient.age = ageOutlet.text!
-        myClient.clientKey = uniqueClientKey
-       
+        
         var clientDictionary = [String:Any]()
         clientDictionary["firstName"] = myClient.firstName
         clientDictionary["lastName"] = myClient.lastName
         clientDictionary["age"] = myClient.age
         clientDictionary["gender"] = myClient.gender
         clientDictionary["clientKey"] = myClient.clientKey
-        //let fullName = myClient.firstName + " " + myClient.lastName
         
-       
-        self.ref.child("users").child(user.uid).child("Clients").child(uniqueClientKey).setValue(clientDictionary)
-        //update only values that changed
-        // self.ref.child("users").child(user.uid).child("Clients").child(clientKey).updateChildValues(myClient)
+        DBService.shared.createNewClient(newClient: clientDictionary, completion: {
+        let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
         
-    let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
-        presenter.viewWillAppear(true)
+        self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)})
+
+        })
         
-        dismiss(animated: true, completion: {})
-    
+           
     }
 }

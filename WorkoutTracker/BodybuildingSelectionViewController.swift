@@ -19,11 +19,8 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var exercises = [String]()
-    var user:FIRUser!
-    var ref:FIRDatabaseReference!
     var categoryPassed = ""
     
-        //["Back Extensions", "Bent Over Row", "Lat PullDown", "Seated Cable Row"]
     
     let reps = ["Reps", "1 rep", "5 reps", "6 reps", "7 reps", "8 reps", "9 reps", "10 reps", "11 reps", "12 reps", "13 reps", "14 reps", "15 reps", "16 reps", "17 reps", "18 reps", "19 reps", "20 reps", "21 reps", "25 reps", "30 reps", "100 reps"]
     
@@ -31,13 +28,14 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = categoryPassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
 
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,21 +43,13 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Types").child("Bodybuilding").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil{
-                let keyArray = value?.allKeys as! [String]
-                self.exercises = keyArray
-                self.exercises.sort()
-                self.pickerOutlet.reloadAllComponents()
-            }
-            // self.exerciseType.insert("Personal", at: 0)
+        
+        DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
+        self.exercises = DBService.shared.exercisesForBodybuildingCategory
+        self.pickerOutlet.reloadAllComponents()
             
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        })
+
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
@@ -69,15 +59,12 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         popController.setCategory(category:categoryPassed)
         self.navigationController?.pushViewController(popController, animated: true)
         
-        // present the popover
-        //self.present(popController, animated: true, completion: nil)
-        
     }
     
+
     func setCategory(category:String){
         categoryPassed = category
     }
-
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if pickerView.tag == 0{
@@ -120,6 +107,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         myExercise.name = categoryPassed
         myExercise.exerciseDescription = exercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
         myExercise.category = categoryPassed
+        myExercise.type = "Bodybuilding"
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         

@@ -17,22 +17,16 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var clientArray:[Client] = []
     var clientKey:String = "clients"
     var selectedRow:Int = 0
-    var ref:FIRDatabaseReference!
     var currentClient:Client!
     var menuView:MenuView!
     var overlayView: OverlayView!
     var challengeOverlay = true
     var menuShowing = false
-    var user:FIRUser!
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
-        tableViewOutlet.reloadData()
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -50,53 +44,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        retrieveClients()
-    }
-    
-    //Retrieve clients from firebase
-    func retrieveClients(){
-        clientArray.removeAll()
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            // let value = snapshot.value as! NSDictionary
-
-            if let clientsVal = snapshot.value as? [String: [String: AnyObject]] {
-                for client in clientsVal {
-                    let tempClient = Client()
-                    tempClient.age = client.value["age"] as! String
-                    tempClient.firstName = client.value["firstName"] as! String
-                    tempClient.lastName = client.value["lastName"] as! String
-                    tempClient.gender = client.value["gender"] as! String
-                    tempClient.clientKey = client.value["clientKey"] as! String
-                    self.clientArray.append(tempClient)
-
-                }
-            }
-            
-            self.clientArray.sort(by: {a, b in
-
-                if a.firstName < b.firstName {
-                    return true
-                }
-                return false
-            })
-            
+            self.clientArray = DBService.shared.clients
             self.tableViewOutlet.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-    }
-    
-    //add created client from NewClientViewController
-     func addClient(_ client:Client){
-        clientArray.append(client)
-        tableViewOutlet.reloadData()
     }
     
     //TableView
@@ -133,11 +85,8 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let x = indexPath.row
                 let id = self.clientArray[x].clientKey
                 
-                self.ref.child("users").child(self.user.uid).child("Clients").child(id).removeValue { (error, ref) in
-                    if error != nil {
-                        print("error \(String(describing: error))")
-                    }
-                }
+                DBService.shared.deleteClient(id: id)
+
                 self.clientArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             }))
@@ -146,7 +95,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.present(deleteAlert, animated: true, completion: nil)
         }
     }
-    
 
     @IBAction func createClient(_ sender: UIBarButtonItem) {
         var xPosition:CGFloat = 0
@@ -222,7 +170,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return .none
     }
 
-    
     func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
             let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
@@ -243,14 +190,12 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if(segue.identifier == "exercisesSegue"){
             let s = sender as! UITapGestureRecognizer
             let evc:ExercisesViewController = segue.destination as! ExercisesViewController
              let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
-            print(clientArray[selectedRow!])
             evc.clientPassed = clientArray[selectedRow!]
-            
+            DBService.shared.setPassedClient(client: clientArray[selectedRow!])
         }
     }
 

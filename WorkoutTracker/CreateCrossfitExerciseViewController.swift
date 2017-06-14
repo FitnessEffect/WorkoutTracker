@@ -51,7 +51,7 @@ class CreateCrossfitExerciseViewController: UIViewController {
         var dictionary = [String:Any]()
         dictionary[exName.text!.capitalized] = ""
         
-        self.ref.child("users").child(user.uid).child("Types").child("Crossfit").child(categoryPassed).updateChildValues(dictionary)
+        DBService.shared.createCrossfitExercise(dictionary: dictionary)
         
         self.navigationController?.popViewController(animated: true)
     }

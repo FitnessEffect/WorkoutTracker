@@ -27,6 +27,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = categoryPassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -77,7 +79,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         
         myExercise.category = "Amrap"
-
+        myExercise.type = "Crossfit"
         myExercise.exerciseDescription = (time[id] + " | " + metconString)
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
@@ -97,7 +99,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AmrapCell", for: indexPath) as! AmrapCustomCell
         
-        var text = exerciseList[(indexPath as NSIndexPath).row]
+        let text = exerciseList[(indexPath as NSIndexPath).row]
         
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
