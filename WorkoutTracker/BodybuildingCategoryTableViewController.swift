@@ -13,23 +13,22 @@ import Firebase
 class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate{
 
     var categories = [String]()
-    var user:FIRUser!
-    var ref:FIRDatabaseReference!
     var typePassed:String!
-    
-        //["Arms", "Chest", "Back", "Abs", "Legs"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         typePassed = "Bodybuilding"
+        title = typePassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
+
         self.navigationItem.rightBarButtonItem = rightBarButton
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
+        
+        
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -40,21 +39,10 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Types").child("Bodybuilding").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil{
-                let keyArray = value?.allKeys as! [String]
-                self.categories = keyArray
-                self.categories.sort()
-                self.tableView.reloadData()
-            }
-            // self.exerciseType.insert("Personal", at: 0)
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        DBService.shared.retrieveBodybuildingCategories(completion: {
+        self.categories = DBService.shared.bodybuildingCategories
+            self.tableView.reloadData()
+        })
     }
     
     
@@ -64,9 +52,6 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCategoryID") as! CreateBodybuildingCategoryViewController
         popController.typePassed = "Bodybuilding"
         self.navigationController?.pushViewController(popController, animated: true)
-        
-        // present the popover
-        //self.present(popController, animated: true, completion: nil)
         
     }
     
@@ -101,11 +86,10 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     func cellClicked(x:CGPoint){
         let index = tableView.indexPathForRow(at: x)
         let cell = tableView.cellForRow(at: index!)!
-        
         let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingSelectionVC") as! BodybuildingSelectionViewController
         let title = cell.textLabel?.text
+        DBService.shared.setCategory(category: title!)
         nextVC.setCategory(category:title!)
         self.navigationController?.pushViewController(nextVC, animated: true)
-
     }
 }

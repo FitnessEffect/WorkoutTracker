@@ -14,7 +14,6 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -22,15 +21,16 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var exerciseList:[String] = [""]
     var categoryPassed:String!
     
-    
     let rounds = ["1 round", "2 rounds", "3 rounds", "4 rounds", "5 rounds", "6 rounds", "7 rounds", "8 rounds", "9 rounds", "10 rounds"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = categoryPassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +62,6 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func addMetcon(_ sender: UIButton) {
-        
         myExercise.name = "Metcon"
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         var metconString = ""
@@ -73,8 +72,8 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             }
         }
         myExercise.category = "Metcon"
-        
         myExercise.exerciseDescription = (rounds[id] + " | " + metconString)
+        myExercise.type = "Crossfit"
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
@@ -94,18 +93,11 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MetconCell", for: indexPath) as! MetconCustomCell
-        
-        var text = exerciseList[(indexPath as NSIndexPath).row]
-//        if text.isEmpty{
-//            text = "Exercise: " + String((indexPath as NSIndexPath).row + 1)
-//        }
-        
+        let text = exerciseList[(indexPath as NSIndexPath).row]
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
         cell.exTextField.addTarget(self, action: #selector(MetconViewController.textFieldDidChange(_:)), for:UIControlEvents.editingChanged)
-        
         return cell
     }
     
@@ -116,7 +108,6 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        
        
         label.text = rounds[row]
         

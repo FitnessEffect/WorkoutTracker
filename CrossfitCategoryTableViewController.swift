@@ -11,21 +11,17 @@ import UIKit
 import Firebase
 
 class CrossfitCategoryTableViewController: UITableViewController {
-    
-    //let crossfitWorkouts = ["1RM", "Amrap", "Metcon", "Tabata", "Wods"]
-    var user:FIRUser!
-    var ref:FIRDatabaseReference!
+
     var categories = [String]()
     var typePassed:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         typePassed = "Crossfit"
+        title = typePassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
-        
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
       
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -36,21 +32,10 @@ class CrossfitCategoryTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Types").child("Crossfit").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil{
-                let keyArray = value?.allKeys as! [String]
-                self.categories = keyArray
-                self.categories.sort()
-                self.tableView.reloadData()
-            }
-            // self.exerciseType.insert("Personal", at: 0)
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        DBService.shared.retrieveCrossfitCategories(completion: {
+        self.categories = DBService.shared.crossfitCategories
+        self.tableView.reloadData()
+        })
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -124,21 +109,25 @@ class CrossfitCategoryTableViewController: UITableViewController {
         if cell.textLabel?.text == "1 Rep Max" || cell.textLabel?.text == "Wods"{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wodsVC") as! WodsViewController
             let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
             nextVC.setCategory(category:title!)
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if cell.textLabel?.text == "Tabata"{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabataVC") as! TabataViewController
             let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
             nextVC.setCategory(category:title!)
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if cell.textLabel?.text == "Metcon"{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "metconVC") as! MetconViewController
             let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
             nextVC.setCategory(category:title!)
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "amrapVC") as! AmrapViewController
             let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
             nextVC.setCategory(category:title!)
             self.navigationController?.pushViewController(nextVC, animated: true)
         }

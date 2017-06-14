@@ -28,6 +28,9 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = categoryPassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
@@ -43,7 +46,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-        if tableView.frame.contains(sender.location(in: view)){
+        if tableView.frame.contains(sender.location(in: view)) {
             self.view.endEditing(true)
         }
     }
@@ -91,7 +94,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
         
         myExercise.category = "Tabata"
-        
+        myExercise.type = "Crossfit"
         myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + tabataString
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])

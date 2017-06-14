@@ -30,32 +30,20 @@ class LoginViewController: UIViewController {
         ref = FIRDatabase.database().reference()
         
         register.isHidden = true
-//        login.layer.cornerRadius = 10.0
-//        login.clipsToBounds = true
-//        login.layer.borderWidth = 1
-//        login.layer.borderColor = UIColor.black.cgColor
-//        
-//        register.layer.cornerRadius = 10.0
-//        register.clipsToBounds = true
-//        register.layer.borderWidth = 1
-//        register.layer.borderColor = UIColor.black.cgColor
         
+        if self.prefs.object(forKey: "switch") as? Bool == true{
+            setAuthListener()
+        }
+        // Do any additional setup after loading the view.
+    }
+    
+    func setAuthListener() {
         FIRAuth.auth()?.addStateDidChangeListener({auth, user in
-            //check if remember me is true
-            if self.prefs.object(forKey: "switch") as? Bool == true{
-                if user != nil{
-                    if let temp = self.prefs.object(forKey: "email") as? String{
-                        self.emailTF.text = temp
-                    }
-                    if let temp = self.prefs.object(forKey: "password") as? String{
-                        self.passwordTF.text = temp
-                    }
-                    if let temp = self.prefs.object(forKey: "switch") as? Bool{
-                        self.rememberMeSwitch.isOn = temp
-                    }
+            DBService.shared.setUser(completion: { user, message in
+                if user == nil {
+                    print(message!)
+                    return
                 }
-            }
-            if user != nil{
                 if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
                     print(deviceTokenString)
                     //use email
@@ -64,9 +52,9 @@ class LoginViewController: UIViewController {
                     
                 }
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
-            }
+            })
+
         })
-        // Do any additional setup after loading the view.
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -122,11 +110,11 @@ class LoginViewController: UIViewController {
             prefs.set(emailTF.text, forKey: "email")
             prefs.set(passwordTF.text, forKey:"password")
             prefs.set(rememberMeSwitch.isOn, forKey:"switch")
+            setAuthListener()
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
                 
             })
         }
-        
     }
     
     @IBAction func register(_ sender: UIButton) {
@@ -160,7 +148,7 @@ class LoginViewController: UIViewController {
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
-                    // db.ref().child("emails").childBy... 
+                    
                     self.present(alertController, animated: true, completion: nil)
                     
                 } else {
@@ -185,7 +173,7 @@ class LoginViewController: UIViewController {
         //let workoutInputVC:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
         //workoutInputVC.setUsername(username: usernameTF.text!)
         
-        
+       
         
     }
     

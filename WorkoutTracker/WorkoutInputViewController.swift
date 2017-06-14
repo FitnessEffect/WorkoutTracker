@@ -10,20 +10,18 @@ import UIKit
 import Firebase
 import MessageUI
 
-class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate{
+class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate{
     
+    @IBOutlet var workoutInputView: WorkoutInputView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
-    
     @IBOutlet weak var exerciseBtn: UIButton!
-    
     @IBOutlet weak var dateBtn: UIButton!
     @IBOutlet weak var erase: UIButton!
     @IBOutlet weak var eraseResult: UIButton!
     @IBOutlet weak var eraseEmail: UIButton!
-    
     @IBOutlet weak var resultBtn: UIButton!
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var challenge: UIButton!
@@ -40,28 +38,27 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var buttonItemView:Any!
     var menuView:MenuView!
     var overlayView: OverlayView!
-    var clientPassed = Client()
     var tempKey:String!
-    var exercisePassed:Exercise!
     var exerciseDictionary = [String:Any]()
     var edit = false
-    let currentExercise = Exercise()
+    var tempExercise = Exercise()
     var exerciseKey:String!
     var translation1:CGFloat = 170
     var translation2:CGFloat = 100
     var translation3:CGFloat = 100
     var activeField: UITextField?
-    var clients = [Client]()
-    
+    var keyboardActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //workoutInputView.setDelegates()
+        //workoutInputView.delegate = self
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
- 
-        if clientPassed.firstName != "" {
+        
+        if DBService.shared.passedClient.firstName != ""{
             
-            title = clientPassed.firstName
+            title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
         }else{
             title = "Personal"
         }
@@ -72,9 +69,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         erase.alpha = 0
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
-        self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         
-        //registerForKeyboardNotifications()
+        resultBtn.isUserInteractionEnabled = false
+        challenge.isUserInteractionEnabled = false
+        save.isUserInteractionEnabled = false
+        
+        self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
@@ -89,8 +89,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
-        dateSelected = DateConverter.getCurrentDate()
-        dateBtn.setTitle(dateSelected, for: .normal)
+        registerForKeyboardNotifications()
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -101,48 +101,41 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-        
     }
     
+//    func handleTextEntered(input: String) {
+//        print(input)
+//    }
+    
+    func handleSelection(type: String) {
+        
+        let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
+                   self.present(inputVC, animated: true, completion: nil)
+
+    }
+//    func handleCreate(workoutName: String /*callback: () -> Void */ ) {
+//        // do stuff to create the workout
+//        exerciseDictionary = packageExercise()
+//        DBService.shared.createExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
+//            // launch confirmation alert
+//        })
+//        // callback()
+//    }
+    
+//    func saveToDB() {
+//        // save it
+//    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil{
-                let keyArray = value?.allKeys as! [String]
-                for client in keyArray{
-                    self.ref.child("users").child(userID!).child("Clients").child(client).observeSingleEvent(of: .value, with: { (snapshot) in
-                       let client = snapshot.value as? NSDictionary
-                        let c = Client()
-                        let fName = client?["firstName"] as! String
-                        let lName = client?["lastName"] as! String
-                        
-                        c.firstName = fName
-                        c.lastName = lName
-                        c.gender = client?["gender"] as! String
-                        c.age = client?["age"] as! String
-                        c.clientKey = client?["clientKey"] as! String
-                        
-                        
-                        let tempStr = fName + " " + lName
-                        self.nameArray.append(tempStr)
-                        self.clients.append(c)
-                    })
-  
-                }
-            }
-            self.nameArray.insert("Personal", at: 0)
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
         
         if edit == true{
-            //format exercise description string
-            exercisePassed.exerciseDescription = formatExerciseDescription(desStr: exercisePassed.exerciseDescription)
-            
+            dateSelected = DBService.shared.passedExercise.date
+            dateBtn.setTitle(dateSelected, for: .normal)
             fillInExercisePassed()
+            
+        }else{
+            dateSelected = DateConverter.getCurrentDate()
+            dateBtn.setTitle(dateSelected, for: .normal)
         }
     }
     
@@ -152,23 +145,25 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func fillInExercisePassed(){
-        dateBtn.titleLabel?.text = exercisePassed.date
-        let tempStr = exercisePassed.name + " " + exercisePassed.exerciseDescription
+        tempExercise = DBService.shared.passedExercise
+        tempExercise.exerciseDescription = formatExerciseDescription(desStr: tempExercise.exerciseDescription)
+        dateBtn.titleLabel?.text = tempExercise.date
+        let tempStr = tempExercise.name + " " + tempExercise.exerciseDescription
         saveExercise(exStr: tempStr)
-        saveResult(str: exercisePassed.result)
-    }
-    
-    func passExercise(exercise:Exercise){
-        exercisePassed = exercise
+        saveResult(str: tempExercise.result)
+        if tempExercise.opponent != ""{
+            saveEmail(emailStr: tempExercise.opponent)
+        }
     }
     
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         let myExercise = info["exerciseKey"]
         
-        currentExercise.name = (myExercise?.name)!
-        currentExercise.exerciseDescription = (myExercise?.exerciseDescription)!
-        descriptionTextView.text = myExercise?.exerciseDescription
+        tempExercise.name = (myExercise?.name)!
+        tempExercise.category = (myExercise?.category)!
+        tempExercise.exerciseDescription = (myExercise?.exerciseDescription)!
+        tempExercise.type = (myExercise?.type)!
         
         //format response
         let desStr:String = myExercise!.exerciseDescription
@@ -188,7 +183,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             newString.append(part)
             newString.append("\n")
         }
-       
+        
         return newString
     }
     
@@ -204,19 +199,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
                 self.erase.alpha = 1
-                //self.resultBtn.setTitleColor(UIColor(red: 0, green: 0, blue: 255, alpha: 1), for: .normal)
                 self.resultBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
+                self.resultBtn.isUserInteractionEnabled = true
             })
         }))
-    }
-    
-    func setClient(client:Client){
-        clientPassed = client
-    }
-    
-    func setExercise(exercise:Exercise){
-        exercisePassed = exercise
     }
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
@@ -240,35 +226,36 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             })
             menuShowing = false
         }
-        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-        menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
     
-    func btnAction(_ sender: UIButton) {
-        
-        if sender.tag == 1{
-            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
-            self.present(inputVC, animated: true, completion: nil)
-        }else if sender.tag == 2{
-            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
-            self.present(historyVC, animated: true, completion: nil)
-        }else if sender.tag == 3{
-            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
-            self.present(clientVC, animated: true, completion: nil)
-        }else if sender.tag == 4{
-            let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
-            self.present(challengesVC, animated: true, completion: nil)
-        }else if sender.tag == 5{
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-            self.present(loginVC, animated: true, completion: nil)
-        }
-    }
+//    func btnAction(_ sender: UIButton) {
+//        
+//        if sender.tag == 1{
+//            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
+//            self.present(inputVC, animated: true, completion: nil)
+//        }else if sender.tag == 2{
+//            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
+//            self.present(historyVC, animated: true, completion: nil)
+//        }else if sender.tag == 3{
+//            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+//            self.present(clientVC, animated: true, completion: nil)
+//        }else if sender.tag == 4{
+//            let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
+//            self.present(challengesVC, animated: true, completion: nil)
+//        }else if sender.tag == 5{
+//            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+//            self.present(loginVC, animated: true, completion: nil)
+//        }
+//    }
     
     func hitTest(_ sender:UITapGestureRecognizer){
+        
         if menuShowing == true{
             //remove menu view
             UIView.animate(withDuration: 0.3, animations: {
@@ -276,20 +263,46 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-        
         }else{
-            if dateBtn.frame.contains(sender.location(in: view)){
-                selectDate(dateBtn)
-            }else if exerciseBtn.frame.contains(sender.location(in: view)){
-                selectExercise(exerciseBtn)
-            }else if resultBtn.frame.contains(sender.location(in: view)){
-                selectResult(resultBtn)
-            }else if challenge.frame.contains(sender.location(in: view)){
-                challengeBtn(challenge)
-            }else if save.frame.contains(sender.location(in: view)){
-                saveBtn(save)
-            }
+//            if dateBtn.frame.contains(sender.location(in: view)){
+//                selectDate(dateBtn)
+//            }else if exerciseBtn.frame.contains(sender.location(in: view)){
+//                selectExercise(exerciseBtn)
+//            }else if resultBtn.frame.contains(sender.location(in: view)){
+//                selectResult(resultBtn)
+//            }else if challenge.frame.contains(sender.location(in: view)){
+//                challengeBtn(challenge)
+//            }else if save.frame.contains(sender.location(in: view)){
+//                saveBtn(save)
+//            }
         }
+    }
+    
+    func eraseExercise(){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.descriptionTextView.text = ""
+            self.descriptionTextView.alpha = 0
+            self.erase.alpha = 0
+            self.resultTextView.text = ""
+            self.resultTextView.alpha = 0
+            self.emailTextView.text = ""
+            self.emailTextView.alpha = 0
+            self.eraseResult.alpha = 0
+            self.eraseEmail.alpha = 0
+            self.resultBtn.frame = CGRect(x: 0, y: 232, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: 314, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.save.frame = CGRect(x: 0, y: 396, width: self.save.frame.width, height: self.save.frame.height)
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.exerciseBtn.alpha = 1
+                self.resultBtn.alpha = 1
+                self.challenge.alpha = 1
+                self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                self.save.setBackgroundImage(UIImage(named:""), for: .normal)
+                self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
+                self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+            })
+        }))
     }
     
     @IBAction func eraseBtn(_ sender: UIButton) {
@@ -317,6 +330,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                     self.save.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                    self.save.isUserInteractionEnabled = false
+                    self.challenge.isUserInteractionEnabled = false
+                    self.resultBtn.isUserInteractionEnabled = false
                 })
             }))
             
@@ -336,12 +352,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 UIView.animate(withDuration: 0.3, animations: {
                     self.resultBtn.alpha = 1
                     self.challenge.alpha = 1
-//                    self.save.setTitleColor(UIColor.lightGray, for: .normal)
-//                    self.challenge.setTitleColor(UIColor.lightGray, for: .normal)
                     self.save.setBackgroundImage(UIImage(named:""), for: .normal)
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
-                    //self.resultBtn.titleLabel?.textColor = UIColor(red: 0, green: 0, blue: 255, alpha: 1)
                     self.resultBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                    self.save.isUserInteractionEnabled = false
+                    self.challenge.isUserInteractionEnabled = false
                 })
             }))
             //erase email
@@ -355,7 +370,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1
-                     self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                    self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                     self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 })
             }))
@@ -366,11 +381,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func client(_ sender: UIBarButtonItem) {
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
-        
         
         xPosition = self.view.frame.width/2
         yPosition = (buttonItemView as AnyObject).frame.maxY + 20
@@ -389,6 +402,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if sender.tag == 1{
+            nameArray.removeAll()
+            for client in DBService.shared.clients{
+                let fName = client.firstName
+                let lName = client.lastName
+                let tempStr = fName + " " + lName
+                self.nameArray.append(tempStr)
+            }
+            nameArray.insert("Personal", at: 0)
             popController.setClients(clients: nameArray)
             popController.setTag(tag: 1)
         }
@@ -397,155 +418,178 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.present(popController, animated: true, completion: nil)
     }
     
+    //decouple ui stuff =>> put in method
     @IBAction func saveBtn(_ sender: UIButton) {
-        exerciseKey = self.ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
-        
         
         if edit == false{
             if self.title == "Personal"{
-                currentExercise.date = (dateBtn.titleLabel?.text!)!
-                currentExercise.creator = user.email!
-                currentExercise.result = resultTextView.text!
-                //currentExercise.exerciseDescription = descriptionTextView.text!
-                currentExercise.exerciseKey = exerciseKey
                 
-                //move currentExercise to exerciseDictionary for firebase
-                exerciseDictionary["name"] =  currentExercise.name
-                exerciseDictionary["description"] =  currentExercise.exerciseDescription
-                exerciseDictionary["date"] =  currentExercise.date
-                exerciseDictionary["result"] =  currentExercise.result
-                exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
+                exerciseDictionary = packageExercise()
                 
-                self.ref.child("users").child(user.uid).child("Exercises").child(exerciseKey).setValue(exerciseDictionary)
-                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                    // Put your code which should be executed with a delay here
-                    self.dismiss(animated: true, completion: nil)
-                })})
+                DBService.shared.createExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
+                    //DBService.shared.clearCurrentKey()
+                    eraseExercise()
+                    self.save.isUserInteractionEnabled = false
+                    self.challenge.isUserInteractionEnabled = false
+                    self.resultBtn.isUserInteractionEnabled = false
+                    let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                    present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    })})
+                })
             }else{
-                currentExercise.date = (dateBtn.titleLabel?.text)!
-                currentExercise.creator = user.email!
-                currentExercise.result = resultTextView.text!
-                currentExercise.exerciseDescription = descriptionTextView.text!
-                currentExercise.exerciseKey = exerciseKey
-                currentExercise.client = self.title!
                 
-                exerciseDictionary["name"] =  currentExercise.name
-                exerciseDictionary["description"] =  currentExercise.exerciseDescription
-                exerciseDictionary["date"] =  currentExercise.date
-                exerciseDictionary["result"] =  currentExercise.result
-                exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
-                exerciseDictionary["client"] = currentExercise.client
+                exerciseDictionary = packageExercise()
                 
-                retrieveClientID(clientObj: clientPassed)
-                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                    // Put your code which should be executed with a delay here
-                    self.dismiss(animated: true, completion: nil)
-                })})
+                if self.edit == false{
+                    DBService.shared.createExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+                        eraseExercise()
+                        self.save.isUserInteractionEnabled = false
+                        self.challenge.isUserInteractionEnabled = false
+                        self.resultBtn.isUserInteractionEnabled = false
+                        let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                        present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                            self.dismiss(animated: true, completion: nil)
+                        })})
+                    })
+                }else if self.edit == true{
+                    DBService.shared.editExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+                        eraseExercise()
+                        self.save.isUserInteractionEnabled = false
+                        self.challenge.isUserInteractionEnabled = false
+                        self.resultBtn.isUserInteractionEnabled = false
+                        let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                        present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                            self.dismiss(animated: true, completion: nil)
+                        })})
+                    })
+                }
             }
         }else{
             if self.title == "Personal"{
-                currentExercise.date = (dateBtn.titleLabel?.text)!
-                currentExercise.creator = user.email!
-                currentExercise.result = resultTextView.text!
-                currentExercise.exerciseDescription = descriptionTextView.text!
-                if currentExercise.name == ""{
-                    exerciseDictionary["name"] = exercisePassed.name
-                }else{
-                    exerciseDictionary["name"] =  currentExercise.name
-                }
-                exerciseDictionary["description"] =  currentExercise.exerciseDescription
-                exerciseDictionary["date"] =  currentExercise.date
-                exerciseDictionary["result"] =  currentExercise.result
-                exerciseDictionary["exerciseKey"] =  exercisePassed.exerciseKey
                 
-                self.ref.child("users").child(user.uid).child("Exercises").child(exercisePassed.exerciseKey).updateChildValues(exerciseDictionary)
-                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                    // Put your code which should be executed with a delay here
-                    self.dismiss(animated: true, completion: nil)
-                })})
+                exerciseDictionary = packageExercise()
+                
+                DBService.shared.editExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
+                    eraseExercise()
+                    self.save.isUserInteractionEnabled = false
+                    self.challenge.isUserInteractionEnabled = false
+                    self.resultBtn.isUserInteractionEnabled = false
+                    let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                    present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                        self.dismiss(animated: true, completion: nil)
+                    })})
+                })
+                
             }else{
                 
-                currentExercise.date = (dateBtn.titleLabel?.text)!
-                currentExercise.creator = user.email!
-                currentExercise.result = resultTextView.text!
-                currentExercise.exerciseDescription = descriptionTextView.text!
-                currentExercise.client = self.title!
-                if currentExercise.name == ""{
-                    exerciseDictionary["name"] = exercisePassed.name
-                }else{
-                    exerciseDictionary["name"] =  currentExercise.name
-                }
-                exerciseDictionary["description"] =  currentExercise.exerciseDescription
-                exerciseDictionary["date"] =  currentExercise.date
-                exerciseDictionary["result"] =  currentExercise.result
-                exerciseDictionary["exerciseKey"] =  exercisePassed.exerciseKey
-                exerciseDictionary["client"] = currentExercise.client
+                exerciseDictionary = packageExercise()
                 
-                retrieveClientID(clientObj: clientPassed)
-                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                    // Put your code which should be executed with a delay here
-                    self.dismiss(animated: true, completion: nil)
-                })})
+                if self.edit == false{
+                    DBService.shared.createExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+                        eraseExercise()
+                        self.save.isUserInteractionEnabled = false
+                        self.challenge.isUserInteractionEnabled = false
+                        self.resultBtn.isUserInteractionEnabled = false
+                        let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                        present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                            self.dismiss(animated: true, completion: nil)
+                        })})
+                    })
+                }else if self.edit == true{
+                    DBService.shared.editExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+                        eraseExercise()
+                        self.save.isUserInteractionEnabled = false
+                        self.challenge.isUserInteractionEnabled = false
+                        self.resultBtn.isUserInteractionEnabled = false
+                        let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                        present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                            self.dismiss(animated: true, completion: nil)
+                        })})
+                    })
+                }
             }
         }
         
         //post request for notification if challenge is on!!!
-        if (emailTextView.text?.characters.contains("@"))!{
-            
-            currentExercise.creator = user.email!
-            currentExercise.opponent = (emailTextView.text)!
-            
-            //does not work on different network?
-            var request = URLRequest(url: URL(string: "http://192.168.0.5:3001/challenges")!)
-            request.httpMethod = "POST"
-            //send email / ex id etc
-            let postString = "exerciseKey=\(currentExercise.exerciseKey)&opponentEmail=\(currentExercise.opponent)&userID=\(user.uid)&userEmail=\(user.email!)"
-            request.httpBody = postString.data(using: .utf8)
-            print(postString)
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                print(response!)
-                guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                    print("error=\(String(describing: error))")
-                    return
-                }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    print("response = \(String(describing: response))")
-                }
-                
-                let responseString = String(data: data, encoding: .utf8)
-                print("responseString = \(String(describing: responseString))")
-            }
-            task.resume()
+        
+        if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
+            APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
         }
     }
     
-    func retrieveClientID(clientObj:Client){
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            // let value = snapshot.value as! NSDictionary
-            if let clientsVal = snapshot.value as? [String: [String: AnyObject]] {
-                for client in clientsVal {
-                    if client.value["lastName"] as! String == clientObj.lastName && client.value["age"] as! String == clientObj.age{
-                        self.tempKey = client.key
-                        if self.edit == false{
-                            self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exerciseKey).setValue(self.exerciseDictionary)
-                        }else if self.edit == true{
-                            self.ref.child("users").child(self.user.uid).child("Clients").child(self.tempKey).child("Exercises").child(self.exercisePassed.exerciseKey).updateChildValues(self.exerciseDictionary)
-                        }
-                        return
-                    }
-                }
+    func handleSave() {
+        // 1. package up the dictionary data
+        // 2. whatever else always happens
+        
+        // 3. dependant actions
+        if edit {
+            switch (title!) {
+                case "Personal":
+                    // 4. call the db method you need
+                    // 5. as the completion, pass in some other function in this VC
+                    // that function can call some UI method
+                    // separate the alert function into a method that takes in a title and body, and call it with the right title/body
+                    break
+                default:
+                    break
             }
-        }) { (error) in
-            print(error.localizedDescription)
         }
+        else {
+            switch (title!) {
+            case "Personal":
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func packageExercise() -> [String:Any]{
+        let currentExercise = Exercise()
+        
+        currentExercise.date = (dateBtn.titleLabel?.text!)!
+        currentExercise.creatorEmail = user.email!
+        currentExercise.result = resultTextView.text!
+        //Save unformatted version of description
+        currentExercise.exerciseDescription = tempExercise.exerciseDescription
+        currentExercise.creatorID = user.uid
+        currentExercise.name = tempExercise.name
+        currentExercise.type = tempExercise.type
+        currentExercise.category = tempExercise.category
+        
+        
+        //how to perform if passedExercise is not initialized
+        if DBService.shared.passedExercise.exerciseKey == ""{
+            //create exercise key
+            self.exerciseKey = DBService.shared.createExerciseKey()
+        }else{
+            exerciseKey = DBService.shared.passedExercise.exerciseKey
+        }
+        currentExercise.exerciseKey = exerciseKey
+        
+        currentExercise.client = self.title!
+        if emailTextView.text.contains("@"){
+            currentExercise.opponent = emailTextView.text!
+        }else{
+            currentExercise.opponent = ""
+        }
+        
+        //move currentExercise to exerciseDictionary for firebase
+        exerciseDictionary["name"] =  currentExercise.name
+        exerciseDictionary["description"] =  currentExercise.exerciseDescription
+        exerciseDictionary["date"] =  currentExercise.date
+        exerciseDictionary["result"] =  currentExercise.result
+        exerciseDictionary["exerciseKey"] =  currentExercise.exerciseKey
+        exerciseDictionary["client"] = currentExercise.client
+        exerciseDictionary["opponent"] = currentExercise.opponent
+        exerciseDictionary["creatorEmail"] = currentExercise.creatorEmail
+        exerciseDictionary["creatorID"] = currentExercise.creatorID
+        exerciseDictionary["type"] = currentExercise.type
+        exerciseDictionary["category"] = currentExercise.category
+        
+        return exerciseDictionary
     }
     
     @IBAction func selectResult(_ sender: UIButton) {
@@ -568,13 +612,17 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.preferredContentSize = CGSize(width: 300, height: 250)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
-        if currentExercise.name == "1 Rep Max" || currentExercise.name == "Back" || currentExercise.name == "Legs" || currentExercise.name == "Abs" || currentExercise.name == "Arms" || currentExercise.name == "Chest"{
+        if tempExercise.name == ""{
+            tempExercise = DBService.shared.passedExercise
+        }
+        
+        if tempExercise.category == "1 Rep Max" || tempExercise.type == "Bodybuilding"{
             popController.setTag(tag: 3)
             
-        }else if currentExercise.name == "Tabata" || currentExercise.name == "Metcon" || currentExercise.name == "Fran" || currentExercise.name == "Grace" || currentExercise.name == "Murph"{
+        }else if tempExercise.name == "Tabata" || tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph"{
             popController.setTag(tag: 2)
             
-        }else if currentExercise.name == "Amrap"{
+        }else if tempExercise.name == "Amrap"{
             popController.setTag(tag: 4)
         }
         
@@ -669,11 +717,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func savePickerName(name:String){
         self.title = name
-        clientPassed = getClientFromName(n:name)
+        DBService.shared.setPassedClient(client:getClientFromName(n:name))
     }
     
     func getClientFromName(n:String) -> Client{
-        for client in clients{
+        
+        for client in DBService.shared.clients{
             if n == client.firstName + " " + client.lastName{
                 return client
             }
@@ -694,62 +743,48 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 self.save.frame = CGRect(x: 0, y: (411 + self.translation2), width: self.save.frame.width, height: self.save.frame.height)
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.save.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                self.challenge.isUserInteractionEnabled = true
+                self.save.isUserInteractionEnabled = true
+                
             })
         }))
     }
-    
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
     
-    func launchEmail(sendTo address: String) {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients([address])
-            mail.setMessageBody("<a href='workout-tracker://challenges/accept'>Clickme</a>", isHTML: true)
-            present(mail, animated: true)
-        } else {
-            print("no go")
-        }
+    func keyboardWasShown(notification: NSNotification){
+        //let info: NSDictionary  = notification.userInfo! as NSDictionary
+        //let keyboardSize = (info.value(forKey: UIKeyboardFrameEndUserInfoKey) as AnyObject).cgRectValue.size
+        //let contentInsets:UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+        //scrollView.contentInset = contentInsets
+        //scrollView.scrollIndicatorInsets = contentInsets
+        
+        keyboardActive = true
     }
     
-    
-//    func keyboardWasShown(notification: NSNotification){
-//        //Need to calculate keyboard exact size due to Apple suggestions
-//        let info: NSDictionary  = notification.userInfo! as NSDictionary
-//        let keyboardSize = (info.value(forKey: UIKeyboardFrameEndUserInfoKey) as AnyObject).cgRectValue.size
-//        let contentInsets:UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
-//        scrollView.contentInset = contentInsets
-//        scrollView.scrollIndicatorInsets = contentInsets
-//        self.scrollView.setContentOffset(CGPoint(x:0, y:(keyboardSize.height)), animated: true)
-//    }
-//    
-//    func keyboardWillBeHidden(notification: NSNotification){
-//        //Once keyboard disappears, restore original positions
+    func keyboardWillBeHidden(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
 //        var info = notification.userInfo!
 //        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
 //        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
 //        self.scrollView.contentInset = contentInsets
 //        self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-//    }
-//    
-//    func registerForKeyboardNotifications(){
-//        //Adding notifies on keyboard appearing
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//    }
-//    
-//    func deregisterFromKeyboardNotifications(){
-//        //Removing notifies on keyboard appearing
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//    }
+        
+        keyboardActive = false
+    }
     
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        print(error!)
-        controller.dismiss(animated: true, completion: nil)
+    func registerForKeyboardNotifications(){
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
 

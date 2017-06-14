@@ -14,28 +14,22 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     
-    var wods = [String]()
-    var oneRM = [String]()
-        
-        //["Back Squat", "Front Squat", "Overhead Squat", "Snatch", "Clean & Jerk", "Clean", "Deadlift", "Bench Press"]
-    
+    var exercises = [String]()
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var categoryPassed:String!
-    var user:FIRUser!
-    var ref:FIRDatabaseReference!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = categoryPassed
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
 
         if categoryPassed == "1 Rep Max"{
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         }
-        
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,25 +37,10 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            ref.child("users").child(userID!).child("Types").child("Crossfit").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                if value != nil{
-                    let keyArray = value?.allKeys as! [String]
-                    if self.categoryPassed == "1 Rep Max"{
-                       self.oneRM = keyArray
-                        self.oneRM.sort()
-                    }else{
-                        self.wods = keyArray
-                        self.wods.sort()
-                    }
-                    
-                    self.pickerOutlet.reloadAllComponents()
-                }
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+        DBService.shared.retrieveCrossfitCategoryExercises(completion: {
+            self.exercises = DBService.shared.exercisesForCrossfitCategory
+            self.pickerOutlet.reloadAllComponents()
+        })
     }
     
     func setCategory(category:String){
@@ -75,33 +54,26 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         popController.setCategory(category:categoryPassed)
         self.navigationController?.pushViewController(popController, animated: true)
     }
-
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if categoryPassed == "Wods"{
-            return wods.count
-        }else{
-            return oneRM.count
-        }
+        return exercises.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if categoryPassed == "Wods"{
-            return wods[row]
-        }else{
-            return oneRM[row]
-        }
+        return exercises[row]
     }
 
     @IBAction func addWod(_ sender: UIButton) {
         
         if categoryPassed == "Wods"{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-            myExercise.name = wods[id]
+            myExercise.name = exercises[id]
+            myExercise.category = "Wods"
+            myExercise.type = "Crossfit"
             
             if myExercise.name == "Fran"{
                 myExercise.exerciseDescription = ("21-15-9 reps for time | thrusters (95lbs) | pull-ups")
@@ -112,8 +84,10 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             }
         }else{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-            myExercise.name = ("1 Rep Max")
-            myExercise.exerciseDescription = (oneRM[id])
+            myExercise.name = exercises[id]
+            myExercise.category = "1 Rep Max"
+            myExercise.exerciseDescription = "1 Rep Max"
+            myExercise.type = "Crossfit"
         }
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
@@ -124,11 +98,7 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         
-        if categoryPassed == "Wods"{
-            label.text = wods[row]
-        }else{
-            label.text = oneRM[row]
-        }
+        label.text = exercises[row]
         
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 28.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle

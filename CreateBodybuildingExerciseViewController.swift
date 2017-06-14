@@ -16,15 +16,11 @@ class CreateBodybuildingExerciseViewController: UIViewController {
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var user:FIRUser!
-    var ref:FIRDatabaseReference!
     var categoryPassed:String!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -44,14 +40,12 @@ class CreateBodybuildingExerciseViewController: UIViewController {
         categoryPassed = category
     }
     
-    
     @IBAction func addExercise(_ sender: UIButton) {
-        
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
-        dictionary[exName.text!.capitalized] = ""
+        dictionary[exName.text!.capitalized] = "True"
         
-        self.ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child(categoryPassed).updateChildValues(dictionary)
+        DBService.shared.createBodybuildingExercise(dictionary: dictionary)
         
         self.navigationController?.popViewController(animated: true)
     }

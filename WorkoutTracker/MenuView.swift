@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MenuViewDelegate {
+    func handleSelection(type: String)
+}
+
 class MenuView: UIView {
     
     
@@ -18,9 +22,10 @@ class MenuView: UIView {
     @IBOutlet weak var settingsBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
     
+    var delegate: MenuViewDelegate?
+    
     
     class func instanceFromNib() -> UIView {
-        
         return UINib(nibName: "MenuView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MenuView
     }
     
@@ -60,6 +65,60 @@ class MenuView: UIView {
         self.removeFromSuperview()
     }
     
+    func profileButtonAction() {
+        // delegate.handleSelection(type: "profile")
+        // self.removeFromSuperview()
+    }
+    
+//    func addSelector() {
+//        //slide view in here
+//        if menuShowing == false{
+//            addFx()
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
+//                self.view.isHidden = false
+//                self.overlayView.alpha = 1
+//            })
+//            menuShowing = true
+//        }else{
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+//                self.overlayView.alpha = 0
+//            })
+//            menuShowing = false
+//        }
+//        profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//        logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+//    }
+
+    var navigationController: UINavigationController?
+    
+    @IBAction func btnAction(_ sender: UIButton) {
+        if sender.tag == 1{
+            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! WorkoutInputViewController
+            //self.present(inputVC, animated: true, completion: nil)
+            inputVC.handleSelection(type: "home")
+            
+        }else if sender.tag == 2{
+            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
+            //self.present(historyVC, animated: true, completion: nil)
+           
+        }else if sender.tag == 3{
+            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            //self.present(clientVC, animated: true, completion: nil)
+            
+        }else if sender.tag == 4{
+            let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
+            //self.present(challengesVC, animated: true, completion: nil)
+        }else if sender.tag == 5{
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            //self.present(loginVC, animated: true, completion: nil)
+        }
+    }
     
 //    func triggerButton1(completion: () -> Void) {
 //        completion()
