@@ -11,6 +11,7 @@ import Firebase
 
 class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var notificationNumber: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
@@ -29,6 +30,8 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         ref = FIRDatabase.database().reference()
       
         title = "History"
+        
+            NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -49,9 +52,24 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.text = ""
+        }else{
+            notificationNumber.text = String(num)
+        }
         DBService.shared.retrieveExercisesForUser {
             self.exerciseArray = DBService.shared.exercisesForUser
             self.tableViewOutlet.reloadData()
+        }
+    }
+    
+    func appEnteredForeground(_ notification: Notification){
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.text = ""
+        }else{
+            notificationNumber.text = String(num)
         }
     }
     

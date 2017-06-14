@@ -24,9 +24,12 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var menuShowing = false
     
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var notificationNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+           NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -47,8 +50,23 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.text = ""
+        }else{
+            notificationNumber.text = String(num)
+        }
             self.clientArray = DBService.shared.clients
             self.tableViewOutlet.reloadData()
+    }
+    
+    func appEnteredForeground(_ notification: Notification){
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.text = ""
+        }else{
+            notificationNumber.text = String(num)
+        }
     }
     
     //TableView

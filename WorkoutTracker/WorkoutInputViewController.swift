@@ -26,7 +26,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var challenge: UIButton!
     @IBOutlet weak var client: UIBarButtonItem!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var menuShowing = false
     var dateSelected:String!
@@ -49,10 +48,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var activeField: UITextField?
     var keyboardActive = false
     
+    @IBOutlet weak var notificationNumber: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //workoutInputView.setDelegates()
         //workoutInputView.delegate = self
+        
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -107,6 +111,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
 //        print(input)
 //    }
     
+    func appEnteredForeground(_ notification: Notification){
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.text = ""
+        }else{
+            notificationNumber.text = String(num)
+        }
+    }
+    
     func handleSelection(type: String) {
         
         let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
@@ -127,7 +140,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
 //    }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.text = ""
+        }else{
+            notificationNumber.text = String(num)
+        }
         if edit == true{
             dateSelected = DBService.shared.passedExercise.date
             dateBtn.setTitle(dateSelected, for: .normal)
@@ -138,6 +156,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             dateBtn.setTitle(dateSelected, for: .normal)
         }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

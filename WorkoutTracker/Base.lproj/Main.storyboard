@@ -150,6 +150,13 @@
                                     <action selector="selectDate:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="odB-cl-8HG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jP-Bl-N1v">
+                                <rect key="frame" x="36" y="10" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="17"/>
+                                <color key="textColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
@@ -180,6 +187,7 @@
                         <outlet property="eraseEmail" destination="UXq-zi-tdN" id="avv-DW-cWZ"/>
                         <outlet property="eraseResult" destination="30Z-oB-Cek" id="Zs7-5j-A7H"/>
                         <outlet property="exerciseBtn" destination="CF5-Jb-Wye" id="fYP-t1-LjI"/>
+                        <outlet property="notificationNumber" destination="3jP-Bl-N1v" id="4RY-aE-oxH"/>
                         <outlet property="resultBtn" destination="Uu5-Zy-Bx8" id="coR-W8-4Q4"/>
                         <outlet property="resultTextView" destination="Abk-mw-bOp" id="1z8-UW-UdI"/>
                         <outlet property="save" destination="UNQ-aE-emQ" id="mZv-Qe-avN"/>
@@ -395,6 +403,13 @@
                                     <outlet property="delegate" destination="U4l-CF-NEd" id="6g4-cX-RjI"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXt-F7-nlC">
+                                <rect key="frame" x="45" y="11" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="17"/>
+                                <color key="textColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -418,6 +433,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="notificationNumber" destination="DXt-F7-nlC" id="n2S-Zr-Cbl"/>
                         <outlet property="tableViewOutlet" destination="PhY-tN-TJF" id="oFC-yc-uwc"/>
                     </connections>
                 </viewController>
@@ -1517,6 +1533,13 @@
                                     <outlet property="delegate" destination="y7H-dD-F6s" id="0jg-YO-xNl"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcL-9g-keO">
+                                <rect key="frame" x="42" y="8" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="17"/>
+                                <color key="textColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1539,6 +1562,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="notificationNumber" destination="mcL-9g-keO" id="QSm-aG-OkN"/>
                         <outlet property="tableViewOutlet" destination="Sf4-uq-5X3" id="U59-16-NNM"/>
                     </connections>
                 </viewController>
@@ -1950,6 +1974,6 @@
         <image name="menuIcon" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuF-iy-fzI"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>
