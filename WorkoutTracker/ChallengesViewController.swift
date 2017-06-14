@@ -24,6 +24,8 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.resetBadgeNumber()
         title = "Challenges"
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
@@ -46,7 +48,15 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.retrieveChallengesExercises {
+            
             self.exerciseArray = DBService.shared.challengeExercises
+            self.exerciseArray.sort(by: {a, b in
+                if a.date > b.date {
+                    return true
+                }
+                return false
+            })
+
             self.tableViewOutlet.reloadData()
         }
     }
@@ -132,12 +142,13 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ChallengeCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell", for: indexPath) as! ChallengeCustomCell
         
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
         cell.challenger.text = exercise.creatorEmail
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
+        cell.date.text = exercise.date
         return cell
     }
     

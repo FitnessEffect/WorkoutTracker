@@ -147,7 +147,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func fillInExercisePassed(){
         tempExercise = DBService.shared.passedExercise
         tempExercise.exerciseDescription = formatExerciseDescription(desStr: tempExercise.exerciseDescription)
-        dateBtn.titleLabel?.text = tempExercise.date
+        dateBtn.setTitle(tempExercise.date, for: .normal)
         let tempStr = tempExercise.name + " " + tempExercise.exerciseDescription
         saveExercise(exStr: tempStr)
         saveResult(str: tempExercise.result)
@@ -226,33 +226,33 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             })
             menuShowing = false
         }
-//        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
+        menuView.logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
     }
     
-//    func btnAction(_ sender: UIButton) {
-//        
-//        if sender.tag == 1{
-//            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
-//            self.present(inputVC, animated: true, completion: nil)
-//        }else if sender.tag == 2{
-//            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
-//            self.present(historyVC, animated: true, completion: nil)
-//        }else if sender.tag == 3{
-//            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
-//            self.present(clientVC, animated: true, completion: nil)
-//        }else if sender.tag == 4{
-//            let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
-//            self.present(challengesVC, animated: true, completion: nil)
-//        }else if sender.tag == 5{
-//            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-//            self.present(loginVC, animated: true, completion: nil)
-//        }
-//    }
+    func btnAction(_ sender: UIButton) {
+        
+        if sender.tag == 1{
+            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
+            self.present(inputVC, animated: true, completion: nil)
+        }else if sender.tag == 2{
+            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
+            self.present(historyVC, animated: true, completion: nil)
+        }else if sender.tag == 3{
+            let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            self.present(clientVC, animated: true, completion: nil)
+        }else if sender.tag == 4{
+            let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
+            self.present(challengesVC, animated: true, completion: nil)
+        }else if sender.tag == 5{
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+    }
     
     func hitTest(_ sender:UITapGestureRecognizer){
         
