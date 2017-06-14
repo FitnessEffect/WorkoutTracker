@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ref:FIRDatabaseReference!
     var user:FIRUser!
 
-    
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
          UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 18)!], for: .normal) // your textattributes here
@@ -37,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
-        
         return true
     }
     
@@ -72,16 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         print("Push notification received: \(data)")
-        setBadgeNumber(-1)
-        //let challenger = data["challenger"]!
-        var exerciseDictionary = data["exercise"]! as! [String:Any]
-        //exerciseDictionary["challenger"] = challenger as! String
         
+        setBadgeNumber(-1)
+        
+        var exerciseDictionary = data["exercise"]! as! [String:Any]
         
         //handle challenge notification
         //save to firebase or nsuserdefault
         DBService.shared.saveChallengeExercise(exerciseDictionary: exerciseDictionary)
-//        self.ref.child("users").child(user.uid).child("Challenges").child(exKey).setValue(exerciseDictionary)
         
            let myEx = Exercise()
         myEx.name = exerciseDictionary["name"] as! String
@@ -99,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DBService.shared.setPassedExercise(exercise:myEx)
 
         //grab reference to vc on screen. Do not instantiate
-         let vc = window?.rootViewController?.presentedViewController?.childViewControllers[0] as! WorkoutInputViewController
+        let vc = window?.rootViewController?.presentedViewController?.childViewControllers[0] as! WorkoutInputViewController
         
         vc.fillInExercisePassed()
         
@@ -116,9 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -135,7 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
         print(options)
         print(url)
         return false

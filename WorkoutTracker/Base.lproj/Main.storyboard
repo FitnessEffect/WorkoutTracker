@@ -1573,7 +1573,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GxR-g9-zJT">
             <objects>
-                <navigationController storyboardIdentifier="inputNavVC" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="inputNavID" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IFa-KB-lpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1974,6 +1974,6 @@
         <image name="menuIcon" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJO-pp-3SY"/>
+        <segue reference="OuF-iy-fzI"/>
     </inferredMetricsTieBreakers>
 </document>

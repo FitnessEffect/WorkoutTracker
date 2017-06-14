@@ -148,10 +148,7 @@ class CalendarViewController:UIViewController{
             let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
             presenter.setNewDate(dateStr: date)
             dateBtn = false
-        }//else{
-         //   let presenter = self.presentingViewController as! CreateEntryViewController
-        //    presenter.saveDate(date: date)
-        //}
+        }
         self.dismiss(animated: true, completion: nil)
         return date
     }

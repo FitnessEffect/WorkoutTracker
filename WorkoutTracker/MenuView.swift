@@ -95,29 +95,44 @@ class MenuView: UIView {
 //        logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
 //    }
 
-    var navigationController: UINavigationController?
+    func getCurrentViewController() -> UIViewController? {
+        
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+        
+    }
     
     @IBAction func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
-            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! WorkoutInputViewController
-            //self.present(inputVC, animated: true, completion: nil)
-            
-            inputVC.handleSelection(type: "home")
+            let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
+            let currentController = self.getCurrentViewController()
+            currentController?.present(inputVC, animated: false, completion: nil)
             
         }else if sender.tag == 2{
             let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
-            //self.present(historyVC, animated: true, completion: nil)
-           
+            let currentController = self.getCurrentViewController()
+            currentController?.present(historyVC, animated: false, completion: nil)
+
         }else if sender.tag == 3{
             let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
-            //self.present(clientVC, animated: true, completion: nil)
+            let currentController = self.getCurrentViewController()
+            currentController?.present(clientVC, animated: false, completion: nil)
             
         }else if sender.tag == 4{
             let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
-            //self.present(challengesVC, animated: true, completion: nil)
+            let currentController = self.getCurrentViewController()
+            currentController?.present(challengesVC, animated: false, completion: nil)
+            
         }else if sender.tag == 5{
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-            //self.present(loginVC, animated: true, completion: nil)
+            let currentController = self.getCurrentViewController()
+            currentController?.present(loginVC, animated: false, completion: nil)
         }
     }
     
