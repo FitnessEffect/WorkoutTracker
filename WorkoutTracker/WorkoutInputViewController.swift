@@ -364,42 +364,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func client(_ sender: UIBarButtonItem) {
-        var xPosition:CGFloat = 0
-        var yPosition:CGFloat = 0
-        
-        xPosition = self.view.frame.width/2
-        yPosition = (buttonItemView as AnyObject).frame.maxY + 20
-        
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 300)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        
-        if sender.tag == 1{
-            nameArray.removeAll()
-            for client in DBService.shared.clients{
-                let fName = client.firstName
-                let lName = client.lastName
-                let tempStr = fName + " " + lName
-                self.nameArray.append(tempStr)
-            }
-            nameArray.insert("Personal", at: 0)
-            popController.setClients(clients: nameArray)
-            popController.setTag(tag: 1)
-        }
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
-    }
     
     //decouple ui stuff =>> put in method
     @IBAction func saveBtn(_ sender: UIButton) {
@@ -573,6 +537,43 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         exerciseDictionary["category"] = currentExercise.category
         
         return exerciseDictionary
+    }
+    
+    @IBAction func client(_ sender: UIBarButtonItem) {
+        var xPosition:CGFloat = 0
+        var yPosition:CGFloat = 0
+        
+        xPosition = self.view.frame.width/2
+        yPosition = self.view.frame.minY + 60
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 300)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        if sender.tag == 1{
+            nameArray.removeAll()
+            for client in DBService.shared.clients{
+                let fName = client.firstName
+                let lName = client.lastName
+                let tempStr = fName + " " + lName
+                self.nameArray.append(tempStr)
+            }
+            nameArray.insert("Personal", at: 0)
+            popController.setClients(clients: nameArray)
+            popController.setTag(tag: 1)
+        }
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
     }
     
     @IBAction func selectResult(_ sender: UIButton) {
