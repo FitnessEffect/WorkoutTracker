@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DK Cool Crayon", size: 16)!], for: UIControlState.normal)
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         ref = FIRDatabase.database().reference()
