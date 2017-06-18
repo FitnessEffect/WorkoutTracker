@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var notificationNumber: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -28,10 +28,10 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-      
+        
         title = "History"
         
-            NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -66,8 +66,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 }
                 return false
             })
-            
-
             self.tableViewOutlet.reloadData()
         }
     }
@@ -113,8 +111,8 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             })
             menuShowing = false
         }else{
-          if tableViewOutlet.frame.contains(sender.location(in: view)){
-            performSegue(withIdentifier: "editExerciseSegue", sender: sender)
+            if tableViewOutlet.frame.contains(sender.location(in: view)){
+                performSegue(withIdentifier: "editExerciseSegue", sender: sender)
             }
         }
     }
@@ -147,7 +145,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 let id = self.exerciseArray[x].exerciseKey
                 
                 DBService.shared.deleteExerciseForUser(id: id)
-
+                
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 tableView.reloadData()

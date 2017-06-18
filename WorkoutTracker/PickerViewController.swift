@@ -9,7 +9,7 @@
 import UIKit
 
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     @IBOutlet weak var saveBtn: UIButton!
     
     var namesPassed:[String]!
@@ -26,7 +26,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         weights.append("lbs")
         reps.append("reps")
@@ -36,7 +36,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             reps.append(String(i))
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +49,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func setTag(tag: Int){
         tagPassed = tag
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if tagPassed == 2{
             return 3
@@ -61,14 +61,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if tagPassed == 1{
-        return namesPassed.count
+            return namesPassed.count
         }else if tagPassed == 2{
             if component == 0{
-                 return hours.count
+                return hours.count
             }else if component == 1{
                 return minutes.count
             }else{
-                 return seconds.count
+                return seconds.count
             }
         }else if tagPassed == 3{
             return weights.count
@@ -85,9 +85,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             if component == 0{
                 return hours[row]
             }else if component == 1{
-               return minutes[row]
+                return minutes[row]
             }else{
-               return seconds[row]
+                return seconds[row]
             }
         }else if tagPassed == 3{
             return weights[row]
@@ -98,12 +98,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-
+        
         if tagPassed == 1{
-        let pickerName = namesPassed[row]
-        tempResult = pickerName
+            let pickerName = namesPassed[row]
+            tempResult = pickerName
         }else if tagPassed == 2{
- 
+            
             if component == 0{
                 tempHours = hours[row]
             }else if component == 1{
@@ -122,7 +122,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             tempResult = tempReps
         }
     }
-
+    
     @IBAction func saveBtn(_ sender: UIButton) {
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
         if tagPassed == 1{
@@ -166,15 +166,15 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         return label
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

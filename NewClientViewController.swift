@@ -31,9 +31,9 @@ class NewClientViewController: UIViewController {
         self.view.addGestureRecognizer(gesture)
     }
     
-
-    @IBAction func genderSelection(_ sender: UISegmentedControl) {
     
+    @IBAction func genderSelection(_ sender: UISegmentedControl) {
+        
         if genderSegmentedControl.selectedSegmentIndex == 0 {
             
             
@@ -68,12 +68,10 @@ class NewClientViewController: UIViewController {
         clientDictionary["clientKey"] = myClient.clientKey
         
         DBService.shared.createNewClient(newClient: clientDictionary, completion: {
-        let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
-        
-        self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)})
-
+            let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
+            
+            self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)})
+            
         })
-        
-           
     }
 }

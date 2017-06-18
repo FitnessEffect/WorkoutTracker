@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
@@ -20,7 +20,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     var menuShowing = false
     var menuView:MenuView!
     var overlayView: OverlayView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +48,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.retrieveChallengesExercises {
-            
             self.exerciseArray = DBService.shared.challengeExercises
             self.exerciseArray.sort(by: {a, b in
                 if a.date > b.date {
@@ -56,16 +55,15 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
                 return false
             })
-
             self.tableViewOutlet.reloadData()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
     }
@@ -106,7 +104,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

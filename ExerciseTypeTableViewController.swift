@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class ExerciseTypeTableViewController: UITableViewController{
-
+    
     var exerciseType = ["Bodybuilding", "Crossfit"]
     
     override func viewDidLoad() {
@@ -19,28 +19,28 @@ class ExerciseTypeTableViewController: UITableViewController{
         self.tableView.backgroundView?.alpha = 0.1
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exerciseType.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BodybuildingCell", for: indexPath)
-        let exercise = exerciseType[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = exercise
-        cell.backgroundColor = UIColor.clear
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BodybuildingCell", for: indexPath)
+            let exercise = exerciseType[(indexPath as NSIndexPath).row]
+            cell.textLabel?.text = exercise
+            cell.backgroundColor = UIColor.clear
             
-        return cell
+            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CrossfitCell", for: indexPath)
             let exercise = exerciseType[(indexPath as NSIndexPath).row]

@@ -29,7 +29,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-           NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -37,7 +37,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -56,8 +56,8 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{
             notificationNumber.text = String(num)
         }
-            self.clientArray = DBService.shared.clients
-            self.tableViewOutlet.reloadData()
+        self.clientArray = DBService.shared.clients
+        self.tableViewOutlet.reloadData()
     }
     
     func appEnteredForeground(_ notification: Notification){
@@ -70,15 +70,15 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     //TableView
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clientArray.count
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCustomCell
         
         let client = clientArray[(indexPath as NSIndexPath).row]
@@ -104,7 +104,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let id = self.clientArray[x].clientKey
                 
                 DBService.shared.deleteClient(id: id)
-
+                
                 self.clientArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             }))
@@ -113,7 +113,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.present(deleteAlert, animated: true, completion: nil)
         }
     }
-
+    
     @IBAction func createClient(_ sender: UIBarButtonItem) {
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
@@ -175,7 +175,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }else{
             performSegue(withIdentifier: "exercisesSegue", sender: sender)
-            }
+        }
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -186,10 +186,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(segue.identifier == "exercisesSegue"){
             let s = sender as! UITapGestureRecognizer
             let evc:ExercisesViewController = segue.destination as! ExercisesViewController
-             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
+            let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             evc.clientPassed = clientArray[selectedRow!]
             DBService.shared.setPassedClient(client: clientArray[selectedRow!])
         }
     }
-
 }
