@@ -55,7 +55,6 @@ class LoginViewController: UIViewController {
                 }
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
             })
-
         })
     }
     
@@ -97,7 +96,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: UIButton) {
-       if (passwordTF.text?.characters.count) == 0{
+        if (passwordTF.text?.characters.count) == 0{
             print("Invalid Password")
             let alert = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -120,10 +119,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: UIButton) {
-        
-        // functions auth hook javascript:
-        // var db = some db reference
-        // exports.addEmail = functions.auth.user().onCreate(event => { db.ref().child("emails").set() });
         
         if emailTF.text == "" {
             let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
@@ -164,19 +159,4 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        //let workoutInputVC:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
-        //workoutInputVC.setUsername(username: usernameTF.text!)
-        
-       
-        
-    }
-    
 }

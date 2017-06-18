@@ -14,7 +14,7 @@ protocol WorkoutInputViewDelegate {
 }
 
 class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate {
-
+    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -29,7 +29,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var emailTxtView: UITextView!
     @IBOutlet weak var notificationNumber: UILabel!
-
+    
     var delegate: WorkoutInputViewDelegate?
     var name: String = ""
     var date: Date = Date()
@@ -57,7 +57,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         
         self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         
-         NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputView.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputView.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
     }
     
     func setNotifications(num:Int){
@@ -87,7 +87,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         for index in 0...stringParts.count-1{
             newString.append(stringParts[index])
             if index != stringParts.count - 1{
-            newString.append("|")
+                newString.append("|")
             }
         }
         
@@ -141,7 +141,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     @IBAction func save(_ sender: UIButton) {
-       
+        
         var exerciseDictionary = [String:String]()
         
         exerciseDictionary["date"] =  (dateBtn.titleLabel?.text!)!
@@ -185,7 +185,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
         let yPosition = exerciseBtn.frame.midY + 15
         
-         let currentController = self.getCurrentViewController()
+        let currentController = self.getCurrentViewController()
         
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseNavID") as! UINavigationController
@@ -205,30 +205,30 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     @IBAction func selectResult(_ sender: UIButton) {
-            let xPosition:CGFloat = resultBtn.frame.minX + (resultBtn.frame.width/2)
-            let yPosition:CGFloat = resultBtn.frame.maxY
+        let xPosition:CGFloat = resultBtn.frame.minX + (resultBtn.frame.width/2)
+        let yPosition:CGFloat = resultBtn.frame.maxY
         
-           let currentController = self.getCurrentViewController()
+        let currentController = self.getCurrentViewController()
         
-            // get a reference to the view controller for the popover
-            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
-            
-            // set the presentation style
-            popController.modalPresentationStyle = UIModalPresentationStyle.popover
-            
-            // set up the popover presentation controller
-            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-            popController.popoverPresentationController?.delegate = self
-            popController.popoverPresentationController?.sourceView = currentController?.view
-            popController.preferredContentSize = CGSize(width: 300, height: 250)
-            popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-
-            let int = delegate?.handleResultPickerChoice()
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
         
-            popController.setTag(tag: int!)
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
         
-            // present the popover
-            currentController?.present(popController, animated: true, completion: nil)
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = currentController?.view
+        popController.preferredContentSize = CGSize(width: 300, height: 250)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        let int = delegate?.handleResultPickerChoice()
+        
+        popController.setTag(tag: int!)
+        
+        // present the popover
+        currentController?.present(popController, animated: true, completion: nil)
     }
     
     @IBAction func selectChallenge(_ sender: UIButton) {
@@ -263,7 +263,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         dateSelected = dateStr
         dateBtn.setTitle(dateSelected,for: .normal)
     }
-
+    
     func updateUI() {
         // populate interface, show views, etc
     }
@@ -402,7 +402,6 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             }))
         }
     }
-
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none

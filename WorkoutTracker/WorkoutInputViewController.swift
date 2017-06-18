@@ -13,7 +13,7 @@ import MessageUI
 class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate{
     
     @IBOutlet var workoutInputView: WorkoutInputView!
-
+    
     var menuShowing = false
     var bodybuildingExercises = [String]()
     var crossfitExercises = [String]()
@@ -50,7 +50,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }else{
             title = "Personal"
         }
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
         workoutInputView.initializeView()
@@ -112,9 +112,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         return newString
     }
-
+    
     func handleResultPickerChoice() -> Int{
-
+        
         if edit == true{
             tempExercise = DBService.shared.passedExercise
         }
@@ -135,7 +135,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func handleSave(json: [String : Any]) {
         
         var exerciseDictionary = json
-        
         
         exerciseDictionary["description"] = tempExercise.exerciseDescription
         exerciseDictionary["name"] =  tempExercise.name
@@ -162,7 +161,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 })})
             })
         }else{
-            
             DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
                 
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
@@ -171,27 +169,24 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 })})
             })
         }
-        
         //post request for notification if challenge is on!!!
-        
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
             APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
         }
-        
     }
     
     func handleSelection(type: String) {
         
         let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
-                   self.present(inputVC, animated: true, completion: nil)
+        self.present(inputVC, animated: true, completion: nil)
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
@@ -215,9 +210,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             menuShowing = false
         }
     }
-
+    
     func fillInExercisePassed(){
-    let ex = DBService.shared.passedExercise
+        let ex = DBService.shared.passedExercise
         ex.exerciseDescription = formatExerciseDescription(desStr: ex.exerciseDescription)
         workoutInputView.fillInExercisePassed(exercise: ex)
     }
@@ -232,7 +227,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             menuShowing = false
         }
     }
-
+    
     @IBAction func logoutBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -240,26 +235,26 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     //decouple ui stuff =>> put in method
     @IBAction func saveBtn(_ sender: UIButton) {
         
-            if self.title == "Personal"{
-                DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
+        if self.title == "Personal"{
+            DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
+                
+                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    self.dismiss(animated: true, completion: nil)
                     
-                    let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                    present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                        self.dismiss(animated: true, completion: nil)
-                        
-                    })})
-                })
-            }else{
-
-                    DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
-                        
-                        let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                        present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                            self.dismiss(animated: true, completion: nil)
-                        })})
-                    })
-            }
-
+                })})
+            })
+        }else{
+            
+            DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+                
+                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    self.dismiss(animated: true, completion: nil)
+                })})
+            })
+        }
+        
         //post request for notification if challenge is on!!!
         
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
@@ -276,13 +271,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func setEdit(bool:Bool){
-       edit = bool
+        edit = bool
     }
     
     func setNewDate(dateStr:String){
         workoutInputView.setNewDate(dateStr: dateStr)
     }
-
+    
     
     func savePickerName(name:String){
         self.title = name
@@ -324,7 +319,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         // present the popover
         self.present(popController, animated: true, completion: nil)
-
+        
     }
     
     func getClientFromName(n:String) -> Client{
@@ -343,23 +338,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func keyboardWasShown(notification: NSNotification){
-        //let info: NSDictionary  = notification.userInfo! as NSDictionary
-        //let keyboardSize = (info.value(forKey: UIKeyboardFrameEndUserInfoKey) as AnyObject).cgRectValue.size
-        //let contentInsets:UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
-        //scrollView.contentInset = contentInsets
-        //scrollView.scrollIndicatorInsets = contentInsets
-        
         keyboardActive = true
     }
     
     func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-//        var info = notification.userInfo!
-//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-//        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-//        self.scrollView.contentInset = contentInsets
-//        self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-        
         keyboardActive = false
     }
     
