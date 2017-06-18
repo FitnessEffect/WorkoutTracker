@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate{
-
+    
     var categories = [String]()
     var typePassed:String!
     
@@ -25,29 +25,26 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
-
+        
         self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.retrieveBodybuildingCategories(completion: {
-        self.categories = DBService.shared.bodybuildingCategories
+            self.categories = DBService.shared.bodybuildingCategories
             self.tableView.reloadData()
         })
     }
     
-    
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
-
+        
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCategoryID") as! CreateBodybuildingCategoryViewController
         popController.typePassed = "Bodybuilding"
@@ -57,10 +54,10 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     
     func hitTest(_ sender:UITapGestureRecognizer){
         if tableView.frame.contains(sender.location(in: view)){
-                cellClicked(x: sender.location(in: view))
+            cellClicked(x: sender.location(in: view))
         }
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
