@@ -72,15 +72,15 @@ class DBService {
         let type = action["type"]!
         let data = action["data"]!
         switch (type) {
-            case "email":
-                // do stuff
-                // call the update email function
-                print(data)
-                break
-            case "first_name":
-                break
-            default:
-                break
+        case "email":
+            // do stuff
+            // call the update email function
+            print(data)
+            break
+        case "first_name":
+            break
+        default:
+            break
         }
     }
     //automatically called when user logs in or out
@@ -114,12 +114,12 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
     func createExerciseKey() -> String{
-       let str = _ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
+        let str = _ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
         _currentKey = str
         return str
     }
@@ -130,11 +130,6 @@ class DBService {
         return str
     }
     
-//    func createExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-//        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
-//        completion()
-//    }
-    
     func updateExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
         self._ref.child("users").child(user.uid).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
@@ -142,11 +137,6 @@ class DBService {
     
     func clearCurrentKey(){
         _currentKey = ""
-    }
-    
-    func clearPassedExercise(){
-        //how to clear object
-        //_passedExercise = ""
     }
     
     func getIDforClient(id:String) -> String{
@@ -184,7 +174,7 @@ class DBService {
     
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
-    
+        
         _ref.child("users").child(user.uid).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Get user value
@@ -207,14 +197,14 @@ class DBService {
                 }
             }
             
-            }) { (error) in
+        }) { (error) in
             print(error.localizedDescription)
         }
     }
     
     func retrieveBodybuildingCategoryExercises(completion: @escaping () -> Void){
         _exercisesForBodybuildingCategory.removeAll()
-
+        
         _ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -284,7 +274,7 @@ class DBService {
         }) { (error) in
             print(error.localizedDescription)
         }
-
+        
     }
     
     func retrieveClients(completion: @escaping () -> Void){
@@ -317,8 +307,8 @@ class DBService {
     func retrieveExercisesForClient(completion:@escaping ()-> Void){
         _exercisesForClient.removeAll()
         
-    _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
-
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
+            
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
                     
@@ -338,7 +328,7 @@ class DBService {
                     completion()
                 }
             }
-           
+            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -374,7 +364,7 @@ class DBService {
         }) { (error) in
             print(error.localizedDescription)
         }
-
+        
     }
     
     func deleteClient(id:String){
@@ -479,13 +469,13 @@ class DBService {
         }
     }
     
-//        use setters to filter data and perform various actions, variable = ""
-//        set(newVal) {
-//            guard let email = newVal.email else {
-//                return
-//            }
-//            
-//        }
-    }
-    
+    //        use setters to filter data and perform various actions, variable = ""
+    //        set(newVal) {
+    //            guard let email = newVal.email else {
+    //                return
+    //            }
+    //            
+    //        }
+}
+
 

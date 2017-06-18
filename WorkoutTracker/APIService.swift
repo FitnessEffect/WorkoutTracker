@@ -40,55 +40,10 @@ class APIService {
             print("responseString = \(String(describing: responseString))")
         }
         task.resume()
-    
-    }
-
-    func get(endpoint url: String, data json: [String: AnyObject], completion handler: ([String: AnyObject]) -> Void) {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    func someFunctionThatTakesAClosure(closure: () -> Void) {
-        // function body goes here
-        
-        closure()
-     
-    }
-    
-    // Here's how you call this function without using a trailing closure:
-    func callThem() {
-        let x = 2
-        someFunctionThatTakesAClosure(closure: {
-            // closure's body goes here
-            print(x)
-        })
-        
-        // Here's how you call this function with a trailing closure instead:
-        
-        someFunctionThatTakesAClosure() {
-            // trailing closure's body goes here
-        }
-    }
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+//    func get(endpoint url: String, data json: [String: AnyObject], completion handler: ([String: AnyObject]) -> Void) {
+//        
+//    }
 }

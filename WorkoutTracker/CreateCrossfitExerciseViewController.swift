@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class CreateCrossfitExerciseViewController: UIViewController {
-
+    
     @IBOutlet weak var exName: UITextField!
     @IBOutlet weak var add: UIButton!
     
@@ -19,7 +19,6 @@ class CreateCrossfitExerciseViewController: UIViewController {
     var user:FIRUser!
     var ref:FIRDatabaseReference!
     var categoryPassed:String!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +43,7 @@ class CreateCrossfitExerciseViewController: UIViewController {
         categoryPassed = category
     }
     
-    
     @IBAction func addExercise(_ sender: UIButton) {
-        
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
         dictionary[exName.text!.capitalized] = ""
@@ -55,7 +52,4 @@ class CreateCrossfitExerciseViewController: UIViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
-    
-
-
 }

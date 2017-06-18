@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var repsSetsOutlet: UIPickerView!
@@ -31,7 +31,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-
+        
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -45,11 +45,11 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         
         DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
-        self.exercises = DBService.shared.exercisesForBodybuildingCategory
-        self.pickerOutlet.reloadAllComponents()
+            self.exercises = DBService.shared.exercisesForBodybuildingCategory
+            self.pickerOutlet.reloadAllComponents()
             
         })
-
+        
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
@@ -61,7 +61,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         
     }
     
-
+    
     func setCategory(category:String){
         categoryPassed = category
     }
@@ -82,7 +82,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
                 return reps.count
             }else{
                 return sets.count
-            }  
+            }
         }
     }
     

@@ -64,36 +64,6 @@ class MenuView: UIView {
         self.removeFromSuperview()
     }
     
-    func profileButtonAction() {
-        // delegate.handleSelection(type: "profile")
-        // self.removeFromSuperview()
-    }
-    
-//    func addSelector() {
-//        //slide view in here
-//        if menuShowing == false{
-//            addFx()
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
-//                self.view.isHidden = false
-//                self.overlayView.alpha = 1
-//            })
-//            menuShowing = true
-//        }else{
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-//                self.overlayView.alpha = 0
-//            })
-//            menuShowing = false
-//        }
-//        profileBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        clientBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        historyBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        challengeBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        settingsBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//        logoutBtn.addTarget(self, action: #selector(btnAction(_:)), for: .touchUpInside)
-//    }
-
     func getCurrentViewController() -> UIViewController? {
         
         if let rootController = UIApplication.shared.keyWindow?.rootViewController {
@@ -117,7 +87,7 @@ class MenuView: UIView {
             let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
             let currentController = self.getCurrentViewController()
             currentController?.present(historyVC, animated: false, completion: nil)
-
+            
         }else if sender.tag == 3{
             let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
             let currentController = self.getCurrentViewController()
@@ -134,22 +104,4 @@ class MenuView: UIView {
             currentController?.present(loginVC, animated: false, completion: nil)
         }
     }
-    
-//    func triggerButton1(completion: () -> Void) {
-//        completion()
-//    }
-
-
-    // or from main view controller
-    // let menu = MenuView.instanceFromNib()
-    // menu.button1.action...
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

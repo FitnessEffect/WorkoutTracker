@@ -145,9 +145,5 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         return label
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 20.0
-//    }
 }
 

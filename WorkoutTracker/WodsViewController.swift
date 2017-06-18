@@ -18,20 +18,20 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var categoryPassed:String!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-
+        
         if categoryPassed == "1 Rep Max"{
-        let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
-        rightBarButton.image = UIImage(named:"addIcon")
-        self.navigationItem.rightBarButtonItem = rightBarButton
+            let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
+            rightBarButton.image = UIImage(named:"addIcon")
+            self.navigationItem.rightBarButtonItem = rightBarButton
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -66,7 +66,7 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return exercises[row]
     }
-
+    
     @IBAction func addWod(_ sender: UIButton) {
         
         if categoryPassed == "Wods"{
