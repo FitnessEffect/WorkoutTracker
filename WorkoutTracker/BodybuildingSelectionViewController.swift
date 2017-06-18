@@ -105,7 +105,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         
         
         myExercise.name = categoryPassed
-        myExercise.exerciseDescription = exercises[id] + "|" + reps[idReps] + " - " + sets[idSets]
+        myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " " + sets[idSets]
         myExercise.category = categoryPassed
         myExercise.type = "Bodybuilding"
         

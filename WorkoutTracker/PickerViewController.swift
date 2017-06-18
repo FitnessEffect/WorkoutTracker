@@ -15,9 +15,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var namesPassed:[String]!
     var weights = [String]()
     var reps = [String]()
-    var minutes = ["minutes","1","2","3", "4", "5", "6", "7", "8", "9", "10", "15"]
-    var hours = ["hours","1", "2"]
-    var seconds = ["seconds","1", "2"]
+    var minutes = ["minutes", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
+    var hours = ["hours","0","1", "2"]
+    var seconds = ["seconds", "0", "1", "2"]
     var tagPassed = 0
     var tempHours = ""
     var tempMinutes = ""
@@ -111,7 +111,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }else if component == 2{
                 tempSeconds = seconds[row]
             }
-            let tempTime = tempHours + "hour(s) " + tempMinutes + "minute(s) " + tempSeconds + "second(s)"
+            let tempTime = tempHours + "hour(s) " + tempMinutes + "min(s) " + tempSeconds + "sec(s)"
             tempResult = tempTime
         }else if tagPassed == 3{
             let tempWeight = weights[row] + " lbs"
