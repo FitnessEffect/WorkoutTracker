@@ -31,7 +31,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
       
         title = "History"
         
-            NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
+            NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -60,6 +60,14 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
         DBService.shared.retrieveExercisesForUser {
             self.exerciseArray = DBService.shared.exercisesForUser
+            self.exerciseArray.sort(by: {a, b in
+                if a.date > b.date {
+                    return true
+                }
+                return false
+            })
+            
+
             self.tableViewOutlet.reloadData()
         }
     }
@@ -155,12 +163,12 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
-            wivc.edit = true
+            wivc.setEdit(bool: true)
         }
         if(segue.identifier == "addExerciseSegue"){
             let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
             DBService.shared.setPassedClient(client: client)
-            edv.edit = false
+            edv.setEdit(bool: false)
         }
     }
 }

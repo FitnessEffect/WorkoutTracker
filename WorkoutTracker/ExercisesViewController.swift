@@ -90,12 +90,12 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             DBService.shared.setPassedClient(client: clientPassed)
             selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
-            wivc.edit = true
+            wivc.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
             let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
             DBService.shared.setPassedClient(client: clientPassed)
-            edv.edit = false
+            edv.setEdit(bool:false)
         }
     }
 }

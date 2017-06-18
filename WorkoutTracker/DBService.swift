@@ -16,7 +16,7 @@ class DBService {
     private var _ref: FIRDatabaseReference!
     private var _user: FIRUser!
     private var _clients = [Client]()
-    private var _passedExercise = Exercise()
+    private var _passedExercise:Exercise? = Exercise()
     private var _passedClient = Client()
     private var _currentKey = ""
     private var _exercisesForClient = [Exercise]()
@@ -113,8 +113,8 @@ class DBService {
         self._ref.child("users").child(user.uid).child("Challenges").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
     }
     
-    func editExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(passedExercise.exerciseKey).updateChildValues(exerciseDictionary)
+    func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
+         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
@@ -130,13 +130,13 @@ class DBService {
         return str
     }
     
-    func createExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
-        completion()
-    }
+//    func createExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
+//        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
+//        completion()
+//    }
     
-    func editExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
-        self._ref.child("users").child(user.uid).child("Exercises").child(passedExercise.exerciseKey).updateChildValues(exerciseDictionary)
+    func updateExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
+        self._ref.child("users").child(user.uid).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
@@ -147,13 +147,6 @@ class DBService {
     func clearPassedExercise(){
         //how to clear object
         //_passedExercise = ""
-    }
-    
-    func createExerciseForUser(exerciseDictionary: [String:Any], completion: () -> Void) {
-        self._ref.child("users").child(user.uid).child("Exercises").child(currentkey).updateChildValues(exerciseDictionary)
-
-        // do stuff first with firebase, then...
-         completion()
     }
     
     func getIDforClient(id:String) -> String{
@@ -422,7 +415,7 @@ class DBService {
     
     var passedExercise: Exercise{
         get{
-            return _passedExercise
+            return _passedExercise!
         }
     }
     
@@ -485,6 +478,7 @@ class DBService {
             return _challengeExercises
         }
     }
+    
 //        use setters to filter data and perform various actions, variable = ""
 //        set(newVal) {
 //            guard let email = newVal.email else {

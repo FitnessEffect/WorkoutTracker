@@ -24,7 +24,6 @@ class MenuView: UIView {
     
     var delegate: MenuViewDelegate?
     
-    
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "MenuView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MenuView
     }

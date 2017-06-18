@@ -151,7 +151,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
-            wivc.edit = true
+            wivc.setEdit(bool:true)
         }
     }
 }

@@ -65,8 +65,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="ChallengePressed:" destination="ELO-R3-AfS" eventType="touchUpInside" id="ZTg-Ui-F8x"/>
-                                    <action selector="challengeBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="qaz-xP-dAl"/>
+                                    <action selector="selectChallenge:" destination="ELO-R3-AfS" eventType="touchUpInside" id="I4c-HW-uW9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-aE-emQ">
@@ -78,7 +77,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="bnW-8F-Q3a"/>
+                                    <action selector="save:" destination="ELO-R3-AfS" eventType="touchUpInside" id="ADY-Tu-1cx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF5-Jb-Wye">
@@ -90,7 +89,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectExercise:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="iGL-fC-U58"/>
+                                    <action selector="selectExercise:" destination="ELO-R3-AfS" eventType="touchUpInside" id="PUb-wI-aKo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-oB-Cek" userLabel="EraseResult">
@@ -101,7 +100,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="eraseBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="Kmo-s7-8p9"/>
+                                    <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="cua-I0-jOA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-Zy-Bx8">
@@ -113,7 +112,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectResult:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="Agf-NL-OS7"/>
+                                    <action selector="selectResult:" destination="ELO-R3-AfS" eventType="touchUpInside" id="XF0-Ya-1Qg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-zi-tdN" userLabel="EraseEmail">
@@ -124,7 +123,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="eraseBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="rUX-rZ-cxd"/>
+                                    <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="C68-tU-fTw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-XL-Hjl">
@@ -135,7 +134,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="eraseBtn:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="QJ6-AM-R4v"/>
+                                    <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="E6y-p8-soB"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsg-o6-oRT">
@@ -147,7 +146,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectDate:" destination="pzd-PZ-fvb" eventType="touchUpInside" id="odB-cl-8HG"/>
+                                    <action selector="selectDate:" destination="ELO-R3-AfS" eventType="touchUpInside" id="XCy-bW-iG0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jP-Bl-N1v">
@@ -160,37 +159,36 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
+                            <outlet property="backgroundImage" destination="jdq-aR-cVX" id="e0g-40-QWg"/>
+                            <outlet property="challenge" destination="rA8-gv-R0v" id="Jqy-BG-p9K"/>
+                            <outlet property="dateBtn" destination="Bsg-o6-oRT" id="c34-Vw-GWG"/>
+                            <outlet property="descriptionTextView" destination="7hE-Sh-Eqt" id="vob-pD-mhB"/>
                             <outlet property="emailTxtView" destination="Xd9-VW-xci" id="8Uh-o8-jfX"/>
+                            <outlet property="erase" destination="daE-XL-Hjl" id="RWy-jX-Gnu"/>
+                            <outlet property="eraseEmail" destination="UXq-zi-tdN" id="Z9K-3j-ixx"/>
+                            <outlet property="eraseResult" destination="30Z-oB-Cek" id="sp8-5S-rfg"/>
+                            <outlet property="exerciseBtn" destination="CF5-Jb-Wye" id="7vH-4T-cB4"/>
+                            <outlet property="notificationNumber" destination="3jP-Bl-N1v" id="yAD-x0-W0k"/>
+                            <outlet property="resultBtn" destination="Uu5-Zy-Bx8" id="9Kr-5T-ZTu"/>
+                            <outlet property="resultTextView" destination="Abk-mw-bOp" id="eQv-ht-ivw"/>
+                            <outlet property="saveButton" destination="UNQ-aE-emQ" id="zpf-uh-cWB"/>
                         </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="IVz-K0-uwO">
-                        <barButtonItem key="leftBarButtonItem" image="menuIcon" style="done" id="g6X-Me-JFN">
+                    <navigationItem key="navigationItem" id="xQl-sG-j9a">
+                        <barButtonItem key="leftBarButtonItem" image="menuIcon" style="done" id="3dG-Ah-Hc1">
                             <connections>
-                                <action selector="openMenu:" destination="pzd-PZ-fvb" id="Ewn-ot-ULL"/>
+                                <action selector="openMenu:" destination="pzd-PZ-fvb" id="7Qv-vn-Kdc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" tag="1" image="clientIcon" style="done" id="AZl-xc-mvw">
+                        <barButtonItem key="rightBarButtonItem" tag="1" image="clientIcon" style="done" id="bsd-ba-48k">
                             <connections>
-                                <action selector="client:" destination="pzd-PZ-fvb" id="9dU-NQ-j4u"/>
+                                <action selector="selectClient:" destination="pzd-PZ-fvb" id="wOX-WC-Wf4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="backgroundImage" destination="jdq-aR-cVX" id="a6j-q4-LyT"/>
-                        <outlet property="challenge" destination="rA8-gv-R0v" id="0Dg-W1-vhC"/>
-                        <outlet property="dateBtn" destination="Bsg-o6-oRT" id="LCK-Rm-crI"/>
-                        <outlet property="descriptionTextView" destination="7hE-Sh-Eqt" id="qPP-iP-laW"/>
-                        <outlet property="emailTextView" destination="Xd9-VW-xci" id="uHW-YN-SB1"/>
-                        <outlet property="erase" destination="daE-XL-Hjl" id="m6q-ny-vfD"/>
-                        <outlet property="eraseEmail" destination="UXq-zi-tdN" id="avv-DW-cWZ"/>
-                        <outlet property="eraseResult" destination="30Z-oB-Cek" id="Zs7-5j-A7H"/>
-                        <outlet property="exerciseBtn" destination="CF5-Jb-Wye" id="fYP-t1-LjI"/>
-                        <outlet property="notificationNumber" destination="3jP-Bl-N1v" id="4RY-aE-oxH"/>
-                        <outlet property="resultBtn" destination="Uu5-Zy-Bx8" id="coR-W8-4Q4"/>
-                        <outlet property="resultTextView" destination="Abk-mw-bOp" id="1z8-UW-UdI"/>
-                        <outlet property="save" destination="UNQ-aE-emQ" id="mZv-Qe-avN"/>
                         <outlet property="workoutInputView" destination="ELO-R3-AfS" id="jGr-Y5-fkn"/>
                     </connections>
                 </viewController>

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 let gender = "gender"
 let firstNameKey = "first name"
 let lastNameKey = "last name"
@@ -15,7 +16,7 @@ let ageKey = "age"
 let exercisesKey = "exercise array"
 let key = "clientKey"
 
-class Client: NSCoder {
+class Client: NSCoder{
     
     var gender:String
     var firstName:String
