@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "519410598.607836"
+            filePath = "WorkoutTracker/LoginViewController.swift"
+            timestampString = "519575868.255269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "updateExerciseForClient(exerciseDictionary:completion:)"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "login(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
