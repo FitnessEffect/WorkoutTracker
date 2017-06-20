@@ -51,7 +51,6 @@ class LoginViewController: UIViewController {
                     //use email
                     let formattedEmail = self.formateEmail(email: (user?.email)!)
                     self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
-                    
                 }
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
             })
@@ -107,19 +106,16 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
-            
             prefs.set(emailTF.text, forKey: "email")
             prefs.set(passwordTF.text, forKey:"password")
             prefs.set(rememberMeSwitch.isOn, forKey:"switch")
             setAuthListener()
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
-                
             })
         }
     }
     
     @IBAction func register(_ sender: UIButton) {
-        
         if emailTF.text == "" {
             let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -133,10 +129,7 @@ class LoginViewController: UIViewController {
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
-            
-            
         }else{
-            
             FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
                 if error == nil {
                     print("You have successfully signed up")

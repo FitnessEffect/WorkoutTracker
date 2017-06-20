@@ -76,7 +76,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         if edit == true{
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
@@ -134,7 +133,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func handleSave(json: [String : Any]) {
         
-        var exerciseDictionary = json
+        exerciseDictionary = json
         
         exerciseDictionary["description"] = tempExercise.exerciseDescription
         exerciseDictionary["name"] =  tempExercise.name
@@ -176,17 +175,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func handleSelection(type: String) {
-        
         let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
         self.present(inputVC, animated: true, completion: nil)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
@@ -278,7 +274,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         workoutInputView.setNewDate(dateStr: dateStr)
     }
     
-    
     func savePickerName(name:String){
         self.title = name
         DBService.shared.setPassedClient(client:getClientFromName(n:name))
@@ -319,11 +314,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         // present the popover
         self.present(popController, animated: true, completion: nil)
-        
     }
     
     func getClientFromName(n:String) -> Client{
-        
         for client in DBService.shared.clients{
             if n == client.firstName + " " + client.lastName{
                 return client
