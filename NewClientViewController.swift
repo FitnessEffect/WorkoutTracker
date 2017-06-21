@@ -27,6 +27,8 @@ class NewClientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }

@@ -164,7 +164,6 @@
 			children = (
 				52192ACC1CD5452100A311A1 /* CustomCells */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
-				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 				522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
@@ -206,6 +205,7 @@
 		52EB1DEB1ECA778C004CA561 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 				5291C4561CE13EED00DF8C0C /* Bodybuilding Views */,
 				5291C4551CE13ECB00DF8C0C /* Crossfit Views */,
 				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
