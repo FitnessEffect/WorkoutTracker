@@ -38,7 +38,7 @@ class CreateBodybuildingCategoryViewController: UIViewController{
     @IBAction func addExercise(_ sender: UIButton) {
         myExercise.name = categoryName.text!
         var dictionary = [String:Any]()
-        dictionary[categoryName.text!.capitalized] = ""
+        dictionary[categoryName.text!.capitalized] = true
         DBService.shared.createBodybuildingCategories(dictionary: dictionary)
         self.navigationController?.popViewController(animated: true)
     }

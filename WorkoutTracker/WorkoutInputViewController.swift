@@ -77,6 +77,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if edit == true{
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
@@ -215,6 +216,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         if ex.exerciseKey != ""{
         ex.exerciseDescription = formatExerciseDescription(desStr: ex.exerciseDescription)
         workoutInputView.fillInExercisePassed(exercise: ex)
+        ex.exerciseKey = ""
         }
     }
     
