@@ -364,7 +364,14 @@ class DBService {
         }) { (error) in
             print(error.localizedDescription)
         }
-        
+    }
+    
+    func retrieveWod(wodName:String, completion:@escaping (String)->Void){
+        self._ref.child("wods").child(wodName).observeSingleEvent(of: .value, with: { (snapshot) in
+          let value = snapshot.value as? NSDictionary
+            let str = value?["description"] as! String
+            completion(str)
+        })
     }
     
     func deleteClient(id:String){

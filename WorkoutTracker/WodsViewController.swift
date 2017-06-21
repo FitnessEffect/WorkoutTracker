@@ -68,7 +68,6 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     @IBAction func addWod(_ sender: UIButton) {
-        
         if categoryPassed == "Wods"{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             myExercise.name = exercises[id]
@@ -76,11 +75,24 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             myExercise.type = "Crossfit"
             
             if myExercise.name == "Fran"{
-                myExercise.exerciseDescription = ("21-15-9 reps for time | thrusters (95lbs) | pull-ups")
+                DBService.shared.retrieveWod(wodName: "Fran", completion: {
+                (str) in
+                    self.myExercise.exerciseDescription = str
+                   NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+                })
+                print(myExercise.exerciseDescription)
             }else if myExercise.name == "Grace"{
-                myExercise.exerciseDescription = ("30 reps for time | 135lbs clean and jerk")
+                DBService.shared.retrieveWod(wodName: "Grace", completion: {
+                    (str) in
+                    self.myExercise.exerciseDescription = str
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+                })
             }else if myExercise.name == "Murph"{
-                myExercise.exerciseDescription = ("1 mile run | 100 pull-ups | 200 push-ups | 300 air squats | 1 mile run")
+                DBService.shared.retrieveWod(wodName: "Murph", completion: {
+                    (str) in
+                    self.myExercise.exerciseDescription = str
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+                })
             }
         }else{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
@@ -88,9 +100,8 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             myExercise.category = "1 Rep Max"
             myExercise.exerciseDescription = "1 Rep Max"
             myExercise.type = "Crossfit"
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         }
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
         dismiss(animated: true, completion: nil)
     }
