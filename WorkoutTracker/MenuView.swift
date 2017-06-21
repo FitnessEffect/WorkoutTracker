@@ -19,7 +19,6 @@ class MenuView: UIView {
     @IBOutlet weak var clientBtn: UIButton!
     @IBOutlet weak var historyBtn: UIButton!
     @IBOutlet weak var challengeBtn: UIButton!
-    @IBOutlet weak var settingsBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
     
     var delegate: MenuViewDelegate?
@@ -48,11 +47,6 @@ class MenuView: UIView {
         challengeBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         challengeBtn.layer.shadowOpacity = 0.6
         challengeBtn.layer.shadowRadius = 5
-        
-        settingsBtn.layer.shadowColor = UIColor.black.cgColor
-        settingsBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
-        settingsBtn.layer.shadowOpacity = 0.6
-        settingsBtn.layer.shadowRadius = 5
         
         logoutBtn.layer.shadowColor = UIColor.black.cgColor
         logoutBtn.layer.shadowOffset = CGSize(width: 5, height: 5)

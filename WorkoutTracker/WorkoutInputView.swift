@@ -74,7 +74,13 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         exercise.exerciseDescription = unFormatExerciseDescription(desStr: exercise.exerciseDescription)
         saveResult(str: (exercise.result))
         if exercise.opponent != ""{
-            saveEmail(emailStr: exercise.opponent)
+            //if exercise comes from history do not set creator as the challenger
+            if exercise.creatorEmail == DBService.shared.user.email{
+               //do nothing
+            }else{
+            //if exercise comes from challenges set creator as the challenger
+            saveEmail(emailStr: exercise.creatorEmail)
+            }
         }
     }
     

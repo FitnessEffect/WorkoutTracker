@@ -391,6 +391,20 @@ class DBService {
         }
     }
     
+    func updateNotifications(num:Int){
+        let formattedEmail = formateEmail(email: self.user.email!)
+        var dictionary = [String:Any]()
+        dictionary[formattedEmail] = num
+        self._ref.child("notification").updateChildValues(dictionary)
+    }
+    
+    func formateEmail(email:String) -> String{
+        var tempEmail = ""
+        tempEmail = email.replacingOccurrences(of: "@", with: "%40")
+        tempEmail = tempEmail.replacingOccurrences(of: ".", with: "%2E")
+        return tempEmail
+    }
+    
     var user: FIRUser {
         get {
             return _user

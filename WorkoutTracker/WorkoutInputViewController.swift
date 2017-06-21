@@ -30,6 +30,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var activeField: UITextField?
     var keyboardActive = false
     var edit = false
+    var passedOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }else{
             workoutInputView.setCurrentDate()
         }
+        
+        fillInExercisePassed()
+       
     }
     
     func getExercise(_ notification: Notification){
@@ -108,7 +112,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             newString.append(part)
             newString.append("\n")
         }
-        
         return newString
     }
     
@@ -209,8 +212,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func fillInExercisePassed(){
         let ex = DBService.shared.passedExercise
+        if ex.exerciseKey != ""{
         ex.exerciseDescription = formatExerciseDescription(desStr: ex.exerciseDescription)
         workoutInputView.fillInExercisePassed(exercise: ex)
+        }
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -233,7 +238,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         if self.title == "Personal"{
             DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
-                
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
                 present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
@@ -241,7 +245,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
                 })})
             })
         }else{
-            
             DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
                 
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
@@ -296,7 +299,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 300)
+        popController.preferredContentSize = CGSize(width: 300, height: 250)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if sender.tag == 1{
