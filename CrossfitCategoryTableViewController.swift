@@ -12,7 +12,7 @@ import Firebase
 
 class CrossfitCategoryTableViewController: UITableViewController {
     
-    var categories = ["1 Rep Max", "Amrap", "Metcon", "Tabata", "Wods"]
+    var categories = [String]()
     var typePassed:String!
 
     override func viewDidLoad() {
