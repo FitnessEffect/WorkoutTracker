@@ -46,7 +46,7 @@ class CreateCrossfitExerciseViewController: UIViewController {
     @IBAction func addExercise(_ sender: UIButton) {
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
-        dictionary[exName.text!.capitalized] = ""
+        dictionary[exName.text!.capitalized] = true
         
         DBService.shared.createCrossfitExercise(dictionary: dictionary)
         

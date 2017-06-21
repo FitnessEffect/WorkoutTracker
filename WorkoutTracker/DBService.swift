@@ -405,6 +405,39 @@ class DBService {
         return tempEmail
     }
     
+    func clearExercisePassed(){
+        _passedExercise?.exerciseKey = ""
+    }
+    
+    func initializeData(){
+        //set notifications to 0
+        updateNotifications(num: 0)
+        //set pickerView categories
+        
+        var crossfitDictionary = [String:Any]()
+        crossfitDictionary["1 Rep Max"] = true
+        crossfitDictionary["Amrap"] = true
+        crossfitDictionary["Metcon"] = true
+        crossfitDictionary["Tabata"] = true
+        crossfitDictionary["Wods"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").updateChildValues(crossfitDictionary)
+        
+        var wodDictionary = [String:Any]()
+        wodDictionary["Murph"] = true
+        wodDictionary["Grace"] = true
+        wodDictionary["Fran"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("Wods").updateChildValues(wodDictionary)
+        
+        var bodybuildingDictionary = [String:Any]()
+        bodybuildingDictionary["Abs"] = true
+        bodybuildingDictionary["Chest"] = true
+        bodybuildingDictionary["Legs"] = true
+        bodybuildingDictionary["Arms"] = true
+        bodybuildingDictionary["Back"] = true
+        bodybuildingDictionary["Shoulders"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").updateChildValues(bodybuildingDictionary)
+    }
+    
     var user: FIRUser {
         get {
             return _user

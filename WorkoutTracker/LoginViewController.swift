@@ -51,7 +51,10 @@ class LoginViewController: UIViewController {
                     //use email
                     let formattedEmail = self.formateEmail(email: (user?.email)!)
                     self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
+                   
                 }
+                //move up for production
+                DBService.shared.initializeData()
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
             })
         })
