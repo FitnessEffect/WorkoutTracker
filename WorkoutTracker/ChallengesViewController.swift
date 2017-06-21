@@ -57,6 +57,8 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             })
             self.tableViewOutlet.reloadData()
         }
+        
+        DBService.shared.updateNotifications(num: 0)
     }
     
     override func didReceiveMemoryWarning() {
