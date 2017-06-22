@@ -75,6 +75,14 @@
                         <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VUZ-F8-ABs"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i1-hf-GYS">
+                    <rect key="frame" x="105" y="297" width="19" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
@@ -82,6 +90,7 @@
                 <outlet property="clientBtn" destination="YZT-6u-cDX" id="KaE-Ym-kO1"/>
                 <outlet property="historyBtn" destination="x47-gG-DUO" id="CMu-rN-s1A"/>
                 <outlet property="logoutBtn" destination="ET5-8a-P6H" id="1hb-wg-6yE"/>
+                <outlet property="notificationLabel" destination="2i1-hf-GYS" id="8lU-f6-U4Y"/>
                 <outlet property="profileBtn" destination="1pl-4H-5a3" id="G8p-kC-11U"/>
             </connections>
             <point key="canvasLocation" x="71.5" y="110.5"/>

@@ -21,7 +21,6 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     var exercises = [String]()
     var categoryPassed = ""
     
-    
     let reps = ["Reps", "1 rep", "5 reps", "6 reps", "7 reps", "8 reps", "9 reps", "10 reps", "11 reps", "12 reps", "13 reps", "14 reps", "15 reps", "16 reps", "17 reps", "18 reps", "19 reps", "20 reps", "21 reps", "25 reps", "30 reps", "100 reps"]
     
     let sets = ["Sets", "1 set", "2 sets", "3 sets", "4 sets", "5 sets","6 sets", "7 sets", "8 sets", "9 sets", "10 sets", "11 sets", "12 sets", "13 sets", "14 sets", "15 sets", "20 sets"]
@@ -35,7 +34,6 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,17 +41,13 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
             self.exercises = DBService.shared.exercisesForBodybuildingCategory
             self.pickerOutlet.reloadAllComponents()
-            
         })
-        
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
-        
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createExerciseID") as! CreateBodybuildingExerciseViewController
         popController.setCategory(category:categoryPassed)
@@ -102,7 +96,6 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
         let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
-        
         
         myExercise.name = categoryPassed
         myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " " + sets[idSets]

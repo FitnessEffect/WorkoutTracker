@@ -21,7 +21,6 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
@@ -73,7 +72,6 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             myExercise.name = exercises[id]
             myExercise.category = "Wods"
             myExercise.type = "Crossfit"
-            
             if myExercise.name == "Fran"{
                 DBService.shared.retrieveWod(wodName: "Fran", completion: {
                 (str) in
@@ -102,19 +100,15 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             myExercise.type = "Crossfit"
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         }
-        
         dismiss(animated: true, completion: nil)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        
         label.text = exercises[row]
-        
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 28.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
-        
         return label
     }
 }

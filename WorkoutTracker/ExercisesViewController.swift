@@ -30,12 +30,10 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         ref = FIRDatabase.database().reference()
         title = clientPassed.firstName        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +41,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.exerciseArray = DBService.shared.exercisesForClient
         self.tableViewOutlet.reloadData()
         })
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

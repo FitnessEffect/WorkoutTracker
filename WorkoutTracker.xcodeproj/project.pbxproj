@@ -43,6 +43,7 @@
 		5291C45E1CE144B900DF8C0C /* BodybuildingSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291C45D1CE144B900DF8C0C /* BodybuildingSelectionViewController.swift */; };
 		52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */; };
 		52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7D1611EC8BEAB00585964 /* LoginViewController.swift */; };
+		52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB16A91EFBFD2D00F4232D /* Formatter.swift */; };
 		52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */; };
 		52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */; };
 		52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */; };
@@ -95,6 +96,7 @@
 		5291C45D1CE144B900DF8C0C /* BodybuildingSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodybuildingSelectionViewController.swift; sourceTree = "<group>"; };
 		52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		52C7D1611EC8BEAB00585964 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		52CB16A91EFBFD2D00F4232D /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetconCustomCell.swift; sourceTree = "<group>"; };
 		52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmrapCustomCell.swift; path = ../AmrapCustomCell.swift; sourceTree = "<group>"; };
 		52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
@@ -162,16 +164,14 @@
 		5283E0801C89130500FB716B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				52192ACC1CD5452100A311A1 /* CustomCells */,
+				52CB16A81EFBFC8F00F4232D /* Format */,
+				52CB16A71EFBFBD500F4232D /* Popovers */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
-				522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
 				5283E07E1C890E6200FB716B /* ExercisesViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* WorkoutInputViewController.swift */,
-				526A3F101EC60D61001BF557 /* CalendarViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
-				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 			);
@@ -202,9 +202,29 @@
 			name = "Bodybuilding Views";
 			sourceTree = "<group>";
 		};
+		52CB16A71EFBFBD500F4232D /* Popovers */ = {
+			isa = PBXGroup;
+			children = (
+				522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */,
+				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
+				526A3F101EC60D61001BF557 /* CalendarViewController.swift */,
+			);
+			name = Popovers;
+			sourceTree = "<group>";
+		};
+		52CB16A81EFBFC8F00F4232D /* Format */ = {
+			isa = PBXGroup;
+			children = (
+				52CB16A91EFBFD2D00F4232D /* Formatter.swift */,
+				526A3F121EC6165C001BF557 /* DateConverter.swift */,
+			);
+			name = Format;
+			sourceTree = "<group>";
+		};
 		52EB1DEB1ECA778C004CA561 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52192ACC1CD5452100A311A1 /* CustomCells */,
 				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 				5291C4561CE13EED00DF8C0C /* Bodybuilding Views */,
 				5291C4551CE13ECB00DF8C0C /* Crossfit Views */,
@@ -258,7 +278,6 @@
 			children = (
 				5283E0741C7E37CB00FB716B /* Client.swift */,
 				5283E0871C8B998600FB716B /* Exercise.swift */,
-				526A3F121EC6165C001BF557 /* DateConverter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -437,6 +456,7 @@
 				5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
+				52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */,
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,

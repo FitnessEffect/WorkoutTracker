@@ -47,7 +47,6 @@ class CalendarViewController:UIViewController{
         setToSelectedMonthAndYear()
     }
     
-    
     func setToSelectedMonthAndYear(){
         yearLabel.text = String(selectedYear)
         if passedStartingMonth != 0{

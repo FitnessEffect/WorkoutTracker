@@ -66,26 +66,8 @@ class DBService {
         }
     }
     
-    
-    // DBService.shared.updateUserData(action: ["type": "email", "data": "me@mail.com"])
-    func updateUserData(action: [String: String]) {
-        let type = action["type"]!
-        let data = action["data"]!
-        switch (type) {
-        case "email":
-            // do stuff
-            // call the update email function
-            print(data)
-            break
-        case "first_name":
-            break
-        default:
-            break
-        }
-    }
     //automatically called when user logs in or out
     func setUser(completion handler: (FIRUser?, String?) -> Void) {
-        //why does this get called twice?????
         if let user = FIRAuth.auth()?.currentUser {
             _user = user
             handler(user, nil)
@@ -96,7 +78,6 @@ class DBService {
     }
     
     func createNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
-        
         _ref.child("users").child(_user.uid).child("Clients").child(currentkey).setValue(newClient)
         retrieveClients(completion: {
             self._clients.sort(by: {a, b in
@@ -237,8 +218,6 @@ class DBService {
         }
     }
     
-    
-    
     func retrieveCrossfitCategoryExercises(completion: @escaping () -> Void){
         _exercisesForCrossfitCategory.removeAll()
         
@@ -274,7 +253,6 @@ class DBService {
         }) { (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     func retrieveClients(completion: @escaping () -> Void){
@@ -398,19 +376,22 @@ class DBService {
         }
     }
     
+    func deleteChallengeExerciseForUser(id:String){
+        self._ref.child("users").child(self.user.uid).child("Challenges").child(id).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func updateNotifications(num:Int){
-        let formattedEmail = formateEmail(email: self.user.email!)
+        let formattedEmail = Formatter.formateEmail(email: self.user.email!)
         var dictionary = [String:Any]()
         dictionary[formattedEmail] = num
         self._ref.child("notification").updateChildValues(dictionary)
+        UIApplication.shared.applicationIconBadgeNumber = num
     }
-    
-    func formateEmail(email:String) -> String{
-        var tempEmail = ""
-        tempEmail = email.replacingOccurrences(of: "@", with: "%40")
-        tempEmail = tempEmail.replacingOccurrences(of: ".", with: "%2E")
-        return tempEmail
-    }
+
     
     func clearExercisePassed(){
         _passedExercise?.exerciseKey = ""
@@ -522,14 +503,6 @@ class DBService {
             return _challengeExercises
         }
     }
-    
-    //        use setters to filter data and perform various actions, variable = ""
-    //        set(newVal) {
-    //            guard let email = newVal.email else {
-    //                return
-    //            }
-    //            
-    //        }
 }
 
 

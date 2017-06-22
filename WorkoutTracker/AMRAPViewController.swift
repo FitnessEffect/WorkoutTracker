@@ -26,10 +26,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
@@ -67,7 +65,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
 
     @IBAction func addMetcon(_ sender: UIButton) {
-        
         myExercise.name = "Amrap"
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         var metconString = ""
@@ -77,7 +74,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 metconString.append(" | ")
             }
         }
-        
         myExercise.category = "Amrap"
         myExercise.type = "Crossfit"
         myExercise.exerciseDescription = (time[id] + " | " + metconString)
@@ -96,15 +92,11 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "AmrapCell", for: indexPath) as! AmrapCustomCell
-        
         let text = exerciseList[(indexPath as NSIndexPath).row]
-        
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
         cell.exTextField.addTarget(self, action: #selector(MetconViewController.textFieldDidChange(_:)), for:UIControlEvents.editingChanged)
-        
         return cell
     }
     
@@ -115,13 +107,10 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-      
         label.text = time[row]
-        
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
-        
         return label
     }
     

@@ -34,7 +34,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        workoutInputView.setDelegates()
         workoutInputView.delegate = self
         
         let barButtonItem = self.navigationItem.rightBarButtonItem!
@@ -46,12 +45,12 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
         if DBService.shared.passedClient.firstName != ""{
-            
             title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
         }else{
             title = "Personal"
         }
         
+        NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
         workoutInputView.initializeView()
@@ -62,6 +61,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
+        UIApplication.shared.keyWindow?.addSubview(workoutInputView.notificationNumber)
+        
         registerForKeyboardNotifications()
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
@@ -70,64 +71,47 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         menuView = MenuView.instanceFromNib() as! MenuView
         view.addSubview(overlayView)
         view.addSubview(menuView)
+        
         //initialize position of views
+        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
-        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         if edit == true{
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
-            tempExercise.exerciseDescription = formatExerciseDescription(desStr: tempExercise.exerciseDescription)
+            tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
             workoutInputView.fillInExercisePassed(exercise: tempExercise)
         }else{
             workoutInputView.setCurrentDate()
         }
-        
         fillInExercisePassed()
-       
+    }
+    
+    func updateNotification(_ notification: Notification) {
+        workoutInputView.updateNotification()
     }
     
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         tempExercise = info["exerciseKey"]!
-        
         //format response
         let desStr:String = tempExercise.exerciseDescription
-        
-        let formatExerciseDesStr = formatExerciseDescription(desStr: desStr)
+        let formatExerciseDesStr = Formatter.formatExerciseDescription(desStr: desStr)
         let formattedStr = tempExercise.name + formatExerciseDesStr
-        
         workoutInputView.saveExercise(exStr: formattedStr)
     }
     
-    func formatExerciseDescription(desStr:String) -> String{
-        let stringParts = desStr.components(separatedBy: "|")
-        
-        var newString:String = ""
-        newString.append("\n")
-        for part in stringParts{
-            newString.append(part)
-            newString.append("\n")
-        }
-        return newString
-    }
-    
     func handleResultPickerChoice() -> Int{
-        
         if edit == true{
             tempExercise = DBService.shared.passedExercise
         }
-        
         if tempExercise.category == "1 Rep Max" || tempExercise.type == "Bodybuilding"{
             return 3
-            
         }else if tempExercise.name == "Tabata" || tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph"{
             return 2
-            
         }else if tempExercise.name == "Amrap"{
             return 4
         }else{
@@ -136,9 +120,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func handleSave(json: [String : Any]) {
-        
         exerciseDictionary = json
-        
         exerciseDictionary["description"] = tempExercise.exerciseDescription
         exerciseDictionary["name"] =  tempExercise.name
         exerciseDictionary["type"] = tempExercise.type
@@ -151,21 +133,16 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }else{
             exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
         }
-        
         edit = false
-        
         if self.title == "Personal"{
             DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
-                
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
                 present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
-                    
                 })})
             })
         }else{
             DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
-                
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
                 present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
@@ -214,9 +191,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func fillInExercisePassed(){
         let ex = DBService.shared.passedExercise
         if ex.exerciseKey != ""{
-        ex.exerciseDescription = formatExerciseDescription(desStr: ex.exerciseDescription)
-        workoutInputView.fillInExercisePassed(exercise: ex)
-        ex.exerciseKey = ""
+            ex.exerciseDescription = Formatter.formatExerciseDescription(desStr: ex.exerciseDescription)
+            workoutInputView.fillInExercisePassed(exercise: ex)
+            ex.exerciseKey = ""
         }
     }
     
@@ -235,9 +212,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         self.dismiss(animated: true, completion: nil)
     }
     
-    //decouple ui stuff =>> put in method
     @IBAction func saveBtn(_ sender: UIButton) {
-        
         if self.title == "Personal"{
             DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
@@ -257,9 +232,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
         
         //post request for notification if challenge is on!!!
-        
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
-            APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
+            APIService.shared.post(endpoint: "challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
         }
     }
     
@@ -355,4 +329,3 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
-

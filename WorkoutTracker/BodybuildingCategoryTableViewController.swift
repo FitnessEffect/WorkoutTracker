@@ -44,12 +44,10 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
-        
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCategoryID") as! CreateBodybuildingCategoryViewController
         popController.typePassed = "Bodybuilding"
         self.navigationController?.pushViewController(popController, animated: true)
-        
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -67,12 +65,9 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")!
-        
         cell.textLabel?.text = self.categories[indexPath.row]
         cell.tag = indexPath.row
-        
         return cell
     }
     

@@ -49,9 +49,8 @@ class LoginViewController: UIViewController {
                 if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
                     print(deviceTokenString)
                     //use email
-                    let formattedEmail = self.formateEmail(email: (user?.email)!)
+                    let formattedEmail = Formatter.formateEmail(email: (user?.email)!)
                     self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
-                   
                 }
                 //move up for production
                 DBService.shared.initializeData()
@@ -71,13 +70,6 @@ class LoginViewController: UIViewController {
                 self.view.endEditing(true)
             }
         }
-    }
-    
-    func formateEmail(email:String) -> String{
-        var tempEmail = ""
-        tempEmail = email.replacingOccurrences(of: "@", with: "%40")
-        tempEmail = tempEmail.replacingOccurrences(of: ".", with: "%2E")
-        return tempEmail
     }
     
     override func didReceiveMemoryWarning() {

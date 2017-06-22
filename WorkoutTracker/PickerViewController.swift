@@ -27,7 +27,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         weights.append("lbs")
         reps.append("reps")
         
@@ -98,7 +97,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        
         if tagPassed == 1{
             let pickerName = namesPassed[row]
             tempResult = pickerName
@@ -126,24 +124,19 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func saveBtn(_ sender: UIButton) {
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
         if tagPassed == 1{
-            
             presenter.savePickerName(name: tempResult)
         }else if tagPassed == 2{
-            
             presenter.saveResult(str: tempResult)
         }else if tagPassed == 3{
-            
             presenter.saveResult(str: tempResult)
         }else if tagPassed == 4{
             presenter.saveResult(str: tempResult)
         }
-        
         dismiss(animated: true, completion: nil)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        
         if tagPassed == 1{
             label.text = namesPassed[row]
         }else if tagPassed == 2{
@@ -159,11 +152,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else{
             label.text = reps[row]
         }
-        
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
-        
         return label
     }
     

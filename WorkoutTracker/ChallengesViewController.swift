@@ -26,7 +26,12 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
+        DBService.shared.updateNotifications(num: 0)
         title = "Challenges"
+        
+        NotificationCenter.default.post(name:Notification.Name(rawValue:"notifKey"),
+                                        object: nil,
+                                        userInfo:nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -57,8 +62,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             })
             self.tableViewOutlet.reloadData()
         }
-        
-        DBService.shared.updateNotifications(num: 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,16 +93,13 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-        
         if menuShowing == true{
             //remove menu view
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-            
         }else{
             if tableViewOutlet.frame.contains(sender.location(in: view)){
                 performSegue(withIdentifier: "editChallengeSegue", sender: sender)
@@ -117,7 +117,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell", for: indexPath) as! ChallengeCustomCell
-        
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
         cell.challenger.text = exercise.creatorEmail
@@ -130,12 +129,11 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
-            
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.exerciseArray[x].exerciseKey
                 
-                DBService.shared.deleteExerciseForClient(id:id)
+                DBService.shared.deleteChallengeExerciseForUser(id:id)
                 
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
@@ -145,6 +143,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             self.present(deleteAlert, animated: true, completion:nil)
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editChallengeSegue"){
             let s = sender as! UITapGestureRecognizer

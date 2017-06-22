@@ -24,7 +24,6 @@ class CreateCrossfitExerciseViewController: UIViewController {
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
@@ -47,9 +46,7 @@ class CreateCrossfitExerciseViewController: UIViewController {
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
         dictionary[exName.text!.capitalized] = true
-        
         DBService.shared.createCrossfitExercise(dictionary: dictionary)
-        
         self.navigationController?.popViewController(animated: true)
     }
 }
