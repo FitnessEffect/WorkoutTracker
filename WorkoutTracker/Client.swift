@@ -54,7 +54,6 @@ class Client: NSCoder{
         aCoder.encode(clientKey, forKey:  "key")
     }
     
-    
     init (coder aDecoder: NSCoder!) {
         self.gender = aDecoder.decodeObject(forKey: "gender") as! String
         self.firstName = aDecoder.decodeObject(forKey: "first name") as! String

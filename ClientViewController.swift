@@ -31,12 +31,21 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
+       // NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
+        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        
+        notificationNumber.layer.cornerRadius = 10.0
+        notificationNumber.clipsToBounds = true
+        notificationNumber.layer.borderWidth = 1
+        notificationNumber.layer.borderColor = UIColor.red.cgColor
+        
+        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -52,8 +61,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         let num  = UIApplication.shared.applicationIconBadgeNumber
         if num == 0{
-            notificationNumber.text = ""
+            notificationNumber.alpha = 0
         }else{
+            notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
         self.clientArray = DBService.shared.clients
@@ -63,8 +73,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func appEnteredForeground(_ notification: Notification){
         let num  = UIApplication.shared.applicationIconBadgeNumber
         if num == 0{
-            notificationNumber.text = ""
+            notificationNumber.alpha = 0
         }else{
+            notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
     }
@@ -91,7 +102,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else if client.gender == "Female" {
             cell.nameOutlet.textColor = UIColor(red: 255.0/255.0, green: 140.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         }
-        
         return cell
     }
     
@@ -138,7 +148,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.present(popController, animated: true, completion: nil)
     }
     
-    
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
     }
@@ -163,10 +172,8 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-        
         if menuShowing == true{
             //remove menu view
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0

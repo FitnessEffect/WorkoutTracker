@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var notificationNumber: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
@@ -49,13 +49,21 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+        
+        notificationNumber.layer.cornerRadius = 10.0
+        notificationNumber.clipsToBounds = true
+        notificationNumber.layer.borderWidth = 1
+        notificationNumber.layer.borderColor = UIColor.red.cgColor
+        
+        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let num  = UIApplication.shared.applicationIconBadgeNumber
         if num == 0{
-            notificationNumber.text = ""
+            notificationNumber.alpha = 0
         }else{
+            notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
         DBService.shared.retrieveExercisesForUser {
@@ -73,8 +81,9 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     func appEnteredForeground(_ notification: Notification){
         let num  = UIApplication.shared.applicationIconBadgeNumber
         if num == 0{
-            notificationNumber.text = ""
+            notificationNumber.alpha = 0
         }else{
+            notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
     }
@@ -127,7 +136,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
-        
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
         cell.descriptionOutlet.text = exercise.exerciseDescription

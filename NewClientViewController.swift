@@ -26,18 +26,13 @@ class NewClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-         genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
-        
+        genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
     
-    
     @IBAction func genderSelection(_ sender: UISegmentedControl) {
-        
         if genderSegmentedControl.selectedSegmentIndex == 0 {
-            
             
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
             
@@ -52,7 +47,6 @@ class NewClientViewController: UIViewController {
     
     @IBAction func createClient(_ sender: UIButton) {
         myClient.clientKey = DBService.shared.createClientID()
-        
         if genderSegmentedControl.selectedSegmentIndex == 0{
             myClient.gender = "Male"
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
@@ -71,9 +65,7 @@ class NewClientViewController: UIViewController {
         
         DBService.shared.createNewClient(newClient: clientDictionary, completion: {
             let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
-            
             self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)})
-            
         })
     }
 }

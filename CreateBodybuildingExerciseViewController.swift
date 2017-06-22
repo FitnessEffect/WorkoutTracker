@@ -17,7 +17,6 @@ class CreateBodybuildingExerciseViewController: UIViewController {
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var categoryPassed:String!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +42,8 @@ class CreateBodybuildingExerciseViewController: UIViewController {
     @IBAction func addExercise(_ sender: UIButton) {
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
-        dictionary[exName.text!.capitalized] = "True"
-        
+        dictionary[exName.text!.capitalized] = true
         DBService.shared.createBodybuildingExercise(dictionary: dictionary)
-        
         self.navigationController?.popViewController(animated: true)
     }
     

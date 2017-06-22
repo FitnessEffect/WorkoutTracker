@@ -27,10 +27,8 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }
@@ -60,7 +58,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         if component == 0 {
             return rest.count
         }else if component == 1{
@@ -71,7 +68,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         if component == 0 {
             return rest[row]
         }else if component == 1{
@@ -82,7 +78,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func addTabata(_ sender: UIButton) {
-        
         myExercise.name = "Tabata"
         let id:Int = pickerOutlet.selectedRow(inComponent: 2)
         var tabataString = ""
@@ -92,13 +87,10 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                 tabataString.append(" | ")
             }
         }
-        
         myExercise.category = "Tabata"
         myExercise.type = "Crossfit"
         myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + tabataString
-        
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -111,16 +103,11 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TabataCell", for: indexPath) as! TabataCustomCell
-        
         let text = exerciseList[(indexPath as NSIndexPath).row]
-
-
         cell.exTextField.text = text
         cell.exTextField.tag = (indexPath as NSIndexPath).row
         cell.exTextField.addTarget(self, action: #selector(TabataViewController.textFieldDidChange(_:)), for:UIControlEvents.editingChanged)
-        
         return cell
     }
     
@@ -131,7 +118,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-
                 if component == 0 {
                     label.text = rest[row]
                 }else if component == 1{
@@ -142,7 +128,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
-        
         return label
     }
 }

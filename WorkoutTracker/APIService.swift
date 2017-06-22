@@ -11,14 +11,10 @@ import Foundation
 class APIService {
     static let shared = APIService()
     
-    private var POST_URL = ""
-    
-    private init() {
-        
-    }
+    private var POST_URL = "http://104.236.21.144:3001/"
     
     func post(endpoint url: String, data json: [String: AnyObject], completion handler: ([String: AnyObject]) -> Void) {
-        var request = URLRequest(url: URL(string: url)!)
+        var request = URLRequest(url: URL(string: POST_URL + url)!)
         request.httpMethod = "POST"
         //send email / ex id etc
         let postString = "exerciseKey=\(json["exerciseKey"] as! String)&opponentEmail=\(json["opponent"] as! String)&userID=\(DBService.shared.user.uid)&userEmail=\(DBService.shared.user.email!)"

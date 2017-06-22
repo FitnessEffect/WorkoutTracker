@@ -13,7 +13,7 @@ protocol WorkoutInputViewDelegate {
     func handleResultPickerChoice()->Int
 }
 
-class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate {
+class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var resultTextView: UITextView!
@@ -25,7 +25,6 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBOutlet weak var eraseEmail: UIButton!
     @IBOutlet weak var resultBtn: UIButton!
     @IBOutlet weak var challenge: UIButton!
-    @IBOutlet weak var client: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var emailTxtView: UITextView!
     @IBOutlet weak var notificationNumber: UILabel!
@@ -40,7 +39,6 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //emailTxtView.delegate = self
     }
     
     func initializeView(){
@@ -58,12 +56,21 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         
         NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputView.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
+        
+        notificationNumber.layer.cornerRadius = 10.0
+        notificationNumber.clipsToBounds = true
+        notificationNumber.layer.borderWidth = 1
+        notificationNumber.layer.borderColor = UIColor.red.cgColor
+        
+        //set it on top of navigation bar
+        notificationNumber.layer.zPosition = 1;
     }
     
     func setNotifications(num:Int){
         if num == 0{
-            notificationNumber.text = ""
+            notificationNumber.alpha = 0
         }else{
+            notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
     }
@@ -71,33 +78,17 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     func fillInExercisePassed(exercise:Exercise){
         dateBtn.setTitle(exercise.date, for: .normal)
         saveExercise(exStr: exercise.exerciseDescription)
-        exercise.exerciseDescription = unFormatExerciseDescription(desStr: exercise.exerciseDescription)
+        exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
         saveResult(str: (exercise.result))
         if exercise.opponent != ""{
             //if exercise comes from history do not set creator as the challenger
             if exercise.creatorEmail == DBService.shared.user.email{
-               //do nothing
+            
             }else{
             //if exercise comes from challenges set creator as the challenger
             saveEmail(emailStr: exercise.creatorEmail)
             }
         }
-    }
-    
-    func unFormatExerciseDescription(desStr:String) -> String{
-        var stringParts = desStr.components(separatedBy: "\n")
-        
-        var newString:String = ""
-        stringParts.removeFirst()
-        stringParts.removeLast()
-        for index in 0...stringParts.count-1{
-            newString.append(stringParts[index])
-            if index != stringParts.count - 1{
-                newString.append("|")
-            }
-        }
-        
-        return newString
     }
     
     func saveExercise(exStr:String){
@@ -121,14 +112,21 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     func appEnteredForeground(_ notification: Notification){
         let num  = UIApplication.shared.applicationIconBadgeNumber
         if num == 0{
-            notificationNumber.text = ""
+            notificationNumber.alpha = 0
         }else{
+            notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
     }
     
-    func setDelegates() {
-        emailTxtView.delegate = self
+    func updateNotification(){
+        let num  = UIApplication.shared.applicationIconBadgeNumber
+        if num == 0{
+            notificationNumber.alpha = 0
+        }else{
+            notificationNumber.alpha = 1
+            notificationNumber.text = String(num)
+        }
     }
     
     func getCurrentViewController() -> UIViewController? {
@@ -268,14 +266,6 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     func setNewDate(dateStr:String){
         dateSelected = dateStr
         dateBtn.setTitle(dateSelected,for: .normal)
-    }
-    
-    func updateUI() {
-        // populate interface, show views, etc
-    }
-    
-    func hideView(view: UIView) {
-        // hide any view
     }
     
     func saveResult(str:String){

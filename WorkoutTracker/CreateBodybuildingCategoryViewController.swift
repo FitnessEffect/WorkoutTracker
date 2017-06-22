@@ -20,7 +20,6 @@ class CreateBodybuildingCategoryViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
     }

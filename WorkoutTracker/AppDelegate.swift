@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 18)!], for: .normal) // your textattributes here
         
-        
         FIRApp.configure()
         ref = FIRDatabase.database().reference()
         user = FIRAuth.auth()?.currentUser
@@ -75,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //update notification badge number
         setBadgeNumber(-1)
         
-        
         DBService.shared.updateNotifications(num: badgeNum - 1)
         
         var exerciseDictionary = data["exercise"]! as! [String:Any]
@@ -97,19 +95,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         DBService.shared.setPassedExercise(exercise:myEx)
         
-        //grab reference to vc on screen. Do not instantiate
-        //let vc = window?.rootViewController?.presentedViewController?.childViewControllers[0] as! WorkoutInputViewController
-
-        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "inputNavID")
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
-        
-       
-        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

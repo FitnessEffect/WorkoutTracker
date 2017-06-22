@@ -27,7 +27,6 @@ class EmailSelectionViewController: UIViewController {
     
     @IBAction func addEmail(_ sender: UIButton) {
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
-    
         presenter.saveEmail(emailStr: emailTextField.text!)
         dismiss(animated: true, completion: nil)
     }
@@ -35,10 +34,8 @@ class EmailSelectionViewController: UIViewController {
     func hitTest(_ sender:UITapGestureRecognizer){
        if !emailTextField.frame.contains(sender.location(in: view)){
                 self.view.endEditing(true)
-            
         }
     }
-    
     
     /*
     // MARK: - Navigation

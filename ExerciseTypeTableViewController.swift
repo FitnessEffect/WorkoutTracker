@@ -17,7 +17,6 @@ class ExerciseTypeTableViewController: UITableViewController{
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,7 +32,6 @@ class ExerciseTypeTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "BodybuildingCell", for: indexPath)
             let exercise = exerciseType[(indexPath as NSIndexPath).row]
