@@ -233,7 +233,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         //post request for notification if challenge is on!!!
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
-            APIService.shared.post(endpoint: "challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
+            APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
         }
     }
     
