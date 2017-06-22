@@ -225,13 +225,13 @@
 			isa = PBXGroup;
 			children = (
 				52192ACC1CD5452100A311A1 /* CustomCells */,
-				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 				5291C4561CE13EED00DF8C0C /* Bodybuilding Views */,
 				5291C4551CE13ECB00DF8C0C /* Crossfit Views */,
 				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
 				52EB1DEE1ECA77F2004CA561 /* MenuView.swift */,
 				52EB1DF01ECA7902004CA561 /* OverlayView.xib */,
 				52EB1DF41ECA7949004CA561 /* OverlayView.swift */,
+				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,8 +259,8 @@
 			children = (
 				52717FE21EE8DB7A00DBD8DE /* Services */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
-				52EB1DEB1ECA778C004CA561 /* Views */,
 				52FCD5C21CB59F87008B0472 /* Models */,
+				52EB1DEB1ECA778C004CA561 /* Views */,
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,

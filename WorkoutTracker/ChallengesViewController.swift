@@ -29,9 +29,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         DBService.shared.updateNotifications(num: 0)
         title = "Challenges"
         
-        NotificationCenter.default.post(name:Notification.Name(rawValue:"notifKey"),
-                                        object: nil,
-                                        userInfo:nil)
+        NotificationCenter.default.post(name:Notification.Name(rawValue:"notifKey"),object: nil,userInfo:nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -121,7 +119,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
         cell.challenger.text = exercise.creatorEmail
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
-        cell.date.text = exercise.date
         return cell
     }
     

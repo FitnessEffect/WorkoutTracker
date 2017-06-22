@@ -556,7 +556,7 @@
                                     <constraint firstAttribute="height" constant="50" id="hE0-NZ-NDE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addExercise:" destination="nyg-zS-dKd" eventType="touchUpInside" id="Cf3-Lm-dGo"/>
                                 </connections>
@@ -889,7 +889,7 @@
                                     <constraint firstAttribute="width" constant="190" id="jDY-LY-aC6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addWod:" destination="rcG-z7-cRk" eventType="touchUpInside" id="b5m-JK-iD1"/>
                                 </connections>
@@ -1087,7 +1087,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ZXT-U1-81Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addTabata:" destination="1Ts-N7-NBp" eventType="touchUpInside" id="NXz-I7-Ezw"/>
                                 </connections>
@@ -1237,7 +1237,7 @@
                                     <constraint firstAttribute="width" constant="190" id="rkC-aC-dxM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addMetcon:" destination="L6G-hK-Tej" eventType="touchUpInside" id="dez-tg-f1H"/>
                                 </connections>
@@ -1339,7 +1339,7 @@
                                     <constraint firstAttribute="width" constant="190" id="ri7-h5-gjz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="addMetcon:" destination="amZ-mI-WTt" eventType="touchUpInside" id="Z75-Sy-cyG"/>
                                 </connections>
@@ -1421,7 +1421,7 @@
                                     <constraint firstAttribute="height" constant="50" id="id2-l4-wtw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="saveBtn:" destination="R3g-3K-scy" eventType="touchUpInside" id="iZ2-6M-cSc"/>
                                 </connections>
