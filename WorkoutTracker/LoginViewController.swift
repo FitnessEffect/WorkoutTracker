@@ -52,9 +52,11 @@ class LoginViewController: UIViewController {
                     let formattedEmail = Formatter.formateEmail(email: (user?.email)!)
                     self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
                 }
-                //move up for production
+                
+                
                 DBService.shared.initializeData()
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
+
             })
         })
     }
@@ -113,35 +115,25 @@ class LoginViewController: UIViewController {
     @IBAction func register(_ sender: UIButton) {
         if emailTF.text == "" {
             let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-            
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
-            
             present(alertController, animated: true, completion: nil)
-            
         } else if passwordTF.text == "" {
             let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-            
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
                 if error == nil {
                     print("You have successfully signed up")
-                    
                     let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
-                    
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
-                    
                     self.present(alertController, animated: true, completion: nil)
-                    
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
-                    
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
