@@ -84,4 +84,23 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         nextVC.setCategory(category:title!)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this category?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                let x = indexPath.row
+                let id = self.categories[x]
+                
+                DBService.shared.deleteCategory(category: id)
+                
+                self.categories.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+    }
 }

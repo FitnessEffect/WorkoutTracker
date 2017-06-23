@@ -384,6 +384,14 @@ class DBService {
         }
     }
     
+    func deleteCategory(category:String){
+        self._ref.child("users").child(self.user.uid).child("Types").child("Bodybuilding").child(category).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func updateNotifications(num:Int){
         let formattedEmail = Formatter.formateEmail(email: self.user.email!)
         var dictionary = [String:Any]()
@@ -405,6 +413,7 @@ class DBService {
         var crossfitDictionary = [String:Any]()
         crossfitDictionary["1 Rep Max"] = true
         crossfitDictionary["Amrap"] = true
+        crossfitDictionary["Emom"] = true
         crossfitDictionary["Metcon"] = true
         crossfitDictionary["Tabata"] = true
         crossfitDictionary["Wods"] = true
