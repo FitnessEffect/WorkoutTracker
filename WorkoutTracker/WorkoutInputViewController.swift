@@ -114,6 +114,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             return 2
         }else if tempExercise.name == "Amrap"{
             return 4
+        }else if tempExercise.name == "Emom"{
+            return 5
         }else{
             return 0
         }
