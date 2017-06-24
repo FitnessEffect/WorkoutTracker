@@ -696,7 +696,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exercise Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E27-0T-66N">
                                 <rect key="frame" x="71" y="73" width="233" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="233" id="Dgh-BQ-TXH"/>
+                                    <constraint firstAttribute="width" constant="233" id="lS8-UH-Fpv"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
@@ -717,10 +717,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="E27-0T-66N" firstAttribute="top" secondItem="oCP-WY-abZ" secondAttribute="bottom" constant="53" id="CoR-Vl-g6O"/>
-                            <constraint firstItem="E27-0T-66N" firstAttribute="centerX" secondItem="Pi4-ZW-EF9" secondAttribute="centerX" id="L8Q-iv-BCe"/>
+                            <constraint firstItem="E27-0T-66N" firstAttribute="centerX" secondItem="Pi4-ZW-EF9" secondAttribute="centerX" id="EPh-Rx-Eh0"/>
+                            <constraint firstItem="E27-0T-66N" firstAttribute="top" secondItem="oCP-WY-abZ" secondAttribute="bottom" constant="53" id="N8Y-L1-5YG"/>
+                            <constraint firstItem="E5I-i8-Wtr" firstAttribute="top" secondItem="E27-0T-66N" secondAttribute="bottom" constant="84" id="Td2-v4-Nq0"/>
                             <constraint firstItem="E5I-i8-Wtr" firstAttribute="centerX" secondItem="Pi4-ZW-EF9" secondAttribute="centerX" id="dWk-cP-UzO"/>
-                            <constraint firstItem="E5I-i8-Wtr" firstAttribute="top" secondItem="E27-0T-66N" secondAttribute="bottom" constant="84" id="rmG-rf-fEo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1433,6 +1433,27 @@
                                     <action selector="saveBtn:" destination="R3g-3K-scy" eventType="touchUpInside" id="iZ2-6M-cSc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFW-Kj-Teg">
+                                <rect key="frame" x="262" y="60" width="41" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
+                                <rect key="frame" x="163" y="60" width="41" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXa-Pi-mYb">
+                                <rect key="frame" x="59" y="60" width="41" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

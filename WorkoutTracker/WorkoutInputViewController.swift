@@ -65,6 +65,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         registerForKeyboardNotifications()
         
+        
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -91,6 +93,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func updateNotification(_ notification: Notification) {
+        workoutInputView.updateNotification()
+    }
+    
+    func updateNotif(){
         workoutInputView.updateNotification()
     }
     

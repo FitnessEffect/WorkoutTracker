@@ -28,25 +28,51 @@ class MenuView: UIView {
     }
     
     func addFx() {
+        
+        profileBtn.layer.cornerRadius = 5.0
+        profileBtn.clipsToBounds = true
+        profileBtn.layer.borderWidth = 1
+        profileBtn.layer.borderColor = UIColor.black.cgColor
+        
         profileBtn.layer.shadowColor = UIColor.black.cgColor
         profileBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         profileBtn.layer.shadowOpacity = 0.6
         profileBtn.layer.shadowRadius = 5
+        
+        clientBtn.layer.cornerRadius = 5.0
+        clientBtn.clipsToBounds = true
+        clientBtn.layer.borderWidth = 1
+        clientBtn.layer.borderColor = UIColor.black.cgColor
         
         clientBtn.layer.shadowColor = UIColor.black.cgColor
         clientBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         clientBtn.layer.shadowOpacity = 0.6
         clientBtn.layer.shadowRadius = 5
         
+        historyBtn.layer.cornerRadius = 5.0
+        historyBtn.clipsToBounds = true
+        historyBtn.layer.borderWidth = 1
+        historyBtn.layer.borderColor = UIColor.black.cgColor
+        
         historyBtn.layer.shadowColor = UIColor.black.cgColor
         historyBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         historyBtn.layer.shadowOpacity = 0.6
         historyBtn.layer.shadowRadius = 5
         
+        challengeBtn.layer.cornerRadius = 5.0
+        challengeBtn.clipsToBounds = true
+        challengeBtn.layer.borderWidth = 1
+        challengeBtn.layer.borderColor = UIColor.black.cgColor
+        
         challengeBtn.layer.shadowColor = UIColor.black.cgColor
         challengeBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         challengeBtn.layer.shadowOpacity = 0.6
         challengeBtn.layer.shadowRadius = 5
+        
+        logoutBtn.layer.cornerRadius = 5.0
+        logoutBtn.clipsToBounds = true
+        logoutBtn.layer.borderWidth = 1
+        logoutBtn.layer.borderColor = UIColor.black.cgColor
         
         logoutBtn.layer.shadowColor = UIColor.black.cgColor
         logoutBtn.layer.shadowOffset = CGSize(width: 5, height: 5)

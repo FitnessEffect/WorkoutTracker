@@ -110,6 +110,7 @@ class LoginViewController: UIViewController {
             prefs.set(rememberMeSwitch.isOn, forKey:"switch")
             setAuthListener()
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
+                
             })
         }
     }

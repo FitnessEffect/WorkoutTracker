@@ -24,12 +24,20 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     let time = ["1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "15 minutes"]
     
+    var emomTime = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        emomTime.append("minute(s)")
+        
+        for i in 1...100{
+            emomTime.append(String(i))
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,11 +65,19 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if categoryPassed == "Emom"{
+            return emomTime.count
+        }else{
             return time.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if categoryPassed == "Emom"{
+            return emomTime[row]
+        }else{
             return time[row]
+        }
     }
 
     @IBAction func addMetcon(_ sender: UIButton) {
@@ -91,12 +107,10 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             }
             myExercise.category = "Emom"
             myExercise.type = "Crossfit"
-            myExercise.exerciseDescription = (time[id] + " | " + emomString)
-            
-            
-            
-
+            myExercise.exerciseDescription = (emomTime[id] + " | " + emomString)
+            DBService.shared.setEmomTime(time:emomTime[id])
         }
+        
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         dismiss(animated: true, completion: nil)
     }
@@ -124,12 +138,21 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label = UILabel()
-        label.text = time[row]
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
-        label.attributedText = myTitle
-        label.textAlignment = NSTextAlignment.center
-        return label
+        if categoryPassed == "Emom"{
+            let label = UILabel()
+            label.text = emomTime[row]
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            label.attributedText = myTitle
+            label.textAlignment = NSTextAlignment.center
+            return label
+        }else{
+            let label = UILabel()
+            label.text = time[row]
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            label.attributedText = myTitle
+            label.textAlignment = NSTextAlignment.center
+            return label
+        }
     }
     
 }
