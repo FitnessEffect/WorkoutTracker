@@ -15,10 +15,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var namesPassed:[String]!
     var weights = [String]()
     var reps = [String]()
-    var minutes = ["minutes", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
-    var hours = ["hours","0","1", "2"]
-    var seconds = ["seconds", "0", "1", "2"]
-    var metcon = ["Completed", "1", "2"]
+    var minutes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
+    var hours = ["0","1", "2"]
+    var seconds = ["0", "1", "2"]
+    var emom = ["Completed"]
     var tagPassed = 0
     var tempHours = ""
     var tempMinutes = ""
@@ -34,6 +34,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         for i in 0...500{
             weights.append(String(i))
             reps.append(String(i))
+        }
+        
+        if tagPassed == 5{
+            let max = Int(DBService.shared.emomTime)
+            for i in 0...max!{
+                emom.append(String(i))
+            }
+            
         }
     }
     
@@ -74,7 +82,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 4{
             return reps.count
         }else{
-            return metcon.count
+            return emom.count
         }
     }
     
@@ -94,7 +102,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 4{
             return reps[row]
         }else{
-            return metcon[row]
+            return emom[row]
         }
     }
     
@@ -121,9 +129,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let tempReps = reps[row] + " rep(s)"
             tempResult = tempReps
         }else if tagPassed == 5{
-            var temp = metcon[row] + " minute(s) completed"
-            if metcon[row] == "Completed"{
-                temp = metcon[row]
+            var temp = emom[row] + " minute(s) completed"
+            if emom[row] == "Completed"{
+                temp = emom[row]
             }
             tempResult = temp
         }
@@ -156,7 +164,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 4{
             label.text = reps[row]
         }else{
-            label.text = metcon[row]
+            label.text = emom[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle

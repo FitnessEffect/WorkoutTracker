@@ -52,7 +52,6 @@ class CrossfitCategoryTableViewController: UITableViewController {
         return categories.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let x = (indexPath as NSIndexPath).row

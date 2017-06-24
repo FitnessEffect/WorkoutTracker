@@ -28,6 +28,7 @@ class DBService {
     private var _bodybuildingCategories = [String]()
     private var _challengeExercises = [Exercise]()
     private var _typePassed:String!
+    private var _emomTime:String!
     
     private init() {
         initDatabase()
@@ -139,6 +140,10 @@ class DBService {
     
     func setPassedType(type:String){
         _typePassed = type
+    }
+    
+    func setEmomTime(time:String){
+        _emomTime = time
     }
     
     func createCrossfitExercise(dictionary:[String:Any]){
@@ -509,6 +514,12 @@ class DBService {
     var challengeExercises:[Exercise]{
         get{
             return _challengeExercises
+        }
+    }
+    
+    var emomTime:String{
+        get{
+            return _emomTime
         }
     }
 }

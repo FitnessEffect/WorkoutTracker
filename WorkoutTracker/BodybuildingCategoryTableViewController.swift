@@ -19,13 +19,16 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         super.viewDidLoad()
         typePassed = "Bodybuilding"
         title = typePassed
+        
+       
+        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
-        rightBarButton.image = UIImage(named:"addIcon")
         
+        rightBarButton.image = UIImage(named:"addIcon")
         
         
         self.navigationItem.rightBarButtonItem = rightBarButton

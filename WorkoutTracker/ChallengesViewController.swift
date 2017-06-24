@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+//protocol sendNotifUpdateDelegate{
+//    func updateNotif()
+//}
+
 class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableViewOutlet: UITableView!
@@ -20,6 +24,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     var menuShowing = false
     var menuView:MenuView!
     var overlayView: OverlayView!
+ //   var delegate:sendNotifUpdateDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +34,9 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         DBService.shared.updateNotifications(num: 0)
         title = "Challenges"
         
-        NotificationCenter.default.post(name:Notification.Name(rawValue:"notifKey"),object: nil,userInfo:nil)
+ //       delegate.updateNotif()
+        
+        //NotificationCenter.default.post(name:Notification.Name(rawValue:"notifKey"),object: nil,userInfo:nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
