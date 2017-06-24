@@ -400,7 +400,6 @@ class DBService {
         UIApplication.shared.applicationIconBadgeNumber = num
     }
 
-    
     func clearExercisePassed(){
         _passedExercise?.exerciseKey = ""
     }

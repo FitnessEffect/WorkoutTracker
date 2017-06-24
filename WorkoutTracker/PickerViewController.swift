@@ -18,6 +18,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var minutes = ["minutes", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
     var hours = ["hours","0","1", "2"]
     var seconds = ["seconds", "0", "1", "2"]
+    var metcon = ["Completed", "1", "2"]
     var tagPassed = 0
     var tempHours = ""
     var tempMinutes = ""
@@ -58,7 +59,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         if tagPassed == 1{
             return namesPassed.count
         }else if tagPassed == 2{
@@ -71,13 +71,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }else if tagPassed == 3{
             return weights.count
-        }else{
+        }else if tagPassed == 4{
             return reps.count
+        }else{
+            return metcon.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         if tagPassed == 1{
             return namesPassed[row]
         }else if tagPassed == 2{
@@ -90,8 +91,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }else if tagPassed == 3{
             return weights[row]
-        }else{
+        }else if tagPassed == 4{
             return reps[row]
+        }else{
+            return metcon[row]
         }
     }
     
@@ -115,9 +118,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let tempWeight = weights[row] + " lbs"
             tempResult = tempWeight
         }else if tagPassed == 4{
-            
             let tempReps = reps[row] + " rep(s)"
             tempResult = tempReps
+        }else if tagPassed == 5{
+            var temp = metcon[row] + " minute(s) completed"
+            if metcon[row] == "Completed"{
+                temp = metcon[row]
+            }
+            tempResult = temp
         }
     }
     
@@ -125,11 +133,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
         if tagPassed == 1{
             presenter.savePickerName(name: tempResult)
-        }else if tagPassed == 2{
-            presenter.saveResult(str: tempResult)
-        }else if tagPassed == 3{
-            presenter.saveResult(str: tempResult)
-        }else if tagPassed == 4{
+        }else{
             presenter.saveResult(str: tempResult)
         }
         dismiss(animated: true, completion: nil)
@@ -149,8 +153,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }else if tagPassed == 3{
             label.text = weights[row]
-        }else{
+        }else if tagPassed == 4{
             label.text = reps[row]
+        }else{
+            label.text = metcon[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle

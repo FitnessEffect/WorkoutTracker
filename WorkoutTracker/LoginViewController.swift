@@ -53,8 +53,10 @@ class LoginViewController: UIViewController {
                     self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
                 }
                 
-                
+                //must be called once
                 DBService.shared.initializeData()
+                
+                //called only for login
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
 
             })
