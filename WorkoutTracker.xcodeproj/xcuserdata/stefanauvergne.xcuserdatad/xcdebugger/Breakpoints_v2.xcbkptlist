@@ -217,11 +217,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewClientViewController.swift"
-            timestampString = "520048534.309536"
+            timestampString = "520055668.193278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172">
+            startingLineNumber = "231"
+            endingLineNumber = "231">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -259,11 +259,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Client.swift"
-            timestampString = "520046205.220582"
+            timestampString = "520051678.254826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "Client"
             landmarkType = "3">
          </BreakpointContent>
@@ -275,11 +275,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Client.swift"
-            timestampString = "520046205.220582"
+            timestampString = "520051678.254826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85">
+            startingLineNumber = "91"
+            endingLineNumber = "91">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -289,11 +289,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Client.swift"
-            timestampString = "520046205.220582"
+            timestampString = "520051678.254826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86">
+            startingLineNumber = "92"
+            endingLineNumber = "92">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,11 +303,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Client.swift"
-            timestampString = "520046205.220582"
+            timestampString = "520051678.254826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87">
+            startingLineNumber = "93"
+            endingLineNumber = "93">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -317,11 +317,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Client.swift"
-            timestampString = "520046205.220582"
+            timestampString = "520051678.254826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88">
+            startingLineNumber = "94"
+            endingLineNumber = "94">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

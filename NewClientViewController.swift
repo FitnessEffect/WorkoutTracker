@@ -26,20 +26,61 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     var delegate:createClientDelegate! = nil
     var myClient = Client()
+    var clientPassed = Client()
+    var edit = false
     var age = ["10", "15", "16", "17", "18"]
     var inches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
     var feet = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
     var weight = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "16"]
     var activityLevel = ["inactive", "occasional physical activity", "Athlete"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
                 activitySegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
         
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if clientPassed.firstName != ""{
+            if clientPassed.gender == "Male"{
+              genderSegmentedControl.selectedSegmentIndex =  0
+            }else{
+               genderSegmentedControl.selectedSegmentIndex =  1
+            }
+            
+            firstNameOutlet.text = clientPassed.firstName
+            lastNameOutlet.text = clientPassed.lastName
+            for index in 0...age.count-1{
+                if age[index] == clientPassed.age{
+                    agePickerView.selectRow(index, inComponent: 0, animated: true)
+                   break
+                }
+            }
+            activitySegmentedControl.selectedSegmentIndex = (Int(clientPassed.activityLevel)! - 1)
+            for index in 0...weight.count-1{
+                if weight[index] == clientPassed.weight{
+                    weightPickerView.selectRow(index, inComponent: 0, animated: true)
+                }
+            }
+            for index in 0...feet.count-1{
+                if feet[index] == clientPassed.feet{
+                    heightPickerView.selectRow(index, inComponent: 0, animated: true)
+                }
+            }
+            for index in 0...inches.count-1{
+                if inches[index] == clientPassed.inches{
+                    heightPickerView.selectRow(index, inComponent: 1, animated: true)
+                }
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        edit = false
     }
     
     @IBAction func genderSelection(_ sender: UISegmentedControl) {
@@ -48,6 +89,14 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
             
         }
+    }
+    
+    func setClient(client:Client){
+        clientPassed = client
+        edit = true
+    }
+    func setEdit(ed:Bool){
+        edit = ed
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -120,7 +169,12 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     }
     
     @IBAction func createClient(_ sender: UIButton) {
-        myClient.clientKey = DBService.shared.createClientID()
+        if edit == false{
+          myClient.clientKey = DBService.shared.createClientID()
+        }else{
+            myClient.clientKey = clientPassed.clientKey
+        }
+        
         if genderSegmentedControl.selectedSegmentIndex == 0{
             myClient.gender = "Male"
         }else if genderSegmentedControl.selectedSegmentIndex == 1{
@@ -132,14 +186,17 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         let tempAge = self.age[ageId]
         
         let ftId:Int = heightPickerView.selectedRow(inComponent: 0)
+        let tempFeet = feet[ftId]
         let inId:Int = heightPickerView.selectedRow(inComponent: 1)
-        let tempHeight = feet[ftId] + "'" + inches[inId]
+        let tempInches = inches[inId]
+        
         
         let lbsId:Int = weightPickerView.selectedRow(inComponent: 0)
-        let tempWeight = weight[lbsId] + "lbs"
+        let tempWeight = weight[lbsId]
         
         myClient.weight = tempWeight
-        myClient.height = tempHeight
+        myClient.feet = tempFeet
+        myClient.inches = tempInches
         myClient.age = tempAge
         myClient.activityLevel = String(activityNum)
         myClient.firstName = firstNameOutlet.text!
@@ -150,14 +207,16 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         clientDictionary["lastName"] = myClient.lastName
         clientDictionary["age"] = myClient.age
         clientDictionary["activityLevel"] = myClient.activityLevel
-        clientDictionary["height"] = myClient.height
+        clientDictionary["feet"] = myClient.feet
+        clientDictionary["inches"] = myClient.inches
         clientDictionary["weight"] = myClient.weight
         clientDictionary["gender"] = myClient.gender
         clientDictionary["clientKey"] = myClient.clientKey
         
-        DBService.shared.createNewClient(newClient: clientDictionary, completion: {
-            let presenter = self.presentingViewController?.childViewControllers.last as! ClientViewController
-            self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)})
+        
+        DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
+                let presenter = self.presentingViewController?.childViewControllers.last
+                self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
         })
     }
 }

@@ -13,7 +13,7 @@
 import UIKit
 import Firebase
 
-class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
 
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -28,12 +28,20 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        title = clientPassed.firstName        
+        //title = clientPassed.firstName
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        
+        let button =  UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        button.titleLabel!.font =  UIFont(name: "DKCoolCrayon", size: 20)
+        button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+        button.setTitle(clientPassed.firstName, for: .normal)
+        button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
+        self.navigationItem.titleView = button
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +49,33 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.exerciseArray = DBService.shared.exercisesForClient
         self.tableViewOutlet.reloadData()
         })
+    }
+    
+    func clickOnButton(button: UIButton) {
+        var xPosition:CGFloat = 0
+        var yPosition:CGFloat = 0
+        
+        xPosition = self.view.frame.width/2
+        yPosition = self.view.frame.minY + 60
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 600)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        popController.setClient(client: clientPassed)
+        
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,6 +114,10 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion:nil)
         }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
