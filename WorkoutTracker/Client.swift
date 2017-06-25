@@ -13,6 +13,9 @@ let gender = "gender"
 let firstNameKey = "first name"
 let lastNameKey = "last name"
 let ageKey = "age"
+let activityLevelKey = "activityLevel"
+let heightKey = "height"
+let weightKey = "weight"
 let exercisesKey = "exercise array"
 let key = "clientKey"
 
@@ -22,6 +25,9 @@ class Client: NSCoder{
     var firstName:String
     var lastName:String
     var age:String
+    var activityLevel:String
+    var height:String
+    var weight:String
     var exerciseArray:[Exercise]
     var clientKey:String
     
@@ -31,16 +37,22 @@ class Client: NSCoder{
         firstName = ""
         lastName = ""
         age = ""
+        activityLevel = ""
+        height = ""
+        weight = ""
         exerciseArray = []
         clientKey = ""
     }
     
     //overload initializer
-    init(gender:String, firstName:String, lastName:String, age:String, exerciseArray:[Exercise], clientKey:String){
+    init(gender:String, firstName:String, lastName:String, age:String, activityLevel:String, height:String, weight:String, exerciseArray:[Exercise], clientKey:String){
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
+        self.activityLevel = activityLevel
+        self.height = height
+        self.weight = weight
         self.exerciseArray = []
         self.clientKey = clientKey
     }
@@ -51,7 +63,10 @@ class Client: NSCoder{
         aCoder.encode(lastName, forKey: "last name")
         aCoder.encode(age, forKey: "age")
         aCoder.encode(exerciseArray, forKey:  "exercise array")
-        aCoder.encode(clientKey, forKey:  "key")
+        aCoder.encode(clientKey, forKey:  "clientKey")
+        aCoder.encode(activityLevel, forKey:  "activityLevelKey")
+        aCoder.encode(weight, forKey:  "weightKey")
+        aCoder.encode(height, forKey:  "heightKey")
     }
     
     init (coder aDecoder: NSCoder!) {
@@ -60,6 +75,9 @@ class Client: NSCoder{
         self.lastName = aDecoder.decodeObject(forKey: "last name") as! String
         self.age = aDecoder.decodeObject(forKey: "age") as! String
         self.exerciseArray = aDecoder.decodeObject(forKey: "exercise array") as! [Exercise]
-         self.clientKey = aDecoder.decodeObject(forKey: "clientKey") as! String
+        self.clientKey = aDecoder.decodeObject(forKey: "clientKey") as! String
+        self.activityLevel = aDecoder.decodeObject(forKey: "activityLevelKey") as! String
+        self.weight = aDecoder.decodeObject(forKey: "weightKey") as! String
+        self.height = aDecoder.decodeObject(forKey: "heightKey") as! String
     }
 }

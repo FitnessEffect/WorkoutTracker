@@ -21,12 +21,17 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     var exercises = [String]()
     var categoryPassed = ""
     
-    let reps = ["Reps", "1 rep", "5 reps", "6 reps", "7 reps", "8 reps", "9 reps", "10 reps", "11 reps", "12 reps", "13 reps", "14 reps", "15 reps", "16 reps", "17 reps", "18 reps", "19 reps", "20 reps", "21 reps", "25 reps", "30 reps", "100 reps"]
+    var reps = ["1", "2"]
     
-    let sets = ["Sets", "1 set", "2 sets", "3 sets", "4 sets", "5 sets","6 sets", "7 sets", "8 sets", "9 sets", "10 sets", "11 sets", "12 sets", "13 sets", "14 sets", "15 sets", "20 sets"]
+    var sets = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 1...300{
+            reps.append(String(i))
+            sets.append(String(i))
+        }
         
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]

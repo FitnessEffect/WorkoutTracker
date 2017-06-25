@@ -262,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vU0-WF-gNw">
-                                <rect key="frame" x="77" y="194" width="220" height="30"/>
+                                <rect key="frame" x="77" y="149" width="220" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="3dY-eR-kz6"/>
@@ -272,18 +272,8 @@
                                 <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xG8-bU-5E4">
-                                <rect key="frame" x="114" y="255" width="147" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="147" id="I7O-kW-CAC"/>
-                                    <constraint firstAttribute="height" constant="30" id="MW2-IQ-dqf"/>
-                                </constraints>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-yI-eKo">
-                                <rect key="frame" x="77" y="133" width="220" height="30"/>
+                                <rect key="frame" x="77" y="101" width="220" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="G6c-4B-nii"/>
@@ -294,7 +284,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-pf-AUz">
-                                <rect key="frame" x="77" y="60" width="220" height="29"/>
+                                <rect key="frame" x="77" y="43" width="220" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="aSu-7h-Eak"/>
@@ -308,7 +298,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lla-uv-X9k">
-                                <rect key="frame" x="92" y="342" width="190" height="50"/>
+                                <rect key="frame" x="92" y="527" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="j4h-r3-Hay"/>
                                     <constraint firstAttribute="width" constant="190" id="v3E-oT-d7o"/>
@@ -319,26 +309,134 @@
                                     <action selector="createClient:" destination="BiS-Xy-g6B" eventType="touchUpInside" id="OpL-vA-Znh"/>
                                 </connections>
                             </button>
+                            <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGy-VF-C4Q">
+                                <rect key="frame" x="237" y="396" width="138" height="98"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="138" id="9HE-Gl-1G8"/>
+                                    <constraint firstAttribute="height" constant="98" id="xkk-az-ftc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BiS-Xy-g6B" id="YgV-Ye-wDd"/>
+                                    <outlet property="delegate" destination="BiS-Xy-g6B" id="PaR-qv-zGS"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1d-A2-fG5">
+                                <rect key="frame" x="0.0" y="396" width="229" height="98"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="93W-SO-zPy"/>
+                                    <constraint firstAttribute="height" constant="98" id="ePx-am-I5W"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BiS-Xy-g6B" id="7kh-8t-USN"/>
+                                    <outlet property="delegate" destination="BiS-Xy-g6B" id="BTg-AE-bzt"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4f-WB-qEM">
+                                <rect key="frame" x="170" y="203" width="50" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gr6-Gu-YZc">
+                                <rect key="frame" x="16" y="319" width="343" height="29"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNy-Bj-Y7B">
+                                <rect key="frame" x="52" y="413" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZ2-L6-Q8U">
+                                <rect key="frame" x="131" y="413" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz0-Fi-V2k">
+                                <rect key="frame" x="244" y="413" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHp-0t-KRc">
+                                <rect key="frame" x="52" y="362" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDA-Ck-h3Y">
+                                <rect key="frame" x="203" y="362" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-bz-Pmo">
+                                <rect key="frame" x="121" y="286" width="132" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="wwf-9u-iTy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-SC-J5t">
+                                <rect key="frame" x="0.0" y="197" width="375" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="KIp-4g-4Py"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BiS-Xy-g6B" id="FIn-c9-1rf"/>
+                                    <outlet property="delegate" destination="BiS-Xy-g6B" id="vdN-xn-Eu6"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vU0-WF-gNw" firstAttribute="top" secondItem="8pZ-yI-eKo" secondAttribute="bottom" constant="31" id="15t-rT-C0C"/>
-                            <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="xG8-bU-5E4" secondAttribute="bottom" constant="57" id="9ZX-C6-0fN"/>
-                            <constraint firstItem="xG8-bU-5E4" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="E7N-1j-Z4L"/>
-                            <constraint firstItem="8pZ-yI-eKo" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="113" id="PmE-Lm-afj"/>
+                            <constraint firstItem="vU0-WF-gNw" firstAttribute="top" secondItem="8pZ-yI-eKo" secondAttribute="bottom" constant="18" id="15t-rT-C0C"/>
+                            <constraint firstItem="E1d-A2-fG5" firstAttribute="top" secondItem="Gr6-Gu-YZc" secondAttribute="bottom" constant="49" id="6KK-3L-pxj"/>
+                            <constraint firstItem="Gr6-Gu-YZc" firstAttribute="top" secondItem="Lhu-SC-J5t" secondAttribute="bottom" constant="41" id="6Xj-gR-n0j"/>
+                            <constraint firstItem="YGy-VF-C4Q" firstAttribute="top" secondItem="Gr6-Gu-YZc" secondAttribute="bottom" constant="49" id="Bx6-hC-IbC"/>
+                            <constraint firstItem="Lhu-SC-J5t" firstAttribute="top" secondItem="vU0-WF-gNw" secondAttribute="bottom" constant="18" id="CQk-kQ-2Wm"/>
+                            <constraint firstAttribute="trailing" secondItem="YGy-VF-C4Q" secondAttribute="trailing" id="Dy0-eU-7iZ"/>
+                            <constraint firstItem="jAZ-bz-Pmo" firstAttribute="top" secondItem="Lhu-SC-J5t" secondAttribute="bottom" constant="8" id="Nyl-ss-ub8"/>
+                            <constraint firstItem="Gr6-Gu-YZc" firstAttribute="leading" secondItem="SZh-ov-VPS" secondAttribute="leadingMargin" id="OEp-B7-AL8"/>
+                            <constraint firstItem="YGy-VF-C4Q" firstAttribute="leading" secondItem="E1d-A2-fG5" secondAttribute="trailing" constant="8" id="PBU-ti-oPE"/>
+                            <constraint firstItem="8pZ-yI-eKo" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="81" id="PmE-Lm-afj"/>
+                            <constraint firstItem="Lhu-SC-J5t" firstAttribute="leading" secondItem="SZh-ov-VPS" secondAttribute="leading" id="SgZ-IV-Cr1"/>
+                            <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="E1d-A2-fG5" secondAttribute="bottom" constant="33" id="XFk-8J-1a1"/>
                             <constraint firstItem="8pZ-yI-eKo" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="csJ-rH-J0c"/>
-                            <constraint firstItem="xG8-bU-5E4" firstAttribute="top" secondItem="vU0-WF-gNw" secondAttribute="bottom" constant="31" id="h04-ER-CdA"/>
-                            <constraint firstItem="3DZ-pf-AUz" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="40" id="jGr-EB-SIy"/>
+                            <constraint firstItem="E1d-A2-fG5" firstAttribute="leading" secondItem="SZh-ov-VPS" secondAttribute="leading" id="fI9-iT-UMk"/>
+                            <constraint firstItem="3DZ-pf-AUz" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="23" id="jGr-EB-SIy"/>
                             <constraint firstItem="3DZ-pf-AUz" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="lJb-rV-Knf"/>
                             <constraint firstItem="vU0-WF-gNw" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="mAV-mB-DRl"/>
+                            <constraint firstItem="jAZ-bz-Pmo" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" id="mCA-op-uZN"/>
+                            <constraint firstAttribute="trailing" secondItem="Lhu-SC-J5t" secondAttribute="trailing" id="ozP-90-6UA"/>
+                            <constraint firstItem="YGy-VF-C4Q" firstAttribute="leading" secondItem="E1d-A2-fG5" secondAttribute="trailing" constant="8" id="q79-9E-aaB"/>
+                            <constraint firstItem="Gr6-Gu-YZc" firstAttribute="trailing" secondItem="SZh-ov-VPS" secondAttribute="trailingMargin" id="rrp-vT-oTf"/>
                             <constraint firstItem="lla-uv-X9k" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" id="wri-5o-3hJ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ageOutlet" destination="xG8-bU-5E4" id="6qa-HY-9pk"/>
+                        <outlet property="activitySegmentedControl" destination="Gr6-Gu-YZc" id="cHb-Ih-BwC"/>
+                        <outlet property="agePickerView" destination="Lhu-SC-J5t" id="6Np-s4-Dcg"/>
                         <outlet property="firstNameOutlet" destination="8pZ-yI-eKo" id="4vJ-xS-fOW"/>
                         <outlet property="genderSegmentedControl" destination="3DZ-pf-AUz" id="dae-Wk-ZNe"/>
+                        <outlet property="heightPickerView" destination="E1d-A2-fG5" id="o1h-ln-x3N"/>
                         <outlet property="lastNameOutlet" destination="vU0-WF-gNw" id="w3t-oj-1IH"/>
+                        <outlet property="weightPickerView" destination="YGy-VF-C4Q" id="isG-ZD-nVM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrW-6C-DOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -561,6 +659,20 @@
                                     <action selector="addExercise:" destination="nyg-zS-dKd" eventType="touchUpInside" id="Cf3-Lm-dGo"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0t-5x-BwA">
+                                <rect key="frame" x="88" y="220" width="41" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpM-3S-LpW">
+                                <rect key="frame" x="238" y="220" width="41" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1147,6 +1259,27 @@
                                     <outlet property="delegate" destination="1Ts-N7-NBp" id="vfR-Wx-gqL"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="rest " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E2-iT-3Nq">
+                                <rect key="frame" x="36" y="175" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ9-DS-mdT">
+                                <rect key="frame" x="132" y="175" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75A-fo-AvL">
+                                <rect key="frame" x="235" y="175" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1249,6 +1382,13 @@
                                     <action selector="addMetcon:" destination="L6G-hK-Tej" eventType="touchUpInside" id="dez-tg-f1H"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="round(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
+                                <rect key="frame" x="162" y="240" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1351,6 +1491,27 @@
                                     <action selector="addMetcon:" destination="amZ-mI-WTt" eventType="touchUpInside" id="Z75-Sy-cyG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quh-jp-oaE">
+                                <rect key="frame" x="94" y="239" width="61" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-M4-Xaa">
+                                <rect key="frame" x="185" y="239" width="61" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
+                                <rect key="frame" x="231" y="239" width="79" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1373,7 +1534,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="add" destination="Ihm-wr-0JO" id="xQX-iT-2yp"/>
+                        <outlet property="emomMinutesLabel" destination="SL5-M4-Xaa" id="7PQ-xs-Cva"/>
+                        <outlet property="minutesLabel" destination="Quh-jp-oaE" id="p6X-tM-p1r"/>
                         <outlet property="pickerOutlet" destination="Bp9-2c-CyR" id="3jQ-Jk-VwS"/>
+                        <outlet property="secondsLabel" destination="TLL-Dc-Wra" id="wqr-hQ-F8H"/>
                         <outlet property="tableView" destination="eH5-Wu-1fM" id="6Rn-E8-qGV"/>
                     </connections>
                 </viewController>
@@ -1440,6 +1604,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXa-Pi-mYb">
+                                <rect key="frame" x="59" y="60" width="41" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
                                 <rect key="frame" x="163" y="60" width="41" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1447,10 +1618,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXa-Pi-mYb">
-                                <rect key="frame" x="59" y="60" width="41" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBj-NH-kBw">
+                                <rect key="frame" x="183" y="64" width="46" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p57-R2-tHV">
+                                <rect key="frame" x="240" y="64" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGI-bm-bWQ">
+                                <rect key="frame" x="162" y="63" width="50" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1465,7 +1650,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="hLabel" destination="lXa-Pi-mYb" id="z51-dn-iAz"/>
+                        <outlet property="lbsLabel" destination="nBj-NH-kBw" id="BtN-Nt-XnL"/>
+                        <outlet property="minLabel" destination="bYm-8o-cAH" id="IKT-by-hj4"/>
+                        <outlet property="repsLabel" destination="oGI-bm-bWQ" id="RU9-Vo-SfW"/>
                         <outlet property="saveBtn" destination="RWt-x7-kbS" id="mvg-B1-jaT"/>
+                        <outlet property="secLabel" destination="JFW-Kj-Teg" id="xX5-1X-14s"/>
+                        <outlet property="setsLabel" destination="p57-R2-tHV" id="g2b-lR-S7O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daZ-B1-ce6" userLabel="First Responder" sceneMemberID="firstResponder"/>

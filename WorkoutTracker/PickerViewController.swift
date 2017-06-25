@@ -12,13 +12,20 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var saveBtn: UIButton!
     
+    @IBOutlet weak var secLabel: UILabel!
+    @IBOutlet weak var hLabel: UILabel!
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var lbsLabel: UILabel!
+    @IBOutlet weak var setsLabel: UILabel!
+    @IBOutlet weak var repsLabel: UILabel!
+    
     var namesPassed:[String]!
     var weights = [String]()
     var reps = [String]()
     var minutes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
     var hours = ["0","1", "2"]
     var seconds = ["0", "1", "2"]
-    var emom = ["Completed"]
+    var emom = [String]()
     var tagPassed = 0
     var tempHours = ""
     var tempMinutes = ""
@@ -28,10 +35,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weights.append("lbs")
-        reps.append("reps")
+        secLabel.alpha = 0
+        hLabel.alpha = 0
+        minLabel.alpha = 0
+        lbsLabel.alpha = 0
+        setsLabel.alpha = 0
+        repsLabel.alpha = 0
         
-        for i in 0...500{
+        for i in 1...500{
             weights.append(String(i))
             reps.append(String(i))
         }
@@ -41,7 +52,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             for i in 0...max!{
                 emom.append(String(i))
             }
-            
         }
     }
     
@@ -149,9 +159,18 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
+        secLabel.alpha = 0
+        hLabel.alpha = 0
+        minLabel.alpha = 0
+        lbsLabel.alpha = 0
+        setsLabel.alpha = 0
+        repsLabel.alpha = 0
         if tagPassed == 1{
             label.text = namesPassed[row]
         }else if tagPassed == 2{
+            hLabel.alpha = 1
+            minLabel.alpha = 1
+            secLabel.alpha = 1
             if component == 0{
                 label.text = hours[row]
             }else if component == 1{
@@ -160,10 +179,13 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 label.text = seconds[row]
             }
         }else if tagPassed == 3{
+            lbsLabel.alpha = 1
             label.text = weights[row]
         }else if tagPassed == 4{
+            repsLabel.alpha = 1
             label.text = reps[row]
         }else{
+            minLabel.alpha = 1
             label.text = emom[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
