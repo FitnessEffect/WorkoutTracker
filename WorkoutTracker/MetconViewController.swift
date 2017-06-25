@@ -21,7 +21,7 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var exerciseList:[String] = [""]
     var categoryPassed:String!
     
-    let rounds = ["1 round", "2 rounds", "3 rounds", "4 rounds", "5 rounds", "6 rounds", "7 rounds", "8 rounds", "9 rounds", "10 rounds"]
+    let rounds = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

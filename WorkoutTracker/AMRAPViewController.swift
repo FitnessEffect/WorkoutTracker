@@ -11,6 +11,9 @@ import UIKit
 
 class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var secondsLabel: UILabel!
+    @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var emomMinutesLabel: UILabel!
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
@@ -22,19 +25,23 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var exerciseList:[String] = [""]
     var categoryPassed:String!
     
-    let time = ["1 minute", "1min 30sec", "2 minutes", "2min 30sec", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "15 minutes"]
+    var minutes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
+    var seconds = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
     
     var emomTime = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        secondsLabel.alpha = 0
+        minutesLabel.alpha = 0
+        emomMinutesLabel.alpha = 0
+        
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
-        
-        emomTime.append("minute(s)")
-        
+                
         for i in 1...100{
             emomTime.append(String(i))
         }
@@ -61,14 +68,22 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        if categoryPassed == "Emom"{
+            return 1
+        }else{
+            return 2
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if categoryPassed == "Emom"{
             return emomTime.count
         }else{
-            return time.count
+            if component == 0{
+               return seconds.count
+            }else{
+               return minutes.count
+            }
         }
     }
     
@@ -76,7 +91,11 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         if categoryPassed == "Emom"{
             return emomTime[row]
         }else{
-            return time[row]
+            if component == 0{
+                return seconds[row]
+            }else{
+                return minutes[row]
+            }
         }
     }
 
@@ -93,7 +112,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         myExercise.category = "Amrap"
         myExercise.type = "Crossfit"
-        myExercise.exerciseDescription = (time[id] + " | " + amrapString)
+        myExercise.exerciseDescription = (seconds[id] + minutes[id] + " | " + amrapString)
 
         }else{
             myExercise.name = "Emom"
@@ -138,7 +157,12 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        secondsLabel.alpha = 0
+        minutesLabel.alpha = 0
+        emomMinutesLabel.alpha = 0
+        
         if categoryPassed == "Emom"{
+            emomMinutesLabel.alpha = 1
             let label = UILabel()
             label.text = emomTime[row]
             let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
@@ -146,13 +170,19 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             label.textAlignment = NSTextAlignment.center
             return label
         }else{
+            secondsLabel.alpha = 1
+            minutesLabel.alpha = 1
             let label = UILabel()
-            label.text = time[row]
+            if component == 0{
+                label.text = seconds[row]
+            }else if component == 1{
+                label.text = minutes[row]
+            }
+            
             let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
             label.attributedText = myTitle
             label.textAlignment = NSTextAlignment.center
             return label
         }
     }
-    
 }

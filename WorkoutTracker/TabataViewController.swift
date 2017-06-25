@@ -21,9 +21,9 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var exerciseList:[String] = [""]
     var categoryPassed:String!
     
-    let rest = ["-- Rest --", "5 sec", "10 sec", "15 sec", "20 sec", "25 sec", "30 sec"]
-    let work = ["-- Work --", "15 sec", "30 sec", "45 sec", "1 min", "1m 30s", "2 min", "2m 30s", "3 min"]
-    let totalTime = ["-- Time -- ", "1 min", "1m 30s", "2 min", "2m 30s", "3 min", "4 min", "5 min", "6 min", "7 min", "8 min", "9 min", "10 min", "15 min"]
+    let rest = ["5 s ", "10 s", "15 s", "20 sec", "25 sec", "30 sec"]
+    let work = ["15 sec", "30 sec", "45 sec", "1 min", "1m30s", "2 min", "2m30s", "3 min"]
+    let totalTime = ["1 m", "1m30s", "2 m", "2m30s", "3 m", "4 m", "5 m", "6 min", "7 min", "8 min", "9 min", "10 min", "15 min"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
