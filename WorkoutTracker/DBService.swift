@@ -78,8 +78,8 @@ class DBService {
         handler(nil, "No user logged in")
     }
     
-    func createNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
-        _ref.child("users").child(_user.uid).child("Clients").child(currentkey).setValue(newClient)
+    func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
+        _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
             self._clients.sort(by: {a, b in
                 if a.firstName < b.firstName {
@@ -277,6 +277,10 @@ class DBService {
                         c.gender = client?["gender"] as! String
                         c.age = client?["age"] as! String
                         c.clientKey = client?["clientKey"] as! String
+                        c.activityLevel = client?["activityLevel"] as! String
+                        c.weight = client?["weight"] as! String
+                        c.feet = client?["feet"] as! String
+                        c.inches = client?["inches"] as! String
                         self._clients.append(c)
                         completion()
                     })
