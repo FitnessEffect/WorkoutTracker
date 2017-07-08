@@ -36,8 +36,8 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
-                activitySegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 20)!], for: UIControlState.normal)
+        genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
+                activitySegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -162,7 +162,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
             label.text = weight[row]
         }
         
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label
@@ -181,7 +181,15 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
             myClient.gender = "Female"
         }
         
-        let activityNum = (activitySegmentedControl.selectedSegmentIndex + 1)
+        var activityLvl = ""
+        if activitySegmentedControl.selectedSegmentIndex == 0{
+            activityLvl = "inactive"
+        }else if activitySegmentedControl.selectedSegmentIndex == 1{
+            activityLvl = "casual"
+        }else if activitySegmentedControl.selectedSegmentIndex == 2{
+            activityLvl = "active"
+        }
+        
         let ageId:Int = agePickerView.selectedRow(inComponent: 0)
         let tempAge = self.age[ageId]
         
@@ -198,7 +206,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         myClient.feet = tempFeet
         myClient.inches = tempInches
         myClient.age = tempAge
-        myClient.activityLevel = String(activityNum)
+        myClient.activityLevel = activityLvl
         myClient.firstName = firstNameOutlet.text!
         myClient.lastName = lastNameOutlet.text!
         

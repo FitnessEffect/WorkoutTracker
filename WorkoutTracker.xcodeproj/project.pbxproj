@@ -27,9 +27,6 @@
 		52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE51EE8DBB100DBD8DE /* APIService.swift */; };
 		52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */; };
 		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
-		527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */; };
-		5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */; };
-		5276516F1EDDC75E006814AD /* Have a Great Day Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */; };
 		527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */; };
 		5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */; };
 		5276517D1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */; };
@@ -44,6 +41,8 @@
 		52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */; };
 		52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7D1611EC8BEAB00585964 /* LoginViewController.swift */; };
 		52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB16A91EFBFD2D00F4232D /* Formatter.swift */; };
+		52CB16B31F10D9A600F4232D /* Have a Great Day.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52CB16B21F10D9A600F4232D /* Have a Great Day.ttf */; };
+		52CB16B71F10EF9A00F4232D /* DJB Chalk It Up.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52CB16B61F10EF9A00F4232D /* DJB Chalk It Up.ttf */; };
 		52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */; };
 		52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */; };
 		52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */; };
@@ -80,9 +79,6 @@
 		52717FE51EE8DBB100DBD8DE /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputView.swift; sourceTree = "<group>"; };
 		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
-		527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Cool Crayon.ttf"; sourceTree = "<group>"; };
-		5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BasicSharpie.ttf; sourceTree = "<group>"; };
-		5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Have a Great Day Demo.ttf"; sourceTree = "<group>"; };
 		527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBodybuildingCategoryViewController.swift; sourceTree = "<group>"; };
 		5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateBodybuildingExerciseViewController.swift; path = ../CreateBodybuildingExerciseViewController.swift; sourceTree = "<group>"; };
 		5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCrossfitExerciseViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +93,8 @@
 		52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		52C7D1611EC8BEAB00585964 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52CB16A91EFBFD2D00F4232D /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		52CB16B21F10D9A600F4232D /* Have a Great Day.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Have a Great Day.ttf"; sourceTree = "<group>"; };
+		52CB16B61F10EF9A00F4232D /* DJB Chalk It Up.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DJB Chalk It Up.ttf"; sourceTree = "<group>"; };
 		52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetconCustomCell.swift; sourceTree = "<group>"; };
 		52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmrapCustomCell.swift; path = ../AmrapCustomCell.swift; sourceTree = "<group>"; };
 		52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
@@ -154,9 +152,8 @@
 		527651721EDE5280006814AD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				527651631EDCEDDB006814AD /* DK Cool Crayon.ttf */,
-				5276516C1EDDC5AE006814AD /* BasicSharpie.ttf */,
-				5276516E1EDDC75E006814AD /* Have a Great Day Demo.ttf */,
+				52CB16B61F10EF9A00F4232D /* DJB Chalk It Up.ttf */,
+				52CB16B21F10D9A600F4232D /* Have a Great Day.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -369,14 +366,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CB16B71F10EF9A00F4232D /* DJB Chalk It Up.ttf in Resources */,
 				52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */,
 				52EB1DF11ECA7902004CA561 /* OverlayView.xib in Resources */,
 				52EB1DED1ECA77A2004CA561 /* MenuView.xib in Resources */,
-				5276516D1EDDC5B4006814AD /* BasicSharpie.ttf in Resources */,
+				52CB16B31F10D9A600F4232D /* Have a Great Day.ttf in Resources */,
 				52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */,
 				52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */,
-				527651641EDCEF6C006814AD /* DK Cool Crayon.ttf in Resources */,
-				5276516F1EDDC75E006814AD /* Have a Great Day Demo.ttf in Resources */,
 				523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

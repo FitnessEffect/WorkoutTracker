@@ -21,7 +21,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     var exercises = [String]()
     var categoryPassed = ""
     
-    var reps = ["1", "2"]
+    var reps = [String]()
     
     var sets = [String]()
     
@@ -34,7 +34,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         }
         
         title = categoryPassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
@@ -122,7 +122,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         }else{
             label.text = sets[row]
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         
