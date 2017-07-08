@@ -76,12 +76,19 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             }
         }
         myExercise.category = "Metcon"
-        myExercise.exerciseDescription = (rounds[id] + " | " + metconString)
         myExercise.type = "Crossfit"
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-        
-        dismiss(animated: true, completion: nil)
+        if metconString == ""{
+            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            myExercise.exerciseDescription = (rounds[id] + " round(s)" + " | " + metconString)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+            
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     func setCategory(category:String){

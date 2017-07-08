@@ -13,12 +13,6 @@
         <array key="DJB Chalk It Up.ttf">
             <string>DJBCHALKITUP</string>
         </array>
-        <array key="DK Cool Crayon.ttf">
-            <string>DKCoolCrayon</string>
-        </array>
-        <array key="Have a Great Day Demo.ttf">
-            <string>HaveaGreatDayDemo</string>
-        </array>
         <array key="Have a Great Day.ttf">
             <string>HaveaGreatDay</string>
         </array>
@@ -45,21 +39,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-mw-bOp">
                                 <rect key="frame" x="0.0" y="327" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xd9-VW-xci">
                                 <rect key="frame" x="0.0" y="440" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DKCoolCrayon" family="DK Cool Crayon" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-gv-R0v">
@@ -276,7 +270,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-yI-eKo">
                                 <rect key="frame" x="77" y="101" width="220" height="30"/>
@@ -287,7 +281,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-pf-AUz">
                                 <rect key="frame" x="77" y="43" width="220" height="29"/>
@@ -304,7 +298,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lla-uv-X9k">
-                                <rect key="frame" x="92" y="527" width="190" height="50"/>
+                                <rect key="frame" x="92" y="449" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="j4h-r3-Hay"/>
                                     <constraint firstAttribute="width" constant="190" id="v3E-oT-d7o"/>
@@ -383,20 +377,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4f-WB-qEM">
-                                <rect key="frame" x="99" y="223" width="45" height="21"/>
+                                <rect key="frame" x="99" y="223" width="45" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="TXg-pD-Zuu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs old" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d24-31-qk0">
-                                <rect key="frame" x="197" y="223" width="59" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="59" id="U3O-Ck-nrq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDayDemo" family="Have a Great Day Demo" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -416,12 +401,10 @@
                             <constraint firstItem="8pZ-yI-eKo" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="81" id="PmE-Lm-afj"/>
                             <constraint firstItem="Lhu-SC-J5t" firstAttribute="leading" secondItem="SZh-ov-VPS" secondAttribute="leading" id="SgZ-IV-Cr1"/>
                             <constraint firstItem="B4f-WB-qEM" firstAttribute="top" secondItem="vU0-WF-gNw" secondAttribute="bottom" constant="44" id="U9L-Td-kkJ"/>
-                            <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="E1d-A2-fG5" secondAttribute="bottom" constant="97" id="XFk-8J-1a1"/>
-                            <constraint firstItem="d24-31-qk0" firstAttribute="leading" secondItem="B4f-WB-qEM" secondAttribute="trailing" constant="53" id="ZLe-5M-AbD"/>
+                            <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="E1d-A2-fG5" secondAttribute="bottom" constant="19" id="XFk-8J-1a1"/>
                             <constraint firstItem="YGy-VF-C4Q" firstAttribute="top" secondItem="Gr6-Gu-YZc" secondAttribute="bottom" constant="11" id="aOs-jc-GEa"/>
                             <constraint firstItem="8pZ-yI-eKo" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="csJ-rH-J0c"/>
                             <constraint firstItem="E1d-A2-fG5" firstAttribute="leading" secondItem="SZh-ov-VPS" secondAttribute="leading" id="fI9-iT-UMk"/>
-                            <constraint firstItem="d24-31-qk0" firstAttribute="baseline" secondItem="B4f-WB-qEM" secondAttribute="baseline" id="gxR-ou-DzZ"/>
                             <constraint firstItem="3DZ-pf-AUz" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="23" id="jGr-EB-SIy"/>
                             <constraint firstItem="3DZ-pf-AUz" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="lJb-rV-Knf"/>
                             <constraint firstItem="vU0-WF-gNw" firstAttribute="centerX" secondItem="SZh-ov-VPS" secondAttribute="centerX" constant="-0.5" id="mAV-mB-DRl"/>

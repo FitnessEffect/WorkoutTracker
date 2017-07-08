@@ -28,14 +28,22 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     var myClient = Client()
     var clientPassed = Client()
     var edit = false
-    var age = ["10", "15", "16", "17", "18"]
-    var inches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
-    var feet = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
-    var weight = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "16"]
+    var age = [String]()
+    var inches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    var feet = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+    var weight = [String]()
     var activityLevel = ["inactive", "occasional physical activity", "Athlete"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for x in 10...120{
+            age.append(String(x))
+        }
+        for x in 50...700{
+            weight.append(String(x))
+        }
+        
         genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
                 activitySegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
         
@@ -207,8 +215,8 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         myClient.inches = tempInches
         myClient.age = tempAge
         myClient.activityLevel = activityLvl
-        myClient.firstName = firstNameOutlet.text!
-        myClient.lastName = lastNameOutlet.text!
+        myClient.firstName = (firstNameOutlet.text?.capitalized)!
+        myClient.lastName = (lastNameOutlet.text?.capitalized)!
         
         var clientDictionary = [String:Any]()
         clientDictionary["firstName"] = myClient.firstName

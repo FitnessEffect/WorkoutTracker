@@ -103,13 +103,19 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
         
         myExercise.name = categoryPassed
-        myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " " + sets[idSets]
         myExercise.category = categoryPassed
         myExercise.type = "Bodybuilding"
         
+        if exercises.count == 0{
+            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+        }else{
+        myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-        
-        dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

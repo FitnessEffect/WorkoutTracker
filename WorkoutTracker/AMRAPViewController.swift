@@ -106,19 +106,28 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
     @IBAction func addMetcon(_ sender: UIButton) {
         if categoryPassed == "Amrap"{
-        myExercise.name = "Amrap"
-        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        var amrapString = ""
-        for exercise in exerciseList{
-            if !exercise.isEmpty {
-                amrapString.append(exercise)
-                amrapString.append(" | ")
+            myExercise.name = "Amrap"
+            let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+            var amrapString = ""
+            for exercise in exerciseList{
+                if !exercise.isEmpty {
+                    amrapString.append(exercise)
+                    amrapString.append(" | ")
+                }
             }
-        }
-        myExercise.category = "Amrap"
-        myExercise.type = "Crossfit"
-        myExercise.exerciseDescription = (seconds[id] + minutes[id] + " | " + amrapString)
-
+            myExercise.category = "Amrap"
+            myExercise.type = "Crossfit"
+            if amrapString == ""{
+                let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }else{
+               myExercise.exerciseDescription = (minutes[id] + " min(s) " + seconds[id] + " sec(s)" + " | " + amrapString)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+                dismiss(animated: true, completion: nil)
+            }
+           
         }else{
             myExercise.name = "Emom"
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
@@ -131,12 +140,17 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             }
             myExercise.category = "Emom"
             myExercise.type = "Crossfit"
-            myExercise.exerciseDescription = (emomTime[id] + " | " + emomString)
-            DBService.shared.setEmomTime(time:emomTime[id])
+            if emomString == ""{
+                let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                myExercise.exerciseDescription = (emomTime[id] + " minute(s)" + " | " + emomString)
+                DBService.shared.setEmomTime(time:emomTime[id])
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+                dismiss(animated: true, completion: nil)
+            }
         }
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-        dismiss(animated: true, completion: nil)
     }
     
     func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
