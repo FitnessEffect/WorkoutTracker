@@ -188,7 +188,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             minLabel.alpha = 1
             label.text = emom[row]
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

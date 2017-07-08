@@ -42,7 +42,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DKCoolCrayon", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
         if DBService.shared.passedClient.firstName != ""{
             title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName

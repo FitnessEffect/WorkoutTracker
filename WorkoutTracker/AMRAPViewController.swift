@@ -25,20 +25,25 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var exerciseList:[String] = [""]
     var categoryPassed:String!
     
-    var minutes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
-    var seconds = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
+    var minutes = [String]()
+    var seconds = [String]()
     
     var emomTime = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for x in 0...59{
+            minutes.append(String(x))
+            seconds.append(String(x))
+        }
+        
         secondsLabel.alpha = 0
         minutesLabel.alpha = 0
         emomMinutesLabel.alpha = 0
         
         title = categoryPassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day Demo", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
                 
@@ -165,7 +170,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             emomMinutesLabel.alpha = 1
             let label = UILabel()
             label.text = emomTime[row]
-            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
             label.attributedText = myTitle
             label.textAlignment = NSTextAlignment.center
             return label
@@ -179,7 +184,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 label.text = minutes[row]
             }
             
-            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day Demo", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
             label.attributedText = myTitle
             label.textAlignment = NSTextAlignment.center
             return label
