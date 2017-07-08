@@ -23,6 +23,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     var ref:FIRDatabaseReference!
     var tempKey:String!
     var user:FIRUser!
+    var button:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        let button =  UIButton(type: .custom)
+        button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 20)
         button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
@@ -68,7 +69,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 600)
+        popController.preferredContentSize = CGSize(width: 300, height: 500)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         popController.setClient(client: clientPassed)
         
