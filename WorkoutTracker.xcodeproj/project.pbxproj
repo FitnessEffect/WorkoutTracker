@@ -43,6 +43,7 @@
 		52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB16A91EFBFD2D00F4232D /* Formatter.swift */; };
 		52CB16B31F10D9A600F4232D /* Have a Great Day.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52CB16B21F10D9A600F4232D /* Have a Great Day.ttf */; };
 		52CB16B71F10EF9A00F4232D /* DJB Chalk It Up.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52CB16B61F10EF9A00F4232D /* DJB Chalk It Up.ttf */; };
+		52CB16C41F13F0DF00F4232D /* WorkoutTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB16C31F13F0DF00F4232D /* WorkoutTrackerTests.swift */; };
 		52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */; };
 		52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */; };
 		52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */; };
@@ -56,6 +57,16 @@
 		52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */; };
 		52FCD5B51CB2C44E008B0472 /* WorkoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52CB16C61F13F0DF00F4232D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52F6A8931C5F0036000FD7B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52F6A89A1C5F0036000FD7B0;
+			remoteInfo = WorkoutTracker;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3EEB5F1E333942879DC7210C /* Pods-WorkoutTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +106,9 @@
 		52CB16A91EFBFD2D00F4232D /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		52CB16B21F10D9A600F4232D /* Have a Great Day.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Have a Great Day.ttf"; sourceTree = "<group>"; };
 		52CB16B61F10EF9A00F4232D /* DJB Chalk It Up.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DJB Chalk It Up.ttf"; sourceTree = "<group>"; };
+		52CB16C11F13F0DF00F4232D /* WorkoutTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52CB16C31F13F0DF00F4232D /* WorkoutTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerTests.swift; sourceTree = "<group>"; };
+		52CB16C51F13F0DF00F4232D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetconCustomCell.swift; sourceTree = "<group>"; };
 		52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmrapCustomCell.swift; path = ../AmrapCustomCell.swift; sourceTree = "<group>"; };
 		52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +128,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		52CB16BE1F13F0DF00F4232D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F6A8981C5F0036000FD7B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +239,15 @@
 			name = Format;
 			sourceTree = "<group>";
 		};
+		52CB16C21F13F0DF00F4232D /* WorkoutTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				52CB16C31F13F0DF00F4232D /* WorkoutTrackerTests.swift */,
+				52CB16C51F13F0DF00F4232D /* Info.plist */,
+			);
+			path = WorkoutTrackerTests;
+			sourceTree = "<group>";
+		};
 		52EB1DEB1ECA778C004CA561 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */,
+				52CB16C21F13F0DF00F4232D /* WorkoutTrackerTests */,
 				52F6A89C1C5F0036000FD7B0 /* Products */,
 				7FD06369F6DC76AEB56545EE /* Pods */,
 				C01818AFA428246932A92380 /* Frameworks */,
@@ -247,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				52F6A89B1C5F0036000FD7B0 /* WorkoutTracker.app */,
+				52CB16C11F13F0DF00F4232D /* WorkoutTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +332,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		52CB16C01F13F0DF00F4232D /* WorkoutTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52CB16C81F13F0DF00F4232D /* Build configuration list for PBXNativeTarget "WorkoutTrackerTests" */;
+			buildPhases = (
+				52CB16BD1F13F0DF00F4232D /* Sources */,
+				52CB16BE1F13F0DF00F4232D /* Frameworks */,
+				52CB16BF1F13F0DF00F4232D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52CB16C71F13F0DF00F4232D /* PBXTargetDependency */,
+			);
+			name = WorkoutTrackerTests;
+			productName = WorkoutTrackerTests;
+			productReference = 52CB16C11F13F0DF00F4232D /* WorkoutTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52F6A8AD1C5F0036000FD7B0 /* Build configuration list for PBXNativeTarget "WorkoutTracker" */;
@@ -326,10 +376,16 @@
 		52F6A8931C5F0036000FD7B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Stefan Auvergne";
 				TargetAttributes = {
+					52CB16C01F13F0DF00F4232D = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = JF325HQHWJ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 52F6A89A1C5F0036000FD7B0;
+					};
 					52F6A89A1C5F0036000FD7B0 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JF325HQHWJ;
@@ -357,11 +413,19 @@
 			projectRoot = "";
 			targets = (
 				52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */,
+				52CB16C01F13F0DF00F4232D /* WorkoutTrackerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		52CB16BF1F13F0DF00F4232D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F6A8991C5F0036000FD7B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,6 +492,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		52CB16BD1F13F0DF00F4232D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52CB16C41F13F0DF00F4232D /* WorkoutTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F6A8971C5F0036000FD7B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -475,6 +547,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		52CB16C71F13F0DF00F4232D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */;
+			targetProxy = 52CB16C61F13F0DF00F4232D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		52F6A8A21C5F0036000FD7B0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -495,6 +575,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		52CB16C91F13F0DF00F4232D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = JF325HQHWJ;
+				INFOPLIST_FILE = WorkoutTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-auvergne.stefan.WorkoutTrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkoutTracker.app/WorkoutTracker";
+			};
+			name = Debug;
+		};
+		52CB16CA1F13F0DF00F4232D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = JF325HQHWJ;
+				INFOPLIST_FILE = WorkoutTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-auvergne.stefan.WorkoutTrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkoutTracker.app/WorkoutTracker";
+			};
+			name = Release;
+		};
 		52F6A8AB1C5F0036000FD7B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -622,6 +739,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		52CB16C81F13F0DF00F4232D /* Build configuration list for PBXNativeTarget "WorkoutTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52CB16C91F13F0DF00F4232D /* Debug */,
+				52CB16CA1F13F0DF00F4232D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		52F6A8961C5F0036000FD7B0 /* Build configuration list for PBXProject "WorkoutTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

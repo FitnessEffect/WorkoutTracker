@@ -28,6 +28,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var emailTxtView: UITextView!
     @IBOutlet weak var notificationNumber: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var delegate: WorkoutInputViewDelegate?
     var name: String = ""
@@ -162,7 +163,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectDate(_ sender: UIButton) {
         let xPosition = dateBtn.frame.minX + (dateBtn.frame.width/2)
-        let yPosition = dateBtn.frame.maxY
+        let yPosition = dateBtn.frame.maxY - 25 - scrollView.contentOffset.y
         
         let currentController = self.getCurrentViewController()
         
@@ -187,8 +188,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectExercise(_ sender: UIButton) {
         let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
-        let yPosition = exerciseBtn.frame.midY + 15
-        
+        let yPosition = exerciseBtn.frame.midY + 15 - scrollView.contentOffset.y
         let currentController = self.getCurrentViewController()
         
         // get a reference to the view controller for the popover
@@ -201,7 +201,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = currentController?.view
-        popController.preferredContentSize = CGSize(width: 300, height: 416)
+        popController.preferredContentSize = CGSize(width: 300, height: 350)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         // present the popover
@@ -210,7 +210,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectResult(_ sender: UIButton) {
         let xPosition:CGFloat = resultBtn.frame.minX + (resultBtn.frame.width/2)
-        let yPosition:CGFloat = resultBtn.frame.maxY
+        let yPosition:CGFloat = resultBtn.frame.midY + 15 - scrollView.contentOffset.y
+
         
         let currentController = self.getCurrentViewController()
         
@@ -237,7 +238,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectChallenge(_ sender: UIButton) {
         let xPosition = challenge.frame.minX + (challenge.frame.width/2)
-        let yPosition = challenge.frame.maxY - 60
+        let yPosition = challenge.frame.maxY - 60 - scrollView.contentOffset.y
         
         let currentController = self.getCurrentViewController()
         

@@ -29,9 +29,9 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.resetBadgeNumber()
-        DBService.shared.updateNotifications(num: 0)
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.resetBadgeNumber()
+//        DBService.shared.updateNotifications(num: 0)
         title = "Challenges"
         
  //       delegate.updateNotif()
@@ -57,6 +57,11 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.resetBadgeNumber()
+        DBService.shared.updateNotifications(num: 0)
+        
+        
         DBService.shared.retrieveChallengesExercises {
             self.exerciseArray = DBService.shared.challengeExercises
             self.exerciseArray.sort(by: {a, b in

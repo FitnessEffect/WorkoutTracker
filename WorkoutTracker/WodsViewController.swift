@@ -9,10 +9,11 @@
 import UIKit
 import Firebase
 
-class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var exercises = [String]()
     let exerciseKey:String = "exerciseKey"
@@ -21,6 +22,7 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
@@ -31,6 +33,7 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         }
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -40,6 +43,8 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             self.exercises = DBService.shared.exercisesForCrossfitCategory
             self.pickerOutlet.reloadAllComponents()
         })
+        
+        pickerOutlet.isUserInteractionEnabled = true
     }
     
     func setCategory(category:String){

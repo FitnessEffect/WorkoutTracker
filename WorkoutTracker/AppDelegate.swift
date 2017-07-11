@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var exerciseDictionary = data["exercise"]! as! [String:Any]
         
-        DBService.shared.saveChallengeExercise(exerciseDictionary: exerciseDictionary)
+        //DBService.shared.saveChallengeExercise(exerciseDictionary: exerciseDictionary)
         
         let myEx = Exercise()
         myEx.name = exerciseDictionary["name"] as! String

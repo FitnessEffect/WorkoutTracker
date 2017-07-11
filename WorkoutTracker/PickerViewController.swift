@@ -42,10 +42,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         setsLabel.alpha = 0
         repsLabel.alpha = 0
         
-        for i in 1...500{
+        for i in 0...500{
             weights.append(String(i))
             reps.append(String(i))
         }
+        
         
         if tagPassed == 5{
             let max = Int(DBService.shared.emomTime)
@@ -122,7 +123,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let pickerName = namesPassed[row]
             tempResult = pickerName
         }else if tagPassed == 2{
-            
+            tempHours = hours[0]
+            tempMinutes = minutes[0]
+            tempSeconds = seconds[0]
             if component == 0{
                 tempHours = hours[row]
             }else if component == 1{
@@ -152,6 +155,19 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if tagPassed == 1{
             presenter.savePickerName(name: tempResult)
         }else{
+            //first value force selection
+            if tempResult == ""{
+                if tagPassed == 2{
+                    tempResult = "0 hour(s) 0 min(s) 0 sec(s)"
+                }else if tagPassed == 3{
+                    tempResult = "0 lbs"
+                }else if tagPassed == 4{
+                    tempResult = "0 reps"
+                }else{
+                    tempResult = "0 minute(s) completed"
+                }
+            }
+            
             presenter.saveResult(str: tempResult)
         }
         dismiss(animated: true, completion: nil)
