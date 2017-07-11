@@ -51,10 +51,13 @@ class LoginViewController: UIViewController {
                     //use email
                     let formattedEmail = Formatter.formateEmail(email: (user?.email)!)
                     self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
+                    self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                 }
                 
                 //must be called once
                 DBService.shared.initializeData()
+                
+                
                 
                 //called only for login
                 self.performSegue(withIdentifier: "workoutSegue", sender: self)
