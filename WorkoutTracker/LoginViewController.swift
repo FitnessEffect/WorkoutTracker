@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
     
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
+    var authHandle:UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,38 +33,44 @@ class LoginViewController: UIViewController {
         ref = FIRDatabase.database().reference()
         
         register.isHidden = true
+        UserDefaults.standard.set(false, forKey: "newUser")
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
             setAuthListener()
+        }
+        else {
+            do{
+                try FIRAuth.auth()?.signOut()
+            }catch{
+                
+            }
         }
         // Do any additional setup after loading the view.
     }
     
     func setAuthListener() {
-        FIRAuth.auth()?.addStateDidChangeListener({auth, user in
-            DBService.shared.setUser(completion: { user, message in
-                if user == nil {
+        if authHandle != nil{
+            return
+        }
+        authHandle = FIRAuth.auth()?.addStateDidChangeListener({auth, user in
+            DBService.shared.setUser(completion: { u, message in
+                if u == nil {
                     print(message!)
                     return
+                } else {
+                    
+                    if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
+                        print(deviceTokenString)
+                        //use email
+                        let formattedEmail = Formatter.formateEmail(email: (u?.email)!)
+                        self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
+                    }
+                    //called only for login
+                    self.performSegue(withIdentifier: "workoutSegue", sender: self)
                 }
-                if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
-                    print(deviceTokenString)
-                    //use email
-                    let formattedEmail = Formatter.formateEmail(email: (user?.email)!)
-                    self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
-                    self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
-                }
-                
-                //must be called once
-                DBService.shared.initializeData()
-                
-                
-                
-                //called only for login
-                self.performSegue(withIdentifier: "workoutSegue", sender: self)
-
             })
-        })
+            
+        }) as? UInt
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -113,7 +120,6 @@ class LoginViewController: UIViewController {
             prefs.set(rememberMeSwitch.isOn, forKey:"switch")
             setAuthListener()
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
-                
             })
         }
     }
@@ -130,8 +136,12 @@ class LoginViewController: UIViewController {
             alertController.addAction(defaultAction)
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
-                if error == nil {
+                if error != nil {
+                    //must be called once //add user info
+                    DBService.shared.initializeData()
+                    
                     print("You have successfully signed up")
+                    UserDefaults.standard.set(true, forKey: "newUser")
                     let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
