@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-//protocol sendNotifUpdateDelegate{
+//protocol ChallengeNotifUpdateDelegate{
 //    func updateNotif()
 //}
 
@@ -24,19 +24,11 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     var menuShowing = false
     var menuView:MenuView!
     var overlayView: OverlayView!
- //   var delegate:sendNotifUpdateDelegate!
+    //var delegate:ChallengeNotifUpdateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        appDelegate.resetBadgeNumber()
-//        DBService.shared.updateNotifications(num: 0)
         title = "Challenges"
-        
- //       delegate.updateNotif()
-        
-        //NotificationCenter.default.post(name:Notification.Name(rawValue:"notifKey"),object: nil,userInfo:nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -59,8 +51,9 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
+        //delegate?.updateNotif()
         DBService.shared.updateNotifications(num: 0)
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
         
         DBService.shared.retrieveChallengesExercises {
             self.exerciseArray = DBService.shared.challengeExercises

@@ -13,6 +13,7 @@ protocol WorkoutInputViewDelegate {
     func handleResultPickerChoice()->Int
 }
 
+
 class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var backgroundImage: UIImageView!

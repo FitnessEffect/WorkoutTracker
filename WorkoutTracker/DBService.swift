@@ -32,14 +32,13 @@ class DBService {
     
     private init() {
         initDatabase()
-        initUser()
     }
     
     private func initDatabase() {
         _ref = FIRDatabase.database().reference()
     }
     
-    private func initUser() {
+    func initUser() {
         if let user = FIRAuth.auth()?.currentUser {
             _user = user
             
@@ -260,30 +259,39 @@ class DBService {
         }
     }
     
+    func retrieveClientInfo(lastName:String)->Client{
+        for client in _clients{
+            if client.lastName == lastName{
+                return client
+            }
+        }
+        let c = Client()
+        return c
+    }
+    
+    
     func retrieveClients(completion: @escaping () -> Void){
         _clients.removeAll()
-        
         _ref.child("users").child(user.uid).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil{
                 let keyArray = value?.allKeys as! [String]
-                for client in keyArray{
-                    self._ref.child("users").child(self.user.uid).child("Clients").child(client).observeSingleEvent(of: .value, with: { (snapshot) in
-                        let client = snapshot.value as? NSDictionary
-                        let c = Client()
-                        c.firstName = client?["firstName"] as! String
-                        c.lastName = client?["lastName"] as! String
-                        c.gender = client?["gender"] as! String
-                        c.age = client?["age"] as! String
-                        c.clientKey = client?["clientKey"] as! String
-                        c.activityLevel = client?["activityLevel"] as! String
-                        c.weight = client?["weight"] as! String
-                        c.feet = client?["feet"] as! String
-                        c.inches = client?["inches"] as! String
-                        self._clients.append(c)
-                        completion()
-                    })
+                self._clients.removeAll()
+                for key in keyArray{
+                    let client = value?[key] as? NSDictionary
+                    let c = Client()
+                    c.firstName = client?["firstName"] as! String
+                    c.lastName = client?["lastName"] as! String
+                    c.gender = client?["gender"] as! String
+                    c.age = client?["age"] as! String
+                    c.clientKey = client?["clientKey"] as! String
+                    c.activityLevel = client?["activityLevel"] as! String
+                    c.weight = client?["weight"] as! String
+                    c.feet = client?["feet"] as! String
+                    c.inches = client?["inches"] as! String
+                    self._clients.append(c)
+                    completion()
                 }
             }
         }) { (error) in

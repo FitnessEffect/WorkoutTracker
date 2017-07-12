@@ -34,6 +34,21 @@ class CreateBodybuildingCategoryViewController: UIViewController{
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x>0 {
+            scrollView.contentOffset.x = 0
+        }
+        if scrollView.contentOffset.x<0 {
+            scrollView.contentOffset.x = 0
+        }
+        if scrollView.contentOffset.y > 70{
+            scrollView.contentOffset.y = 70
+        }
+        if scrollView.contentOffset.y < 0{
+            scrollView.contentOffset.y = 0
+        }
+    }
+    
     @IBAction func addExercise(_ sender: UIButton) {
         myExercise.name = categoryName.text!
         var dictionary = [String:Any]()
