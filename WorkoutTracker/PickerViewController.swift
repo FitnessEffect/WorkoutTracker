@@ -135,9 +135,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let pickerName = namesPassed[row]
             tempResult = pickerName
         }else if tagPassed == 2{
-            tempHours = hours[0]
-            tempMinutes = minutes[0]
-            tempSeconds = seconds[0]
             if component == 0{
                 tempHours = hours[row]
             }else if component == 1{
@@ -145,7 +142,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }else if component == 2{
                 tempSeconds = seconds[row]
             }
-            let tempTime = tempHours + "hour(s) " + tempMinutes + "min(s) " + tempSeconds + "sec(s)"
+            let tempTime = tempHours + " hour(s) " + tempMinutes + " min(s) " + tempSeconds + " sec(s)"
             tempResult = tempTime
         }else if tagPassed == 3{
             let tempWeight = weights[row] + " lbs"
@@ -165,6 +162,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func saveBtn(_ sender: UIButton) {
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
         if tagPassed == 1{
+            if tempResult == ""{
+                tempResult = namesPassed[0]
+            }
             presenter.savePickerName(name: tempResult)
         }else{
             //first value force selection
@@ -179,7 +179,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     tempResult = "0 minute(s) completed"
                 }
             }
-            
+            //format result
+            tempResult = Formatter.formatResult(str: tempResult)
             presenter.saveResult(str: tempResult)
         }
         dismiss(animated: true, completion: nil)
