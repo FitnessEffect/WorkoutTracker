@@ -6,7 +6,6 @@
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
-
 import UIKit
 import Firebase
 
@@ -31,7 +30,7 @@ class LoginViewController: UIViewController {
             
         }
         
-        segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 16)!], for: UIControlState.normal)
+        segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 20)!], for: UIControlState.normal)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -127,6 +126,12 @@ class LoginViewController: UIViewController {
             prefs.set(rememberMeSwitch.isOn, forKey:"switch")
             setAuthListener()
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
+                if success.0 == nil{
+                    let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
             })
         }
     }
@@ -141,8 +146,10 @@ class LoginViewController: UIViewController {
             let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
+            present(alertController, animated: true, completion: nil)
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
+                
                 if error != nil {
                     //must be called once //add user info
                     DBService.shared.initializeData()

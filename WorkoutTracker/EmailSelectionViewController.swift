@@ -18,6 +18,11 @@ class EmailSelectionViewController: UIViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        emailTextField.layer.cornerRadius = 5.0
+        emailTextField.clipsToBounds = true
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.borderColor = UIColor.white.cgColor
     }
 
     override func didReceiveMemoryWarning() {

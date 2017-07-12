@@ -46,7 +46,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         print(user.email!)
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
         if DBService.shared.passedClient.firstName != ""{
             title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
@@ -246,35 +246,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             menuShowing = false
         }
     }
-    
-//    @IBAction func logoutBtn(_ sender: UIBarButtonItem) {
-//        self.dismiss(animated: true, completion: nil)
-//    }
-    
-//    @IBAction func saveBtn(_ sender: UIButton) {
-//        if self.title == "Personal"{
-//            DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
-//                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-//                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-//                    self.dismiss(animated: true, completion: nil)
-//                    
-//                })})
-//            })
-//        }else{
-//            DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
-//                
-//                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-//                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-//                    self.dismiss(animated: true, completion: nil)
-//                })})
-//            })
-//        }
-//        
-//        //post request for notification if challenge is on!!!
-//        if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
-//            APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
-//        }
-//    }
     
     func saveEmail(emailStr:String){
         workoutInputView.saveEmail(emailStr: emailStr)

@@ -33,7 +33,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         
         NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -138,7 +138,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-        cell.descriptionOutlet.text = exercise.exerciseDescription
+        cell.dateOutlet.text = exercise.date
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
         return cell
     }
