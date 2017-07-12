@@ -33,6 +33,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var edit = false
     var passedOn = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         workoutInputView.delegate = self
@@ -159,8 +160,15 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         exerciseDictionary["client"] = self.title
         exerciseDictionary["creatorEmail"] = user.email
         exerciseDictionary["creatorID"] = user.uid
+    
+        
         if edit == true{
-            exerciseDictionary["exerciseKey"] = tempExercise.exerciseKey
+            //if user changes client while exercises is in edit mode
+            if DBService.shared.passedExercise.client != title{
+               exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
+            }else{
+                exerciseDictionary["exerciseKey"] = tempExercise.exerciseKey
+            }
         }else{
             exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
         }
@@ -239,34 +247,34 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
     }
     
-    @IBAction func logoutBtn(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func logoutBtn(_ sender: UIBarButtonItem) {
+//        self.dismiss(animated: true, completion: nil)
+//    }
     
-    @IBAction func saveBtn(_ sender: UIButton) {
-        if self.title == "Personal"{
-            DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
-                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                    self.dismiss(animated: true, completion: nil)
-                    
-                })})
-            })
-        }else{
-            DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
-                
-                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                    self.dismiss(animated: true, completion: nil)
-                })})
-            })
-        }
-        
-        //post request for notification if challenge is on!!!
-        if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
-            APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
-        }
-    }
+//    @IBAction func saveBtn(_ sender: UIButton) {
+//        if self.title == "Personal"{
+//            DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
+//                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+//                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+//                    self.dismiss(animated: true, completion: nil)
+//                    
+//                })})
+//            })
+//        }else{
+//            DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+//                
+//                let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
+//                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+//                    self.dismiss(animated: true, completion: nil)
+//                })})
+//            })
+//        }
+//        
+//        //post request for notification if challenge is on!!!
+//        if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
+//            APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
+//        }
+//    }
     
     func saveEmail(emailStr:String){
         workoutInputView.saveEmail(emailStr: emailStr)
