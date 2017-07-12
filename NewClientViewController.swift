@@ -14,7 +14,7 @@ protocol createClientDelegate{
     func addClient(_ client:Client)
 }
 
-class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate {
+class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var agePickerView: UIPickerView!
     @IBOutlet weak var weightPickerView: UIPickerView!
@@ -49,6 +49,17 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x>0 {
+            scrollView.contentOffset.x = 0
+        }
+        if scrollView.contentOffset.x<0 {
+            scrollView.contentOffset.x = 0
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +78,14 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
                    break
                 }
             }
-            activitySegmentedControl.selectedSegmentIndex = (Int(clientPassed.activityLevel)! - 1)
+            if clientPassed.activityLevel == "active"{
+                activitySegmentedControl.selectedSegmentIndex = 2
+            }else if clientPassed.activityLevel == "casual"{
+                activitySegmentedControl.selectedSegmentIndex = 1
+            }else{
+                activitySegmentedControl.selectedSegmentIndex = 0
+            }
+            
             for index in 0...weight.count-1{
                 if weight[index] == clientPassed.weight{
                     weightPickerView.selectRow(index, inComponent: 0, animated: true)

@@ -13,6 +13,7 @@ import MessageUI
 class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate{
     
     @IBOutlet var workoutInputView: WorkoutInputView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var menuShowing = false
     var bodybuildingExercises = [String]()
@@ -36,12 +37,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         super.viewDidLoad()
         workoutInputView.delegate = self
         
+        
+        
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
         
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        
+        print(user.email!)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
         
         if DBService.shared.passedClient.firstName != ""{
@@ -80,7 +83,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         overlayView.alpha = 0
     }
     
+    override func viewDidLayoutSubviews() {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        
+        
         if edit == true{
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
@@ -98,6 +107,20 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     func updateNotif(){
         workoutInputView.updateNotification()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x>0 {
+            scrollView.contentOffset.x = 0
+        }
+        if scrollView.contentOffset.x<0 {
+            scrollView.contentOffset.x = 0
+        }
+        
+        if scrollView.contentOffset.y < 0{
+            scrollView.contentOffset.y = 0
+        }
+        
     }
     
     func getExercise(_ notification: Notification){

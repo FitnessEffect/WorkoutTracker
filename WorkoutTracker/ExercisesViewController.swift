@@ -36,7 +36,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        button =  UIButton(type: .custom)
+        button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 20)
         button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
@@ -50,6 +50,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.exerciseArray = DBService.shared.exercisesForClient
         self.tableViewOutlet.reloadData()
         })
+        
+        clientPassed = DBService.shared.retrieveClientInfo(lastName: clientPassed.lastName)
     }
     
     func clickOnButton(button: UIButton) {

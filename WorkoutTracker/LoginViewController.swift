@@ -25,6 +25,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do{
+        try FIRAuth.auth()?.signOut()
+        }catch{
+            
+        }
         
         segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 16)!], for: UIControlState.normal)
         
@@ -59,11 +64,13 @@ class LoginViewController: UIViewController {
                     return
                 } else {
                     
+                    DBService.shared.initUser()
                     if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
                         print(deviceTokenString)
                         //use email
                         let formattedEmail = Formatter.formateEmail(email: (u?.email)!)
                         self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
+                        self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
                     //called only for login
                     self.performSegue(withIdentifier: "workoutSegue", sender: self)
