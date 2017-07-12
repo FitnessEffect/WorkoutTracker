@@ -26,6 +26,11 @@ class CreateCrossfitExerciseViewController: UIViewController {
         ref = FIRDatabase.database().reference()
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        exName.layer.cornerRadius = 5.0
+        exName.clipsToBounds = true
+        exName.layer.borderWidth = 1
+        exName.layer.borderColor = UIColor.white.cgColor
     }
     
     override func didReceiveMemoryWarning() {

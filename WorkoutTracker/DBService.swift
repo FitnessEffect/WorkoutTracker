@@ -449,6 +449,13 @@ class DBService {
         bodybuildingDictionary["Back"] = true
         bodybuildingDictionary["Shoulders"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").updateChildValues(bodybuildingDictionary)
+        
+        var bodybuildingAbsExercise = [String:Any]()
+        bodybuildingAbsExercise["Bicycle Crunches"] = true
+        bodybuildingAbsExercise["Hanging Knee Raises"] = true
+        bodybuildingAbsExercise["Sit Ups"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Abs").updateChildValues(bodybuildingAbsExercise)
+        
     }
     
     var user: FIRUser {

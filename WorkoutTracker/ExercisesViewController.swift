@@ -30,15 +30,15 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         //title = clientPassed.firstName
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 24)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
         button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 20)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
         button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         button.setTitle(clientPassed.firstName, for: .normal)
         button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
@@ -94,7 +94,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         
        let exercise = exerciseArray[(indexPath as NSIndexPath).row]
        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-       cell.descriptionOutlet.text = exercise.exerciseDescription
+       cell.dateOutlet.text = exercise.exerciseDescription
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
        return cell
     }

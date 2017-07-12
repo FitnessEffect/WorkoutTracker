@@ -179,8 +179,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     tempResult = "0 minute(s) completed"
                 }
             }
-            //format result
-            tempResult = Formatter.formatResult(str: tempResult)
+            if tagPassed == 2{
+                tempResult = Formatter.formatResult(str: tempResult)
+            }
             presenter.saveResult(str: tempResult)
         }
         dismiss(animated: true, completion: nil)

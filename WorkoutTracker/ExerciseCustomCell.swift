@@ -10,7 +10,7 @@ import UIKit
 
 class ExerciseCustomCell: UITableViewCell {
 
-    @IBOutlet weak var descriptionOutlet: UILabel!
+    @IBOutlet weak var dateOutlet: UILabel!
     @IBOutlet weak var numberOutlet: UILabel!
     @IBOutlet weak var titleOutlet: UILabel!
     

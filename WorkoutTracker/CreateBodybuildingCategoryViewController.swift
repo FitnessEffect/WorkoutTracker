@@ -22,6 +22,11 @@ class CreateBodybuildingCategoryViewController: UIViewController{
         super.viewDidLoad()
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        categoryName.layer.cornerRadius = 5.0
+        categoryName.clipsToBounds = true
+        categoryName.layer.borderWidth = 1
+        categoryName.layer.borderColor = UIColor.white.cgColor
     }
     
     override func didReceiveMemoryWarning() {
