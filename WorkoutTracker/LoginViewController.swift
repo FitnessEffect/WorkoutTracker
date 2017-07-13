@@ -24,11 +24,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do{
-        try FIRAuth.auth()?.signOut()
-        }catch{
-            
-        }
+//        do{
+//        try FIRAuth.auth()?.signOut()
+//        }catch{
+//            
+//        }
         
         segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 20)!], for: UIControlState.normal)
         

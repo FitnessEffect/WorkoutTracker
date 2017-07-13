@@ -94,7 +94,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         
        let exercise = exerciseArray[(indexPath as NSIndexPath).row]
        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-       cell.dateOutlet.text = exercise.exerciseDescription
+       cell.dateOutlet.text = exercise.date
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
        return cell
     }

@@ -29,6 +29,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         
         rightBarButton.image = UIImage(named:"addIcon")
+        rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         
         
         self.navigationItem.rightBarButtonItem = rightBarButton
