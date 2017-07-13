@@ -30,6 +30,7 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
             rightBarButton.image = UIImage(named:"addIcon")
             self.navigationItem.rightBarButtonItem = rightBarButton
+            rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         }
     }
     
@@ -54,8 +55,8 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         if scrollView.contentOffset.x<0 {
             scrollView.contentOffset.x = 0
         }
-        if scrollView.contentOffset.y > 70{
-            scrollView.contentOffset.y = 70
+        if scrollView.contentOffset.y > 50{
+            scrollView.contentOffset.y = 50
         }
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0

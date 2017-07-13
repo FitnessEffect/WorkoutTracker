@@ -173,7 +173,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
             tempResult = temp
         }else if tagPassed == 6{
-            var temp = tabata[row] + " minute(s) completed"
+            let temp = tabata[row] + " minute(s) completed"
             tempResult = temp
         }
     }
