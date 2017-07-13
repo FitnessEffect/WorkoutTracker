@@ -26,6 +26,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var hours = ["0","1", "2"]
     var seconds = ["0", "1", "2"]
     var emom = [String]()
+    var tabata = [String]()
     var tagPassed = 0
     var tempHours = ""
     var tempMinutes = ""
@@ -52,6 +53,17 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let max = Int(DBService.shared.emomTime)
             for i in 0...max!{
                 emom.append(String(i))
+            }
+        }
+        
+        if tagPassed == 6{
+            let temp = DBService.shared.tabataTime
+            let arr = temp.components(separatedBy: " ")
+            let max = Int(arr[0])
+            
+            
+            for i in 0...max!{
+                tabata.append(String(i))
             }
         }
     }
@@ -104,8 +116,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return weights.count
         }else if tagPassed == 4{
             return reps.count
-        }else{
+        }else if tagPassed == 5{
             return emom.count
+        }else{
+            return tabata.count
         }
     }
     
@@ -124,8 +138,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return weights[row]
         }else if tagPassed == 4{
             return reps[row]
-        }else{
+        }else if tagPassed == 5{
             return emom[row]
+        }else{
+            return tabata[row]
         }
     }
     
@@ -155,6 +171,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             if emom[row] == "Completed"{
                 temp = emom[row]
             }
+            tempResult = temp
+        }else if tagPassed == 6{
+            var temp = tabata[row] + " minute(s) completed"
             tempResult = temp
         }
     }
@@ -214,9 +233,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 4{
             repsLabel.alpha = 1
             label.text = reps[row]
-        }else{
+        }else if tagPassed == 5{
             minLabel.alpha = 1
             label.text = emom[row]
+        }else{
+            minLabel.alpha = 1
+            label.text = tabata[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
