@@ -29,6 +29,7 @@ class DBService {
     private var _challengeExercises = [Exercise]()
     private var _typePassed:String!
     private var _emomTime:String!
+    private var _tabataTime:String!
     
     private init() {
         initDatabase()
@@ -143,6 +144,10 @@ class DBService {
     
     func setEmomTime(time:String){
         _emomTime = time
+    }
+    
+    func setTabataTime(time:String){
+        _tabataTime = time
     }
     
     func createCrossfitExercise(dictionary:[String:Any]){
@@ -539,6 +544,12 @@ class DBService {
     var emomTime:String{
         get{
             return _emomTime
+        }
+    }
+    
+    var tabataTime:String{
+        get{
+            return _tabataTime
         }
     }
 }

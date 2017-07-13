@@ -17,7 +17,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
-    @IBOutlet weak var backgroundImageOutlet: UIImageView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
