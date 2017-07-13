@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol MenuViewDelegate {
     func handleSelection(type: String)
@@ -131,7 +132,13 @@ class MenuView: UIView {
 
         }else if sender.tag == 5{
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            
             let currentController = self.getCurrentViewController()
+            do{
+                try FIRAuth.auth()?.signOut()
+            }catch{
+                
+            }
             currentController?.present(loginVC, animated: false, completion: nil)
         }
     }

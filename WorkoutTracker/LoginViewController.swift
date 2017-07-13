@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
     var authHandle:UInt?
+    var workoutVC:WorkoutInputViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +41,11 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.set(false, forKey: "newUser")
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
+            rememberMeSwitch.setOn(true, animated: true)
             setAuthListener()
         }
         else {
+            rememberMeSwitch.setOn(false, animated: true)
             do{
                 try FIRAuth.auth()?.signOut()
             }catch{
@@ -72,6 +75,7 @@ class LoginViewController: UIViewController {
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
                     //called only for login
+                    
                     self.performSegue(withIdentifier: "workoutSegue", sender: self)
                 }
             })
@@ -95,6 +99,10 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func `switch`(_ sender: UISwitch) {
+            self.prefs.set(sender.isOn, forKey: "switch")
     }
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
@@ -149,17 +157,17 @@ class LoginViewController: UIViewController {
             present(alertController, animated: true, completion: nil)
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
-                
-                if error != nil {
+                if error == nil {
                     //must be called once //add user info
                     DBService.shared.initializeData()
                     
                     print("You have successfully signed up")
+                    //check if user was just created
                     UserDefaults.standard.set(true, forKey: "newUser")
-                    let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
+//                    let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
+//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                    alertController.addAction(defaultAction)
+//                    self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
