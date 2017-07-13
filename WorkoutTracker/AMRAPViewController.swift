@@ -50,6 +50,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         for i in 1...100{
             emomTime.append(String(i))
         }
+        
+        self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
     }
 
     override func didReceiveMemoryWarning() {

@@ -36,6 +36,8 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
     }
 
     override func didReceiveMemoryWarning() {

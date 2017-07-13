@@ -13,7 +13,6 @@ protocol WorkoutInputViewDelegate {
     func handleResultPickerChoice()->Int
 }
 
-
 class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -37,6 +36,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     var translation1:CGFloat = 170
     var translation2:CGFloat = 100
     var translation3:CGFloat = 100
+    var resultStartPosition:CGFloat = 157
+    var challengeStartPosition:CGFloat = 239
+    var saveStartPosition:CGFloat = 321
     var dateSelected:String!
     
     override init(frame: CGRect) {
@@ -98,9 +100,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         //exerice Btn disappears first
         self.exerciseBtn.alpha = 0
         UIView.animate(withDuration: 0.5, animations: {
-            self.resultBtn.frame = CGRect(x: 0, y:(157 + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-            self.challenge.frame = CGRect(x: 0, y:(239 + self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
-            self.saveButton.frame = CGRect(x: 0, y:(321 + self.translation1), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.resultBtn.frame = CGRect(x: 0, y:(self.resultStartPosition + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y:(self.challengeStartPosition + self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y:(self.saveStartPosition + self.translation1), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
@@ -314,9 +316,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             self.emailTxtView.alpha = 0
             self.eraseResult.alpha = 0
             self.eraseEmail.alpha = 0
-            self.resultBtn.frame = CGRect(x: 0, y: 232, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-            self.challenge.frame = CGRect(x: 0, y: 314, width: self.challenge.frame.width, height: self.challenge.frame.height)
-            self.saveButton.frame = CGRect(x: 0, y: 396, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.exerciseBtn.alpha = 1
@@ -343,9 +345,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.emailTxtView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: 232, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 314, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: 396, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.exerciseBtn.alpha = 1

@@ -37,10 +37,10 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for x in 10...120{
+        for x in 0...120{
             age.append(String(x))
         }
-        for x in 50...700{
+        for x in 0...700{
             weight.append(String(x))
         }
         

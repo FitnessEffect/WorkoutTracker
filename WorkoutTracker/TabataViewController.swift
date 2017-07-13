@@ -37,6 +37,8 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             totalTime.append(String(i) + " min")
         }
         
+        self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        
         registerForKeyboardNotifications()
     }
 
@@ -45,6 +47,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func add(_ sender: UIBarButtonItem) {
+
         exerciseNumber += 1
         exerciseList.append("")
         tableView.reloadData()
