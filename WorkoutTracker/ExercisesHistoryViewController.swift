@@ -40,6 +40,8 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
+        tableViewOutlet.addGestureRecognizer(tapGesture)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -108,6 +110,15 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 self.overlayView.alpha = 0
             })
             menuShowing = false
+        }
+    }
+    
+    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+        let touchPoint = sender.location(in: tableViewOutlet)
+        let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
+        
+        if row != nil{
+            performSegue(withIdentifier: "editExerciseSegue", sender: sender)
         }
     }
     
