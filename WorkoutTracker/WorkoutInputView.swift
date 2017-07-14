@@ -28,17 +28,16 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var emailTxtView: UITextView!
     @IBOutlet weak var notificationNumber: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var delegate: WorkoutInputViewDelegate?
     var name: String = ""
     var date: Date = Date()
-    var translation1:CGFloat = 170
-    var translation2:CGFloat = 100
-    var translation3:CGFloat = 100
-    var resultStartPosition:CGFloat = 157
-    var challengeStartPosition:CGFloat = 239
-    var saveStartPosition:CGFloat = 321
+    var translation1:CGFloat = 0
+    var translation2:CGFloat = 0
+    var translation3:CGFloat = 0
+    var resultStartPosition:CGFloat = 0
+    var challengeStartPosition:CGFloat = 0
+    var saveStartPosition:CGFloat = 0
     var dateSelected:String!
     
     override init(frame: CGRect) {
@@ -53,6 +52,13 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
         
+        resultStartPosition = resultBtn.frame.origin.y
+        challengeStartPosition = challenge.frame.origin.y
+        saveStartPosition = saveButton.frame.origin.y
+        
+        translation1 = descriptionTextView.frame.size.height - 80
+        translation2 = resultTextView.frame.size.height - 80
+        translation3 = emailTxtView.frame.size.height - 80
         resultBtn.isUserInteractionEnabled = false
         challenge.isUserInteractionEnabled = false
         saveButton.isUserInteractionEnabled = false
@@ -166,7 +172,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectDate(_ sender: UIButton) {
         let xPosition = dateBtn.frame.minX + (dateBtn.frame.width/2)
-        let yPosition = dateBtn.frame.maxY - 25 - scrollView.contentOffset.y
+        let yPosition = dateBtn.frame.maxY - 25
         
         let currentController = self.getCurrentViewController()
         
@@ -191,7 +197,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectExercise(_ sender: UIButton) {
         let xPosition = exerciseBtn.frame.minX + (exerciseBtn.frame.width/2)
-        let yPosition = exerciseBtn.frame.midY + 15 - scrollView.contentOffset.y
+        let yPosition = exerciseBtn.frame.midY + 15
         let currentController = self.getCurrentViewController()
         
         // get a reference to the view controller for the popover
@@ -213,7 +219,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectResult(_ sender: UIButton) {
         let xPosition:CGFloat = resultBtn.frame.minX + (resultBtn.frame.width/2)
-        let yPosition:CGFloat = resultBtn.frame.midY + 15 - scrollView.contentOffset.y
+        let yPosition:CGFloat = resultBtn.frame.midY + 15
 
         
         let currentController = self.getCurrentViewController()
@@ -241,7 +247,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     @IBAction func selectChallenge(_ sender: UIButton) {
         let xPosition = challenge.frame.minX + (challenge.frame.width/2)
-        let yPosition = challenge.frame.maxY - 60 - scrollView.contentOffset.y
+        let yPosition = challenge.frame.maxY - 60
         
         let currentController = self.getCurrentViewController()
         
@@ -280,8 +286,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             UIView.animate(withDuration: 0.3, animations: {
                 self.resultTextView.alpha = 1
                 self.eraseResult.alpha = 1
-                self.challenge.frame = CGRect(x: 0, y: (329 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: (411 + self.translation2), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: (self.challengeStartPosition + self.translation1 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.saveButton.frame = CGRect(x: 0, y: (self.saveStartPosition + self.translation1 + self.translation2), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.challenge.isUserInteractionEnabled = true
@@ -298,7 +304,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.emailTxtView.alpha = 1
-                self.saveButton.frame = CGRect(x: 0, y: (472+self.translation3), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                self.saveButton.frame = CGRect(x: 0, y: (self.saveStartPosition + self.translation1 + self.translation2 + self.translation3), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
                 self.eraseEmail.alpha = 1
                 self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
             })
@@ -371,9 +377,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.emailTxtView.alpha = 0
                 self.eraseResult.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: 327, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: 409, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: 491, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition + self.translation1, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.resultBtn.alpha = 1
@@ -391,8 +397,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.emailTxtView.text = ""
                 self.emailTxtView.alpha = 0
                 self.eraseEmail.alpha = 0
-                self.challenge.frame = CGRect(x: 0, y: 409, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: 491, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1 + self.translation2, width: self.challenge.frame.width, height: self.challenge.frame.height)
+                self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1 + self.translation2, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.challenge.alpha = 1

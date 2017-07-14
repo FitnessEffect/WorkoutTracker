@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,196 +39,127 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6Y-IK-bmV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jdq-aR-cVX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jdq-aR-cVX">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7hE-Sh-Eqt">
-                                        <rect key="frame" x="0.0" y="155" width="375" height="170"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="7hE-Sh-Eqt" secondAttribute="height" multiplier="75:34" id="C8r-Bj-ZER"/>
-                                            <constraint firstAttribute="height" constant="170" id="rhe-A5-2TB"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-mw-bOp">
-                                        <rect key="frame" x="0.0" y="327" width="375" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="8Fc-XK-fgh"/>
-                                            <constraint firstAttribute="width" constant="375" id="y9k-aY-5Ji"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xd9-VW-xci">
-                                        <rect key="frame" x="0.0" y="440" width="375" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="R8N-aM-lai"/>
-                                            <constraint firstAttribute="width" constant="375" id="tDG-Iq-h2M"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-gv-R0v">
-                                        <rect key="frame" x="0.0" y="314" width="375" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="1pl-eY-o2d"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
-                                        <state key="normal" title="Challenge">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="selectChallenge:" destination="ELO-R3-AfS" eventType="touchUpInside" id="I4c-HW-uW9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-aE-emQ">
-                                        <rect key="frame" x="0.0" y="396" width="375" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="rQG-da-PSf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="30"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="save:" destination="ELO-R3-AfS" eventType="touchUpInside" id="ADY-Tu-1cx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF5-Jb-Wye">
-                                        <rect key="frame" x="0.0" y="150" width="375" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="j1J-6O-j0X"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
-                                        <state key="normal" title="Exercise">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="selectExercise:" destination="ELO-R3-AfS" eventType="touchUpInside" id="PUb-wI-aKo"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-oB-Cek" userLabel="EraseResult">
-                                        <rect key="frame" x="332" y="332" width="35" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
-                                        <state key="normal" title="X" backgroundImage="chalkBackground">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="cua-I0-jOA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-Zy-Bx8">
-                                        <rect key="frame" x="0.0" y="232" width="375" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="3o7-do-HAs"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
-                                        <state key="normal" title="Result">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="selectResult:" destination="ELO-R3-AfS" eventType="touchUpInside" id="XF0-Ya-1Qg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-zi-tdN" userLabel="EraseEmail">
-                                        <rect key="frame" x="332" y="444" width="35" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
-                                        <state key="normal" title="X" backgroundImage="chalkBackground">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="C68-tU-fTw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-XL-Hjl">
-                                        <rect key="frame" x="332" y="160" width="35" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
-                                        <state key="normal" title="X" backgroundImage="chalkBackground">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="E6y-p8-soB"/>
-                                        </connections>
-                                    </button>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsg-o6-oRT">
-                                        <rect key="frame" x="0.0" y="67" width="375" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="Zn4-lo-ZTb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
-                                        <state key="normal" title="Date" backgroundImage="chalkBackground">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="selectDate:" destination="ELO-R3-AfS" eventType="touchUpInside" id="XCy-bW-iG0"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="7hE-Sh-Eqt" firstAttribute="top" secondItem="v6Y-IK-bmV" secondAttribute="top" constant="155" id="1ZH-zc-fUf"/>
-                                    <constraint firstItem="Uu5-Zy-Bx8" firstAttribute="top" secondItem="CF5-Jb-Wye" secondAttribute="bottom" constant="2" id="42i-js-UN5"/>
-                                    <constraint firstItem="Bsg-o6-oRT" firstAttribute="leading" secondItem="v6Y-IK-bmV" secondAttribute="leading" id="7tZ-DW-Npc"/>
-                                    <constraint firstItem="rA8-gv-R0v" firstAttribute="leading" secondItem="v6Y-IK-bmV" secondAttribute="leading" id="Aos-28-2Tq"/>
-                                    <constraint firstAttribute="trailing" secondItem="7hE-Sh-Eqt" secondAttribute="trailing" id="BmZ-4m-70U"/>
-                                    <constraint firstItem="7hE-Sh-Eqt" firstAttribute="leading" secondItem="jdq-aR-cVX" secondAttribute="leading" id="DBI-3i-gtr"/>
-                                    <constraint firstItem="rA8-gv-R0v" firstAttribute="top" secondItem="Uu5-Zy-Bx8" secondAttribute="bottom" constant="2" id="EHT-OR-FCd"/>
-                                    <constraint firstAttribute="trailing" secondItem="UNQ-aE-emQ" secondAttribute="trailing" id="HEL-Sw-Z4X"/>
-                                    <constraint firstItem="Bsg-o6-oRT" firstAttribute="top" secondItem="v6Y-IK-bmV" secondAttribute="top" constant="67" id="Hdj-6q-6gh"/>
-                                    <constraint firstItem="CF5-Jb-Wye" firstAttribute="leading" secondItem="v6Y-IK-bmV" secondAttribute="leading" id="KW7-wc-KsZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="7hE-Sh-Eqt" secondAttribute="trailing" id="NZZ-H0-Hju"/>
-                                    <constraint firstItem="UNQ-aE-emQ" firstAttribute="top" secondItem="rA8-gv-R0v" secondAttribute="bottom" constant="2" id="OAE-eh-gDC"/>
-                                    <constraint firstItem="Xd9-VW-xci" firstAttribute="top" secondItem="Abk-mw-bOp" secondAttribute="bottom" constant="13" id="OJi-r3-1mA"/>
-                                    <constraint firstAttribute="bottom" secondItem="7hE-Sh-Eqt" secondAttribute="bottom" constant="342" id="PWh-8y-5bH"/>
-                                    <constraint firstItem="Xd9-VW-xci" firstAttribute="trailing" secondItem="7hE-Sh-Eqt" secondAttribute="trailing" id="Plj-2R-ccd"/>
-                                    <constraint firstItem="Uu5-Zy-Bx8" firstAttribute="leading" secondItem="v6Y-IK-bmV" secondAttribute="leading" id="RCF-hK-iuB"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xd9-VW-xci" secondAttribute="trailing" id="T89-y3-w5S"/>
-                                    <constraint firstItem="UNQ-aE-emQ" firstAttribute="leading" secondItem="v6Y-IK-bmV" secondAttribute="leading" id="UlI-Kt-OUB"/>
-                                    <constraint firstAttribute="trailing" secondItem="rA8-gv-R0v" secondAttribute="trailing" id="UlJ-wm-fUf"/>
-                                    <constraint firstItem="Abk-mw-bOp" firstAttribute="top" secondItem="7hE-Sh-Eqt" secondAttribute="bottom" constant="2" id="cNS-Ni-rMP"/>
-                                    <constraint firstAttribute="trailing" secondItem="Abk-mw-bOp" secondAttribute="trailing" id="cNd-U5-TsJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Uu5-Zy-Bx8" secondAttribute="trailing" id="cm5-qb-snb"/>
-                                    <constraint firstAttribute="trailing" secondItem="CF5-Jb-Wye" secondAttribute="trailing" id="ddK-96-GjZ"/>
-                                    <constraint firstItem="CF5-Jb-Wye" firstAttribute="top" secondItem="Bsg-o6-oRT" secondAttribute="bottom" constant="3" id="fcG-Ny-38n"/>
-                                    <constraint firstItem="7hE-Sh-Eqt" firstAttribute="leading" secondItem="Xd9-VW-xci" secondAttribute="leading" id="frL-F1-cu8"/>
-                                    <constraint firstItem="7hE-Sh-Eqt" firstAttribute="leading" secondItem="Abk-mw-bOp" secondAttribute="leading" id="hr7-2y-2Fi"/>
-                                    <constraint firstItem="CF5-Jb-Wye" firstAttribute="centerX" secondItem="v6Y-IK-bmV" secondAttribute="centerX" id="i8R-fv-3MZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bsg-o6-oRT" secondAttribute="trailing" id="oqN-Dn-mgo"/>
-                                    <constraint firstItem="Abk-mw-bOp" firstAttribute="trailing" secondItem="7hE-Sh-Eqt" secondAttribute="trailing" id="vkq-lY-fVS"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xd9-VW-xci">
+                                <rect key="frame" x="0.0" y="444" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-mw-bOp">
+                                <rect key="frame" x="0.0" y="327" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7hE-Sh-Eqt">
+                                <rect key="frame" x="0.0" y="155" width="375" height="170"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-aE-emQ">
+                                <rect key="frame" x="0.0" y="396" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <outlet property="delegate" destination="pzd-PZ-fvb" id="sKF-s9-3ra"/>
+                                    <action selector="save:" destination="ELO-R3-AfS" eventType="touchUpInside" id="ADY-Tu-1cx"/>
                                 </connections>
-                            </scrollView>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-gv-R0v">
+                                <rect key="frame" x="0.0" y="314" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <state key="normal" title="Challenge">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectChallenge:" destination="ELO-R3-AfS" eventType="touchUpInside" id="I4c-HW-uW9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-oB-Cek" userLabel="EraseResult">
+                                <rect key="frame" x="332" y="332" width="35" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
+                                <state key="normal" title="X" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="cua-I0-jOA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-zi-tdN" userLabel="EraseEmail">
+                                <rect key="frame" x="332" y="444" width="35" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
+                                <state key="normal" title="X" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="C68-tU-fTw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF5-Jb-Wye">
+                                <rect key="frame" x="0.0" y="150" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <state key="normal" title="Exercise">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectExercise:" destination="ELO-R3-AfS" eventType="touchUpInside" id="PUb-wI-aKo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-XL-Hjl">
+                                <rect key="frame" x="332" y="160" width="35" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
+                                <state key="normal" title="X" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="eraseBtn:" destination="ELO-R3-AfS" eventType="touchUpInside" id="E6y-p8-soB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-Zy-Bx8">
+                                <rect key="frame" x="0.0" y="232" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <state key="normal" title="Result">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectResult:" destination="ELO-R3-AfS" eventType="touchUpInside" id="XF0-Ya-1Qg"/>
+                                </connections>
+                            </button>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsg-o6-oRT">
+                                <rect key="frame" x="0.0" y="67" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <state key="normal" title="Date" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectDate:" destination="ELO-R3-AfS" eventType="touchUpInside" id="XCy-bW-iG0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jdq-aR-cVX" firstAttribute="top" secondItem="VXl-1s-rw7" secondAttribute="bottom" constant="-64" id="1iA-ky-60q"/>
-                            <constraint firstItem="Qpj-1o-s2b" firstAttribute="top" secondItem="jdq-aR-cVX" secondAttribute="bottom" constant="-44" id="2ar-Wa-0zV"/>
-                            <constraint firstItem="jdq-aR-cVX" firstAttribute="leading" secondItem="ELO-R3-AfS" secondAttribute="leadingMargin" constant="-16" id="80q-PQ-6cT"/>
-                            <constraint firstItem="Qpj-1o-s2b" firstAttribute="top" secondItem="v6Y-IK-bmV" secondAttribute="bottom" constant="-44" id="EZG-5e-32F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jdq-aR-cVX" secondAttribute="trailing" constant="-16" id="Gbg-mQ-Ndr"/>
-                            <constraint firstItem="v6Y-IK-bmV" firstAttribute="height" secondItem="ELO-R3-AfS" secondAttribute="height" id="Jn7-cG-ZMj"/>
-                            <constraint firstItem="v6Y-IK-bmV" firstAttribute="leading" secondItem="ELO-R3-AfS" secondAttribute="leadingMargin" constant="-16" id="ZPK-km-bSZ"/>
-                            <constraint firstItem="v6Y-IK-bmV" firstAttribute="top" secondItem="VXl-1s-rw7" secondAttribute="bottom" constant="-64" id="g2u-qC-2Hu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v6Y-IK-bmV" secondAttribute="trailing" constant="-16" id="lOp-O1-aZL"/>
-                            <constraint firstItem="v6Y-IK-bmV" firstAttribute="width" secondItem="ELO-R3-AfS" secondAttribute="width" id="ySO-o9-whS"/>
-                        </constraints>
                         <connections>
                             <outlet property="backgroundImage" destination="jdq-aR-cVX" id="e0g-40-QWg"/>
                             <outlet property="challenge" destination="rA8-gv-R0v" id="Jqy-BG-p9K"/>
@@ -244,7 +174,6 @@
                             <outlet property="resultBtn" destination="Uu5-Zy-Bx8" id="9Kr-5T-ZTu"/>
                             <outlet property="resultTextView" destination="Abk-mw-bOp" id="eQv-ht-ivw"/>
                             <outlet property="saveButton" destination="UNQ-aE-emQ" id="zpf-uh-cWB"/>
-                            <outlet property="scrollView" destination="v6Y-IK-bmV" id="P83-v0-fWM"/>
                         </connections>
                     </view>
                     <toolbarItems/>
@@ -262,7 +191,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="scrollView" destination="v6Y-IK-bmV" id="e0K-If-kan"/>
                         <outlet property="workoutInputView" destination="ELO-R3-AfS" id="jGr-Y5-fkn"/>
                     </connections>
                 </viewController>
@@ -549,7 +477,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="nameOutlet" destination="DLQ-DC-gRT" id="AcX-zS-6c2"/>
-                                            <segue destination="8GF-XO-Gxt" kind="show" identifier="exercisesSegue" id="HB2-zW-20z"/>
+                                            <segue destination="8GF-XO-Gxt" kind="showDetail" identifier="exercisesSegue" id="h1c-4m-kch"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1875,7 +1803,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFW-Kj-Teg">
-                                        <rect key="frame" x="256" y="65" width="21" height="17"/>
+                                        <rect key="frame" x="257" y="65" width="21" height="17"/>
                                         <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1890,21 +1818,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
-                                        <rect key="frame" x="169.5" y="62" width="22.5" height="21"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGI-bm-bWQ">
                                         <rect key="frame" x="164" y="62" width="32" height="21"/>
                                         <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
+                                        <rect key="frame" x="163" y="62" width="22.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="leading" secondItem="p57-R2-tHV" secondAttribute="trailing" constant="50" id="2pf-XU-dRj"/>
+                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="leading" secondItem="p57-R2-tHV" secondAttribute="trailing" constant="51" id="2pf-XU-dRj"/>
                                     <constraint firstItem="lXa-Pi-mYb" firstAttribute="leading" secondItem="NTr-8p-FVc" secondAttribute="leading" constant="65" id="6zO-ng-rER"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="leading" secondItem="lXa-Pi-mYb" secondAttribute="trailing" constant="74" id="9DQ-hM-Mfw"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="leading" secondItem="NTr-8p-FVc" secondAttribute="leading" constant="8" id="DSV-iP-tn2"/>
@@ -1915,7 +1843,7 @@
                                     <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="63" id="Mfi-q8-Diq"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="15" id="XlP-JB-BAP"/>
                                     <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="423" id="Xni-3w-6la"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-18" id="b64-rs-j8I"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-11.5" id="b64-rs-j8I"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="top" secondItem="bYm-8o-cAH" secondAttribute="top" id="bc0-ys-YAQ"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="top" secondItem="nBj-NH-kBw" secondAttribute="top" id="fIn-L9-mPm"/>
                                     <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="oGI-bm-bWQ" secondAttribute="trailing" constant="-22" id="gCf-pd-P0H"/>
@@ -2382,7 +2310,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YWZ-8d-I9B">
-                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
+                                <rect key="frame" x="0.0" y="41" width="375" height="626"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -2521,6 +2449,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TQo-Nm-LIR"/>
+        <segue reference="OuF-iy-fzI"/>
     </inferredMetricsTieBreakers>
 </document>
