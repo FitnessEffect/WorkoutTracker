@@ -13,7 +13,6 @@ import MessageUI
 class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate{
     
     @IBOutlet var workoutInputView: WorkoutInputView!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var menuShowing = false
     var bodybuildingExercises = [String]()
@@ -84,9 +83,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         overlayView.alpha = 0
     }
     
-    override func viewDidLayoutSubviews() {
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
+//    override func viewDidLayoutSubviews() {
+//        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -110,19 +109,19 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         workoutInputView.updateNotification()
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x>0 {
-            scrollView.contentOffset.x = 0
-        }
-        if scrollView.contentOffset.x<0 {
-            scrollView.contentOffset.x = 0
-        }
-        
-        if scrollView.contentOffset.y < 0{
-            scrollView.contentOffset.y = 0
-        }
-        
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView.contentOffset.x>0 {
+//            scrollView.contentOffset.x = 0
+//        }
+//        if scrollView.contentOffset.x<0 {
+//            scrollView.contentOffset.x = 0
+//        }
+//        
+//        if scrollView.contentOffset.y < 0{
+//            scrollView.contentOffset.y = 0
+//        }
+//        
+//    }
     
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
