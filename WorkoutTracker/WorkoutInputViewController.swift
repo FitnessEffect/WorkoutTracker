@@ -37,8 +37,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         super.viewDidLoad()
         workoutInputView.delegate = self
         
-        
-        
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
         
@@ -81,14 +79,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
+        menuView.alpha = 0
     }
     
-//    override func viewDidLayoutSubviews() {
-//        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
-        
         
         if edit == true{
             //set tempExercise from passedExercise
@@ -108,20 +102,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     func updateNotif(){
         workoutInputView.updateNotification()
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.contentOffset.x>0 {
-//            scrollView.contentOffset.x = 0
-//        }
-//        if scrollView.contentOffset.x<0 {
-//            scrollView.contentOffset.x = 0
-//        }
-//        
-//        if scrollView.contentOffset.y < 0{
-//            scrollView.contentOffset.y = 0
-//        }
-//        
-//    }
     
     func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
@@ -210,6 +190,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     func addSelector() {
+        menuView.alpha = 1
         //slide view in here
         if menuShowing == false{
             menuView.addFx()
@@ -223,8 +204,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
-            })
+                
+            }, completion:{success in
+                self.menuView.alpha = 0})
             menuShowing = false
+            
         }
     }
     
