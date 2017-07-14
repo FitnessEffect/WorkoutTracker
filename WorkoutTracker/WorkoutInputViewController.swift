@@ -37,6 +37,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         super.viewDidLoad()
         workoutInputView.delegate = self
         
+        if let _ = UserDefaults.standard.object(forKey: "newUser") as? Bool{
+            //must be called once //add user info
+            DBService.shared.initializeData()
+            UserDefaults.standard.set(false, forKey: "newUser")
+        }
+        
+        
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
         
