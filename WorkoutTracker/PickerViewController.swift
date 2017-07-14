@@ -22,9 +22,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var namesPassed:[String]!
     var weights = [String]()
     var reps = [String]()
-    var minutes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
-    var hours = ["0","1", "2"]
-    var seconds = ["0", "1", "2"]
+    var hours = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"]
+    var minutes = [String]()
+    var seconds = [String]()
     var emom = [String]()
     var tabata = [String]()
     var tagPassed = 0
@@ -46,6 +46,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         for i in 0...500{
             weights.append(String(i))
             reps.append(String(i))
+        }
+        
+        for i in 0...60{
+            minutes.append(String(i))
+            seconds.append(String(i))
         }
         
         
