@@ -41,7 +41,7 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jdq-aR-cVX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xd9-VW-xci">
                                 <rect key="frame" x="0.0" y="444" width="375" height="100"/>
@@ -477,13 +477,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="nameOutlet" destination="DLQ-DC-gRT" id="AcX-zS-6c2"/>
-                                            <segue destination="8GF-XO-Gxt" kind="showDetail" identifier="exercisesSegue" id="h1c-4m-kch"/>
+                                            <segue destination="8GF-XO-Gxt" kind="show" identifier="exercisesSegue" id="KQ2-75-HtG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="U4l-CF-NEd" id="Tzg-ox-nbq"/>
-                                    <outlet property="delegate" destination="U4l-CF-NEd" id="6g4-cX-RjI"/>
+                                    <outlet property="dataSource" destination="U4l-CF-NEd" id="MJw-9Z-aoB"/>
+                                    <outlet property="delegate" destination="U4l-CF-NEd" id="CXZ-Q8-wn1"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXt-F7-nlC">
@@ -2292,7 +2292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBa-nN-zDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="-685"/>
+            <point key="canvasLocation" x="34" y="-685"/>
         </scene>
         <!--Exercises View Controller-->
         <scene sceneID="OVW-hB-szn">
@@ -2310,7 +2310,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YWZ-8d-I9B">
-                                <rect key="frame" x="0.0" y="41" width="375" height="626"/>
+                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -2449,6 +2449,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuF-iy-fzI"/>
+        <segue reference="vQN-UH-ceT"/>
     </inferredMetricsTieBreakers>
 </document>

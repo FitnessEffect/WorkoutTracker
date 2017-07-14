@@ -37,6 +37,8 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
+        tableViewOutlet.addGestureRecognizer(tapGesture)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -95,6 +97,16 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    
+    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+        let touchPoint = sender.location(in: tableViewOutlet)
+        let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
+        
+        if row != nil{
+            performSegue(withIdentifier: "editChallengeSegue", sender: sender)
+        }
+    }
+    
     func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
@@ -103,10 +115,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-        }else{
-            if tableViewOutlet.frame.contains(sender.location(in: view)){
-                performSegue(withIdentifier: "editChallengeSegue", sender: sender)
-            }
         }
     }
     
