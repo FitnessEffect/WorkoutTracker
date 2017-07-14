@@ -121,7 +121,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             self.present(alert, animated: true, completion: nil)
             
         }else{
-            myExercise.exerciseDescription = rest[id] + " rest" + " - " + work[id] + " work" + " - " + totalTime[id] +  " total" + " | " + tabataString
+            myExercise.exerciseDescription = rest[id] + "rest" + " - " + work[id] + "work" + " - " + totalTime[id] +  " total" + " | " + tabataString
             DBService.shared.setTabataTime(time:totalTime[id])
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
             dismiss(animated: true, completion: nil)
