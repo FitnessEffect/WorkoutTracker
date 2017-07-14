@@ -53,12 +53,12 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         firstNameOutlet.layer.cornerRadius = 5.0
         firstNameOutlet.clipsToBounds = true
         firstNameOutlet.layer.borderWidth = 1
-        firstNameOutlet.layer.borderColor = UIColor.gray.cgColor
+        firstNameOutlet.layer.borderColor = UIColor.white.cgColor
         
         lastNameOutlet.layer.cornerRadius = 5.0
         lastNameOutlet.clipsToBounds = true
         lastNameOutlet.layer.borderWidth = 1
-        lastNameOutlet.layer.borderColor = UIColor.gray.cgColor
+        lastNameOutlet.layer.borderColor = UIColor.white.cgColor
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

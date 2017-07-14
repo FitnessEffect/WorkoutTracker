@@ -121,10 +121,10 @@ class DBService {
         _currentKey = ""
     }
     
-    func getIDforClient(id:String) -> String{
-        let str = ""
-        return str
-    }
+//    func getIDforClient(id:String) -> String{
+//        let str = ""
+//        return str
+//    }
     
     func setPassedExercise(exercise:Exercise){
         _passedExercise = exercise
@@ -265,12 +265,24 @@ class DBService {
     }
     
     func retrieveClientInfo(lastName:String)->Client{
+        let c = Client()
         for client in _clients{
             if client.lastName == lastName{
                 return client
             }
         }
+        
+        return c
+    }
+    
+    func retrieveClientInfoByFullName(fullName:String)->Client{
         let c = Client()
+        for client in _clients{
+            if (client.firstName + " " + client.lastName) == fullName{
+                return client
+            }
+        }
+        
         return c
     }
     
