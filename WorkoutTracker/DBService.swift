@@ -40,8 +40,8 @@ class DBService {
     }
     
     func initUser() {
-        if let user = FIRAuth.auth()?.currentUser {
-            _user = user
+        if let u = FIRAuth.auth()?.currentUser {
+            _user = u
             
             retrieveClients(completion: {
                 self._clients.sort(by: {a, b in
