@@ -67,7 +67,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         registerForKeyboardNotifications()
         
         
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -141,7 +140,13 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         exerciseDictionary["client"] = self.title
         exerciseDictionary["creatorEmail"] = user.email
         exerciseDictionary["creatorID"] = user.uid
-    
+        exerciseDictionary["clientKey"] = " "
+        
+        //look up clientKey from name
+        if self.title != "Personal"{
+            let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
+            exerciseDictionary["clientKey"] = tempClient.clientKey
+        }
         
         if edit == true{
             //if user changes client while exercises is in edit mode
@@ -285,7 +290,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             popController.setClients(clients: nameArray)
             popController.setTag(tag: 1)
         }
-        
+    
         // present the popover
         self.present(popController, animated: true, completion: nil)
     }

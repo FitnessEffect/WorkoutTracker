@@ -141,7 +141,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 500)
+        popController.preferredContentSize = CGSize(width: 300, height: 580)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         // present the popover

@@ -44,7 +44,6 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             self.exercises = DBService.shared.exercisesForCrossfitCategory
             self.pickerOutlet.reloadAllComponents()
         })
-        
         pickerOutlet.isUserInteractionEnabled = true
     }
     
