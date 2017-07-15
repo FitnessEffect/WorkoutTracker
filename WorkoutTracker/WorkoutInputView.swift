@@ -155,7 +155,6 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     @IBAction func save(_ sender: UIButton) {
-        
         var exerciseDictionary = [String:String]()
         
         exerciseDictionary["date"] =  (dateBtn.titleLabel?.text!)!
