@@ -73,7 +73,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         notificationNumber.layer.borderColor = UIColor.red.cgColor
         
         //set it on top of navigation bar
-        notificationNumber.layer.zPosition = 1;
+        notificationNumber.layer.zPosition = 1
     }
     
     func setNotifications(num:Int){

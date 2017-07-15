@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var register: UIButton!
     @IBOutlet weak var segmentedOutlet: UISegmentedControl!
+    @IBOutlet weak var termsOfUselabel: UITextView!
+    @IBOutlet weak var termsOfUseBtn: UIButton!
     
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
@@ -25,11 +27,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        do{
-//        try FIRAuth.auth()?.signOut()
-//        }catch{
-//            
-//        }
         
         segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 20)!], for: UIControlState.normal)
         
@@ -37,6 +34,8 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(gesture)
         ref = FIRDatabase.database().reference()
         
+        termsOfUselabel.isHidden = true
+        termsOfUseBtn.isHidden = true
         register.isHidden = true
         UserDefaults.standard.set(false, forKey: "newUser")
         
@@ -83,6 +82,14 @@ class LoginViewController: UIViewController {
         }) as? UInt
     }
     
+    @IBAction func termOfUse(_ sender: UIButton) {
+        if let url = NSURL(string: "https://github.com/FitnessEffect/WorkoutTracker/blob/master/Terms%20of%20Use"){
+            UIApplication.shared.openURL(url as URL)
+        }
+        
+    }
+    
+    
     func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTF.frame.contains(sender.location(in: view)){
             if emailTF.isEditing{
@@ -110,10 +117,14 @@ class LoginViewController: UIViewController {
         if segmentedOutlet.selectedSegmentIndex == 1{
             login.isHidden = true
             register.isHidden = false
+            termsOfUselabel.isHidden = false
+            termsOfUseBtn.isHidden = false
         }
         if segmentedOutlet.selectedSegmentIndex == 0{
             register.isHidden = true
             login.isHidden = false
+            termsOfUselabel.isHidden = true
+            termsOfUseBtn.isHidden = true
         }
     }
     
@@ -181,10 +192,10 @@ class LoginViewController: UIViewController {
                     }
                     
                     
-                    //                    let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
-                    //                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    //                    alertController.addAction(defaultAction)
-                    //                    self.present(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                        alertController.addAction(defaultAction)
+                                        self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
