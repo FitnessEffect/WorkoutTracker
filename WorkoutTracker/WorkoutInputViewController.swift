@@ -32,7 +32,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     var edit = false
     var passedOn = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         workoutInputView.delegate = self
@@ -42,7 +41,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             DBService.shared.initializeData()
             UserDefaults.standard.set(false, forKey: "newUser")
         }
-        
         
         let barButtonItem = self.navigationItem.rightBarButtonItem!
         buttonItemView = barButtonItem.value(forKey: "view")
@@ -89,6 +87,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        workoutInputView.setCurrentDate()
         
         if edit == true{
             //set tempExercise from passedExercise
@@ -96,9 +95,10 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
             workoutInputView.fillInExercisePassed(exercise: tempExercise)
         }else{
-            workoutInputView.setCurrentDate()
+           fillInExercisePassed() 
+            
         }
-        fillInExercisePassed()
+        
     }
     
     func updateNotification(_ notification: Notification) {
@@ -154,7 +154,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
             exerciseDictionary["clientKey"] = tempClient.clientKey
         }
-        
         if edit == true{
             //if user changes client while exercises is in edit mode
             if DBService.shared.passedExercise.client != title{
