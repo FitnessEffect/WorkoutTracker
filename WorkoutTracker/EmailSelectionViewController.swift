@@ -32,7 +32,7 @@ class EmailSelectionViewController: UIViewController {
     
     @IBAction func addEmail(_ sender: UIButton) {
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
-        presenter.saveEmail(emailStr: emailTextField.text!)
+        presenter.saveEmail(emailStr: (emailTextField.text?.lowercased())!)
         dismiss(animated: true, completion: nil)
     }
     
