@@ -1,5 +1,5 @@
 //
-//  WodsViewController.swift
+//  ForTimeViewController.swift
 //  WorkoutTracker
 //
 //  Created by Stefan Auvergne on 5/9/16.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
@@ -87,10 +87,10 @@ class WodsViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     @IBAction func addWod(_ sender: UIButton) {
-        if categoryPassed == "Wods"{
+        if categoryPassed == "For Time"{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             myExercise.name = exercises[id]
-            myExercise.category = "Wods"
+            myExercise.category = "For Time"
             myExercise.type = "Crossfit"
             if myExercise.name == "Fran"{
                 DBService.shared.retrieveWod(wodName: "Fran", completion: {

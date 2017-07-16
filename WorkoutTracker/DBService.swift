@@ -379,7 +379,7 @@ class DBService {
     }
     
     func retrieveWod(wodName:String, completion:@escaping (String)->Void){
-        self._ref.child("wods").child(wodName).observeSingleEvent(of: .value, with: { (snapshot) in
+        self._ref.child("for time").child(wodName).observeSingleEvent(of: .value, with: { (snapshot) in
           let value = snapshot.value as? NSDictionary
             let str = value?["description"] as! String
             completion(str)
@@ -449,7 +449,7 @@ class DBService {
         crossfitDictionary["Emom"] = true
         crossfitDictionary["Metcon"] = true
         crossfitDictionary["Tabata"] = true
-        crossfitDictionary["Wods"] = true
+        crossfitDictionary["For Time"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Crossfit").updateChildValues(crossfitDictionary)
         
         var oneRepMaxDictionary = [String:Any]()
@@ -458,11 +458,11 @@ class DBService {
         oneRepMaxDictionary["Front Squats"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("1 Rep Max").updateChildValues(oneRepMaxDictionary)
         
-        var wodDictionary = [String:Any]()
-        wodDictionary["Murph"] = true
-        wodDictionary["Grace"] = true
-        wodDictionary["Fran"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("Wods").updateChildValues(wodDictionary)
+        var forTimeDictionary = [String:Any]()
+        forTimeDictionary["Murph"] = true
+        forTimeDictionary["Grace"] = true
+        forTimeDictionary["Fran"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("For Time").updateChildValues(forTimeDictionary)
         
         var bodybuildingDictionary = [String:Any]()
         bodybuildingDictionary["Abs"] = true

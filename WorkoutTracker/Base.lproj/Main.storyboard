@@ -1037,7 +1037,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7hW-Gt-Xou">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="For Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7hW-Gt-Xou">
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
@@ -1064,10 +1064,10 @@
             </objects>
             <point key="canvasLocation" x="4492" y="752"/>
         </scene>
-        <!--Wods View Controller-->
+        <!--For Time View Controller-->
         <scene sceneID="9w3-KE-bMe">
             <objects>
-                <viewController storyboardIdentifier="wodsVC" id="rcG-z7-cRk" customClass="WodsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="forTimeVC" id="rcG-z7-cRk" customClass="ForTimeViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tIq-Z7-Se3"/>
                         <viewControllerLayoutGuide type="bottom" id="vWs-w6-BkZ"/>
@@ -1623,30 +1623,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VC-2U-ygc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                        <rect key="frame" x="229" y="204" width="26" height="21"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quh-jp-oaE">
-                                        <rect key="frame" x="86" y="204" width="61" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="H7c-Um-JbP"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-M4-Xaa">
-                                        <rect key="frame" x="165" y="204" width="61" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="tCA-FK-iHT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihm-wr-0JO">
                                         <rect key="frame" x="93" y="299" width="190" height="50"/>
                                         <constraints>
@@ -1669,6 +1645,30 @@
                                             <outlet property="delegate" destination="amZ-mI-WTt" id="9C4-tQ-8Xu"/>
                                         </connections>
                                     </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
+                                        <rect key="frame" x="233" y="204" width="26" height="21"/>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-M4-Xaa">
+                                        <rect key="frame" x="161" y="204" width="61" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="tCA-FK-iHT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quh-jp-oaE">
+                                        <rect key="frame" x="89" y="204" width="61" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="H7c-Um-JbP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eH5-Wu-1fM">
                                         <rect key="frame" x="0.0" y="25" width="375" height="125"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1720,15 +1720,15 @@
                                     <constraint firstItem="Bp9-2c-CyR" firstAttribute="centerX" secondItem="Ihm-wr-0JO" secondAttribute="centerX" id="K0Z-Qa-Jfp"/>
                                     <constraint firstItem="Bp9-2c-CyR" firstAttribute="centerX" secondItem="3VC-2U-ygc" secondAttribute="centerX" id="NKU-hE-VbF"/>
                                     <constraint firstItem="Quh-jp-oaE" firstAttribute="baseline" secondItem="SL5-M4-Xaa" secondAttribute="baseline" id="QB8-if-lxQ"/>
-                                    <constraint firstItem="SL5-M4-Xaa" firstAttribute="leading" secondItem="Quh-jp-oaE" secondAttribute="trailing" constant="18" id="TJA-o0-if2"/>
+                                    <constraint firstItem="SL5-M4-Xaa" firstAttribute="leading" secondItem="Quh-jp-oaE" secondAttribute="trailing" constant="11" id="TJA-o0-if2"/>
                                     <constraint firstAttribute="trailing" secondItem="eH5-Wu-1fM" secondAttribute="trailing" id="UCp-XT-f9g"/>
                                     <constraint firstItem="Quh-jp-oaE" firstAttribute="centerY" secondItem="Bp9-2c-CyR" secondAttribute="centerY" id="Ucs-7w-hvU"/>
                                     <constraint firstItem="Bp9-2c-CyR" firstAttribute="leading" secondItem="3VC-2U-ygc" secondAttribute="leading" constant="8" id="XAT-Mb-RYo"/>
-                                    <constraint firstItem="Quh-jp-oaE" firstAttribute="leading" secondItem="3VC-2U-ygc" secondAttribute="leading" constant="86" id="Ytk-4e-H5Y"/>
+                                    <constraint firstItem="Quh-jp-oaE" firstAttribute="leading" secondItem="3VC-2U-ygc" secondAttribute="leading" constant="89" id="Ytk-4e-H5Y"/>
                                     <constraint firstAttribute="trailing" secondItem="Bp9-2c-CyR" secondAttribute="trailing" constant="8" id="ecR-Ts-5VZ"/>
                                     <constraint firstItem="eH5-Wu-1fM" firstAttribute="top" secondItem="3VC-2U-ygc" secondAttribute="top" constant="25" id="hHh-v1-OFg"/>
                                     <constraint firstAttribute="bottom" secondItem="Ihm-wr-0JO" secondAttribute="bottom" constant="329" id="nBG-oq-GyS"/>
-                                    <constraint firstItem="TLL-Dc-Wra" firstAttribute="leading" secondItem="SL5-M4-Xaa" secondAttribute="trailing" constant="3" id="qhB-ic-YMD"/>
+                                    <constraint firstItem="TLL-Dc-Wra" firstAttribute="leading" secondItem="SL5-M4-Xaa" secondAttribute="trailing" constant="11" id="qhB-ic-YMD"/>
                                     <constraint firstItem="eH5-Wu-1fM" firstAttribute="centerX" secondItem="3VC-2U-ygc" secondAttribute="centerX" id="ubh-gl-mVX"/>
                                 </constraints>
                                 <connections>
@@ -1798,21 +1798,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTr-8p-FVc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBj-NH-kBw">
-                                        <rect key="frame" x="167" y="62" width="27" height="21"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p57-R2-tHV">
-                                        <rect key="frame" x="174" y="59" width="32" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="32" id="ac9-qV-57w"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FaO-rX-9dF">
                                         <rect key="frame" x="8" y="15" width="359" height="116"/>
                                         <constraints>
@@ -1836,56 +1821,88 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFW-Kj-Teg">
-                                        <rect key="frame" x="257" y="65" width="21" height="17"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
+                                        <rect key="frame" x="258" y="60" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="Hmx-4X-3Q3"/>
+                                            <constraint firstAttribute="width" constant="26" id="yhT-IW-sqq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXa-Pi-mYb">
-                                        <rect key="frame" x="65" y="65" width="25" height="17"/>
+                                        <rect key="frame" x="65" y="60" width="25" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="DPm-ZK-UaW"/>
-                                            <constraint firstAttribute="height" constant="17" id="kXI-I5-cxA"/>
+                                            <constraint firstAttribute="height" constant="26" id="kXI-I5-cxA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGI-bm-bWQ">
-                                        <rect key="frame" x="164" y="62" width="32" height="21"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="19"/>
+                                        <rect key="frame" x="164" y="59" width="37" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="9kN-EL-tMo"/>
+                                            <constraint firstAttribute="height" constant="26" id="kLj-qi-maZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p57-R2-tHV">
+                                        <rect key="frame" x="181" y="59" width="39" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="39" id="ac9-qV-57w"/>
+                                            <constraint firstAttribute="height" constant="27" id="yHi-SQ-04k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBj-NH-kBw">
+                                        <rect key="frame" x="168" y="59" width="31" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="31" id="U3e-yn-WsS"/>
+                                            <constraint firstAttribute="height" constant="27" id="aNu-hV-TWP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
-                                        <rect key="frame" x="163" y="62" width="22.5" height="21"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="17"/>
+                                        <rect key="frame" x="163" y="59" width="36" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="KyC-Pm-jax"/>
+                                            <constraint firstAttribute="width" constant="36" id="SdI-av-dY4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="leading" secondItem="p57-R2-tHV" secondAttribute="trailing" constant="51" id="2pf-XU-dRj"/>
+                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="leading" secondItem="p57-R2-tHV" secondAttribute="trailing" constant="38" id="2pf-XU-dRj"/>
                                     <constraint firstItem="lXa-Pi-mYb" firstAttribute="leading" secondItem="NTr-8p-FVc" secondAttribute="leading" constant="65" id="6zO-ng-rER"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="leading" secondItem="lXa-Pi-mYb" secondAttribute="trailing" constant="74" id="9DQ-hM-Mfw"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="leading" secondItem="NTr-8p-FVc" secondAttribute="leading" constant="8" id="DSV-iP-tn2"/>
-                                    <constraint firstItem="lXa-Pi-mYb" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="65" id="ERO-Cp-KFV"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="lXa-Pi-mYb" secondAttribute="baseline" constant="1" id="G0s-mZ-HHx"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="firstBaseline" secondItem="p57-R2-tHV" secondAttribute="firstBaseline" constant="3" id="HlQ-28-zax"/>
-                                    <constraint firstItem="oGI-bm-bWQ" firstAttribute="bottom" secondItem="bYm-8o-cAH" secondAttribute="bottom" id="IrM-oS-EYs"/>
+                                    <constraint firstItem="lXa-Pi-mYb" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="60" id="ERO-Cp-KFV"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="lXa-Pi-mYb" secondAttribute="baseline" id="G0s-mZ-HHx"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="firstBaseline" secondItem="p57-R2-tHV" secondAttribute="firstBaseline" id="HlQ-28-zax"/>
+                                    <constraint firstItem="oGI-bm-bWQ" firstAttribute="bottom" secondItem="bYm-8o-cAH" secondAttribute="bottom" constant="-1" id="IrM-oS-EYs"/>
                                     <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="63" id="Mfi-q8-Diq"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="15" id="XlP-JB-BAP"/>
                                     <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="423" id="Xni-3w-6la"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-11.5" id="b64-rs-j8I"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-18" id="b64-rs-j8I"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="top" secondItem="bYm-8o-cAH" secondAttribute="top" id="bc0-ys-YAQ"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="top" secondItem="nBj-NH-kBw" secondAttribute="top" id="fIn-L9-mPm"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="oGI-bm-bWQ" secondAttribute="trailing" constant="-22" id="gCf-pd-P0H"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="nBj-NH-kBw" secondAttribute="trailing" constant="-20" id="hPm-EX-aFo"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="oGI-bm-bWQ" secondAttribute="trailing" constant="-20" id="gCf-pd-P0H"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="nBj-NH-kBw" secondAttribute="trailing" constant="-18" id="hPm-EX-aFo"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="bottom" secondItem="nBj-NH-kBw" secondAttribute="bottom" id="nqn-QG-pCw"/>
                                     <constraint firstItem="RWt-x7-kbS" firstAttribute="centerX" secondItem="NTr-8p-FVc" secondAttribute="centerX" id="rgI-bn-nbQ"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="centerX" secondItem="NTr-8p-FVc" secondAttribute="centerX" id="vYj-PS-Xk1"/>
-                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="65" id="wvw-cr-ZFP"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="p57-R2-tHV" secondAttribute="baseline" constant="3" id="yuj-id-2y0"/>
+                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="60" id="wvw-cr-ZFP"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="p57-R2-tHV" secondAttribute="baseline" id="yuj-id-2y0"/>
                                     <constraint firstAttribute="trailing" secondItem="FaO-rX-9dF" secondAttribute="trailing" constant="8" id="z3v-TA-4pf"/>
                                 </constraints>
                                 <connections>
