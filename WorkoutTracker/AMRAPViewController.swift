@@ -121,10 +121,11 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
     }
 
-    @IBAction func addMetcon(_ sender: UIButton) {
+    @IBAction func add(_ sender: UIButton) {
         if categoryPassed == "Amrap"{
             myExercise.name = "Amrap"
-            let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+            let idMin:Int = pickerOutlet.selectedRow(inComponent: 0)
+            let idSec:Int = pickerOutlet.selectedRow(inComponent: 1)
             var amrapString = ""
             for exercise in exerciseList{
                 if !exercise.isEmpty {
@@ -140,7 +141,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
-               myExercise.exerciseDescription = (minutes[id] + " min(s) " + seconds[id] + " sec(s)" + " | " + amrapString)
+               myExercise.exerciseDescription = (minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)" + " | " + amrapString)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }

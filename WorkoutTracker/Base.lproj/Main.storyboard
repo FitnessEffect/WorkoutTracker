@@ -1656,7 +1656,7 @@
                                         <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
                                         <state key="normal" title="Select" backgroundImage="markerBackground"/>
                                         <connections>
-                                            <action selector="addMetcon:" destination="amZ-mI-WTt" eventType="touchUpInside" id="Z75-Sy-cyG"/>
+                                            <action selector="add:" destination="amZ-mI-WTt" eventType="touchUpInside" id="89t-Th-GXd"/>
                                         </connections>
                                     </button>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-2c-CyR">
