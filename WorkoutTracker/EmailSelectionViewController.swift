@@ -33,6 +33,13 @@ class EmailSelectionViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func addEmail(_ sender: UIButton) {
+        if !(emailTextField.text?.characters.contains("@"))! || !(emailTextField.text?.characters.contains("."))!{
+            let alert = UIAlertController(title: "Error", message: "Incorrect Email Address", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+
         let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
         presenter.saveEmail(emailStr: (emailTextField.text?.lowercased())!)
         dismiss(animated: true, completion: nil)
