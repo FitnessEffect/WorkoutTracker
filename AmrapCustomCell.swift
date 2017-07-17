@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AmrapCustomCell: UITableViewCell {
+class AmrapCustomCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var exTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        exTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,4 +27,8 @@ class AmrapCustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CreateBodybuildingExerciseViewController: UIViewController {
+class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var exName: UITextField!
     @IBOutlet weak var add: UIButton!
@@ -21,6 +21,7 @@ class CreateBodybuildingExerciseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        exName.delegate = self
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -93,6 +94,11 @@ class CreateBodybuildingExerciseViewController: UIViewController {
         //Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
 }

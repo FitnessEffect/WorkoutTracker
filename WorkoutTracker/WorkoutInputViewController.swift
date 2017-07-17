@@ -71,7 +71,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         registerForKeyboardNotifications()
         
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -98,7 +97,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
            fillInExercisePassed() 
             
         }
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        //clear passedExercise
+        DBService.shared.clearExercisePassed()
     }
     
     func updateNotification(_ notification: Notification) {
@@ -184,6 +187,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
             APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
         }
+        
+        //clear passedExercise
+        DBService.shared.clearExercisePassed()
     }
     
     func handleSelection(type: String) {

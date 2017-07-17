@@ -35,7 +35,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.view.backgroundColor = .clear
         
         button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
         button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         button.setTitle(clientPassed.firstName, for: .normal)

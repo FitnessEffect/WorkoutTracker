@@ -8,13 +8,15 @@
 
 import UIKit
 
-class EmailSelectionViewController: UIViewController {
+class EmailSelectionViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var email: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -40,6 +42,11 @@ class EmailSelectionViewController: UIViewController {
        if !emailTextField.frame.contains(sender.location(in: view)){
                 self.view.endEditing(true)
         }
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     /*

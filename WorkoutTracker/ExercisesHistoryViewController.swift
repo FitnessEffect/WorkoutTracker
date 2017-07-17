@@ -61,6 +61,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         let num  = UIApplication.shared.applicationIconBadgeNumber
         if num == 0{
             notificationNumber.alpha = 0
