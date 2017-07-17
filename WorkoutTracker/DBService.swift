@@ -30,6 +30,7 @@ class DBService {
     private var _typePassed:String!
     private var _emomTime:String!
     private var _tabataTime:String!
+    private var _crossfitHeroWods = [String]()
     
     private init() {
         initDatabase()
@@ -120,11 +121,6 @@ class DBService {
     func clearCurrentKey(){
         _currentKey = ""
     }
-    
-//    func getIDforClient(id:String) -> String{
-//        let str = ""
-//        return str
-//    }
     
     func setPassedExercise(exercise:Exercise){
         _passedExercise = exercise
@@ -378,8 +374,28 @@ class DBService {
         }
     }
     
-    func retrieveWod(wodName:String, completion:@escaping (String)->Void){
-        self._ref.child("for time").child(wodName).observeSingleEvent(of: .value, with: { (snapshot) in
+    func retrieveHeroWods(completion: @escaping () -> Void){
+        
+        _crossfitHeroWods.removeAll()
+        
+        self._ref.child("hero wods").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let keyArray = value?.allKeys as! [String]
+                self._crossfitHeroWods = keyArray
+                self._crossfitHeroWods.sort()
+                completion()
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
+    }
+    
+    func retrieveWodDescription(wodName:String, completion:@escaping (String)->Void){
+        self._ref.child("hero wods").child(wodName).observeSingleEvent(of: .value, with: { (snapshot) in
           let value = snapshot.value as? NSDictionary
             let str = value?["description"] as! String
             completion(str)
@@ -450,6 +466,7 @@ class DBService {
         crossfitDictionary["Metcon"] = true
         crossfitDictionary["Tabata"] = true
         crossfitDictionary["For Time"] = true
+        crossfitDictionary["Hero Wods"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Crossfit").updateChildValues(crossfitDictionary)
         
         var oneRepMaxDictionary = [String:Any]()
@@ -598,6 +615,12 @@ class DBService {
     var tabataTime:String{
         get{
             return _tabataTime
+        }
+    }
+    
+    var crossfitHeroWods:[String]{
+        get{
+            return _crossfitHeroWods
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
@@ -32,6 +32,13 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             self.navigationItem.rightBarButtonItem = rightBarButton
             rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         }
+        
+        if categoryPassed == "Hero Wods"{
+            let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
+            rightBarButton.image = UIImage(named:"addIcon")
+            self.navigationItem.rightBarButtonItem = rightBarButton
+            rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        }
     }
     
     
@@ -40,11 +47,18 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if categoryPassed == "1 Rep Max"{
         DBService.shared.retrieveCrossfitCategoryExercises(completion: {
             self.exercises = DBService.shared.exercisesForCrossfitCategory
             self.pickerOutlet.reloadAllComponents()
         })
         pickerOutlet.isUserInteractionEnabled = true
+        }else{
+            DBService.shared.retrieveHeroWods(completion:{
+                self.exercises = DBService.shared.crossfitHeroWods
+                self.pickerOutlet.reloadAllComponents()
+            })
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -67,7 +81,6 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
-        
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCrossfitExerciseID") as! CreateCrossfitExerciseViewController
         popController.setCategory(category:categoryPassed)
@@ -87,26 +100,26 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     @IBAction func addWod(_ sender: UIButton) {
-        if categoryPassed == "For Time"{
+        if categoryPassed == "Hero Wods"{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             myExercise.name = exercises[id]
-            myExercise.category = "For Time"
+            myExercise.category = "Hero Wods"
             myExercise.type = "Crossfit"
             if myExercise.name == "Fran"{
-                DBService.shared.retrieveWod(wodName: "Fran", completion: {
+                DBService.shared.retrieveWodDescription(wodName: "Fran", completion: {
                 (str) in
                     self.myExercise.exerciseDescription = str
                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
                 })
                 print(myExercise.exerciseDescription)
             }else if myExercise.name == "Grace"{
-                DBService.shared.retrieveWod(wodName: "Grace", completion: {
+                DBService.shared.retrieveWodDescription(wodName: "Grace", completion: {
                     (str) in
                     self.myExercise.exerciseDescription = str
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
                 })
             }else if myExercise.name == "Murph"{
-                DBService.shared.retrieveWod(wodName: "Murph", completion: {
+                DBService.shared.retrieveWodDescription(wodName: "Murph", completion: {
                     (str) in
                     self.myExercise.exerciseDescription = str
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])

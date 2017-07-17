@@ -92,6 +92,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
             tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
+            tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
             workoutInputView.fillInExercisePassed(exercise: tempExercise)
         }else{
            fillInExercisePassed() 
@@ -128,7 +129,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
         if tempExercise.category == "1 Rep Max" || tempExercise.type == "Bodybuilding"{
             return 3
-        }else if tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph"{
+        }else if tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph" || tempExercise.category == "For Time"{
             return 2
         }else if tempExercise.name == "Amrap"{
             return 4
