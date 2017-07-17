@@ -482,6 +482,7 @@ class DBService {
         bodybuildingDictionary["Arms"] = true
         bodybuildingDictionary["Back"] = true
         bodybuildingDictionary["Shoulders"] = true
+        bodybuildingDictionary["Superset"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").updateChildValues(bodybuildingDictionary)
         
         var bodybuildingAbsExercise = [String:Any]()

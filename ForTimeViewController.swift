@@ -76,6 +76,28 @@ class ForTimeViewController: UIViewController{
     }
     
     @IBAction func add(_ sender: UIButton) {
+        if categoryPassed == "Superset"{
+            myExercise.name = "Superset"
+            var supersetString = ""
+            for exercise in exerciseList{
+                if !exercise.isEmpty {
+                    supersetString.append(exercise)
+                    supersetString.append(" | ")
+                }
+            }
+            myExercise.category = categoryPassed
+            myExercise.type = "Bodybuilding"
+            if supersetString == ""{
+                let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }else{
+                myExercise.exerciseDescription = supersetString
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+                dismiss(animated: true, completion: nil)
+            }
+        }else{
             myExercise.name = "For Time"
             var forTimeString = ""
             for exercise in exerciseList{
@@ -95,6 +117,7 @@ class ForTimeViewController: UIViewController{
                 myExercise.exerciseDescription = forTimeString
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
+            }
         }
     }
     

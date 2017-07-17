@@ -20,8 +20,6 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         typePassed = "Bodybuilding"
         title = typePassed
         
-       
-        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
@@ -83,13 +81,23 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     func cellClicked(x:CGPoint){
+        
+        
         let index = tableView.indexPathForRow(at: x)
         let cell = tableView.cellForRow(at: index!)!
+        if cell.textLabel?.text == "Superset"{
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "forTimeVC") as! ForTimeViewController
+            let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
+            nextVC.setCategory(category:title!)
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }else{
         let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingSelectionVC") as! BodybuildingSelectionViewController
         let title = cell.textLabel?.text
         DBService.shared.setCategory(category: title!)
         nextVC.setCategory(category:title!)
         self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
