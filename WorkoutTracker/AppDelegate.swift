@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         myEx.type = exerciseDictionary["type"] as! String
         myEx.category = exerciseDictionary["category"] as! String
         
+        
         DBService.shared.setPassedExercise(exercise:myEx)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
