@@ -67,11 +67,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             rememberMeSwitch.setOn(false, animated: true)
-            do{
-                try FIRAuth.auth()?.signOut()
-            }catch{
-                
-            }
+//            do{
+//                try FIRAuth.auth()?.signOut()
+//            }catch{
+//                
+//            }
         }
         // Do any additional setup after loading the view.
     }

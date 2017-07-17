@@ -36,7 +36,9 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         super.viewDidLoad()
         workoutInputView.delegate = self
         
-        if let _ = UserDefaults.standard.object(forKey: "newUser") as? Bool{
+        let tempBool = UserDefaults.standard.object(forKey: "newUser") as! Bool
+        if tempBool == true{
+            
             //must be called once //add user info
             DBService.shared.initializeData()
             UserDefaults.standard.set(false, forKey: "newUser")
@@ -234,6 +236,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         let ex = DBService.shared.passedExercise
         if ex.exerciseKey != ""{
             ex.exerciseDescription = Formatter.formatExerciseDescription(desStr: ex.exerciseDescription)
+            ex.exerciseDescription = ex.name + ex.exerciseDescription
             workoutInputView.fillInExercisePassed(exercise: ex)
             ex.exerciseKey = ""
         }
