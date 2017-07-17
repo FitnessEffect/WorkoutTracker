@@ -1064,10 +1064,10 @@
             </objects>
             <point key="canvasLocation" x="4492" y="752"/>
         </scene>
-        <!--For Time View Controller-->
+        <!--Hero Wods View Controller-->
         <scene sceneID="9w3-KE-bMe">
             <objects>
-                <viewController storyboardIdentifier="forTimeVC" id="rcG-z7-cRk" customClass="ForTimeViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="heroWodsVC" id="rcG-z7-cRk" customClass="HeroWodsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tIq-Z7-Se3"/>
                         <viewControllerLayoutGuide type="bottom" id="vWs-w6-BkZ"/>
@@ -1079,7 +1079,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fo-51-nNK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMI-Pe-gjj">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMI-Pe-gjj">
                                         <rect key="frame" x="8" y="20" width="359" height="166"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="166" id="b6f-jG-Gch"/>
@@ -1090,7 +1090,7 @@
                                         </connections>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC2-Dt-8RF">
-                                        <rect key="frame" x="92" y="315" width="190" height="50"/>
+                                        <rect key="frame" x="93" y="299" width="190" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="190" id="RaB-7U-Xis"/>
                                             <constraint firstAttribute="height" constant="50" id="hgW-ob-6qm"/>
@@ -1104,12 +1104,12 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="YMI-Pe-gjj" firstAttribute="top" secondItem="1fo-51-nNK" secondAttribute="top" constant="20" id="1EH-yk-tav"/>
-                                    <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="129" id="Hnq-uQ-70N"/>
+                                    <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="113" id="Hnq-uQ-70N"/>
                                     <constraint firstItem="YMI-Pe-gjj" firstAttribute="centerX" secondItem="1fo-51-nNK" secondAttribute="centerX" id="Nid-Ws-fTu"/>
                                     <constraint firstItem="NC2-Dt-8RF" firstAttribute="centerX" secondItem="1fo-51-nNK" secondAttribute="centerX" id="YXx-Iz-3Mn"/>
                                     <constraint firstAttribute="trailing" secondItem="YMI-Pe-gjj" secondAttribute="trailing" constant="8" id="cTo-Nr-jsf"/>
                                     <constraint firstItem="YMI-Pe-gjj" firstAttribute="leading" secondItem="1fo-51-nNK" secondAttribute="leading" constant="8" id="vDv-Wy-BOT"/>
-                                    <constraint firstAttribute="bottom" secondItem="NC2-Dt-8RF" secondAttribute="bottom" constant="302" id="yk0-rG-N13"/>
+                                    <constraint firstAttribute="bottom" secondItem="NC2-Dt-8RF" secondAttribute="bottom" constant="318" id="yk0-rG-N13"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="rcG-z7-cRk" id="sfd-sU-QMQ"/>
@@ -1135,7 +1135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-hc-F45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6136.8000000000002" y="1438.8305847076463"/>
+            <point key="canvasLocation" x="6473" y="1559"/>
         </scene>
         <!--Create Crossfit Exercise View Controller-->
         <scene sceneID="3eY-eU-BBH">
@@ -1206,7 +1206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejr-Ag-R03" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6136.8000000000002" y="2129.6851574212897"/>
+            <point key="canvasLocation" x="4588" y="2388"/>
         </scene>
         <!--Challenges View Controller-->
         <scene sceneID="mfh-NT-KEK">
@@ -1471,7 +1471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oye-aT-vFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4088.8000000000002" y="1438.8305847076463"/>
+            <point key="canvasLocation" x="3846" y="1559"/>
         </scene>
         <!--Metcon View Controller-->
         <scene sceneID="sKU-ve-HCz">
@@ -1606,7 +1606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcB-TO-PVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4740" y="1438.8305847076463"/>
+            <point key="canvasLocation" x="4492" y="1558"/>
         </scene>
         <!--Amrap View Controller-->
         <scene sceneID="g0t-dc-Dei">
@@ -1763,7 +1763,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bx-u8-NWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5429.6000000000004" y="1438.8305847076463"/>
+            <point key="canvasLocation" x="5159" y="1558"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mY4-3X-fix">
@@ -2114,7 +2114,7 @@
                                     <constraint firstAttribute="height" constant="33" id="tKB-On-hmb"/>
                                 </constraints>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nbo-FA-276">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nbo-FA-276">
                                 <rect key="frame" x="95" y="602" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2504,6 +2504,114 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FY-4Z-E5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-847" y="2444"/>
+        </scene>
+        <!--For Time View Controller-->
+        <scene sceneID="DQ4-BF-1fn">
+            <objects>
+                <viewController storyboardIdentifier="forTimeVC" id="V1j-cH-YAw" customClass="ForTimeViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jMj-aB-Zv2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gt1-5u-9hX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zkc-a4-nVh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-HS-tbi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OTt-Mq-tib">
+                                        <rect key="frame" x="1" y="25" width="375" height="249"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="249" id="eIq-pi-9nd"/>
+                                        </constraints>
+                                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AmrapCell" id="UNV-Z9-Rs8" customClass="AmrapCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UNV-Z9-Rs8" id="eeE-hX-xhQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-e0-5Pv">
+                                                            <rect key="frame" x="57" y="2" width="260" height="30"/>
+                                                            <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="260" id="4xB-ZU-XId"/>
+                                                                <constraint firstAttribute="height" constant="30" id="5na-ys-ZAr"/>
+                                                            </constraints>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="26"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Udx-e0-5Pv" firstAttribute="centerX" secondItem="eeE-hX-xhQ" secondAttribute="centerX" id="LAO-EZ-sDJ"/>
+                                                        <constraint firstItem="Udx-e0-5Pv" firstAttribute="bottom" secondItem="eeE-hX-xhQ" secondAttribute="bottomMargin" constant="-3.5" id="U4C-XW-kGA"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="exTextField" destination="Udx-e0-5Pv" id="yac-Sr-N4b"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="V1j-cH-YAw" id="a6p-4j-fgv"/>
+                                            <outlet property="delegate" destination="V1j-cH-YAw" id="e2n-cV-1F5"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Az-mb-p3X">
+                                        <rect key="frame" x="93" y="299" width="190" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="190" id="aZA-z4-DmL"/>
+                                            <constraint firstAttribute="height" constant="50" id="har-K8-scD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                        <state key="normal" title="Select" backgroundImage="markerBackground"/>
+                                        <connections>
+                                            <action selector="add:" destination="V1j-cH-YAw" eventType="touchUpInside" id="tBh-0j-IwA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="OTt-Mq-tib" secondAttribute="trailing" constant="-1" id="99T-D7-34J"/>
+                                    <constraint firstItem="OTt-Mq-tib" firstAttribute="centerX" secondItem="oeX-HS-tbi" secondAttribute="centerX" constant="1" id="HJf-2R-2uj"/>
+                                    <constraint firstItem="OTt-Mq-tib" firstAttribute="top" secondItem="oeX-HS-tbi" secondAttribute="top" constant="25" id="KKB-lD-xkU"/>
+                                    <constraint firstItem="3Az-mb-p3X" firstAttribute="top" secondItem="OTt-Mq-tib" secondAttribute="bottom" constant="25" id="eXi-6l-FVp"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Az-mb-p3X" secondAttribute="bottom" constant="318" id="kq4-PB-uUS"/>
+                                    <constraint firstItem="3Az-mb-p3X" firstAttribute="centerX" secondItem="oeX-HS-tbi" secondAttribute="centerX" constant="0.5" id="o1z-D4-bgT"/>
+                                    <constraint firstItem="OTt-Mq-tib" firstAttribute="leading" secondItem="oeX-HS-tbi" secondAttribute="leading" constant="1" id="pq1-7r-nsM"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="V1j-cH-YAw" id="RfF-xZ-6vQ"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oeX-HS-tbi" firstAttribute="leading" secondItem="zkc-a4-nVh" secondAttribute="leadingMargin" constant="-16" id="9Ie-3o-S69"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oeX-HS-tbi" secondAttribute="trailing" constant="-16" id="SYP-W1-wlO"/>
+                            <constraint firstItem="Gt1-5u-9hX" firstAttribute="top" secondItem="oeX-HS-tbi" secondAttribute="bottom" id="gDR-Me-LvL"/>
+                            <constraint firstItem="oeX-HS-tbi" firstAttribute="top" secondItem="jMj-aB-Zv2" secondAttribute="bottom" constant="-20" id="ty1-rG-Hor"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="77s-cq-0PR">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" style="done" id="UsG-cO-2sz">
+                            <connections>
+                                <action selector="addExercise:" destination="V1j-cH-YAw" id="xZI-OA-zQU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="oeX-HS-tbi" id="mfn-gy-Mjl"/>
+                        <outlet property="tableView" destination="OTt-Mq-tib" id="5Cf-dR-RnG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ByC-yy-cXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5823" y="1559"/>
         </scene>
     </scenes>
     <resources>

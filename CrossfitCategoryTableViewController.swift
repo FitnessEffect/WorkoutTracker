@@ -93,7 +93,13 @@ class CrossfitCategoryTableViewController: UITableViewController {
         let index = tableView.indexPathForRow(at: x)
         let cell = tableView.cellForRow(at: index!)!
         
-        if cell.textLabel?.text == "1 Rep Max" || cell.textLabel?.text == "For Time"{
+        if cell.textLabel?.text == "1 Rep Max" || cell.textLabel?.text == "Hero Wods"{
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "heroWodsVC") as! HeroWodsViewController
+            let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
+            nextVC.setCategory(category:title!)
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if cell.textLabel?.text == "For Time"{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "forTimeVC") as! ForTimeViewController
             let title = cell.textLabel?.text
             DBService.shared.setCategory(category: title!)
