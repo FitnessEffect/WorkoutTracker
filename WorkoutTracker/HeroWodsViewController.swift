@@ -32,13 +32,6 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             self.navigationItem.rightBarButtonItem = rightBarButton
             rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         }
-        
-        if categoryPassed == "Hero Wods"{
-            let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
-            rightBarButton.image = UIImage(named:"addIcon")
-            self.navigationItem.rightBarButtonItem = rightBarButton
-            rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
-        }
     }
     
     
@@ -105,26 +98,34 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             myExercise.name = exercises[id]
             myExercise.category = "Hero Wods"
             myExercise.type = "Crossfit"
-            if myExercise.name == "Fran"{
-                DBService.shared.retrieveWodDescription(wodName: "Fran", completion: {
+            DBService.shared.retrieveWodDescription(wodName: myExercise.name, completion: {
                 (str) in
-                    self.myExercise.exerciseDescription = str
-                   NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
-                })
-                print(myExercise.exerciseDescription)
-            }else if myExercise.name == "Grace"{
-                DBService.shared.retrieveWodDescription(wodName: "Grace", completion: {
-                    (str) in
-                    self.myExercise.exerciseDescription = str
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
-                })
-            }else if myExercise.name == "Murph"{
-                DBService.shared.retrieveWodDescription(wodName: "Murph", completion: {
-                    (str) in
-                    self.myExercise.exerciseDescription = str
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
-                })
-            }
+                self.myExercise.exerciseDescription = str
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+                if self.myExercise.name == "Cindy"{
+                     DBService.shared.setEmomTime(time:"20")
+                }
+            })
+//            if myExercise.name == "Fran"{
+//                DBService.shared.retrieveWodDescription(wodName: "Fran", completion: {
+//                (str) in
+//                    self.myExercise.exerciseDescription = str
+//                   NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+//                })
+//                print(myExercise.exerciseDescription)
+//            }else if myExercise.name == "Grace"{
+//                DBService.shared.retrieveWodDescription(wodName: "Grace", completion: {
+//                    (str) in
+//                    self.myExercise.exerciseDescription = str
+//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+//                })
+//            }else if myExercise.name == "Murph"{
+//                DBService.shared.retrieveWodDescription(wodName: "Murph", completion: {
+//                    (str) in
+//                    self.myExercise.exerciseDescription = str
+//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
+//                })
+//            }
         }else{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             myExercise.name = exercises[id]
@@ -143,5 +144,9 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 30.0
     }
 }

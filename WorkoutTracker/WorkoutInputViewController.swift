@@ -131,11 +131,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         }
         if tempExercise.category == "1 Rep Max" || tempExercise.type == "Bodybuilding"{
             return 3
-        }else if tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph" || tempExercise.category == "For Time"{
+        }else if tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph" || tempExercise.category == "For Time" || tempExercise.name == "Angie" || tempExercise.name == "Diane"{
             return 2
         }else if tempExercise.name == "Amrap"{
             return 4
-        }else if tempExercise.name == "Emom"{
+        }else if tempExercise.name == "Emom" || tempExercise.name == "Cindy"{
             return 5
         }else if tempExercise.name == "Tabata"{
             return 6

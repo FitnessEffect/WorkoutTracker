@@ -1080,9 +1080,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMI-Pe-gjj">
-                                        <rect key="frame" x="8" y="20" width="359" height="166"/>
+                                        <rect key="frame" x="8" y="48" width="359" height="176"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="166" id="b6f-jG-Gch"/>
+                                            <constraint firstAttribute="height" constant="176" id="b6f-jG-Gch"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dataSource" destination="rcG-z7-cRk" id="RGu-6E-I5H"/>
@@ -1090,7 +1090,7 @@
                                         </connections>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC2-Dt-8RF">
-                                        <rect key="frame" x="93" y="299" width="190" height="50"/>
+                                        <rect key="frame" x="93" y="319" width="190" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="190" id="RaB-7U-Xis"/>
                                             <constraint firstAttribute="height" constant="50" id="hgW-ob-6qm"/>
@@ -1103,13 +1103,13 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="YMI-Pe-gjj" firstAttribute="top" secondItem="1fo-51-nNK" secondAttribute="top" constant="20" id="1EH-yk-tav"/>
-                                    <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="113" id="Hnq-uQ-70N"/>
+                                    <constraint firstItem="YMI-Pe-gjj" firstAttribute="top" secondItem="1fo-51-nNK" secondAttribute="top" constant="48" id="1EH-yk-tav"/>
+                                    <constraint firstItem="NC2-Dt-8RF" firstAttribute="top" secondItem="YMI-Pe-gjj" secondAttribute="bottom" constant="95" id="Hnq-uQ-70N"/>
                                     <constraint firstItem="YMI-Pe-gjj" firstAttribute="centerX" secondItem="1fo-51-nNK" secondAttribute="centerX" id="Nid-Ws-fTu"/>
                                     <constraint firstItem="NC2-Dt-8RF" firstAttribute="centerX" secondItem="1fo-51-nNK" secondAttribute="centerX" id="YXx-Iz-3Mn"/>
                                     <constraint firstAttribute="trailing" secondItem="YMI-Pe-gjj" secondAttribute="trailing" constant="8" id="cTo-Nr-jsf"/>
                                     <constraint firstItem="YMI-Pe-gjj" firstAttribute="leading" secondItem="1fo-51-nNK" secondAttribute="leading" constant="8" id="vDv-Wy-BOT"/>
-                                    <constraint firstAttribute="bottom" secondItem="NC2-Dt-8RF" secondAttribute="bottom" constant="318" id="yk0-rG-N13"/>
+                                    <constraint firstAttribute="bottom" secondItem="NC2-Dt-8RF" secondAttribute="bottom" constant="298" id="yk0-rG-N13"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="rcG-z7-cRk" id="sfd-sU-QMQ"/>
@@ -1135,7 +1135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-hc-F45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6473" y="1559"/>
+            <point key="canvasLocation" x="6472.8000000000002" y="1558.4707646176912"/>
         </scene>
         <!--Create Crossfit Exercise View Controller-->
         <scene sceneID="3eY-eU-BBH">
@@ -1238,7 +1238,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35X-SR-Rb7">
                                                     <rect key="frame" x="37" y="29" width="310" height="22"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1962,7 +1962,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-h7-ICx" userLabel="Date Outlet">
                                                     <rect key="frame" x="37" y="29" width="310" height="22"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2391,7 +2391,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8y-OF-sZM" userLabel="Date Outlet">
                                                     <rect key="frame" x="37" y="29" width="310" height="22"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
