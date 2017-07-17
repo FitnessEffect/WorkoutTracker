@@ -9,7 +9,7 @@
 
 import UIKit
 
-class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
 
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!

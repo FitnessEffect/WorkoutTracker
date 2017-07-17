@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CreateCrossfitExerciseViewController: UIViewController {
+class CreateCrossfitExerciseViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var exName: UITextField!
     @IBOutlet weak var add: UIButton!
@@ -23,6 +23,8 @@ class CreateCrossfitExerciseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        exName.delegate = self
+        
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
@@ -96,5 +98,10 @@ class CreateCrossfitExerciseViewController: UIViewController {
         //Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }

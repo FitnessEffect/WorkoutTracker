@@ -267,6 +267,11 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         currentController?.present(popController, animated: true, completion: nil)
     }
     
+    func getTitle() -> String{
+        let n = DBService.shared.passedExercise.client
+        return n
+    }
+    
     func setCurrentDate(){
         dateSelected = DateConverter.getCurrentDate()
         dateBtn.setTitle(dateSelected, for: .normal)

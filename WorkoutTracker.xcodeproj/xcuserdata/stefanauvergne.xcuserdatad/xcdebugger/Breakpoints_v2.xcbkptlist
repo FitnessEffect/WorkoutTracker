@@ -217,11 +217,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewClientViewController.swift"
-            timestampString = "521593190.581291"
+            timestampString = "521942764.552919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273">
+            startingLineNumber = "282"
+            endingLineNumber = "282">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

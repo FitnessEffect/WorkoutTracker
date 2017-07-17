@@ -14,7 +14,7 @@ protocol createClientDelegate{
     func addClient(_ client:Client)
 }
 
-class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate {
+class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var agePickerView: UIPickerView!
     @IBOutlet weak var weightPickerView: UIPickerView!
@@ -36,6 +36,9 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        firstNameOutlet.delegate = self
+        lastNameOutlet.delegate = self
         
         for x in 0...120{
             age.append(String(x))
@@ -71,6 +74,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if clientPassed.firstName != ""{
             if clientPassed.gender == "Male"{
               genderSegmentedControl.selectedSegmentIndex =  0
@@ -260,5 +264,10 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
                 let presenter = self.presentingViewController?.childViewControllers.last
                 self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
         })
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }

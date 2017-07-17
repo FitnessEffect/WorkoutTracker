@@ -51,6 +51,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
         //delegate?.updateNotif()

@@ -8,14 +8,17 @@
 
 import UIKit
 
-class TabataCustomCell: UITableViewCell {
-
+class TabataCustomCell: UITableViewCell, UITextFieldDelegate {
+    
+    @IBOutlet weak var exTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        exTextField.delegate = self
     }
    
-    @IBOutlet weak var exTextField: UITextField!
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -29,6 +32,11 @@ class TabataCustomCell: UITableViewCell {
     func getExercise() -> String{
         let exercise:String = exTextField.text!
         return exercise
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
     }
 
 }
