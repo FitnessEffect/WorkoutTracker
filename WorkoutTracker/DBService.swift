@@ -475,12 +475,6 @@ class DBService {
         oneRepMaxDictionary["Front Squats"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("1 Rep Max").updateChildValues(oneRepMaxDictionary)
         
-        var forTimeDictionary = [String:Any]()
-        forTimeDictionary["Murph"] = true
-        forTimeDictionary["Grace"] = true
-        forTimeDictionary["Fran"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("For Time").updateChildValues(forTimeDictionary)
-        
         var bodybuildingDictionary = [String:Any]()
         bodybuildingDictionary["Abs"] = true
         bodybuildingDictionary["Chest"] = true
