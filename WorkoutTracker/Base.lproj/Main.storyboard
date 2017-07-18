@@ -2514,10 +2514,10 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OTt-Mq-tib">
-                                        <rect key="frame" x="0.0" y="24" width="375" height="171"/>
+                                        <rect key="frame" x="0.0" y="25" width="375" height="125"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="171" id="4Bj-pl-UCC"/>
+                                            <constraint firstAttribute="height" constant="125" id="4Bj-pl-UCC"/>
                                         </constraints>
                                         <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
@@ -2557,11 +2557,11 @@
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="OTt-Mq-tib" firstAttribute="top" secondItem="cL6-gg-MpE" secondAttribute="top" constant="24" id="8YW-ck-h3Z"/>
+                                    <constraint firstItem="OTt-Mq-tib" firstAttribute="top" secondItem="cL6-gg-MpE" secondAttribute="top" constant="25" id="8YW-ck-h3Z"/>
                                     <constraint firstItem="3Az-mb-p3X" firstAttribute="centerX" secondItem="cL6-gg-MpE" secondAttribute="centerX" id="Bnc-dS-Imf"/>
                                     <constraint firstItem="OTt-Mq-tib" firstAttribute="leading" secondItem="cL6-gg-MpE" secondAttribute="leading" id="EOd-w6-cAy"/>
                                     <constraint firstAttribute="bottom" secondItem="3Az-mb-p3X" secondAttribute="bottom" constant="334" id="Jz6-75-zg4"/>
-                                    <constraint firstItem="3Az-mb-p3X" firstAttribute="top" secondItem="OTt-Mq-tib" secondAttribute="bottom" constant="86" id="R5H-xf-p7s"/>
+                                    <constraint firstItem="3Az-mb-p3X" firstAttribute="top" secondItem="OTt-Mq-tib" secondAttribute="bottom" constant="131" id="R5H-xf-p7s"/>
                                     <constraint firstAttribute="trailing" secondItem="OTt-Mq-tib" secondAttribute="trailing" id="c80-BH-KDB"/>
                                     <constraint firstItem="OTt-Mq-tib" firstAttribute="centerX" secondItem="3Az-mb-p3X" secondAttribute="centerX" id="cHC-tm-BMb"/>
                                 </constraints>

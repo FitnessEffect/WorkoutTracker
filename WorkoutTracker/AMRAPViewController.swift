@@ -52,6 +52,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         
         self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        
+        registerForKeyboardNotifications()
     }
 
     override func didReceiveMemoryWarning() {
