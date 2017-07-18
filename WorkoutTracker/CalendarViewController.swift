@@ -165,7 +165,7 @@ class CalendarViewController:UIViewController{
         }
         
         var xPosition = 0
-        var yPosition = 58
+        var yPosition = 47
         
         let numOfdays = getDaysInMonth(monthNum: month, year: selectedYear)
         if firstDayOfMonth == 1{
@@ -185,7 +185,7 @@ class CalendarViewController:UIViewController{
         }
         for index in 1...numOfdays{
             dayBoxBtn = UIButton()
-            dayBoxBtn.frame = CGRect(x:xPosition, y:yPosition, width:42, height:42)
+            dayBoxBtn.frame = CGRect(x:xPosition, y:yPosition, width:42, height:37)
             buttonArray.append(dayBoxBtn)
             calendarView.addSubview(dayBoxBtn)
             dayBoxBtn.setTitle(String(index), for: .normal)
@@ -201,7 +201,7 @@ class CalendarViewController:UIViewController{
             xPosition = xPosition + 43
             
             if xPosition == 301{
-                yPosition += 43
+                yPosition += 38
                 xPosition = 0
             }
         }

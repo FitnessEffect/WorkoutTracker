@@ -38,6 +38,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     var resultStartPosition:CGFloat = 0
     var challengeStartPosition:CGFloat = 0
     var saveStartPosition:CGFloat = 0
+    var dateStartPosition:CGFloat = 0
     var dateSelected:String!
     
     override init(frame: CGRect) {
@@ -55,6 +56,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         resultStartPosition = resultBtn.frame.origin.y
         challengeStartPosition = challenge.frame.origin.y
         saveStartPosition = saveButton.frame.origin.y
+        dateStartPosition = dateBtn.frame.origin.y
         
         translation1 = descriptionTextView.frame.size.height - 80
         translation2 = resultTextView.frame.size.height - 80
@@ -109,6 +111,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             self.resultBtn.frame = CGRect(x: 0, y:(self.resultStartPosition + self.translation1), width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
             self.challenge.frame = CGRect(x: 0, y:(self.challengeStartPosition + self.translation1), width: self.challenge.frame.width, height: self.challenge.frame.height)
             self.saveButton.frame = CGRect(x: 0, y:(self.saveStartPosition + self.translation1), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.dateBtn.frame = CGRect(x: 0, y:(self.dateStartPosition + self.translation1), width: self.dateBtn.frame.width, height: self.dateBtn.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.descriptionTextView.alpha = 1
@@ -187,7 +190,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = currentController?.view
-        popController.preferredContentSize = CGSize(width: 300, height: 316)
+        popController.preferredContentSize = CGSize(width: 300, height: 275)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         // present the popover
@@ -329,6 +332,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
             self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition, width: self.challenge.frame.width, height: self.challenge.frame.height)
             self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.dateBtn.frame = CGRect(x: 0, y: self.dateStartPosition, width: self.dateBtn.frame.width, height: self.dateBtn.frame.height)
         }, completion: ( {success in
             UIView.animate(withDuration: 0.3, animations: {
                 self.exerciseBtn.alpha = 1
@@ -358,6 +362,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
                 self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition, width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                self.dateBtn.frame = CGRect(x: 0, y: self.dateStartPosition, width: self.dateBtn.frame.width, height: self.dateBtn.frame.height)
             }, completion: ( {success in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.exerciseBtn.alpha = 1
