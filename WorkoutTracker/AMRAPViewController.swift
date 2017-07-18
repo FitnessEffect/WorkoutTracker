@@ -17,7 +17,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -50,8 +49,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         
         self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
-        
-        registerForKeyboardNotifications()
     }
     
     override func didReceiveMemoryWarning() {
@@ -223,29 +220,5 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             label.textAlignment = NSTextAlignment.center
             return label
         }
-    }
-    
-    func keyboardWasShown(notification: NSNotification){
-    }
-    
-    func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-    }
-    
-    func registerForKeyboardNotifications(){
-        //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func deregisterFromKeyboardNotifications(){
-        //Removing notifies on keyboard appearing
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
