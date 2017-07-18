@@ -36,7 +36,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         firstNameOutlet.delegate = self
         lastNameOutlet.delegate = self
         
@@ -48,7 +47,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         }
         
         genderSegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
-                activitySegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
+        activitySegmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -74,12 +73,11 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         if clientPassed.firstName != ""{
             if clientPassed.gender == "Male"{
-              genderSegmentedControl.selectedSegmentIndex =  0
+                genderSegmentedControl.selectedSegmentIndex =  0
             }else{
-               genderSegmentedControl.selectedSegmentIndex =  1
+                genderSegmentedControl.selectedSegmentIndex =  1
             }
             
             firstNameOutlet.text = clientPassed.firstName
@@ -87,7 +85,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
             for index in 0...age.count-1{
                 if age[index] == clientPassed.age{
                     agePickerView.selectRow(index, inComponent: 0, animated: true)
-                   break
+                    break
                 }
             }
             if clientPassed.activityLevel == "active"{
@@ -185,7 +183,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        
         if pickerView.tag == 0{
             label.text = age[row]
         }else if pickerView.tag == 1{
@@ -199,7 +196,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         }else{
             label.text = weight[row]
         }
-        
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
@@ -208,7 +204,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     @IBAction func createClient(_ sender: UIButton) {
         if edit == false{
-          myClient.clientKey = DBService.shared.createClientID()
+            myClient.clientKey = DBService.shared.createClientID()
         }else{
             myClient.clientKey = clientPassed.clientKey
         }
@@ -259,10 +255,9 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         clientDictionary["gender"] = myClient.gender
         clientDictionary["clientKey"] = myClient.clientKey
         
-        
         DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
-                let presenter = self.presentingViewController?.childViewControllers.last
-                self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
+            let presenter = self.presentingViewController?.childViewControllers.last
+            self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
         })
     }
     

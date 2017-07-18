@@ -73,12 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let badgeNum = UIApplication.shared.applicationIconBadgeNumber
         //update notification badge number
         setBadgeNumber(-1)
-        
         DBService.shared.updateNotifications(num: badgeNum - 1)
         
         var exerciseDictionary = data["exercise"]! as! [String:Any]
-        
-        //DBService.shared.saveChallengeExercise(exerciseDictionary: exerciseDictionary)
         
         let myEx = Exercise()
         myEx.name = exerciseDictionary["name"] as! String
@@ -92,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         myEx.creatorID = exerciseDictionary["creatorID"] as! String
         myEx.type = exerciseDictionary["type"] as! String
         myEx.category = exerciseDictionary["category"] as! String
-        
         
         DBService.shared.setPassedExercise(exercise:myEx)
         
@@ -124,11 +120,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-//        do{
-//            try FIRAuth.auth()?.signOut()
-//        }catch{
-//            print(error)
-//        }
+        //        do{
+        //            try FIRAuth.auth()?.signOut()
+        //        }catch{
+        //            print(error)
+        //        }
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

@@ -38,7 +38,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         
         let tempBool = UserDefaults.standard.object(forKey: "newUser") as! Bool
         if tempBool == true{
-            
             //must be called once //add user info
             DBService.shared.initializeData()
             UserDefaults.standard.set(false, forKey: "newUser")
@@ -97,8 +96,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
             workoutInputView.fillInExercisePassed(exercise: tempExercise)
         }else{
-           fillInExercisePassed() 
-            
+            fillInExercisePassed()
         }
     }
     
@@ -163,7 +161,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         if edit == true{
             //if user changes client while exercises is in edit mode
             if DBService.shared.passedExercise.client != title{
-               exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
+                exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
             }else{
                 exerciseDictionary["exerciseKey"] = tempExercise.exerciseKey
             }
@@ -306,7 +304,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             popController.setClients(clients: nameArray)
             popController.setTag(tag: 1)
         }
-    
+        
         // present the popover
         self.present(popController, animated: true, completion: nil)
     }

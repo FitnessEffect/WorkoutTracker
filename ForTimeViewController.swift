@@ -9,7 +9,7 @@
 import UIKit
 
 class ForTimeViewController: UIViewController{
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -18,13 +18,12 @@ class ForTimeViewController: UIViewController{
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
     var categoryPassed:String!
-    
     var reps = [String]()
     var sets = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         for x in 0...59{
             reps.append(String(x))
             sets.append(String(x))
@@ -39,7 +38,7 @@ class ForTimeViewController: UIViewController{
         
         registerForKeyboardNotifications()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -169,16 +168,4 @@ class ForTimeViewController: UIViewController{
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

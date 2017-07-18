@@ -12,7 +12,7 @@ import UIKit
 import Firebase
 
 class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
-
+    
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
@@ -27,7 +27,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        //title = clientPassed.firstName
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -45,10 +44,9 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.retrieveExercisesForClient(completion: {
-        self.exerciseArray = DBService.shared.exercisesForClient
-        self.tableViewOutlet.reloadData()
+            self.exerciseArray = DBService.shared.exercisesForClient
+            self.tableViewOutlet.reloadData()
         })
-        
         clientPassed = DBService.shared.retrieveClientInfo(lastName: clientPassed.lastName)
     }
     
@@ -73,10 +71,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         popController.setClient(client: clientPassed)
         
-        
         // present the popover
         self.present(popController, animated: true, completion: nil)
-
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,27 +85,23 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
-        
-       let exercise = exerciseArray[(indexPath as NSIndexPath).row]
-       cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-       cell.dateOutlet.text = exercise.date
+        let exercise = exerciseArray[(indexPath as NSIndexPath).row]
+        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+        cell.dateOutlet.text = exercise.date
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
-       return cell
+        return cell
     }
     
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
-            
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.exerciseArray[x].exerciseKey
-                
                 DBService.shared.deleteExerciseForClient(id:id)
-
-            self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 tableView.reloadData()
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))

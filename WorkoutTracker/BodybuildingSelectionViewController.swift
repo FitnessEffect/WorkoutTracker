@@ -20,9 +20,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     var myExercise = Exercise()
     var exercises = [String]()
     var categoryPassed = ""
-    
     var reps = [String]()
-    
     var sets = [String]()
     
     override func viewDidLoad() {
@@ -73,9 +71,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createExerciseID") as! CreateBodybuildingExerciseViewController
         popController.setCategory(category:categoryPassed)
         self.navigationController?.pushViewController(popController, animated: true)
-        
     }
-    
     
     func setCategory(category:String){
         categoryPassed = category
@@ -126,10 +122,10 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-
+            
         }else{
-        myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+            myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
             dismiss(animated: true, completion: nil)
         }
     }

@@ -24,7 +24,6 @@ class MetconCustomCell: UITableViewCell, UITextFieldDelegate {
         exTextField.clipsToBounds = true
         exTextField.layer.borderWidth = 1
         exTextField.layer.borderColor = UIColor.white.cgColor
-        // Configure the view for the selected state
     }
 
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {

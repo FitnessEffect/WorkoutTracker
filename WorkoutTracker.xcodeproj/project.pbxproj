@@ -56,7 +56,6 @@
 		52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A21C5F0036000FD7B0 /* Main.storyboard */; };
 		52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */; };
 		52F6A8A91C5F0036000FD7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */; };
-		52FCD5B51CB2C44E008B0472 /* WorkoutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +123,6 @@
 		52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52F6A8A81C5F0036000FD7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52F6A8AA1C5F0036000FD7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCustomCell.swift; sourceTree = "<group>"; };
 		9A9AE9780A33CCB231F00403 /* Pods-WorkoutTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		ECBD1F8CB1C946F17950D606 /* Pods_WorkoutTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,7 +153,6 @@
 				5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */,
 				52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */,
 				52DFA3CE1CEE382E00E85264 /* MetconCustomCell.swift */,
-				52FCD5B41CB2C44E008B0472 /* WorkoutCustomCell.swift */,
 				52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */,
 				52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */,
 				52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */,
@@ -523,7 +520,6 @@
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
-				52FCD5B51CB2C44E008B0472 /* WorkoutCustomCell.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,

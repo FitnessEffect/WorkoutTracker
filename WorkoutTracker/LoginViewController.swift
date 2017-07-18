@@ -44,34 +44,34 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
             rememberMeSwitch.setOn(true, animated: true)
-//            var eLog = ""
-//            var pLog = ""
-//            if ((UserDefaults.standard.object(forKey: "emailLogin") as? String) != nil){
-//                eLog = (UserDefaults.standard.object(forKey: "emailLogin") as? String)!
-//            }
-//            if ((UserDefaults.standard.object(forKey: "passwordLogin") as? String) != nil){
-//                pLog = (UserDefaults.standard.object(forKey: "passwordLogin") as? String)!
-//            }
-//            if eLog != "" && pLog != ""{
-//                FIRAuth.auth()?.signIn(withEmail: eLog, password: pLog, completion:{(success) in
-//                    if success.0 == nil{
-//                        let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
-//                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                        alertController.addAction(defaultAction)
-//                        self.present(alertController, animated: true, completion: nil)
-//                    }
-//                })
-//            }
-
+            //            var eLog = ""
+            //            var pLog = ""
+            //            if ((UserDefaults.standard.object(forKey: "emailLogin") as? String) != nil){
+            //                eLog = (UserDefaults.standard.object(forKey: "emailLogin") as? String)!
+            //            }
+            //            if ((UserDefaults.standard.object(forKey: "passwordLogin") as? String) != nil){
+            //                pLog = (UserDefaults.standard.object(forKey: "passwordLogin") as? String)!
+            //            }
+            //            if eLog != "" && pLog != ""{
+            //                FIRAuth.auth()?.signIn(withEmail: eLog, password: pLog, completion:{(success) in
+            //                    if success.0 == nil{
+            //                        let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+            //                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            //                        alertController.addAction(defaultAction)
+            //                        self.present(alertController, animated: true, completion: nil)
+            //                    }
+            //                })
+            //            }
+            
             setAuthListener()
         }
         else {
             rememberMeSwitch.setOn(false, animated: true)
-//            do{
-//                try FIRAuth.auth()?.signOut()
-//            }catch{
-//                
-//            }
+            //            do{
+            //                try FIRAuth.auth()?.signOut()
+            //            }catch{
+            //
+            //            }
         }
     }
     
@@ -134,7 +134,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func `switch`(_ sender: UISwitch) {
-            self.prefs.set(sender.isOn, forKey: "switch")
+        self.prefs.set(sender.isOn, forKey: "switch")
     }
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
@@ -176,8 +176,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
-               // UserDefaults.standard.set(self.emailTF.text!, forKey: "emailLogin")
-               // UserDefaults.standard.set(self.passwordTF.text!, forKey: "passwordLogin")
+                // UserDefaults.standard.set(self.emailTF.text!, forKey: "emailLogin")
+                // UserDefaults.standard.set(self.passwordTF.text!, forKey: "passwordLogin")
             })
         }
     }
@@ -221,8 +221,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                                        alertController.addAction(defaultAction)
-                                        self.present(alertController, animated: true, completion: nil)
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

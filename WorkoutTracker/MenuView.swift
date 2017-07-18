@@ -29,7 +29,6 @@ class MenuView: UIView {
     }
     
     func addFx() {
-        
         profileBtn.layer.cornerRadius = 5.0
         profileBtn.clipsToBounds = true
         profileBtn.layer.borderWidth = 1

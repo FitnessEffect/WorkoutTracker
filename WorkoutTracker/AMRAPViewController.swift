@@ -24,10 +24,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
     var categoryPassed:String!
-    
     var minutes = [String]()
     var seconds = [String]()
-    
     var emomTime = [String]()
     
     override func viewDidLoad() {
@@ -46,7 +44,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
-                
+        
         for i in 1...100{
             emomTime.append(String(i))
         }
@@ -55,7 +53,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         registerForKeyboardNotifications()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -87,9 +85,9 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     @IBAction func addExercise(_ sender: UIBarButtonItem) {
         if exerciseNumber < 4{
-        exerciseNumber += 1
-        exerciseList.append("")
-        tableView.reloadData()
+            exerciseNumber += 1
+            exerciseList.append("")
+            tableView.reloadData()
         }
     }
     
@@ -106,9 +104,9 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             return emomTime.count
         }else{
             if component == 0{
-               return seconds.count
+                return seconds.count
             }else{
-               return minutes.count
+                return minutes.count
             }
         }
     }
@@ -124,7 +122,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             }
         }
     }
-
+    
     @IBAction func add(_ sender: UIButton) {
         if categoryPassed == "Amrap"{
             myExercise.name = "Amrap"
@@ -145,11 +143,11 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
-               myExercise.exerciseDescription = (minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)" + " | " + amrapString)
+                myExercise.exerciseDescription = (minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)" + " | " + amrapString)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }
-           
+            
         }else{
             myExercise.name = "Emom"
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)

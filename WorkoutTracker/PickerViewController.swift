@@ -53,7 +53,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             seconds.append(String(i))
         }
         
-        
         if tagPassed == 5{
             let max = Int(DBService.shared.emomTime)
             for i in 0...max!{
@@ -65,8 +64,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let temp = DBService.shared.tabataTime
             let arr = temp.components(separatedBy: " ")
             let max = Int(arr[0])
-            
-            
             for i in 0...max!{
                 tabata.append(String(i))
             }
@@ -250,15 +247,4 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         label.textAlignment = NSTextAlignment.center
         return label
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

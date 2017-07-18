@@ -9,10 +9,6 @@
 import UIKit
 import Firebase
 
-//protocol ChallengeNotifUpdateDelegate{
-//    func updateNotif()
-//}
-
 class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableViewOutlet: UITableView!
@@ -24,7 +20,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     var menuShowing = false
     var menuView:MenuView!
     var overlayView: OverlayView!
-    //var delegate:ChallengeNotifUpdateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +46,8 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
-        //delegate?.updateNotif()
         DBService.shared.updateNotifications(num: 0)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
         
@@ -97,7 +90,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             menuShowing = false
         }
     }
-    
     
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)

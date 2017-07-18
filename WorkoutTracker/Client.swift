@@ -84,6 +84,6 @@ class Client: NSCoder{
         self.activityLevel = aDecoder.decodeObject(forKey: "activityLevelKey") as! String
         self.weight = aDecoder.decodeObject(forKey: "weightKey") as! String
         self.feet = aDecoder.decodeObject(forKey: "feetKey") as! String
-         self.inches = aDecoder.decodeObject(forKey: "inchesKey") as! String
+        self.inches = aDecoder.decodeObject(forKey: "inchesKey") as! String
     }
 }
