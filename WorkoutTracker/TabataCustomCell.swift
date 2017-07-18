@@ -18,15 +18,12 @@ class TabataCustomCell: UITableViewCell, UITextFieldDelegate {
         exTextField.delegate = self
     }
    
-    
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         exTextField.layer.cornerRadius = 5.0
         exTextField.clipsToBounds = true
         exTextField.layer.borderWidth = 1
         exTextField.layer.borderColor = UIColor.white.cgColor
-        // Configure the view for the selected state
     }
     
     func getExercise() -> String{
@@ -38,5 +35,4 @@ class TabataCustomCell: UITableViewCell, UITextFieldDelegate {
         self.endEditing(true)
         return true
     }
-
 }

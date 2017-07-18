@@ -55,7 +55,6 @@ class CreateCrossfitExerciseViewController: UIViewController, UITextFieldDelegat
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0
         }
-        
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){

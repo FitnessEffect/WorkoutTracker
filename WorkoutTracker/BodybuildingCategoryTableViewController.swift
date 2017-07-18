@@ -29,9 +29,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         rightBarButton.image = UIImage(named:"addIcon")
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         
-        
         self.navigationItem.rightBarButtonItem = rightBarButton
-        
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -81,8 +79,6 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     func cellClicked(x:CGPoint){
-        
-        
         let index = tableView.indexPathForRow(at: x)
         let cell = tableView.cellForRow(at: index!)!
         if cell.textLabel?.text == "Superset"{
@@ -92,24 +88,21 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
             nextVC.setCategory(category:title!)
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else{
-        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingSelectionVC") as! BodybuildingSelectionViewController
-        let title = cell.textLabel?.text
-        DBService.shared.setCategory(category: title!)
-        nextVC.setCategory(category:title!)
-        self.navigationController?.pushViewController(nextVC, animated: true)
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingSelectionVC") as! BodybuildingSelectionViewController
+            let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
+            nextVC.setCategory(category:title!)
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this category?", preferredStyle: UIAlertControllerStyle.alert)
-            
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.categories[x]
-                
                 DBService.shared.deleteCategory(category: id)
-                
                 self.categories.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             }))

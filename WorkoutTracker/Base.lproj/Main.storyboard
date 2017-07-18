@@ -44,14 +44,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xd9-VW-xci">
-                                <rect key="frame" x="0.0" y="444" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="461" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-mw-bOp">
-                                <rect key="frame" x="0.0" y="327" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="348" width="375" height="93"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-oB-Cek" userLabel="EraseResult">
-                                <rect key="frame" x="332" y="332" width="35" height="33"/>
+                                <rect key="frame" x="332" y="348" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
                                 <state key="normal" title="X" backgroundImage="chalkBackground">
@@ -101,7 +101,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-zi-tdN" userLabel="EraseEmail">
-                                <rect key="frame" x="332" y="444" width="35" height="33"/>
+                                <rect key="frame" x="332" y="461" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
                                 <state key="normal" title="X" backgroundImage="chalkBackground">
@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUJ-uJ-zw7">
-                                <rect key="frame" x="92.5" y="143" width="190" height="50"/>
+                                <rect key="frame" x="92.5" y="160" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="EMH-TC-kiZ"/>
                                     <constraint firstAttribute="height" constant="50" id="Z5s-am-5vS"/>
@@ -239,7 +239,7 @@
                             <constraint firstItem="ae8-pj-W9O" firstAttribute="top" secondItem="DC0-2P-hgA" secondAttribute="bottom" constant="30" id="2VP-W8-Cvd"/>
                             <constraint firstItem="ae8-pj-W9O" firstAttribute="centerX" secondItem="9sz-ie-rfn" secondAttribute="centerX" id="X9D-HN-Osb"/>
                             <constraint firstItem="VUJ-uJ-zw7" firstAttribute="centerX" secondItem="9sz-ie-rfn" secondAttribute="centerX" id="js3-Lc-hrb"/>
-                            <constraint firstItem="VUJ-uJ-zw7" firstAttribute="top" secondItem="ae8-pj-W9O" secondAttribute="bottom" constant="48" id="tqb-e2-Irh"/>
+                            <constraint firstItem="VUJ-uJ-zw7" firstAttribute="top" secondItem="ae8-pj-W9O" secondAttribute="bottom" constant="65" id="tqb-e2-Irh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1790,7 +1790,7 @@
                                         </connections>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-x7-kbS">
-                                        <rect key="frame" x="92" y="194" width="190" height="50"/>
+                                        <rect key="frame" x="92" y="169" width="190" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Ech-qq-qKj"/>
                                             <constraint firstAttribute="width" constant="190" id="X87-1a-lI1"/>
@@ -1871,9 +1871,9 @@
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="lXa-Pi-mYb" secondAttribute="baseline" id="G0s-mZ-HHx"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="firstBaseline" secondItem="p57-R2-tHV" secondAttribute="firstBaseline" id="HlQ-28-zax"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="bottom" secondItem="bYm-8o-cAH" secondAttribute="bottom" constant="-1" id="IrM-oS-EYs"/>
-                                    <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="63" id="Mfi-q8-Diq"/>
+                                    <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="38" id="Mfi-q8-Diq"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="15" id="XlP-JB-BAP"/>
-                                    <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="423" id="Xni-3w-6la"/>
+                                    <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="448" id="Xni-3w-6la"/>
                                     <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-18" id="b64-rs-j8I"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="top" secondItem="bYm-8o-cAH" secondAttribute="top" id="bc0-ys-YAQ"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="top" secondItem="nBj-NH-kBw" secondAttribute="top" id="fIn-L9-mPm"/>
@@ -2498,7 +2498,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-gg-MpE">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-gg-MpE">
                                 <rect key="frame" x="0.0" y="2" width="375" height="665"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Az-mb-p3X">

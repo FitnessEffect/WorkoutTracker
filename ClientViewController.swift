@@ -91,12 +91,8 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCustomCell
-        
         let client = clientArray[(indexPath as NSIndexPath).row]
-        
         cell.nameOutlet.text = client.firstName + " " + client.lastName
-        cell.ageOutlet?.text = client.age
-        
         if client.gender == "Male" {
             cell.nameOutlet.textColor = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         }else if client.gender == "Female" {
@@ -108,13 +104,10 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this client?", preferredStyle: UIAlertControllerStyle.alert)
-            
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.clientArray[x].clientKey
-                
                 DBService.shared.deleteClient(id: id)
-                
                 self.clientArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             }))
@@ -174,7 +167,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
-        
         if row != nil{
             performSegue(withIdentifier: "exercisesSegue", sender: sender)
         }
@@ -188,10 +180,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-            
         }else{
-             if tableViewOutlet.frame.contains(sender.location(in: view)){
-            performSegue(withIdentifier: "exercisesSegue", sender: sender)
+            if tableViewOutlet.frame.contains(sender.location(in: view)){
+                performSegue(withIdentifier: "exercisesSegue", sender: sender)
             }
         }
     }

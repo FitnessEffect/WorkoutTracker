@@ -93,7 +93,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         if exercise.opponent != ""{
             //if exercise comes from history do not set creator as the challenger
             if exercise.creatorEmail == DBService.shared.user.email{
-            
+            saveEmail(emailStr: exercise.opponent)
             }else{
             //if exercise comes from challenges set creator as the challenger
             saveEmail(emailStr: exercise.creatorEmail)

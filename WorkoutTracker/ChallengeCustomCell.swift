@@ -13,7 +13,6 @@ class ChallengeCustomCell: UITableViewCell {
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var numberOutlet: UILabel!
     @IBOutlet weak var challenger: UILabel!
-    @IBOutlet weak var date: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +24,4 @@ class ChallengeCustomCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

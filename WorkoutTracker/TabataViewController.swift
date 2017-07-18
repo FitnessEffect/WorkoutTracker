@@ -10,7 +10,7 @@
 import UIKit
 
 class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
-
+    
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerOutlet: UIPickerView!
@@ -41,16 +41,16 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         registerForKeyboardNotifications()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func add(_ sender: UIBarButtonItem) {
         if exerciseNumber < 4{
-        exerciseNumber += 1
-        exerciseList.append("")
-        tableView.reloadData()
+            exerciseNumber += 1
+            exerciseList.append("")
+            tableView.reloadData()
         }
     }
     
@@ -153,13 +153,13 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-                if component == 0 {
-                    label.text = rest[row]
-                }else if component == 1{
-                    label.text = work[row]
-                }else{
-                    label.text = totalTime[row]
-                }
+        if component == 0 {
+            label.text = rest[row]
+        }else if component == 1{
+            label.text = work[row]
+        }else{
+            label.text = totalTime[row]
+        }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center

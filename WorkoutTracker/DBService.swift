@@ -254,7 +254,6 @@ class DBService {
                 self._bodybuildingCategories.sort()
                 completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -267,7 +266,6 @@ class DBService {
                 return client
             }
         }
-        
         return c
     }
     
@@ -278,7 +276,6 @@ class DBService {
                 return client
             }
         }
-        
         return c
     }
     
@@ -316,10 +313,8 @@ class DBService {
         _exercisesForClient.removeAll()
         
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
-            
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
-                    
                     let tempExercise = Exercise()
                     tempExercise.name = exercise.value["name"] as! String
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
@@ -336,7 +331,6 @@ class DBService {
                     completion()
                 }
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -350,7 +344,6 @@ class DBService {
             // let value = snapshot.value as! NSDictionary
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
-                    
                     let tempExercise = Exercise()
                     tempExercise.name = exercise.value["name"] as! String
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
@@ -368,14 +361,12 @@ class DBService {
                     completion()
                 }
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     
     func retrieveHeroWods(completion: @escaping () -> Void){
-        
         _crossfitHeroWods.removeAll()
         
         self._ref.child("hero wods").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -387,16 +378,14 @@ class DBService {
                 self._crossfitHeroWods.sort()
                 completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
-
     }
     
     func retrieveWodDescription(wodName:String, completion:@escaping (String)->Void){
         self._ref.child("hero wods").child(wodName).observeSingleEvent(of: .value, with: { (snapshot) in
-          let value = snapshot.value as? NSDictionary
+            let value = snapshot.value as? NSDictionary
             let str = value?["description"] as! String
             completion(str)
         })
@@ -449,7 +438,7 @@ class DBService {
         self._ref.child("notification").updateChildValues(dictionary)
         UIApplication.shared.applicationIconBadgeNumber = num
     }
-
+    
     func clearExercisePassed(){
         _passedExercise?.exerciseKey = ""
     }
@@ -457,7 +446,6 @@ class DBService {
     func initializeData(){
         //set notifications to 0
         updateNotifications(num: 0)
-        //set pickerView categories
         
         var crossfitDictionary = [String:Any]()
         crossfitDictionary["1 Rep Max"] = true
@@ -520,7 +508,6 @@ class DBService {
         bodybuildingShouldersExercise["Barbell High Pulls"] = true
         bodybuildingShouldersExercise["Shoulder Press"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Shoulders").updateChildValues(bodybuildingShouldersExercise)
-        
     }
     
     var user: FIRUser {
@@ -619,5 +606,3 @@ class DBService {
         }
     }
 }
-
-

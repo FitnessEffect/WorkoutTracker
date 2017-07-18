@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var exName: UITextField!
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -72,7 +72,7 @@ class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDel
     }
     
     func keyboardWasShown(notification: NSNotification){
-
+        
     }
     
     func keyboardWillBeHidden(notification: NSNotification){
@@ -100,5 +100,4 @@ class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDel
         self.view.endEditing(true)
         return true
     }
-    
 }

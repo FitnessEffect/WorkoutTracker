@@ -10,7 +10,7 @@
 import UIKit
 
 class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
-
+    
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
@@ -21,14 +21,13 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
     var categoryPassed:String!
-    
     var rounds = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         for x in 0...100{
-           rounds.append(String(x))
+            rounds.append(String(x))
         }
         
         title = categoryPassed
@@ -41,16 +40,16 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         registerForKeyboardNotifications()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func addExercise(_ sender: UIBarButtonItem) {
         if exerciseNumber < 4{
-        exerciseNumber += 1
-        exerciseList.append("")
-        tableView.reloadData()
+            exerciseNumber += 1
+            exerciseList.append("")
+            tableView.reloadData()
         }
     }
     
