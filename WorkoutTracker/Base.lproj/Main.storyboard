@@ -767,7 +767,7 @@
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -941,110 +941,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell1" textLabel="JXs-RF-QdH" imageView="gro-i0-mEf" style="IBUITableViewCellStyleDefault" id="08S-m2-WsS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell" textLabel="JXs-RF-QdH" imageView="gro-i0-mEf" style="IBUITableViewCellStyleDefault" id="08S-m2-WsS">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="08S-m2-WsS" id="2by-ln-R2K">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 RM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXs-RF-QdH">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXs-RF-QdH">
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" highlightedImage="Background1" id="gro-i0-mEf">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell2" textLabel="bXT-sJ-mba" imageView="tMd-SQ-pSV" style="IBUITableViewCellStyleDefault" id="irY-z1-0L2">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="irY-z1-0L2" id="nmY-I5-ddi">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Amrap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bXT-sJ-mba">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="tMd-SQ-pSV">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell3" textLabel="66h-BT-Ge7" imageView="JEm-VB-Hzu" style="IBUITableViewCellStyleDefault" id="b3S-e3-CoI">
-                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b3S-e3-CoI" id="EBt-cv-hco">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Metcon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="66h-BT-Ge7">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="JEm-VB-Hzu">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell4" textLabel="XVD-pd-3sA" imageView="V92-DE-u2H" style="IBUITableViewCellStyleDefault" id="7bU-4L-lrA">
-                                <rect key="frame" x="0.0" y="160" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7bU-4L-lrA" id="Bwc-0L-Nkc">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tabata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XVD-pd-3sA">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="V92-DE-u2H">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="crossfitCell5" textLabel="7hW-Gt-Xou" imageView="IWX-Oo-ojq" style="IBUITableViewCellStyleDefault" id="ilg-SC-PK9">
-                                <rect key="frame" x="0.0" y="204" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ilg-SC-PK9" id="pNi-5p-eBN">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="For Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7hW-Gt-Xou">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="IWX-Oo-ojq">
                                             <rect key="frame" x="15" y="0.0" width="25" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -1340,10 +1251,10 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-Kx-4Cf">
-                                                            <rect key="frame" x="57" y="2" width="260" height="30"/>
+                                                            <rect key="frame" x="57" y="2" width="260" height="35"/>
                                                             <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="8BA-6h-Fka"/>
+                                                                <constraint firstAttribute="height" constant="35" id="8BA-6h-Fka"/>
                                                                 <constraint firstAttribute="width" constant="260" id="cC0-X5-iwM"/>
                                                             </constraints>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1353,7 +1264,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="9gQ-Kx-4Cf" firstAttribute="centerX" secondItem="dwg-U2-qFf" secondAttribute="centerX" id="ZGC-ce-gal"/>
-                                                        <constraint firstItem="9gQ-Kx-4Cf" firstAttribute="bottom" secondItem="dwg-U2-qFf" secondAttribute="bottomMargin" constant="-3.5" id="xTT-0c-NWG"/>
+                                                        <constraint firstItem="9gQ-Kx-4Cf" firstAttribute="bottom" secondItem="dwg-U2-qFf" secondAttribute="bottomMargin" constant="1.5" id="xTT-0c-NWG"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -1377,30 +1288,30 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rest " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E2-iT-3Nq">
-                                        <rect key="frame" x="33" y="159" width="42" height="21"/>
+                                        <rect key="frame" x="30" y="158" width="50" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="yfA-nH-qgT"/>
+                                            <constraint firstAttribute="width" constant="50" id="yfA-nH-qgT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75A-fo-AvL">
-                                        <rect key="frame" x="230" y="159" width="42" height="21"/>
+                                        <rect key="frame" x="220" y="160" width="50" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="dWX-rn-cDT"/>
+                                            <constraint firstAttribute="width" constant="50" id="dWX-rn-cDT"/>
                                             <constraint firstAttribute="height" constant="21" id="nws-iD-SoB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ9-DS-mdT">
-                                        <rect key="frame" x="132" y="159" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="work" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ9-DS-mdT">
+                                        <rect key="frame" x="126" y="158" width="55" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="IlF-HM-atG"/>
+                                            <constraint firstAttribute="width" constant="55" id="IlF-HM-atG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1408,13 +1319,13 @@
                                 <constraints>
                                     <constraint firstItem="ehZ-Db-OgB" firstAttribute="top" secondItem="BQh-eU-hxM" secondAttribute="bottom" constant="24" id="4SC-wU-8Y8"/>
                                     <constraint firstItem="ehZ-Db-OgB" firstAttribute="centerY" secondItem="CJ9-DS-mdT" secondAttribute="centerY" constant="57" id="9Ny-yz-z6O"/>
-                                    <constraint firstItem="1E2-iT-3Nq" firstAttribute="leading" secondItem="1Dq-3I-hXY" secondAttribute="leading" constant="33" id="AvE-Rw-cnw"/>
+                                    <constraint firstItem="1E2-iT-3Nq" firstAttribute="leading" secondItem="1Dq-3I-hXY" secondAttribute="leading" constant="30" id="AvE-Rw-cnw"/>
                                     <constraint firstItem="ehZ-Db-OgB" firstAttribute="leading" secondItem="1Dq-3I-hXY" secondAttribute="leading" constant="8" id="Bil-c0-xrR"/>
-                                    <constraint firstItem="CJ9-DS-mdT" firstAttribute="leading" secondItem="1E2-iT-3Nq" secondAttribute="trailing" constant="57" id="Br6-DV-30X"/>
+                                    <constraint firstItem="CJ9-DS-mdT" firstAttribute="leading" secondItem="1E2-iT-3Nq" secondAttribute="trailing" constant="46" id="Br6-DV-30X"/>
                                     <constraint firstAttribute="bottom" secondItem="O04-vp-vQv" secondAttribute="bottom" constant="333" id="LY2-N3-CBY"/>
                                     <constraint firstItem="O04-vp-vQv" firstAttribute="centerX" secondItem="1Dq-3I-hXY" secondAttribute="centerX" id="MhH-Ze-V61"/>
                                     <constraint firstItem="CJ9-DS-mdT" firstAttribute="baseline" secondItem="75A-fo-AvL" secondAttribute="baseline" id="l02-p7-jtV"/>
-                                    <constraint firstItem="75A-fo-AvL" firstAttribute="leading" secondItem="CJ9-DS-mdT" secondAttribute="trailing" constant="56" id="mUS-rJ-cWU"/>
+                                    <constraint firstItem="75A-fo-AvL" firstAttribute="leading" secondItem="CJ9-DS-mdT" secondAttribute="trailing" constant="39" id="mUS-rJ-cWU"/>
                                     <constraint firstItem="O04-vp-vQv" firstAttribute="top" secondItem="ehZ-Db-OgB" secondAttribute="bottom" constant="6" id="mq3-0O-9Dz"/>
                                     <constraint firstItem="BQh-eU-hxM" firstAttribute="leading" secondItem="1Dq-3I-hXY" secondAttribute="leading" id="nH6-kn-5AL"/>
                                     <constraint firstAttribute="trailing" secondItem="ehZ-Db-OgB" secondAttribute="trailing" constant="8" id="o25-Om-T7D"/>
@@ -1452,7 +1363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oye-aT-vFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3846" y="1559"/>
+            <point key="canvasLocation" x="3845.5999999999999" y="1558.4707646176912"/>
         </scene>
         <!--Metcon View Controller-->
         <scene sceneID="sKU-ve-HCz">
@@ -1516,11 +1427,11 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-nJ-ltt">
-                                                            <rect key="frame" x="57" y="2" width="260" height="30"/>
+                                                            <rect key="frame" x="57" y="2" width="260" height="35"/>
                                                             <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="260" id="deJ-fY-yeW"/>
-                                                                <constraint firstAttribute="height" constant="30" id="iKj-Ms-c10"/>
+                                                                <constraint firstAttribute="height" constant="35" id="iKj-Ms-c10"/>
                                                             </constraints>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="26"/>
@@ -1529,7 +1440,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="Ojc-nJ-ltt" firstAttribute="centerX" secondItem="a9g-TB-vwW" secondAttribute="centerX" id="7gn-et-Q6q"/>
-                                                        <constraint firstItem="Ojc-nJ-ltt" firstAttribute="bottom" secondItem="a9g-TB-vwW" secondAttribute="bottomMargin" constant="-3.5" id="YVv-zq-mQ0"/>
+                                                        <constraint firstItem="Ojc-nJ-ltt" firstAttribute="bottom" secondItem="a9g-TB-vwW" secondAttribute="bottomMargin" constant="1.5" id="YVv-zq-mQ0"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -1666,11 +1577,11 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-F9-vVf">
-                                                            <rect key="frame" x="57" y="2" width="260" height="30"/>
+                                                            <rect key="frame" x="57" y="2" width="260" height="35"/>
                                                             <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="260" id="Rec-zz-aqx"/>
-                                                                <constraint firstAttribute="height" constant="30" id="s3A-G6-MgX"/>
+                                                                <constraint firstAttribute="height" constant="35" id="s3A-G6-MgX"/>
                                                             </constraints>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="26"/>
@@ -1679,7 +1590,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="kZf-F9-vVf" firstAttribute="centerX" secondItem="1jV-S2-zKy" secondAttribute="centerX" id="iu3-vl-aWF"/>
-                                                        <constraint firstItem="kZf-F9-vVf" firstAttribute="bottom" secondItem="1jV-S2-zKy" secondAttribute="bottomMargin" constant="-3.5" id="pF8-AZ-jHX"/>
+                                                        <constraint firstItem="kZf-F9-vVf" firstAttribute="bottom" secondItem="1jV-S2-zKy" secondAttribute="bottomMargin" constant="1.5" id="pF8-AZ-jHX"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -1831,26 +1742,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p57-R2-tHV">
-                                        <rect key="frame" x="181" y="59" width="39" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="39" id="ac9-qV-57w"/>
-                                            <constraint firstAttribute="height" constant="27" id="yHi-SQ-04k"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBj-NH-kBw">
-                                        <rect key="frame" x="168" y="59" width="31" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="31" id="U3e-yn-WsS"/>
-                                            <constraint firstAttribute="height" constant="27" id="aNu-hV-TWP"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
                                         <rect key="frame" x="163" y="59" width="36" height="27"/>
                                         <constraints>
@@ -1861,29 +1752,49 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p57-R2-tHV">
+                                        <rect key="frame" x="165" y="60" width="39" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="39" id="ac9-qV-57w"/>
+                                            <constraint firstAttribute="height" constant="27" id="yHi-SQ-04k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBj-NH-kBw">
+                                        <rect key="frame" x="168" y="60" width="31" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="31" id="U3e-yn-WsS"/>
+                                            <constraint firstAttribute="height" constant="27" id="aNu-hV-TWP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="leading" secondItem="p57-R2-tHV" secondAttribute="trailing" constant="38" id="2pf-XU-dRj"/>
+                                    <constraint firstItem="JFW-Kj-Teg" firstAttribute="leading" secondItem="p57-R2-tHV" secondAttribute="trailing" constant="54" id="2pf-XU-dRj"/>
                                     <constraint firstItem="lXa-Pi-mYb" firstAttribute="leading" secondItem="NTr-8p-FVc" secondAttribute="leading" constant="65" id="6zO-ng-rER"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="leading" secondItem="lXa-Pi-mYb" secondAttribute="trailing" constant="74" id="9DQ-hM-Mfw"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="leading" secondItem="NTr-8p-FVc" secondAttribute="leading" constant="8" id="DSV-iP-tn2"/>
                                     <constraint firstItem="lXa-Pi-mYb" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="60" id="ERO-Cp-KFV"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="lXa-Pi-mYb" secondAttribute="baseline" id="G0s-mZ-HHx"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="firstBaseline" secondItem="p57-R2-tHV" secondAttribute="firstBaseline" id="HlQ-28-zax"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="firstBaseline" secondItem="p57-R2-tHV" secondAttribute="firstBaseline" constant="-1" id="HlQ-28-zax"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="bottom" secondItem="bYm-8o-cAH" secondAttribute="bottom" constant="-1" id="IrM-oS-EYs"/>
                                     <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="38" id="Mfi-q8-Diq"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="15" id="XlP-JB-BAP"/>
                                     <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="448" id="Xni-3w-6la"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-18" id="b64-rs-j8I"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-34" id="b64-rs-j8I"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="top" secondItem="bYm-8o-cAH" secondAttribute="top" id="bc0-ys-YAQ"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="top" secondItem="nBj-NH-kBw" secondAttribute="top" id="fIn-L9-mPm"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="oGI-bm-bWQ" secondAttribute="trailing" constant="-20" id="gCf-pd-P0H"/>
-                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="nBj-NH-kBw" secondAttribute="trailing" constant="-18" id="hPm-EX-aFo"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="bottom" secondItem="nBj-NH-kBw" secondAttribute="bottom" id="nqn-QG-pCw"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="top" secondItem="nBj-NH-kBw" secondAttribute="top" constant="-1" id="fIn-L9-mPm"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="oGI-bm-bWQ" secondAttribute="trailing" constant="-36" id="gCf-pd-P0H"/>
+                                    <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="nBj-NH-kBw" secondAttribute="trailing" constant="-34" id="hPm-EX-aFo"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="bottom" secondItem="nBj-NH-kBw" secondAttribute="bottom" constant="-1" id="nqn-QG-pCw"/>
                                     <constraint firstItem="RWt-x7-kbS" firstAttribute="centerX" secondItem="NTr-8p-FVc" secondAttribute="centerX" id="rgI-bn-nbQ"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="centerX" secondItem="NTr-8p-FVc" secondAttribute="centerX" id="vYj-PS-Xk1"/>
                                     <constraint firstItem="JFW-Kj-Teg" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="60" id="wvw-cr-ZFP"/>
-                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="p57-R2-tHV" secondAttribute="baseline" id="yuj-id-2y0"/>
+                                    <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="p57-R2-tHV" secondAttribute="baseline" constant="-1" id="yuj-id-2y0"/>
                                     <constraint firstAttribute="trailing" secondItem="FaO-rX-9dF" secondAttribute="trailing" constant="8" id="z3v-TA-4pf"/>
                                 </constraints>
                                 <connections>
@@ -2529,11 +2440,11 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-e0-5Pv">
-                                                            <rect key="frame" x="57" y="2" width="260" height="30"/>
+                                                            <rect key="frame" x="57" y="2" width="260" height="35"/>
                                                             <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="260" id="4xB-ZU-XId"/>
-                                                                <constraint firstAttribute="height" constant="30" id="5na-ys-ZAr"/>
+                                                                <constraint firstAttribute="height" constant="35" id="5na-ys-ZAr"/>
                                                             </constraints>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="26"/>
@@ -2542,7 +2453,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="Udx-e0-5Pv" firstAttribute="centerX" secondItem="eeE-hX-xhQ" secondAttribute="centerX" id="LAO-EZ-sDJ"/>
-                                                        <constraint firstItem="Udx-e0-5Pv" firstAttribute="bottom" secondItem="eeE-hX-xhQ" secondAttribute="bottomMargin" constant="-3.5" id="U4C-XW-kGA"/>
+                                                        <constraint firstItem="Udx-e0-5Pv" firstAttribute="bottom" secondItem="eeE-hX-xhQ" secondAttribute="bottomMargin" constant="1.5" id="U4C-XW-kGA"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>

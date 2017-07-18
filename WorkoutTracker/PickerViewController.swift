@@ -23,6 +23,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var weights = [String]()
     var reps = [String]()
     var hours = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+    var supersetSets = [String]()
     var minutes = [String]()
     var seconds = [String]()
     var emom = [String]()
@@ -46,6 +47,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         for i in 0...500{
             weights.append(String(i))
             reps.append(String(i))
+            supersetSets.append(String(i))
         }
         
         for i in 0...59{
@@ -120,8 +122,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return reps.count
         }else if tagPassed == 5{
             return emom.count
-        }else{
+        }else if tagPassed == 6{
             return tabata.count
+        }else{
+            return supersetSets.count
         }
     }
     
@@ -142,8 +146,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return reps[row]
         }else if tagPassed == 5{
             return emom[row]
-        }else{
+        }else if tagPassed == 6{
             return tabata[row]
+        }else{
+            return supersetSets[row]
         }
     }
     
@@ -176,6 +182,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             tempResult = temp
         }else if tagPassed == 6{
             let temp = tabata[row] + " minute(s) completed"
+            tempResult = temp
+        }else if tagPassed == 7{
+            let temp = supersetSets[row] + " set(s)"
             tempResult = temp
         }
     }
@@ -238,9 +247,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 5{
             minLabel.alpha = 1
             label.text = emom[row]
-        }else{
+        }else if tagPassed == 6{
             minLabel.alpha = 1
             label.text = tabata[row]
+        }else{
+            setsLabel.alpha = 1
+            label.text = supersetSets[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle

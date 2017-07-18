@@ -54,39 +54,11 @@ class CrossfitCategoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let x = (indexPath as NSIndexPath).row
-        
-        if x == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell1", for: indexPath)
-            let exercise = categories[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clear
-            return cell
-        }else if x == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell2", for: indexPath)
-            let exercise = categories[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clear
-            return cell
-        }else if x == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell3", for: indexPath)
-            let exercise = categories[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clear
-            return cell
-        }else if x == 3{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell4", for: indexPath)
-            let exercise = categories[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clear
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "crossfitCell5", for: indexPath)
-            let exercise = categories[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = exercise
-            cell.backgroundColor = UIColor.clear
-            return cell
-        }
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "crossfitCell")!
+        cell.textLabel?.text = self.categories[indexPath.row]
+        cell.backgroundColor = UIColor.clear
+        cell.tag = indexPath.row
+        return cell
     }
     
     func cellClicked(x:CGPoint){

@@ -160,7 +160,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }else{
             label.text = totalTime[row]
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 23.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label
