@@ -13,7 +13,6 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var exercises = [String]()
     let exerciseKey:String = "exerciseKey"
@@ -34,38 +33,22 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if categoryPassed == "1 Rep Max"{
-        DBService.shared.retrieveCrossfitCategoryExercises(completion: {
-            self.exercises = DBService.shared.exercisesForCrossfitCategory
-            self.pickerOutlet.reloadAllComponents()
-        })
-        pickerOutlet.isUserInteractionEnabled = true
+            DBService.shared.retrieveCrossfitCategoryExercises(completion: {
+                self.exercises = DBService.shared.exercisesForCrossfitCategory
+                self.pickerOutlet.reloadAllComponents()
+            })
+            pickerOutlet.isUserInteractionEnabled = true
         }else{
             DBService.shared.retrieveHeroWods(completion:{
                 self.exercises = DBService.shared.crossfitHeroWods
                 self.pickerOutlet.reloadAllComponents()
             })
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x>0 {
-            scrollView.contentOffset.x = 0
-        }
-        if scrollView.contentOffset.x<0 {
-            scrollView.contentOffset.x = 0
-        }
-        if scrollView.contentOffset.y > 50{
-            scrollView.contentOffset.y = 50
-        }
-        if scrollView.contentOffset.y < 0{
-            scrollView.contentOffset.y = 0
         }
     }
     
@@ -103,29 +86,9 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 self.myExercise.exerciseDescription = str
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
                 if self.myExercise.name == "Cindy"{
-                     DBService.shared.setEmomTime(time:"20")
+                    DBService.shared.setEmomTime(time:"20")
                 }
             })
-//            if myExercise.name == "Fran"{
-//                DBService.shared.retrieveWodDescription(wodName: "Fran", completion: {
-//                (str) in
-//                    self.myExercise.exerciseDescription = str
-//                   NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
-//                })
-//                print(myExercise.exerciseDescription)
-//            }else if myExercise.name == "Grace"{
-//                DBService.shared.retrieveWodDescription(wodName: "Grace", completion: {
-//                    (str) in
-//                    self.myExercise.exerciseDescription = str
-//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
-//                })
-//            }else if myExercise.name == "Murph"{
-//                DBService.shared.retrieveWodDescription(wodName: "Murph", completion: {
-//                    (str) in
-//                    self.myExercise.exerciseDescription = str
-//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [self.exerciseKey:self.myExercise])
-//                })
-//            }
         }else{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             myExercise.name = exercises[id]

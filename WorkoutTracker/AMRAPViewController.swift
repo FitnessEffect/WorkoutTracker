@@ -71,8 +71,8 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         if scrollView.contentOffset.x<0 {
             scrollView.contentOffset.x = 0
         }
-        if scrollView.contentOffset.y > 50{
-            scrollView.contentOffset.y = 50
+        if scrollView.contentOffset.y > 60{
+            scrollView.contentOffset.y = 60
         }
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0
@@ -84,9 +84,11 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func addExercise(_ sender: UIBarButtonItem) {
+        if exerciseNumber < 4{
         exerciseNumber += 1
         exerciseList.append("")
         tableView.reloadData()
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -10,8 +10,8 @@ import UIKit
 
 class ForTimeViewController: UIViewController{
 
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -29,7 +29,6 @@ class ForTimeViewController: UIViewController{
             reps.append(String(x))
             sets.append(String(x))
         }
-        
         
         title = categoryPassed
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
@@ -57,8 +56,8 @@ class ForTimeViewController: UIViewController{
         if scrollView.contentOffset.x<0 {
             scrollView.contentOffset.x = 0
         }
-        if scrollView.contentOffset.y > 50{
-            scrollView.contentOffset.y = 50
+        if scrollView.contentOffset.y > 100{
+            scrollView.contentOffset.y = 100
         }
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0
@@ -70,9 +69,12 @@ class ForTimeViewController: UIViewController{
     }
     
     @IBAction func addExercise(_ sender: UIBarButtonItem) {
-        exerciseNumber += 1
-        exerciseList.append("")
-        tableView.reloadData()
+        if exerciseNumber < 4{
+            exerciseNumber += 1
+            exerciseList.append("")
+            tableView.reloadData()
+        }
+        
     }
     
     @IBAction func add(_ sender: UIButton) {
@@ -142,21 +144,6 @@ class ForTimeViewController: UIViewController{
         let index = textField.tag
         exerciseList[index] = textField.text!
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//
-//            let label = UILabel()
-//        if component == 0{
-//            label.text = reps[row]
-//        }else{
-//            label.text = sets[row]
-//        }
-//            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
-//            label.attributedText = myTitle
-//            label.textAlignment = NSTextAlignment.center
-//            return label
-//        
-//    }
     
     func keyboardWasShown(notification: NSNotification){
     }

@@ -47,10 +47,11 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func add(_ sender: UIBarButtonItem) {
-
+        if exerciseNumber < 4{
         exerciseNumber += 1
         exerciseList.append("")
         tableView.reloadData()
+        }
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -66,8 +67,8 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         if scrollView.contentOffset.x<0 {
             scrollView.contentOffset.x = 0
         }
-        if scrollView.contentOffset.y > 50{
-            scrollView.contentOffset.y = 50
+        if scrollView.contentOffset.y > 60{
+            scrollView.contentOffset.y = 60
         }
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0

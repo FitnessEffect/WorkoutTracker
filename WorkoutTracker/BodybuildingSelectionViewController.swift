@@ -60,8 +60,8 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         if scrollView.contentOffset.x<0 {
             scrollView.contentOffset.x = 0
         }
-        if scrollView.contentOffset.y > 50{
-            scrollView.contentOffset.y = 50
+        if scrollView.contentOffset.y > 0{
+            scrollView.contentOffset.y = 0
         }
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0
