@@ -127,7 +127,11 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         if edit == true{
             tempExercise = DBService.shared.passedExercise
         }
+        
         if tempExercise.category == "1 Rep Max" || tempExercise.type == "Bodybuilding"{
+            if tempExercise.name == "Superset"{
+                return 7
+            }
             return 3
         }else if tempExercise.name == "Metcon" || tempExercise.name == "Fran" || tempExercise.name == "Grace" || tempExercise.name == "Murph" || tempExercise.category == "For Time" || tempExercise.name == "Angie" || tempExercise.name == "Diane"{
             return 2

@@ -70,6 +70,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel?.text = self.categories[indexPath.row]
+        cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
         return cell
     }
