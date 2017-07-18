@@ -36,6 +36,8 @@ class ForTimeViewController: UIViewController{
         self.view.addGestureRecognizer(gesture)
         
         self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        
+        registerForKeyboardNotifications()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,8 +58,8 @@ class ForTimeViewController: UIViewController{
         if scrollView.contentOffset.x<0 {
             scrollView.contentOffset.x = 0
         }
-        if scrollView.contentOffset.y > 100{
-            scrollView.contentOffset.y = 100
+        if scrollView.contentOffset.y > 60{
+            scrollView.contentOffset.y = 60
         }
         if scrollView.contentOffset.y < 0{
             scrollView.contentOffset.y = 0
@@ -74,7 +76,6 @@ class ForTimeViewController: UIViewController{
             exerciseList.append("")
             tableView.reloadData()
         }
-        
     }
     
     @IBAction func add(_ sender: UIButton) {
