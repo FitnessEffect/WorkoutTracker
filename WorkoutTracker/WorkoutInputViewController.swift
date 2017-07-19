@@ -87,9 +87,20 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
             for client in DBService.shared.clients{
                 self.nameArray.append(client.firstName + " " + client.lastName)
             }
-            self.nameArray.insert("Personal", at: 0)
+           self.nameArray.insert("Personal", at: 0)
+            //check in case call is asynchronous
+            for x in 0...self.nameArray.count - 1{
+                var tempCount = 0
+                if self.nameArray[x] == "Personal"{
+                    tempCount += 1
+                }
+                if tempCount == 2{
+                    self.nameArray.removeFirst()
+                }
+            }
         }
-        
+        self.nameArray.insert("Personal", at: 0)
+
         if DBService.shared.passedClient.firstName != ""{
             if DBService.shared.passedClient.firstName == "Personal"{
                 title = DBService.shared.passedClient.firstName
