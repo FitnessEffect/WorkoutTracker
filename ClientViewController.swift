@@ -66,8 +66,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             notificationNumber.alpha = 1
             notificationNumber.text = String(num)
         }
-        self.clientArray = DBService.shared.clients
-        self.tableViewOutlet.reloadData()
+        DBService.shared.retrieveClients {
+            self.clientArray = DBService.shared.clients
+            self.tableViewOutlet.reloadData()
+        }
+        
     }
     
     func appEnteredForeground(_ notification: Notification){

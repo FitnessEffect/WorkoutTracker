@@ -203,6 +203,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     }
     
     @IBAction func createClient(_ sender: UIButton) {
+        if firstNameOutlet.text != ""{
         if edit == false{
             myClient.clientKey = DBService.shared.createClientID()
         }else{
@@ -259,6 +260,11 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
             let presenter = self.presentingViewController?.childViewControllers.last
             self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
         })
+        }else{
+            let alert = UIAlertController(title: "Error", message: "Please enter client's first name", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {

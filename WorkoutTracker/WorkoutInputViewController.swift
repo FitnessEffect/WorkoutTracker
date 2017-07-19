@@ -51,12 +51,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         print(user.email!)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
-        if DBService.shared.passedClient.firstName != ""{
-            title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
-        }else{
-            title = "Personal"
-        }
-        
         NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
@@ -88,6 +82,22 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     override func viewWillAppear(_ animated: Bool) {
         workoutInputView.setCurrentDate()
+        nameArray.removeAll()
+        DBService.shared.retrieveClients {
+            for client in DBService.shared.clients{
+                self.nameArray.append(client.firstName + " " + client.lastName)
+            }
+            self.nameArray.insert("Personal", at: 0)
+        }
+        if DBService.shared.passedClient.firstName != ""{
+            if DBService.shared.passedClient.firstName == "Personal"{
+                title = DBService.shared.passedClient.firstName
+            }else{
+            title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
+            }
+        }else{
+            title = "Personal"
+        }
         
         if edit == true{
             //set tempExercise from passedExercise
@@ -103,6 +113,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     override func viewWillDisappear(_ animated: Bool) {
         //clear passedExercise
         DBService.shared.clearExercisePassed()
+        DBService.shared.setPassedClientToPersonal()
     }
     
     func updateNotification(_ notification: Notification) {
@@ -297,14 +308,6 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if sender.tag == 1{
-            nameArray.removeAll()
-            for client in DBService.shared.clients{
-                let fName = client.firstName
-                let lName = client.lastName
-                let tempStr = fName + " " + lName
-                self.nameArray.append(tempStr)
-            }
-            nameArray.insert("Personal", at: 0)
             popController.setClients(clients: nameArray)
             popController.setTag(tag: 1)
         }
