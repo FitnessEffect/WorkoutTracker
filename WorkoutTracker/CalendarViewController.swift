@@ -144,7 +144,7 @@ class CalendarViewController:UIViewController{
         let date = monthStr + "/" + btnStr + "/" + String(selectedYear)
         if dateBtn == true{
             //
-            let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
+            let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
             presenter.setNewDate(dateStr: date)
             dateBtn = false
         }

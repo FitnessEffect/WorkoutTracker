@@ -115,14 +115,14 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
-            let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            let wivc:InputExerciseViewController = segue.destination as! InputExerciseViewController
             DBService.shared.setPassedClient(client: clientPassed)
             selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
             wivc.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
-            let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            let edv:InputExerciseViewController = segue.destination as! InputExerciseViewController
             DBService.shared.setPassedClient(client: clientPassed)
             edv.setEdit(bool:false)
         }

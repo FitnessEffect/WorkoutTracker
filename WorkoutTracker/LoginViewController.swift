@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
     var authHandle:UInt?
-    var workoutVC:WorkoutInputViewController?
+    var workoutVC:InputExerciseViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()

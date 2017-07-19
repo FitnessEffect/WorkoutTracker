@@ -177,13 +177,13 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
             let s = sender as! UITapGestureRecognizer
-            let wivc:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            let wivc:InputExerciseViewController = segue.destination as! InputExerciseViewController
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
             wivc.setEdit(bool: true)
         }
         if(segue.identifier == "addExerciseSegue"){
-            let edv:WorkoutInputViewController = segue.destination as! WorkoutInputViewController
+            let edv:InputExerciseViewController = segue.destination as! InputExerciseViewController
             DBService.shared.setPassedClient(client: client)
             edv.setEdit(bool: false)
         }
