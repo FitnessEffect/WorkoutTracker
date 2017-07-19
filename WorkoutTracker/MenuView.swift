@@ -133,6 +133,7 @@ class MenuView: UIView {
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
             
             let currentController = self.getCurrentViewController()
+            UserDefaults.standard.set(false, forKey: "switch")
 //            do{
 //                try FIRAuth.auth()?.signOut()
 //                
