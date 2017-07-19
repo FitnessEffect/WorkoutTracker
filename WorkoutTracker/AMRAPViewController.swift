@@ -138,7 +138,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-                
             }else{
                 myExercise.exerciseDescription = (minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)" + " | " + amrapString)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])

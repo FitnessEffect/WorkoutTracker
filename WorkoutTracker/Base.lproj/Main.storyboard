@@ -433,7 +433,6 @@
                                     <constraint firstItem="YGy-VF-C4Q" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="cht-ay-xJN"/>
                                     <constraint firstItem="3z8-No-MwX" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="d4E-VO-arL"/>
                                     <constraint firstItem="Gr6-Gu-YZc" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="eJf-xJ-8AC"/>
-                                    <constraint firstItem="Lhu-SC-J5t" firstAttribute="leading" secondItem="4HL-uU-OMV" secondAttribute="leading" constant="72" id="gyx-WE-KEE"/>
                                     <constraint firstAttribute="trailing" secondItem="Vz0-Fi-V2k" secondAttribute="trailing" constant="106" id="iq8-fd-9SU"/>
                                     <constraint firstItem="E1d-A2-fG5" firstAttribute="top" secondItem="QMm-lK-jMa" secondAttribute="bottom" constant="1" id="jsH-O9-jdA"/>
                                     <constraint firstAttribute="bottom" secondItem="lla-uv-X9k" secondAttribute="bottom" constant="79" id="loG-02-wDG"/>
@@ -1202,7 +1201,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3L-Aj-VYj" id="dwg-U2-qFf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-Kx-4Cf">
@@ -1589,7 +1588,7 @@
                                         </connections>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-x7-kbS">
-                                        <rect key="frame" x="92" y="169" width="190" height="50"/>
+                                        <rect key="frame" x="92" y="179" width="190" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Ech-qq-qKj"/>
                                             <constraint firstAttribute="width" constant="190" id="X87-1a-lI1"/>
@@ -1670,9 +1669,9 @@
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="baseline" secondItem="lXa-Pi-mYb" secondAttribute="baseline" id="G0s-mZ-HHx"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="firstBaseline" secondItem="p57-R2-tHV" secondAttribute="firstBaseline" constant="-1" id="HlQ-28-zax"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="bottom" secondItem="bYm-8o-cAH" secondAttribute="bottom" constant="-1" id="IrM-oS-EYs"/>
-                                    <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="38" id="Mfi-q8-Diq"/>
+                                    <constraint firstItem="RWt-x7-kbS" firstAttribute="top" secondItem="FaO-rX-9dF" secondAttribute="bottom" constant="48" id="Mfi-q8-Diq"/>
                                     <constraint firstItem="FaO-rX-9dF" firstAttribute="top" secondItem="NTr-8p-FVc" secondAttribute="top" constant="15" id="XlP-JB-BAP"/>
-                                    <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="448" id="Xni-3w-6la"/>
+                                    <constraint firstAttribute="bottom" secondItem="RWt-x7-kbS" secondAttribute="bottom" constant="438" id="Xni-3w-6la"/>
                                     <constraint firstItem="p57-R2-tHV" firstAttribute="leading" secondItem="bYm-8o-cAH" secondAttribute="trailing" constant="-34" id="b64-rs-j8I"/>
                                     <constraint firstItem="oGI-bm-bWQ" firstAttribute="top" secondItem="bYm-8o-cAH" secondAttribute="top" id="bc0-ys-YAQ"/>
                                     <constraint firstItem="bYm-8o-cAH" firstAttribute="top" secondItem="nBj-NH-kBw" secondAttribute="top" constant="-1" id="fIn-L9-mPm"/>

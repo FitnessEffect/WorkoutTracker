@@ -443,6 +443,10 @@ class DBService {
         _passedExercise?.exerciseKey = ""
     }
     
+    func setPassedClientToPersonal(){
+        _passedClient.firstName = "Personal"
+    }
+    
     func initializeData(){
         //set notifications to 0
         updateNotifications(num: 0)
