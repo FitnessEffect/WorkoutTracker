@@ -11,7 +11,6 @@ import UIKit
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var saveBtn: UIButton!
-    
     @IBOutlet weak var secLabel: UILabel!
     @IBOutlet weak var hLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
@@ -75,18 +74,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x>0 {
-            scrollView.contentOffset.x = 0
-        }
-        if scrollView.contentOffset.x<0 {
-            scrollView.contentOffset.x = 0
-        }
-        if scrollView.contentOffset.y > 50{
-            scrollView.contentOffset.y = 50
-        }
     }
     
     func setClients(clients:[String]){

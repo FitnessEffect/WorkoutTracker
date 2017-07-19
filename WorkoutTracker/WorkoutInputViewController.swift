@@ -82,13 +82,14 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
     
     override func viewWillAppear(_ animated: Bool) {
         workoutInputView.setCurrentDate()
-        nameArray.removeAll()
         DBService.shared.retrieveClients {
+            self.nameArray.removeAll()
             for client in DBService.shared.clients{
                 self.nameArray.append(client.firstName + " " + client.lastName)
             }
             self.nameArray.insert("Personal", at: 0)
         }
+        
         if DBService.shared.passedClient.firstName != ""{
             if DBService.shared.passedClient.firstName == "Personal"{
                 title = DBService.shared.passedClient.firstName
@@ -304,7 +305,7 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 250)
+        popController.preferredContentSize = CGSize(width: 300, height: 210)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if sender.tag == 1{
