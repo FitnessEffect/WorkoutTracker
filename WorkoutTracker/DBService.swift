@@ -44,14 +44,9 @@ class DBService {
         if let u = FIRAuth.auth()?.currentUser {
             _user = u
             
-            retrieveClients(completion: {
-                self._clients.sort(by: {a, b in
-                    if a.firstName < b.firstName {
-                        return true
-                    }
-                    return false
-                })
-            })
+//            retrieveClients(completion: {
+//               self.sortClients()
+//            })
             
             retrieveExercisesForUser(completion: {
                 self._exercisesForUser.sort(by: {a, b in
@@ -77,6 +72,15 @@ class DBService {
         }
         // if they are nil...
         handler(nil, "No user logged in")
+    }
+    
+    func sortClients(){
+        self._clients.sort(by: {a, b in
+            if a.firstName < b.firstName {
+                return true
+            }
+            return false
+        })
     }
     
     func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {

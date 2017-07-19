@@ -70,7 +70,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.clientArray = DBService.shared.clients
             self.tableViewOutlet.reloadData()
         }
-        
     }
     
     func appEnteredForeground(_ notification: Notification){
@@ -113,6 +112,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DBService.shared.deleteClient(id: id)
                 self.clientArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                DBService.shared.passedClient.firstName = "Personal"
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
