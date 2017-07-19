@@ -177,7 +177,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
-        let presenter = self.presentingViewController?.childViewControllers.last as! WorkoutInputViewController
+        let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
         if tagPassed == 1{
             if tempResult == ""{
                 tempResult = namesPassed[0]

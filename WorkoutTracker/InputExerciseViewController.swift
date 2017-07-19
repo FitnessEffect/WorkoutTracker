@@ -1,5 +1,5 @@
 //
-//  WorkoutInputViewController.swift
+//  InputExerciseViewController.swift
 //  WorkoutTracker
 //
 //  Created by Stefan Auvergne on 5/11/17.
@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MessageUI
 
-class WorkoutInputViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate{
+class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate{
     
     @IBOutlet var workoutInputView: WorkoutInputView!
     
@@ -51,8 +51,8 @@ class WorkoutInputViewController: UIViewController, UIPopoverPresentationControl
         print(user.email!)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
-        NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(WorkoutInputViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(InputExerciseViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         
         workoutInputView.initializeView()
         workoutInputView.setNotifications(num:UIApplication.shared.applicationIconBadgeNumber)

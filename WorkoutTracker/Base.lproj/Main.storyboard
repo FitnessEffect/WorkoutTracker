@@ -19,10 +19,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Workout Input View Controller-->
+        <!--Input Exercise View Controller-->
         <scene sceneID="Xf1-ha-tus">
             <objects>
-                <viewController storyboardIdentifier="inputVC" id="pzd-PZ-fvb" customClass="WorkoutInputViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inputVC" id="pzd-PZ-fvb" customClass="InputExerciseViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VXl-1s-rw7"/>
                         <viewControllerLayoutGuide type="bottom" id="Qpj-1o-s2b"/>
@@ -2342,6 +2342,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vQN-UH-ceT"/>
+        <segue reference="TQo-Nm-LIR"/>
     </inferredMetricsTieBreakers>
 </document>
