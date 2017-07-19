@@ -1792,7 +1792,7 @@
             <objects>
                 <navigationController storyboardIdentifier="inputNavID" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IFa-KB-lpl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFa-KB-lpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1953,7 +1953,6 @@
                         <outlet property="segmentedOutlet" destination="GIi-UJ-f7Q" id="jMv-MP-L7O"/>
                         <outlet property="termsOfUseBtn" destination="8v5-Wc-92b" id="wg3-bV-Sj6"/>
                         <outlet property="termsOfUselabel" destination="e5r-O0-1Xl" id="Jmr-Ml-LW0"/>
-                        <segue destination="ubk-nh-pMx" kind="show" identifier="workoutSegue" id="H3Y-P8-sXG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdr-ZL-or6" userLabel="First Responder" sceneMemberID="firstResponder"/>

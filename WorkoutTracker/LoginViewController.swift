@@ -100,13 +100,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
                     //called only for login
-                    self.performSegue(withIdentifier: "workoutSegue", sender: self)
+                    //self.performSegue(withIdentifier: "workoutSegue", sender: self)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc =   storyboard.instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
+                    //self.navigationController!.pushViewController(vc, animated: true)
+                    self.present(vc, animated: true, completion: nil)
                 }
             })
             
         }) as? UInt
     }
-    
+
     @IBAction func termOfUse(_ sender: UIButton) {
         if let url = NSURL(string: "https://github.com/FitnessEffect/WorkoutTracker/blob/master/Terms%20of%20Use"){
             UIApplication.shared.openURL(url as URL)
