@@ -50,11 +50,17 @@ class CreateCrossfitExerciseViewController: UIViewController, UITextFieldDelegat
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        myExercise.name = exName.text!
-        var dictionary = [String:Any]()
-        dictionary[exName.text!.capitalized] = true
-        DBService.shared.createCrossfitExercise(dictionary: dictionary)
-        self.navigationController?.popViewController(animated: true)
+        if exName.text == ""{
+            let alert = UIAlertController(title: "Error", message: "Please enter an exercise name", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            myExercise.name = exName.text!
+            var dictionary = [String:Any]()
+            dictionary[exName.text!.capitalized] = true
+            DBService.shared.createCrossfitExercise(dictionary: dictionary)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {

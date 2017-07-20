@@ -44,21 +44,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xd9-VW-xci">
-                                <rect key="frame" x="0.0" y="461" width="375" height="83"/>
+                                <rect key="frame" x="0.0" y="452" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-mw-bOp">
-                                <rect key="frame" x="0.0" y="348" width="375" height="93"/>
+                                <rect key="frame" x="0.0" y="357" width="375" height="93"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7hE-Sh-Eqt">
-                                <rect key="frame" x="0.0" y="67" width="375" height="170"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7hE-Sh-Eqt">
+                                <rect key="frame" x="0.0" y="85" width="375" height="170"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,7 +66,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-aE-emQ">
-                                <rect key="frame" x="0.0" y="396" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="407" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-gv-R0v">
-                                <rect key="frame" x="0.0" y="314" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="325" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-oB-Cek" userLabel="EraseResult">
-                                <rect key="frame" x="332" y="348" width="35" height="33"/>
+                                <rect key="frame" x="332" y="364" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
                                 <state key="normal" title="X" backgroundImage="chalkBackground">
@@ -101,7 +101,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-zi-tdN" userLabel="EraseEmail">
-                                <rect key="frame" x="332" y="461" width="35" height="33"/>
+                                <rect key="frame" x="332" y="460" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
                                 <state key="normal" title="X" backgroundImage="chalkBackground">
@@ -112,7 +112,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF5-Jb-Wye">
-                                <rect key="frame" x="0.0" y="67" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
@@ -124,7 +124,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-Zy-Bx8">
-                                <rect key="frame" x="0.0" y="232" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="243" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
@@ -136,7 +136,7 @@
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsg-o6-oRT">
-                                <rect key="frame" x="0.0" y="150" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="161" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
@@ -148,7 +148,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-XL-Hjl">
-                                <rect key="frame" x="332" y="74" width="35" height="33"/>
+                                <rect key="frame" x="332" y="92" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="17"/>
                                 <state key="normal" title="X" backgroundImage="chalkBackground">
@@ -623,6 +623,32 @@
                                     <segue destination="V6a-dl-n5I" kind="show" identifier="crossfitSegue" id="6x6-6z-QZd"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EnduranceCell" textLabel="i7H-Ep-MRn" imageView="0Ea-Z8-NKC" style="IBUITableViewCellStyleDefault" id="cud-Sr-ZOc">
+                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cud-Sr-ZOc" id="VZf-Fl-vmF">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Endurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i7H-Ep-MRn">
+                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="0Ea-Z8-NKC">
+                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <segue destination="vI4-uO-6HP" kind="show" identifier="enduranceSegue" id="d53-Of-1b5"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="RjY-wQ-OQ9" id="0WM-ld-wMX"/>
@@ -662,7 +688,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="Myd-gU-vkW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -671,7 +697,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="B1x-uW-Sdp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -878,7 +904,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jNy-Si-t16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7028" y="280.20989505247377"/>
+            <point key="canvasLocation" x="7028" y="280"/>
         </scene>
         <!--Crossfit Category Table View Controller-->
         <scene sceneID="WjX-ye-Wdf">
@@ -1310,7 +1336,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1641,6 +1667,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kms-oK-nZJ">
+                                <rect key="frame" x="165" y="55" width="62" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="meters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzW-WM-nXC">
+                                <rect key="frame" x="176" y="55" width="62" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1654,6 +1694,8 @@
                     <connections>
                         <outlet property="hLabel" destination="lXa-Pi-mYb" id="z51-dn-iAz"/>
                         <outlet property="lbsLabel" destination="nBj-NH-kBw" id="BtN-Nt-XnL"/>
+                        <outlet property="metersLabel" destination="dzW-WM-nXC" id="Gql-9h-bU9"/>
+                        <outlet property="milesLabel" destination="Kms-oK-nZJ" id="owf-YX-VBi"/>
                         <outlet property="minLabel" destination="bYm-8o-cAH" id="IKT-by-hj4"/>
                         <outlet property="repsLabel" destination="oGI-bm-bWQ" id="RU9-Vo-SfW"/>
                         <outlet property="saveBtn" destination="RWt-x7-kbS" id="mvg-B1-jaT"/>
@@ -1792,7 +1834,7 @@
             <objects>
                 <navigationController storyboardIdentifier="inputNavID" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFa-KB-lpl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IFa-KB-lpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2328,6 +2370,294 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByC-yy-cXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5821.6000000000004" y="1558.4707646176912"/>
+        </scene>
+        <!--Endurance Category Table View Controller-->
+        <scene sceneID="mvk-h9-BZu">
+            <objects>
+                <tableViewController storyboardIdentifier="enduranceCategoryVC" id="vI4-uO-6HP" customClass="EnduranceCategoryTableViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="esK-tv-jOJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Hro-li-TDX" imageView="Fkg-ia-f1Q" style="IBUITableViewCellStyleDefault" id="iip-q7-diX">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iip-q7-diX" id="YK4-5T-Is5">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hro-li-TDX">
+                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="Fkg-ia-f1Q">
+                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vI4-uO-6HP" id="9d2-fa-apk"/>
+                            <outlet property="delegate" destination="vI4-uO-6HP" id="osG-nD-gfq"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6m1-yM-5iC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5030" y="-1332"/>
+        </scene>
+        <!--Endurance Selection View Controller-->
+        <scene sceneID="3AR-Ou-eAG">
+            <objects>
+                <viewController storyboardIdentifier="enduranceSelectionVC" id="0gT-UN-A6U" customClass="EnduranceSelectionViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ci3-fU-t9j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mwf-TL-tYx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q5j-Uo-GS0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0h2-1z-Nhn">
+                                <rect key="frame" x="8" y="133" width="359" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="Hdl-Xd-qiO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="0gT-UN-A6U" id="Mil-uN-dgM"/>
+                                    <outlet property="delegate" destination="0gT-UN-A6U" id="cXQ-Wf-8Bn"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-MV-JBt">
+                                <rect key="frame" x="245" y="177" width="53" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="MoL-l5-RA3"/>
+                                    <constraint firstAttribute="width" constant="53" id="X1C-mD-1xO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uio-CA-cRl">
+                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="H8R-k3-zwW"/>
+                                    <constraint firstAttribute="height" constant="50" id="OLE-tL-Gem"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="addExercise:" destination="0gT-UN-A6U" eventType="touchUpInside" id="A4G-kM-dcW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-Fn-ulp">
+                                <rect key="frame" x="140" y="177" width="38" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="8Sm-gc-oic"/>
+                                    <constraint firstAttribute="height" constant="27" id="ciN-G7-Wz7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LI4-CO-7dh">
+                                <rect key="frame" x="244" y="177" width="51" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="che-4E-3sO"/>
+                                    <constraint firstAttribute="height" constant="27" id="n01-mu-qXB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmi-qr-xbg">
+                                <rect key="frame" x="332" y="177" width="33" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="QcB-qw-jvS"/>
+                                    <constraint firstAttribute="width" constant="33" id="tIb-u8-aMQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="91R-oM-TTd">
+                                <rect key="frame" x="97" y="55" width="181" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="8YP-L9-djS"/>
+                                    <constraint firstAttribute="width" constant="181" id="hBE-A1-eMb"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Distance"/>
+                                    <segment title="Time"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedBtn:" destination="0gT-UN-A6U" eventType="valueChanged" id="m28-Aq-fuE"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2K-MZ-WGc">
+                                <rect key="frame" x="251" y="177" width="56" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="0JP-2g-uaf"/>
+                                    <constraint firstAttribute="width" constant="56" id="RRU-l2-SMT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="k2K-MZ-WGc" secondAttribute="trailing" constant="52" id="4jn-D9-dPX"/>
+                            <constraint firstItem="LI4-CO-7dh" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="8EC-7r-JGF"/>
+                            <constraint firstItem="hW4-Fn-ulp" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="BT7-U9-1hB"/>
+                            <constraint firstItem="91R-oM-TTd" firstAttribute="top" secondItem="ci3-fU-t9j" secondAttribute="bottom" constant="35" id="F60-vk-i3H"/>
+                            <constraint firstItem="uio-CA-cRl" firstAttribute="centerX" secondItem="q5j-Uo-GS0" secondAttribute="centerX" id="FUi-cd-uSY"/>
+                            <constraint firstItem="Jmi-qr-xbg" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="Gnm-5V-lL7"/>
+                            <constraint firstItem="0h2-1z-Nhn" firstAttribute="leading" secondItem="q5j-Uo-GS0" secondAttribute="leading" constant="8" id="Gtd-AX-cA2"/>
+                            <constraint firstItem="mLT-MV-JBt" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="MVQ-ts-itU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mLT-MV-JBt" secondAttribute="trailing" constant="61" id="MxM-vz-nj8"/>
+                            <constraint firstItem="LI4-CO-7dh" firstAttribute="leading" secondItem="hW4-Fn-ulp" secondAttribute="trailing" constant="66" id="NM4-S8-mhp"/>
+                            <constraint firstAttribute="trailing" secondItem="0h2-1z-Nhn" secondAttribute="trailing" constant="8" id="dYa-6f-Kp1"/>
+                            <constraint firstItem="91R-oM-TTd" firstAttribute="centerX" secondItem="q5j-Uo-GS0" secondAttribute="centerX" id="fAn-R7-q9X"/>
+                            <constraint firstItem="0h2-1z-Nhn" firstAttribute="top" secondItem="91R-oM-TTd" secondAttribute="bottom" constant="50" id="gCv-KD-efN"/>
+                            <constraint firstItem="uio-CA-cRl" firstAttribute="top" secondItem="0h2-1z-Nhn" secondAttribute="bottom" constant="34" id="iNx-fg-kIr"/>
+                            <constraint firstItem="Jmi-qr-xbg" firstAttribute="leading" secondItem="k2K-MZ-WGc" secondAttribute="leading" constant="81" id="qEe-dr-mBm"/>
+                            <constraint firstItem="Jmi-qr-xbg" firstAttribute="leading" secondItem="LI4-CO-7dh" secondAttribute="trailing" constant="37" id="rfP-dS-W2C"/>
+                            <constraint firstItem="k2K-MZ-WGc" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="y5V-6M-9uH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="add" destination="uio-CA-cRl" id="scT-vE-gtj"/>
+                        <outlet property="hourLabel" destination="hW4-Fn-ulp" id="KIa-cw-q6O"/>
+                        <outlet property="metersLabel" destination="k2K-MZ-WGc" id="NOl-oO-z72"/>
+                        <outlet property="milesLabel" destination="mLT-MV-JBt" id="woU-kb-aCg"/>
+                        <outlet property="minLabel" destination="LI4-CO-7dh" id="0pT-eJ-MGW"/>
+                        <outlet property="pickerOutlet" destination="0h2-1z-Nhn" id="M4s-1S-x4H"/>
+                        <outlet property="secLabel" destination="Jmi-qr-xbg" id="9ks-ds-4Vx"/>
+                        <outlet property="segmentedControl" destination="91R-oM-TTd" id="Bp7-Yt-C6H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CRY-2f-gql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5725.6000000000004" y="-1333.5832083958021"/>
+        </scene>
+        <!--Create Endurance Exercise View Controller-->
+        <scene sceneID="Y1G-cT-Mxi">
+            <objects>
+                <viewController storyboardIdentifier="createEnduranceExerciseID" id="3aP-jd-eR5" customClass="CreateEnduranceExerciseViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T1l-1z-BvS"/>
+                        <viewControllerLayoutGuide type="bottom" id="i4U-OF-0VO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wNI-CK-pAy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-aa-Zag">
+                                <rect key="frame" x="57" y="74" width="260" height="40"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6um-q0-k82"/>
+                                    <constraint firstAttribute="width" constant="260" id="V6d-eH-IgY"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-JL-fAa">
+                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4LS-OR-D6x"/>
+                                    <constraint firstAttribute="width" constant="190" id="a3g-gH-I9P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="addExercise:" destination="3aP-jd-eR5" eventType="touchUpInside" id="OUA-Gp-Usr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EF1-JL-fAa" firstAttribute="top" secondItem="hyN-aa-Zag" secondAttribute="bottom" constant="168" id="7hA-B9-Tfz"/>
+                            <constraint firstItem="hyN-aa-Zag" firstAttribute="centerX" secondItem="wNI-CK-pAy" secondAttribute="centerX" id="JdZ-Lm-yDz"/>
+                            <constraint firstItem="hyN-aa-Zag" firstAttribute="top" secondItem="T1l-1z-BvS" secondAttribute="bottom" constant="54" id="een-iM-4eh"/>
+                            <constraint firstItem="EF1-JL-fAa" firstAttribute="centerX" secondItem="wNI-CK-pAy" secondAttribute="centerX" id="uTb-q8-cov"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="add" destination="EF1-JL-fAa" id="Fi3-J7-Ta6"/>
+                        <outlet property="exName" destination="hyN-aa-Zag" id="1OH-5e-lCD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W2b-Pb-atB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6383" y="-1333"/>
+        </scene>
+        <!--Create Endurance Category View Controller-->
+        <scene sceneID="hP4-uJ-UNb">
+            <objects>
+                <viewController storyboardIdentifier="createEnduranceCategoryID" id="p5p-i4-Sfe" customClass="CreateEnduranceCategoryViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tL0-Ao-p6G"/>
+                        <viewControllerLayoutGuide type="bottom" id="8jO-YZ-6I9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bbi-Vx-pXI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTg-E2-k4n">
+                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="NzO-ss-Fmi"/>
+                                    <constraint firstAttribute="height" constant="50" id="YVw-xp-PYR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="addExercise:" destination="p5p-i4-Sfe" eventType="touchUpInside" id="LW1-tb-dJb"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ihA-lT-Uy8">
+                                <rect key="frame" x="57" y="74" width="260" height="40"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Vrw-Zo-XHg"/>
+                                    <constraint firstAttribute="width" constant="260" id="tbx-2e-zau"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nTg-E2-k4n" firstAttribute="centerX" secondItem="Bbi-Vx-pXI" secondAttribute="centerX" id="8Bw-Lt-Wnn"/>
+                            <constraint firstItem="nTg-E2-k4n" firstAttribute="top" secondItem="ihA-lT-Uy8" secondAttribute="bottom" constant="168" id="Kpy-uw-13Q"/>
+                            <constraint firstItem="ihA-lT-Uy8" firstAttribute="centerX" secondItem="Bbi-Vx-pXI" secondAttribute="centerX" id="Pdg-TT-dAM"/>
+                            <constraint firstItem="ihA-lT-Uy8" firstAttribute="top" secondItem="tL0-Ao-p6G" secondAttribute="bottom" constant="54" id="eUO-cY-Ga9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="add" destination="nTg-E2-k4n" id="qX9-vP-oKU"/>
+                        <outlet property="categoryName" destination="ihA-lT-Uy8" id="3TU-Fu-bQN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqo-pn-O1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5030" y="-2033"/>
         </scene>
     </scenes>
     <resources>

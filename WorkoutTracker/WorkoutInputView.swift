@@ -236,7 +236,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = currentController?.view
-        popController.preferredContentSize = CGSize(width: 300, height: 250)
+        popController.preferredContentSize = CGSize(width: 300, height: 210)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         let int = delegate?.handleResultPickerChoice()

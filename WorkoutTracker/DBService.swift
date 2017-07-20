@@ -24,8 +24,10 @@ class DBService {
     private var _categoryPassed = ""
     private var _exercisesForBodybuildingCategory = [String]()
     private var _exercisesForCrossfitCategory = [String]()
+    private var _exercisesForEnduranceCategory = [String]()
     private var _crossfitCategories = [String]()
     private var _bodybuildingCategories = [String]()
+    private var _enduranceCategories = [String]()
     private var _challengeExercises = [Exercise]()
     private var _typePassed:String!
     private var _emomTime:String!
@@ -150,6 +152,10 @@ class DBService {
         _tabataTime = time
     }
     
+    func createEnduranceExercise(dictionary:[String:Any]){
+        self._ref.child("users").child(user.uid).child("Types").child("Endurance").child(categoryPassed).updateChildValues(dictionary)
+    }
+    
     func createCrossfitExercise(dictionary:[String:Any]){
         self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child(categoryPassed).updateChildValues(dictionary)
     }
@@ -159,6 +165,10 @@ class DBService {
     }
     
     func createBodybuildingCategories(dictionary:[String:Any]){
+        self._ref.child("users").child(user.uid).child("Types").child(_typePassed).updateChildValues(dictionary)
+    }
+    
+    func createEnduranceCategories(dictionary:[String:Any]){
         self._ref.child("users").child(user.uid).child("Types").child(_typePassed).updateChildValues(dictionary)
     }
     
@@ -229,7 +239,6 @@ class DBService {
     
     func retrieveCrossfitCategoryExercises(completion: @escaping () -> Void){
         _exercisesForCrossfitCategory.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Crossfit").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -248,7 +257,6 @@ class DBService {
     
     func retrieveBodybuildingCategories(completion: @escaping () -> Void){
         _bodybuildingCategories.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Bodybuilding").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -256,6 +264,41 @@ class DBService {
                 let keyArray = value?.allKeys as! [String]
                 self._bodybuildingCategories = keyArray
                 self._bodybuildingCategories.sort()
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveEnduranceCategories(completion: @escaping () -> Void){
+        _enduranceCategories.removeAll()
+        
+        _ref.child("users").child(user.uid).child("Types").child("Endurance").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let keyArray = value?.allKeys as! [String]
+                self._enduranceCategories = keyArray
+                self._enduranceCategories.sort()
+                completion()
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveEnduranceCategoryExercises(completion: @escaping () -> Void){
+        _exercisesForEnduranceCategory.removeAll()
+        
+        _ref.child("users").child(user.uid).child("Types").child("Endurance").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let keyArray = value?.allKeys as! [String]
+                self._exercisesForEnduranceCategory = keyArray
+                self._exercisesForEnduranceCategory.sort()
                 completion()
             }
         }) { (error) in
@@ -455,6 +498,12 @@ class DBService {
         //set notifications to 0
         updateNotifications(num: 0)
         
+        var enduranceDictionary = [String:Any]()
+        enduranceDictionary["Running"] = true
+        enduranceDictionary["Cycling"] = true
+        enduranceDictionary["Rowing"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Endurance").updateChildValues(enduranceDictionary)
+        
         var crossfitDictionary = [String:Any]()
         crossfitDictionary["1 Rep Max"] = true
         crossfitDictionary["Amrap"] = true
@@ -578,6 +627,12 @@ class DBService {
         }
     }
     
+    var enduranceCategories:[String]{
+        get{
+            return _enduranceCategories
+        }
+    }
+    
     var exercisesForBodybuildingCategory:[String]{
         get{
             return _exercisesForBodybuildingCategory
@@ -587,6 +642,12 @@ class DBService {
     var exercisesForCrossfitCategory:[String]{
         get{
             return _exercisesForCrossfitCategory
+        }
+    }
+    
+    var exercisesForEnduranceCategory:[String]{
+        get{
+            return _exercisesForEnduranceCategory
         }
     }
     

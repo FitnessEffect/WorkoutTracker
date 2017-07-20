@@ -1,15 +1,15 @@
 //
-//  CreateBodybuildingExerciseViewController.swift
+//  CreateEnduranceExerciseViewController.swift
 //  WorkoutTracker
 //
-//  Created by Stefan Auvergne on 6/2/17.
+//  Created by Stefan Auvergne on 7/19/17.
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDelegate {
+class CreateEnduranceExerciseViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var exName: UITextField!
     @IBOutlet weak var add: UIButton!
@@ -59,7 +59,7 @@ class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDel
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
         dictionary[exName.text!.capitalized] = true
-        DBService.shared.createBodybuildingExercise(dictionary: dictionary)
+        DBService.shared.createEnduranceExercise(dictionary: dictionary)
         self.navigationController?.popViewController(animated: true)
         }
     }

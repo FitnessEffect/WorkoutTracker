@@ -17,6 +17,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var lbsLabel: UILabel!
     @IBOutlet weak var setsLabel: UILabel!
     @IBOutlet weak var repsLabel: UILabel!
+    @IBOutlet weak var metersLabel: UILabel!
+    @IBOutlet weak var milesLabel: UILabel!
     
     var namesPassed:[String]!
     var weights = [String]()
@@ -25,6 +27,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var supersetSets = [String]()
     var minutes = [String]()
     var seconds = [String]()
+    var miles = [String]()
+    var meters = [String]()
     var emom = [String]()
     var tabata = [String]()
     var tagPassed = 0
@@ -47,6 +51,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             weights.append(String(i))
             reps.append(String(i))
             supersetSets.append(String(i))
+            miles.append(String(i))
+        }
+        
+        for i in 0...50000{
+            meters.append(String(i))
         }
         
         for i in 0...59{
@@ -111,6 +120,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return emom.count
         }else if tagPassed == 6{
             return tabata.count
+        }else if tagPassed == 8{
+            return meters.count
+        }else if tagPassed == 9{
+            return miles.count
         }else{
             return supersetSets.count
         }
@@ -135,6 +148,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return emom[row]
         }else if tagPassed == 6{
             return tabata[row]
+        }else if tagPassed == 8{
+            return meters[row]
+        }else if tagPassed == 9{
+            return miles[row]
         }else{
             return supersetSets[row]
         }
@@ -173,6 +190,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 7{
             let temp = supersetSets[row] + " set(s)"
             tempResult = temp
+        }else if tagPassed == 8{
+            let temp = meters[row] + " meter(s)"
+            tempResult = temp
+        }else{
+            let temp = miles[row] + " mile(s)"
+            tempResult = temp
         }
     }
     
@@ -189,11 +212,15 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 if tagPassed == 2{
                     tempResult = "0 hour(s) 0 min(s) 0 sec(s)"
                 }else if tagPassed == 3{
-                    tempResult = "0 lbs"
+                    tempResult = "0 lb(s)"
                 }else if tagPassed == 4{
-                    tempResult = "0 reps"
-                }else{
+                    tempResult = "0 rep(s)"
+                }else if tagPassed == 5 || tagPassed == 6{
                     tempResult = "0 minute(s) completed"
+                }else if tagPassed == 8{
+                    tempResult = "0 meter(s)"
+                }else{
+                    tempResult = "0 mile(s)"
                 }
             }
             if tagPassed == 2{
@@ -212,6 +239,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         lbsLabel.alpha = 0
         setsLabel.alpha = 0
         repsLabel.alpha = 0
+        milesLabel.alpha = 0
+        metersLabel.alpha = 0
         if tagPassed == 1{
             label.text = namesPassed[row]
         }else if tagPassed == 2{
@@ -237,9 +266,15 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 6{
             minLabel.alpha = 1
             label.text = tabata[row]
-        }else{
+        }else if tagPassed == 7{
             setsLabel.alpha = 1
             label.text = supersetSets[row]
+        }else if tagPassed == 8{
+            metersLabel.alpha = 1
+            label.text = meters[row]
+        }else{
+            milesLabel.alpha = 1
+            label.text = miles[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
