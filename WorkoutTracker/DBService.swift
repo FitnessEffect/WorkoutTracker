@@ -518,13 +518,17 @@ class DBService {
         oneRepMaxDictionary["Deadlift"] = true
         oneRepMaxDictionary["Squat"] = true
         oneRepMaxDictionary["Front Squats"] = true
+        oneRepMaxDictionary["Snatch"] = true
+        oneRepMaxDictionary["Clean and Jerk"] = true
+        oneRepMaxDictionary["Bench Press"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("1 Rep Max").updateChildValues(oneRepMaxDictionary)
         
         var bodybuildingDictionary = [String:Any]()
         bodybuildingDictionary["Abs"] = true
         bodybuildingDictionary["Chest"] = true
         bodybuildingDictionary["Legs"] = true
-        bodybuildingDictionary["Arms"] = true
+        bodybuildingDictionary["Biceps"] = true
+        bodybuildingDictionary["Triceps"] = true
         bodybuildingDictionary["Back"] = true
         bodybuildingDictionary["Shoulders"] = true
         bodybuildingDictionary["Superset"] = true
@@ -533,37 +537,57 @@ class DBService {
         var bodybuildingAbsExercise = [String:Any]()
         bodybuildingAbsExercise["Bicycle Crunches"] = true
         bodybuildingAbsExercise["Hanging Knee Raises"] = true
-        bodybuildingAbsExercise["Sit Ups"] = true
+        bodybuildingAbsExercise["Sit-Ups"] = true
+        bodybuildingAbsExercise["Russian Twists"] = true
+        bodybuildingAbsExercise["Decline Sit-Ups"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Abs").updateChildValues(bodybuildingAbsExercise)
         
         var bodybuildingChestExercise = [String:Any]()
+        bodybuildingChestExercise["Dumbbell Press"] = true
         bodybuildingChestExercise["Incline Dumbbell Press"] = true
+        bodybuildingChestExercise["Decline Dumbbell Press"] = true
         bodybuildingChestExercise["Bench Press"] = true
-        bodybuildingChestExercise["Flies"] = true
+        bodybuildingChestExercise["Dumbbell Flies"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Chest").updateChildValues(bodybuildingChestExercise)
         
         var bodybuildingLegsExercise = [String:Any]()
         bodybuildingLegsExercise["Deadlift"] = true
         bodybuildingLegsExercise["Squats"] = true
         bodybuildingLegsExercise["Leg Press"] = true
+        bodybuildingLegsExercise["Smith Machine Squats"] = true
+        bodybuildingLegsExercise["Barbell Lunges"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Legs").updateChildValues(bodybuildingLegsExercise)
         
-        var bodybuildingArmsExercise = [String:Any]()
-        bodybuildingArmsExercise["Dumbbell Alternating Curls"] = true
-        bodybuildingArmsExercise["Barbell Curls"] = true
-        bodybuildingArmsExercise["Hammer Curls"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Arms").updateChildValues(bodybuildingArmsExercise)
+        var bodybuildingBicepsExercise = [String:Any]()
+        bodybuildingBicepsExercise["Dumbbell Alternating Curls"] = true
+        bodybuildingBicepsExercise["Hammer Curls"] = true
+        bodybuildingBicepsExercise["Barbell Curls"] = true
+        bodybuildingBicepsExercise["Close grip Easy Bar Curls"] = true
+        bodybuildingBicepsExercise["Seated Dumbbell Preacher Curls"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Biceps").updateChildValues(bodybuildingBicepsExercise)
+        
+        var bodybuildingTricepsExercise = [String:Any]()
+        bodybuildingTricepsExercise["Seated Extensions"] = true
+        bodybuildingTricepsExercise["Incline Barbell Skull Crushers"] = true
+        bodybuildingTricepsExercise["Cable Pull Downs"] = true
+        bodybuildingTricepsExercise["Dumbbell Skull Crushers"] = true
+        bodybuildingTricepsExercise["Cable Pull Downs reverse grip"] = true
+        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Triceps").updateChildValues(bodybuildingBicepsExercise)
         
         var bodybuildingBackExercise = [String:Any]()
-        bodybuildingBackExercise["Dumbbell Rows"] = true
+        bodybuildingBackExercise["Single Arm Dumbbell Rows"] = true
         bodybuildingBackExercise["Bent Over Barbell Row"] = true
         bodybuildingBackExercise["Lat Pulldown"] = true
+        bodybuildingBackExercise["Seated Row Close Grip"] = true
+        bodybuildingBackExercise["Seated Row Wide Grip"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Back").updateChildValues(bodybuildingBackExercise)
         
         var bodybuildingShouldersExercise = [String:Any]()
-        bodybuildingShouldersExercise["Lateral Dumbbell Raises"] = true
+        bodybuildingShouldersExercise["Dumbbell Lateral Raises"] = true
         bodybuildingShouldersExercise["Barbell High Pulls"] = true
         bodybuildingShouldersExercise["Shoulder Press"] = true
+        bodybuildingShouldersExercise["Dumbbell Front Raises "] = true
+        bodybuildingShouldersExercise["Arnold Press"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Shoulders").updateChildValues(bodybuildingShouldersExercise)
     }
     
