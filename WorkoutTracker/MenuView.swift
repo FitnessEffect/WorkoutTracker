@@ -20,7 +20,7 @@ class MenuView: UIView {
     @IBOutlet weak var clientBtn: UIButton!
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
-    @IBOutlet weak var profileBtn: UIButton!
+    @IBOutlet weak var personalBtn: UIButton!
     
     var delegate: MenuViewDelegate?
     
@@ -39,15 +39,15 @@ class MenuView: UIView {
         homeBtn.layer.shadowOpacity = 0.6
         homeBtn.layer.shadowRadius = 5
         
-        profileBtn.layer.cornerRadius = 5.0
-        profileBtn.clipsToBounds = true
-        profileBtn.layer.borderWidth = 1
-        profileBtn.layer.borderColor = UIColor.black.cgColor
+        personalBtn.layer.cornerRadius = 5.0
+        personalBtn.clipsToBounds = true
+        personalBtn.layer.borderWidth = 1
+        personalBtn.layer.borderColor = UIColor.black.cgColor
         
-        profileBtn.layer.shadowColor = UIColor.black.cgColor
-        profileBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
-        profileBtn.layer.shadowOpacity = 0.6
-        profileBtn.layer.shadowRadius = 5
+        personalBtn.layer.shadowColor = UIColor.black.cgColor
+        personalBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
+        personalBtn.layer.shadowOpacity = 0.6
+        personalBtn.layer.shadowRadius = 5
         
         clientBtn.layer.cornerRadius = 5.0
         clientBtn.clipsToBounds = true

@@ -56,7 +56,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                    <state key="normal" title="Profile">
+                    <state key="normal" title="Personal">
                         <color key="titleColor" red="0.0019415960409999999" green="0.094649694859999994" blue="0.69839686160000003" alpha="0.75684931509999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -95,7 +95,7 @@
                 <outlet property="homeBtn" destination="1pl-4H-5a3" id="ryu-8y-Mby"/>
                 <outlet property="logoutBtn" destination="ET5-8a-P6H" id="1hb-wg-6yE"/>
                 <outlet property="notificationLabel" destination="2i1-hf-GYS" id="8lU-f6-U4Y"/>
-                <outlet property="profileBtn" destination="x47-gG-DUO" id="ca6-p8-1W2"/>
+                <outlet property="personalBtn" destination="x47-gG-DUO" id="hGc-4u-xWB"/>
             </connections>
             <point key="canvasLocation" x="68.5" y="110.5"/>
         </view>
