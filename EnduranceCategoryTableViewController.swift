@@ -94,7 +94,7 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
                 deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                     let x = indexPath.row
                     let id = self.categories[x]
-                    DBService.shared.deleteCategory(category: id)
+                    DBService.shared.deleteEnduranceCategory(category: id)
                     self.categories.remove(at: (indexPath as NSIndexPath).row)
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 }))

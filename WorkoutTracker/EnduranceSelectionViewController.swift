@@ -56,25 +56,10 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
         }
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
-        let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
-        rightBarButton.image = UIImage(named:"addIcon")
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createEnduranceExerciseID") as! CreateEnduranceExerciseViewController
-        popController.setCategory(category:categoryPassed)
-        self.navigationController?.pushViewController(popController, animated: true)
     }
     
     func setCategory(category:String){
