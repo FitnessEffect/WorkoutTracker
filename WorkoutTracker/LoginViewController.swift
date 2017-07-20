@@ -118,7 +118,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
     func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTF.frame.contains(sender.location(in: view)){
             if emailTF.isEditing{

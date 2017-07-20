@@ -52,7 +52,7 @@ class Formatter{
         if arr[0] == "0"{
             if arr[2] == "0"{
                 if arr[4] == "0"{
-                    formattedStr = "0 hour 0 min 0 sec"
+                    formattedStr = "0 hour(s) 0 min(s) 0 sec(s)"
                 }else{
                     formattedStr = arr[4] + " " + arr[5]
                 }
@@ -90,8 +90,7 @@ class Formatter{
     }
     
     static func formatExerciseDescription(desStr:String) -> String{
-        let stringParts = desStr.components(separatedBy: "|")
-        
+        let stringParts = desStr.components(separatedBy: " | ")
         var newString:String = ""
         newString.append("\n")
         for part in stringParts{

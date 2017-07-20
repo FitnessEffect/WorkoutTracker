@@ -17,6 +17,10 @@
 		52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */; };
 		52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */; };
 		52265E0C1F1D04AE009F3B27 /* ForTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */; };
+		52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */; };
+		52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */; };
+		52265E151F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */; };
+		52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
@@ -79,6 +83,10 @@
 		52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabataCustomCell.swift; sourceTree = "<group>"; };
 		52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCustomCell.swift; sourceTree = "<group>"; };
 		52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForTimeViewController.swift; path = ../ForTimeViewController.swift; sourceTree = "<group>"; };
+		52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnduranceCategoryTableViewController.swift; path = ../EnduranceCategoryTableViewController.swift; sourceTree = "<group>"; };
+		52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSelectionViewController.swift; sourceTree = "<group>"; };
+		52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEnduranceExerciseViewController.swift; sourceTree = "<group>"; };
+		52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEnduranceCategoryViewController.swift; path = ../CreateEnduranceCategoryViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -158,6 +166,17 @@
 				52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */,
 			);
 			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		52265E111F203BF6009F3B27 /* Endurance Views */ = {
+			isa = PBXGroup;
+			children = (
+				52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */,
+				52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */,
+				52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */,
+				52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */,
+			);
+			name = "Endurance Views";
 			sourceTree = "<group>";
 		};
 		52717FE21EE8DB7A00DBD8DE /* Services */ = {
@@ -252,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				52192ACC1CD5452100A311A1 /* CustomCells */,
+				52265E111F203BF6009F3B27 /* Endurance Views */,
 				5291C4561CE13EED00DF8C0C /* Bodybuilding Views */,
 				5291C4551CE13ECB00DF8C0C /* Crossfit Views */,
 				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
@@ -514,14 +534,18 @@
 				5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */,
 				52192AC11CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift in Sources */,
 				52265E0C1F1D04AE009F3B27 /* ForTimeViewController.swift in Sources */,
+				52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */,
 				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
 				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
+				52265E151F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift in Sources */,
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
+				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */,
+				52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
 				52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */,

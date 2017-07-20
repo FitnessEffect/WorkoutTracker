@@ -41,11 +41,22 @@ class CreateBodybuildingCategoryViewController: UIViewController, UITextFieldDel
         }
     }
     
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     @IBAction func addExercise(_ sender: UIButton) {
+        if categoryName.text == ""{
+            let alert = UIAlertController(title: "Error", message: "Please enter a category name", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
         myExercise.name = categoryName.text!
         var dictionary = [String:Any]()
         dictionary[categoryName.text!.capitalized] = true
         DBService.shared.createBodybuildingCategories(dictionary: dictionary)
         self.navigationController?.popViewController(animated: true)
+        }
     }
 }

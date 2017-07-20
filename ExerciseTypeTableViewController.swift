@@ -11,7 +11,7 @@ import Firebase
 
 class ExerciseTypeTableViewController: UITableViewController{
     
-    var exerciseType = ["Bodybuilding", "Crossfit"]
+    var exerciseType = ["Bodybuilding", "Crossfit", "Endurance"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,14 @@ class ExerciseTypeTableViewController: UITableViewController{
             cell.backgroundColor = UIColor.clear
             
             return cell
-        }else{
+        }else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CrossfitCell", for: indexPath)
+            let exercise = exerciseType[(indexPath as NSIndexPath).row]
+            cell.textLabel?.text = exercise
+            cell.backgroundColor = UIColor.clear
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EnduranceCell", for: indexPath)
             let exercise = exerciseType[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = exercise
             cell.backgroundColor = UIColor.clear
@@ -54,6 +60,9 @@ class ExerciseTypeTableViewController: UITableViewController{
         }
         if(segue.identifier == "crossfitSegue"){
             DBService.shared.setPassedType(type: "Crossfit")
+        }
+        if(segue.identifier == "enduranceSegue"){
+            DBService.shared.setPassedType(type: "Endurance")
         }
     }
 }

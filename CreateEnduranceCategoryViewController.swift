@@ -1,34 +1,34 @@
 //
-//  CreateBodybuildingExerciseViewController.swift
+//  CreateEnduranceCategoryViewController.swift
 //  WorkoutTracker
 //
-//  Created by Stefan Auvergne on 6/2/17.
+//  Created by Stefan Auvergne on 7/19/17.
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDelegate {
+class CreateEnduranceCategoryViewController: UIViewController, UITextFieldDelegate{
     
-    @IBOutlet weak var exName: UITextField!
+    @IBOutlet weak var categoryName: UITextField!
     @IBOutlet weak var add: UIButton!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var categoryPassed:String!
+    var typePassed:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exName.delegate = self
         
+        categoryName.delegate = self
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         
-        exName.layer.cornerRadius = 5.0
-        exName.clipsToBounds = true
-        exName.layer.borderWidth = 1
-        exName.layer.borderColor = UIColor.white.cgColor
+        categoryName.layer.cornerRadius = 5.0
+        categoryName.clipsToBounds = true
+        categoryName.layer.borderWidth = 1
+        categoryName.layer.borderColor = UIColor.white.cgColor
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,13 +36,9 @@ class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDel
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
-        if !exName.frame.contains(sender.location(in: view)){
+        if !categoryName.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }
-    }
-    
-    func setCategory(category:String){
-        categoryPassed = category
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
@@ -51,15 +47,15 @@ class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDel
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        if exName.text == ""{
-            let alert = UIAlertController(title: "Error", message: "Please enter an exercise name", preferredStyle: UIAlertControllerStyle.alert)
+        if categoryName.text == ""{
+            let alert = UIAlertController(title: "Error", message: "Please enter a category name", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
-        myExercise.name = exName.text!
+        myExercise.name = categoryName.text!
         var dictionary = [String:Any]()
-        dictionary[exName.text!.capitalized] = true
-        DBService.shared.createBodybuildingExercise(dictionary: dictionary)
+        dictionary[categoryName.text!.capitalized] = true
+        DBService.shared.createEnduranceCategories(dictionary: dictionary)
         self.navigationController?.popViewController(animated: true)
         }
     }
