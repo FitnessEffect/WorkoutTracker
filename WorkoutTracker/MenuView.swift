@@ -16,11 +16,11 @@ protocol MenuViewDelegate {
 class MenuView: UIView {
     
     @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var profileBtn: UIButton!
+    @IBOutlet weak var homeBtn: UIButton!
     @IBOutlet weak var clientBtn: UIButton!
-    @IBOutlet weak var historyBtn: UIButton!
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
+    @IBOutlet weak var profileBtn: UIButton!
     
     var delegate: MenuViewDelegate?
     
@@ -29,6 +29,16 @@ class MenuView: UIView {
     }
     
     func addFx() {
+        homeBtn.layer.cornerRadius = 5.0
+        homeBtn.clipsToBounds = true
+        homeBtn.layer.borderWidth = 1
+        homeBtn.layer.borderColor = UIColor.black.cgColor
+        
+        homeBtn.layer.shadowColor = UIColor.black.cgColor
+        homeBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
+        homeBtn.layer.shadowOpacity = 0.6
+        homeBtn.layer.shadowRadius = 5
+        
         profileBtn.layer.cornerRadius = 5.0
         profileBtn.clipsToBounds = true
         profileBtn.layer.borderWidth = 1
@@ -48,16 +58,6 @@ class MenuView: UIView {
         clientBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
         clientBtn.layer.shadowOpacity = 0.6
         clientBtn.layer.shadowRadius = 5
-        
-        historyBtn.layer.cornerRadius = 5.0
-        historyBtn.clipsToBounds = true
-        historyBtn.layer.borderWidth = 1
-        historyBtn.layer.borderColor = UIColor.black.cgColor
-        
-        historyBtn.layer.shadowColor = UIColor.black.cgColor
-        historyBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
-        historyBtn.layer.shadowOpacity = 0.6
-        historyBtn.layer.shadowRadius = 5
         
         challengeBtn.layer.cornerRadius = 5.0
         challengeBtn.clipsToBounds = true
@@ -115,7 +115,7 @@ class MenuView: UIView {
             currentController?.present(inputVC, animated: false, completion: nil)
             
         }else if sender.tag == 2{
-            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyNavID") as! UINavigationController
+            let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileNavID") as! UINavigationController
             let currentController = self.getCurrentViewController()
             currentController?.present(historyVC, animated: false, completion: nil)
             

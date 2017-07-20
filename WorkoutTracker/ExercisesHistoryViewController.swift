@@ -15,23 +15,24 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
-    var client = Client()
+    //var client = Client()
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!
     var tempKey:String!
-    var menuShowing = false
-    var menuView:MenuView!
+    //var menuShowing = false
+    //var menuView:MenuView!
     var overlayView: OverlayView!
     var user:FIRUser!
+    //var button:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         
-        title = "History"
+        self.title = "History"
         
-        NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -40,24 +41,24 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
-        tableViewOutlet.addGestureRecognizer(tapGesture)
-        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
-        self.view.addGestureRecognizer(gesture)
-        overlayView = OverlayView.instanceFromNib() as! OverlayView
-        menuView = MenuView.instanceFromNib() as! MenuView
-        view.addSubview(overlayView)
-        view.addSubview(menuView)
-        overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        overlayView.alpha = 0
-        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-        
-        notificationNumber.layer.cornerRadius = 10.0
-        notificationNumber.clipsToBounds = true
-        notificationNumber.layer.borderWidth = 1
-        notificationNumber.layer.borderColor = UIColor.red.cgColor
-        
-        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
+//        tableViewOutlet.addGestureRecognizer(tapGesture)
+//        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+//        self.view.addGestureRecognizer(gesture)
+//        overlayView = OverlayView.instanceFromNib() as! OverlayView
+//        menuView = MenuView.instanceFromNib() as! MenuView
+//        view.addSubview(overlayView)
+//        view.addSubview(menuView)
+//        overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//        overlayView.alpha = 0
+//        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+//        
+//        notificationNumber.layer.cornerRadius = 10.0
+//        notificationNumber.clipsToBounds = true
+//        notificationNumber.layer.borderWidth = 1
+//        notificationNumber.layer.borderColor = UIColor.red.cgColor
+//        
+//        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,28 +91,28 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    @IBAction func openMenu(_ sender: UIBarButtonItem) {
-        addSelector()
-    }
+//    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+//        addSelector()
+//    }
     
-    func addSelector() {
-        //slide view in here
-        if menuShowing == false{
-            menuView.addFx()
-            UIView.animate(withDuration: 0.3, animations: {
-                self.menuView.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
-                self.view.isHidden = false
-                self.overlayView.alpha = 1
-            })
-            menuShowing = true
-        }else{
-            UIView.animate(withDuration: 0.3, animations: {
-                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-                self.overlayView.alpha = 0
-            })
-            menuShowing = false
-        }
-    }
+//    func addSelector() {
+//        //slide view in here
+//        if menuShowing == false{
+//            menuView.addFx()
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.menuView.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
+//                self.view.isHidden = false
+//                self.overlayView.alpha = 1
+//            })
+//            menuShowing = true
+//        }else{
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+//                self.overlayView.alpha = 0
+//            })
+//            menuShowing = false
+//        }
+//    }
     
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
@@ -122,20 +123,20 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
-        if menuShowing == true{
-            //remove menu view
-            UIView.animate(withDuration: 0.3, animations: {
-                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-                self.overlayView.alpha = 0
-            })
-            menuShowing = false
-        }else{
-            if tableViewOutlet.frame.contains(sender.location(in: view)){
-                performSegue(withIdentifier: "editExerciseSegue", sender: sender)
-            }
-        }
-    }
+//    func hitTest(_ sender:UITapGestureRecognizer){
+//        if menuShowing == true{
+//            //remove menu view
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+//                self.overlayView.alpha = 0
+//            })
+//            menuShowing = false
+//        }else{
+//            if tableViewOutlet.frame.contains(sender.location(in: view)){
+//                performSegue(withIdentifier: "editExerciseSegue", sender: sender)
+//            }
+//        }
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -176,15 +177,16 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
-            let s = sender as! UITapGestureRecognizer
+
             let wivc:InputExerciseViewController = segue.destination as! InputExerciseViewController
-            let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
-            DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
-            wivc.setEdit(bool: true)
+            //DBService.shared.setPassedClient(client: clientPassed)
+            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
+            DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
+            wivc.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
             let edv:InputExerciseViewController = segue.destination as! InputExerciseViewController
-            DBService.shared.setPassedClient(client: client)
+            //DBService.shared.setPassedClient(client: client)
             edv.setEdit(bool: false)
         }
     }

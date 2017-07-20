@@ -21,6 +21,8 @@
 		52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */; };
 		52265E151F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */; };
 		52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */; };
+		52265E191F20F559009F3B27 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* ProfileViewController.swift */; };
+		52265E1B1F20FB16009F3B27 /* ProfileStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* ProfileStatsViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
@@ -87,6 +89,8 @@
 		52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSelectionViewController.swift; sourceTree = "<group>"; };
 		52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEnduranceExerciseViewController.swift; sourceTree = "<group>"; };
 		52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEnduranceCategoryViewController.swift; path = ../CreateEnduranceCategoryViewController.swift; sourceTree = "<group>"; };
+		52265E181F20F559009F3B27 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		52265E1A1F20FB16009F3B27 /* ProfileStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStatsViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -210,6 +214,8 @@
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
+				52265E1A1F20FB16009F3B27 /* ProfileStatsViewController.swift */,
+				52265E181F20F559009F3B27 /* ProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52265E1B1F20FB16009F3B27 /* ProfileStatsViewController.swift in Sources */,
 				526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */,
 				5276517D1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift in Sources */,
 				5291C45E1CE144B900DF8C0C /* BodybuildingSelectionViewController.swift in Sources */,
@@ -564,6 +571,7 @@
 				52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */,
 				52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */,
 				52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */,
+				52265E191F20F559009F3B27 /* ProfileViewController.swift in Sources */,
 				527D07E81CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift in Sources */,
 				52F6A89F1C5F0036000FD7B0 /* AppDelegate.swift in Sources */,
 			);
