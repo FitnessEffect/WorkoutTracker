@@ -2306,7 +2306,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-e0-5Pv">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reps / Exercise / Weight" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-e0-5Pv">
                                                     <rect key="frame" x="57" y="2" width="260" height="35"/>
                                                     <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -2314,7 +2314,7 @@
                                                         <constraint firstAttribute="height" constant="35" id="5na-ys-ZAr"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="26"/>
+                                                    <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -2415,7 +2415,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6m1-yM-5iC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5030" y="-1332"/>
+            <point key="canvasLocation" x="5233" y="-1334"/>
         </scene>
         <!--Endurance Selection View Controller-->
         <scene sceneID="3AR-Ou-eAG">
@@ -2551,7 +2551,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRY-2f-gql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5725.6000000000004" y="-1333.5832083958021"/>
+            <point key="canvasLocation" x="5929" y="-1335"/>
         </scene>
         <!--Create Endurance Exercise View Controller-->
         <scene sceneID="Y1G-cT-Mxi">
@@ -2604,7 +2604,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2b-Pb-atB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6383" y="-1333"/>
+            <point key="canvasLocation" x="6585" y="-1335"/>
         </scene>
         <!--Create Endurance Category View Controller-->
         <scene sceneID="hP4-uJ-UNb">
@@ -2657,7 +2657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqo-pn-O1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5030" y="-2033"/>
+            <point key="canvasLocation" x="5233" y="-2035"/>
         </scene>
     </scenes>
     <resources>
@@ -2671,6 +2671,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TQo-Nm-LIR"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>
