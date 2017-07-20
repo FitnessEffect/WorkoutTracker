@@ -27,7 +27,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         passwordTF.delegate = self
         emailTF.delegate = self
         
@@ -44,34 +43,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
             rememberMeSwitch.setOn(true, animated: true)
-            //            var eLog = ""
-            //            var pLog = ""
-            //            if ((UserDefaults.standard.object(forKey: "emailLogin") as? String) != nil){
-            //                eLog = (UserDefaults.standard.object(forKey: "emailLogin") as? String)!
-            //            }
-            //            if ((UserDefaults.standard.object(forKey: "passwordLogin") as? String) != nil){
-            //                pLog = (UserDefaults.standard.object(forKey: "passwordLogin") as? String)!
-            //            }
-            //            if eLog != "" && pLog != ""{
-            //                FIRAuth.auth()?.signIn(withEmail: eLog, password: pLog, completion:{(success) in
-            //                    if success.0 == nil{
-            //                        let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
-            //                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            //                        alertController.addAction(defaultAction)
-            //                        self.present(alertController, animated: true, completion: nil)
-            //                    }
-            //                })
-            //            }
-            
             setAuthListener()
         }
         else {
             rememberMeSwitch.setOn(false, animated: true)
-            //            do{
-            //                try FIRAuth.auth()?.signOut()
-            //            }catch{
-            //
-            //            }
         }
     }
     
@@ -90,7 +65,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     print(message!)
                     return
                 } else {
-                    
                     DBService.shared.initUser()
                     if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
                         print(deviceTokenString)
@@ -103,19 +77,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     //self.performSegue(withIdentifier: "workoutSegue", sender: self)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc =   storyboard.instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
-                    //self.navigationController!.pushViewController(vc, animated: true)
                     self.present(vc, animated: true, completion: nil)
                 }
             })
-            
         }) as? UInt
     }
-
+    
     @IBAction func termOfUse(_ sender: UIButton) {
         if let url = NSURL(string: "https://github.com/FitnessEffect/WorkoutTracker/blob/master/Terms%20of%20Use"){
             UIApplication.shared.openURL(url as URL)
         }
-        
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -179,8 +150,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
-                // UserDefaults.standard.set(self.emailTF.text!, forKey: "emailLogin")
-                // UserDefaults.standard.set(self.passwordTF.text!, forKey: "passwordLogin")
             })
         }
     }
@@ -221,12 +190,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     
-                    
                     let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
-                } else {
+                }else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)

@@ -5,7 +5,6 @@
 //  Created by Stefan Auvergne on 5/9/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-//  This controller provides a list of bodyParts
 
 import UIKit
 import Firebase

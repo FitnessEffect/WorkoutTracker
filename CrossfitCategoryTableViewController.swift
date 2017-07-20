@@ -5,7 +5,6 @@
 //  Created by Stefan Auvergne on 4/14/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-// This tableView Controller displays a list of crossfit workouts
 
 import UIKit
 import Firebase

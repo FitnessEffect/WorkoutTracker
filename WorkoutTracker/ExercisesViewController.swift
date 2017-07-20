@@ -5,8 +5,6 @@
 //  Created by Stefan Auvergne on 3/3/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-//  The ExerciseViewController is responsible for displaying exercises in the
-//  tableView
 
 import UIKit
 import Firebase

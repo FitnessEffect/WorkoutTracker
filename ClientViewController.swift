@@ -5,9 +5,6 @@
 //  Created by Stefan Auvergne on 3/4/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-//  The ClientViewController is responsible for displaying the clients in the
-//  tableView and for saving the workouts and exercises for the respective
-//  client to a file
 
 import UIKit
 import Firebase

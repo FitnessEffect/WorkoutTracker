@@ -688,7 +688,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="Myd-gU-vkW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -697,7 +697,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="B1x-uW-Sdp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1336,7 +1336,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1578,7 +1578,7 @@
             <objects>
                 <navigationController storyboardIdentifier="exerciseNavID" automaticallyAdjustsScrollViewInsets="NO" id="bAR-Af-Bzn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gql-r2-aGv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gql-r2-aGv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1829,7 +1829,7 @@
             <objects>
                 <navigationController storyboardIdentifier="inputNavID" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IFa-KB-lpl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFa-KB-lpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2118,7 +2118,7 @@
             <objects>
                 <navigationController storyboardIdentifier="clientNavID" automaticallyAdjustsScrollViewInsets="NO" id="eOA-Kw-WaG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xhw-3y-dWu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xhw-3y-dWu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2243,7 +2243,7 @@
             <objects>
                 <navigationController storyboardIdentifier="challengesNavID" automaticallyAdjustsScrollViewInsets="NO" id="X8U-Tw-LmN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Uq7-Rw-d5f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uq7-Rw-d5f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2677,7 +2677,7 @@
             <objects>
                 <navigationController storyboardIdentifier="profileNavID" automaticallyAdjustsScrollViewInsets="NO" id="CSd-EX-vQ6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nom-5R-TMC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nom-5R-TMC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2757,23 +2757,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qie-1D-1fz">
-                                <rect key="frame" x="171" y="35" width="33" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="FDY-kB-l2R"/>
-                                    <constraint firstAttribute="height" constant="23" id="k2A-jN-rt2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSJ-A5-i9k">
-                                <rect key="frame" x="158" y="153" width="58" height="21"/>
+                                <rect key="frame" x="140" y="153" width="95" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="EyA-XE-qTY"/>
-                                    <constraint firstAttribute="width" constant="58" id="rLM-ft-gDi"/>
+                                    <constraint firstAttribute="width" constant="95" id="rLM-ft-gDi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2788,12 +2778,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDJ-bl-D8h">
-                                <rect key="frame" x="157" y="271" width="60" height="21"/>
+                                <rect key="frame" x="140" y="271" width="95" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BH7-MF-Wfi"/>
-                                    <constraint firstAttribute="width" constant="60" id="Hob-bN-Lo8"/>
+                                    <constraint firstAttribute="width" constant="95" id="Hob-bN-Lo8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2804,6 +2794,16 @@
                                     <constraint firstAttribute="width" constant="27" id="glb-i0-8up"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qie-1D-1fz">
+                                <rect key="frame" x="140" y="35" width="95" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="FDY-kB-l2R"/>
+                                    <constraint firstAttribute="height" constant="23" id="k2A-jN-rt2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

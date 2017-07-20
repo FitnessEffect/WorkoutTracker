@@ -24,7 +24,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
@@ -38,7 +37,7 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         notificationNumber.clipsToBounds = true
         notificationNumber.layer.borderWidth = 1
         notificationNumber.layer.borderColor = UIColor.red.cgColor
-                
+        
         button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
@@ -59,7 +58,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +93,7 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         // present the popover
         self.present(popController, animated: true, completion: nil)
     }
-
+    
     
     func appEnteredForeground(_ notification: Notification){
         let num  = UIApplication.shared.applicationIconBadgeNumber

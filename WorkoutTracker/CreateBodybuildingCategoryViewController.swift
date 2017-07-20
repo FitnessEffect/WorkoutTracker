@@ -1,9 +1,9 @@
 //
 //  CreateBodybuildingCategoryViewController.swift
-//
+//  WorkoutTracker
 //
 //  Created by Stefan Auvergne on 6/2/17.
-//
+//  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
 import UIKit
@@ -20,8 +20,8 @@ class CreateBodybuildingCategoryViewController: UIViewController, UITextFieldDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         categoryName.delegate = self
+        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         

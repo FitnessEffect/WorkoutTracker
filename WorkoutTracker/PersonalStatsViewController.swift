@@ -23,7 +23,6 @@ class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         for x in 0...120{
             age.append(String(x))
         }
@@ -121,24 +120,24 @@ class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UI
     }
     
     @IBAction func createClient(_ sender: UIButton) {
-            let ageId:Int = agePickerView.selectedRow(inComponent: 0)
-            let tempAge = self.age[ageId]
-            let ftId:Int = heightPickerView.selectedRow(inComponent: 0)
-            let tempFeet = feet[ftId]
-            let inId:Int = heightPickerView.selectedRow(inComponent: 1)
-            let tempInches = inches[inId]
-            let lbsId:Int = weightPickerView.selectedRow(inComponent: 0)
-            let tempWeight = weight[lbsId]
-    
-            var userDictionary = [String:Any]()
-            userDictionary["age"] = tempAge
-            userDictionary["feet"] = tempFeet
-            userDictionary["inches"] = tempInches
-            userDictionary["weight"] = tempWeight
-            
-            DBService.shared.updateProfileStats(newStats: userDictionary, completion: {
-                let presenter = self.presentingViewController?.childViewControllers.last
-                self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
-            })
+        let ageId:Int = agePickerView.selectedRow(inComponent: 0)
+        let tempAge = self.age[ageId]
+        let ftId:Int = heightPickerView.selectedRow(inComponent: 0)
+        let tempFeet = feet[ftId]
+        let inId:Int = heightPickerView.selectedRow(inComponent: 1)
+        let tempInches = inches[inId]
+        let lbsId:Int = weightPickerView.selectedRow(inComponent: 0)
+        let tempWeight = weight[lbsId]
+        
+        var userDictionary = [String:Any]()
+        userDictionary["age"] = tempAge
+        userDictionary["feet"] = tempFeet
+        userDictionary["inches"] = tempInches
+        userDictionary["weight"] = tempWeight
+        
+        DBService.shared.updateProfileStats(newStats: userDictionary, completion: {
+            let presenter = self.presentingViewController?.childViewControllers.last
+            self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
+        })
     }
 }

@@ -31,7 +31,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = categoryPassed
         metersLabel.alpha = 0
         milesLabel.alpha = 0
         hourLabel.alpha = 0
@@ -42,12 +42,9 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
             minutes.append(String(i))
             seconds.append(String(i))
         }
-        
         for i in 0...1000{
             miles.append(String(i))
         }
-        
-        title = categoryPassed
         
         if categoryPassed == "Rowing"{
             metersLabel.alpha = 1
@@ -55,7 +52,6 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
             milesLabel.alpha = 1
         }
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,15 +128,14 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        
         myExercise.name = self.title!
+        myExercise.type = "Endurance"
+        
         if segmentedControl.selectedSegmentIndex == 0{
             myExercise.category = "Distance"
         }else{
             myExercise.category = "Time"
         }
-        
-        myExercise.type = "Endurance"
         
         if segmentedControl.selectedSegmentIndex == 0{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
@@ -180,11 +175,9 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
                 label.text = seconds[row]
             }
         }
-        
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
-        
         return label
     }
 }

@@ -52,11 +52,11 @@ class CreateEnduranceCategoryViewController: UIViewController, UITextFieldDelega
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
-        myExercise.name = categoryName.text!
-        var dictionary = [String:Any]()
-        dictionary[categoryName.text!.capitalized] = true
-        DBService.shared.createEnduranceCategories(dictionary: dictionary)
-        self.navigationController?.popViewController(animated: true)
+            myExercise.name = categoryName.text!
+            var dictionary = [String:Any]()
+            dictionary[categoryName.text!.capitalized] = true
+            DBService.shared.createEnduranceCategories(dictionary: dictionary)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
