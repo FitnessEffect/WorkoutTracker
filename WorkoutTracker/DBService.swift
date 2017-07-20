@@ -15,6 +15,7 @@ class DBService {
     
     private var _ref: FIRDatabaseReference!
     private var _user: FIRUser!
+    private var _userStats = [String:Any]()
     private var _clients = [Client]()
     private var _passedExercise:Exercise? = Exercise()
     private var _passedClient = Client()
@@ -97,6 +98,27 @@ class DBService {
             completion()
         })
     }
+    
+    func updateProfileStats(newStats: [String:Any], completion:@escaping ()->Void) {
+        _ref.child("users").child(_user.uid).child("Profile").updateChildValues(newStats)
+        completion()
+    }
+    
+    func retrieveUserStats(completion:@escaping ()->Void){
+        _ref.child("users").child(_user.uid).child("Profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                self._userStats["age"] = value?["age"] as! String
+                self._userStats["feet"] = value?["feet"] as! String
+                self._userStats["inches"] = value?["inches"] as! String
+                self._userStats["weight"] = value?["weight"] as! String
+                completion()
+            }
+        })
+    }
+
     
     func saveChallengeExercise(exerciseDictionary:[String:Any]){
         self._ref.child("users").child(user.uid).child("Challenges").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
@@ -594,6 +616,12 @@ class DBService {
     var user: FIRUser {
         get {
             return _user
+        }
+    }
+    
+    var userStats: [String:Any]{
+        get{
+            return _userStats
         }
     }
     

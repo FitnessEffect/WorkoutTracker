@@ -87,7 +87,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             for client in DBService.shared.clients{
                 self.nameArray.append(client.firstName + " " + client.lastName)
             }
-           self.nameArray.insert("Personal", at: 0)
+            self.nameArray.insert("Personal", at: 0)
             //check in case call is asynchronous
             for x in 0...self.nameArray.count - 1{
                 var tempCount = 0
@@ -100,12 +100,12 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             }
         }
         self.nameArray.insert("Personal", at: 0)
-
+        
         if DBService.shared.passedClient.firstName != ""{
             if DBService.shared.passedClient.firstName == "Personal"{
                 title = DBService.shared.passedClient.firstName
             }else{
-            title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
+                title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
             }
         }else{
             title = "Personal"
@@ -126,6 +126,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         //clear passedExercise
         DBService.shared.clearExercisePassed()
         DBService.shared.setPassedClientToPersonal()
+        
     }
     
     func updateNotification(_ notification: Notification) {
@@ -169,7 +170,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
                 return 2
             }else{
                 if tempExercise.name == "Rowing"{
-                  return 8
+                    return 8
                 }else{
                     return 9
                 }

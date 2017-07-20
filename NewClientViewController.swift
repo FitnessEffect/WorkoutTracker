@@ -152,8 +152,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0{
             return age.count
-        }else if pickerView.tag == 1{
-            return activityLevel.count
         }else if pickerView.tag == 2{
             if component == 0{
                 return feet.count
@@ -168,8 +166,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0{
             return age[row]
-        }else if pickerView.tag == 1{
-            return activityLevel[row]
         }else if pickerView.tag == 2{
             if component == 0{
                 return feet[row]
@@ -185,8 +181,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         let label = UILabel()
         if pickerView.tag == 0{
             label.text = age[row]
-        }else if pickerView.tag == 1{
-            label.text = activityLevel[row]
         }else if pickerView.tag == 2{
             if component == 0{
                 label.text = feet[row]
