@@ -594,7 +594,7 @@ class DBService {
         bodybuildingTricepsExercise["Cable Pull Downs"] = true
         bodybuildingTricepsExercise["Dumbbell Skull Crushers"] = true
         bodybuildingTricepsExercise["Cable Pull Downs reverse grip"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Triceps").updateChildValues(bodybuildingBicepsExercise)
+        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Triceps").updateChildValues(bodybuildingTricepsExercise)
         
         var bodybuildingBackExercise = [String:Any]()
         bodybuildingBackExercise["Single Arm Dumbbell Rows"] = true
