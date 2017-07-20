@@ -2636,10 +2636,10 @@
             </objects>
             <point key="canvasLocation" x="6172" y="-2035.2323838080961"/>
         </scene>
-        <!--Profile-->
+        <!--Personal-->
         <scene sceneID="AC0-Ua-G6S">
             <objects>
-                <viewController storyboardIdentifier="ProfileID" id="BB7-6R-HUh" customClass="ProfileViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileID" id="BB7-6R-HUh" customClass="PersonalViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ref-ye-aTi"/>
                         <viewControllerLayoutGuide type="bottom" id="IKm-HT-bep"/>
@@ -2708,7 +2708,7 @@
                             <constraint firstItem="0ph-pe-rTa" firstAttribute="leading" secondItem="3M7-mY-aIQ" secondAttribute="leading" id="xTU-yH-JJF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="lOA-PF-mh0">
+                    <navigationItem key="navigationItem" title="Personal" id="lOA-PF-mh0">
                         <barButtonItem key="leftBarButtonItem" image="menuIcon" id="Lt4-2x-sHc">
                             <connections>
                                 <action selector="openMenu:" destination="BB7-6R-HUh" id="LHP-UZ-NkC"/>
@@ -2743,10 +2743,10 @@
             </objects>
             <point key="canvasLocation" x="-1233" y="1636"/>
         </scene>
-        <!--Profile Stats View Controller-->
+        <!--Personal Stats View Controller-->
         <scene sceneID="fR8-5h-UJt">
             <objects>
-                <viewController storyboardIdentifier="profileStatsVC" id="J9C-oa-BSl" customClass="ProfileStatsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="personalStatsVC" id="J9C-oa-BSl" customClass="PersonalStatsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bCb-zB-Vs7"/>
                         <viewControllerLayoutGuide type="bottom" id="Ha4-tc-jVW"/>

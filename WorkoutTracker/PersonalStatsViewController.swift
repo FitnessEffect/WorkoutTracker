@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ProfileStatsViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate {
+class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var agePickerView: UIPickerView!
     @IBOutlet weak var weightPickerView: UIPickerView!

@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
+class PersonalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     var history:[String] = ["History"]
     var selectedRow:Int = 0
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
         button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-        button.setTitle("Profile", for: .normal)
+        button.setTitle("Personal", for: .normal)
         button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
         self.navigationItem.titleView = button
         UIApplication.shared.keyWindow?.addSubview(notificationNumber)
@@ -80,7 +80,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         yPosition = self.view.frame.minY + 60
         
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileStatsVC") as! ProfileStatsViewController
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "personalStatsVC") as! PersonalStatsViewController
         
         // set the presentation style
         popController.modalPresentationStyle = UIModalPresentationStyle.popover
