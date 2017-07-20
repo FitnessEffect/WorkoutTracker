@@ -170,14 +170,14 @@
 			name = CustomCells;
 			sourceTree = "<group>";
 		};
-		52265E111F203BF6009F3B27 /* Endurance Views */ = {
+		52265E111F203BF6009F3B27 /* Endurance */ = {
 			isa = PBXGroup;
 			children = (
 				52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */,
 				52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */,
 				52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */,
 			);
-			name = "Endurance Views";
+			name = Endurance;
 			sourceTree = "<group>";
 		};
 		52717FE21EE8DB7A00DBD8DE /* Services */ = {
@@ -201,23 +201,22 @@
 		5283E0801C89130500FB716B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5291C4551CE13ECB00DF8C0C /* Crossfit */,
+				5291C4561CE13EED00DF8C0C /* Bodybuilding  */,
+				52265E111F203BF6009F3B27 /* Endurance */,
+				529FC7C51F21676800C16203 /* Clients */,
 				52CB16A81EFBFC8F00F4232D /* Format */,
 				52CB16A71EFBFBD500F4232D /* Popovers */,
+				529FC7C41F21673A00C16203 /* Personal  */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
-				5283E0831C89F53200FB716B /* ClientViewController.swift */,
-				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
-				5283E07E1C890E6200FB716B /* ExercisesViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
-				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
-				52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */,
-				52265E181F20F559009F3B27 /* PersonalViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		5291C4551CE13ECB00DF8C0C /* Crossfit Views */ = {
+		5291C4551CE13ECB00DF8C0C /* Crossfit */ = {
 			isa = PBXGroup;
 			children = (
 				52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */,
@@ -228,10 +227,10 @@
 				52192AC41CC186A300A311A1 /* TabataViewController.swift */,
 				527D07E51CE11E2E00F46B57 /* HeroWodsViewController.swift */,
 			);
-			name = "Crossfit Views";
+			name = Crossfit;
 			sourceTree = "<group>";
 		};
-		5291C4561CE13EED00DF8C0C /* Bodybuilding Views */ = {
+		5291C4561CE13EED00DF8C0C /* Bodybuilding  */ = {
 			isa = PBXGroup;
 			children = (
 				527D07E71CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift */,
@@ -239,7 +238,38 @@
 				5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */,
 				527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */,
 			);
-			name = "Bodybuilding Views";
+			name = "Bodybuilding ";
+			sourceTree = "<group>";
+		};
+		529FC7C31F2166E500C16203 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
+				52EB1DEE1ECA77F2004CA561 /* MenuView.swift */,
+				52EB1DF01ECA7902004CA561 /* OverlayView.xib */,
+				52EB1DF41ECA7949004CA561 /* OverlayView.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		529FC7C41F21673A00C16203 /* Personal  */ = {
+			isa = PBXGroup;
+			children = (
+				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
+				52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */,
+				52265E181F20F559009F3B27 /* PersonalViewController.swift */,
+			);
+			name = "Personal ";
+			sourceTree = "<group>";
+		};
+		529FC7C51F21676800C16203 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				5283E0831C89F53200FB716B /* ClientViewController.swift */,
+				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
+				5283E07E1C890E6200FB716B /* ExercisesViewController.swift */,
+			);
+			name = Clients;
 			sourceTree = "<group>";
 		};
 		52CB16A71EFBFBD500F4232D /* Popovers */ = {
@@ -274,13 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				52192ACC1CD5452100A311A1 /* CustomCells */,
-				52265E111F203BF6009F3B27 /* Endurance Views */,
-				5291C4561CE13EED00DF8C0C /* Bodybuilding Views */,
-				5291C4551CE13ECB00DF8C0C /* Crossfit Views */,
-				52EB1DEC1ECA77A2004CA561 /* MenuView.xib */,
-				52EB1DEE1ECA77F2004CA561 /* MenuView.swift */,
-				52EB1DF01ECA7902004CA561 /* OverlayView.xib */,
-				52EB1DF41ECA7949004CA561 /* OverlayView.swift */,
+				529FC7C31F2166E500C16203 /* Menu */,
 				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 			);
 			name = Views;
@@ -310,7 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				52717FE21EE8DB7A00DBD8DE /* Services */,
-				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
 				52FCD5C21CB59F87008B0472 /* Models */,
 				52EB1DEB1ECA778C004CA561 /* Views */,
 				5283E0801C89130500FB716B /* Controllers */,
@@ -318,6 +341,7 @@
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
+				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
 				523470651ED099F90079D03E /* GoogleService-Info.plist */,
 				52F6A8A71C5F0036000FD7B0 /* LaunchScreen.storyboard */,
 				52F6A8AA1C5F0036000FD7B0 /* Info.plist */,

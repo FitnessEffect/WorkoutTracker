@@ -5,7 +5,6 @@
 //  Created by Stefan Auvergne on 5/9/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-// Displays a list of Back exercises
 
 import UIKit
 import Firebase

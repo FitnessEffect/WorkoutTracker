@@ -5,7 +5,6 @@
 //  Created by Stefan Auvergne on 4/15/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-//  This controller allows the user to create a Metcon
 
 import UIKit
 

@@ -5,7 +5,6 @@
 //  Created by Stefan Auvergne on 3/3/16.
 //  Copyright © 2016 Stefan Auvergne. All rights reserved.
 //
-//  Creates a new Client and returns it to the ClientViewController.
 
 import UIKit
 import Firebase
