@@ -120,15 +120,20 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         
         if pickerView.tag == 0 {
             label.text = exercises[row]
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            label.attributedText = myTitle
+            label.textAlignment = NSTextAlignment.center
         }else if component == 0{
             label.text = reps[row]
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            label.attributedText = myTitle
+            label.textAlignment = NSTextAlignment.center
         }else{
             label.text = sets[row]
+            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+            label.attributedText = myTitle
+            label.textAlignment = NSTextAlignment.center
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 25.0)!,NSForegroundColorAttributeName:UIColor.black])
-        label.attributedText = myTitle
-        label.textAlignment = NSTextAlignment.center
-        
         return label
     }
 }
