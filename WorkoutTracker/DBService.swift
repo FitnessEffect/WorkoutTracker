@@ -500,6 +500,14 @@ class DBService {
         }
     }
     
+    func deleteEnduranceCategory(category:String){
+        self._ref.child("users").child(self.user.uid).child("Types").child("Endurance").child(category).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func updateNotifications(num:Int){
         let formattedEmail = Formatter.formateEmail(email: self.user.email!)
         var dictionary = [String:Any]()

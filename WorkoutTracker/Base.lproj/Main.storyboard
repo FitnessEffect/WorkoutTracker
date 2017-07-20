@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUJ-uJ-zw7">
-                                <rect key="frame" x="92.5" y="160" width="190" height="50"/>
+                                <rect key="frame" x="92.5" y="156" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="EMH-TC-kiZ"/>
                                     <constraint firstAttribute="height" constant="50" id="Z5s-am-5vS"/>
@@ -239,7 +239,7 @@
                             <constraint firstItem="ae8-pj-W9O" firstAttribute="top" secondItem="DC0-2P-hgA" secondAttribute="bottom" constant="30" id="2VP-W8-Cvd"/>
                             <constraint firstItem="ae8-pj-W9O" firstAttribute="centerX" secondItem="9sz-ie-rfn" secondAttribute="centerX" id="X9D-HN-Osb"/>
                             <constraint firstItem="VUJ-uJ-zw7" firstAttribute="centerX" secondItem="9sz-ie-rfn" secondAttribute="centerX" id="js3-Lc-hrb"/>
-                            <constraint firstItem="VUJ-uJ-zw7" firstAttribute="top" secondItem="ae8-pj-W9O" secondAttribute="bottom" constant="65" id="tqb-e2-Irh"/>
+                            <constraint firstItem="VUJ-uJ-zw7" firstAttribute="top" secondItem="ae8-pj-W9O" secondAttribute="bottom" constant="61" id="tqb-e2-Irh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -702,7 +702,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-do-szN">
-                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <rect key="frame" x="93" y="292" width="190" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="ET0-Yb-VIP"/>
@@ -735,7 +735,7 @@
                             <constraint firstItem="P7K-bV-kuU" firstAttribute="leading" secondItem="rQ3-oo-kgh" secondAttribute="leading" constant="8" id="LKs-vK-vTc"/>
                             <constraint firstItem="P7K-bV-kuU" firstAttribute="top" secondItem="o3Q-vA-gnP" secondAttribute="bottom" id="O8d-ab-eOK"/>
                             <constraint firstItem="UpM-3S-LpW" firstAttribute="firstBaseline" secondItem="j0t-5x-BwA" secondAttribute="firstBaseline" id="Oh5-Bo-ADL"/>
-                            <constraint firstItem="OUC-do-szN" firstAttribute="top" secondItem="NOb-2P-INX" secondAttribute="bottom" constant="34" id="ati-oA-egr"/>
+                            <constraint firstItem="OUC-do-szN" firstAttribute="top" secondItem="NOb-2P-INX" secondAttribute="bottom" constant="44" id="ati-oA-egr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UpM-3S-LpW" secondAttribute="trailing" constant="10" id="bHX-gJ-fI8"/>
                             <constraint firstItem="UpM-3S-LpW" firstAttribute="top" secondItem="P7K-bV-kuU" secondAttribute="bottom" constant="52" id="feF-J7-6dU"/>
                             <constraint firstItem="UpM-3S-LpW" firstAttribute="baseline" secondItem="j0t-5x-BwA" secondAttribute="baseline" id="rL8-mS-Okx"/>
@@ -813,7 +813,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZx-CE-cmR">
-                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <rect key="frame" x="93" y="290" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="9Nq-hp-4bP"/>
                                     <constraint firstAttribute="height" constant="50" id="DT4-IF-J85"/>
@@ -838,7 +838,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QZx-CE-cmR" firstAttribute="top" secondItem="CcS-jo-N54" secondAttribute="bottom" constant="168" id="6t0-7m-x11"/>
+                            <constraint firstItem="QZx-CE-cmR" firstAttribute="top" secondItem="CcS-jo-N54" secondAttribute="bottom" constant="176" id="6t0-7m-x11"/>
                             <constraint firstItem="CcS-jo-N54" firstAttribute="centerX" secondItem="0Is-OG-0Ut" secondAttribute="centerX" id="DBp-tv-eoj"/>
                             <constraint firstItem="QZx-CE-cmR" firstAttribute="centerX" secondItem="0Is-OG-0Ut" secondAttribute="centerX" id="VS2-Uj-Akf"/>
                             <constraint firstItem="CcS-jo-N54" firstAttribute="top" secondItem="Jt9-DC-0SV" secondAttribute="bottom" constant="54" id="jPO-bx-yBW"/>
@@ -877,7 +877,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5I-i8-Wtr">
-                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <rect key="frame" x="93" y="290" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="NCn-Bi-YSn"/>
                                     <constraint firstAttribute="height" constant="50" id="NIg-AT-yWJ"/>
@@ -894,7 +894,7 @@
                             <constraint firstItem="E5I-i8-Wtr" firstAttribute="centerX" secondItem="Pi4-ZW-EF9" secondAttribute="centerX" id="AhD-Eh-f71"/>
                             <constraint firstItem="E27-0T-66N" firstAttribute="top" secondItem="oCP-WY-abZ" secondAttribute="bottom" constant="54" id="Ppq-0K-HXW"/>
                             <constraint firstItem="E27-0T-66N" firstAttribute="centerX" secondItem="Pi4-ZW-EF9" secondAttribute="centerX" id="Ufn-RV-QAs"/>
-                            <constraint firstItem="E5I-i8-Wtr" firstAttribute="top" secondItem="E27-0T-66N" secondAttribute="bottom" constant="168" id="viG-qG-d66"/>
+                            <constraint firstItem="E5I-i8-Wtr" firstAttribute="top" secondItem="E27-0T-66N" secondAttribute="bottom" constant="176" id="viG-qG-d66"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2427,7 +2427,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uio-CA-cRl">
-                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <rect key="frame" x="93" y="290" width="190" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="H8R-k3-zwW"/>
@@ -2509,7 +2509,7 @@
                             <constraint firstAttribute="trailing" secondItem="0h2-1z-Nhn" secondAttribute="trailing" constant="8" id="dYa-6f-Kp1"/>
                             <constraint firstItem="91R-oM-TTd" firstAttribute="centerX" secondItem="q5j-Uo-GS0" secondAttribute="centerX" id="fAn-R7-q9X"/>
                             <constraint firstItem="0h2-1z-Nhn" firstAttribute="top" secondItem="91R-oM-TTd" secondAttribute="bottom" constant="50" id="gCv-KD-efN"/>
-                            <constraint firstItem="uio-CA-cRl" firstAttribute="top" secondItem="0h2-1z-Nhn" secondAttribute="bottom" constant="34" id="iNx-fg-kIr"/>
+                            <constraint firstItem="uio-CA-cRl" firstAttribute="top" secondItem="0h2-1z-Nhn" secondAttribute="bottom" constant="42" id="iNx-fg-kIr"/>
                             <constraint firstItem="Jmi-qr-xbg" firstAttribute="leading" secondItem="k2K-MZ-WGc" secondAttribute="leading" constant="81" id="qEe-dr-mBm"/>
                             <constraint firstItem="Jmi-qr-xbg" firstAttribute="leading" secondItem="LI4-CO-7dh" secondAttribute="trailing" constant="37" id="rfP-dS-W2C"/>
                             <constraint firstItem="k2K-MZ-WGc" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="y5V-6M-9uH"/>
@@ -2530,59 +2530,6 @@
             </objects>
             <point key="canvasLocation" x="6868" y="-1335.3823088455774"/>
         </scene>
-        <!--Create Endurance Exercise View Controller-->
-        <scene sceneID="Y1G-cT-Mxi">
-            <objects>
-                <viewController storyboardIdentifier="createEnduranceExerciseID" id="3aP-jd-eR5" customClass="CreateEnduranceExerciseViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="T1l-1z-BvS"/>
-                        <viewControllerLayoutGuide type="bottom" id="i4U-OF-0VO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wNI-CK-pAy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exercise Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-aa-Zag">
-                                <rect key="frame" x="57" y="74" width="260" height="40"/>
-                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="6um-q0-k82"/>
-                                    <constraint firstAttribute="width" constant="260" id="V6d-eH-IgY"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-JL-fAa">
-                                <rect key="frame" x="93" y="282" width="190" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="4LS-OR-D6x"/>
-                                    <constraint firstAttribute="width" constant="190" id="a3g-gH-I9P"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
-                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
-                                <connections>
-                                    <action selector="addExercise:" destination="3aP-jd-eR5" eventType="touchUpInside" id="OUA-Gp-Usr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="EF1-JL-fAa" firstAttribute="top" secondItem="hyN-aa-Zag" secondAttribute="bottom" constant="168" id="7hA-B9-Tfz"/>
-                            <constraint firstItem="hyN-aa-Zag" firstAttribute="centerX" secondItem="wNI-CK-pAy" secondAttribute="centerX" id="JdZ-Lm-yDz"/>
-                            <constraint firstItem="hyN-aa-Zag" firstAttribute="top" secondItem="T1l-1z-BvS" secondAttribute="bottom" constant="54" id="een-iM-4eh"/>
-                            <constraint firstItem="EF1-JL-fAa" firstAttribute="centerX" secondItem="wNI-CK-pAy" secondAttribute="centerX" id="uTb-q8-cov"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="add" destination="EF1-JL-fAa" id="Fi3-J7-Ta6"/>
-                        <outlet property="exName" destination="hyN-aa-Zag" id="1OH-5e-lCD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W2b-Pb-atB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7524" y="-1335.3823088455774"/>
-        </scene>
         <!--Create Endurance Category View Controller-->
         <scene sceneID="hP4-uJ-UNb">
             <objects>
@@ -2596,7 +2543,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTg-E2-k4n">
-                                <rect key="frame" x="93" y="282" width="190" height="50"/>
+                                <rect key="frame" x="93" y="290" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="NzO-ss-Fmi"/>
                                     <constraint firstAttribute="height" constant="50" id="YVw-xp-PYR"/>
@@ -2622,7 +2569,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nTg-E2-k4n" firstAttribute="centerX" secondItem="Bbi-Vx-pXI" secondAttribute="centerX" id="8Bw-Lt-Wnn"/>
-                            <constraint firstItem="nTg-E2-k4n" firstAttribute="top" secondItem="ihA-lT-Uy8" secondAttribute="bottom" constant="168" id="Kpy-uw-13Q"/>
+                            <constraint firstItem="nTg-E2-k4n" firstAttribute="top" secondItem="ihA-lT-Uy8" secondAttribute="bottom" constant="176" id="Kpy-uw-13Q"/>
                             <constraint firstItem="ihA-lT-Uy8" firstAttribute="centerX" secondItem="Bbi-Vx-pXI" secondAttribute="centerX" id="Pdg-TT-dAM"/>
                             <constraint firstItem="ihA-lT-Uy8" firstAttribute="top" secondItem="tL0-Ao-p6G" secondAttribute="bottom" constant="54" id="eUO-cY-Ga9"/>
                         </constraints>
@@ -2908,6 +2855,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Os-F2-dTk"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>

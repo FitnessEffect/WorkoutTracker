@@ -19,7 +19,6 @@
 		52265E0C1F1D04AE009F3B27 /* ForTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */; };
 		52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */; };
 		52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */; };
-		52265E151F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */; };
 		52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */; };
 		52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalViewController.swift */; };
 		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
@@ -87,7 +86,6 @@
 		52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForTimeViewController.swift; path = ../ForTimeViewController.swift; sourceTree = "<group>"; };
 		52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnduranceCategoryTableViewController.swift; path = ../EnduranceCategoryTableViewController.swift; sourceTree = "<group>"; };
 		52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSelectionViewController.swift; sourceTree = "<group>"; };
-		52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEnduranceExerciseViewController.swift; sourceTree = "<group>"; };
 		52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEnduranceCategoryViewController.swift; path = ../CreateEnduranceCategoryViewController.swift; sourceTree = "<group>"; };
 		52265E181F20F559009F3B27 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalStatsViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		52265E111F203BF6009F3B27 /* Endurance Views */ = {
 			isa = PBXGroup;
 			children = (
-				52265E141F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift */,
 				52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */,
 				52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */,
 				52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */,
@@ -545,7 +542,6 @@
 				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
 				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
-				52265E151F203FC0009F3B27 /* CreateEnduranceExerciseViewController.swift in Sources */,
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
 				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
