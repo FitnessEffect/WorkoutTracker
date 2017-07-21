@@ -47,10 +47,6 @@ class DBService {
         if let u = FIRAuth.auth()?.currentUser {
             _user = u
             
-//            retrieveClients(completion: {
-//               self.sortClients()
-//            })
-            
             retrieveExercisesForUser(completion: {
                 self._exercisesForUser.sort(by: {a, b in
                     let dateFormatter = DateFormatter()
@@ -89,12 +85,6 @@ class DBService {
     func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
-            self._clients.sort(by: {a, b in
-                if a.firstName < b.firstName {
-                    return true
-                }
-                return false
-            })
             completion()
         })
     }
@@ -118,7 +108,7 @@ class DBService {
             }
         })
     }
-
+    
     
     func saveChallengeExercise(exerciseDictionary:[String:Any]){
         self._ref.child("users").child(user.uid).child("Challenges").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
@@ -348,7 +338,6 @@ class DBService {
         return c
     }
     
-    
     func retrieveClients(completion: @escaping () -> Void){
         _clients.removeAll()
         _ref.child("users").child(user.uid).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -370,6 +359,7 @@ class DBService {
                     c.feet = client?["feet"] as! String
                     c.inches = client?["inches"] as! String
                     self._clients.append(c)
+                    self.sortClients()
                     completion()
                 }
             }
