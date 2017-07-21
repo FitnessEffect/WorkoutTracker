@@ -71,7 +71,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if clientPassed.firstName != ""{
             if clientPassed.gender == "Male"{
                 genderSegmentedControl.selectedSegmentIndex =  0
