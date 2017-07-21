@@ -1578,7 +1578,7 @@
             <objects>
                 <navigationController storyboardIdentifier="exerciseNavID" automaticallyAdjustsScrollViewInsets="NO" id="bAR-Af-Bzn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gql-r2-aGv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gql-r2-aGv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1829,7 +1829,7 @@
             <objects>
                 <navigationController storyboardIdentifier="inputNavID" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFa-KB-lpl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IFa-KB-lpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1952,7 +1952,7 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="By Clicking &quot;Register&quot; you agree to the following" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e5r-O0-1Xl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="By clicking &quot;Register&quot; you agree to the following" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e5r-O0-1Xl">
                                 <rect key="frame" x="0.0" y="508" width="375" height="38"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1963,7 +1963,7 @@
                                 <rect key="frame" x="93" y="546" width="188" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
-                                <state key="normal" title="Terms of Use"/>
+                                <state key="normal" title="terms of use"/>
                                 <connections>
                                     <action selector="termOfUse:" destination="nji-W8-ZX0" eventType="touchUpInside" id="9YR-K6-IID"/>
                                 </connections>
@@ -2118,7 +2118,7 @@
             <objects>
                 <navigationController storyboardIdentifier="clientNavID" automaticallyAdjustsScrollViewInsets="NO" id="eOA-Kw-WaG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xhw-3y-dWu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xhw-3y-dWu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2243,7 +2243,7 @@
             <objects>
                 <navigationController storyboardIdentifier="challengesNavID" automaticallyAdjustsScrollViewInsets="NO" id="X8U-Tw-LmN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uq7-Rw-d5f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Uq7-Rw-d5f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2677,7 +2677,7 @@
             <objects>
                 <navigationController storyboardIdentifier="profileNavID" automaticallyAdjustsScrollViewInsets="NO" id="CSd-EX-vQ6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nom-5R-TMC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nom-5R-TMC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
