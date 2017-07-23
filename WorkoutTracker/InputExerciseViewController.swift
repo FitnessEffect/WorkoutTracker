@@ -148,6 +148,13 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     
     func setNotifAlphaToOne(_:Notification){
         workoutInputView.notificationNumber.alpha = 1
+        if DBService.shared.notificationCount == 0{
+            workoutInputView.notificationNumber.alpha = 0
+        }else{
+            workoutInputView.notificationNumber.alpha = 1
+            workoutInputView.notificationNumber.text = String(DBService.shared.notificationCount)
+        }
+
     }
     
     func getExercise(_ notification: Notification){
