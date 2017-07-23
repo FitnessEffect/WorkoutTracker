@@ -50,6 +50,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.clientArray = DBService.shared.clients
             self.tableViewOutlet.reloadData()
         }
+
     }
     
     //TableView
