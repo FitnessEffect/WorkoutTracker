@@ -34,6 +34,7 @@ class DBService {
     private var _emomTime:String!
     private var _tabataTime:String!
     private var _crossfitHeroWods = [String]()
+    private var _notificationCount:Int = 0
     
     private init() {
         initDatabase()
@@ -416,12 +417,27 @@ class DBService {
                     tempExercise.creatorID = exercise.value["creatorID"] as! String
                     tempExercise.category = exercise.value["category"] as! String
                     tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.viewed = exercise.value["viewed"] as! String
                     self._challengeExercises.append(tempExercise)
                     completion()
                 }
+            }else{
+                completion()
             }
         }) { (error) in
             print(error.localizedDescription)
+        }
+    }
+    
+    func notificationCheck(completion: @escaping () -> Void){
+        retrieveChallengesExercises {
+            self._notificationCount = 0
+            for exercise in self.challengeExercises{
+                if exercise.viewed == "false"{
+                   self._notificationCount += 1
+                }
+            }
+            completion()
         }
     }
     
@@ -498,12 +514,16 @@ class DBService {
         }
     }
     
-    func updateNotifications(num:Int){
-        let formattedEmail = Formatter.formateEmail(email: self.user.email!)
-        var dictionary = [String:Any]()
-        dictionary[formattedEmail] = num
-        self._ref.child("notification").updateChildValues(dictionary)
-        UIApplication.shared.applicationIconBadgeNumber = num
+    func setChallengesToViewed(){
+        retrieveChallengesExercises {
+            for exercise in self._challengeExercises{
+                self._ref.child("users").child(self.user.uid).child("Challenges").child(exercise.exerciseKey).child("viewed").setValue("true")
+            }
+        }
+    }
+    
+    func resetNotificationCount(){
+        _notificationCount = 0
     }
     
     func clearExercisePassed(){
@@ -515,8 +535,6 @@ class DBService {
     }
     
     func initializeData(){
-        //set notifications to 0
-        updateNotifications(num: 0)
         
         var enduranceDictionary = [String:Any]()
         enduranceDictionary["Running"] = true
@@ -722,6 +740,12 @@ class DBService {
     var crossfitHeroWods:[String]{
         get{
             return _crossfitHeroWods
+        }
+    }
+    
+    var notificationCount:Int{
+        get{
+            return _notificationCount
         }
     }
 }

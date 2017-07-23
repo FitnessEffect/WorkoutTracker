@@ -52,6 +52,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         erase.alpha = 0
         eraseResult.alpha = 0
         eraseEmail.alpha = 0
+        notificationNumber.alpha = 0
         
         resultStartPosition = resultBtn.frame.origin.y
         challengeStartPosition = challenge.frame.origin.y
@@ -66,9 +67,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         saveButton.isUserInteractionEnabled = false
         
         self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(WorkoutInputView.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
-        
+
         notificationNumber.layer.cornerRadius = 10.0
         notificationNumber.clipsToBounds = true
         notificationNumber.layer.borderWidth = 1
@@ -120,16 +119,6 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.resultBtn.isUserInteractionEnabled = true
             })
         }))
-    }
-    
-    func appEnteredForeground(_ notification: Notification){
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
-        }
     }
     
     func updateNotification(){

@@ -518,14 +518,6 @@
                                     <outlet property="delegate" destination="U4l-CF-NEd" id="CXZ-Q8-wn1"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXt-F7-nlC">
-                                <rect key="frame" x="50" y="13" width="19" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -553,7 +545,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="notificationNumber" destination="DXt-F7-nlC" id="n2S-Zr-Cbl"/>
                         <outlet property="tableViewOutlet" destination="PhY-tN-TJF" id="oFC-yc-uwc"/>
                     </connections>
                 </viewController>
@@ -1787,14 +1778,6 @@
                                     <outlet property="delegate" destination="y7H-dD-F6s" id="0jg-YO-xNl"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcL-9g-keO">
-                                <rect key="frame" x="50" y="13" width="19" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1816,7 +1799,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="notificationNumber" destination="mcL-9g-keO" id="QSm-aG-OkN"/>
                         <outlet property="tableViewOutlet" destination="Sf4-uq-5X3" id="U59-16-NNM"/>
                     </connections>
                 </viewController>
@@ -2633,14 +2615,6 @@
                                     <outlet property="delegate" destination="BB7-6R-HUh" id="hvb-Xc-jO7"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch3-N9-vh6">
-                                <rect key="frame" x="50" y="13" width="19" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2664,7 +2638,6 @@
                         <barButtonItem key="rightBarButtonItem" image="blankIcon" id="YCH-Gy-UVt"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="notificationNumber" destination="ch3-N9-vh6" id="xcI-47-HAe"/>
                         <outlet property="tableViewOutlet" destination="0ph-pe-rTa" id="huU-FH-Olc"/>
                     </connections>
                 </viewController>

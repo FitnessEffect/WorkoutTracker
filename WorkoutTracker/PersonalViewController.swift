@@ -20,11 +20,9 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
     var button:UIButton!
     
     @IBOutlet weak var tableViewOutlet: UITableView!
-    @IBOutlet weak var notificationNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -33,11 +31,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        notificationNumber.layer.cornerRadius = 10.0
-        notificationNumber.clipsToBounds = true
-        notificationNumber.layer.borderWidth = 1
-        notificationNumber.layer.borderColor = UIColor.red.cgColor
-        
         button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
@@ -45,7 +38,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         button.setTitle("Personal", for: .normal)
         button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
         self.navigationItem.titleView = button
-        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
         tableViewOutlet.addGestureRecognizer(tapGesture)
@@ -58,16 +50,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
-        }
     }
     
     func clickOnButton(button: UIButton) {
@@ -92,17 +74,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         
         // present the popover
         self.present(popController, animated: true, completion: nil)
-    }
-    
-    
-    func appEnteredForeground(_ notification: Notification){
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
-        }
     }
     
     //TableView
