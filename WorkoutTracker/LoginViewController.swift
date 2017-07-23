@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var segmentedOutlet: UISegmentedControl!
     @IBOutlet weak var termsOfUselabel: UITextView!
     @IBOutlet weak var termsOfUseBtn: UIButton!
+    @IBOutlet weak var rememberMeLabel: UILabel!
     
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
@@ -36,10 +37,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(gesture)
         ref = FIRDatabase.database().reference()
         
-        termsOfUselabel.isHidden = true
-        termsOfUseBtn.isHidden = true
-        register.isHidden = true
+        termsOfUselabel.alpha = 0
+        termsOfUseBtn.alpha = 0
+        register.alpha = 0
         UserDefaults.standard.set(false, forKey: "newUser")
+        rememberMeSwitch.alpha = 0
+        rememberMeLabel.alpha = 0
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
             rememberMeSwitch.setOn(true, animated: true)
@@ -74,7 +77,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
                     //called only for login
-                    //self.performSegue(withIdentifier: "workoutSegue", sender: self)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc =   storyboard.instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
                     self.present(vc, animated: true, completion: nil)
@@ -112,19 +114,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
+        //login btn
+        if segmentedOutlet.selectedSegmentIndex == 0{
+                self.register.alpha = 0
+                self.termsOfUselabel.alpha = 0
+              self.termsOfUseBtn.alpha = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.login.alpha = 1
+                self.rememberMeSwitch.alpha = 1
+                self.rememberMeLabel.alpha = 1
+            })
+        }
         //Register btn
         if segmentedOutlet.selectedSegmentIndex == 1{
-            login.isHidden = true
-            register.isHidden = false
-            termsOfUselabel.isHidden = false
-            termsOfUseBtn.isHidden = false
+           
+                self.login.alpha = 0
+                self.rememberMeSwitch.alpha = 0
+                self.rememberMeLabel.alpha = 0
+             UIView.animate(withDuration: 0.5, animations: {
+                self.register.alpha = 1
+                self.termsOfUselabel.alpha = 1
+                self.termsOfUseBtn.alpha = 1
+            
+            })
         }
-        if segmentedOutlet.selectedSegmentIndex == 0{
-            register.isHidden = true
-            login.isHidden = false
-            termsOfUselabel.isHidden = true
-            termsOfUseBtn.isHidden = true
-        }
+        
     }
     
     @IBAction func login(_ sender: UIButton) {
@@ -139,17 +153,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
-            prefs.set(emailTF.text, forKey: "email")
-            prefs.set(passwordTF.text, forKey:"password")
-            prefs.set(rememberMeSwitch.isOn, forKey:"switch")
-            setAuthListener()
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
                 if success.0 == nil{
                     let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
+                }else{
+                    self.prefs.set(self.emailTF.text, forKey: "email")
+                    self.prefs.set(self.passwordTF.text, forKey:"password")
+                    self.prefs.set(self.rememberMeSwitch.isOn, forKey:"switch")
+                    self.setAuthListener()
                 }
+                
             })
         }
     }
