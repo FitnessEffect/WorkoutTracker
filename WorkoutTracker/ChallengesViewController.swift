@@ -48,9 +48,9 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
-        DBService.shared.updateNotifications(num: 0)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
-        
+        DBService.shared.setChallengesToViewed()
+        DBService.shared.resetNotificationCount()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
         DBService.shared.retrieveChallengesExercises {
             self.exerciseArray = DBService.shared.challengeExercises
             self.exerciseArray.sort(by: {a, b in

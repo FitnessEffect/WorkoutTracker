@@ -21,12 +21,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var menuShowing = false
     
     @IBOutlet weak var tableViewOutlet: UITableView!
-    @IBOutlet weak var notificationNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(ClientViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
@@ -34,13 +31,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
-        notificationNumber.layer.cornerRadius = 10.0
-        notificationNumber.clipsToBounds = true
-        notificationNumber.layer.borderWidth = 1
-        notificationNumber.layer.borderColor = UIColor.red.cgColor
-        
-        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
         tableViewOutlet.addGestureRecognizer(tapGesture)
@@ -56,26 +46,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
-        }
         DBService.shared.retrieveClients {
             self.clientArray = DBService.shared.clients
             self.tableViewOutlet.reloadData()
-        }
-    }
-    
-    func appEnteredForeground(_ notification: Notification){
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
         }
     }
     

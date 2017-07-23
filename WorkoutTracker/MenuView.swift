@@ -84,12 +84,11 @@ class MenuView: UIView {
         notificationLabel.layer.borderWidth = 1
         notificationLabel.layer.borderColor = UIColor.red.cgColor
         
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
+        if DBService.shared.notificationCount == 0{
             notificationLabel.alpha = 0
         }else{
             notificationLabel.alpha = 1
-            notificationLabel.text = String(num)
+            notificationLabel.text = String(DBService.shared.notificationCount)
         }
     }
     
@@ -106,6 +105,15 @@ class MenuView: UIView {
             return currentController
         }
         return nil
+    }
+    
+    func setNotifications(num:Int){
+        if num == 0{
+            notificationLabel.alpha = 0
+        }else{
+            notificationLabel.alpha = 1
+            notificationLabel.text = String(num)
+        }
     }
     
     @IBAction func btnAction(_ sender: UIButton) {
@@ -128,19 +136,19 @@ class MenuView: UIView {
             let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
             let currentController = self.getCurrentViewController()
             currentController?.present(challengesVC, animated: false, completion: nil)
-
+            
         }else if sender.tag == 5{
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
             
             let currentController = self.getCurrentViewController()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
             UserDefaults.standard.set(false, forKey: "switch")
-//            do{
-//                try FIRAuth.auth()?.signOut()
-//                
-//            }catch{
-//                
-//            }
-            
+            do{
+                try FIRAuth.auth()?.signOut()
+                
+            }catch{
+                
+            }
             currentController?.present(loginVC, animated: false, completion: nil)
         }
     }

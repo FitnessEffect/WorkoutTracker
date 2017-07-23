@@ -46,6 +46,12 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tableViewOutlet.reloadData()
         })
         clientPassed = DBService.shared.retrieveClientInfo(lastName: clientPassed.lastName)
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
     
     func clickOnButton(button: UIButton) {

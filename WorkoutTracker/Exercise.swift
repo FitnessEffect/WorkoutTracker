@@ -19,6 +19,7 @@ let opponentKey = "opponent"
 let categoryKey = "category"
 let creatorID = "creatorID"
 let typeKey = "type"
+let viewedKey = "viewed"
 
 class Exercise: NSCoder {
     
@@ -33,7 +34,7 @@ class Exercise: NSCoder {
     var category:String
     var creatorID:String
     var type:String
-    
+    var viewed:String
     
     //default initializer
     override init(){
@@ -48,10 +49,11 @@ class Exercise: NSCoder {
         category = ""
         creatorID = ""
         type = ""
+        viewed = ""
     }
     
     //overload initializer
-    init(name:String, result:String, description:String, date:String, creatorEmail:String, client:String, exerciseKey:String, opponent:String, category:String, creatorID:String, type:String){
+    init(name:String, result:String, description:String, date:String, creatorEmail:String, client:String, exerciseKey:String, opponent:String, category:String, creatorID:String, type:String, viewed:String){
         self.name = name
         self.exerciseDescription = description
         self.result = result
@@ -63,6 +65,7 @@ class Exercise: NSCoder {
         self.category = category
         self.creatorID = creatorID
         self.type = type
+        self.viewed = viewed
     }
     
     func encodeWithCoder(_ aCoder: NSCoder!) {
@@ -77,6 +80,7 @@ class Exercise: NSCoder {
         aCoder.encode(category, forKey: "categoryKey")
         aCoder.encode(creatorID, forKey: "creatorID")
         aCoder.encode(type, forKey: "typeKey")
+        aCoder.encode(type, forKey: "viewedKey")
     }
     
     init (coder aDecoder: NSCoder!) {
@@ -91,5 +95,6 @@ class Exercise: NSCoder {
         self.category = aDecoder.decodeObject(forKey: "category") as! String
         self.creatorID = aDecoder.decodeObject(forKey: "creatorID") as! String
         self.type = aDecoder.decodeObject(forKey: "type") as! String
+        self.viewed = aDecoder.decodeObject(forKey: "viewed") as! String
     }
 }

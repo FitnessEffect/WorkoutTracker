@@ -51,8 +51,11 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         print(user.email!)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
-        NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(InputExerciseViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.hideNotificationOnExit(_:)), name: NSNotification.Name(rawValue: "hideNotif"), object: nil)
+         NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.setNotifAlphaToZero(_:)), name: NSNotification.Name(rawValue: "notifAlphaToZero"), object: nil)
+                 NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.setNotifAlphaToOne(_:)), name: NSNotification.Name(rawValue: "notifAlphaToOne"), object: nil)
         
         workoutInputView.initializeView()
         workoutInputView.setNotifications(num:UIApplication.shared.applicationIconBadgeNumber)
@@ -82,6 +85,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     
     override func viewWillAppear(_ animated: Bool) {
         workoutInputView.setCurrentDate()
+        
         DBService.shared.retrieveClients {
             self.nameArray.removeAll()
             for client in DBService.shared.clients{
@@ -122,19 +126,28 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+          refreshNotifications()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         //clear passedExercise
         DBService.shared.clearExercisePassed()
         DBService.shared.setPassedClientToPersonal()
-        
     }
     
-    func updateNotification(_ notification: Notification) {
-        workoutInputView.updateNotification()
+    func hideNotificationOnExit(_ notification: Notification){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.resetBadgeNumber()
+        workoutInputView.notificationNumber.alpha = 0
     }
     
-    func updateNotif(){
-        workoutInputView.updateNotification()
+    func setNotifAlphaToZero(_:Notification){
+        workoutInputView.notificationNumber.alpha = 0
+    }
+    
+    func setNotifAlphaToOne(_:Notification){
+        workoutInputView.notificationNumber.alpha = 1
     }
     
     func getExercise(_ notification: Notification){
@@ -212,6 +225,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
                 present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
+                    self.refreshNotifications()
                 })})
             })
         }else{
@@ -219,6 +233,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
                 present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
+                    self.refreshNotifications()
                 })})
             })
         }
@@ -226,7 +241,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
             APIService.shared.post(endpoint: "http://104.236.21.144:3001/challenges", data: exerciseDictionary as [String : AnyObject], completion: {_ in })
         }
-        
         //clear passedExercise
         DBService.shared.clearExercisePassed()
     }
@@ -234,6 +248,16 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func handleSelection(type: String) {
         let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavVC") as! UINavigationController
         self.present(inputVC, animated: true, completion: nil)
+    }
+    
+    func refreshNotifications(){
+        //update notification
+        DBService.shared.notificationCheck(completion: {
+            self.workoutInputView.setNotifications(num: DBService.shared.notificationCount)
+            self.menuView.setNotifications(num:DBService.shared.notificationCount)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.setBadgeNumber(DBService.shared.notificationCount)
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -264,7 +288,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             }, completion:{success in
                 self.menuView.alpha = 0})
             menuShowing = false
-            
         }
     }
     

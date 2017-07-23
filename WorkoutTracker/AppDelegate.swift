@@ -42,8 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
-    func setBadgeNumber(_ delta: Int){
-        UIApplication.shared.applicationIconBadgeNumber += delta
+    func setBadgeNumber(_ num: Int){
+        UIApplication.shared.applicationIconBadgeNumber = num
     }
     
     // Called when APNs has assigned the device a unique token
@@ -66,38 +66,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // Push notification received
-    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-        // Print notification payload data
-        print("Push notification received: \(data)")
-        
-        let badgeNum = UIApplication.shared.applicationIconBadgeNumber
-        //update notification badge number
-        setBadgeNumber(-1)
-        DBService.shared.updateNotifications(num: badgeNum - 1)
-        
-        var exerciseDictionary = data["exercise"]! as! [String:Any]
-        
-        let myEx = Exercise()
-        myEx.name = exerciseDictionary["name"] as! String
-        myEx.exerciseDescription = exerciseDictionary["description"] as! String
-        myEx.result = exerciseDictionary["result"] as! String
-        myEx.date = exerciseDictionary["date"] as! String
-        myEx.exerciseKey = exerciseDictionary["exerciseKey"] as! String
-        myEx.client = exerciseDictionary["client"] as! String
-        myEx.opponent = exerciseDictionary["opponent"] as! String
-        myEx.creatorEmail = exerciseDictionary["creatorEmail"] as! String
-        myEx.creatorID = exerciseDictionary["creatorID"] as! String
-        myEx.type = exerciseDictionary["type"] as! String
-        myEx.category = exerciseDictionary["category"] as! String
-        
-        DBService.shared.setPassedExercise(exercise:myEx)
-        
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "inputNavID")
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
-    }
+//    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
+//        // Print notification payload data
+//        print("Push notification received: \(data)")
+//        
+//        let badgeNum = UIApplication.shared.applicationIconBadgeNumber
+//        //update notification badge number
+//        setBadgeNumber(-1)
+//        DBService.shared.updateNotifications(num: badgeNum - 1)
+//        
+//        var exerciseDictionary = data["exercise"]! as! [String:Any]
+//        
+//        let myEx = Exercise()
+//        myEx.name = exerciseDictionary["name"] as! String
+//        myEx.exerciseDescription = exerciseDictionary["description"] as! String
+//        myEx.result = exerciseDictionary["result"] as! String
+//        myEx.date = exerciseDictionary["date"] as! String
+//        myEx.exerciseKey = exerciseDictionary["exerciseKey"] as! String
+//        myEx.client = exerciseDictionary["client"] as! String
+//        myEx.opponent = exerciseDictionary["opponent"] as! String
+//        myEx.creatorEmail = exerciseDictionary["creatorEmail"] as! String
+//        myEx.creatorID = exerciseDictionary["creatorID"] as! String
+//        myEx.type = exerciseDictionary["type"] as! String
+//        myEx.category = exerciseDictionary["category"] as! String
+//        
+//        DBService.shared.setPassedExercise(exercise:myEx)
+//        
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "inputNavID")
+//        self.window?.rootViewController = initialViewController
+//        self.window?.makeKeyAndVisible()
+//    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
+       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object:nil)
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

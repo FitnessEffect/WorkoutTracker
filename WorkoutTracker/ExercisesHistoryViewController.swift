@@ -11,19 +11,14 @@ import Firebase
 
 class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    @IBOutlet weak var notificationNumber: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var selectedRow:Int = 0
-    //var client = Client()
     var exerciseArray = [Exercise]()
     var ref:FIRDatabaseReference!
     var tempKey:String!
-    //var menuShowing = false
-    //var menuView:MenuView!
     var overlayView: OverlayView!
     var user:FIRUser!
-    //var button:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,43 +27,15 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         
         self.title = "History"
         
-//        NotificationCenter.default.addObserver(self, selector:#selector(ExercisesHistoryViewController.appEnteredForeground(_:)), name: NSNotification.Name(rawValue: "appEnteredForegroundKey"), object: nil)
-        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
-//        tableViewOutlet.addGestureRecognizer(tapGesture)
-//        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
-//        self.view.addGestureRecognizer(gesture)
-//        overlayView = OverlayView.instanceFromNib() as! OverlayView
-//        menuView = MenuView.instanceFromNib() as! MenuView
-//        view.addSubview(overlayView)
-//        view.addSubview(menuView)
-//        overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-//        overlayView.alpha = 0
-//        menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-//        
-//        notificationNumber.layer.cornerRadius = 10.0
-//        notificationNumber.clipsToBounds = true
-//        notificationNumber.layer.borderWidth = 1
-//        notificationNumber.layer.borderColor = UIColor.red.cgColor
-//        
-//        UIApplication.shared.keyWindow?.addSubview(notificationNumber)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
-        }
         DBService.shared.retrieveExercisesForUser {
             self.exerciseArray = DBService.shared.exercisesForUser
             self.exerciseArray.sort(by: {a, b in
@@ -79,41 +46,13 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             })
             self.tableViewOutlet.reloadData()
         }
+         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
-    func appEnteredForeground(_ notification: Notification){
-        let num  = UIApplication.shared.applicationIconBadgeNumber
-        if num == 0{
-            notificationNumber.alpha = 0
-        }else{
-            notificationNumber.alpha = 1
-            notificationNumber.text = String(num)
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
-    
-//    @IBAction func openMenu(_ sender: UIBarButtonItem) {
-//        addSelector()
-//    }
-    
-//    func addSelector() {
-//        //slide view in here
-//        if menuShowing == false{
-//            menuView.addFx()
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.menuView.frame = CGRect(x: 0, y: 0, width: 126, height: 500)
-//                self.view.isHidden = false
-//                self.overlayView.alpha = 1
-//            })
-//            menuShowing = true
-//        }else{
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-//                self.overlayView.alpha = 0
-//            })
-//            menuShowing = false
-//        }
-//    }
-    
+
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
@@ -122,22 +61,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             performSegue(withIdentifier: "editExerciseSegue", sender: sender)
         }
     }
-    
-//    func hitTest(_ sender:UITapGestureRecognizer){
-//        if menuShowing == true{
-//            //remove menu view
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-//                self.overlayView.alpha = 0
-//            })
-//            menuShowing = false
-//        }else{
-//            if tableViewOutlet.frame.contains(sender.location(in: view)){
-//                performSegue(withIdentifier: "editExerciseSegue", sender: sender)
-//            }
-//        }
-//    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -177,16 +101,13 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
-
             let wivc:InputExerciseViewController = segue.destination as! InputExerciseViewController
-            //DBService.shared.setPassedClient(client: clientPassed)
             selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
             wivc.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
             let edv:InputExerciseViewController = segue.destination as! InputExerciseViewController
-            //DBService.shared.setPassedClient(client: client)
             edv.setEdit(bool: false)
         }
     }
