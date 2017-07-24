@@ -15,7 +15,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var hLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var lbsLabel: UILabel!
-    @IBOutlet weak var setsLabel: UILabel!
     @IBOutlet weak var repsLabel: UILabel!
     @IBOutlet weak var metersLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
@@ -24,7 +23,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var weights = [String]()
     var reps = [String]()
     var hours = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
-    var supersetSets = [String]()
+    var supersetSets = ["Completed", "Incomplete"]
     var minutes = [String]()
     var seconds = [String]()
     var miles = [String]()
@@ -44,13 +43,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         hLabel.alpha = 0
         minLabel.alpha = 0
         lbsLabel.alpha = 0
-        setsLabel.alpha = 0
         repsLabel.alpha = 0
         
         for i in 0...500{
             weights.append(String(i))
             reps.append(String(i))
-            supersetSets.append(String(i))
             miles.append(String(i))
         }
         
@@ -188,7 +185,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let temp = tabata[row] + " minute(s) completed"
             tempResult = temp
         }else if tagPassed == 7{
-            let temp = supersetSets[row] + " set(s)"
+            let temp = supersetSets[row]
             tempResult = temp
         }else if tagPassed == 8{
             let temp = meters[row] + " meter(s)"
@@ -237,7 +234,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         hLabel.alpha = 0
         minLabel.alpha = 0
         lbsLabel.alpha = 0
-        setsLabel.alpha = 0
         repsLabel.alpha = 0
         milesLabel.alpha = 0
         metersLabel.alpha = 0
@@ -267,7 +263,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             minLabel.alpha = 1
             label.text = tabata[row]
         }else if tagPassed == 7{
-            setsLabel.alpha = 1
             label.text = supersetSets[row]
         }else if tagPassed == 8{
             metersLabel.alpha = 1
