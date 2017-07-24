@@ -41,8 +41,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         termsOfUseBtn.alpha = 0
         register.alpha = 0
         UserDefaults.standard.set(false, forKey: "newUser")
-        rememberMeSwitch.alpha = 0
-        rememberMeLabel.alpha = 0
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
             rememberMeSwitch.setOn(true, animated: true)
