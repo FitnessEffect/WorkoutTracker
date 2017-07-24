@@ -110,7 +110,6 @@ class DBService {
         })
     }
     
-    
     func saveChallengeExercise(exerciseDictionary:[String:Any]){
         self._ref.child("users").child(user.uid).child("Challenges").child(exerciseDictionary["exerciseKey"] as! String).setValue(exerciseDictionary)
     }

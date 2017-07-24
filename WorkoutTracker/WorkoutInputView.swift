@@ -67,7 +67,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         saveButton.isUserInteractionEnabled = false
         
         self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-
+        
         notificationNumber.layer.cornerRadius = 10.0
         notificationNumber.clipsToBounds = true
         notificationNumber.layer.borderWidth = 1
@@ -94,10 +94,10 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         if exercise.opponent != ""{
             //if exercise comes from history do not set creator as the challenger
             if exercise.creatorEmail == DBService.shared.user.email{
-            saveEmail(emailStr: exercise.opponent)
+                saveEmail(emailStr: exercise.opponent)
             }else{
-            //if exercise comes from challenges set creator as the challenger
-            saveEmail(emailStr: exercise.creatorEmail)
+                //if exercise comes from challenges set creator as the challenger
+                saveEmail(emailStr: exercise.creatorEmail)
             }
         }
     }
@@ -211,7 +211,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBAction func selectResult(_ sender: UIButton) {
         let xPosition:CGFloat = resultBtn.frame.minX + (resultBtn.frame.width/2)
         let yPosition:CGFloat = resultBtn.frame.midY + 15
-
+        
         
         let currentController = self.getCurrentViewController()
         

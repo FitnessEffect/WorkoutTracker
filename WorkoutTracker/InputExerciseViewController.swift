@@ -51,7 +51,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         print(user.email!)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
-        //NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.updateNotification(_:)), name: NSNotification.Name(rawValue: "notifKey"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(InputExerciseViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.hideNotificationOnExit(_:)), name: NSNotification.Name(rawValue: "hideNotif"), object: nil)
          NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.setNotifAlphaToZero(_:)), name: NSNotification.Name(rawValue: "notifAlphaToZero"), object: nil)
