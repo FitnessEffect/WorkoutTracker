@@ -28,7 +28,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         self.title = "History"
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -46,13 +45,13 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             })
             self.tableViewOutlet.reloadData()
         }
-         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
-
+    
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
@@ -61,7 +60,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             performSegue(withIdentifier: "editExerciseSegue", sender: sender)
         }
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
