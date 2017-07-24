@@ -8,23 +8,35 @@
 
 import UIKit
 
-class ForTimeViewController: UIViewController{
+class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var roundsLabel: UILabel!
+    @IBOutlet weak var setsLabel: UILabel!
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var exerciseNumber:Int = 1
     var exerciseList:[String] = [""]
     var categoryPassed:String!
-    var reps = [String]()
+    var rounds = [String]()
     var sets = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for x in 0...59{
-            reps.append(String(x))
+        roundsLabel.isHidden = true
+        setsLabel.isHidden = true
+        
+        if categoryPassed == "Superset"{
+            setsLabel.isHidden = false
+        }else{
+            roundsLabel.isHidden = false
+        }
+        
+        for x in 1...99{
+            rounds.append(String(x))
             sets.append(String(x))
         }
         
@@ -61,6 +73,7 @@ class ForTimeViewController: UIViewController{
     }
     
     @IBAction func add(_ sender: UIButton) {
+        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         if categoryPassed == "Superset"{
             myExercise.name = "Superset"
             var supersetString = ""
@@ -78,7 +91,7 @@ class ForTimeViewController: UIViewController{
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
-                myExercise.exerciseDescription = supersetString
+                myExercise.exerciseDescription =  sets[id] + " set(s)" + " | " + supersetString
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }
@@ -99,11 +112,44 @@ class ForTimeViewController: UIViewController{
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
-                myExercise.exerciseDescription = forTimeString
+                myExercise.exerciseDescription = rounds[id] + " round(s)" + " | " + forTimeString
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if categoryPassed == "Superset"{
+          return sets.count
+        }else{
+            return rounds.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if categoryPassed == "Superset"{
+            return sets[row]
+        }else{
+            return rounds[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        if categoryPassed == "Superset"{
+           label.text = sets[row]
+        }else{
+           label.text = rounds[row]
+        }
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 23.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
+        return label
     }
     
     func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {

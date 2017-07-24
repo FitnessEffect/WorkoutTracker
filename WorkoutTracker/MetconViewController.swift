@@ -24,7 +24,7 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for x in 0...100{
+        for x in 1...100{
             rounds.append(String(x))
         }
         
