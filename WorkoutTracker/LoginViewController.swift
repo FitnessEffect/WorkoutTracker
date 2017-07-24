@@ -204,7 +204,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     
-                    let alertController = UIAlertController(title: "", message: "You are Registered!", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "", message: "You are registered!", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
