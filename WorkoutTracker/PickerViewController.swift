@@ -45,7 +45,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         lbsLabel.alpha = 0
         repsLabel.alpha = 0
         
-        for i in 0...500{
+        for i in 0...1500{
             weights.append(String(i))
             reps.append(String(i))
             miles.append(String(i))
