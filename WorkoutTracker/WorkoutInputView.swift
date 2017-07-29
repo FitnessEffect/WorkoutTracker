@@ -314,6 +314,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     func eraseExerciseDescription(){
         UIView.animate(withDuration: 0.5, animations: {
             UserDefaults.standard.set(nil, forKey: "supersetDescription")
+            DBService.shared.setEdit(bool:false)
+            DBService.shared.clearExercisePassed()
             self.descriptionTextView.text = ""
             self.descriptionTextView.alpha = 0
             self.erase.alpha = 0

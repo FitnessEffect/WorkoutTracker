@@ -216,6 +216,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     tempResult = "0 minute(s) completed"
                 }else if tagPassed == 8{
                     tempResult = "0 meter(s)"
+                }else if tagPassed == 7{
+                    tempResult = "Completed"
                 }else{
                     tempResult = "0 mile(s)"
                 }

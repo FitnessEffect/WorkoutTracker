@@ -36,6 +36,7 @@ class DBService {
     private var _crossfitHeroWods = [String]()
     private var _notificationCount:Int = 0
     private var _supersetExercises = [Exercise]()
+    private var _edit = false
     
     private init() {
         initDatabase()
@@ -82,6 +83,10 @@ class DBService {
             }
             return false
         })
+    }
+    
+    func setEdit(bool:Bool){
+        _edit = bool
     }
     
     func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
@@ -762,6 +767,12 @@ class DBService {
     var supersetExercises:[Exercise]{
         get{
             return _supersetExercises
+        }
+    }
+    
+    var edit:Bool{
+        get{
+            return _edit
         }
     }
 }
