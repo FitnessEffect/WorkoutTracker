@@ -19,6 +19,10 @@ class ExerciseTypeTableViewController: UITableViewController{
         self.tableView.backgroundView?.alpha = 0.1
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        DBService.shared.clearSupersetExercises()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

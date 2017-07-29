@@ -86,6 +86,10 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         }
     }
     
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController){
+        DBService.shared.clearSupersetExercises()
+    }
+    
     func fillInExercisePassed(exercise:Exercise){
         dateBtn.setTitle(exercise.date, for: .normal)
         saveExercise(exStr: exercise.exerciseDescription)
@@ -158,7 +162,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         self.resultBtn.isUserInteractionEnabled = false
         
         delegate?.handleSave(json: exerciseDictionary)
-        eraseExercise()
+        eraseExerciseDescription()
     }
     
     @IBAction func selectDate(_ sender: UIButton) {
@@ -307,8 +311,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         }))
     }
     
-    func eraseExercise(){
+    func eraseExerciseDescription(){
         UIView.animate(withDuration: 0.5, animations: {
+            UserDefaults.standard.set(nil, forKey: "supersetDescription")
             self.descriptionTextView.text = ""
             self.descriptionTextView.alpha = 0
             self.erase.alpha = 0
@@ -331,79 +336,60 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.saveButton.setBackgroundImage(UIImage(named:""), for: .normal)
                 self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
                 self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                self.saveButton.isUserInteractionEnabled = false
+                self.challenge.isUserInteractionEnabled = false
+                self.resultBtn.isUserInteractionEnabled = false
+            })
+        }))
+    }
+    
+    func eraseResultDescription(){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.resultTextView.text = ""
+            self.resultTextView.alpha = 0
+            self.emailTxtView.text = ""
+            self.emailTxtView.alpha = 0
+            self.eraseResult.alpha = 0
+            self.eraseEmail.alpha = 0
+            self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition + self.translation1, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.resultBtn.alpha = 1
+                self.challenge.alpha = 1
+                self.saveButton.setBackgroundImage(UIImage(named:""), for: .normal)
+                self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                self.resultBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                self.saveButton.isUserInteractionEnabled = false
+                self.challenge.isUserInteractionEnabled = false
+            })
+        }))
+    }
+    
+    func eraseEmailDescription(){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.emailTxtView.text = ""
+            self.emailTxtView.alpha = 0
+            self.eraseEmail.alpha = 0
+            self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1 + self.translation2, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1 + self.translation2, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+        }, completion: ( {success in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.challenge.alpha = 1
+                self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
             })
         }))
     }
     
     @IBAction func eraseBtn(_ sender: UIButton) {
-        //erase exercise
         if sender.tag == 0{
-            UIView.animate(withDuration: 0.5, animations: {
-                self.descriptionTextView.text = ""
-                self.descriptionTextView.alpha = 0
-                self.erase.alpha = 0
-                self.resultTextView.text = ""
-                self.resultTextView.alpha = 0
-                self.emailTxtView.text = ""
-                self.emailTxtView.alpha = 0
-                self.eraseResult.alpha = 0
-                self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
-                self.dateBtn.frame = CGRect(x: 0, y: self.dateStartPosition, width: self.dateBtn.frame.width, height: self.dateBtn.frame.height)
-            }, completion: ( {success in
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.exerciseBtn.alpha = 1
-                    self.resultBtn.alpha = 1
-                    self.challenge.alpha = 1
-                    self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
-                    self.saveButton.setBackgroundImage(UIImage(named:""), for: .normal)
-                    self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
-                    self.exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                    self.saveButton.isUserInteractionEnabled = false
-                    self.challenge.isUserInteractionEnabled = false
-                    self.resultBtn.isUserInteractionEnabled = false
-                })
-            }))
-            //erase result
+            eraseExerciseDescription()
         }else if sender.tag == 1{
-            UIView.animate(withDuration: 0.5, animations: {
-                self.resultTextView.text = ""
-                self.resultTextView.alpha = 0
-                self.emailTxtView.text = ""
-                self.emailTxtView.alpha = 0
-                self.eraseResult.alpha = 0
-                self.eraseEmail.alpha = 0
-                self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition + self.translation1, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
-                self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
-            }, completion: ( {success in
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.resultBtn.alpha = 1
-                    self.challenge.alpha = 1
-                    self.saveButton.setBackgroundImage(UIImage(named:""), for: .normal)
-                    self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
-                    self.resultBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                    self.saveButton.isUserInteractionEnabled = false
-                    self.challenge.isUserInteractionEnabled = false
-                })
-            }))
-            //erase email
+            eraseResultDescription()
         }else if sender.tag == 2{
-            UIView.animate(withDuration: 0.5, animations: {
-                self.emailTxtView.text = ""
-                self.emailTxtView.alpha = 0
-                self.eraseEmail.alpha = 0
-                self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1 + self.translation2, width: self.challenge.frame.width, height: self.challenge.frame.height)
-                self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1 + self.translation2, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
-            }, completion: ( {success in
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.challenge.alpha = 1
-                    self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                    self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                })
-            }))
+           eraseEmailDescription()
         }
     }
     
