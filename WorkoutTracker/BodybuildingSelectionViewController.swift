@@ -163,7 +163,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
                         let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
                     myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
-                   DBService.shared.setSupersetExercises(exercise: myExercise)
+                   DBService.shared.setSupersetExercise(exercise: myExercise)
                     self.navigationController?.pushViewController(vc, animated: true)
                 }else{
                     let idReps = repsSetsOutlet.selectedRow(inComponent: 0)

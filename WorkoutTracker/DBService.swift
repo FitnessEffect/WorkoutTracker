@@ -165,7 +165,11 @@ class DBService {
         _tabataTime = time
     }
     
-    func setSupersetExercises(exercise:Exercise){
+    func setSupersetExercises(exercises:[Exercise]){
+        _supersetExercises = exercises
+    }
+    
+    func setSupersetExercise(exercise:Exercise){
         _supersetExercises.append(exercise)
     }
     

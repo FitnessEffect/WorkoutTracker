@@ -134,6 +134,22 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         return cell
     }
     
+    //Allows exercise cell to be deleted
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                let x = indexPath.row
+                self.exercises.remove(at: x)
+                DBService.shared.setSupersetExercises(exercises: self.exercises)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                tableView.reloadData()
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(deleteAlert, animated: true, completion:nil)
+        }
+    }
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         if component == 0 {
