@@ -29,7 +29,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     var exerciseKey:String!
     var activeField: UITextField?
     var keyboardActive = false
-    var edit = false
+    
     var passedOn = false
     
     override func viewDidLoad() {
@@ -116,7 +116,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             title = "Personal"
         }
         
-        if edit == true{
+        if DBService.shared.edit == true{
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
             tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
@@ -169,7 +169,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func handleResultPickerChoice() -> Int{
-        if edit == true{
+        if DBService.shared.edit == true{
             tempExercise = DBService.shared.passedExercise
         }
         
@@ -217,7 +217,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
             exerciseDictionary["clientKey"] = tempClient.clientKey
         }
-        if edit == true{
+        if DBService.shared.edit == true{
             //if user changes client while exercises is in edit mode
             if DBService.shared.passedExercise.client != title{
                 exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
@@ -227,7 +227,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         }else{
             exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
         }
-        edit = false
+        DBService.shared.setEdit(bool:false)
         if self.title == "Personal"{
             DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
@@ -328,9 +328,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         workoutInputView.saveResult(str: str)
     }
     
-    func setEdit(bool:Bool){
-        edit = bool
-    }
+
     
     func setNewDate(dateStr:String){
         workoutInputView.setNewDate(dateStr: dateStr)
