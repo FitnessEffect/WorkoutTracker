@@ -35,6 +35,11 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
         }else if categoryPassed == "Emom"{
             title = "Emom Exercise"
         }
+        
+        let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
+        rightBarButton.image = UIImage(named:"addIcon")
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {

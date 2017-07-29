@@ -225,10 +225,6 @@
 				522F4F4F1F2AE7360053009C /* SupersetViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
-				525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */,
-				525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */,
-				525D5D921F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift */,
-				525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 			);
 			name = Controllers;
@@ -237,6 +233,10 @@
 		5291C4551CE13ECB00DF8C0C /* Crossfit */ = {
 			isa = PBXGroup;
 			children = (
+				525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */,
+				525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */,
+				525D5D921F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift */,
+				525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */,
 				52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */,
 				52192AC01CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift */,
 				5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */,
