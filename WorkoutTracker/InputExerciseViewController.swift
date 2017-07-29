@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MessageUI
 
-class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate{
+class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate, PresentAlertDelegate{
     
     @IBOutlet var workoutInputView: WorkoutInputView!
     
@@ -35,6 +35,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     override func viewDidLoad() {
         super.viewDidLoad()
         workoutInputView.delegate = self
+        workoutInputView.del = self
         
         let tempBool = UserDefaults.standard.object(forKey: "newUser") as! Bool
         if tempBool == true{
@@ -135,6 +136,12 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         //clear passedExercise
         DBService.shared.clearExercisePassed()
         DBService.shared.setPassedClientToPersonal()
+    }
+    
+    func presentAlert(){
+        let alert = UIAlertController(title: "Error", message: "No registered User with that email!", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func hideNotificationOnExit(_ notification: Notification){

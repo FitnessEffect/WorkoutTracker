@@ -13,6 +13,12 @@ protocol WorkoutInputViewDelegate {
     func handleResultPickerChoice()->Int
 }
 
+
+protocol PresentAlertDelegate{
+    func presentAlert()
+}
+
+
 class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -30,6 +36,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBOutlet weak var notificationNumber: UILabel!
     
     var delegate: WorkoutInputViewDelegate?
+    var del: PresentAlertDelegate?
     var name: String = ""
     var date: Date = Date()
     var translation1:CGFloat = 0
@@ -151,27 +158,41 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     @IBAction func save(_ sender: UIButton) {
-        DBService.shared.checkOpponentEmail(email:Formatter.formateEmail(email:emailTxtView.text), completion: {
-            if DBService.shared.emailCheckBoolean == true{
-                var exerciseDictionary = [String:String]()
-                
-                exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                exerciseDictionary["result"] =   self.resultTextView.text!
-                exerciseDictionary["opponent"] = self.emailTxtView.text
-
-                self.saveButton.isUserInteractionEnabled = false
-                self.challenge.isUserInteractionEnabled = false
-                self.resultBtn.isUserInteractionEnabled = false
-                
-                self.delegate?.handleSave(json: exerciseDictionary)
-                self.eraseExerciseDescription()
-                
-            }else{
-                let alert = UIAlertController(title: "Error", message: "No registered user with that email!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(alert, animated: true, completion: nil)
-            }
-        })
+        if emailTxtView.text != ""{
+            DBService.shared.checkOpponentEmail(email:Formatter.formateEmail(email:emailTxtView.text), completion: {
+                if DBService.shared.emailCheckBoolean == true{
+                    var exerciseDictionary = [String:String]()
+                    
+                    exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
+                    exerciseDictionary["result"] =   self.resultTextView.text!
+                    exerciseDictionary["opponent"] = self.emailTxtView.text
+                    
+                    self.saveButton.isUserInteractionEnabled = false
+                    self.challenge.isUserInteractionEnabled = false
+                    self.resultBtn.isUserInteractionEnabled = false
+                    
+                    self.delegate?.handleSave(json: exerciseDictionary)
+                    self.eraseExerciseDescription()
+                    
+                }else{
+                    self.del?.presentAlert()
+ 
+                }
+            })
+        }else{
+            var exerciseDictionary = [String:String]()
+            
+            exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
+            exerciseDictionary["result"] =   self.resultTextView.text!
+            exerciseDictionary["opponent"] = self.emailTxtView.text
+            
+            self.saveButton.isUserInteractionEnabled = false
+            self.challenge.isUserInteractionEnabled = false
+            self.resultBtn.isUserInteractionEnabled = false
+            
+            self.delegate?.handleSave(json: exerciseDictionary)
+            self.eraseExerciseDescription()
+        }
     }
     
     @IBAction func selectDate(_ sender: UIButton) {
