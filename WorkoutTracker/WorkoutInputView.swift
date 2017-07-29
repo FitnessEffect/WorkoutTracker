@@ -151,18 +151,27 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     @IBAction func save(_ sender: UIButton) {
-        var exerciseDictionary = [String:String]()
-        
-        exerciseDictionary["date"] =  (dateBtn.titleLabel?.text!)!
-        exerciseDictionary["result"] =   resultTextView.text!
-        exerciseDictionary["opponent"] = emailTxtView.text
-        
-        self.saveButton.isUserInteractionEnabled = false
-        self.challenge.isUserInteractionEnabled = false
-        self.resultBtn.isUserInteractionEnabled = false
-        
-        delegate?.handleSave(json: exerciseDictionary)
-        eraseExerciseDescription()
+        DBService.shared.checkOpponentEmail(email:Formatter.formateEmail(email:emailTxtView.text), completion: {
+            if DBService.shared.emailCheckBoolean == true{
+                var exerciseDictionary = [String:String]()
+                
+                exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
+                exerciseDictionary["result"] =   self.resultTextView.text!
+                exerciseDictionary["opponent"] = self.emailTxtView.text
+
+                self.saveButton.isUserInteractionEnabled = false
+                self.challenge.isUserInteractionEnabled = false
+                self.resultBtn.isUserInteractionEnabled = false
+                
+                self.delegate?.handleSave(json: exerciseDictionary)
+                self.eraseExerciseDescription()
+                
+            }else{
+                let alert = UIAlertController(title: "Error", message: "No registered user with that email!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     @IBAction func selectDate(_ sender: UIButton) {

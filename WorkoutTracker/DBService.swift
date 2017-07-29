@@ -37,6 +37,7 @@ class DBService {
     private var _notificationCount:Int = 0
     private var _supersetExercises = [Exercise]()
     private var _edit = false
+    private var _emailCheckBoolean = false
     
     private init() {
         initDatabase()
@@ -82,6 +83,25 @@ class DBService {
                 return true
             }
             return false
+        })
+    }
+    
+    func checkOpponentEmail(email:String, completion:@escaping ()->Void){
+        
+        _ref.child("emails").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            let keys = value.allKeys as! [String]
+            for key in keys{
+                if key == email{
+                    self._emailCheckBoolean = true
+                    completion()
+                    return
+                }
+            }
+            self._emailCheckBoolean = false
+            completion()
         })
     }
     
@@ -773,6 +793,12 @@ class DBService {
     var edit:Bool{
         get{
             return _edit
+        }
+    }
+    
+    var emailCheckBoolean:Bool{
+        get{
+            return _emailCheckBoolean
         }
     }
 }

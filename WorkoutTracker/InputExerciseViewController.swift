@@ -202,6 +202,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func handleSave(json: [String : Any]) {
+        
         exerciseDictionary = json
         exerciseDictionary["description"] = tempExercise.exerciseDescription
         exerciseDictionary["name"] =  tempExercise.name
