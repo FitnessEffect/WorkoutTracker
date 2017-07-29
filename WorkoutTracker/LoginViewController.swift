@@ -67,11 +67,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     return
                 } else {
                     DBService.shared.initUser()
-                    if let deviceTokenString = UserDefaults.standard.object(forKey: "deviceToken") as? String{
-                        print(deviceTokenString)
+                    if UserDefaults.standard.object(forKey: "newUser") as! Bool == true{
+                       
                         //use email
                         let formattedEmail = Formatter.formateEmail(email: (u?.email)!)
-                        self.ref.child("token").updateChildValues([formattedEmail:deviceTokenString])
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
                     //called only for login
