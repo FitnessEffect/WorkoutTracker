@@ -31,9 +31,9 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
         }
 
         if categoryPassed == "Amrap"{
-            title = "Amrap Exercise"
+            title = "Exercise"
         }else if categoryPassed == "Emom"{
-            title = "Emom Exercise"
+            title = "Exercise"
         }
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
@@ -139,7 +139,7 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
                 label.text = lbs[row]
             }
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 23.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label
