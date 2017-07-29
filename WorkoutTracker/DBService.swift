@@ -35,6 +35,7 @@ class DBService {
     private var _tabataTime:String!
     private var _crossfitHeroWods = [String]()
     private var _notificationCount:Int = 0
+    private var _supersetExercises = [Exercise]()
     
     private init() {
         initDatabase()
@@ -162,6 +163,10 @@ class DBService {
     
     func setTabataTime(time:String){
         _tabataTime = time
+    }
+    
+    func setSupersetExercises(exercise:Exercise){
+        _supersetExercises.append(exercise)
     }
     
     func createEnduranceExercise(dictionary:[String:Any]){
@@ -524,6 +529,10 @@ class DBService {
         _notificationCount = 0
     }
     
+    func clearSupersetExercises(){
+        _supersetExercises.removeAll()
+    }
+    
     func clearExercisePassed(){
         _passedExercise?.exerciseKey = ""
     }
@@ -567,7 +576,6 @@ class DBService {
         bodybuildingDictionary["Triceps"] = true
         bodybuildingDictionary["Back"] = true
         bodybuildingDictionary["Shoulders"] = true
-        bodybuildingDictionary["Superset"] = true
         self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").updateChildValues(bodybuildingDictionary)
         
         var bodybuildingAbsExercise = [String:Any]()
@@ -744,6 +752,12 @@ class DBService {
     var notificationCount:Int{
         get{
             return _notificationCount
+        }
+    }
+    
+    var supersetExercises:[Exercise]{
+        get{
+            return _supersetExercises
         }
     }
 }

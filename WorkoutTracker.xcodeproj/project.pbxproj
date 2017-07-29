@@ -23,9 +23,15 @@
 		52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalViewController.swift */; };
 		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
+		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
 		523470681ED0E6480079D03E /* ExercisesHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */; };
+		525D5D891F2BC07400F9F00F /* SupersetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D881F2BC07400F9F00F /* SupersetTableViewCell.swift */; };
+		525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */; };
+		525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */; };
+		525D5D911F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */; };
+		525D5D931F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D921F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift */; };
 		526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */; };
 		526A3F111EC60D61001BF557 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F101EC60D61001BF557 /* CalendarViewController.swift */; };
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
@@ -90,10 +96,16 @@
 		52265E181F20F559009F3B27 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalStatsViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
+		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		523470651ED099F90079D03E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisesHistoryViewController.swift; sourceTree = "<group>"; };
+		525D5D881F2BC07400F9F00F /* SupersetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupersetTableViewCell.swift; sourceTree = "<group>"; };
+		525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForMetconViewController.swift; sourceTree = "<group>"; };
+		525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForAmrapViewController.swift; sourceTree = "<group>"; };
+		525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForTabataViewController.swift; sourceTree = "<group>"; };
+		525D5D921F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForForTimeViewController.swift; sourceTree = "<group>"; };
 		526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputExerciseViewController.swift; sourceTree = "<group>"; };
 		526A3F101EC60D61001BF557 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 				52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */,
 				52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */,
 				52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */,
+				525D5D881F2BC07400F9F00F /* SupersetTableViewCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -209,8 +222,13 @@
 				52CB16A71EFBFBD500F4232D /* Popovers */,
 				529FC7C41F21673A00C16203 /* Personal  */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
+				522F4F4F1F2AE7360053009C /* SupersetViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
+				525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */,
+				525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */,
+				525D5D921F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift */,
+				525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 			);
 			name = Controllers;
@@ -568,17 +586,21 @@
 				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
 				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
+				525D5D911F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
+				525D5D931F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* ExercisesViewController.swift in Sources */,
 				52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
+				525D5D891F2BC07400F9F00F /* SupersetTableViewCell.swift in Sources */,
 				52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */,
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
+				525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */,
 				52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */,
 				5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */,
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
@@ -588,6 +610,8 @@
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,
 				5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */,
 				52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */,
+				525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */,
+				522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */,
 				52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */,
 				52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */,
 				52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */,

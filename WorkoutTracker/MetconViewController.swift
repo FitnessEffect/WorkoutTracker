@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var pickerOutlet: UIPickerView!
@@ -16,10 +16,9 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
-    var exerciseNumber:Int = 1
-    var exerciseList:[String] = [""]
     var categoryPassed:String!
     var rounds = [String]()
+    var exercises = [Exercise]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,25 +27,33 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             rounds.append(String(x))
         }
         
+        let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SupersetViewController.rightSideBarButtonItemTapped(_:)))
+        rightBarButton.image = UIImage(named:"addIcon")
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        
         title = categoryPassed
+        
+          self.navigationItem.setHidesBackButton(true, animated:true)
+        
+        self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
-        
-        self.navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        exercises = DBService.shared.supersetExercises
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func addExercise(_ sender: UIBarButtonItem) {
-        if exerciseNumber < 4{
-            exerciseNumber += 1
-            exerciseList.append("")
-            tableView.reloadData()
-        }
+    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+        self.navigationController?.popViewController(animated: true)
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){
@@ -68,55 +75,50 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func addMetcon(_ sender: UIButton) {
+        let myExercise = Exercise()
+        let idRounds:Int = pickerOutlet.selectedRow(inComponent: 0)
+        
         myExercise.name = "Metcon"
-        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        var metconString = ""
-        for exercise in exerciseList{
-            if !exercise.isEmpty {
-                metconString.append(exercise)
-                metconString.append(" | ")
-            }
-        }
         myExercise.category = "Metcon"
         myExercise.type = "Crossfit"
-        
-        if metconString == ""{
-            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
-        }else{
-            myExercise.exerciseDescription = (rounds[id] + " round(s)" + " | " + metconString)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-            
-            dismiss(animated: true, completion: nil)
+        for exercise in exercises{
+            if myExercise.exerciseDescription == ""{
+                myExercise.exerciseDescription = exercise.exerciseDescription
+                
+            }else{
+                myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+            }
         }
+        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + rounds[idRounds] + " set(s)"
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+        
+        DBService.shared.clearSupersetExercises()
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setCategory(category:String){
         categoryPassed = category
     }
     
-    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exerciseList.count
+        return exercises.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MetconCell", for: indexPath) as! MetconCustomCell
-        let text = exerciseList[(indexPath as NSIndexPath).row]
-        cell.exTextField.text = text
-        cell.exTextField.tag = (indexPath as NSIndexPath).row
-        cell.exTextField.addTarget(self, action: #selector(MetconViewController.textFieldDidChange(_:)), for:UIControlEvents.editingChanged)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetTableViewCell
+        cell.descriptionTextView.text = self.exercises[indexPath.row].exerciseDescription
+        cell.numLabel.text = String(indexPath.row + 1)
+        cell.backgroundColor = UIColor.clear
+        cell.tag = indexPath.row
         return cell
-    }
-    
-    func textFieldDidChange(_ textField: UITextField) {
-        let index = textField.tag
-        exerciseList[index] = textField.text!
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

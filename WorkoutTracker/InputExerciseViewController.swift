@@ -85,6 +85,8 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     override func viewWillAppear(_ animated: Bool) {
         workoutInputView.setCurrentDate()
         
+        UserDefaults.standard.set(nil, forKey: "supersetDescription")
+        
         DBService.shared.retrieveClients {
             self.nameArray.removeAll()
             for client in DBService.shared.clients{

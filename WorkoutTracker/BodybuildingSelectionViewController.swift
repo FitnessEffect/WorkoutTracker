@@ -14,6 +14,11 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     @IBOutlet weak var pickerOutlet: UIPickerView!
     @IBOutlet weak var add: UIButton!
     @IBOutlet weak var repsSetsOutlet: UIPickerView!
+    @IBOutlet weak var repsLabelForTwoComponents: UILabel!
+    @IBOutlet weak var setsLabelForTwoComponents: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var repsLabelForOneComponent: UILabel!
+    @IBOutlet weak var lbsLabel: UILabel!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -21,13 +26,24 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     var categoryPassed = ""
     var reps = [String]()
     var sets = [String]()
+    var lbs = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
+
+        
+        repsLabelForOneComponent.isHidden = true
+        lbsLabel.isHidden = true
+        
         for i in 1...300{
             reps.append(String(i))
             sets.append(String(i))
+        }
+        
+        for i in 0...1500{
+            lbs.append(String(i))
         }
         
         title = categoryPassed
@@ -44,10 +60,32 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if DBService.shared.supersetExercises.count != 0{
+            segmentedControl.selectedSegmentIndex = 1
+        }
+        
         DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
             self.exercises = DBService.shared.exercisesForBodybuildingCategory
             self.pickerOutlet.reloadAllComponents()
         })
+    }
+
+    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        if segmentedControl.selectedSegmentIndex == 0{
+            repsLabelForOneComponent.isHidden = true
+            lbsLabel.isHidden = true
+            repsLabelForTwoComponents.isHidden = false
+            setsLabelForTwoComponents.isHidden = false
+            repsSetsOutlet.tag = 1
+            repsSetsOutlet.reloadAllComponents()
+        }else{
+            repsSetsOutlet.tag = 2
+            repsLabelForTwoComponents.isHidden = true
+            setsLabelForTwoComponents.isHidden = true
+            repsLabelForOneComponent.isHidden = false
+            lbsLabel.isHidden = false
+            repsSetsOutlet.reloadAllComponents()
+        }
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
@@ -72,11 +110,17 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0{
             return exercises.count
-        }else{
+        }else if pickerView.tag == 1{
             if component == 0 {
                 return reps.count
             }else{
                 return sets.count
+            }
+        }else{
+            if component == 0 {
+                return reps.count
+            }else{
+                return lbs.count
             }
         }
     }
@@ -84,33 +128,54 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0{
             return exercises[row]
-        }else{
+        }else if pickerView.tag == 1{
             if component == 0 {
                 return reps[row]
             }else {
                 return sets[row]
             }
+        }else{
+            if component == 0 {
+                return reps[row]
+            }else{
+                return lbs[row]
+            }
         }
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-        let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
-        let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
         
-        myExercise.name = categoryPassed
-        myExercise.category = categoryPassed
-        myExercise.type = "Bodybuilding"
         
-        if exercises.count == 0{
-            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+        
+            myExercise.name = categoryPassed
+            myExercise.category = categoryPassed
+            myExercise.type = "Bodybuilding"
             
-        }else{
-            myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-            dismiss(animated: true, completion: nil)
+            if exercises.count == 0{
+                let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }else{
+                if segmentedControl.selectedSegmentIndex == 1{
+                        let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
+                        let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
+                    myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
+                   DBService.shared.setSupersetExercises(exercise: myExercise)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
+                    let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
+                    myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
+                    
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+                    
+                     DBService.shared.clearSupersetExercises()
+                
+                dismiss(animated: true, completion: nil)
+            }
         }
     }
     
@@ -119,20 +184,22 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         
         if pickerView.tag == 0 {
             label.text = exercises[row]
-            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
-            label.attributedText = myTitle
-            label.textAlignment = NSTextAlignment.center
-        }else if component == 0{
-            label.text = reps[row]
-            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
-            label.attributedText = myTitle
-            label.textAlignment = NSTextAlignment.center
+        }else if pickerView.tag == 1{
+            if component == 0{
+                label.text = reps[row]
+            }else{
+                label.text = sets[row]
+            }
         }else{
-            label.text = sets[row]
-            let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
-            label.attributedText = myTitle
-            label.textAlignment = NSTextAlignment.center
+            if component == 0{
+                label.text = reps[row]
+            }else{
+                label.text = lbs[row]
+            }
         }
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 21.0)!,NSForegroundColorAttributeName:UIColor.black])
+        label.attributedText = myTitle
+        label.textAlignment = NSTextAlignment.center
         return label
     }
 }
