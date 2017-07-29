@@ -102,18 +102,17 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         for exercise in exercises{
             if myExercise.exerciseDescription == ""{
                 myExercise.exerciseDescription = exercise.exerciseDescription
-                
             }else{
                 myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
             }
         }
-        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + rest[idRest] + "rest" + " - " + work[idWork] + "work" + " - " + totalTime[idTime] +  " total" + " | "
+        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + rest[idRest] + " rest" + " - " + work[idWork] + " work" + " - " + totalTime[idTime] +  " total" + " | "
         NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         
+        DBService.shared.setTabataTime(time: totalTime[idTime])
         DBService.shared.clearSupersetExercises()
         
         self.dismiss(animated: true, completion: nil)
-
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
