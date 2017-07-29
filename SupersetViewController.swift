@@ -9,20 +9,20 @@
 import UIKit
 
 class SupersetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource{
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var setsPicker: UIPickerView!
     
     let exerciseKey:String = "exerciseKey"
     var exercises = [Exercise]()
     var sets = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Superset"
-
-      self.navigationItem.setHidesBackButton(true, animated:true)
+        
+        self.navigationItem.setHidesBackButton(true, animated:true)
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SupersetViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
@@ -43,11 +43,11 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
         // get a reference to the view controller for the popover
         for vc in (self.navigationController?.viewControllers)!{
             if vc is BodybuildingCategoryTableViewController{
-               self.navigationController?.popToViewController(vc, animated: true)
+                self.navigationController?.popToViewController(vc, animated: true)
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,7 +86,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
             self.present(deleteAlert, animated: true, completion:nil)
         }
     }
-
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -97,7 +97,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return sets[row]
+        return sets[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -108,38 +108,35 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
         label.textAlignment = NSTextAlignment.center
         return label
     }
-
+    
     @IBAction func selectBtn(_ sender: UIButton) {
-        let myExercise = Exercise()
-        let idSets:Int = setsPicker.selectedRow(inComponent: 0)
-        
-        myExercise.name = "Superset"
-        myExercise.category = "Superset"
-        myExercise.type = "Bodybuilding"
-        for exercise in exercises{
-            if myExercise.exerciseDescription == ""{
-                myExercise.exerciseDescription = exercise.exerciseDescription
-                
-            }else{
-                myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+        if exercises.count == 0{
+            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            let myExercise = Exercise()
+            let idSets:Int = setsPicker.selectedRow(inComponent: 0)
+            
+            myExercise.name = "Superset"
+            myExercise.category = "Superset"
+            myExercise.type = "Bodybuilding"
+            for exercise in exercises{
+                if myExercise.exerciseDescription == ""{
+                    myExercise.exerciseDescription = exercise.exerciseDescription
+                    
+                }else{
+                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+                }
             }
+            myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + sets[idSets] + " set(s)"
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+            
+            DBService.shared.clearSupersetExercises()
+            
+            self.dismiss(animated: true, completion: nil)
         }
-        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + sets[idSets] + " set(s)"
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-        
-        DBService.shared.clearSupersetExercises()
-        
-        self.dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

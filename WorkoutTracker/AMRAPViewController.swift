@@ -42,7 +42,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         
-         title = categoryPassed
+        title = categoryPassed
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
@@ -110,56 +110,63 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func add(_ sender: UIButton) {
-        if categoryPassed == "Amrap"{
-            let myExercise = Exercise()
-            let idSec:Int = pickerOutlet.selectedRow(inComponent: 0)
-             let idMin:Int = pickerOutlet.selectedRow(inComponent: 1)
-            
-            myExercise.name = "Amrap"
-            myExercise.category = "Amrap"
-            myExercise.type = "Crossfit"
-            for exercise in exercises{
-                if myExercise.exerciseDescription == ""{
-                    myExercise.exerciseDescription = exercise.exerciseDescription
-                    
-                }else{
-                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
-                }
-            }
-            myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + seconds[idSec] + " sec(s)" + " | " + minutes[idMin] + " min(s)"
-            
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-            
-              self.navigationItem.setHidesBackButton(true, animated:true)
-            
-            DBService.shared.clearSupersetExercises()
-            
-            self.dismiss(animated: true, completion: nil)
+        if exercises.count == 0{
+            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             
         }else{
-            let myExercise = Exercise()
-            let idMin:Int = pickerOutlet.selectedRow(inComponent: 0)
-            
-            myExercise.name = "Emom"
-            myExercise.category = "Emom"
-            myExercise.type = "Crossfit"
-            for exercise in exercises{
-                if myExercise.exerciseDescription == ""{
-                    myExercise.exerciseDescription = exercise.exerciseDescription
-                    
-                }else{
-                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+            if categoryPassed == "Amrap"{
+                let myExercise = Exercise()
+                let idMin:Int = pickerOutlet.selectedRow(inComponent: 0)
+                let idSec:Int = pickerOutlet.selectedRow(inComponent: 1)
+                
+                myExercise.name = "Amrap"
+                myExercise.category = "Amrap"
+                myExercise.type = "Crossfit"
+                for exercise in exercises{
+                    if myExercise.exerciseDescription == ""{
+                        myExercise.exerciseDescription = exercise.exerciseDescription
+                        
+                    }else{
+                        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+                    }
                 }
+                myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)"
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+                
+                self.navigationItem.setHidesBackButton(true, animated:true)
+                
+                DBService.shared.clearSupersetExercises()
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            }else{
+                let myExercise = Exercise()
+                let idMin:Int = pickerOutlet.selectedRow(inComponent: 0)
+                
+                myExercise.name = "Emom"
+                myExercise.category = "Emom"
+                myExercise.type = "Crossfit"
+                for exercise in exercises{
+                    if myExercise.exerciseDescription == ""{
+                        myExercise.exerciseDescription = exercise.exerciseDescription
+                        
+                    }else{
+                        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+                    }
+                }
+                myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + emomTime[idMin] + " min(s)"
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+                
+                DBService.shared.setEmomTime(time: emomTime[idMin])
+                
+                DBService.shared.clearSupersetExercises()
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + emomTime[idMin] + " min(s)"
-            
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-            
-            DBService.shared.setEmomTime(time: emomTime[idMin])
-            
-            DBService.shared.clearSupersetExercises()
-            
-            self.dismiss(animated: true, completion: nil)
         }
     }
     

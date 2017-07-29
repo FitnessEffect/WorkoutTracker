@@ -91,28 +91,35 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func addTabata(_ sender: UIButton) {
-        let myExercise = Exercise()
-        let idRest:Int = pickerOutlet.selectedRow(inComponent: 0)
-        let idWork:Int = pickerOutlet.selectedRow(inComponent: 1)
-        let idTime:Int = pickerOutlet.selectedRow(inComponent: 2)
-        
-        myExercise.name = "Tabata"
-        myExercise.category = "Tabata"
-        myExercise.type = "Crossfit"
-        for exercise in exercises{
-            if myExercise.exerciseDescription == ""{
-                myExercise.exerciseDescription = exercise.exerciseDescription
-            }else{
-                myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+        if exercises.count == 0{
+            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            let myExercise = Exercise()
+            let idRest:Int = pickerOutlet.selectedRow(inComponent: 0)
+            let idWork:Int = pickerOutlet.selectedRow(inComponent: 1)
+            let idTime:Int = pickerOutlet.selectedRow(inComponent: 2)
+            
+            myExercise.name = "Tabata"
+            myExercise.category = "Tabata"
+            myExercise.type = "Crossfit"
+            for exercise in exercises{
+                if myExercise.exerciseDescription == ""{
+                    myExercise.exerciseDescription = exercise.exerciseDescription
+                }else{
+                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+                }
             }
+            myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + rest[idRest] + " rest" + " - " + work[idWork] + " work" + " - " + totalTime[idTime] +  " total" + " | "
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
+            
+            DBService.shared.setTabataTime(time: totalTime[idTime])
+            DBService.shared.clearSupersetExercises()
+            
+            self.dismiss(animated: true, completion: nil)
         }
-        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + rest[idRest] + " rest" + " - " + work[idWork] + " work" + " - " + totalTime[idTime] +  " total" + " | "
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-        
-        DBService.shared.setTabataTime(time: totalTime[idTime])
-        DBService.shared.clearSupersetExercises()
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
