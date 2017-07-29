@@ -11,7 +11,7 @@ import UIKit
 class SupersetTableViewCell: UITableViewCell {
 
 
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var numLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
