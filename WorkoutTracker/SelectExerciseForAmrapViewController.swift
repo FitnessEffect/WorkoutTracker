@@ -115,7 +115,7 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
             myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
             if categoryPassed == "Amrap" || categoryPassed == "Emom"{
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "amrapVC") as! AmrapViewController
-                DBService.shared.setSupersetExercises(exercise: myExercise)
+                DBService.shared.setSupersetExercise(exercise: myExercise)
                 vc.setCategory(category: categoryPassed)
                 self.navigationController?.pushViewController(vc, animated: true)
             }

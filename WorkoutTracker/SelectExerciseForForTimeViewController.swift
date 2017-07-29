@@ -114,7 +114,7 @@ class SelectExerciseForForTimeViewController: UIViewController, UIPickerViewDele
             let idPounds = repsWeightPicker.selectedRow(inComponent: 1)
             myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "forTimeVC") as! ForTimeViewController
-            DBService.shared.setSupersetExercises(exercise: myExercise)
+            DBService.shared.setSupersetExercise(exercise: myExercise)
             vc.setCategory(category: categoryPassed)
             self.navigationController?.pushViewController(vc, animated: true)
         }
