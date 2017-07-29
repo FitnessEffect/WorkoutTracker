@@ -2638,7 +2638,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6m1-yM-5iC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6172" y="-1334.4827586206898"/>
+            <point key="canvasLocation" x="6172" y="-1237"/>
         </scene>
         <!--Endurance Selection View Controller-->
         <scene sceneID="3AR-Ou-eAG">
@@ -2774,7 +2774,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRY-2f-gql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6868" y="-1335.3823088455774"/>
+            <point key="canvasLocation" x="7028" y="-1238"/>
         </scene>
         <!--Create Endurance Category View Controller-->
         <scene sceneID="hP4-uJ-UNb">
