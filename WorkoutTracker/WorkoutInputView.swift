@@ -13,12 +13,6 @@ protocol WorkoutInputViewDelegate {
     func handleResultPickerChoice()->Int
 }
 
-
-protocol PresentAlertDelegate{
-    func presentAlert()
-}
-
-
 class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var backgroundImage: UIImageView!

@@ -848,8 +848,8 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerLine" translatesAutoresizingMaskIntoConstraints="NO" id="jzR-K5-FQG">
-                                                    <rect key="frame" x="0.0" y="44" width="375" height="2"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="jzR-K5-FQG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" adjustsFontSizeToFit="NO" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="j9B-3s-zCG">
@@ -1407,8 +1407,8 @@
                                                     <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerLine" translatesAutoresizingMaskIntoConstraints="NO" id="UVj-Y0-MXN">
-                                                    <rect key="frame" x="0.0" y="44" width="375" height="2"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="UVj-Y0-MXN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1532,8 +1532,8 @@
                                                     <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerLine" translatesAutoresizingMaskIntoConstraints="NO" id="hFe-hn-c4L">
-                                                    <rect key="frame" x="0.0" y="44" width="375" height="2"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="hFe-hn-c4L">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1768,8 +1768,8 @@
                                                     <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerLine" translatesAutoresizingMaskIntoConstraints="NO" id="nyH-DU-adw">
-                                                    <rect key="frame" x="0.0" y="44" width="375" height="2"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="nyH-DU-adw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -2564,8 +2564,8 @@
                                                     <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerLine" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Na-YXn">
-                                                    <rect key="frame" x="0.0" y="44" width="375" height="2"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Na-YXn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -3393,7 +3393,7 @@
         <image name="clientIcon" width="44" height="44"/>
         <image name="lighterBackground" width="375" height="667"/>
         <image name="markerBackground" width="363" height="265"/>
-        <image name="markerLine" width="700" height="4"/>
+        <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
     </resources>
