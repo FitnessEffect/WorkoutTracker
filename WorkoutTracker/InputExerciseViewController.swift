@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 import MessageUI
 
+protocol PresentAlertDelegate{
+    func presentAlert()
+}
+
 class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate, PresentAlertDelegate{
     
     @IBOutlet var workoutInputView: WorkoutInputView!
@@ -147,6 +151,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func hideNotificationOnExit(_ notification: Notification){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
+        DBService.shared.resetNotificationCount()
         workoutInputView.notificationNumber.alpha = 0
     }
     

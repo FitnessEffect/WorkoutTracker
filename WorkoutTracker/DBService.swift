@@ -430,11 +430,12 @@ class DBService {
     }
     
     func retrieveChallengesExercises(completion:@escaping ()->Void){
+        self._challengeExercises.removeAll()
         _ref.child("users").child(user.uid).child("Challenges").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             // let value = snapshot.value as! NSDictionary
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
-                self._challengeExercises.removeAll()
+                
                 for exercise in exercisesVal {
                     let tempExercise = Exercise()
                     tempExercise.name = exercise.value["name"] as! String
