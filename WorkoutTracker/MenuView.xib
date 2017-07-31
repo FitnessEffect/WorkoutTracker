@@ -19,7 +19,7 @@
                     <rect key="frame" x="-9" y="300" width="138" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
                     <state key="normal" title="Challenges">
                         <color key="titleColor" red="0.0019415960409999999" green="0.094649694859999994" blue="0.69839686160000003" alpha="0.75684931509999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -43,7 +43,7 @@
                     <rect key="frame" x="-9" y="234" width="138" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
                     <state key="normal" title="Clients">
                         <color key="titleColor" red="0.0019415960409999999" green="0.094649694859999994" blue="0.69839686160000003" alpha="0.75684931509999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -55,7 +55,7 @@
                     <rect key="frame" x="-9" y="168" width="138" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
                     <state key="normal" title="Personal">
                         <color key="titleColor" red="0.0019415960409999999" green="0.094649694859999994" blue="0.69839686160000003" alpha="0.75684931509999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -67,7 +67,7 @@
                     <rect key="frame" x="-9" y="367" width="138" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
                     <state key="normal" title="Logout">
                         <color key="titleColor" red="0.0019415960409999999" green="0.094649694859999994" blue="0.69839686160000003" alpha="0.75684931509999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -84,7 +84,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="homeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Alf-9W-K1Z">
-                    <rect key="frame" x="32" y="90" width="60" height="60"/>
+                    <rect key="frame" x="29" y="89" width="62" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>

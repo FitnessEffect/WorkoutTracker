@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTF.delegate = self
         emailTF.delegate = self
         
-        segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 20)!], for: UIControlState.normal)
+        segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 23)!], for: UIControlState.normal)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
