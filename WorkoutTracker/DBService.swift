@@ -453,8 +453,7 @@ class DBService {
     }
     
     func retrieveChallengesExercises(completion:@escaping ()->Void){
-        
-        _ref.child("users").child(user.uid).child("Challenges").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+        _ref.child("users").child(user.uid).child("Challenges").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             // let value = snapshot.value as! NSDictionary
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
@@ -577,7 +576,7 @@ class DBService {
     func setChallengesToViewed(){
         retrieveChallengesExercises {
             for exercise in self._challengeExercises{
-                self._ref.child("users").child(self.user.uid).child("Challenges").child(self.currentYear).child(self.currentWeekNumber).child(exercise.exerciseKey).updateChildValues(["viewed":"true"])
+                self._ref.child("users").child(self.user.uid).child("Challenges").child(exercise.exerciseKey).updateChildValues(["viewed":"true"])
             }
         }
     }
