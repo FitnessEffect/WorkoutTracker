@@ -33,48 +33,6 @@ class DateConverter{
         return tempStr
     }
     
-    static func getFridayForWeek(selectedDate:NSDate) -> NSDate{
-        let calendar = NSCalendar.current
-        let weekDay = calendar.component(.weekday, from: selectedDate as Date)
-        var daysUntilFriday = 6 - weekDay
-        if daysUntilFriday == 0{
-            daysUntilFriday = 7
-        }
-        if daysUntilFriday == -1{
-            daysUntilFriday = 6
-        }
-        let friday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilFriday*60*60*24))
-        return friday
-    }
-    
-    static func getThrusdayForWeek(selectedDate:NSDate) -> NSDate{
-        let calendar = NSCalendar.current
-        let weekDay = calendar.component(.weekday, from: selectedDate as Date)
-        var daysUntilThrusday = 5 - weekDay
-        if daysUntilThrusday == -1{
-            daysUntilThrusday = 6
-        }
-        if daysUntilThrusday == -2{
-            daysUntilThrusday = 5
-        }
-        let thrusday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilThrusday*60*60*24))
-        return thrusday
-    }
-    
-    static func getPreviousFridayForWeek(selectedDate:NSDate) -> NSDate{
-        let calendar = NSCalendar.current
-        let weekDay = calendar.component(.weekday, from: selectedDate as Date)
-        var daysUntilPrevFriday = -1 - weekDay
-        if daysUntilPrevFriday == -7{
-            daysUntilPrevFriday = 0
-        }
-        if daysUntilPrevFriday == -8{
-            daysUntilPrevFriday = -1
-        }
-        let prevFriday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilPrevFriday*60*60*24))
-        return prevFriday
-    }
-    
     static func getidFromResponse(selectedDate:NSDate, response:[[String:Any]]) -> Int{
         var weekID = 0
         
@@ -156,9 +114,9 @@ class DateConverter{
         return date!
     }
     
-    static func getNameForDay(entryDate:String)->String{
+    static func getNameForDay(exerciseDate:String)->String{
         //convert string to correct date
-        let tempDate = getDateFromUnixString(str: entryDate)
+        let tempDate = stringToDate(dateStr: exerciseDate)
         
         //get date name
         let dateFormatter = DateFormatter()
@@ -180,21 +138,86 @@ class DateConverter{
         let stringWithFormat = dateFormatter.string(from: prevSaturday as Date) + " - " + dateFormatter.string(from: nextFriday as Date)
         return stringWithFormat
     }
+
     
-    static func getDateFromUnixString(str:String) -> NSDate{
-        let tempArray = str.components(separatedBy: "(")
-        let tempArray2 = tempArray[1].components(separatedBy: "-")
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        let temp = Date(timeIntervalSince1970: Double(tempArray2[0])!/1000)
-        return temp as NSDate
-    }
+//    static func getDateFromUnixString(str:String) -> NSDate{
+//        let tempArray = str.components(separatedBy: "(")
+//        let tempArray2 = tempArray[1].components(separatedBy: "-")
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+//        dateFormatter.locale = NSLocale.current
+//        dateFormatter.dateFormat = "MM-dd-yyyy"
+//        let temp = Date(timeIntervalSince1970: Double(tempArray2[0])!/1000)
+//        return temp as NSDate
+//    }
     
     static func getMonthFromDate(date:Date) -> Int{
         let calendar = Calendar.current
         let month = calendar.component(.month, from: date as Date)
         return month
+    }
+    
+    
+    static func getCurrentWeekNum()->Int{
+        let calendar = Calendar.current
+        let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
+        print(weekOfYear)
+        return weekOfYear
+    }
+    
+    static func weekNumFromDate(date:NSDate)->Int{
+        let calendar = Calendar.current
+        let weekOfYear = calendar.component(.weekOfYear, from: date as Date)
+        //let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
+        print(weekOfYear)
+        return weekOfYear
+    }
+    
+    static func yearFromDate(date:NSDate)->Int{
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date as Date)
+        //let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
+        print(year)
+        return year
+    }
+    
+    static func getCurrentYear()->Int{
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: Date.init(timeIntervalSinceNow: 0))
+        print(year)
+        return year
+    }
+    
+    
+//    static func getNameForDay(exerciseDate:String)->String{
+//        //convert string to correct date
+//        let tempDate = getDateFromUnixString(str: exerciseDate)
+//        
+//        //get date name
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "EEEE"
+//        let dayName = dateFormatter.string(from: tempDate as Date)
+//        return dayName
+//    }
+//    
+    static func getPreviousSundayForWeek(selectedDate:NSDate) -> NSDate{
+        let calendar = NSCalendar.current
+        let weekDay = calendar.component(.weekday, from: selectedDate as Date)
+        var daysUntilPrevSunday =  1 - weekDay
+        if daysUntilPrevSunday == 1{
+            daysUntilPrevSunday = -6
+        }
+        
+        let prevFriday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilPrevSunday*60*60*24))
+        return prevFriday
+    }
+    
+    static func getSaturdayForWeek(selectedDate:NSDate) -> NSDate{
+        let calendar = NSCalendar.current
+        let weekDay = calendar.component(.weekday, from: selectedDate as Date)
+        let daysUntilSaturday = 7-weekDay
+
+        let saturday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilSaturday*60*60*24))
+        return saturday
     }
 }

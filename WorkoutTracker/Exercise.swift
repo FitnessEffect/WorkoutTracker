@@ -20,6 +20,8 @@ let categoryKey = "category"
 let creatorID = "creatorID"
 let typeKey = "type"
 let viewedKey = "viewed"
+let weekKey = "week"
+let yearKey = "year"
 
 class Exercise: NSCoder {
     
@@ -35,6 +37,8 @@ class Exercise: NSCoder {
     var creatorID:String
     var type:String
     var viewed:String
+    var week:String
+    var year:String
     
     //default initializer
     override init(){
@@ -50,10 +54,12 @@ class Exercise: NSCoder {
         creatorID = ""
         type = ""
         viewed = ""
+        year = ""
+        week = ""
     }
     
     //overload initializer
-    init(name:String, result:String, description:String, date:String, creatorEmail:String, client:String, exerciseKey:String, opponent:String, category:String, creatorID:String, type:String, viewed:String){
+    init(name:String, result:String, description:String, date:String, creatorEmail:String, client:String, exerciseKey:String, opponent:String, category:String, creatorID:String, type:String, viewed:String, year:String, week:String){
         self.name = name
         self.exerciseDescription = description
         self.result = result
@@ -66,6 +72,8 @@ class Exercise: NSCoder {
         self.creatorID = creatorID
         self.type = type
         self.viewed = viewed
+        self.year = year
+        self.week = week
     }
     
     func encodeWithCoder(_ aCoder: NSCoder!) {
@@ -80,7 +88,9 @@ class Exercise: NSCoder {
         aCoder.encode(category, forKey: "categoryKey")
         aCoder.encode(creatorID, forKey: "creatorID")
         aCoder.encode(type, forKey: "typeKey")
-        aCoder.encode(type, forKey: "viewedKey")
+        aCoder.encode(viewed, forKey: "viewedKey")
+        aCoder.encode(year, forKey: "year")
+        aCoder.encode(week, forKey: "week")
     }
     
     init (coder aDecoder: NSCoder!) {
@@ -96,5 +106,7 @@ class Exercise: NSCoder {
         self.creatorID = aDecoder.decodeObject(forKey: "creatorID") as! String
         self.type = aDecoder.decodeObject(forKey: "type") as! String
         self.viewed = aDecoder.decodeObject(forKey: "viewed") as! String
+        self.year = aDecoder.decodeObject(forKey: "year") as! String
+        self.week = aDecoder.decodeObject(forKey: "week") as! String
     }
 }

@@ -38,6 +38,9 @@ class DBService {
     private var _supersetExercises = [Exercise]()
     private var _edit = false
     private var _emailCheckBoolean = false
+    private var _currentWeekNumber = ""
+    private var _currentYear = ""
+    private var _selectedDate = ""
     
     private init() {
         initDatabase()
@@ -48,6 +51,8 @@ class DBService {
     }
     
     func initUser() {
+        setCurrentYearNumber(strYear: String(DateConverter.getCurrentYear()))
+        setCurrentWeekNumber(strWeek: String(DateConverter.getCurrentWeekNum()))
         if let u = FIRAuth.auth()?.currentUser {
             _user = u
             
@@ -109,6 +114,14 @@ class DBService {
         _edit = bool
     }
     
+    func setCurrentWeekNumber(strWeek:String){
+        _currentWeekNumber = strWeek
+    }
+    
+    func setCurrentYearNumber(strYear:String){
+        _currentYear = strYear
+    }
+    
     func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
@@ -141,7 +154,7 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(currentYear).child(currentWeekNumber).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
@@ -158,10 +171,14 @@ class DBService {
     }
     
     func updateExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
-        self._ref.child("users").child(user.uid).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        self._ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
+    func setNewDate(dateString:String){
+        _selectedDate = dateString
+    }
+
     func clearCurrentKey(){
         _currentKey = ""
     }
@@ -221,12 +238,14 @@ class DBService {
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
         
-        _ref.child("users").child(user.uid).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
+        _ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Get user value
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
                     let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
                     tempExercise.name = exercise.value["name"] as! String
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
                     tempExercise.result = exercise.value["result"] as! String
@@ -241,8 +260,10 @@ class DBService {
                     self._exercisesForUser.append(tempExercise)
                     completion()
                 }
+            }else{
+            self._exercisesForUser.removeAll()
+            completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -405,10 +426,12 @@ class DBService {
     func retrieveExercisesForClient(completion:@escaping ()-> Void){
         _exercisesForClient.removeAll()
         
-        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").observeSingleEvent(of: .value, with: { (snapshot) in
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
                     let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
                     tempExercise.name = exercise.value["name"] as! String
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
                     tempExercise.result = exercise.value["result"] as! String
@@ -430,14 +453,16 @@ class DBService {
     }
     
     func retrieveChallengesExercises(completion:@escaping ()->Void){
-        self._challengeExercises.removeAll()
-        _ref.child("users").child(user.uid).child("Challenges").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        _ref.child("users").child(user.uid).child("Challenges").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             // let value = snapshot.value as! NSDictionary
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
-                
+                self._challengeExercises.removeAll()
                 for exercise in exercisesVal {
                     let tempExercise = Exercise()
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.year = exercise.value["year"] as! String
                     tempExercise.name = exercise.value["name"] as! String
                     tempExercise.exerciseDescription = exercise.value["description"] as! String
                     tempExercise.result = exercise.value["result"] as! String
@@ -455,6 +480,7 @@ class DBService {
                     completion()
                 }
             }else{
+                self._challengeExercises.removeAll()
                 completion()
             }
         }) { (error) in
@@ -507,24 +533,25 @@ class DBService {
         }
     }
     
-    func deleteExerciseForClient(id:String){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(id).removeValue { (error, ref) in
+    func deleteExerciseForClient(exercise:Exercise){
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
     }
     
-    func deleteExerciseForUser(id:String){
-        self._ref.child("users").child(self.user.uid).child("Exercises").child(id).removeValue { (error, ref) in
+    func deleteExerciseForUser(exercise:Exercise, completion: @escaping () -> Void){
+        self._ref.child("users").child(self.user.uid).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
+            completion()
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
     }
     
-    func deleteChallengeExerciseForUser(id:String){
-        self._ref.child("users").child(self.user.uid).child("Challenges").child(id).removeValue { (error, ref) in
+    func deleteChallengeExerciseForUser(exercise:Exercise){
+        self._ref.child("users").child(self.user.uid).child("Challenges").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
@@ -550,7 +577,7 @@ class DBService {
     func setChallengesToViewed(){
         retrieveChallengesExercises {
             for exercise in self._challengeExercises{
-                self._ref.child("users").child(self.user.uid).child("Challenges").child(exercise.exerciseKey).child("viewed").setValue("true")
+                self._ref.child("users").child(self.user.uid).child("Challenges").child(self.currentYear).child(self.currentWeekNumber).child(exercise.exerciseKey).updateChildValues(["viewed":"true"])
             }
         }
     }
@@ -800,6 +827,24 @@ class DBService {
     var emailCheckBoolean:Bool{
         get{
             return _emailCheckBoolean
+        }
+    }
+    
+    var currentWeekNumber:String{
+        get{
+            return _currentWeekNumber
+        }
+    }
+    
+    var currentYear:String{
+        get{
+            return _currentYear
+        }
+    }
+    
+    var selectedDate:String{
+        get{
+            return _selectedDate
         }
     }
 }
