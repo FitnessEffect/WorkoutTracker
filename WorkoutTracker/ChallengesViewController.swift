@@ -154,7 +154,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editChallengeSegue"){
             let s = sender as! UITapGestureRecognizer
-            
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow!])
             DBService.shared.setEdit(bool:true)

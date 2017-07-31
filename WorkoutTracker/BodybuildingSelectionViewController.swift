@@ -30,9 +30,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         segmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
-
         
         repsLabelForOneComponent.isHidden = true
         lbsLabel.isHidden = true
@@ -41,7 +39,6 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             reps.append(String(i))
             sets.append(String(i))
         }
-        
         for i in 0...1500{
             lbs.append(String(i))
         }
@@ -69,7 +66,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             self.pickerOutlet.reloadAllComponents()
         })
     }
-
+    
     @IBAction func segmentedControl(_ sender: UISegmentedControl) {
         if segmentedControl.selectedSegmentIndex == 0{
             repsLabelForOneComponent.isHidden = true
@@ -144,33 +141,33 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-            let id:Int = pickerOutlet.selectedRow(inComponent: 0)
+        let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         
-            myExercise.name = categoryPassed
-            myExercise.category = categoryPassed
-            myExercise.type = "Bodybuilding"
+        myExercise.name = categoryPassed
+        myExercise.category = categoryPassed
+        myExercise.type = "Bodybuilding"
+        
+        if exercises.count == 0{
+            let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             
-            if exercises.count == 0{
-                let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
+        }else{
+            if segmentedControl.selectedSegmentIndex == 1{
+                let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
+                let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
+                myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
+                DBService.shared.setSupersetExercise(exercise: myExercise)
+                self.navigationController?.pushViewController(vc, animated: true)
             }else{
-                if segmentedControl.selectedSegmentIndex == 1{
-                        let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
-                        let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
-                    myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
-                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
-                   DBService.shared.setSupersetExercise(exercise: myExercise)
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }else{
-                    let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
-                    let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
-                    myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
-                    
+                let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
+                let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
+                myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
+                
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-                    
-                     DBService.shared.clearSupersetExercises()
+                
+                DBService.shared.clearSupersetExercises()
                 
                 dismiss(animated: true, completion: nil)
             }

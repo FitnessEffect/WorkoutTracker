@@ -226,7 +226,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         let inId:Int = heightPickerView.selectedRow(inComponent: 1)
         let tempInches = inches[inId]
         
-        
         let lbsId:Int = weightPickerView.selectedRow(inComponent: 0)
         let tempWeight = weight[lbsId]
         

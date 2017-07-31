@@ -34,8 +34,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     var activeField: UITextField?
     var keyboardActive = false
     
-    var passedOn = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         workoutInputView.delegate = self
@@ -224,7 +222,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         exerciseDictionary["creatorID"] = user.uid
         exerciseDictionary["clientKey"] = " "
 
-        
         //look up clientKey from name
         if self.title != "Personal"{
             let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
@@ -340,8 +337,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func saveResult(str:String){
         workoutInputView.saveResult(str: str)
     }
-    
-
     
     func setNewDate(dateStr:String){
         workoutInputView.setNewDate(dateStr: dateStr)

@@ -21,7 +21,7 @@ class SelectExerciseForTabataViewController: UIViewController, UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Exercise"
         for i in 1...300{
             reps.append(String(i))
         }
@@ -30,13 +30,10 @@ class SelectExerciseForTabataViewController: UIViewController, UIPickerViewDeleg
             lbs.append(String(i))
         }
         
-        title = "Exercise"
-        
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +94,6 @@ class SelectExerciseForTabataViewController: UIViewController, UIPickerViewDeleg
     
     @IBAction func addExercise(_ sender: UIButton) {
         let myExercise = Exercise()
-        
         let id:Int = exercisePicker.selectedRow(inComponent: 0)
         
         myExercise.name = categoryPassed
@@ -108,7 +104,6 @@ class SelectExerciseForTabataViewController: UIViewController, UIPickerViewDeleg
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
         }else{
             let idReps = repsWeightPicker.selectedRow(inComponent: 0)
             let idPounds = repsWeightPicker.selectedRow(inComponent: 1)
@@ -137,15 +132,4 @@ class SelectExerciseForTabataViewController: UIViewController, UIPickerViewDeleg
         label.textAlignment = NSTextAlignment.center
         return label
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
 }

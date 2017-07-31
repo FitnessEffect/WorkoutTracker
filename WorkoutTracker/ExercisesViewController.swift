@@ -26,7 +26,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         displayCurrentWeek()
+        displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
@@ -99,7 +99,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    
     @IBAction func selectDate(_ sender: UIButton) {
         let xPosition = dateBtn.frame.minX + (dateBtn.frame.width/2)
         let yPosition = dateBtn.frame.maxY - 25
@@ -116,8 +115,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             popController.passedStartingMonth = Int((tempArray2?[0])!)!
             popController.passedStartingYear = Int((tempArray2?[2])!)!
         }
-        
-        
         
         // set the presentation style
         popController.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -344,8 +341,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: { self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                    tableView.reloadData()})
+                    //tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    self.refreshTableViewData()})
                 
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
@@ -392,14 +389,12 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
-            //let wivc:InputExerciseViewController = segue.destination as! InputExerciseViewController
             DBService.shared.setPassedClient(client: clientPassed)
             selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
             DBService.shared.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
-            //let edv:InputExerciseViewController = segue.destination as! InputExerciseViewController
             DBService.shared.setPassedClient(client: clientPassed)
             DBService.shared.setEdit(bool:false)
         }
