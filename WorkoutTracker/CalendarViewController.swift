@@ -128,7 +128,6 @@ class CalendarViewController:UIViewController{
         var monthStr = ""
         var btnStr = ""
         
-        
         if selectedMonth < 10 {
             monthStr = "0" + String(selectedMonth)
         }else{
@@ -169,7 +168,6 @@ class CalendarViewController:UIViewController{
             }
             buttonArray.removeAll()
         }
-        
         var xPosition = 0
         var yPosition = 47
         

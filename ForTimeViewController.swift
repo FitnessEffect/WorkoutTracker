@@ -69,7 +69,6 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
         }else{
             let myExercise = Exercise()
             let idRounds:Int = pickerOutlet.selectedRow(inComponent: 0)
@@ -77,7 +76,6 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             myExercise.name = "For Time"
             myExercise.category = "For Time"
             myExercise.type = "Crossfit"
-            
             
             for exercise in exercises{
                 if myExercise.exerciseDescription == ""{
@@ -90,9 +88,7 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + rounds[idRounds] + " set(s)"
             
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-            
             DBService.shared.clearSupersetExercises()
-            
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -127,7 +123,6 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetTableViewCell
         cell.descriptionTextField.text = self.exercises[indexPath.row].exerciseDescription
         cell.numLabel.text = String(indexPath.row + 1)

@@ -35,7 +35,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             totalTime.append(String(i) + " min")
         }
         
-        
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SupersetViewController.rightSideBarButtonItemTapped(_:)))
@@ -52,7 +51,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         exercises = DBService.shared.supersetExercises
         tableView.reloadData()
     }
-    
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
@@ -97,7 +95,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
         }else{
             let myExercise = Exercise()
             let idRest:Int = pickerOutlet.selectedRow(inComponent: 0)

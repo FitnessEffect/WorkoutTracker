@@ -68,7 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     DBService.shared.initUser()
                     if UserDefaults.standard.object(forKey: "newUser") as! Bool == true{
-                       
+                        
                         //use email
                         let formattedEmail = Formatter.formateEmail(email: (u?.email)!)
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
@@ -113,9 +113,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         //login btn
         if segmentedOutlet.selectedSegmentIndex == 0{
-                self.register.alpha = 0
-                self.termsOfUselabel.alpha = 0
-              self.termsOfUseBtn.alpha = 0
+            self.register.alpha = 0
+            self.termsOfUselabel.alpha = 0
+            self.termsOfUseBtn.alpha = 0
             UIView.animate(withDuration: 0.5, animations: {
                 self.login.alpha = 1
                 self.rememberMeSwitch.alpha = 1
@@ -124,18 +124,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         //Register btn
         if segmentedOutlet.selectedSegmentIndex == 1{
-           
-                self.login.alpha = 0
-                self.rememberMeSwitch.alpha = 0
-                self.rememberMeLabel.alpha = 0
-             UIView.animate(withDuration: 0.5, animations: {
+            
+            self.login.alpha = 0
+            self.rememberMeSwitch.alpha = 0
+            self.rememberMeLabel.alpha = 0
+            UIView.animate(withDuration: 0.5, animations: {
                 self.register.alpha = 1
                 self.termsOfUselabel.alpha = 1
                 self.termsOfUseBtn.alpha = 1
-            
+                
             })
         }
-        
     }
     
     @IBAction func login(_ sender: UIButton) {

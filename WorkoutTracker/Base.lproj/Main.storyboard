@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nji-W8-ZX0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nji-W8-ZX0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1438,7 +1438,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -2970,16 +2970,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSJ-A5-i9k">
-                                <rect key="frame" x="140" y="153" width="95" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="EyA-XE-qTY"/>
-                                    <constraint firstAttribute="width" constant="95" id="rLM-ft-gDi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xk-Ri-n3F">
                                 <rect key="frame" x="220" y="203" width="22" height="27"/>
                                 <constraints>
@@ -2987,16 +2977,6 @@
                                     <constraint firstAttribute="height" constant="27" id="rKT-j6-ahA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDJ-bl-D8h">
-                                <rect key="frame" x="140" y="271" width="95" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="BH7-MF-Wfi"/>
-                                    <constraint firstAttribute="width" constant="95" id="Hob-bN-Lo8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3010,14 +2990,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qie-1D-1fz">
-                                <rect key="frame" x="140" y="35" width="95" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVr-ch-u2n">
+                                <rect key="frame" x="160" y="86" width="33" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="FDY-kB-l2R"/>
-                                    <constraint firstAttribute="height" constant="23" id="k2A-jN-rt2"/>
+                                    <constraint firstAttribute="width" constant="33" id="MHy-8E-b7b"/>
+                                    <constraint firstAttribute="height" constant="27" id="pOS-xD-Ejn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -3025,24 +3005,20 @@
                         <constraints>
                             <constraint firstItem="e8m-PZ-X1b" firstAttribute="top" secondItem="I62-mY-MHa" secondAttribute="bottom" constant="24" id="0sw-AE-Jbr"/>
                             <constraint firstItem="3gR-XI-k2P" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="4SY-cx-sHu"/>
-                            <constraint firstItem="qie-1D-1fz" firstAttribute="top" secondItem="bCb-zB-Vs7" secondAttribute="bottom" constant="15" id="CQR-Dh-Fba"/>
+                            <constraint firstItem="fVr-ch-u2n" firstAttribute="trailing" secondItem="2Xk-Ri-n3F" secondAttribute="trailing" constant="-49" id="5s1-5o-BSL"/>
+                            <constraint firstItem="fVr-ch-u2n" firstAttribute="centerY" secondItem="mkw-hI-IWn" secondAttribute="centerY" id="BIy-kb-Tbu"/>
                             <constraint firstItem="2Xk-Ri-n3F" firstAttribute="leading" secondItem="fXX-Lr-dU6" secondAttribute="trailing" constant="78" id="E24-RY-a8D"/>
+                            <constraint firstItem="3gR-XI-k2P" firstAttribute="top" secondItem="fVr-ch-u2n" secondAttribute="bottom" constant="61" id="HFu-e5-4lx"/>
                             <constraint firstItem="e8m-PZ-X1b" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="Hwc-o0-b1Q"/>
-                            <constraint firstItem="mkw-hI-IWn" firstAttribute="top" secondItem="qie-1D-1fz" secondAttribute="bottom" constant="-1" id="KpL-Fd-vVZ"/>
-                            <constraint firstItem="3gR-XI-k2P" firstAttribute="top" secondItem="JSJ-A5-i9k" secondAttribute="bottom" id="LRZ-RJ-SHl"/>
                             <constraint firstItem="2Xk-Ri-n3F" firstAttribute="firstBaseline" secondItem="fXX-Lr-dU6" secondAttribute="firstBaseline" id="Nf6-kb-s4d"/>
                             <constraint firstItem="fXX-Lr-dU6" firstAttribute="leading" secondItem="ne2-2a-r4I" secondAttribute="leadingMargin" constant="84" id="OAA-cN-AuQ"/>
-                            <constraint firstItem="qie-1D-1fz" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="Voq-Wy-MJO"/>
                             <constraint firstItem="rTx-3s-o5T" firstAttribute="centerY" secondItem="I62-mY-MHa" secondAttribute="centerY" constant="-0.5" id="aLD-VT-fnf"/>
                             <constraint firstItem="mkw-hI-IWn" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="ao5-8b-4qz"/>
-                            <constraint firstItem="JSJ-A5-i9k" firstAttribute="top" secondItem="mkw-hI-IWn" secondAttribute="bottom" constant="11" id="c74-Ge-wud"/>
                             <constraint firstItem="fXX-Lr-dU6" firstAttribute="centerY" secondItem="3gR-XI-k2P" secondAttribute="centerY" id="dBf-gK-klR"/>
                             <constraint firstItem="I62-mY-MHa" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="iFH-y3-xux"/>
-                            <constraint firstItem="I62-mY-MHa" firstAttribute="top" secondItem="CDJ-bl-D8h" secondAttribute="bottom" constant="1" id="sgw-de-JDO"/>
-                            <constraint firstItem="CDJ-bl-D8h" firstAttribute="top" secondItem="3gR-XI-k2P" secondAttribute="bottom" constant="12" id="sqm-Ll-awX"/>
-                            <constraint firstItem="CDJ-bl-D8h" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="xVu-go-est"/>
+                            <constraint firstItem="rTx-3s-o5T" firstAttribute="top" secondItem="3gR-XI-k2P" secondAttribute="bottom" constant="63" id="rDr-RL-hfG"/>
+                            <constraint firstItem="fVr-ch-u2n" firstAttribute="top" secondItem="bCb-zB-Vs7" secondAttribute="bottom" constant="66" id="uxv-Q6-Phd"/>
                             <constraint firstAttribute="trailing" secondItem="rTx-3s-o5T" secondAttribute="trailing" constant="108" id="zFg-DA-T8g"/>
-                            <constraint firstItem="JSJ-A5-i9k" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="zcW-2t-0Lf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3354,6 +3330,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuF-iy-fzI"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>

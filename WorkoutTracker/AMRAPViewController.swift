@@ -27,7 +27,7 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = categoryPassed
         for x in 0...59{
             minutes.append(String(x))
             seconds.append(String(x))
@@ -36,13 +36,10 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         secondsLabel.alpha = 0
         minutesLabel.alpha = 0
         emomMinutesLabel.alpha = 0
-        
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SupersetViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
-        
-        title = categoryPassed
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
@@ -226,7 +223,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             }else if component == 1{
                 label.text = minutes[row]
             }
-            
             let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
             label.attributedText = myTitle
             label.textAlignment = NSTextAlignment.center

@@ -19,19 +19,16 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Superset"
+        for i in 1...300{
+            sets.append(String(i))
+        }
         
         self.navigationItem.setHidesBackButton(true, animated:true)
-        
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SupersetViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
-        
-        for i in 1...300{
-            sets.append(String(i))
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,7 +111,6 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
         }else{
             let myExercise = Exercise()
             let idSets:Int = setsPicker.selectedRow(inComponent: 0)
@@ -125,17 +121,13 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
             for exercise in exercises{
                 if myExercise.exerciseDescription == ""{
                     myExercise.exerciseDescription = exercise.exerciseDescription
-                    
                 }else{
                     myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
                 }
             }
             myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + sets[idSets] + " set(s)"
-            
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-            
             DBService.shared.clearSupersetExercises()
-            
             self.dismiss(animated: true, completion: nil)
         }
     }

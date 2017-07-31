@@ -23,15 +23,12 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     var selectedDate = NSDate()
     var daysSections = [String:Any]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        
         self.title = "History"
-        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -129,7 +126,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         self.present(popController, animated: true, completion: nil)
     }
     
-    
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
@@ -154,19 +150,19 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         
         switch(section){
         case 0:
-             array = daysSections["Sunday"] as! [Any]!
+            array = daysSections["Sunday"] as! [Any]!
         case 1:
             array = daysSections["Monday"] as! [Any]!
         case 2:
             array = daysSections["Tuesday"] as! [Any]!
         case 3:
-             array = daysSections["Wednesday"] as! [Any]!
+            array = daysSections["Wednesday"] as! [Any]!
         case 4:
             array = daysSections["Thursday"] as! [Any]!
         case 5:
             array = daysSections["Friday"] as! [Any]!
         case 6:
-           array = daysSections["Saturday"] as! [Any]!
+            array = daysSections["Saturday"] as! [Any]!
         default:
             return 0;
         }
@@ -175,7 +171,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         }
         return array!.count;
     }
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
@@ -209,7 +204,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     sectionTitle = "Tuesday"
                 }
             }
-            
         case 3:
             if daysSections["Wednesday"] != nil{
                 tempArray = daysSections["Wednesday"] as! [Exercise]
@@ -219,7 +213,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     sectionTitle = "Wednesday"
                 }
             }
-            
         case 4:
             if daysSections["Thursday"] != nil{
                 tempArray = daysSections["Thursday"] as! [Exercise]
@@ -229,7 +222,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     sectionTitle = "Thursday"
                 }
             }
-            
         case 5:
             if daysSections["Friday"] != nil{
                 tempArray = daysSections["Friday"] as! [Exercise]
@@ -265,7 +257,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         case 2:
             array = daysSections["Tuesday"] as! [Exercise]
         case 3:
-             array = daysSections["Wednesday"] as! [Exercise]
+            array = daysSections["Wednesday"] as! [Exercise]
         case 4:
             array = daysSections["Thursday"] as! [Exercise]
         case 5:
@@ -285,7 +277,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         header.backgroundView?.backgroundColor = UIColor.clear
         header.textLabel?.textAlignment = .center
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
@@ -298,62 +289,43 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         return cell
     }
     
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-            var array = [Exercise]()
-    
-            switch(indexPath.section){
-            case 0:
-                 array = daysSections["Sunday"] as! [Exercise]
-            case 1:
-                 array = daysSections["Monday"] as! [Exercise]
-            case 2:
-                 array = daysSections["Tuesday"] as! [Exercise]
-            case 3:
-                array = daysSections["Wednesday"] as! [Exercise]
-            case 4:
-                array = daysSections["Thursday"] as! [Exercise]
-            case 5:
-                array = daysSections["Friday"] as! [Exercise]
-            case 6:
-                 array = daysSections["Saturday"] as! [Exercise]
-            default:
-                array = []
-            }
-    
-            let selectedExercise = array[indexPath.row]
-    
-            if editingStyle == .delete {
-                let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
-                deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                    DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: { self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-                        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                        tableView.reloadData()})
-                   
-                }))
-                deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-                self.present(deleteAlert, animated: true, completion: nil)
-            }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        var array = [Exercise]()
+        
+        switch(indexPath.section){
+        case 0:
+            array = daysSections["Sunday"] as! [Exercise]
+        case 1:
+            array = daysSections["Monday"] as! [Exercise]
+        case 2:
+            array = daysSections["Tuesday"] as! [Exercise]
+        case 3:
+            array = daysSections["Wednesday"] as! [Exercise]
+        case 4:
+            array = daysSections["Thursday"] as! [Exercise]
+        case 5:
+            array = daysSections["Friday"] as! [Exercise]
+        case 6:
+            array = daysSections["Saturday"] as! [Exercise]
+        default:
+            array = []
         }
-    
-//    //Allows exercise cell to be deleted
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.delete {
-//            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
-//            
-//            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-//                let x = indexPath.row
-//                let ex = self.exerciseArray[x]
-//                
-//                DBService.shared.deleteExerciseForUser(exercise: ex)
-//                
-//                self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-//                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-//                tableView.reloadData()
-//            }))
-//            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(deleteAlert, animated: true, completion: nil)
-//        }
-//    }
+        
+        let selectedExercise = array[indexPath.row]
+        
+        if editingStyle == .delete {
+            let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+                DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: { self.exerciseArray.remove(at: indexPath.row)
+                    
+                    //tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    self.refreshTableViewData()})
+                
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+    }
     
     func groupExercisesByDay(exercisesPassed:[Exercise])-> NSDictionary{
         var dict = [String:[Exercise]]()
@@ -364,7 +336,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         let thursday = [Exercise]()
         let friday = [Exercise]()
         let saturday = [Exercise]()
-
+        
         dict["Sunday"] = sunday
         dict["Monday"] = monday
         dict["Tuesday"] = tuesday
@@ -372,7 +344,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         dict["Thursday"] = thursday
         dict["Friday"] = friday
         dict["Saturday"] = saturday
-        
         
         for exercise in exercisesPassed{
             let dayName = DateConverter.getNameForDay(exerciseDate: exercise.date as String)
@@ -395,13 +366,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
-            //let wivc:InputExerciseViewController = segue.destination as! InputExerciseViewController
             selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
             DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
             DBService.shared.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
-            //let edv:InputExerciseViewController = segue.destination as! InputExerciseViewController
             DBService.shared.setEdit(bool: false)
         }
     }

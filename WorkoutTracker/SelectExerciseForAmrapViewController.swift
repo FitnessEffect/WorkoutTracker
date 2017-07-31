@@ -29,7 +29,7 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
         for i in 0...1500{
             lbs.append(String(i))
         }
-
+        
         if categoryPassed == "Amrap"{
             title = "Exercise"
         }else if categoryPassed == "Emom"{
@@ -100,14 +100,11 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
     
     @IBAction func addExercise(_ sender: UIButton) {
         let myExercise = Exercise()
-        
-        
         let id:Int = exercisePicker.selectedRow(inComponent: 0)
         
         myExercise.name = categoryPassed
         myExercise.category = categoryPassed
         myExercise.type = "Crossfit"
-        
         
         if exercises.count == 0{
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
@@ -144,15 +141,4 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
         label.textAlignment = NSTextAlignment.center
         return label
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
