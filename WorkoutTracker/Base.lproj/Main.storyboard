@@ -825,7 +825,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="jzR-K5-FQG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                                    <rect key="frame" x="4" y="0.0" width="367" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" adjustsFontSizeToFit="NO" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="j9B-3s-zCG">
@@ -1201,7 +1201,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-m0-D2A">
-                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -1265,32 +1265,15 @@
                                     <outlet property="delegate" destination="nby-OB-F24" id="28X-yW-nCO"/>
                                 </connections>
                             </tableView>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2A6-px-xKo">
-                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="IaV-Ze-g2h"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="26"/>
-                                <state key="normal" title="Date" backgroundImage="chalkBackground">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectDate:" destination="nby-OB-F24" eventType="touchUpInside" id="an6-s3-gsh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zoB-m0-D2A" secondAttribute="trailing" id="3ue-s2-dwg"/>
                             <constraint firstItem="JTP-Hd-qPw" firstAttribute="top" secondItem="Rue-YO-020" secondAttribute="top" id="KJE-1C-pCC"/>
-                            <constraint firstAttribute="trailing" secondItem="2A6-px-xKo" secondAttribute="trailing" id="Lyr-0A-ASr"/>
-                            <constraint firstItem="2A6-px-xKo" firstAttribute="top" secondItem="jtB-wB-Zbg" secondAttribute="bottom" id="PkP-IL-s2y"/>
-                            <constraint firstItem="zoB-m0-D2A" firstAttribute="top" secondItem="2A6-px-xKo" secondAttribute="bottom" constant="8" id="RqJ-PY-caW"/>
                             <constraint firstItem="JTP-Hd-qPw" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="aWF-uj-8Sn"/>
-                            <constraint firstItem="2A6-px-xKo" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="iCU-2k-n8x"/>
                             <constraint firstAttribute="trailing" secondItem="JTP-Hd-qPw" secondAttribute="trailing" id="lxi-mP-Ib2"/>
                             <constraint firstItem="NSF-NZ-bzU" firstAttribute="top" secondItem="JTP-Hd-qPw" secondAttribute="bottom" id="n60-lv-VaE"/>
+                            <constraint firstItem="zoB-m0-D2A" firstAttribute="top" secondItem="jtB-wB-Zbg" secondAttribute="bottom" constant="14" id="qTL-SD-0BG"/>
                             <constraint firstItem="zoB-m0-D2A" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="qYW-Bf-XJa"/>
                             <constraint firstItem="NSF-NZ-bzU" firstAttribute="top" secondItem="zoB-m0-D2A" secondAttribute="bottom" id="zz0-aN-yOp"/>
                         </constraints>
@@ -1303,7 +1286,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateBtn" destination="2A6-px-xKo" id="E4n-1r-mUD"/>
                         <outlet property="tableViewOutlet" destination="zoB-m0-D2A" id="bmI-8F-m0N"/>
                     </connections>
                 </viewController>
@@ -1374,7 +1356,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="UVj-Y0-MXN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                                    <rect key="frame" x="4" y="0.0" width="367" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1493,7 +1475,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="hFe-hn-c4L">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                                    <rect key="frame" x="4" y="0.0" width="367" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1729,7 +1711,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="nyH-DU-adw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                                    <rect key="frame" x="4" y="0.0" width="367" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1926,7 +1908,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-4V-Eqz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sf4-uq-5X3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sf4-uq-5X3">
                                 <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2349,35 +2331,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="6sr-nt-DmB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YWZ-8d-I9B">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YWZ-8d-I9B">
                                 <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="60" id="fv5-rX-MVH" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="50" id="fv5-rX-MVH" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fv5-rX-MVH" id="SpN-Qo-PgJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8y-OF-sZM" userLabel="Date Outlet">
-                                                    <rect key="frame" x="37" y="29" width="310" height="22"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcC-eo-xLO">
-                                                    <rect key="frame" x="8" y="16" width="23" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="23" id="kQt-5S-SLb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cU-Oq-TQ4">
-                                                    <rect key="frame" x="38" y="0.0" width="304" height="29"/>
+                                                    <rect key="frame" x="38" y="11" width="304" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="SxQ-vv-kqp"/>
                                                     </constraints>
@@ -2385,23 +2352,27 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcC-eo-xLO">
+                                                    <rect key="frame" x="7" y="12" width="23" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="23" id="kQt-5S-SLb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="0cU-Oq-TQ4" secondAttribute="trailing" id="1cL-TV-GKA"/>
-                                                <constraint firstItem="j8y-OF-sZM" firstAttribute="leading" secondItem="JcC-eo-xLO" secondAttribute="trailing" constant="6" id="Ckh-HN-B7t"/>
-                                                <constraint firstItem="0cU-Oq-TQ4" firstAttribute="top" secondItem="SpN-Qo-PgJ" secondAttribute="topMargin" constant="-8" id="H3O-cC-5Oq"/>
-                                                <constraint firstItem="j8y-OF-sZM" firstAttribute="top" secondItem="0cU-Oq-TQ4" secondAttribute="bottom" id="NAT-GZ-2cC"/>
-                                                <constraint firstItem="JcC-eo-xLO" firstAttribute="top" secondItem="SpN-Qo-PgJ" secondAttribute="topMargin" constant="8" id="WxW-Oq-yE4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="j8y-OF-sZM" secondAttribute="trailing" constant="-13" id="X4i-Ze-X8P"/>
-                                                <constraint firstItem="JcC-eo-xLO" firstAttribute="centerY" secondItem="SpN-Qo-PgJ" secondAttribute="centerY" constant="-3" id="gHm-zo-QCU"/>
-                                                <constraint firstItem="0cU-Oq-TQ4" firstAttribute="leading" secondItem="JcC-eo-xLO" secondAttribute="trailing" constant="7" id="ips-xD-K8G"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="j8y-OF-sZM" secondAttribute="bottom" constant="1" id="oBw-Mh-CUY"/>
-                                                <constraint firstItem="JcC-eo-xLO" firstAttribute="leading" secondItem="SpN-Qo-PgJ" secondAttribute="leadingMargin" id="wke-oh-w8h"/>
+                                                <constraint firstItem="0cU-Oq-TQ4" firstAttribute="top" secondItem="SpN-Qo-PgJ" secondAttribute="topMargin" constant="3" id="H3O-cC-5Oq"/>
+                                                <constraint firstItem="JcC-eo-xLO" firstAttribute="top" secondItem="SpN-Qo-PgJ" secondAttribute="topMargin" constant="4" id="WxW-Oq-yE4"/>
+                                                <constraint firstItem="JcC-eo-xLO" firstAttribute="centerY" secondItem="SpN-Qo-PgJ" secondAttribute="centerY" id="gHm-zo-QCU"/>
+                                                <constraint firstItem="0cU-Oq-TQ4" firstAttribute="leading" secondItem="JcC-eo-xLO" secondAttribute="trailing" constant="8" id="ips-xD-K8G"/>
+                                                <constraint firstItem="JcC-eo-xLO" firstAttribute="leading" secondItem="SpN-Qo-PgJ" secondAttribute="leadingMargin" constant="-1" id="wke-oh-w8h"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="dateOutlet" destination="j8y-OF-sZM" id="Rum-ff-IRU"/>
                                             <outlet property="numberOutlet" destination="JcC-eo-xLO" id="9JA-EI-SVd"/>
                                             <outlet property="titleOutlet" destination="0cU-Oq-TQ4" id="vCL-KR-YMT"/>
                                             <segue destination="pzd-PZ-fvb" kind="show" identifier="editExerciseSegue" id="npb-WN-7AS"/>
@@ -2550,7 +2521,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Na-YXn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                                    <rect key="frame" x="4" y="0.0" width="367" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -3383,6 +3354,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJO-pp-3SY"/>
+        <segue reference="OuF-iy-fzI"/>
     </inferredMetricsTieBreakers>
 </document>
