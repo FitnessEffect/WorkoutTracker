@@ -40,7 +40,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         DBService.shared.retrieveExercisesForUser{
             self.exerciseArray = DBService.shared.exercisesForUser
             self.exerciseArray.sort(by: {a, b in

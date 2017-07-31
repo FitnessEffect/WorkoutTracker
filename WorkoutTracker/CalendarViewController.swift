@@ -143,7 +143,6 @@ class CalendarViewController:UIViewController{
         
         let date = monthStr + "/" + btnStr + "/" + String(selectedYear)
         if dateBtn == true{
-            //
             if let presenter = self.presentingViewController?.childViewControllers.last as? InputExerciseViewController{
                 presenter.setNewDate(dateStr: date)
                 dateBtn = false
@@ -152,9 +151,6 @@ class CalendarViewController:UIViewController{
                 dateBtn = false
             }else if let presenter3 = self.presentingViewController?.childViewControllers.last as? ExercisesViewController{
                 presenter3.setNewDate(dateStr: date)
-                dateBtn = false
-            }else if let presenter4 = self.presentingViewController?.childViewControllers.last as? ChallengesViewController{
-                presenter4.setNewDate(dateStr: date)
                 dateBtn = false
             }
         }
