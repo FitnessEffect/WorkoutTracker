@@ -267,7 +267,7 @@
                                 <rect key="frame" x="1" y="1" width="374" height="666"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-yI-eKo">
-                                        <rect key="frame" x="72" y="88" width="230" height="35"/>
+                                        <rect key="frame" x="72" y="98" width="230" height="35"/>
                                         <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="G6c-4B-nii"/>
@@ -278,10 +278,10 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                     <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGy-VF-C4Q">
-                                        <rect key="frame" x="72" y="481" width="230" height="78"/>
+                                        <rect key="frame" x="72" y="475" width="230" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="6IH-Yh-L9S"/>
-                                            <constraint firstAttribute="height" constant="78" id="9fc-rd-qpH"/>
+                                            <constraint firstAttribute="height" constant="100" id="9fc-rd-qpH"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dataSource" destination="BiS-Xy-g6B" id="YgV-Ye-wDd"/>
@@ -289,7 +289,7 @@
                                         </connections>
                                     </pickerView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vU0-WF-gNw">
-                                        <rect key="frame" x="72" y="139" width="230" height="35"/>
+                                        <rect key="frame" x="72" y="149" width="230" height="35"/>
                                         <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="3dY-eR-kz6"/>
@@ -300,7 +300,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gr6-Gu-YZc">
-                                        <rect key="frame" x="72" y="299" width="230" height="29"/>
+                                        <rect key="frame" x="72" y="322" width="230" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="GgV-8b-onC"/>
                                             <constraint firstAttribute="width" constant="230" id="xlH-fs-YXJ"/>
@@ -312,7 +312,7 @@
                                         </segments>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz0-Fi-V2k">
-                                        <rect key="frame" x="202" y="507" width="27" height="26"/>
+                                        <rect key="frame" x="202" y="512" width="27" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="0l3-3A-7VE"/>
                                             <constraint firstAttribute="height" constant="26" id="dga-AL-IRA"/>
@@ -322,10 +322,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-SC-J5t">
-                                        <rect key="frame" x="72" y="204" width="230" height="81"/>
+                                        <rect key="frame" x="72" y="204" width="230" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="IfS-nQ-s1B"/>
-                                            <constraint firstAttribute="height" constant="81" id="KIp-4g-4Py"/>
+                                            <constraint firstAttribute="height" constant="100" id="KIp-4g-4Py"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dataSource" destination="BiS-Xy-g6B" id="FIn-c9-1rf"/>
@@ -345,9 +345,9 @@
                                         </connections>
                                     </button>
                                     <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1d-A2-fG5">
-                                        <rect key="frame" x="72" y="371" width="230" height="78"/>
+                                        <rect key="frame" x="72" y="371" width="230" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="78" id="9x5-na-yT8"/>
+                                            <constraint firstAttribute="height" constant="100" id="9x5-na-yT8"/>
                                             <constraint firstAttribute="width" constant="230" id="DYb-eM-0m5"/>
                                         </constraints>
                                         <connections>
@@ -356,24 +356,14 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNy-Bj-Y7B">
-                                        <rect key="frame" x="100" y="397" width="42" height="26"/>
+                                        <rect key="frame" x="100" y="408" width="42" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXW-yD-9UB">
-                                        <rect key="frame" x="171" y="187" width="33" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="23" id="7Ce-uY-oJ9"/>
-                                            <constraint firstAttribute="width" constant="33" id="dcX-mN-3vj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-pf-AUz">
-                                        <rect key="frame" x="72" y="38" width="230" height="29"/>
+                                        <rect key="frame" x="72" y="43" width="230" height="29"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="49P-Tm-xKO"/>
@@ -387,61 +377,47 @@
                                             <action selector="genderSelection:" destination="BiS-Xy-g6B" eventType="valueChanged" id="dvP-Z7-ID0"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMm-lK-jMa">
-                                        <rect key="frame" x="158" y="349" width="58" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="1YU-SM-CXS"/>
-                                            <constraint firstAttribute="width" constant="58" id="9Yo-7N-mjb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z8-No-MwX">
-                                        <rect key="frame" x="157" y="462" width="60" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="dgb-se-gPY"/>
-                                            <constraint firstAttribute="height" constant="21" id="jLG-CL-SPR"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZ2-L6-Q8U">
-                                        <rect key="frame" x="220" y="397" width="16" height="26"/>
+                                        <rect key="frame" x="220" y="408" width="16" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXW-yD-9UB">
+                                        <rect key="frame" x="161" y="241" width="33" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="0zR-DE-cjP"/>
+                                            <constraint firstAttribute="width" constant="33" id="AWb-rh-WS7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Lhu-SC-J5t" secondAttribute="trailing" constant="72" id="5C6-w6-2rT"/>
-                                    <constraint firstItem="Lhu-SC-J5t" firstAttribute="top" secondItem="vU0-WF-gNw" secondAttribute="bottom" constant="30" id="6GN-pi-rMw"/>
-                                    <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="YGy-VF-C4Q" secondAttribute="bottom" constant="34" id="7Da-Sj-l9w"/>
+                                    <constraint firstItem="Lhu-SC-J5t" firstAttribute="top" secondItem="vU0-WF-gNw" secondAttribute="bottom" constant="20" id="6GN-pi-rMw"/>
+                                    <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="YGy-VF-C4Q" secondAttribute="bottom" constant="18" id="7Da-Sj-l9w"/>
                                     <constraint firstItem="lla-uv-X9k" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="7lt-74-GlL"/>
                                     <constraint firstItem="3DZ-pf-AUz" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="9Jh-6s-IPu"/>
-                                    <constraint firstItem="YGy-VF-C4Q" firstAttribute="top" secondItem="3z8-No-MwX" secondAttribute="bottom" constant="-2" id="Ata-gs-3Sv"/>
                                     <constraint firstItem="Vz0-Fi-V2k" firstAttribute="centerY" secondItem="YGy-VF-C4Q" secondAttribute="centerY" id="HUe-SM-4dF"/>
                                     <constraint firstItem="E1d-A2-fG5" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="Hcg-s8-dE9"/>
-                                    <constraint firstItem="Lhu-SC-J5t" firstAttribute="top" secondItem="jXW-yD-9UB" secondAttribute="bottom" constant="-6" id="JU5-VA-8B3"/>
-                                    <constraint firstItem="8pZ-yI-eKo" firstAttribute="top" secondItem="3DZ-pf-AUz" secondAttribute="bottom" constant="22" id="PBL-JG-IMS"/>
+                                    <constraint firstItem="8pZ-yI-eKo" firstAttribute="top" secondItem="3DZ-pf-AUz" secondAttribute="bottom" constant="27" id="PBL-JG-IMS"/>
                                     <constraint firstItem="8pZ-yI-eKo" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="aLF-B9-sCA"/>
-                                    <constraint firstItem="3DZ-pf-AUz" firstAttribute="top" secondItem="4HL-uU-OMV" secondAttribute="top" constant="38" id="ajf-NO-aUK"/>
-                                    <constraint firstItem="E1d-A2-fG5" firstAttribute="top" secondItem="Gr6-Gu-YZc" secondAttribute="bottom" constant="44" id="avm-dX-naO"/>
+                                    <constraint firstItem="3DZ-pf-AUz" firstAttribute="top" secondItem="4HL-uU-OMV" secondAttribute="top" constant="43" id="ajf-NO-aUK"/>
+                                    <constraint firstItem="E1d-A2-fG5" firstAttribute="top" secondItem="Gr6-Gu-YZc" secondAttribute="bottom" constant="21" id="avm-dX-naO"/>
                                     <constraint firstItem="Lhu-SC-J5t" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="bhJ-YC-hKt"/>
                                     <constraint firstItem="YGy-VF-C4Q" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="cht-ay-xJN"/>
-                                    <constraint firstItem="3z8-No-MwX" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="d4E-VO-arL"/>
                                     <constraint firstItem="Gr6-Gu-YZc" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="eJf-xJ-8AC"/>
                                     <constraint firstAttribute="trailing" secondItem="Vz0-Fi-V2k" secondAttribute="trailing" constant="145" id="iq8-fd-9SU"/>
-                                    <constraint firstItem="E1d-A2-fG5" firstAttribute="top" secondItem="QMm-lK-jMa" secondAttribute="bottom" constant="1" id="jsH-O9-jdA"/>
                                     <constraint firstAttribute="bottom" secondItem="lla-uv-X9k" secondAttribute="bottom" constant="23" id="loG-02-wDG"/>
-                                    <constraint firstItem="Gr6-Gu-YZc" firstAttribute="top" secondItem="Lhu-SC-J5t" secondAttribute="bottom" constant="14" id="nae-Ba-BJO"/>
+                                    <constraint firstItem="Gr6-Gu-YZc" firstAttribute="top" secondItem="Lhu-SC-J5t" secondAttribute="bottom" constant="18" id="nae-Ba-BJO"/>
                                     <constraint firstItem="vU0-WF-gNw" firstAttribute="top" secondItem="8pZ-yI-eKo" secondAttribute="bottom" constant="16" id="o9c-6S-ZtP"/>
-                                    <constraint firstItem="jXW-yD-9UB" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="slr-DD-gHB"/>
-                                    <constraint firstItem="QMm-lK-jMa" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="uTF-mB-KbZ"/>
+                                    <constraint firstItem="jXW-yD-9UB" firstAttribute="leading" secondItem="4HL-uU-OMV" secondAttribute="leading" constant="161" id="uWP-u6-YFD"/>
                                     <constraint firstItem="vU0-WF-gNw" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="um2-zG-nU2"/>
-                                    <constraint firstItem="YGy-VF-C4Q" firstAttribute="top" secondItem="E1d-A2-fG5" secondAttribute="bottom" constant="32" id="xPm-UU-sOR"/>
+                                    <constraint firstItem="jXW-yD-9UB" firstAttribute="centerY" secondItem="Lhu-SC-J5t" secondAttribute="centerY" constant="0.5" id="vzc-1s-8gf"/>
+                                    <constraint firstItem="YGy-VF-C4Q" firstAttribute="top" secondItem="E1d-A2-fG5" secondAttribute="bottom" constant="4" id="xPm-UU-sOR"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BiS-Xy-g6B" id="btL-7u-sVk"/>
@@ -704,7 +680,7 @@
                                     <constraint firstAttribute="width" constant="41" id="B1x-uW-Sdp"/>
                                     <constraint firstAttribute="height" constant="27" id="dSA-hl-NH1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -714,7 +690,7 @@
                                     <constraint firstAttribute="width" constant="41" id="Myd-gU-vkW"/>
                                     <constraint firstAttribute="height" constant="27" id="nGx-L6-dvg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -738,7 +714,7 @@
                                     <constraint firstAttribute="height" constant="27" id="2QG-xb-nux"/>
                                     <constraint firstAttribute="width" constant="41" id="4wh-k0-CHy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -748,7 +724,7 @@
                                     <constraint firstAttribute="width" constant="41" id="N5V-Yl-6Lb"/>
                                     <constraint firstAttribute="height" constant="27" id="Ngc-FJ-YdZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1347,38 +1323,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="work" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ9-DS-mdT">
-                                <rect key="frame" x="126" y="166" width="55" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="IlF-HM-atG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75A-fo-AvL">
-                                <rect key="frame" x="220" y="167" width="50" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="dWX-rn-cDT"/>
-                                    <constraint firstAttribute="height" constant="21" id="nws-iD-SoB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rest " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E2-iT-3Nq" userLabel="rest">
-                                <rect key="frame" x="30" y="166" width="50" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="yfA-nH-qgT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehZ-Db-OgB">
-                                <rect key="frame" x="8" y="179" width="359" height="104"/>
+                                <rect key="frame" x="8" y="164" width="359" height="110"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="104" id="Coa-Gx-IPr"/>
+                                    <constraint firstAttribute="height" constant="110" id="Coa-Gx-IPr"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="1Ts-N7-NBp" id="VCw-Gy-b4w"/>
@@ -1445,21 +1393,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CJ9-DS-mdT" firstAttribute="leading" secondItem="1E2-iT-3Nq" secondAttribute="trailing" constant="46" id="2HF-HM-pfO"/>
                             <constraint firstItem="ehZ-Db-OgB" firstAttribute="leading" secondItem="VWn-ST-UOW" secondAttribute="leading" constant="8" id="4mm-Tk-lwe"/>
-                            <constraint firstItem="O04-vp-vQv" firstAttribute="top" secondItem="ehZ-Db-OgB" secondAttribute="bottom" constant="11" id="4py-3w-z3h"/>
+                            <constraint firstItem="O04-vp-vQv" firstAttribute="top" secondItem="ehZ-Db-OgB" secondAttribute="bottom" constant="20" id="4py-3w-z3h"/>
                             <constraint firstItem="O04-vp-vQv" firstAttribute="centerX" secondItem="VWn-ST-UOW" secondAttribute="centerX" id="AUk-ut-HI6"/>
                             <constraint firstAttribute="trailing" secondItem="bGl-TM-FVT" secondAttribute="trailing" id="G6I-5v-Yrw"/>
-                            <constraint firstItem="ehZ-Db-OgB" firstAttribute="top" secondItem="bGl-TM-FVT" secondAttribute="bottom" constant="17" id="KAa-rF-81I"/>
-                            <constraint firstItem="75A-fo-AvL" firstAttribute="leading" secondItem="CJ9-DS-mdT" secondAttribute="trailing" constant="39" id="LQO-Ss-8Vg"/>
+                            <constraint firstItem="ehZ-Db-OgB" firstAttribute="top" secondItem="bGl-TM-FVT" secondAttribute="bottom" constant="2" id="KAa-rF-81I"/>
                             <constraint firstAttribute="trailing" secondItem="ehZ-Db-OgB" secondAttribute="trailing" constant="8" id="N4g-YH-psK"/>
                             <constraint firstItem="ehZ-Db-OgB" firstAttribute="centerX" secondItem="VWn-ST-UOW" secondAttribute="centerX" id="QuD-yI-ZNR"/>
                             <constraint firstItem="bGl-TM-FVT" firstAttribute="leading" secondItem="VWn-ST-UOW" secondAttribute="leading" id="eTg-k9-AoC"/>
                             <constraint firstItem="bGl-TM-FVT" firstAttribute="top" secondItem="XtG-Kh-JC0" secondAttribute="bottom" id="eZs-kA-0Ao"/>
-                            <constraint firstItem="1E2-iT-3Nq" firstAttribute="baseline" secondItem="75A-fo-AvL" secondAttribute="baseline" id="iV7-bR-45t"/>
-                            <constraint firstItem="1E2-iT-3Nq" firstAttribute="top" secondItem="bGl-TM-FVT" secondAttribute="bottom" constant="4" id="vKs-9O-0s3"/>
-                            <constraint firstItem="1E2-iT-3Nq" firstAttribute="leading" secondItem="VWn-ST-UOW" secondAttribute="leadingMargin" constant="14" id="y2f-sD-IB6"/>
-                            <constraint firstItem="1E2-iT-3Nq" firstAttribute="baseline" secondItem="CJ9-DS-mdT" secondAttribute="baseline" id="z5v-Em-jtu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="teJ-29-cT9">
@@ -2118,7 +2060,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GIi-UJ-f7Q">
-                                <rect key="frame" x="93" y="184" width="188" height="29"/>
+                                <rect key="frame" x="85" y="184" width="204" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Login"/>
@@ -2130,11 +2072,11 @@
                                 </connections>
                             </segmentedControl>
                             <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="krK-xf-daT">
-                                <rect key="frame" x="33" y="56" width="310" height="33"/>
+                                <rect key="frame" x="20" y="54" width="337" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="310" id="Aj2-8P-5vu"/>
-                                    <constraint firstAttribute="height" constant="33" id="tKB-On-hmb"/>
+                                    <constraint firstAttribute="width" constant="337" id="Aj2-8P-5vu"/>
+                                    <constraint firstAttribute="height" constant="35" id="tKB-On-hmb"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="KYm-q4-zMl">
@@ -2166,7 +2108,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-vS-GUP">
                                 <rect key="frame" x="53" y="434" width="270" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                                 <state key="normal" title="Register" backgroundImage="chalkBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2177,7 +2119,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpb-0z-UvW">
                                 <rect key="frame" x="53" y="434" width="270" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                                 <state key="normal" title="Login" backgroundImage="chalkBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2186,12 +2128,12 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdT-Mv-gVp">
-                                <rect key="frame" x="93" y="97" width="188" height="35"/>
+                                <rect key="frame" x="85" y="97" width="203" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="4lA-qy-IKW"/>
-                                    <constraint firstAttribute="width" constant="188" id="daN-yg-6Lf"/>
+                                    <constraint firstAttribute="width" constant="203" id="daN-yg-6Lf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2200,13 +2142,13 @@
                                 <rect key="frame" x="0.0" y="525" width="375" height="59"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-Wc-92b">
                                 <rect key="frame" x="93" y="584" width="188" height="25"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="19"/>
                                 <state key="normal" title="terms of use"/>
                                 <connections>
                                     <action selector="termOfUse:" destination="nji-W8-ZX0" eventType="touchUpInside" id="9YR-K6-IID"/>
@@ -2222,21 +2164,21 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2c-5S-3Iu">
-                                <rect key="frame" x="167" y="571" width="121" height="23"/>
+                                <rect key="frame" x="167" y="571" width="122" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="19"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="krK-xf-daT" firstAttribute="top" secondItem="S3H-7w-nGc" secondAttribute="bottom" constant="36" id="2bK-9T-sFf"/>
+                            <constraint firstItem="krK-xf-daT" firstAttribute="top" secondItem="S3H-7w-nGc" secondAttribute="bottom" constant="34" id="2bK-9T-sFf"/>
                             <constraint firstItem="GdT-Mv-gVp" firstAttribute="top" secondItem="krK-xf-daT" secondAttribute="bottom" constant="8" id="DWH-V8-tgH"/>
                             <constraint firstItem="6kp-nB-wqI" firstAttribute="top" secondItem="tsq-sx-syn" secondAttribute="bottom" id="RAY-E8-jBo"/>
-                            <constraint firstItem="krK-xf-daT" firstAttribute="centerX" secondItem="tsq-sx-syn" secondAttribute="centerX" id="aqy-Q0-0mf"/>
+                            <constraint firstItem="krK-xf-daT" firstAttribute="centerX" secondItem="tsq-sx-syn" secondAttribute="centerX" constant="1.5" id="aqy-Q0-0mf"/>
                             <constraint firstItem="tsq-sx-syn" firstAttribute="top" secondItem="O8S-NK-6Hk" secondAttribute="top" id="b1w-0D-9dc"/>
-                            <constraint firstItem="GdT-Mv-gVp" firstAttribute="centerX" secondItem="tsq-sx-syn" secondAttribute="centerX" id="jLZ-yD-lqK"/>
+                            <constraint firstItem="GdT-Mv-gVp" firstAttribute="centerX" secondItem="tsq-sx-syn" secondAttribute="centerX" constant="-1" id="jLZ-yD-lqK"/>
                             <constraint firstAttribute="trailing" secondItem="tsq-sx-syn" secondAttribute="trailing" id="kqs-94-Up1"/>
                             <constraint firstItem="tsq-sx-syn" firstAttribute="leading" secondItem="O8S-NK-6Hk" secondAttribute="leading" id="rrK-1W-riu"/>
                         </constraints>
@@ -2726,12 +2668,12 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-MV-JBt">
-                                <rect key="frame" x="245" y="177" width="53" height="27"/>
+                                <rect key="frame" x="245" y="177" width="59" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="MoL-l5-RA3"/>
-                                    <constraint firstAttribute="width" constant="53" id="X1C-mD-1xO"/>
+                                    <constraint firstAttribute="width" constant="59" id="X1C-mD-1xO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2754,7 +2696,7 @@
                                     <constraint firstAttribute="width" constant="38" id="8Sm-gc-oic"/>
                                     <constraint firstAttribute="height" constant="27" id="ciN-G7-Wz7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2764,7 +2706,7 @@
                                     <constraint firstAttribute="width" constant="51" id="che-4E-3sO"/>
                                     <constraint firstAttribute="height" constant="27" id="n01-mu-qXB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2774,7 +2716,7 @@
                                     <constraint firstAttribute="height" constant="27" id="QcB-qw-jvS"/>
                                     <constraint firstAttribute="width" constant="33" id="tIb-u8-aMQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2793,19 +2735,19 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2K-MZ-WGc">
-                                <rect key="frame" x="251" y="177" width="56" height="27"/>
+                                <rect key="frame" x="251" y="177" width="73" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="0JP-2g-uaf"/>
-                                    <constraint firstAttribute="width" constant="56" id="RRU-l2-SMT"/>
+                                    <constraint firstAttribute="width" constant="73" id="RRU-l2-SMT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="k2K-MZ-WGc" secondAttribute="trailing" constant="52" id="4jn-D9-dPX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k2K-MZ-WGc" secondAttribute="trailing" constant="35" id="4jn-D9-dPX"/>
                             <constraint firstItem="LI4-CO-7dh" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="8EC-7r-JGF"/>
                             <constraint firstItem="hW4-Fn-ulp" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="BT7-U9-1hB"/>
                             <constraint firstItem="91R-oM-TTd" firstAttribute="top" secondItem="ci3-fU-t9j" secondAttribute="bottom" constant="35" id="F60-vk-i3H"/>
@@ -2813,7 +2755,7 @@
                             <constraint firstItem="Jmi-qr-xbg" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="Gnm-5V-lL7"/>
                             <constraint firstItem="0h2-1z-Nhn" firstAttribute="leading" secondItem="q5j-Uo-GS0" secondAttribute="leading" constant="8" id="Gtd-AX-cA2"/>
                             <constraint firstItem="mLT-MV-JBt" firstAttribute="centerY" secondItem="0h2-1z-Nhn" secondAttribute="centerY" id="MVQ-ts-itU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mLT-MV-JBt" secondAttribute="trailing" constant="61" id="MxM-vz-nj8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mLT-MV-JBt" secondAttribute="trailing" constant="55" id="MxM-vz-nj8"/>
                             <constraint firstItem="LI4-CO-7dh" firstAttribute="leading" secondItem="hW4-Fn-ulp" secondAttribute="trailing" constant="66" id="NM4-S8-mhp"/>
                             <constraint firstAttribute="trailing" secondItem="0h2-1z-Nhn" secondAttribute="trailing" constant="8" id="dYa-6f-Kp1"/>
                             <constraint firstItem="91R-oM-TTd" firstAttribute="centerX" secondItem="q5j-Uo-GS0" secondAttribute="centerX" id="fAn-R7-q9X"/>
@@ -2837,7 +2779,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRY-2f-gql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7028" y="-1238"/>
+            <point key="canvasLocation" x="7028" y="-1238.2308845577213"/>
         </scene>
         <!--Create Endurance Category View Controller-->
         <scene sceneID="hP4-uJ-UNb">
@@ -2892,7 +2834,7 @@
             </objects>
             <point key="canvasLocation" x="6172" y="-2035.2323838080961"/>
         </scene>
-        <!--Personal-->
+        <!--Personal View Controller-->
         <scene sceneID="AC0-Ua-G6S">
             <objects>
                 <viewController storyboardIdentifier="ProfileID" id="BB7-6R-HUh" customClass="PersonalViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -2925,7 +2867,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="taQ-TW-NUi">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="31"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2956,7 +2898,7 @@
                             <constraint firstItem="0ph-pe-rTa" firstAttribute="leading" secondItem="3M7-mY-aIQ" secondAttribute="leading" id="xTU-yH-JJF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Personal" id="lOA-PF-mh0">
+                    <navigationItem key="navigationItem" id="lOA-PF-mh0">
                         <barButtonItem key="leftBarButtonItem" image="menuIcon" id="Lt4-2x-sHc">
                             <connections>
                                 <action selector="openMenu:" destination="BB7-6R-HUh" id="LHP-UZ-NkC"/>

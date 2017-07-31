@@ -23,7 +23,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -32,7 +31,7 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.view.backgroundColor = .clear
         
         button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
+        button.frame = CGRect(x: 0, y: 0, width: 170, height: 60)
         button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
         button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
         button.setTitle("Personal", for: .normal)
