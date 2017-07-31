@@ -157,9 +157,22 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 if DBService.shared.emailCheckBoolean == true{
                     var exerciseDictionary = [String:String]()
                     
+                    
+                    
+                    let strDate = self.dateBtn.titleLabel!.text!
+                    let tempDate = DateConverter.stringToDate(dateStr:strDate)
+                    
+                    let tempWeekNum = DateConverter.weekNumFromDate(date: tempDate as NSDate)
+                    let tempYear = DateConverter.yearFromDate(date:tempDate as NSDate)
+                    
+                    DBService.shared.setCurrentWeekNumber(strWeek: String(tempWeekNum))
+                    DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
+                    
                     exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
                     exerciseDictionary["result"] =   self.resultTextView.text!
                     exerciseDictionary["opponent"] = self.emailTxtView.text
+                    exerciseDictionary["year"] = String(tempYear)
+                    exerciseDictionary["week"] = String(tempWeekNum)
                     
                     self.saveButton.isUserInteractionEnabled = false
                     self.challenge.isUserInteractionEnabled = false
@@ -176,10 +189,20 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         }else{
             var exerciseDictionary = [String:String]()
             
+            let strDate = dateBtn.titleLabel!.text!
+            let tempDate = DateConverter.stringToDate(dateStr:strDate)
+            
+            let tempWeekNum = DateConverter.weekNumFromDate(date: tempDate as NSDate)
+            let tempYear = DateConverter.yearFromDate(date:tempDate as NSDate)
+            
+            DBService.shared.setCurrentWeekNumber(strWeek: String(tempWeekNum))
+            DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
+            
             exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
             exerciseDictionary["result"] =   self.resultTextView.text!
             exerciseDictionary["opponent"] = self.emailTxtView.text
-            
+            exerciseDictionary["year"] = String(tempYear)
+            exerciseDictionary["week"] = String(tempWeekNum)
             self.saveButton.isUserInteractionEnabled = false
             self.challenge.isUserInteractionEnabled = false
             self.resultBtn.isUserInteractionEnabled = false

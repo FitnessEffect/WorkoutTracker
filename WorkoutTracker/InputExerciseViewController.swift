@@ -214,7 +214,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func handleSave(json: [String : Any]) {
-        
         exerciseDictionary = json
         exerciseDictionary["description"] = tempExercise.exerciseDescription
         exerciseDictionary["name"] =  tempExercise.name
@@ -224,6 +223,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         exerciseDictionary["creatorEmail"] = user.email
         exerciseDictionary["creatorID"] = user.uid
         exerciseDictionary["clientKey"] = " "
+
         
         //look up clientKey from name
         if self.title != "Personal"{

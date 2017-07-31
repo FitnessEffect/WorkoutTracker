@@ -12,6 +12,7 @@ import Firebase
 class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var dateBtn: UIButton!
     
     var selectedRow:Int = 0
     var clientPassed = Client()
@@ -20,9 +21,11 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     var tempKey:String!
     var user:FIRUser!
     var button:UIButton!
+    var selectedDate = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
@@ -52,6 +55,81 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
+    }
+    
+    func displayCurrentWeek(){
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        selectedDate = currentDate as NSDate
+        let tempEndDay = DateConverter.getSaturdayForWeek(selectedDate: selectedDate)
+        let endDate = dateFormatter.string(from: tempEndDay as Date)
+        let tempStartDay = DateConverter.getPreviousSundayForWeek(selectedDate:selectedDate)
+        let startDate = dateFormatter.string(from: tempStartDay as Date)
+        dateBtn.setTitle(startDate + " - " + endDate,for: .normal)
+    }
+    
+    func displaySelectedWeek(date:Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        selectedDate = date as NSDate
+        let tempEndDay = DateConverter.getSaturdayForWeek(selectedDate: selectedDate)
+        let endDate = dateFormatter.string(from: tempEndDay as Date)
+        let tempStartDay = DateConverter.getPreviousSundayForWeek(selectedDate:selectedDate)
+        let startDate = dateFormatter.string(from: tempStartDay as Date)
+        dateBtn.setTitle(startDate + " - " + endDate,for: .normal)
+    }
+    
+    func setNewDate(dateStr:String){
+        dateBtn.setTitle(dateStr, for: .normal)
+        let datePassed = DateConverter.stringToDate(dateStr: dateStr) as NSDate
+        displaySelectedWeek(date: datePassed as Date)
+        DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: datePassed)))
+        DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: datePassed)))
+        DBService.shared.retrieveExercisesForUser{
+            self.exerciseArray = DBService.shared.exercisesForUser
+            self.exerciseArray.sort(by: {a, b in
+                if a.date > b.date {
+                    return true
+                }
+                return false
+            })
+            self.tableViewOutlet.reloadData()
+        }
+    }
+    
+    
+    @IBAction func selectDate(_ sender: UIButton) {
+        let xPosition = dateBtn.frame.minX + (dateBtn.frame.width/2)
+        let yPosition = dateBtn.frame.maxY - 25
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendar") as! CalendarViewController
+        
+        popController.dateBtn = true
+        if dateBtn.titleLabel?.text?.isEmpty == false{
+            let dateStr = dateBtn.titleLabel?.text
+            let tempArray = dateStr?.components(separatedBy: " ")
+            let tempArray2 = tempArray?[2].components(separatedBy: "/")
+            
+            popController.passedStartingMonth = Int((tempArray2?[0])!)!
+            popController.passedStartingYear = Int((tempArray2?[2])!)!
+        }
+        
+        
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 316)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
     }
     
     func clickOnButton(button: UIButton) {
@@ -102,8 +180,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
-                let id = self.exerciseArray[x].exerciseKey
-                DBService.shared.deleteExerciseForClient(id:id)
+                let ex = self.exerciseArray[x]
+                DBService.shared.deleteExerciseForClient(exercise:ex)
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 tableView.reloadData()

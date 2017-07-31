@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afE-Yn-JNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3050.4000000000001" y="1412.7436281859073"/>
+            <point key="canvasLocation" x="2937" y="1070"/>
         </scene>
         <!--Email Selection View Controller-->
         <scene sceneID="BuZ-F9-6gx">
@@ -572,7 +572,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bodybuilding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dqH-WC-U1r">
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -598,7 +598,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Crossfit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e5r-ix-PzJ">
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -624,7 +624,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Endurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i7H-Ep-MRn">
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -927,7 +927,7 @@
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1077,7 +1077,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXs-RF-QdH">
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1225,7 +1225,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-m0-D2A">
-                                <rect key="frame" x="0.0" y="89" width="375" height="578"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -1289,13 +1289,30 @@
                                     <outlet property="delegate" destination="nby-OB-F24" id="28X-yW-nCO"/>
                                 </connections>
                             </tableView>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2A6-px-xKo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="IaV-Ze-g2h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="26"/>
+                                <state key="normal" title="Date" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectDate:" destination="nby-OB-F24" eventType="touchUpInside" id="an6-s3-gsh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zoB-m0-D2A" secondAttribute="trailing" id="3ue-s2-dwg"/>
                             <constraint firstItem="JTP-Hd-qPw" firstAttribute="top" secondItem="Rue-YO-020" secondAttribute="top" id="KJE-1C-pCC"/>
+                            <constraint firstAttribute="trailing" secondItem="2A6-px-xKo" secondAttribute="trailing" id="Lyr-0A-ASr"/>
+                            <constraint firstItem="2A6-px-xKo" firstAttribute="top" secondItem="jtB-wB-Zbg" secondAttribute="bottom" id="PkP-IL-s2y"/>
+                            <constraint firstItem="zoB-m0-D2A" firstAttribute="top" secondItem="2A6-px-xKo" secondAttribute="bottom" constant="8" id="RqJ-PY-caW"/>
                             <constraint firstItem="JTP-Hd-qPw" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="aWF-uj-8Sn"/>
-                            <constraint firstItem="zoB-m0-D2A" firstAttribute="top" secondItem="jtB-wB-Zbg" secondAttribute="bottom" constant="25" id="ajJ-52-YLa"/>
+                            <constraint firstItem="2A6-px-xKo" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="iCU-2k-n8x"/>
                             <constraint firstAttribute="trailing" secondItem="JTP-Hd-qPw" secondAttribute="trailing" id="lxi-mP-Ib2"/>
                             <constraint firstItem="NSF-NZ-bzU" firstAttribute="top" secondItem="JTP-Hd-qPw" secondAttribute="bottom" id="n60-lv-VaE"/>
                             <constraint firstItem="zoB-m0-D2A" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="qYW-Bf-XJa"/>
@@ -1310,12 +1327,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateBtn" destination="2A6-px-xKo" id="E4n-1r-mUD"/>
                         <outlet property="tableViewOutlet" destination="zoB-m0-D2A" id="bmI-8F-m0N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHL-4h-nAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="3144"/>
+            <point key="canvasLocation" x="1917.5999999999999" y="3143.4782608695655"/>
         </scene>
         <!--Tabata View Controller-->
         <scene sceneID="hs6-xD-zH2">
@@ -1967,26 +1985,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sf4-uq-5X3">
-                                <rect key="frame" x="0.0" y="91" width="375" height="576"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="exerciseCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="60" id="vcb-lV-7bw" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="exerciseCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="50" id="vcb-lV-7bw" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vcb-lV-7bw" id="pHS-0L-aR8">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-h7-ICx" userLabel="Date Outlet">
-                                                    <rect key="frame" x="37" y="29" width="310" height="22"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-4d-Zqp">
-                                                    <rect key="frame" x="38" y="0.0" width="304" height="29"/>
+                                                    <rect key="frame" x="38" y="8" width="304" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="6xg-g1-xpK"/>
                                                     </constraints>
@@ -1995,31 +2007,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2a-8o-G3w">
-                                                    <rect key="frame" x="8" y="16" width="23" height="22"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="ywS-mL-QUJ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="E2a-8o-G3w" firstAttribute="top" secondItem="pHS-0L-aR8" secondAttribute="topMargin" constant="8" id="EHv-dD-Ws2"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="mH5-h7-ICx" secondAttribute="bottom" constant="1" id="FPx-FN-xH1"/>
-                                                <constraint firstItem="E2a-8o-G3w" firstAttribute="leading" secondItem="pHS-0L-aR8" secondAttribute="leadingMargin" id="QLk-5o-h9J"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mH5-h7-ICx" secondAttribute="trailing" constant="-13" id="gIj-0A-AVF"/>
-                                                <constraint firstItem="mH5-h7-ICx" firstAttribute="top" secondItem="yh6-4d-Zqp" secondAttribute="bottom" id="grc-FO-xrK"/>
-                                                <constraint firstItem="yh6-4d-Zqp" firstAttribute="top" secondItem="pHS-0L-aR8" secondAttribute="topMargin" constant="-8" id="orV-6R-bBw"/>
-                                                <constraint firstItem="yh6-4d-Zqp" firstAttribute="leading" secondItem="E2a-8o-G3w" secondAttribute="trailing" constant="7" id="oyQ-Mw-S3Q"/>
-                                                <constraint firstItem="mH5-h7-ICx" firstAttribute="leading" secondItem="E2a-8o-G3w" secondAttribute="trailing" constant="6" id="uxj-1O-B2f"/>
+                                                <constraint firstItem="E2a-8o-G3w" firstAttribute="top" secondItem="pHS-0L-aR8" secondAttribute="topMargin" id="EHv-dD-Ws2"/>
+                                                <constraint firstItem="E2a-8o-G3w" firstAttribute="leading" secondItem="pHS-0L-aR8" secondAttribute="leadingMargin" constant="-1" id="QLk-5o-h9J"/>
+                                                <constraint firstItem="yh6-4d-Zqp" firstAttribute="top" secondItem="pHS-0L-aR8" secondAttribute="topMargin" id="orV-6R-bBw"/>
+                                                <constraint firstItem="yh6-4d-Zqp" firstAttribute="leading" secondItem="E2a-8o-G3w" secondAttribute="trailing" constant="8" id="oyQ-Mw-S3Q"/>
                                                 <constraint firstItem="E2a-8o-G3w" firstAttribute="centerY" secondItem="pHS-0L-aR8" secondAttribute="centerY" constant="-3" id="vwK-zw-kAG"/>
                                                 <constraint firstAttribute="trailing" secondItem="yh6-4d-Zqp" secondAttribute="trailing" id="yBo-ME-xaD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="dateOutlet" destination="mH5-h7-ICx" id="gsP-jF-RDN"/>
                                             <outlet property="numberOutlet" destination="E2a-8o-G3w" id="FLO-Ie-hRK"/>
                                             <outlet property="titleOutlet" destination="yh6-4d-Zqp" id="gBn-6I-Lly"/>
                                             <segue destination="pzd-PZ-fvb" kind="show" identifier="editExerciseSegue" id="GJO-pp-3SY"/>
@@ -2031,15 +2038,32 @@
                                     <outlet property="delegate" destination="y7H-dD-F6s" id="0jg-YO-xNl"/>
                                 </connections>
                             </tableView>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDK-hQ-DLg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="qhG-CB-0GX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="26"/>
+                                <state key="normal" title="Date" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectDate:" destination="y7H-dD-F6s" eventType="touchUpInside" id="fWZ-MU-uAT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="E2F-4V-Eqz" firstAttribute="leading" secondItem="m0J-zD-DKp" secondAttribute="leading" id="6Gn-5O-ylS"/>
+                            <constraint firstItem="NDK-hQ-DLg" firstAttribute="top" secondItem="N8M-km-AUd" secondAttribute="bottom" id="KG5-d9-a6t"/>
                             <constraint firstItem="E2F-4V-Eqz" firstAttribute="top" secondItem="m0J-zD-DKp" secondAttribute="top" id="Orn-oc-pHX"/>
+                            <constraint firstItem="NDK-hQ-DLg" firstAttribute="leading" secondItem="m0J-zD-DKp" secondAttribute="leading" id="SHs-y5-9Fw"/>
                             <constraint firstItem="N9g-ic-fAn" firstAttribute="top" secondItem="E2F-4V-Eqz" secondAttribute="bottom" id="Xqh-dz-BDP"/>
+                            <constraint firstItem="Sf4-uq-5X3" firstAttribute="top" secondItem="NDK-hQ-DLg" secondAttribute="bottom" constant="8" id="aKl-2C-58D"/>
                             <constraint firstItem="Sf4-uq-5X3" firstAttribute="leading" secondItem="m0J-zD-DKp" secondAttribute="leading" id="eSe-pr-JRQ"/>
+                            <constraint firstAttribute="trailing" secondItem="NDK-hQ-DLg" secondAttribute="trailing" id="gxj-pI-q2z"/>
                             <constraint firstAttribute="bottom" secondItem="Sf4-uq-5X3" secondAttribute="bottom" id="phk-YI-Jdn"/>
-                            <constraint firstItem="Sf4-uq-5X3" firstAttribute="top" secondItem="N8M-km-AUd" secondAttribute="bottom" constant="27" id="pqF-bc-glp"/>
                             <constraint firstAttribute="trailing" secondItem="E2F-4V-Eqz" secondAttribute="trailing" id="ujw-Zy-6CR"/>
                             <constraint firstAttribute="trailing" secondItem="Sf4-uq-5X3" secondAttribute="trailing" id="y4s-D8-uQT"/>
                         </constraints>
@@ -2052,12 +2076,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateBtn" destination="NDK-hQ-DLg" id="tzR-pX-1Rm"/>
                         <outlet property="tableViewOutlet" destination="Sf4-uq-5X3" id="U59-16-NNM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcc-ld-tXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="1636"/>
+            <point key="canvasLocation" x="704.79999999999995" y="1635.832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GxR-g9-zJT">
@@ -2383,7 +2408,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YWZ-8d-I9B">
-                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -2446,15 +2471,32 @@
                                     <outlet property="delegate" destination="8GF-XO-Gxt" id="udH-hh-kTf"/>
                                 </connections>
                             </tableView>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00R-Ku-rUv">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Z4e-BU-pSw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="26"/>
+                                <state key="normal" title="Date" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectDate:" destination="8GF-XO-Gxt" eventType="touchUpInside" id="LHc-kX-gpi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jc1-DM-eQe" firstAttribute="top" secondItem="6sr-nt-DmB" secondAttribute="bottom" id="6W4-o3-UXe"/>
+                            <constraint firstItem="00R-Ku-rUv" firstAttribute="leading" secondItem="lCR-dK-flg" secondAttribute="leading" id="9PK-Fk-LbX"/>
+                            <constraint firstItem="YWZ-8d-I9B" firstAttribute="top" secondItem="00R-Ku-rUv" secondAttribute="bottom" constant="8" id="IGC-ZZ-waX"/>
                             <constraint firstItem="6sr-nt-DmB" firstAttribute="top" secondItem="lCR-dK-flg" secondAttribute="top" id="S3p-oU-gO0"/>
+                            <constraint firstAttribute="trailing" secondItem="00R-Ku-rUv" secondAttribute="trailing" id="doD-Uw-oWg"/>
                             <constraint firstItem="6sr-nt-DmB" firstAttribute="leading" secondItem="lCR-dK-flg" secondAttribute="leading" id="g8P-86-KyJ"/>
-                            <constraint firstItem="YWZ-8d-I9B" firstAttribute="top" secondItem="j6O-gf-WlV" secondAttribute="bottom" constant="21" id="hYI-Ux-75X"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YWZ-8d-I9B" secondAttribute="trailing" constant="-16" id="huE-ks-hw1"/>
                             <constraint firstItem="YWZ-8d-I9B" firstAttribute="leading" secondItem="lCR-dK-flg" secondAttribute="leadingMargin" constant="-16" id="hwd-Kb-Lfi"/>
+                            <constraint firstItem="00R-Ku-rUv" firstAttribute="top" secondItem="j6O-gf-WlV" secondAttribute="bottom" id="pAy-MP-tp7"/>
                             <constraint firstAttribute="trailing" secondItem="6sr-nt-DmB" secondAttribute="trailing" id="wPO-9K-cV5"/>
                             <constraint firstItem="jc1-DM-eQe" firstAttribute="top" secondItem="YWZ-8d-I9B" secondAttribute="bottom" id="zAs-00-lhU"/>
                         </constraints>
@@ -2467,6 +2509,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateBtn" destination="00R-Ku-rUv" id="GOX-Ay-fUS"/>
                         <outlet property="tableViewOutlet" destination="YWZ-8d-I9B" id="uan-RA-G5T"/>
                     </connections>
                 </viewController>
@@ -2635,7 +2678,7 @@
                                             <rect key="frame" x="55" y="0.0" width="285" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
+                                            <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -3398,6 +3441,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vQN-UH-ceT"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>
