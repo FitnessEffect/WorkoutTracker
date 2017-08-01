@@ -550,7 +550,7 @@ class DBService {
     }
     
     func deleteChallengeExerciseForUser(exercise:Exercise){
-        self._ref.child("users").child(self.user.uid).child("Challenges").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
+        self._ref.child("users").child(self.user.uid).child("Challenges").child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
