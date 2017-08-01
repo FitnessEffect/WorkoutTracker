@@ -1438,7 +1438,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
+                                <rect key="frame" x="162" y="208.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -2915,19 +2915,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I62-mY-MHa">
-                                <rect key="frame" x="72" y="293" width="230" height="85"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="nM4-h1-wmP"/>
-                                    <constraint firstAttribute="height" constant="85" id="yyT-gc-z6G"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="J9C-oa-BSl" id="dQE-qf-Sj7"/>
-                                    <outlet property="delegate" destination="J9C-oa-BSl" id="AGg-o0-bqF"/>
-                                </connections>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-PZ-X1b">
-                                <rect key="frame" x="92" y="402" width="190" height="50"/>
+                                <rect key="frame" x="92" y="402.5" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="60O-oB-OkQ"/>
                                     <constraint firstAttribute="height" constant="50" id="eDc-E9-VV7"/>
@@ -2939,10 +2928,10 @@
                                 </connections>
                             </button>
                             <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-XI-k2P">
-                                <rect key="frame" x="72" y="174" width="230" height="85"/>
+                                <rect key="frame" x="72" y="167" width="230" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="EXC-3P-XCy"/>
-                                    <constraint firstAttribute="height" constant="85" id="ec2-Wh-4Oe"/>
+                                    <constraint firstAttribute="height" constant="100" id="ec2-Wh-4Oe"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="74L-ES-ep6"/>
@@ -2950,9 +2939,9 @@
                                 </connections>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkw-hI-IWn">
-                                <rect key="frame" x="72" y="57" width="230" height="85"/>
+                                <rect key="frame" x="72" y="49" width="230" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="VVx-jx-2On"/>
+                                    <constraint firstAttribute="height" constant="100" id="VVx-jx-2On"/>
                                     <constraint firstAttribute="width" constant="230" id="blJ-yp-p0T"/>
                                 </constraints>
                                 <connections>
@@ -2960,6 +2949,16 @@
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="bTf-R3-18l"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVr-ch-u2n">
+                                <rect key="frame" x="160" y="86" width="33" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="MHy-8E-b7b"/>
+                                    <constraint firstAttribute="height" constant="27" id="pOS-xD-Ejn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-Lr-dU6">
                                 <rect key="frame" x="100" y="203" width="42" height="27"/>
                                 <constraints>
@@ -2990,33 +2989,34 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVr-ch-u2n">
-                                <rect key="frame" x="160" y="86" width="33" height="27"/>
+                            <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I62-mY-MHa">
+                                <rect key="frame" x="72" y="285" width="230" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="MHy-8E-b7b"/>
-                                    <constraint firstAttribute="height" constant="27" id="pOS-xD-Ejn"/>
+                                    <constraint firstAttribute="width" constant="230" id="nM4-h1-wmP"/>
+                                    <constraint firstAttribute="height" constant="100" id="yyT-gc-z6G"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <connections>
+                                    <outlet property="dataSource" destination="J9C-oa-BSl" id="dQE-qf-Sj7"/>
+                                    <outlet property="delegate" destination="J9C-oa-BSl" id="AGg-o0-bqF"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="e8m-PZ-X1b" firstAttribute="top" secondItem="I62-mY-MHa" secondAttribute="bottom" constant="24" id="0sw-AE-Jbr"/>
+                            <constraint firstItem="e8m-PZ-X1b" firstAttribute="top" secondItem="I62-mY-MHa" secondAttribute="bottom" constant="17.5" id="0sw-AE-Jbr"/>
                             <constraint firstItem="3gR-XI-k2P" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="4SY-cx-sHu"/>
                             <constraint firstItem="fVr-ch-u2n" firstAttribute="trailing" secondItem="2Xk-Ri-n3F" secondAttribute="trailing" constant="-49" id="5s1-5o-BSL"/>
                             <constraint firstItem="fVr-ch-u2n" firstAttribute="centerY" secondItem="mkw-hI-IWn" secondAttribute="centerY" id="BIy-kb-Tbu"/>
                             <constraint firstItem="2Xk-Ri-n3F" firstAttribute="leading" secondItem="fXX-Lr-dU6" secondAttribute="trailing" constant="78" id="E24-RY-a8D"/>
-                            <constraint firstItem="3gR-XI-k2P" firstAttribute="top" secondItem="fVr-ch-u2n" secondAttribute="bottom" constant="61" id="HFu-e5-4lx"/>
+                            <constraint firstItem="3gR-XI-k2P" firstAttribute="top" secondItem="fVr-ch-u2n" secondAttribute="bottom" constant="54" id="HFu-e5-4lx"/>
                             <constraint firstItem="e8m-PZ-X1b" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="Hwc-o0-b1Q"/>
                             <constraint firstItem="2Xk-Ri-n3F" firstAttribute="firstBaseline" secondItem="fXX-Lr-dU6" secondAttribute="firstBaseline" id="Nf6-kb-s4d"/>
                             <constraint firstItem="fXX-Lr-dU6" firstAttribute="leading" secondItem="ne2-2a-r4I" secondAttribute="leadingMargin" constant="84" id="OAA-cN-AuQ"/>
-                            <constraint firstItem="rTx-3s-o5T" firstAttribute="centerY" secondItem="I62-mY-MHa" secondAttribute="centerY" constant="-0.5" id="aLD-VT-fnf"/>
+                            <constraint firstItem="rTx-3s-o5T" firstAttribute="centerY" secondItem="I62-mY-MHa" secondAttribute="centerY" constant="0.5" id="aLD-VT-fnf"/>
                             <constraint firstItem="mkw-hI-IWn" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="ao5-8b-4qz"/>
                             <constraint firstItem="fXX-Lr-dU6" firstAttribute="centerY" secondItem="3gR-XI-k2P" secondAttribute="centerY" id="dBf-gK-klR"/>
                             <constraint firstItem="I62-mY-MHa" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="iFH-y3-xux"/>
-                            <constraint firstItem="rTx-3s-o5T" firstAttribute="top" secondItem="3gR-XI-k2P" secondAttribute="bottom" constant="63" id="rDr-RL-hfG"/>
+                            <constraint firstItem="rTx-3s-o5T" firstAttribute="top" secondItem="3gR-XI-k2P" secondAttribute="bottom" constant="55" id="rDr-RL-hfG"/>
                             <constraint firstItem="fVr-ch-u2n" firstAttribute="top" secondItem="bCb-zB-Vs7" secondAttribute="bottom" constant="66" id="uxv-Q6-Phd"/>
                             <constraint firstAttribute="trailing" secondItem="rTx-3s-o5T" secondAttribute="trailing" constant="108" id="zFg-DA-T8g"/>
                         </constraints>
@@ -3330,6 +3330,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJO-pp-3SY"/>
+        <segue reference="OuF-iy-fzI"/>
     </inferredMetricsTieBreakers>
 </document>
