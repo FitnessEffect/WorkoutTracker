@@ -92,17 +92,19 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     func fillInExercisePassed(exercise:Exercise){
-        dateBtn.setTitle(exercise.date, for: .normal)
-        saveExercise(exStr: exercise.exerciseDescription)
-        exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
-        saveResult(str: (exercise.result))
-        if exercise.opponent != ""{
-            //if exercise comes from history do not set creator as the challenger
-            if exercise.creatorEmail == DBService.shared.user.email{
-                saveEmail(emailStr: exercise.opponent)
-            }else{
-                //if exercise comes from challenges set creator as the challenger
-                saveEmail(emailStr: exercise.creatorEmail)
+        if exercise.exerciseKey != ""{
+            dateBtn.setTitle(exercise.date, for: .normal)
+            saveExercise(exStr: exercise.exerciseDescription)
+            exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
+            saveResult(str: (exercise.result))
+            if exercise.opponent != ""{
+                //if exercise comes from history do not set creator as the challenger
+                if exercise.creatorEmail == DBService.shared.user.email{
+                    saveEmail(emailStr: exercise.opponent)
+                }else{
+                    //if exercise comes from challenges set creator as the challenger
+                    saveEmail(emailStr: exercise.creatorEmail)
+                }
             }
         }
     }

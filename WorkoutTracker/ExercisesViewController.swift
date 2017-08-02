@@ -45,8 +45,18 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
+        DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
+        DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
         DBService.shared.retrieveExercisesForClient(completion: {
+            self.exerciseArray.removeAll()
             self.exerciseArray = DBService.shared.exercisesForClient
+            self.exerciseArray.sort(by: {a, b in
+                if a.date > b.date {
+                    return true
+                }
+                return false
+            })
             self.refreshTableViewData()
         })
         clientPassed = DBService.shared.retrieveClientInfo(lastName: clientPassed.lastName)
@@ -87,15 +97,16 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         displaySelectedWeek(date: datePassed as Date)
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: datePassed)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: datePassed)))
-        DBService.shared.retrieveExercisesForUser{
-            self.exerciseArray = DBService.shared.exercisesForUser
+        DBService.shared.retrieveExercisesForClient{
+            self.exerciseArray.removeAll()
+            self.exerciseArray = DBService.shared.exercisesForClient
             self.exerciseArray.sort(by: {a, b in
                 if a.date > b.date {
                     return true
                 }
                 return false
             })
-            self.tableViewOutlet.reloadData()
+            self.refreshTableViewData()
         }
     }
     
@@ -340,9 +351,18 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .delete {
             let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: { self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
-                    //tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                    self.refreshTableViewData()})
+                DBService.shared.deleteExerciseForClient(exercise: selectedExercise, completion: {
+                    for i in 0...self.exerciseArray.count{
+                        if self.exerciseArray[i].exerciseKey == selectedExercise.exerciseKey{
+                            self.exerciseArray.remove(at: i)
+                            break
+                        }
+                    }
+                    self.daysSections = self.groupExercisesByDay(exercisesPassed: self.exerciseArray) as! [String : Any]
+                    
+                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    tableView.reloadData()
+                })
                 
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
