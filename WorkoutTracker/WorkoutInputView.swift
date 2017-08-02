@@ -182,10 +182,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                     
                     self.delegate?.handleSave(json: exerciseDictionary)
                     self.eraseExerciseDescription()
-                    
                 }else{
                     self.del?.presentAlert()
- 
                 }
             })
         }else{

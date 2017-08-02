@@ -369,6 +369,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){

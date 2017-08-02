@@ -407,6 +407,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         return .none
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
             DBService.shared.setPassedClient(client: clientPassed)
