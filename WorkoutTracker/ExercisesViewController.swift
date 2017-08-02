@@ -23,6 +23,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     var button:UIButton!
     var selectedDate = NSDate()
     var daysSections = [String:Any]()
+    var cellCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -315,11 +316,13 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
+        
         let tempArr = getExercisesForDayAtIndexPath(indexPath: indexPath as NSIndexPath)
         if tempArr.count != 0{
             let exercise = tempArr[indexPath.row]
             cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
             cell.numberOutlet.text = String(indexPath.row + 1)
+            cell.setExerciseKey(key: exercise.exerciseKey)
         }
         return cell
     }
@@ -412,8 +415,16 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
             DBService.shared.setPassedClient(client: clientPassed)
-            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
-            DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
+            let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
+            let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! ExerciseCustomCell
+            
+            for i in 0...self.exerciseArray.count{
+                if self.exerciseArray[i].exerciseKey == cell.exerciseKey{
+                    DBService.shared.setPassedExercise(exercise: exerciseArray[i])
+                    break
+                }
+            }
+            
             DBService.shared.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){
