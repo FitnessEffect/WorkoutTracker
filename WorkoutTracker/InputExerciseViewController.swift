@@ -131,6 +131,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        DBService.shared.clearExercisePassed()
           refreshNotifications()
     }
     

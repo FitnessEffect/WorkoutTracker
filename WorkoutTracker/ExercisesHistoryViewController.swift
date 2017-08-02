@@ -37,7 +37,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveExercisesForUser{
+        let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
+        DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
+        DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
+        DBService.shared.retrieveExercisesForUser(completion:{
+            self.exerciseArray.removeAll()
             self.exerciseArray = DBService.shared.exercisesForUser
             self.exerciseArray.sort(by: {a, b in
                 if a.date > b.date {
@@ -46,7 +50,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 return false
             })
             self.refreshTableViewData()
-        }
+        })
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
@@ -84,6 +88,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: datePassed)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: datePassed)))
         DBService.shared.retrieveExercisesForUser{
+            self.exerciseArray.removeAll()
             self.exerciseArray = DBService.shared.exercisesForUser
             self.exerciseArray.sort(by: {a, b in
                 if a.date > b.date {
@@ -91,7 +96,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 }
                 return false
             })
-            self.tableViewOutlet.reloadData()
+            self.refreshTableViewData()
         }
     }
     
@@ -126,16 +131,8 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         self.present(popController, animated: true, completion: nil)
     }
     
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
-        let touchPoint = sender.location(in: tableViewOutlet)
-        let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
-        
-        if row != nil{
-            performSegue(withIdentifier: "editExerciseSegue", sender: sender)
-        }
-    }
-    
     func refreshTableViewData(){
+        
         self.daysSections = self.groupExercisesByDay(exercisesPassed: self.exerciseArray) as! [String : Any]
         tableViewOutlet.reloadData()
     }
@@ -316,10 +313,19 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         if editingStyle == .delete {
             let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: { self.exerciseArray.remove(at: indexPath.row)
+                DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: {
                     
-                    //tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                    self.refreshTableViewData()})
+                    for i in 0...self.exerciseArray.count{
+                        if self.exerciseArray[i].exerciseKey == selectedExercise.exerciseKey{
+                            self.exerciseArray.remove(at: i)
+                            break
+                        }
+                    }
+                    self.daysSections = self.groupExercisesByDay(exercisesPassed: self.exerciseArray) as! [String : Any]
+                    
+                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    tableView.reloadData()
+                })
                 
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))

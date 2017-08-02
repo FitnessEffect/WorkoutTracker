@@ -446,6 +446,9 @@ class DBService {
                     self._exercisesForClient.append(tempExercise)
                     completion()
                 }
+            }else{
+                self._exercisesForClient.removeAll()
+                completion()
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -532,8 +535,9 @@ class DBService {
         }
     }
     
-    func deleteExerciseForClient(exercise:Exercise){
+    func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
+            completion()
             if error != nil {
                 print("error \(String(describing: error))")
             }
