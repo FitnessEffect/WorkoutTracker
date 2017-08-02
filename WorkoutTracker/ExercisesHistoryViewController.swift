@@ -282,6 +282,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             let exercise = tempArr[indexPath.row]
             cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
             cell.numberOutlet.text = String(indexPath.row + 1)
+            cell.setExerciseKey(key: exercise.exerciseKey)
         }
         return cell
     }
@@ -373,8 +374,15 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
-            selectedRow = (tableViewOutlet.indexPathForSelectedRow! as NSIndexPath).row
-            DBService.shared.setPassedExercise(exercise: exerciseArray[selectedRow])
+            let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
+            let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! ExerciseCustomCell
+            
+            for i in 0...self.exerciseArray.count{
+                if self.exerciseArray[i].exerciseKey == cell.exerciseKey{
+                    DBService.shared.setPassedExercise(exercise: exerciseArray[i])
+                    break
+                }
+            }
             DBService.shared.setEdit(bool:true)
         }
         if(segue.identifier == "addExerciseSegue"){

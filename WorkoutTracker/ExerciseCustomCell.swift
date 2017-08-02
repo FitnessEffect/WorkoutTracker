@@ -14,10 +14,17 @@ class ExerciseCustomCell: UITableViewCell {
     @IBOutlet weak var numberOutlet: UILabel!
     @IBOutlet weak var titleOutlet: UILabel!
     
+    var exerciseKey = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setExerciseKey(key:String){
+        exerciseKey = key
+    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
