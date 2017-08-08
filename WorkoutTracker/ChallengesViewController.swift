@@ -32,10 +32,12 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
-        tableViewOutlet.addGestureRecognizer(tapGesture)
-        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
-        self.view.addGestureRecognizer(gesture)
+        let tableViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
+        tableViewOutlet.addGestureRecognizer(tableViewTapGesture)
+        
+        let menuTapGesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
+        self.view.addGestureRecognizer(menuTapGesture)
+        
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
         view.addSubview(overlayView)
@@ -94,7 +96,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
-        
         if row != nil{
             performSegue(withIdentifier: "editChallengeSegue", sender: sender)
         }
@@ -136,6 +137,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 let x = indexPath.row
                 let ex = self.exerciseArray[x]
                 
+                //DBService uses Firbase API to delete cell in the database
                 DBService.shared.deleteChallengeExerciseForUser(exercise:ex)
                 
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
