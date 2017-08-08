@@ -16,7 +16,6 @@ class APIService {
     func post(endpoint url: String, data json: [String: AnyObject], completion handler: ([String: AnyObject]) -> Void) {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
-        //send email / ex id etc
         let postString = "exerciseKey=\(json["exerciseKey"] as! String)&opponentEmail=\(json["opponent"] as! String)&userID=\(DBService.shared.user.uid)&userEmail=\(DBService.shared.user.email!)&clientKey=\(json["clientKey"] as! String)&exerciseYear=\(json["year"] as! String)&exerciseWeek=\(json["week"] as! String)"
         request.httpBody = postString.data(using: .utf8)
         print(postString)
