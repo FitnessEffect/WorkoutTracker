@@ -196,7 +196,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     }
     
     @IBAction func createClient(_ sender: UIButton) {
-        if firstNameOutlet.text != ""{
+        if firstNameOutlet.text != "" || lastNameOutlet.text != ""{
         if edit == false{
             myClient.clientKey = DBService.shared.createClientID()
         }else{
@@ -234,8 +234,8 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         myClient.inches = tempInches
         myClient.age = tempAge
         myClient.activityLevel = activityLvl
-        myClient.firstName = (firstNameOutlet.text?.capitalized)!
-        myClient.lastName = (lastNameOutlet.text?.capitalized)!
+        myClient.firstName = (firstNameOutlet.text?.capitalized.trimmingCharacters(in: .whitespacesAndNewlines))!
+        myClient.lastName = (lastNameOutlet.text?.capitalized.trimmingCharacters(in: .whitespacesAndNewlines))!
         
         var clientDictionary = [String:Any]()
         clientDictionary["firstName"] = myClient.firstName
@@ -253,7 +253,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
             self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
         })
         }else{
-            let alert = UIAlertController(title: "Error", message: "Please enter client's first name", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: "Please enter client's first and last name", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
