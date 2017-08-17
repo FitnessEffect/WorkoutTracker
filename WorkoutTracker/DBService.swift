@@ -373,10 +373,10 @@ class DBService {
         }
     }
     
-    func retrieveClientInfo(lastName:String)->Client{
+    func retrieveClientInfo(clientKey:String)->Client{
         let c = Client()
         for client in _clients{
-            if client.lastName == lastName{
+            if client.clientKey == clientKey{
                 return client
             }
         }

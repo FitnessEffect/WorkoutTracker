@@ -60,7 +60,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             })
             self.refreshTableViewData()
         })
-        clientPassed = DBService.shared.retrieveClientInfo(lastName: clientPassed.lastName)
+        
+        clientPassed = DBService.shared.retrieveClientInfo(clientKey: clientPassed.clientKey)
         button.setTitle(clientPassed.firstName, for: .normal)
 
         

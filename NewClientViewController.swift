@@ -196,7 +196,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     }
     
     @IBAction func createClient(_ sender: UIButton) {
-        if firstNameOutlet.text != "" || lastNameOutlet.text != ""{
+        if firstNameOutlet.text != "" && lastNameOutlet.text != ""{
         if edit == false{
             myClient.clientKey = DBService.shared.createClientID()
         }else{
