@@ -61,6 +61,8 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.refreshTableViewData()
         })
         clientPassed = DBService.shared.retrieveClientInfo(lastName: clientPassed.lastName)
+        button.setTitle(clientPassed.firstName, for: .normal)
+
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
@@ -409,8 +411,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){

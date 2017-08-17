@@ -37,6 +37,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
@@ -132,7 +133,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func refreshTableViewData(){
-        
         self.daysSections = self.groupExercisesByDay(exercisesPassed: self.exerciseArray) as! [String : Any]
         tableViewOutlet.reloadData()
     }
