@@ -58,7 +58,7 @@ class CreateBodybuildingExerciseViewController: UIViewController, UITextFieldDel
         }else{
         myExercise.name = exName.text!
         var dictionary = [String:Any]()
-        dictionary[exName.text!.capitalized] = true
+        dictionary[exName.text!.capitalized.trimmingCharacters(in: .whitespacesAndNewlines)] = true
         DBService.shared.createBodybuildingExercise(dictionary: dictionary)
         self.navigationController?.popViewController(animated: true)
         }

@@ -54,7 +54,7 @@ class CreateEnduranceCategoryViewController: UIViewController, UITextFieldDelega
         }else{
             myExercise.name = categoryName.text!
             var dictionary = [String:Any]()
-            dictionary[categoryName.text!.capitalized] = true
+            dictionary[categoryName.text!.capitalized.trimmingCharacters(in: .whitespacesAndNewlines)] = true
             DBService.shared.createEnduranceCategories(dictionary: dictionary)
             self.navigationController?.popViewController(animated: true)
         }

@@ -40,7 +40,7 @@ class EmailSelectionViewController: UIViewController, UITextFieldDelegate {
         }
         
         let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
-        presenter.saveEmail(emailStr: (emailTextField.text?.lowercased())!)
+        presenter.saveEmail(emailStr: (emailTextField.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))!)
         dismiss(animated: true, completion: nil)
     }
     
