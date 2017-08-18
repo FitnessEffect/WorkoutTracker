@@ -77,13 +77,14 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
     }
     
     func cellClicked(x:CGPoint){
-        let index = tableView.indexPathForRow(at: x)
-        let cell = tableView.cellForRow(at: index!)!
-        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "enduranceSelectionVC") as! EnduranceSelectionViewController
-        let title = cell.textLabel?.text
-        DBService.shared.setCategory(category: title!)
-        nextVC.setCategory(category:title!)
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if let index = tableView.indexPathForRow(at: x){
+            let cell = tableView.cellForRow(at: index)!
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "enduranceSelectionVC") as! EnduranceSelectionViewController
+            let title = cell.textLabel?.text
+            DBService.shared.setCategory(category: title!)
+            nextVC.setCategory(category:title!)
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

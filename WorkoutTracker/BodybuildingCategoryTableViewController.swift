@@ -78,20 +78,21 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     func cellClicked(x:CGPoint){
-        let index = tableView.indexPathForRow(at: x)
-        let cell = tableView.cellForRow(at: index!)!
-        if cell.textLabel?.text == "Superset"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "forTimeVC") as! ForTimeViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingSelectionVC") as! BodybuildingSelectionViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
+        if let index = tableView.indexPathForRow(at: x){
+            let cell = tableView.cellForRow(at: index)!
+            if cell.textLabel?.text == "Superset"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "forTimeVC") as! ForTimeViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingSelectionVC") as! BodybuildingSelectionViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
         }
     }
     

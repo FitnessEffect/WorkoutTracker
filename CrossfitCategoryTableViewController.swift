@@ -61,39 +61,39 @@ class CrossfitCategoryTableViewController: UITableViewController {
     }
     
     func cellClicked(x:CGPoint){
-        let index = tableView.indexPathForRow(at: x)
-        let cell = tableView.cellForRow(at: index!)!
-        
-        if cell.textLabel?.text == "1 Rep Max" || cell.textLabel?.text == "Hero Wods"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "heroWodsVC") as! HeroWodsViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if cell.textLabel?.text == "For Time"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForForTimeVC") as! SelectExerciseForForTimeViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if cell.textLabel?.text == "Tabata"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForTabataVC") as! SelectExerciseForTabataViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if cell.textLabel?.text == "Metcon"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForMetconVC") as! SelectExerciseForMetconViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForAmrapVC") as! SelectExerciseForAmrapViewController
-            let title = cell.textLabel?.text
-            DBService.shared.setCategory(category: title!)
-            nextVC.setCategory(category:title!)
-            self.navigationController?.pushViewController(nextVC, animated: true)
+        if let index = tableView.indexPathForRow(at: x){
+            let cell = tableView.cellForRow(at: index)!
+            if cell.textLabel?.text == "1 Rep Max" || cell.textLabel?.text == "Hero Wods"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "heroWodsVC") as! HeroWodsViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if cell.textLabel?.text == "For Time"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForForTimeVC") as! SelectExerciseForForTimeViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if cell.textLabel?.text == "Tabata"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForTabataVC") as! SelectExerciseForTabataViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if cell.textLabel?.text == "Metcon"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForMetconVC") as! SelectExerciseForMetconViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectExerciseForAmrapVC") as! SelectExerciseForAmrapViewController
+                let title = cell.textLabel?.text
+                DBService.shared.setCategory(category: title!)
+                nextVC.setCategory(category:title!)
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
         }
     }
 }

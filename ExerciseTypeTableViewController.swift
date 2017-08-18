@@ -58,20 +58,21 @@ class ExerciseTypeTableViewController: UITableViewController{
     }
     
     func cellClicked(x:CGPoint){
-        let index = tableView.indexPathForRow(at: x)
-        let cell = tableView.cellForRow(at: index!)!
-        if cell.textLabel?.text == "Bodybuilding"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingCategoryVC") as! BodybuildingCategoryTableViewController
-            DBService.shared.setPassedType(type: "Bodybuilding")
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if cell.textLabel?.text == "Crossfit"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "crossfitVC") as! CrossfitCategoryTableViewController
-            DBService.shared.setPassedType(type: "Crossfit")
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "enduranceCategoryVC") as! EnduranceCategoryTableViewController
-            DBService.shared.setPassedType(type: "Endurance")
-            self.navigationController?.pushViewController(nextVC, animated: true)
+        if let index = tableView.indexPathForRow(at: x){
+            let cell = tableView.cellForRow(at: (index))!
+            if cell.textLabel?.text == "Bodybuilding"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bodybuildingCategoryVC") as! BodybuildingCategoryTableViewController
+                DBService.shared.setPassedType(type: "Bodybuilding")
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if cell.textLabel?.text == "Crossfit"{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "crossfitVC") as! CrossfitCategoryTableViewController
+                DBService.shared.setPassedType(type: "Crossfit")
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "enduranceCategoryVC") as! EnduranceCategoryTableViewController
+                DBService.shared.setPassedType(type: "Endurance")
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
         }
     }
 }
