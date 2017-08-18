@@ -29,6 +29,7 @@ class DBService {
     private var _crossfitCategories = [String]()
     private var _bodybuildingCategories = [String]()
     private var _enduranceCategories = [String]()
+    private var _types = [String]()
     private var _challengeExercises = [Exercise]()
     private var _typePassed:String!
     private var _emomTime:String!
@@ -602,97 +603,20 @@ class DBService {
     }
     
     func initializeData(){
-        
-        var enduranceDictionary = [String:Any]()
-        enduranceDictionary["Running"] = true
-        enduranceDictionary["Cycling"] = true
-        enduranceDictionary["Rowing"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Endurance").updateChildValues(enduranceDictionary)
-        
-        var crossfitDictionary = [String:Any]()
-        crossfitDictionary["1 Rep Max"] = true
-        crossfitDictionary["Amrap"] = true
-        crossfitDictionary["Emom"] = true
-        crossfitDictionary["Metcon"] = true
-        crossfitDictionary["Tabata"] = true
-        crossfitDictionary["For Time"] = true
-        crossfitDictionary["Hero Wods"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").updateChildValues(crossfitDictionary)
-        
-        var oneRepMaxDictionary = [String:Any]()
-        oneRepMaxDictionary["Deadlift"] = true
-        oneRepMaxDictionary["Squat"] = true
-        oneRepMaxDictionary["Front Squats"] = true
-        oneRepMaxDictionary["Snatch"] = true
-        oneRepMaxDictionary["Clean and Jerk"] = true
-        oneRepMaxDictionary["Bench Press"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Crossfit").child("1 Rep Max").updateChildValues(oneRepMaxDictionary)
-        
-        var bodybuildingDictionary = [String:Any]()
-        bodybuildingDictionary["Abs"] = true
-        bodybuildingDictionary["Chest"] = true
-        bodybuildingDictionary["Legs"] = true
-        bodybuildingDictionary["Biceps"] = true
-        bodybuildingDictionary["Triceps"] = true
-        bodybuildingDictionary["Back"] = true
-        bodybuildingDictionary["Shoulders"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").updateChildValues(bodybuildingDictionary)
-        
-        var bodybuildingAbsExercise = [String:Any]()
-        bodybuildingAbsExercise["Bicycle Crunches"] = true
-        bodybuildingAbsExercise["Hanging Knee Raises"] = true
-        bodybuildingAbsExercise["Sit-Ups"] = true
-        bodybuildingAbsExercise["Russian Twists"] = true
-        bodybuildingAbsExercise["Decline Sit-Ups"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Abs").updateChildValues(bodybuildingAbsExercise)
-        
-        var bodybuildingChestExercise = [String:Any]()
-        bodybuildingChestExercise["Dumbbell Press"] = true
-        bodybuildingChestExercise["Incline Dumbbell Press"] = true
-        bodybuildingChestExercise["Decline Dumbbell Press"] = true
-        bodybuildingChestExercise["Bench Press"] = true
-        bodybuildingChestExercise["Dumbbell Flies"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Chest").updateChildValues(bodybuildingChestExercise)
-        
-        var bodybuildingLegsExercise = [String:Any]()
-        bodybuildingLegsExercise["Deadlift"] = true
-        bodybuildingLegsExercise["Squats"] = true
-        bodybuildingLegsExercise["Leg Press"] = true
-        bodybuildingLegsExercise["Smith Machine Squats"] = true
-        bodybuildingLegsExercise["Barbell Lunges"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Legs").updateChildValues(bodybuildingLegsExercise)
-        
-        var bodybuildingBicepsExercise = [String:Any]()
-        bodybuildingBicepsExercise["Dumbbell Alternating Curls"] = true
-        bodybuildingBicepsExercise["Hammer Curls"] = true
-        bodybuildingBicepsExercise["Barbell Curls"] = true
-        bodybuildingBicepsExercise["Close grip Easy Bar Curls"] = true
-        bodybuildingBicepsExercise["Seated Dumbbell Preacher Curls"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Biceps").updateChildValues(bodybuildingBicepsExercise)
-        
-        var bodybuildingTricepsExercise = [String:Any]()
-        bodybuildingTricepsExercise["Seated Extensions"] = true
-        bodybuildingTricepsExercise["Incline Barbell Skull Crushers"] = true
-        bodybuildingTricepsExercise["Cable Pull Downs"] = true
-        bodybuildingTricepsExercise["Dumbbell Skull Crushers"] = true
-        bodybuildingTricepsExercise["Cable Pull Downs reverse grip"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Triceps").updateChildValues(bodybuildingTricepsExercise)
-        
-        var bodybuildingBackExercise = [String:Any]()
-        bodybuildingBackExercise["Single Arm Dumbbell Rows"] = true
-        bodybuildingBackExercise["Bent Over Barbell Row"] = true
-        bodybuildingBackExercise["Lat Pulldown"] = true
-        bodybuildingBackExercise["Seated Row Close Grip"] = true
-        bodybuildingBackExercise["Seated Row Wide Grip"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Back").updateChildValues(bodybuildingBackExercise)
-        
-        var bodybuildingShouldersExercise = [String:Any]()
-        bodybuildingShouldersExercise["Dumbbell Lateral Raises"] = true
-        bodybuildingShouldersExercise["Barbell High Pulls"] = true
-        bodybuildingShouldersExercise["Shoulder Press"] = true
-        bodybuildingShouldersExercise["Dumbbell Front Raises "] = true
-        bodybuildingShouldersExercise["Arnold Press"] = true
-        self._ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child("Shoulders").updateChildValues(bodybuildingShouldersExercise)
+        self._ref.child("types").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                self._types = value?.allKeys as! [String]
+                for type in self._types{
+                    var categoryDictionary = [String:Any]()
+                    categoryDictionary = value?[type] as! [String : Any]
+                    self._ref.child("users").child(self.user.uid).child("Types").child(type).updateChildValues(categoryDictionary)
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     var user: FIRUser {
@@ -848,6 +772,12 @@ class DBService {
     var selectedDate:String{
         get{
             return _selectedDate
+        }
+    }
+    
+    var types:[String]{
+        get{
+            return _types
         }
     }
 }
