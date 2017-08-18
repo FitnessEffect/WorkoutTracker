@@ -339,6 +339,24 @@ class DBService {
         }
     }
     
+    func retrieveTypes(completion: @escaping () -> Void){
+        _types.removeAll()
+        
+        _ref.child("users").child(user.uid).child("Types").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let keyArray = value?.allKeys as! [String]
+                self._types = keyArray
+                self._types.sort()
+                completion()
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func retrieveEnduranceCategories(completion: @escaping () -> Void){
         _enduranceCategories.removeAll()
         

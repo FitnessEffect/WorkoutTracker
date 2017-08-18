@@ -11,7 +11,7 @@ import Firebase
 
 class ExerciseTypeTableViewController: UITableViewController{
     
-    var exerciseTypes:[String]!
+    var exerciseTypes = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,10 @@ class ExerciseTypeTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.clearSupersetExercises()
-        exerciseTypes = DBService.shared.types
+        DBService.shared.retrieveTypes(completion: {
+            self.exerciseTypes = DBService.shared.types
+            self.tableView.reloadData()
+        })
     }
     
     override func didReceiveMemoryWarning() {
