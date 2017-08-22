@@ -19,6 +19,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var overlayView: OverlayView!
     var challengeOverlay = true
     var menuShowing = false
+    var spinner = UIActivityIndicatorView()
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -43,14 +44,25 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+        
+        spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.white
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveClients {
-            self.clientArray = DBService.shared.clients
-            self.tableViewOutlet.reloadData()
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveClients {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.clientArray = DBService.shared.clients
+                self.tableViewOutlet.reloadData()
+            }
         }
-
     }
     
     //TableView
