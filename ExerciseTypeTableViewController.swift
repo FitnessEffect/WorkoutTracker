@@ -12,6 +12,7 @@ import Firebase
 class ExerciseTypeTableViewController: UITableViewController{
     
     var exerciseTypes = [String]()
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +21,29 @@ class ExerciseTypeTableViewController: UITableViewController{
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.blue
+        
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.clearSupersetExercises()
-        DBService.shared.retrieveTypes(completion: {
-            self.exerciseTypes = DBService.shared.types
-            self.tableView.reloadData()
-        })
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            DBService.shared.retrieveTypes(completion: {
+               UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.exerciseTypes = DBService.shared.types
+                self.tableView.reloadData()
+            })
+        }
+       
     }
     
     override func didReceiveMemoryWarning() {

@@ -21,6 +21,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     var menuView:MenuView!
     var overlayView: OverlayView!
     var selectedDate = NSDate()
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,12 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+        
+        spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.white
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,21 +60,24 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         DBService.shared.setChallengesToViewed()
         DBService.shared.resetNotificationCount()
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
-        DBService.shared.retrieveChallengesExercises {
-            self.exerciseArray = DBService.shared.challengeExercises
-            self.exerciseArray.sort(by: {a, b in
-                if a.date > b.date {
-                    return true
-                }
-                return false
-            })
-            self.tableViewOutlet.reloadData()
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveChallengesExercises {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.exerciseArray = DBService.shared.challengeExercises
+                self.exerciseArray.sort(by: {a, b in
+                    if a.date > b.date {
+                        return true
+                    }
+                    return false
+                })
+                self.tableViewOutlet.reloadData()
+                
+            }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
@@ -137,7 +147,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 let x = indexPath.row
                 let ex = self.exerciseArray[x]
                 
-                //DBService uses Firbase API to delete cell in the database
                 DBService.shared.deleteChallengeExerciseForUser(exercise:ex)
                 
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
@@ -147,10 +156,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion:nil)
         }
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
