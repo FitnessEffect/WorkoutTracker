@@ -98,6 +98,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="22"/>
                     <state key="normal" title="terms of use"/>
+                    <connections>
+                        <action selector="termsOfUse:" destination="iN0-l3-epB" eventType="touchUpInside" id="cl4-ih-ByT"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&gt; &gt; &gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weq-Rk-KcP">
                     <rect key="frame" x="262" y="607" width="83" height="30"/>

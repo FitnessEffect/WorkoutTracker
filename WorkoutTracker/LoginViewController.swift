@@ -29,11 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         passwordTF.delegate = self
         emailTF.delegate = self
-        
-        let tap = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
-        
         ref = FIRDatabase.database().reference()
-        
         UserDefaults.standard.set(false, forKey: "newUser")
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
@@ -44,43 +40,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             rememberMeSwitch.setOn(false, animated: true)
         }
         
+        let tap = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
         
-        registerView = RegisterView.instanceFromNib() as!RegisterView
+        registerView = RegisterView.instanceFromNib() as! RegisterView
         (registerView as! RegisterView).emailTxtField.delegate = self
         (registerView as! RegisterView).passwordTxtField.delegate = self
         (registerView as! RegisterView).frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         view.addSubview(registerView)
+        
         registerView.addGestureRecognizer(tap)
         registerView.addGestureRecognizer(swipe)
-        registerView.isHidden = true
-        
         loginView = self.view
         loginView.addGestureRecognizer(swipe)
-        
-        self.view.addGestureRecognizer(tap)
+        loginView.addGestureRecognizer(tap)
+        registerView.isHidden = true
     }
     
     func swipe(_ sender:UISwipeGestureRecognizer){
         let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
-        
         if registerView.isHidden == true{
             UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
                 self.registerView.isHidden = false
             })
             UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
-            //self.firstView.isHidden = true
             })
         }else{
             UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
-                //self.firstView.isHidden = true
             })
             UIView.transition(with: registerView, duration: 1.0, options: transitionOptions, animations: {
                 self.registerView.isHidden = true
             })
         }
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,11 +105,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }) as? UInt
     }
     
-    @IBAction func termOfUse(_ sender: UIButton) {
-        if let url = NSURL(string: "https://github.com/FitnessEffect/WorkoutTracker/blob/master/Terms%20of%20Use"){
-            UIApplication.shared.openURL(url as URL)
-        }
-    }
+//    @IBAction func termOfUse(_ sender: UIButton) {
+//        if let url = NSURL(string: "https://github.com/FitnessEffect/WorkoutTracker/blob/master/Terms%20of%20Use"){
+//            UIApplication.shared.openURL(url as URL)
+//        }
+//    }
     
     func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTF.frame.contains(sender.location(in: view)){

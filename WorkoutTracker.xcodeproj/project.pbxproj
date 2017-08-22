@@ -298,6 +298,8 @@
 				52192ACC1CD5452100A311A1 /* CustomCells */,
 				529FC7C31F2166E500C16203 /* Menu */,
 				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
+				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
+				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -329,8 +331,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
-				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
