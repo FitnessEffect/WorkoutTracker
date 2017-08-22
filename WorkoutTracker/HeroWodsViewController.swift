@@ -18,6 +18,7 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
     var categoryPassed:String!
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,12 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             self.navigationItem.rightBarButtonItem = rightBarButton
             rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         }
+        
+        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.blue
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,16 +46,28 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewWillAppear(_ animated: Bool) {
         if categoryPassed == "1 Rep Max"{
-            DBService.shared.retrieveCrossfitCategoryExercises(completion: {
-                self.exercises = DBService.shared.exercisesForCrossfitCategory
-                self.pickerOutlet.reloadAllComponents()
-            })
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                DBService.shared.retrieveCrossfitCategoryExercises(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForCrossfitCategory
+                    self.pickerOutlet.reloadAllComponents()
+                })
+            }
             pickerOutlet.isUserInteractionEnabled = true
         }else{
-            DBService.shared.retrieveHeroWods(completion:{
-                self.exercises = DBService.shared.crossfitHeroWods
-                self.pickerOutlet.reloadAllComponents()
-            })
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                DBService.shared.retrieveHeroWods(completion:{
+                    self.exercises = DBService.shared.crossfitHeroWods
+                    self.pickerOutlet.reloadAllComponents()
+                })
+            }
         }
     }
     
