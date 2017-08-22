@@ -22,6 +22,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     var user:FIRUser!
     var selectedDate = NSDate()
     var daysSections = [String:Any]()
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.white
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,17 +47,23 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
-        DBService.shared.retrieveExercisesForUser(completion:{
-            self.exerciseArray.removeAll()
-            self.exerciseArray = DBService.shared.exercisesForUser
-            self.exerciseArray.sort(by: {a, b in
-                if a.date > b.date {
-                    return true
-                }
-                return false
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveExercisesForUser(completion:{
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.exerciseArray.removeAll()
+                self.exerciseArray = DBService.shared.exercisesForUser
+                self.exerciseArray.sort(by: {a, b in
+                    if a.date > b.date {
+                        return true
+                    }
+                    return false
+                })
+                self.refreshTableViewData()
             })
-            self.refreshTableViewData()
-        })
+        }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
