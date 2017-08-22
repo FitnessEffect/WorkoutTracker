@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nji-W8-ZX0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GxJ-gv-iux">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1383,7 +1383,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209" width="86" height="21"/>
+                                <rect key="frame" x="162" y="208.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1970,161 +1970,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZ6-0u-0C1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="204" y="824"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="9OG-3v-MNu">
-            <objects>
-                <viewController storyboardIdentifier="loginVC" id="nji-W8-ZX0" customClass="LoginViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="S3H-7w-nGc"/>
-                        <viewControllerLayoutGuide type="bottom" id="6kp-nB-wqI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O8S-NK-6Hk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="tsq-sx-syn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GIi-UJ-f7Q">
-                                <rect key="frame" x="85" y="184" width="204" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Login"/>
-                                    <segment title="Register"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="segmentedAction:" destination="nji-W8-ZX0" eventType="valueChanged" id="MjJ-0A-8Db"/>
-                                </connections>
-                            </segmentedControl>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="krK-xf-daT">
-                                <rect key="frame" x="20" y="54" width="337" height="35"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="337" id="Aj2-8P-5vu"/>
-                                    <constraint firstAttribute="height" constant="35" id="tKB-On-hmb"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="KYm-q4-zMl">
-                                <rect key="frame" x="0.0" y="333" width="375" height="70"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="94x-fs-dHJ">
-                                <rect key="frame" x="0.0" y="256" width="375" height="70"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-vS-GUP">
-                                <rect key="frame" x="53" y="434" width="270" height="70"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
-                                <state key="normal" title="Register" backgroundImage="chalkBackground">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="register:" destination="nji-W8-ZX0" eventType="touchUpInside" id="a3c-xI-zcl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpb-0z-UvW">
-                                <rect key="frame" x="53" y="434" width="270" height="70"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
-                                <state key="normal" title="Login" backgroundImage="chalkBackground">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="nji-W8-ZX0" eventType="touchUpInside" id="b2B-Nh-urq"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdT-Mv-gVp">
-                                <rect key="frame" x="85" y="97" width="203" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="4lA-qy-IKW"/>
-                                    <constraint firstAttribute="width" constant="203" id="daN-yg-6Lf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="26"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="By clicking &quot;Register&quot; you agree to the following" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e5r-O0-1Xl">
-                                <rect key="frame" x="0.0" y="525" width="375" height="59"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-Wc-92b">
-                                <rect key="frame" x="93" y="584" width="188" height="25"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="19"/>
-                                <state key="normal" title="terms of use"/>
-                                <connections>
-                                    <action selector="termOfUse:" destination="nji-W8-ZX0" eventType="touchUpInside" id="9YR-K6-IID"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nbo-FA-276">
-                                <rect key="frame" x="95" y="567" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="switch:" destination="nji-W8-ZX0" eventType="valueChanged" id="X6g-Aj-4iJ"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2c-5S-3Iu">
-                                <rect key="frame" x="167" y="571" width="122" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="19"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="krK-xf-daT" firstAttribute="top" secondItem="S3H-7w-nGc" secondAttribute="bottom" constant="34" id="2bK-9T-sFf"/>
-                            <constraint firstItem="GdT-Mv-gVp" firstAttribute="top" secondItem="krK-xf-daT" secondAttribute="bottom" constant="8" id="DWH-V8-tgH"/>
-                            <constraint firstItem="6kp-nB-wqI" firstAttribute="top" secondItem="tsq-sx-syn" secondAttribute="bottom" id="RAY-E8-jBo"/>
-                            <constraint firstItem="krK-xf-daT" firstAttribute="centerX" secondItem="tsq-sx-syn" secondAttribute="centerX" constant="1.5" id="aqy-Q0-0mf"/>
-                            <constraint firstItem="tsq-sx-syn" firstAttribute="top" secondItem="O8S-NK-6Hk" secondAttribute="top" id="b1w-0D-9dc"/>
-                            <constraint firstItem="GdT-Mv-gVp" firstAttribute="centerX" secondItem="tsq-sx-syn" secondAttribute="centerX" constant="-1" id="jLZ-yD-lqK"/>
-                            <constraint firstAttribute="trailing" secondItem="tsq-sx-syn" secondAttribute="trailing" id="kqs-94-Up1"/>
-                            <constraint firstItem="tsq-sx-syn" firstAttribute="leading" secondItem="O8S-NK-6Hk" secondAttribute="leading" id="rrK-1W-riu"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="emailTF" destination="94x-fs-dHJ" id="rae-wp-hZN"/>
-                        <outlet property="login" destination="Fpb-0z-UvW" id="BMM-qd-z9Z"/>
-                        <outlet property="passwordTF" destination="KYm-q4-zMl" id="Lpc-kj-l1h"/>
-                        <outlet property="register" destination="bRg-vS-GUP" id="46E-U6-gXJ"/>
-                        <outlet property="rememberMeLabel" destination="q2c-5S-3Iu" id="ki5-Xd-B5D"/>
-                        <outlet property="rememberMeSwitch" destination="Nbo-FA-276" id="Hwj-D5-ncU"/>
-                        <outlet property="segmentedOutlet" destination="GIi-UJ-f7Q" id="jMv-MP-L7O"/>
-                        <outlet property="termsOfUseBtn" destination="8v5-Wc-92b" id="wg3-bV-Sj6"/>
-                        <outlet property="termsOfUselabel" destination="e5r-O0-1Xl" id="Jmr-Ml-LW0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hdr-ZL-or6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-738.39999999999998" y="823.53823088455783"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="pco-mc-Ao6">
@@ -3261,6 +3106,132 @@
             </objects>
             <point key="canvasLocation" x="6753" y="1558"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="lfQ-3k-ndN">
+            <objects>
+                <viewController storyboardIdentifier="loginVC" id="GxJ-gv-iux" customClass="LoginViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9TT-rY-vXI"/>
+                        <viewControllerLayoutGuide type="bottom" id="tl2-3f-LlY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kN4-iW-z8D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="vbK-gm-pnf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="NBN-h4-wGq">
+                                <rect key="frame" x="22" y="54" width="331" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="331" id="CtM-mC-hIu"/>
+                                    <constraint firstAttribute="height" constant="35" id="b8O-Tv-iFM"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="p8Y-VP-CC2">
+                                <rect key="frame" x="0.0" y="272" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sf3-xm-Xjo">
+                                <rect key="frame" x="0.0" y="195" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0h-9t-Zvy">
+                                <rect key="frame" x="53" y="373" width="270" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <state key="normal" title="Login" backgroundImage="chalkBackground">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="GxJ-gv-iux" eventType="touchUpInside" id="Da9-cz-LcV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbE-GD-Jxq">
+                                <rect key="frame" x="85" y="97" width="203" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="0xg-DP-p5U"/>
+                                    <constraint firstAttribute="height" constant="35" id="ajR-rW-t5Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="03G-Oj-QpE">
+                                <rect key="frame" x="95" y="506" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="switch:" destination="GxJ-gv-iux" eventType="valueChanged" id="jd6-DR-uDu"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGB-bP-FhA">
+                                <rect key="frame" x="167" y="510" width="136" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&gt; &gt; &gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tH-j3-6OG">
+                                <rect key="frame" x="262" y="608" width="91" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe to Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7i3-og-J4L">
+                                <rect key="frame" x="59" y="601" width="191" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LbE-GD-Jxq" firstAttribute="centerX" secondItem="vbK-gm-pnf" secondAttribute="centerX" constant="-1" id="1Th-UU-TVa"/>
+                            <constraint firstItem="NBN-h4-wGq" firstAttribute="centerX" secondItem="vbK-gm-pnf" secondAttribute="centerX" id="5rw-Zl-Bdz"/>
+                            <constraint firstAttribute="trailing" secondItem="vbK-gm-pnf" secondAttribute="trailing" id="9Qt-qK-4dx"/>
+                            <constraint firstItem="tl2-3f-LlY" firstAttribute="top" secondItem="vbK-gm-pnf" secondAttribute="bottom" id="IIr-xG-e5Y"/>
+                            <constraint firstItem="NBN-h4-wGq" firstAttribute="top" secondItem="9TT-rY-vXI" secondAttribute="bottom" constant="34" id="IoY-Rq-izO"/>
+                            <constraint firstItem="vbK-gm-pnf" firstAttribute="top" secondItem="kN4-iW-z8D" secondAttribute="top" id="Qwz-u9-koa"/>
+                            <constraint firstItem="LbE-GD-Jxq" firstAttribute="top" secondItem="NBN-h4-wGq" secondAttribute="bottom" constant="8" id="fau-FW-3Rh"/>
+                            <constraint firstItem="vbK-gm-pnf" firstAttribute="leading" secondItem="kN4-iW-z8D" secondAttribute="leading" id="g7J-gO-SR0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTF" destination="sf3-xm-Xjo" id="I81-zZ-AnY"/>
+                        <outlet property="login" destination="m0h-9t-Zvy" id="1zG-aw-d9M"/>
+                        <outlet property="passwordTF" destination="p8Y-VP-CC2" id="MEZ-Hg-GVW"/>
+                        <outlet property="rememberMeLabel" destination="fGB-bP-FhA" id="5Yx-5s-dde"/>
+                        <outlet property="rememberMeSwitch" destination="03G-Oj-QpE" id="d86-yq-SZe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qvx-W9-LcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-727.20000000000005" y="823.53823088455783"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Background1" width="690" height="1230"/>
@@ -3275,6 +3246,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuF-iy-fzI"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>

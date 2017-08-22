@@ -9,37 +9,31 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var rememberMeSwitch: UISwitch!
     @IBOutlet weak var login: UIButton!
-    @IBOutlet weak var register: UIButton!
-    @IBOutlet weak var segmentedOutlet: UISegmentedControl!
-    @IBOutlet weak var termsOfUselabel: UITextView!
-    @IBOutlet weak var termsOfUseBtn: UIButton!
     @IBOutlet weak var rememberMeLabel: UILabel!
     
     let prefs = UserDefaults.standard
     var ref:FIRDatabaseReference!
     var authHandle:UInt?
     var workoutVC:InputExerciseViewController?
+    var loginView = UIView()
+    var registerView = UIView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTF.delegate = self
         emailTF.delegate = self
         
-        segmentedOutlet.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 23)!], for: UIControlState.normal)
+        let tap = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         
-        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
-        self.view.addGestureRecognizer(gesture)
         ref = FIRDatabase.database().reference()
         
-        termsOfUselabel.alpha = 0
-        termsOfUseBtn.alpha = 0
-        register.alpha = 0
         UserDefaults.standard.set(false, forKey: "newUser")
         
         if self.prefs.object(forKey: "switch") as? Bool == true{
@@ -49,7 +43,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         else {
             rememberMeSwitch.setOn(false, animated: true)
         }
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
+        
+        registerView = RegisterView.instanceFromNib() as!RegisterView
+        (registerView as! RegisterView).emailTxtField.delegate = self
+        (registerView as! RegisterView).passwordTxtField.delegate = self
+        (registerView as! RegisterView).frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        view.addSubview(registerView)
+        registerView.addGestureRecognizer(tap)
+        registerView.addGestureRecognizer(swipe)
+        registerView.isHidden = true
+        
+        loginView = self.view
+        loginView.addGestureRecognizer(swipe)
+        
+        self.view.addGestureRecognizer(tap)
     }
+    
+    func swipe(_ sender:UISwipeGestureRecognizer){
+        let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+        
+        if registerView.isHidden == true{
+            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
+                self.registerView.isHidden = false
+            })
+            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
+            //self.firstView.isHidden = true
+            })
+        }else{
+            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
+                //self.firstView.isHidden = true
+            })
+            UIView.transition(with: registerView, duration: 1.0, options: transitionOptions, animations: {
+                self.registerView.isHidden = true
+            })
+        }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,6 +130,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.view.endEditing(true)
             }
         }
+        if !(registerView as! RegisterView).emailTxtField.frame.contains(sender.location(in: view)){
+            if (registerView as! RegisterView).emailTxtField.isEditing{
+                self.view.endEditing(true)
+            }
+        }
+        if !(registerView as! RegisterView).passwordTxtField.frame.contains(sender.location(in: view)){
+            if (registerView as! RegisterView).passwordTxtField.isEditing{
+                self.view.endEditing(true)
+            }
+        }
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
@@ -108,33 +149,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func `switch`(_ sender: UISwitch) {
         self.prefs.set(sender.isOn, forKey: "switch")
-    }
-    
-    @IBAction func segmentedAction(_ sender: UISegmentedControl) {
-        //login btn
-        if segmentedOutlet.selectedSegmentIndex == 0{
-            self.register.alpha = 0
-            self.termsOfUselabel.alpha = 0
-            self.termsOfUseBtn.alpha = 0
-            UIView.animate(withDuration: 0.5, animations: {
-                self.login.alpha = 1
-                self.rememberMeSwitch.alpha = 1
-                self.rememberMeLabel.alpha = 1
-            })
-        }
-        //Register btn
-        if segmentedOutlet.selectedSegmentIndex == 1{
-            
-            self.login.alpha = 0
-            self.rememberMeSwitch.alpha = 0
-            self.rememberMeLabel.alpha = 0
-            UIView.animate(withDuration: 0.5, animations: {
-                self.register.alpha = 1
-                self.termsOfUselabel.alpha = 1
-                self.termsOfUseBtn.alpha = 1
-                
-            })
-        }
     }
     
     @IBAction func login(_ sender: UIButton) {
@@ -166,55 +180,55 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func register(_ sender: UIButton) {
-        if emailTF.text == "" {
-            let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
-        } else if passwordTF.text == "" {
-            let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
-        }else{
-            FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
-                if error == nil {
-                    
-                    print("You have successfully signed up")
-                    //check if user was just created
-                    UserDefaults.standard.set(true, forKey: "newUser")
-                    
-                    if UIDevice.current.modelName == "Simulator" {
-                        print("Simulator")
-                    }
-                    else {
-                        print("Real Device")
-                        if UIDevice.current.modelName == "iPhone 6s"{
-                            FIRAuth.auth()?.signIn(withEmail: self.emailTF.text!, password: self.passwordTF.text!, completion:{(success) in
-                                if success.0 == nil{
-                                    let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
-                                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                                    alertController.addAction(defaultAction)
-                                    self.present(alertController, animated: true, completion: nil)
-                                }
-                            })
-                        }
-                    }
-                    
-                    let alertController = UIAlertController(title: "", message: "You are registered!", preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }else{
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }
-        }
-    }
+//    func register(email:String, password:String){
+//        if email == "" {
+//            let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
+//            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
+//            present(alertController, animated: true, completion: nil)
+//        } else if password == "" {
+//            let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
+//            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
+//            present(alertController, animated: true, completion: nil)
+//        }else{
+//            FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
+//                if error == nil {
+//                    
+//                    print("You have successfully signed up")
+//                    //check if user was just created
+//                    UserDefaults.standard.set(true, forKey: "newUser")
+//                    
+//                    if UIDevice.current.modelName == "Simulator" {
+//                        print("Simulator")
+//                    }
+//                    else {
+//                        print("Real Device")
+//                        if UIDevice.current.modelName == "iPhone 6s"{
+//                            FIRAuth.auth()?.signIn(withEmail: self.emailTF.text!, password: self.passwordTF.text!, completion:{(success) in
+//                                if success.0 == nil{
+//                                    let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+//                                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                                    alertController.addAction(defaultAction)
+//                                    self.present(alertController, animated: true, completion: nil)
+//                                }
+//                            })
+//                        }
+//                    }
+//                    
+//                    let alertController = UIAlertController(title: "", message: "You are registered!", preferredStyle: .alert)
+//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                    alertController.addAction(defaultAction)
+//                    self.present(alertController, animated: true, completion: nil)
+//                }else{
+//                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                    alertController.addAction(defaultAction)
+//                    self.present(alertController, animated: true, completion: nil)
+//                }
+//            }
+//        }
+//    }
 }
 
 public extension UIDevice {
