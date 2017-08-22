@@ -13,6 +13,7 @@ class CrossfitCategoryTableViewController: UITableViewController {
     
     var categories = [String]()
     var typePassed:String!
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,12 @@ class CrossfitCategoryTableViewController: UITableViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.blue
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,10 +38,16 @@ class CrossfitCategoryTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveCrossfitCategories(completion: {
-            self.categories = DBService.shared.crossfitCategories
-            self.tableView.reloadData()
-        })
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInteractive).async {
+            DBService.shared.retrieveCrossfitCategories(completion: {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.categories = DBService.shared.crossfitCategories
+                self.tableView.reloadData()
+            })
+        }
     }
     
     func hitTest(_ sender:UITapGestureRecognizer){

@@ -25,7 +25,6 @@ class ExerciseTypeTableViewController: UITableViewController{
         spinner.frame = CGRect(x:125, y:150, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.blue
-        
         spinner.alpha = 0
         view.addSubview(spinner)
     }
@@ -34,7 +33,6 @@ class ExerciseTypeTableViewController: UITableViewController{
         DBService.shared.clearSupersetExercises()
         spinner.startAnimating()
         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        
         DispatchQueue.global(qos: .userInteractive).async {
             DBService.shared.retrieveTypes(completion: {
                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
