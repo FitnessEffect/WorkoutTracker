@@ -27,6 +27,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     var reps = [String]()
     var sets = [String]()
     var lbs = [String]()
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,12 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        
+        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.blue
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,10 +68,16 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             segmentedControl.selectedSegmentIndex = 1
         }
         
-        DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
-            self.exercises = DBService.shared.exercisesForBodybuildingCategory
-            self.pickerOutlet.reloadAllComponents()
-        })
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInteractive).async {
+            DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.exercises = DBService.shared.exercisesForBodybuildingCategory
+                self.pickerOutlet.reloadAllComponents()
+            })
+        }
     }
     
     @IBAction func segmentedControl(_ sender: UISegmentedControl) {
