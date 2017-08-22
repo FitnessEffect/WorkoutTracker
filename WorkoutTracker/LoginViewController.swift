@@ -24,7 +24,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     var loginView = UIView()
     var registerView = UIView()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTF.delegate = self
@@ -58,6 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func swipe(_ sender:UISwipeGestureRecognizer){
+        self.view.endEditing(true)
         let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         if registerView.isHidden == true{
             UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
@@ -104,12 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             })
         }) as? UInt
     }
-    
-//    @IBAction func termOfUse(_ sender: UIButton) {
-//        if let url = NSURL(string: "https://github.com/FitnessEffect/WorkoutTracker/blob/master/Terms%20of%20Use"){
-//            UIApplication.shared.openURL(url as URL)
-//        }
-//    }
     
     func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTF.frame.contains(sender.location(in: view)){
@@ -171,56 +165,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             })
         }
     }
-    
-//    func register(email:String, password:String){
-//        if email == "" {
-//            let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-//            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//            alertController.addAction(defaultAction)
-//            present(alertController, animated: true, completion: nil)
-//        } else if password == "" {
-//            let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-//            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//            alertController.addAction(defaultAction)
-//            present(alertController, animated: true, completion: nil)
-//        }else{
-//            FIRAuth.auth()?.createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
-//                if error == nil {
-//                    
-//                    print("You have successfully signed up")
-//                    //check if user was just created
-//                    UserDefaults.standard.set(true, forKey: "newUser")
-//                    
-//                    if UIDevice.current.modelName == "Simulator" {
-//                        print("Simulator")
-//                    }
-//                    else {
-//                        print("Real Device")
-//                        if UIDevice.current.modelName == "iPhone 6s"{
-//                            FIRAuth.auth()?.signIn(withEmail: self.emailTF.text!, password: self.passwordTF.text!, completion:{(success) in
-//                                if success.0 == nil{
-//                                    let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
-//                                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                                    alertController.addAction(defaultAction)
-//                                    self.present(alertController, animated: true, completion: nil)
-//                                }
-//                            })
-//                        }
-//                    }
-//                    
-//                    let alertController = UIAlertController(title: "", message: "You are registered!", preferredStyle: .alert)
-//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                    alertController.addAction(defaultAction)
-//                    self.present(alertController, animated: true, completion: nil)
-//                }else{
-//                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                    alertController.addAction(defaultAction)
-//                    self.present(alertController, animated: true, completion: nil)
-//                }
-//            }
-//        }
-//    }
 }
 
 public extension UIDevice {
