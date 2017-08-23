@@ -66,6 +66,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         if DBService.shared.supersetExercises.count != 0{
             segmentedControl.selectedSegmentIndex = 1
+            supersetSetup()
         }
         
         spinner.startAnimating()
@@ -89,13 +90,17 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             repsSetsOutlet.tag = 1
             repsSetsOutlet.reloadAllComponents()
         }else{
-            repsSetsOutlet.tag = 2
-            repsLabelForTwoComponents.isHidden = true
-            setsLabelForTwoComponents.isHidden = true
-            repsLabelForOneComponent.isHidden = false
-            lbsLabel.isHidden = false
-            repsSetsOutlet.reloadAllComponents()
+           supersetSetup()
         }
+    }
+    
+    func supersetSetup(){
+        repsSetsOutlet.tag = 2
+        repsLabelForTwoComponents.isHidden = true
+        setsLabelForTwoComponents.isHidden = true
+        repsLabelForOneComponent.isHidden = false
+        lbsLabel.isHidden = false
+        repsSetsOutlet.reloadAllComponents()
     }
     
     func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
