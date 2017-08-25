@@ -12,13 +12,12 @@ import Firebase
 class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var pickerOutlet: UIPickerView!
-    @IBOutlet weak var add: UIButton!
     @IBOutlet weak var repsSetsOutlet: UIPickerView!
     @IBOutlet weak var repsLabelForTwoComponents: UILabel!
     @IBOutlet weak var setsLabelForTwoComponents: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var repsLabelForOneComponent: UILabel!
     @IBOutlet weak var lbsLabel: UILabel!
+    @IBOutlet weak var selectionBtn: UIButton!
     
     let exerciseKey:String = "exerciseKey"
     var myExercise = Exercise()
@@ -31,7 +30,6 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
         
         repsLabelForOneComponent.isHidden = true
         lbsLabel.isHidden = true
@@ -64,8 +62,9 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        singleExerciseSetup()
         if DBService.shared.supersetExercises.count != 0{
-            segmentedControl.selectedSegmentIndex = 1
+            selectionBtn.setTitle("Superset", for: .normal)
             supersetSetup()
         }
         
@@ -81,17 +80,13 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         }
     }
     
-    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
-        if segmentedControl.selectedSegmentIndex == 0{
-            repsLabelForOneComponent.isHidden = true
-            lbsLabel.isHidden = true
-            repsLabelForTwoComponents.isHidden = false
-            setsLabelForTwoComponents.isHidden = false
-            repsSetsOutlet.tag = 1
-            repsSetsOutlet.reloadAllComponents()
-        }else{
-           supersetSetup()
-        }
+    func singleExerciseSetup(){
+        repsLabelForOneComponent.isHidden = true
+        lbsLabel.isHidden = true
+        repsLabelForTwoComponents.isHidden = false
+        setsLabelForTwoComponents.isHidden = false
+        repsSetsOutlet.tag = 1
+        repsSetsOutlet.reloadAllComponents()
     }
     
     func supersetSetup(){
@@ -158,6 +153,26 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         }
     }
     
+    @IBAction func rightArrowBtn(_ sender: UIButton) {
+        if selectionBtn.titleLabel?.text == "Select"{
+            selectionBtn.setTitle("Superset", for: .normal)
+            supersetSetup()
+        }else{
+            selectionBtn.setTitle("Select", for: .normal)
+            singleExerciseSetup()
+        }
+    }
+    
+    @IBAction func leftArrowBtn(_ sender: UIButton) {
+        if selectionBtn.titleLabel?.text == "Select"{
+            selectionBtn.setTitle("Superset", for: .normal)
+            supersetSetup()
+        }else{
+            selectionBtn.setTitle("Select", for: .normal)
+            singleExerciseSetup()
+        }
+    }
+    
     @IBAction func addExercise(_ sender: UIButton) {
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         
@@ -171,7 +186,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             self.present(alert, animated: true, completion: nil)
             
         }else{
-            if segmentedControl.selectedSegmentIndex == 1{
+            if selectionBtn.titleLabel?.text == "Superset"{
                 let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
                 let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
                 myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
