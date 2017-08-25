@@ -737,9 +737,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-PB-Kkz">
-                                <rect key="frame" x="7" y="185" width="361" height="94"/>
+                                <rect key="frame" x="7" y="179" width="361" height="106"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="94" id="XHU-Ux-yrN"/>
+                                    <constraint firstAttribute="height" constant="106" id="XHU-Ux-yrN"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="1T5-TI-Cia" id="Ilb-16-FQ8"/>
@@ -819,10 +819,10 @@
                         <constraints>
                             <constraint firstItem="xQI-O6-z9p" firstAttribute="top" secondItem="4xQ-Mi-WvP" secondAttribute="bottom" id="07C-6x-DUl"/>
                             <constraint firstAttribute="trailing" secondItem="Rxd-PB-Kkz" secondAttribute="trailing" constant="7" id="0sy-lP-2Ba"/>
-                            <constraint firstItem="Rxd-PB-Kkz" firstAttribute="top" secondItem="xQI-O6-z9p" secondAttribute="bottom" constant="9" id="QNH-Yp-h2S"/>
+                            <constraint firstItem="Rxd-PB-Kkz" firstAttribute="top" secondItem="xQI-O6-z9p" secondAttribute="bottom" constant="3" id="QNH-Yp-h2S"/>
                             <constraint firstItem="I6v-ls-wjD" firstAttribute="centerX" secondItem="Rxd-PB-Kkz" secondAttribute="centerX" constant="34" id="YYu-1O-ekO"/>
                             <constraint firstItem="xQI-O6-z9p" firstAttribute="leading" secondItem="4oW-Kc-Io5" secondAttribute="leading" id="YdH-47-dda"/>
-                            <constraint firstItem="mTo-Bm-FdF" firstAttribute="top" secondItem="Rxd-PB-Kkz" secondAttribute="bottom" constant="11" id="cOx-0o-ONi"/>
+                            <constraint firstItem="mTo-Bm-FdF" firstAttribute="top" secondItem="Rxd-PB-Kkz" secondAttribute="bottom" constant="5" id="cOx-0o-ONi"/>
                             <constraint firstItem="mTo-Bm-FdF" firstAttribute="centerX" secondItem="4oW-Kc-Io5" secondAttribute="centerX" id="ewR-Qk-GKB"/>
                             <constraint firstItem="I6v-ls-wjD" firstAttribute="centerY" secondItem="Rxd-PB-Kkz" secondAttribute="centerY" id="lXO-TM-hpz"/>
                             <constraint firstItem="Rxd-PB-Kkz" firstAttribute="leading" secondItem="4oW-Kc-Io5" secondAttribute="leading" constant="7" id="u3t-VO-36V"/>
