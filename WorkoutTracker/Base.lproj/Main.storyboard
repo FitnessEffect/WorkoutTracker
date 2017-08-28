@@ -2104,7 +2104,7 @@
             <objects>
                 <navigationController storyboardIdentifier="clientNavID" automaticallyAdjustsScrollViewInsets="NO" id="eOA-Kw-WaG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xhw-3y-dWu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xhw-3y-dWu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2236,7 +2236,7 @@
             <objects>
                 <navigationController storyboardIdentifier="challengesNavID" automaticallyAdjustsScrollViewInsets="NO" id="X8U-Tw-LmN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Uq7-Rw-d5f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uq7-Rw-d5f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2691,7 +2691,7 @@
             <objects>
                 <navigationController storyboardIdentifier="profileNavID" automaticallyAdjustsScrollViewInsets="NO" id="CSd-EX-vQ6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nom-5R-TMC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nom-5R-TMC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

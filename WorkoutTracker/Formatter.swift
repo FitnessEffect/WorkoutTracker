@@ -31,6 +31,17 @@ class Formatter{
         return newString
     }
     
+    static func formatExerciseDescription(desStr:String) -> String{
+        let stringParts = desStr.components(separatedBy: " | ")
+        var newString:String = ""
+        newString.append("\n")
+        for part in stringParts{
+            newString.append(part)
+            newString.append("\n")
+        }
+        return newString
+    }
+    
     static func formatResult(str:String)->String{
         var formattedStr = ""
         var arr = str.components(separatedBy: " ")
@@ -87,16 +98,5 @@ class Formatter{
         }
         
         return formattedStr
-    }
-    
-    static func formatExerciseDescription(desStr:String) -> String{
-        let stringParts = desStr.components(separatedBy: " | ")
-        var newString:String = ""
-        newString.append("\n")
-        for part in stringParts{
-            newString.append(part)
-            newString.append("\n")
-        }
-        return newString
     }
 }

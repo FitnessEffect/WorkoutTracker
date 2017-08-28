@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_WorkoutTrackerVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_WorkoutTrackerVersionString[];
+FOUNDATION_EXPORT double Pods_WorkoutTrackerTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_WorkoutTrackerTestsVersionString[];
 

@@ -20,6 +20,20 @@
                ReferencedContainer = "container:WorkoutTracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "522CFAC91F50F2D70037B371"
+               BuildableName = "WorkoutTrackerTests.xctest"
+               BlueprintName = "WorkoutTrackerTests"
+               ReferencedContainer = "container:WorkoutTracker.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -32,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52CB16C01F13F0DF00F4232D"
+               BlueprintIdentifier = "522CFAC91F50F2D70037B371"
                BuildableName = "WorkoutTrackerTests.xctest"
                BlueprintName = "WorkoutTrackerTests"
                ReferencedContainer = "container:WorkoutTracker.xcodeproj">

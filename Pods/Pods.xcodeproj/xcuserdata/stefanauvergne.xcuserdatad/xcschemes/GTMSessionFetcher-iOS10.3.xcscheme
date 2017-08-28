@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C9DD507F90A43853B025C22BFFB902B"
-               BuildableName = "Pods_WorkoutTracker.framework"
-               BlueprintName = "Pods-WorkoutTracker"
+               BlueprintIdentifier = "D905B0ABC0CF27D818B6192F9ADE8028"
+               BuildableName = "GTMSessionFetcher.framework"
+               BlueprintName = "GTMSessionFetcher-iOS10.3"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C9DD507F90A43853B025C22BFFB902B"
-            BuildableName = "Pods_WorkoutTracker.framework"
-            BlueprintName = "Pods-WorkoutTracker"
+            BlueprintIdentifier = "D905B0ABC0CF27D818B6192F9ADE8028"
+            BuildableName = "GTMSessionFetcher.framework"
+            BlueprintName = "GTMSessionFetcher-iOS10.3"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C9DD507F90A43853B025C22BFFB902B"
-               BuildableName = "Pods_WorkoutTracker.framework"
-               BlueprintName = "Pods-WorkoutTracker"
+               BlueprintIdentifier = "25E4CFC9D899E877EEF96E469D639F98"
+               BuildableName = "GoogleToolboxForMac.framework"
+               BlueprintName = "GoogleToolboxForMac-iOS9.2"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C9DD507F90A43853B025C22BFFB902B"
-            BuildableName = "Pods_WorkoutTracker.framework"
-            BlueprintName = "Pods-WorkoutTracker"
+            BlueprintIdentifier = "25E4CFC9D899E877EEF96E469D639F98"
+            BuildableName = "GoogleToolboxForMac.framework"
+            BlueprintName = "GoogleToolboxForMac-iOS9.2"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
