@@ -10,7 +10,7 @@ import Firebase
 
 class PersonalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
-    var history:[String] = ["History"]
+    var optionsArray:[String] = ["History", "Delete Exercises"]
     var selectedRow:Int = 0
     var currentClient:Client!
     var menuView:MenuView!
@@ -81,12 +81,12 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return optionsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath)
-        cell.textLabel?.text = "History"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = optionsArray[indexPath.row]
         return cell
     }
     
@@ -117,7 +117,13 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
         if row != nil{
-            performSegue(withIdentifier: "historySegue", sender: sender)
+            if row == 0{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseHistoryVC") as! ExercisesHistoryViewController
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if row == 1{
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteExerciseVC") as! DeleteExerciseViewController
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
         }
     }
     

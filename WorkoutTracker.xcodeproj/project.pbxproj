@@ -25,6 +25,7 @@
 		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
 		522CFACD1F50F2D70037B371 /* WorkoutTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */; };
 		522CFAD51F50F32D0037B371 /* Formatter-Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD41F50F32D0037B371 /* Formatter-Test.swift */; };
+		522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
@@ -105,6 +106,7 @@
 		522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerTests.swift; sourceTree = "<group>"; };
 		522CFACE1F50F2D70037B371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		522CFAD41F50F32D0037B371 /* Formatter-Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Formatter-Test.swift"; sourceTree = "<group>"; };
+		522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteExerciseViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				52CB16A71EFBFBD500F4232D /* Popovers */,
 				529FC7C41F21673A00C16203 /* Personal  */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
+				522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */,
 				522F4F4F1F2AE7360053009C /* SupersetViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
@@ -691,6 +694,7 @@
 				527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */,
 				5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */,
 				526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */,
+				522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */,
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,
 				5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */,
 				52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */,
@@ -911,6 +915,7 @@
 				522CFAD21F50F2D70037B371 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52F6A8961C5F0036000FD7B0 /* Build configuration list for PBXProject "WorkoutTracker" */ = {
 			isa = XCConfigurationList;

@@ -341,7 +341,6 @@ class DBService {
     
     func retrieveTypes(completion: @escaping () -> Void){
         _types.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -351,7 +350,6 @@ class DBService {
                 self._types.sort()
                 completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -359,7 +357,6 @@ class DBService {
     
     func retrieveEnduranceCategories(completion: @escaping () -> Void){
         _enduranceCategories.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Endurance").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -596,6 +593,17 @@ class DBService {
         }
     }
     
+    func deleteExerciseForCategoryForType(exercise:String, category:String, type:String, completion: @escaping () -> Void){
+        self._ref.child("users").child(self.user.uid).child("Types").child(type).child(category).child(exercise).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+            completion()
+        }
+    }
+
+
+
     func setChallengesToViewed(){
         retrieveChallengesExercises {
             for exercise in self._challengeExercises{
