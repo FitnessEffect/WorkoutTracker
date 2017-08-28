@@ -2622,10 +2622,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-pe-rTa">
-                                <rect key="frame" x="0.0" y="91" width="375" height="166"/>
+                                <rect key="frame" x="0.0" y="91" width="375" height="576"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="166" id="b6Q-C6-y9D"/>
+                                    <constraint firstAttribute="height" constant="576" id="b6Q-C6-y9D"/>
                                 </constraints>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -2662,7 +2662,7 @@
                             <constraint firstAttribute="trailing" secondItem="0ph-pe-rTa" secondAttribute="trailing" id="MIc-LL-9lH"/>
                             <constraint firstItem="zy9-0r-k53" firstAttribute="top" secondItem="3M7-mY-aIQ" secondAttribute="top" id="RJe-Jd-YkY"/>
                             <constraint firstAttribute="trailing" secondItem="zy9-0r-k53" secondAttribute="trailing" id="W5P-nA-0sY"/>
-                            <constraint firstItem="IKm-HT-bep" firstAttribute="top" secondItem="0ph-pe-rTa" secondAttribute="bottom" constant="410" id="ab6-Qy-0Jg"/>
+                            <constraint firstItem="IKm-HT-bep" firstAttribute="top" secondItem="0ph-pe-rTa" secondAttribute="bottom" id="ab6-Qy-0Jg"/>
                             <constraint firstItem="IKm-HT-bep" firstAttribute="top" secondItem="zy9-0r-k53" secondAttribute="bottom" id="hUZ-V3-UJQ"/>
                             <constraint firstItem="0ph-pe-rTa" firstAttribute="leading" secondItem="3M7-mY-aIQ" secondAttribute="leading" id="xTU-yH-JJF"/>
                         </constraints>
@@ -2845,24 +2845,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1h-ln-JWx">
-                                <rect key="frame" x="8" y="47" width="357" height="140"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="8" y="44" width="359" height="135"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="xed-2c-gHa" id="9lV-j1-etf"/>
                                     <outlet property="delegate" destination="xed-2c-gHa" id="aA7-Ed-Uue"/>
                                 </connections>
                             </pickerView>
                             <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UoX-IH-mCJ">
-                                <rect key="frame" x="8" y="193" width="357" height="160"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="8" y="181" width="359" height="145"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="xed-2c-gHa" id="LeZ-6u-VJN"/>
                                     <outlet property="delegate" destination="xed-2c-gHa" id="YGr-zk-HfV"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0B-SK-CMZ">
-                                <rect key="frame" x="52" y="542" width="270" height="70"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="52" y="559" width="270" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                                 <state key="normal" title="Delete" backgroundImage="chalkBackground">
                                     <color key="titleColor" red="0.99835759400000001" green="0.065198854850000001" blue="0.027290433699999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -2872,8 +2872,8 @@
                                 </connections>
                             </button>
                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0I6-zT-B5Y">
-                                <rect key="frame" x="8" y="359" width="357" height="160"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="8" y="328" width="359" height="145"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="xed-2c-gHa" id="eo6-0C-o0X"/>
                                     <outlet property="delegate" destination="xed-2c-gHa" id="0aL-Ch-nWz"/>
