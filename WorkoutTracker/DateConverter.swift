@@ -138,25 +138,12 @@ class DateConverter{
         let stringWithFormat = dateFormatter.string(from: prevSaturday as Date) + " - " + dateFormatter.string(from: nextFriday as Date)
         return stringWithFormat
     }
-
-    
-//    static func getDateFromUnixString(str:String) -> NSDate{
-//        let tempArray = str.components(separatedBy: "(")
-//        let tempArray2 = tempArray[1].components(separatedBy: "-")
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-//        dateFormatter.locale = NSLocale.current
-//        dateFormatter.dateFormat = "MM-dd-yyyy"
-//        let temp = Date(timeIntervalSince1970: Double(tempArray2[0])!/1000)
-//        return temp as NSDate
-//    }
     
     static func getMonthFromDate(date:Date) -> Int{
         let calendar = Calendar.current
         let month = calendar.component(.month, from: date as Date)
         return month
     }
-    
     
     static func getCurrentWeekNum()->Int{
         let calendar = Calendar.current
@@ -168,7 +155,6 @@ class DateConverter{
     static func weekNumFromDate(date:NSDate)->Int{
         let calendar = Calendar.current
         let weekOfYear = calendar.component(.weekOfYear, from: date as Date)
-        //let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
         print(weekOfYear)
         return weekOfYear
     }
@@ -176,7 +162,6 @@ class DateConverter{
     static func yearFromDate(date:NSDate)->Int{
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date as Date)
-        //let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
         print(year)
         return year
     }
@@ -188,18 +173,6 @@ class DateConverter{
         return year
     }
     
-    
-//    static func getNameForDay(exerciseDate:String)->String{
-//        //convert string to correct date
-//        let tempDate = getDateFromUnixString(str: exerciseDate)
-//        
-//        //get date name
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE"
-//        let dayName = dateFormatter.string(from: tempDate as Date)
-//        return dayName
-//    }
-//    
     static func getPreviousSundayForWeek(selectedDate:NSDate) -> NSDate{
         let calendar = NSCalendar.current
         let weekDay = calendar.component(.weekday, from: selectedDate as Date)

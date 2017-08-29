@@ -11,7 +11,7 @@ import XCTest
 @testable import WorkoutTracker
 
 
-class Formatter_Test: XCTestCase {
+class FormatterTest: XCTestCase {
     
     override func setUp() {
         super.setUp()

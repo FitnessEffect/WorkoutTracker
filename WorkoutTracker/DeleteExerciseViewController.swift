@@ -9,7 +9,7 @@
 import UIKit
 
 class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
-
+    
     @IBOutlet weak var typePickerView: UIPickerView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
     @IBOutlet weak var exercisePickerView: UIPickerView!
@@ -20,7 +20,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,12 +34,11 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidDisappear(_ animated: Bool) {
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
     }
-
+    
     func setCategoriesForType(){
         self.categories.removeAll()
         let index = typePickerView.selectedRow(inComponent: 0)
         if types[index] == "Bodybuilding"{
-            
             DBService.shared.retrieveBodybuildingCategories {
                 self.categories = DBService.shared.bodybuildingCategories
                 self.categoryPickerView.reloadAllComponents()
@@ -62,7 +61,6 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
         }else if types[index] == "Endurance"{
             self.categoryPickerView.reloadAllComponents()
         }
-        
         setExercisesForCategory()
     }
     
@@ -92,7 +90,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             let indexC = categoryPickerView.selectedRow(inComponent: 0)
             let indexE = exercisePickerView.selectedRow(inComponent: 0)
             DBService.shared.deleteExerciseForCategoryForType(exercise: exercises[indexE], category: categories[indexC], type: types[indexT], completion: {
-              self.setExercisesForCategory()
+                self.setExercisesForCategory()
             })
         }else{
             let alert = UIAlertController(title: "Error", message: "No exercises selected", preferredStyle: UIAlertControllerStyle.alert)
@@ -131,7 +129,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
         if pickerView.tag == 0{
             setCategoriesForType()
         }else{
-           setExercisesForCategory()
+            setExercisesForCategory()
         }
     }
     
@@ -154,14 +152,4 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30.0
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

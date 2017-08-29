@@ -24,8 +24,10 @@
 		52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalViewController.swift */; };
 		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
 		522CFACD1F50F2D70037B371 /* WorkoutTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */; };
-		522CFAD51F50F32D0037B371 /* Formatter-Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD41F50F32D0037B371 /* Formatter-Test.swift */; };
+		522CFAD51F50F32D0037B371 /* FormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD41F50F32D0037B371 /* FormatterTest.swift */; };
 		522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */; };
+		522CFADA1F55CEF00037B371 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD91F55CEF00037B371 /* DateConverterTests.swift */; };
+		522CFADC1F55FB980037B371 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADB1F55FB980037B371 /* Session.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
@@ -105,8 +107,10 @@
 		522CFACA1F50F2D70037B371 /* WorkoutTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerTests.swift; sourceTree = "<group>"; };
 		522CFACE1F50F2D70037B371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		522CFAD41F50F32D0037B371 /* Formatter-Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Formatter-Test.swift"; sourceTree = "<group>"; };
+		522CFAD41F50F32D0037B371 /* FormatterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTest.swift; sourceTree = "<group>"; };
 		522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteExerciseViewController.swift; sourceTree = "<group>"; };
+		522CFAD91F55CEF00037B371 /* DateConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverterTests.swift; sourceTree = "<group>"; };
+		522CFADB1F55FB980037B371 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
@@ -210,7 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */,
-				522CFAD41F50F32D0037B371 /* Formatter-Test.swift */,
+				522CFAD41F50F32D0037B371 /* FormatterTest.swift */,
+				522CFAD91F55CEF00037B371 /* DateConverterTests.swift */,
 				522CFACE1F50F2D70037B371 /* Info.plist */,
 			);
 			path = WorkoutTrackerTests;
@@ -389,6 +394,7 @@
 			children = (
 				5283E0741C7E37CB00FB716B /* Client.swift */,
 				5283E0871C8B998600FB716B /* Exercise.swift */,
+				522CFADB1F55FB980037B371 /* Session.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -646,7 +652,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				522CFAD51F50F32D0037B371 /* Formatter-Test.swift in Sources */,
+				522CFADA1F55CEF00037B371 /* DateConverterTests.swift in Sources */,
+				522CFAD51F50F32D0037B371 /* FormatterTest.swift in Sources */,
 				522CFACD1F50F2D70037B371 /* WorkoutTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,6 +682,7 @@
 				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
 				525D5D911F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,
+				522CFADC1F55FB980037B371 /* Session.swift in Sources */,
 				525D5D931F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift in Sources */,
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
