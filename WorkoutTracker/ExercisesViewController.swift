@@ -218,7 +218,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         return array!.count;
     }
-    
+
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
@@ -262,7 +262,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
                     sectionTitle = "Wednesday"
                 }
             }
-            
         case 4:
             if daysSections["Thursday"] != nil{
                 tempArray = daysSections["Thursday"] as! [Exercise]
@@ -272,12 +271,10 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
                     sectionTitle = "Thursday"
                 }
             }
-            
         case 5:
             if daysSections["Friday"] != nil{
                 tempArray = daysSections["Friday"] as! [Exercise]
                 if tempArray.count == 0{
-                    
                 }else{
                     sectionTitle = "Friday"
                 }
@@ -286,7 +283,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             if daysSections["Saturday"] != nil{
                 tempArray = daysSections["Saturday"] as! [Exercise]
                 if tempArray.count == 0{
-                    
                 }else{
                     sectionTitle = "Saturday"
                 }
@@ -381,7 +377,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                     tableView.reloadData()
                 })
-                
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion: nil)
@@ -405,7 +400,6 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         dict["Thursday"] = thursday
         dict["Friday"] = friday
         dict["Saturday"] = saturday
-        
         
         for exercise in exercisesPassed{
             let dayName = DateConverter.getNameForDay(exerciseDate: exercise.date as String)

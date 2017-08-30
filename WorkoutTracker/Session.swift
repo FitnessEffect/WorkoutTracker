@@ -17,7 +17,6 @@ class Session: NSCoder {
     
     var exercises:[Exercise]
     var paid:Bool
-    var client:Client
     var duration:String
     
     //default initializer
@@ -25,14 +24,12 @@ class Session: NSCoder {
         exercises = []
         paid = false
         duration = ""
-        client = Client()
     }
     
     //overload initializer
     init(exercises:[Exercise], paid:Bool, client:Client, duration:String){
         self.exercises = exercises
         self.paid = paid
-        self.client = client
         self.duration = duration
     }
 }

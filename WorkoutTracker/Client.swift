@@ -32,6 +32,7 @@ class Client: NSCoder{
     var weight:String
     var exerciseArray:[Exercise]
     var clientKey:String
+    var session:Session?
     
     //default initializer
     override init(){
@@ -45,6 +46,7 @@ class Client: NSCoder{
         weight = ""
         exerciseArray = []
         clientKey = ""
+        session = nil
     }
     
     //overload initializer
