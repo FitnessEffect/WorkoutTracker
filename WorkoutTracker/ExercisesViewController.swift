@@ -25,6 +25,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     var daysSections = [String:Any]()
     var cellCount = 0
     var spinner = UIActivityIndicatorView()
+    var startDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +104,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         let tempEndDay = DateConverter.getSaturdayForWeek(selectedDate: selectedDate)
         let endDate = dateFormatter.string(from: tempEndDay as Date)
         let tempStartDay = DateConverter.getPreviousSundayForWeek(selectedDate:selectedDate)
-        let startDate = dateFormatter.string(from: tempStartDay as Date)
+        startDate = dateFormatter.string(from: tempStartDay as Date)
         dateBtn.setTitle(startDate + " - " + endDate,for: .normal)
     }
     
@@ -125,6 +126,31 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.refreshTableViewData()
         }
     }
+    
+    @IBAction func createSession(_ sender: UIBarButtonItem) {
+        var xPosition:CGFloat = 0
+        var yPosition:CGFloat = 0
+        
+        xPosition = self.view.frame.width/2
+        yPosition = self.view.frame.minY + 60
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createSessionVC") as! CreateSessionViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 330)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func selectDate(_ sender: UIButton) {
         let xPosition = dateBtn.frame.minX + (dateBtn.frame.width/2)

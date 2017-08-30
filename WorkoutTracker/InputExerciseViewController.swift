@@ -345,6 +345,11 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func savePickerName(name:String){
         self.title = name
         DBService.shared.setPassedClient(client:getClientFromName(n:name))
+        setupClientSave()
+    }
+    
+    func setupClientSave(){
+        workoutInputView.setupClientSave()
     }
     
     @IBAction func selectClient(_ sender: UIBarButtonItem) {

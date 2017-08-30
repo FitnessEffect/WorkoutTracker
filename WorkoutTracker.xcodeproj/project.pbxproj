@@ -29,6 +29,7 @@
 		522CFADA1F55CEF00037B371 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD91F55CEF00037B371 /* DateConverterTests.swift */; };
 		522CFADC1F55FB980037B371 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADB1F55FB980037B371 /* Session.swift */; };
 		522CFADE1F56063B0037B371 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADD1F56063B0037B371 /* SessionViewController.swift */; };
+		522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
@@ -113,6 +114,7 @@
 		522CFAD91F55CEF00037B371 /* DateConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverterTests.swift; sourceTree = "<group>"; };
 		522CFADB1F55FB980037B371 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		522CFADD1F56063B0037B371 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
+		522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		529FC7C51F21676800C16203 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
 				5283E07E1C890E6200FB716B /* ExercisesViewController.swift */,
@@ -682,6 +685,7 @@
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
 				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
+				522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */,
 				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
 				525D5D911F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift in Sources */,
 				5283E0751C7E37CB00FB716B /* Client.swift in Sources */,

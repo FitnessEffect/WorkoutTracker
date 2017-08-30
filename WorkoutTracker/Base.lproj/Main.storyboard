@@ -444,7 +444,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrW-6C-DOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="40"/>
+            <point key="canvasLocation" x="1028" y="-1417"/>
+        </scene>
+        <!--Create Session View Controller-->
+        <scene sceneID="1Ld-dJ-DYr">
+            <objects>
+                <viewController storyboardIdentifier="createSessionVC" id="S1X-a5-V1a" customClass="CreateSessionViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZE8-eE-exJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="A44-1N-1yH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oxu-at-vgh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rff-wg-5ly">
+                                <rect key="frame" x="92" y="262" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CQB-tz-vFH"/>
+                                    <constraint firstAttribute="width" constant="190" id="jpB-gn-jlH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Create" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="create:" destination="S1X-a5-V1a" eventType="touchUpInside" id="Uuq-RG-vJk"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vS1-Ck-Xuc">
+                                <rect key="frame" x="0.0" y="28" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="S1X-a5-V1a" id="xz5-Xq-qYr"/>
+                                    <outlet property="delegate" destination="S1X-a5-V1a" id="hlq-X8-5CU"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vS1-Ck-Xuc" firstAttribute="top" secondItem="ZE8-eE-exJ" secondAttribute="bottom" constant="8" id="36e-fV-LWx"/>
+                            <constraint firstItem="Rff-wg-5ly" firstAttribute="top" secondItem="vS1-Ck-Xuc" secondAttribute="bottom" constant="18" id="OvN-uO-V9K"/>
+                            <constraint firstItem="vS1-Ck-Xuc" firstAttribute="leading" secondItem="Oxu-at-vgh" secondAttribute="leading" id="Xpq-3o-Gcw"/>
+                            <constraint firstItem="Rff-wg-5ly" firstAttribute="centerX" secondItem="Oxu-at-vgh" secondAttribute="centerX" id="cs0-bC-I6F"/>
+                            <constraint firstAttribute="trailing" secondItem="vS1-Ck-Xuc" secondAttribute="trailing" id="yPK-jK-doT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="vS1-Ck-Xuc" id="QHn-KC-LbK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsS-WB-gta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2105" y="-1397"/>
         </scene>
         <!--Clients-->
         <scene sceneID="5ma-vL-iKk">
@@ -1868,6 +1917,7 @@
                         <outlet property="metersLabel" destination="dzW-WM-nXC" id="Gql-9h-bU9"/>
                         <outlet property="milesLabel" destination="Kms-oK-nZJ" id="owf-YX-VBi"/>
                         <outlet property="minLabel" destination="bYm-8o-cAH" id="IKT-by-hj4"/>
+                        <outlet property="pickerView" destination="FaO-rX-9dF" id="DyF-EU-kZB"/>
                         <outlet property="repsLabel" destination="oGI-bm-bWQ" id="RU9-Vo-SfW"/>
                         <outlet property="saveBtn" destination="RWt-x7-kbS" id="mvg-B1-jaT"/>
                         <outlet property="secLabel" destination="JFW-Kj-Teg" id="xX5-1X-14s"/>
@@ -2246,7 +2296,7 @@
                     <navigationItem key="navigationItem" id="8be-8C-8Wb">
                         <barButtonItem key="rightBarButtonItem" image="addIcon" id="faR-4m-szA">
                             <connections>
-                                <segue destination="pzd-PZ-fvb" kind="show" identifier="addExerciseSegue" id="vQN-UH-ceT"/>
+                                <action selector="createSession:" destination="8GF-XO-Gxt" id="lR3-pE-FBp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3351,6 +3401,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vQN-UH-ceT"/>
+        <segue reference="npb-WN-7AS"/>
     </inferredMetricsTieBreakers>
 </document>

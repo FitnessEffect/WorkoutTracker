@@ -42,6 +42,7 @@ class DBService {
     private var _currentWeekNumber = ""
     private var _currentYear = ""
     private var _selectedDate = ""
+    private var _sessions = [String]()
     
     private init() {
         initDatabase()
@@ -155,12 +156,43 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(currentYear).child(currentWeekNumber).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
+    func createSessionForClient(sessionDictionary:[String:Any]){
+            self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(sessionDictionary["day"] as! String).updateChildValues([sessionDictionary["sessionKey"] as! String:true])
+        
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(sessionDictionary["sessionKey"] as! String).updateChildValues([sessionDictionary["sessionKey"] as! String:true])
+    }
+    
+    func retrieveSessions(completion: @escaping () -> Void){
+        _sessions.removeAll()
+        
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let keyArray = value?.allKeys as! [String]
+                self._sessions = keyArray
+                //self._sessions.sort()
+                completion()
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
     func createExerciseKey() -> String{
         let str = _ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
+        _currentKey = str
+        return str
+    }
+    
+    func createSessionKey() -> String{
+        let str = _ref.child("users").child(user.uid).child("Sessions").childByAutoId().key
         _currentKey = str
         return str
     }
@@ -804,6 +836,12 @@ class DBService {
     var types:[String]{
         get{
             return _types
+        }
+    }
+    
+    var sessions:[String]{
+        get{
+            return _sessions
         }
     }
 }

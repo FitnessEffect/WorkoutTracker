@@ -153,6 +153,11 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         super.init(coder: aDecoder)
     }
     
+    
+    func setupClientSave(){
+        challenge.setTitle("Session", for: .normal)
+    }
+    
     @IBAction func save(_ sender: UIButton) {
         if emailTxtView.text != ""{
             DBService.shared.checkOpponentEmail(email:Formatter.formateEmail(email:emailTxtView.text), completion: {
@@ -293,6 +298,25 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         
         let currentController = self.getCurrentViewController()
         
+        if challenge.titleLabel?.text == "Session"{
+            // get a reference to the view controller for the popover
+            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
+            
+            // set the presentation style
+            popController.modalPresentationStyle = UIModalPresentationStyle.popover
+            
+            // set up the popover presentation controller
+            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+            popController.popoverPresentationController?.delegate = self
+            popController.popoverPresentationController?.sourceView = currentController?.view
+            popController.preferredContentSize = CGSize(width: 300, height: 200)
+            popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+            popController.setTag(tag: 0)
+            
+            // present the popover
+            currentController?.present(popController, animated: true, completion: nil)
+        }else{
+        
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
         
@@ -308,6 +332,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         
         // present the popover
         currentController?.present(popController, animated: true, completion: nil)
+        }
     }
     
     func getTitle() -> String{
