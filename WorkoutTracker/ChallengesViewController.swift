@@ -55,13 +55,18 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //set app icon badge number to 0
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
+        
         DBService.shared.setChallengesToViewed()
         DBService.shared.resetNotificationCount()
+        
+        //notification center emits message to reset and hide challenge notification number
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
         spinner.startAnimating()
         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        //download challenges from firebase on seperate thread
         DispatchQueue.global(qos: .userInitiated).async {
             DBService.shared.retrieveChallengesExercises {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
@@ -74,18 +79,12 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                     return false
                 })
                 self.tableViewOutlet.reloadData()
-                
             }
         }
-        
     }
     
+    //Animates menu appearing and disappearing from screen
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
-        addSelector()
-    }
-    
-    func addSelector() {
-        //slide view in here
         if menuShowing == false{
             menuView.addFx()
             UIView.animate(withDuration: 0.3, animations: {
@@ -103,6 +102,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    //tap gesture recognizer for tableView
     func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
@@ -111,6 +111,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    //tap gesture to exit menu
     func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
@@ -144,9 +145,9 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         if editingStyle == UITableViewCellEditingStyle.delete {
             let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                let x = indexPath.row
-                let ex = self.exerciseArray[x]
+                let ex = self.exerciseArray[indexPath.row]
                 
+                //update firebase with deletion
                 DBService.shared.deleteChallengeExerciseForUser(exercise:ex)
                 
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)

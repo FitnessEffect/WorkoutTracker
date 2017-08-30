@@ -67,17 +67,21 @@ class FormatterTest: XCTestCase {
         let str3 = "0 hour(s) 1 min(s) 0 sec(s)"
         let str4 = "0 hour(s) 1 min(s) 1 sec(s)"
         let str5 = "1 hour(s) 1 min(s) 1 sec(s)"
+        let str6 = "0 hour(s) 0 min(s) 0 sec(s)"
         
         let result = WorkoutTracker.Formatter.formatResult(str: str)
         let result2 = WorkoutTracker.Formatter.formatResult(str: str2)
         let result3 = WorkoutTracker.Formatter.formatResult(str: str3)
         let result4 = WorkoutTracker.Formatter.formatResult(str: str4)
         let result5 = WorkoutTracker.Formatter.formatResult(str: str5)
+        let result6 = WorkoutTracker.Formatter.formatResult(str: str6)
+        
         XCTAssertEqual(result, "1 hour(s) 1 sec(s)")
         XCTAssertEqual(result2, "1 hour(s)")
         XCTAssertEqual(result3, "1 min(s)")
         XCTAssertEqual(result4, "1 min(s) 1 sec(s)")
         XCTAssertEqual(result5, "1 hour(s) 1 min(s) 1 sec(s)")
+        XCTAssertEqual(result6, "0 hour(s) 0 min(s) 0 sec(s)")
     }
     
 }
