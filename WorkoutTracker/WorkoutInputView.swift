@@ -305,7 +305,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         
         let currentController = self.getCurrentViewController()
         
-        if challenge.titleLabel?.text == "Session"{
+        if challenge.titleLabel?.text != "Challenge"{
             // get a reference to the view controller for the popover
             let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
             

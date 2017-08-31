@@ -193,6 +193,7 @@ class DBService {
                 session.exercises = value?["exercises"] as? [String]
                 session.key = value?["key"] as! String
                 session.sessionName = value?["sessionName"] as! String
+                session.sessionNumber = value?["sessionNumber"] as! String
                 session.paid = value?["paid"] as! Bool
                 session.weekNumber = value?["weekNumber"] as! String
                 session.clientName = value?["clientName"] as! String
@@ -521,14 +522,16 @@ class DBService {
     }
     
     func retrieveExerciseListFromSessionKey(keyStr:String, completion: @escaping () -> Void){
+        print(keyStr)
         _exercisesForClient.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(keyStr).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let session = snapshot.value as? NSDictionary
             if session != nil{
-                if let exerciseStrings = session?["exercises"] as? [String]{
-                    for ex in exerciseStrings{
-                        self.retrieveExercisesForSession(exerciseStr:ex, completion: {
+                if let exerciseStrings = session?["exercises"] as? NSDictionary{
+                    let keys = exerciseStrings.allKeys
+                    for key in keys{
+                        self.retrieveExercisesForSession(exerciseStr:key as! String, completion: {
                             completion()
                         })
                     }
@@ -544,11 +547,26 @@ class DBService {
     }
     
     func retrieveExercisesForSession(exerciseStr:String, completion: @escaping () -> Void){
+        print(passedClient.clientKey)
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseStr).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            let exercise = snapshot.value as? Exercise
+            let exercise = snapshot.value as? [String:Any]
             if exercise != nil{
-                self._exercisesForClient.append(exercise!)
+                let tempExercise = Exercise()
+                tempExercise.year = exercise?["year"] as! String
+                tempExercise.week = exercise?["week"] as! String
+                tempExercise.name = exercise?["name"] as! String
+                tempExercise.exerciseDescription = exercise?["description"] as! String
+                tempExercise.result = exercise?["result"] as! String
+                tempExercise.exerciseKey = exercise?["exerciseKey"] as! String
+                tempExercise.date = exercise?["date"] as! String
+                tempExercise.client = exercise?["client"] as! String
+                tempExercise.opponent = exercise?["opponent"] as! String
+                tempExercise.creatorEmail = exercise?["creatorEmail"] as! String
+                tempExercise.creatorID = exercise?["creatorID"] as! String
+                tempExercise.category = exercise?["category"] as! String
+                tempExercise.type = exercise?["type"] as! String
+                self._exercisesForClient.append(tempExercise)
                 completion()
             }else{
                 completion()

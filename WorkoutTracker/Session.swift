@@ -17,6 +17,7 @@ let weekNumberKey = "weekNumber"
 let dayKey = "day"
 let keyKey = "key"
 let sessionNameKey = "sessionName"
+let sessionNumberKey = "sessionNumber"
 let clientNameKey = "clientName"
 
 class Session: NSCoder {
@@ -29,6 +30,7 @@ class Session: NSCoder {
     var day:String
     var key:String
     var sessionName:String
+    var sessionNumber:String
     var clientName:String
     
     //default initializer
@@ -41,11 +43,12 @@ class Session: NSCoder {
         day = ""
         key = ""
         sessionName = ""
+        sessionNumber = ""
         clientName = ""
     }
     
     //overload initializer
-    init(exercises:[String], paid:Bool, client:Client, duration:Int, year:String, weekNumber:String, day:String, key:String, sessionName:String, clientName:String){
+    init(exercises:[String], paid:Bool, client:Client, duration:Int, year:String, weekNumber:String, day:String, key:String, sessionName:String, sessionNumber:String, clientName:String){
         self.exercises = exercises
         self.paid = paid
         self.duration = duration
@@ -54,6 +57,7 @@ class Session: NSCoder {
         self.day = day
         self.key = key
         self.sessionName = sessionName
+        self.sessionNumber = sessionNumber
         self.clientName = clientName
     }
 }

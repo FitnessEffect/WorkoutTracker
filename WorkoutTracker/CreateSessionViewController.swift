@@ -42,10 +42,14 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func create(_ sender: UIButton) {
         let index = pickerView.selectedRow(inComponent: 0)
         let sessionKey = DBService.shared.createSessionKey()
+        let temp = sessionName.text?.components(separatedBy: "#")
+        let number = temp?.last
+        
         var sessionDictionary = [String:Any]()
         sessionDictionary["day"] = days[index]
         sessionDictionary["key"] = sessionKey
         sessionDictionary["sessionName"] = sessionName.text
+        sessionDictionary["sessionNumber"] = number
         sessionDictionary["duration"] = 0
         sessionDictionary["paid"] = false
         sessionDictionary["exercises"] = nil

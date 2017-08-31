@@ -355,9 +355,16 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionCustomCell
         
-        let tempArr = getSessionsForDayAtIndexPath(indexPath: indexPath as NSIndexPath)
+        var tempArr = getSessionsForDayAtIndexPath(indexPath: indexPath as NSIndexPath)
+        tempArr = tempArr.sorted(by: {a, b in
+            if Int(a.sessionNumber)! > Int(b.sessionNumber)! {
+                return false
+            }
+                return true
+            })
         if tempArr.count != 0{
             let session = tempArr[indexPath.row]
+           
             if session.paid == false{
                 cell.paidOutlet.text = "✗"
             cell.paidOutlet.textColor = UIColor.red
@@ -459,9 +466,10 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             DBService.shared.setDateRange(dateRange:(dateBtn.titleLabel?.text)!)
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
             let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! SessionCustomCell
-            
+            print(cell.sessionKey)
             for i in 0...self.sessionsArray.count{
                 if self.sessionsArray[i].key == cell.sessionKey{
+                    print(sessionsArray[i])
                     DBService.shared.setPassedSession(session: sessionsArray[i])
                     break
                 }
