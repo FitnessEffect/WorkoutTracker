@@ -31,6 +31,7 @@
 		522CFADE1F56063B0037B371 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */; };
 		522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */; };
 		522CFAE21F57AC8F0037B371 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */; };
+		522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE31F58C31E0037B371 /* NavigationViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
@@ -117,6 +118,7 @@
 		522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		522CFAE31F58C31E0037B371 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
+				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
@@ -711,6 +714,7 @@
 				5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */,
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
 				527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */,
+				522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */,
 				5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */,
 				526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */,
 				522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */,

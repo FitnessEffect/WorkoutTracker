@@ -49,6 +49,7 @@ class DBService {
     private var _passedDate = ""
     private var _dateRange = ""
     private var _exSessionEdit = false
+    private var _passToNextVC = false
     
     private init() {
         initDatabase()
@@ -811,6 +812,10 @@ class DBService {
         _passedDate = dateStr
     }
     
+    func setPassToNextVC(bool:Bool){
+        _passToNextVC = bool
+    }
+    
     func initializeData(){
         self._ref.child("types").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -1029,6 +1034,12 @@ class DBService {
     var exSessionEdit:Bool{
         get{
             return _exSessionEdit
+        }
+    }
+    
+    var passToNextVC:Bool{
+        get{
+            return _passToNextVC
         }
     }
 }

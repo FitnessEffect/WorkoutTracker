@@ -26,6 +26,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     var cellCount = 0
     var spinner = UIActivityIndicatorView()
     var startDate = ""
+    var passToNextVC = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,10 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         clientPassed = DBService.shared.retrieveClientInfo(clientKey: clientPassed.clientKey)
         button.setTitle(clientPassed.firstName, for: .normal)
 
+        if DBService.shared.passToNextVC == true{
+            callCreateSession()
+            DBService.shared.setPassToNextVC(bool:false)
+        }
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
@@ -129,6 +134,10 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func createSession(_ sender: UIBarButtonItem) {
+       callCreateSession()
+    }
+    
+    func callCreateSession(){
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
         

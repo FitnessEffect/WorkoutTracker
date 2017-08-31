@@ -2293,10 +2293,10 @@
             </objects>
             <point key="canvasLocation" x="4492" y="3143"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="vwt-ZB-tHn">
             <objects>
-                <navigationController storyboardIdentifier="clientNavID" automaticallyAdjustsScrollViewInsets="NO" id="eOA-Kw-WaG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="clientNavID" automaticallyAdjustsScrollViewInsets="NO" id="eOA-Kw-WaG" customClass="NavigationViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xhw-3y-dWu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2314,7 +2314,7 @@
         <!--Sessions View Controller-->
         <scene sceneID="OVW-hB-szn">
             <objects>
-                <viewController id="8GF-XO-Gxt" customClass="SessionsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sessionsVC" id="8GF-XO-Gxt" customClass="SessionsViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j6O-gf-WlV"/>
                         <viewControllerLayoutGuide type="bottom" id="jc1-DM-eQe"/>

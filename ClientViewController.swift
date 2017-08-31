@@ -20,6 +20,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var challengeOverlay = true
     var menuShowing = false
     var spinner = UIActivityIndicatorView()
+    var passToNextVC = false
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -50,6 +51,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         spinner.color = UIColor.white
         spinner.alpha = 0
         view.addSubview(spinner)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,9 +63,22 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.spinner.stopAnimating()
                 self.clientArray = DBService.shared.clients
                 self.tableViewOutlet.reloadData()
+                if DBService.shared.passToNextVC == true{
+                    for i in 0...self.clientArray.count-1{
+                        if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{
+                           let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sessionsVC") as! SessionsViewController
+                            nextVC.clientPassed = self.clientArray[self.selectedRow]
+                            DBService.shared.setPassedClient(client: self.clientArray[i])
+                            self.navigationController?.pushViewController(nextVC, animated: true)
+                        }
+                    }
+                }
             }
         }
+        
+
     }
+
     
     //TableView
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -357,6 +357,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         let currentController = self.getCurrentViewController()
         
         if challenge.titleLabel?.text != "Challenge"{
+            if challenge.titleLabel?.text != "Create Session"{
             // get a reference to the view controller for the popover
             let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
             
@@ -375,6 +376,11 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             
             // present the popover
             currentController?.present(popController, animated: true, completion: nil)
+            }else{
+                 let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! NavigationViewController
+                popController.setPassToNextVC(bool: true)
+                currentController?.present(popController, animated: true, completion: nil)
+            }
         }else{
         
         // get a reference to the view controller for the popover
