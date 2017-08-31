@@ -48,6 +48,7 @@ class DBService {
     private var _passedSession = Session()
     private var _passedDate = ""
     private var _dateRange = ""
+    private var _exSessionEdit = false
     
     private init() {
         initDatabase()
@@ -121,6 +122,10 @@ class DBService {
         _edit = bool
     }
     
+    func setExSessionEdit(bool:Bool){
+        _exSessionEdit = bool
+    }
+    
     func setCurrentWeekNumber(strWeek:String){
         _currentWeekNumber = strWeek
     }
@@ -169,7 +174,7 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
+                self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
@@ -561,7 +566,6 @@ class DBService {
                 tempExercise.exerciseKey = exercise?["exerciseKey"] as! String
                 tempExercise.date = exercise?["date"] as! String
                 tempExercise.client = exercise?["client"] as! String
-                tempExercise.opponent = exercise?["opponent"] as! String
                 tempExercise.creatorEmail = exercise?["creatorEmail"] as! String
                 tempExercise.creatorID = exercise?["creatorID"] as! String
                 tempExercise.category = exercise?["category"] as! String
@@ -576,7 +580,7 @@ class DBService {
         }
     }
     
-    func retrieveSessionsForClient(completion:@escaping ()-> Void){
+    func retrieveSessionsForWeekForClient(completion:@escaping ()-> Void){
         _sessions.removeAll()
         
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -1013,6 +1017,12 @@ class DBService {
     var passedDate:String{
         get{
             return _passedDate
+        }
+    }
+    
+    var exSessionEdit:Bool{
+        get{
+            return _exSessionEdit
         }
     }
 }

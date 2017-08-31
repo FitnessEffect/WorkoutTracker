@@ -37,6 +37,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var tempSeconds = ""
     var tempResult = ""
     var sessionNames = [String]()
+    var currentSessName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,9 +80,25 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         if tagPassed == 0{
+            
             milesLabel.alpha = 0
             metersLabel.alpha = 0
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if tagPassed == 0{
+            for i in 0...sessionNames.count-1{
+                if sessionNames[i] == currentSessName{
+                    pickerView.selectRow(i, inComponent: 0, animated: true)
+                    break
+                }
+            }
+        }
+    }
+    
+    func setCurrentSessionName(currentSessionName:String){
+        currentSessName = currentSessionName
     }
     
     func setSessionNames(names:[String]){
@@ -166,7 +183,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if tagPassed == 1{
+        if tagPassed == 0{
+            tempResult = sessionNames[row]
+        }else if tagPassed == 1{
             let pickerName = namesPassed[row]
             tempResult = pickerName
         }else if tagPassed == 2{
@@ -208,7 +227,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBAction func saveBtn(_ sender: UIButton) {
         let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
-        if tagPassed == 1{
+        if tagPassed == 0{
+            if tempResult == ""{
+            tempResult = sessionNames[0]
+            }
+            presenter.savePickerSessionName(name: tempResult)
+        }else if tagPassed == 1{
             if tempResult == ""{
                 tempResult = namesPassed[0]
             }
@@ -216,7 +240,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else{
             //first value force selection
             if tempResult == ""{
-                if tagPassed == 2{
+                if tagPassed == 0{
+                    tempResult = sessionNames[0]
+                }else if tagPassed == 1{
+                    tempResult = namesPassed[0]
+                }else if tagPassed == 2{
                     tempResult = "0 hour(s) 0 min(s) 0 sec(s)"
                 }else if tagPassed == 3{
                     tempResult = "0 lb(s)"

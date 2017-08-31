@@ -31,6 +31,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SessionDetailViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let tableViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
+        tableView.addGestureRecognizer(tableViewTapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -235,6 +238,23 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
             self.present(deleteAlert, animated: true, completion: nil)
+        }
+    }
+    
+    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+        let touchPoint = sender.location(in: tableView)
+        let row = tableView.indexPathForRow(at: touchPoint)?.row
+        if row != nil{
+            performSegue(withIdentifier: "editExerciseForSessionSegue", sender: sender)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "editExerciseForSessionSegue"){
+            let s = sender as! UITapGestureRecognizer
+            let selectedRow = tableView.indexPathForRow(at:s.location(in: tableView))?.row
+            DBService.shared.setPassedExercise(exercise: exercises[selectedRow!])
+            DBService.shared.setExSessionEdit(bool:true)
         }
     }
 }

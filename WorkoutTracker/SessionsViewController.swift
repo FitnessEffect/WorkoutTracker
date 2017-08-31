@@ -60,7 +60,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         spinner.startAnimating()
         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
         DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveSessionsForClient(completion: {
+            DBService.shared.retrieveSessionsForWeekForClient(completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
                 self.sessionsArray.removeAll()
@@ -115,7 +115,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: datePassed)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: datePassed)))
         
-        DBService.shared.retrieveSessionsForClient{
+        DBService.shared.retrieveSessionsForWeekForClient{
             self.sessionsArray.removeAll()
             self.sessionsArray = DBService.shared.sessions
 //            self.exerciseArray.sort(by: {a, b in

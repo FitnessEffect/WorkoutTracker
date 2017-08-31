@@ -1808,11 +1808,11 @@
                                 <rect key="frame" x="0.0" y="275" width="375" height="392"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exerciseCell" id="Huf-7w-y4f" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exerciseCell" id="Huf-7w-y4f" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Huf-7w-y4f" id="tQJ-gf-IYu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itz-3j-0ng">
@@ -1846,6 +1846,7 @@
                                         <connections>
                                             <outlet property="numberOutlet" destination="Cha-cm-M28" id="12c-5I-ScV"/>
                                             <outlet property="titleOutlet" destination="itz-3j-0ng" id="Xzy-iq-tZo"/>
+                                            <segue destination="pzd-PZ-fvb" kind="show" identifier="editExerciseForSessionSegue" id="dgs-GC-2Lb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3531,6 +3532,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJO-pp-3SY"/>
+        <segue reference="dgs-GC-2Lb"/>
     </inferredMetricsTieBreakers>
 </document>

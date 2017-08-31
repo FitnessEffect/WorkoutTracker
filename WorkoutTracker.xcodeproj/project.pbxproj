@@ -128,7 +128,7 @@
 		525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForAmrapViewController.swift; sourceTree = "<group>"; };
 		525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForTabataViewController.swift; sourceTree = "<group>"; };
 		525D5D921F2C078A00F9F00F /* SelectExerciseForForTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForForTimeViewController.swift; sourceTree = "<group>"; };
-		526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputExerciseViewController.swift; sourceTree = "<group>"; };
+		526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = InputExerciseViewController.swift; sourceTree = "<group>"; };
 		526A3F101EC60D61001BF557 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		52717FE31EE8DBA800DBD8DE /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };

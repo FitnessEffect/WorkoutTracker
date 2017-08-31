@@ -124,18 +124,20 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             title = "Personal"
         }
         
-        if DBService.shared.edit == true{
+        if DBService.shared.edit == true || DBService.shared.exSessionEdit == true{
             //set tempExercise from passedExercise
             tempExercise = DBService.shared.passedExercise
             tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
             tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
             workoutInputView.fillInExercisePassed(exercise: tempExercise)
+         if DBService.shared.exSessionEdit == true{
+            workoutInputView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
+         }else{
+            checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+         }
         }else{
             fillInExercisePassed()
-        }
-        
-        if title != "Personal"{
-            workoutInputView.setupClientSave()
+         
         }
     }
     
@@ -187,7 +189,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func handleResultPickerChoice() -> Int{
-        if DBService.shared.edit == true{
+        if DBService.shared.edit == true || DBService.shared.exSessionEdit == true{
             tempExercise = DBService.shared.passedExercise
         }
         
@@ -230,12 +232,20 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         exerciseDictionary["creatorID"] = user.uid
         exerciseDictionary["clientKey"] = " "
 
-        //look up clientKey from name
+      
         if self.title != "Personal"{
+         //look up clientKey from name
             let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
             exerciseDictionary["clientKey"] = tempClient.clientKey
+         //update session
+         for session in DBService.shared.sessions{
+            if workoutInputView.challenge.titleLabel?.text == session.sessionName{
+               DBService.shared.setPassedSession(session: session)
+               break
+            }
+         }
         }
-        if DBService.shared.edit == true{
+        if DBService.shared.edit == true || DBService.shared.exSessionEdit{
             //if user changes client while exercises is in edit mode
             if DBService.shared.passedExercise.client != title{
                 exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
@@ -246,6 +256,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             exerciseDictionary["exerciseKey"] = DBService.shared.createExerciseKey()
         }
         DBService.shared.setEdit(bool:false)
+        DBService.shared.setExSessionEdit(bool:false)
         if self.title == "Personal"{
             DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
@@ -255,13 +266,17 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
                 })})
             })
         }else{
-            DBService.shared.updateExerciseForClient(exerciseDictionary: exerciseDictionary, completion: {
+         
+            
+                DBService.shared.updateExerciseForClient(exerciseDictionary: self.exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                self.present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
                     self.refreshNotifications()
                 })})
             })
+            
+            
         }
         //post request for notification if challenge is on!!!
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
@@ -345,7 +360,16 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func saveResult(str:String){
         workoutInputView.saveResult(str: str)
     }
-    
+   
+//    func updateSession(){
+//      let tempSessions = DBService.shared.sessions
+//        for session in tempSessions{
+//            if session.sessionName == DBService.shared.passedDate{
+//                DBService.shared.setPassedSession(session: session)
+//            }
+//        }
+//    }
+   
     func setNewDate(dateStr:String){
         workoutInputView.setDateOnBtn(dateStr: dateStr, completion: {
             checkSessions(dateStr: dateStr, completion: {})})
@@ -354,36 +378,31 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func checkSessions(dateStr:String, completion: () ->Void){
         //retrieve session for day
         workoutInputView.sessionsNames.removeAll()
-        DBService.shared.retrieveSessionsForDateForClient(dateStr: (dateStr), completion: {
+        DBService.shared.retrieveSessionsForDateForClient(dateStr: dateStr, completion: {
             var tempStrings = [String]()
             for session in DBService.shared.sessions{
                 tempStrings.append(session.sessionName)
-                self.workoutInputView.setSessionNames(names: tempStrings)
-                self.workoutInputView.setupClientSave()
+               self.workoutInputView.setSessionNames(names: tempStrings)
             }
+
+               self.workoutInputView.setupClientSave(completion: {})
         })
-        self.workoutInputView.setupClientSave()
     }
     
-    func savePickerName(name:String){
-        self.title = name
-        if name != "Personal"{
-        DBService.shared.setPassedClient(client:getClientFromName(n:name))
-            
-            //retrieve session for day
-            DBService.shared.retrieveSessionsForDateForClient(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {
-                var tempStrings = [String]()
-                for session in DBService.shared.sessions{
-                    tempStrings.append(session.sessionName)
-                    self.workoutInputView.setSessionNames(names: tempStrings)
-                    self.workoutInputView.setupClientSave()
-                }
-            })
-            self.workoutInputView.setupClientSave()
-        }else{
-            DBService.shared.clearPassedClient()
-        }
-    }
+   func savePickerName(name:String){
+      self.title = name
+      if name != "Personal"{
+         DBService.shared.setPassedClient(client:getClientFromName(n:name))
+         checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+      }else{
+         DBService.shared.clearPassedClient()
+      }
+      
+   }
+   
+   func savePickerSessionName(name:String){
+      workoutInputView.challenge.setTitle(name, for: .normal)
+   }
     
     @IBAction func selectClient(_ sender: UIBarButtonItem) {
         var xPosition:CGFloat = 0

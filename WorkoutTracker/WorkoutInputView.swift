@@ -94,17 +94,27 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     
     func fillInExercisePassed(exercise:Exercise){
         if exercise.exerciseKey != ""{
-            dateBtn.setTitle(exercise.date, for: .normal)
-            saveExercise(exStr: exercise.exerciseDescription)
-            exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
-            saveResult(str: (exercise.result))
-            if exercise.opponent != ""{
-                //if exercise comes from history do not set creator as the challenger
-                if exercise.creatorEmail == DBService.shared.user.email{
-                    saveEmail(emailStr: exercise.opponent)
-                }else{
-                    //if exercise comes from challenges set creator as the challenger
-                    saveEmail(emailStr: exercise.creatorEmail)
+            if DBService.shared.passedExercise.client != "Personal"{
+                dateBtn.setTitle(exercise.date, for: .normal)
+                saveExercise(exStr: exercise.exerciseDescription)
+                exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
+                saveResult(str: (exercise.result))
+                challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
+                challenge.setBackgroundImage(nil, for: .normal)
+                challenge.isUserInteractionEnabled = false
+            }else{
+                dateBtn.setTitle(exercise.date, for: .normal)
+                saveExercise(exStr: exercise.exerciseDescription)
+                exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
+                saveResult(str: (exercise.result))
+                if exercise.opponent != ""{
+                    //if exercise comes from history do not set creator as the challenger
+                    if exercise.creatorEmail == DBService.shared.user.email{
+                        saveEmail(emailStr: exercise.opponent)
+                    }else{
+                        //if exercise comes from challenges set creator as the challenger
+                        saveEmail(emailStr: exercise.creatorEmail)
+                    }
                 }
             }
         }
@@ -159,9 +169,10 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     }
     
     
-    func setupClientSave(){
+    func setupClientSave(completion: () -> Void){
         if sessionsNames.count != 0{
-            challenge.setTitle(sessionsNames.last, for: .normal)
+            challenge.setTitle(sessionsNames.first, for: .normal)
+            completion()
         }else{
             challenge.setTitle("Create Session", for: .normal)
         }
@@ -199,6 +210,31 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 }
             })
         }else{
+            if DBService.shared.passedExercise.client != "Personal"{
+                var exerciseDictionary = [String:String]()
+                
+                let strDate = dateBtn.titleLabel!.text!
+                let tempDate = DateConverter.stringToDate(dateStr:strDate)
+                
+                let tempWeekNum = DateConverter.weekNumFromDate(date: tempDate as NSDate)
+                let tempYear = DateConverter.yearFromDate(date:tempDate as NSDate)
+                
+                DBService.shared.setCurrentWeekNumber(strWeek: String(tempWeekNum))
+                DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
+                
+                exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
+                exerciseDictionary["result"] =   self.resultTextView.text!
+                exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
+                exerciseDictionary["opponent"] = ""
+                exerciseDictionary["year"] = String(tempYear)
+                exerciseDictionary["week"] = String(tempWeekNum)
+                self.saveButton.isUserInteractionEnabled = false
+                self.challenge.isUserInteractionEnabled = false
+                self.resultBtn.isUserInteractionEnabled = false
+                self.delegate?.handleSave(json: exerciseDictionary)
+                self.eraseExerciseDescription()
+
+            }else{
             var exerciseDictionary = [String:String]()
             
             let strDate = dateBtn.titleLabel!.text!
@@ -221,6 +257,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             
             self.delegate?.handleSave(json: exerciseDictionary)
             self.eraseExerciseDescription()
+            }
         }
     }
     
@@ -320,6 +357,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
             popController.setTag(tag: 0)
             popController.setSessionNames(names:sessionsNames)
+            popController.setCurrentSessionName(currentSessionName:(challenge.titleLabel?.text)!)
             
             // present the popover
             currentController?.present(popController, animated: true, completion: nil)
@@ -377,8 +415,13 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.saveButton.frame = CGRect(x: 0, y: (self.saveStartPosition + self.translation1 + self.translation2), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                if DBService.shared.exSessionEdit == true{
+                    self.challenge.isUserInteractionEnabled = false
+                    self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                }else{
                 self.challenge.isUserInteractionEnabled = true
                 self.saveButton.isUserInteractionEnabled = true
+                }
             })
         }))
     }
