@@ -123,7 +123,7 @@ class ForTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetCustomCell
         cell.descriptionTextField.text = self.exercises[indexPath.row].exerciseDescription
         cell.numLabel.text = String(indexPath.row + 1)
         cell.backgroundColor = UIColor.clear

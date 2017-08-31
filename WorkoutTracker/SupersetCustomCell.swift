@@ -1,5 +1,5 @@
 //
-//  SupersetTableViewCell.swift
+//  SupersetCustomCell.swift
 //  WorkoutTracker
 //
 //  Created by Stefan Auvergne on 7/28/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SupersetTableViewCell: UITableViewCell {
+class SupersetCustomCell: UITableViewCell {
 
 
     @IBOutlet weak var descriptionTextField: UITextField!

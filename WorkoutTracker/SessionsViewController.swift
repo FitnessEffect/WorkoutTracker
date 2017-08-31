@@ -454,23 +454,17 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "editExerciseSegue"){
+        if(segue.identifier == "sessionDetailSegue"){
             DBService.shared.setPassedClient(client: clientPassed)
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
-            let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! ExerciseCustomCell
+            let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! SessionCustomCell
             
             for i in 0...self.sessionsArray.count{
-                if self.sessionsArray[i].key == cell.exerciseKey{
-                    //DBService.shared.setPassedSession(session: sessionsArray[i])
+                if self.sessionsArray[i].key == cell.sessionKey{
+                    DBService.shared.setPassedSession(session: sessionsArray[i])
                     break
                 }
             }
-            
-            DBService.shared.setEdit(bool:true)
-        }
-        if(segue.identifier == "addExerciseSegue"){
-            DBService.shared.setPassedClient(client: clientPassed)
-            DBService.shared.setEdit(bool:false)
         }
     }
 }

@@ -828,10 +828,10 @@
                                     <constraint firstAttribute="height" constant="156" id="4ue-sH-DuY"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="cvk-L4-lrk" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="cvk-L4-lrk" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cvk-L4-lrk" id="dKM-yg-IM8" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cvk-L4-lrk" id="dKM-yg-IM8" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -1352,10 +1352,10 @@
                                     <constraint firstAttribute="height" constant="142" id="8QW-O6-KX3"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="H2K-Yn-ecO" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="H2K-Yn-ecO" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H2K-Yn-ecO" id="iM9-e7-veZ" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H2K-Yn-ecO" id="iM9-e7-veZ" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -1471,10 +1471,10 @@
                                     <constraint firstAttribute="height" constant="142" id="fNo-ez-O51"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="E1x-BA-ACq" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="E1x-BA-ACq" customClass="SupersetCustomCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E1x-BA-ACq" id="GO6-h9-qmd" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E1x-BA-ACq" id="GO6-h9-qmd" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -1707,10 +1707,10 @@
                                     <constraint firstAttribute="height" constant="142" id="R8B-uF-fv8"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="QfO-FL-pwb" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="QfO-FL-pwb" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QfO-FL-pwb" id="6RZ-gO-LHY" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QfO-FL-pwb" id="6RZ-gO-LHY" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -1785,10 +1785,10 @@
             </objects>
             <point key="canvasLocation" x="6101.6000000000004" y="2265.5172413793107"/>
         </scene>
-        <!--Session Description View Controller-->
+        <!--Session Detail View Controller-->
         <scene sceneID="3fA-YW-s2Q">
             <objects>
-                <viewController id="3Jg-AE-1tA" customClass="SessionDescriptionViewController" sceneMemberID="viewController">
+                <viewController id="3Jg-AE-1tA" customClass="SessionDetailViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0n3-tp-H00"/>
                         <viewControllerLayoutGuide type="bottom" id="T1c-eM-aG9"/>
@@ -1801,17 +1801,119 @@
                                 <rect key="frame" x="0.0" y="75" width="375" height="171"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QZq-qU-6ZB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QZq-qU-6ZB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-5x-73S">
+                                <rect key="frame" x="0.0" y="275" width="375" height="392"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exerciseCell" id="Huf-7w-y4f" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Huf-7w-y4f" id="tQJ-gf-IYu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itz-3j-0ng">
+                                                    <rect key="frame" x="38" y="8" width="139" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="HF1-h4-RM1"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
+                                                    <rect key="frame" x="7" y="8" width="23" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cha-cm-M28" firstAttribute="top" secondItem="itz-3j-0ng" secondAttribute="top" id="ET5-By-qcT"/>
+                                                <constraint firstItem="Cha-cm-M28" firstAttribute="bottom" secondItem="itz-3j-0ng" secondAttribute="bottom" id="R6E-Ok-jT7"/>
+                                                <constraint firstItem="itz-3j-0ng" firstAttribute="leading" secondItem="Cha-cm-M28" secondAttribute="trailing" constant="8" id="hjH-Jv-LFl"/>
+                                                <constraint firstItem="Cha-cm-M28" firstAttribute="top" secondItem="tQJ-gf-IYu" secondAttribute="topMargin" id="iZL-ku-H3J"/>
+                                                <constraint firstItem="Cha-cm-M28" firstAttribute="leading" secondItem="tQJ-gf-IYu" secondAttribute="leadingMargin" constant="-1" id="sFP-P7-NTd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="numberOutlet" destination="Cha-cm-M28" id="12c-5I-ScV"/>
+                                            <outlet property="titleOutlet" destination="itz-3j-0ng" id="Xzy-iq-tZo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3Jg-AE-1tA" id="80p-cE-aVP"/>
+                                    <outlet property="delegate" destination="3Jg-AE-1tA" id="xT3-z5-g6V"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
+                                <rect key="frame" x="41" y="191" width="295" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="hEn-RH-7h3"/>
+                                    <constraint firstAttribute="width" constant="295" id="nY1-Ru-d9A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-Up-6bZ">
+                                <rect key="frame" x="110" y="72" width="156" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="VH6-Gd-ofP"/>
+                                    <constraint firstAttribute="width" constant="156" id="hmp-Dp-8f3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
+                                <rect key="frame" x="41" y="126" width="294" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="294" id="sjd-UG-Vi4"/>
+                                    <constraint firstAttribute="height" constant="57" id="ywR-Ui-Do5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <state key="normal" title="Paid" backgroundImage="chalkBackgroundBright"/>
+                                <connections>
+                                    <action selector="paidBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="w6e-pz-A5C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="8" id="82q-Nh-Uha"/>
+                            <constraint firstAttribute="trailing" secondItem="QZq-qU-6ZB" secondAttribute="trailing" id="AdT-C0-8J4"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="FKm-rb-rwb"/>
+                            <constraint firstItem="oT8-Up-6bZ" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="8" id="Fhh-Pf-N1r"/>
+                            <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="1Z1-5x-73S" secondAttribute="bottom" id="FuE-P9-jwJ"/>
+                            <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="27" id="bzz-pk-QNh"/>
+                            <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="1" id="dc2-g8-gsN"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="8" id="eJZ-QA-HLH"/>
+                            <constraint firstItem="QZq-qU-6ZB" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="h5s-Sv-hMq"/>
+                            <constraint firstItem="QZq-qU-6ZB" firstAttribute="top" secondItem="nJX-56-Njm" secondAttribute="top" id="iIB-M5-J91"/>
+                            <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="QZq-qU-6ZB" secondAttribute="bottom" id="nxZ-De-HtO"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="smD-uD-yIb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="durationBtn" destination="V6S-nw-PD5" id="MvF-1B-org"/>
+                        <outlet property="paidBtn" destination="A8r-2E-dQR" id="ESP-Cd-gM8"/>
+                        <outlet property="sessionName" destination="oT8-Up-6bZ" id="CB5-jz-uq1"/>
+                        <outlet property="tableView" destination="1Z1-5x-73S" id="dFX-oa-yMG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRt-DN-yt6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="-685"/>
+            <point key="canvasLocation" x="3048.8000000000002" y="-685.00749625187416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mY4-3X-fix">
@@ -2281,7 +2383,7 @@
                                             <outlet property="number" destination="JcC-eo-xLO" id="hK0-1C-Jcm"/>
                                             <outlet property="paidOutlet" destination="XPc-Fw-xwH" id="tRO-80-5SI"/>
                                             <outlet property="titleLabel" destination="0cU-Oq-TQ4" id="Bk0-q4-J9G"/>
-                                            <segue destination="pzd-PZ-fvb" kind="show" identifier="editExerciseSegue" id="npb-WN-7AS"/>
+                                            <segue destination="3Jg-AE-1tA" kind="show" identifier="sessionDetailSegue" id="Xtr-Fl-22W"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2405,10 +2507,10 @@
                                     <constraint firstAttribute="height" constant="142" id="vb5-Nd-fvV"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="zbR-Nm-bFX" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supersetCell" rowHeight="46" id="zbR-Nm-bFX" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zbR-Nm-bFX" id="zgb-5A-kvC" customClass="SupersetTableViewCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zbR-Nm-bFX" id="zgb-5A-kvC" customClass="SupersetCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -3420,6 +3522,7 @@
         <image name="addIcon" width="44" height="44"/>
         <image name="blankIcon" width="44" height="44"/>
         <image name="chalkBackground" width="277" height="135"/>
+        <image name="chalkBackgroundBright" width="254" height="127"/>
         <image name="clientIcon" width="44" height="44"/>
         <image name="lighterBackground" width="375" height="667"/>
         <image name="markerBackground" width="363" height="265"/>
@@ -3428,6 +3531,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="npb-WN-7AS"/>
+        <segue reference="OuF-iy-fzI"/>
     </inferredMetricsTieBreakers>
 </document>

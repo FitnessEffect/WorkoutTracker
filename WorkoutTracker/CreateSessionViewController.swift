@@ -29,7 +29,7 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
         DBService.shared.checkSessionNumber(){
             self.sessionNumber = -1
             self.sessionNumber = DBService.shared.sessionsCount
-            self.sessionName.text = "Session " + String(self.sessionNumber + 1)
+            self.sessionName.text = "Session #" + String(self.sessionNumber + 1)
             self.sessionName.alpha = 1
         }
     }
@@ -48,7 +48,7 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
         sessionDictionary["sessionName"] = sessionName.text
         sessionDictionary["duration"] = 0
         sessionDictionary["paid"] = false
-        sessionDictionary["exercises"] = [""]
+        sessionDictionary["exercises"] = nil
         sessionDictionary["year"] = DBService.shared.currentYear
         sessionDictionary["weekNumber"] = DBService.shared.currentWeekNumber
         sessionDictionary["clientName"] = (DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName)
@@ -80,7 +80,7 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
         DBService.shared.checkSessionNumber(){
             self.sessionNumber = -1
             self.sessionNumber = DBService.shared.sessionsCount
-            self.sessionName.text = "Session " + String(self.sessionNumber + 1)
+            self.sessionName.text = "Session #" + String(self.sessionNumber + 1)
             self.sessionName.alpha = 1
         }
     }

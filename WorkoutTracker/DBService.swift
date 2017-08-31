@@ -45,6 +45,7 @@ class DBService {
     private var _currentDay = ""
     private var _sessions = [Session]()
     private var _sessionsCount = 0
+    private var _passedSession = Session()
     
     private init() {
         initDatabase()
@@ -130,6 +131,10 @@ class DBService {
         _currentDay = day
     }
     
+    func setPassedSession(session:Session){
+        _passedSession = session
+    }
+    
     func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
@@ -162,6 +167,7 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
@@ -182,7 +188,7 @@ class DBService {
                 let session = Session()
                 session.day = value?["day"] as! String
                 session.duration = value?["duration"] as! Int
-                session.exercises = value?["exercises"] as! [String]
+                session.exercises = value?["exercises"] as? [String]
                 session.key = value?["key"] as! String
                 session.sessionName = value?["sessionName"] as! String
                 session.paid = value?["paid"] as! Bool
@@ -507,31 +513,43 @@ class DBService {
         }
     }
     
-    func retrieveExerciseFromKey(keyStr:String){
+    func updatePaidForSession(boolean:Bool, completion: @escaping () -> Void){
+        self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["paid":boolean])
+        completion()
+    }
+    
+    func retrieveExerciseListFromSessionKey(keyStr:String, completion: @escaping () -> Void){
         _exercisesForClient.removeAll()
-        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(keyStr).observeSingleEvent(of: .value, with: { (snapshot) in
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(keyStr).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            let exercise = snapshot.value as? NSDictionary
+            let session = snapshot.value as? NSDictionary
+            if session != nil{
+                if let exerciseStrings = session?["exercises"] as? [String]{
+                    for ex in exerciseStrings{
+                        self.retrieveExercisesForSession(exerciseStr:ex, completion: {
+                            completion()
+                        })
+                    }
+                }else{
+                    completion()
+                }
+            }else{
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveExercisesForSession(exerciseStr:String, completion: @escaping () -> Void){
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseStr).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let exercise = snapshot.value as? Exercise
             if exercise != nil{
-                    let tempExercise = Exercise()
-//                    tempExercise.year = exercise.value["year"] as! String
-//                    tempExercise.week = exercise.value["week"] as! String
-//                    tempExercise.name = exercise.value["name"] as! String
-//                    tempExercise.exerciseDescription = exercise.value["description"] as! String
-//                    tempExercise.result = exercise.value["result"] as! String
-//                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
-//                    tempExercise.date = exercise.value["date"] as! String
-//                    tempExercise.client = exercise.value["client"] as! String
-//                    tempExercise.opponent = exercise.value["opponent"] as! String
-//                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
-//                    tempExercise.creatorID = exercise.value["creatorID"] as! String
-//                    tempExercise.category = exercise.value["category"] as! String
-//                    tempExercise.type = exercise.value["type"] as! String
-                    self._exercisesForClient.append(tempExercise)
-   //                 completion()
-//            }else{
-//                self._exercisesForClient.removeAll()
-//                completion()
+                self._exercisesForClient.append(exercise!)
+                completion()
+            }else{
+                completion()
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -929,6 +947,12 @@ class DBService {
     var sessionsCount:Int{
         get{
             return _sessionsCount
+        }
+    }
+    
+    var passedSession:Session{
+        get{
+            return _passedSession
         }
     }
 }

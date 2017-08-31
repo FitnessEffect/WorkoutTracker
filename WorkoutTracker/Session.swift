@@ -21,7 +21,7 @@ let clientNameKey = "clientName"
 
 class Session: NSCoder {
     
-    var exercises:[String]
+    var exercises:[String]?
     var paid:Bool
     var duration:Int
     var year:String
@@ -33,7 +33,7 @@ class Session: NSCoder {
     
     //default initializer
     override init(){
-        exercises = [""]
+        exercises = nil
         paid = false
         duration = 0
         year = ""

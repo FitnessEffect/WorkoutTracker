@@ -28,7 +28,7 @@
 		522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */; };
 		522CFADA1F55CEF00037B371 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD91F55CEF00037B371 /* DateConverterTests.swift */; };
 		522CFADC1F55FB980037B371 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADB1F55FB980037B371 /* Session.swift */; };
-		522CFADE1F56063B0037B371 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADD1F56063B0037B371 /* SessionViewController.swift */; };
+		522CFADE1F56063B0037B371 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */; };
 		522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */; };
 		522CFAE21F57AC8F0037B371 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
@@ -36,7 +36,7 @@
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
 		523470681ED0E6480079D03E /* ExercisesHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */; };
-		525D5D891F2BC07400F9F00F /* SupersetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D881F2BC07400F9F00F /* SupersetTableViewCell.swift */; };
+		525D5D891F2BC07400F9F00F /* SupersetCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D881F2BC07400F9F00F /* SupersetCustomCell.swift */; };
 		525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */; };
 		525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */; };
 		525D5D911F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */; };
@@ -114,7 +114,7 @@
 		522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteExerciseViewController.swift; sourceTree = "<group>"; };
 		522CFAD91F55CEF00037B371 /* DateConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverterTests.swift; sourceTree = "<group>"; };
 		522CFADB1F55FB980037B371 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		522CFADD1F56063B0037B371 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
+		522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		523470651ED099F90079D03E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisesHistoryViewController.swift; sourceTree = "<group>"; };
-		525D5D881F2BC07400F9F00F /* SupersetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupersetTableViewCell.swift; sourceTree = "<group>"; };
+		525D5D881F2BC07400F9F00F /* SupersetCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupersetCustomCell.swift; sourceTree = "<group>"; };
 		525D5D8A1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForMetconViewController.swift; sourceTree = "<group>"; };
 		525D5D8E1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForAmrapViewController.swift; sourceTree = "<group>"; };
 		525D5D901F2BFB6C00F9F00F /* SelectExerciseForTabataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseForTabataViewController.swift; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 				52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */,
 				52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */,
 				52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */,
-				525D5D881F2BC07400F9F00F /* SupersetTableViewCell.swift */,
+				525D5D881F2BC07400F9F00F /* SupersetCustomCell.swift */,
 				522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */,
 			);
 			name = CustomCells;
@@ -323,7 +323,7 @@
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
 				5283E07E1C890E6200FB716B /* SessionsViewController.swift */,
-				522CFADD1F56063B0037B371 /* SessionViewController.swift */,
+				522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -701,7 +701,7 @@
 				52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
-				525D5D891F2BC07400F9F00F /* SupersetTableViewCell.swift in Sources */,
+				525D5D891F2BC07400F9F00F /* SupersetCustomCell.swift in Sources */,
 				52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */,
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
@@ -720,7 +720,7 @@
 				525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */,
 				522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */,
 				52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */,
-				522CFADE1F56063B0037B371 /* SessionViewController.swift in Sources */,
+				522CFADE1F56063B0037B371 /* SessionDetailViewController.swift in Sources */,
 				52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */,
 				52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */,
 				52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */,
