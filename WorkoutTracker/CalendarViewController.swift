@@ -148,7 +148,7 @@ class CalendarViewController:UIViewController{
             }else if let presenter2 = self.presentingViewController?.childViewControllers.last as? ExercisesHistoryViewController{
                 presenter2.setNewDate(dateStr: date)
                 dateBtn = false
-            }else if let presenter3 = self.presentingViewController?.childViewControllers.last as? ExercisesViewController{
+            }else if let presenter3 = self.presentingViewController?.childViewControllers.last as? SessionsViewController{
                 presenter3.setNewDate(dateStr: date)
                 dateBtn = false
             }

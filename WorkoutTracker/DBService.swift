@@ -42,7 +42,9 @@ class DBService {
     private var _currentWeekNumber = ""
     private var _currentYear = ""
     private var _selectedDate = ""
-    private var _sessions = [String]()
+    private var _currentDay = ""
+    private var _sessions = [Session]()
+    private var _sessionsCount = 0
     
     private init() {
         initDatabase()
@@ -124,6 +126,10 @@ class DBService {
         _currentYear = strYear
     }
     
+    func setCurrentDay(day:String){
+        _currentDay = day
+    }
+    
     func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
@@ -161,24 +167,34 @@ class DBService {
     }
     
     func createSessionForClient(sessionDictionary:[String:Any]){
-            self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(sessionDictionary["day"] as! String).updateChildValues([sessionDictionary["sessionKey"] as! String:true])
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(currentDay).updateChildValues([sessionDictionary["key"] as! String:true])
         
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(sessionDictionary["sessionKey"] as! String).updateChildValues([sessionDictionary["sessionKey"] as! String:true])
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(sessionDictionary["key"] as! String).updateChildValues(sessionDictionary)
     }
     
-    func retrieveSessions(completion: @escaping () -> Void){
+    func retrieveSessionInfo(key:String, completion: @escaping () -> Void){
         _sessions.removeAll()
         
-        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").observeSingleEvent(of: .value, with: { (snapshot) in
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil{
-                let keyArray = value?.allKeys as! [String]
-                self._sessions = keyArray
+                let session = Session()
+                session.day = value?["day"] as! String
+                session.duration = value?["duration"] as! Int
+                session.exercises = value?["exercises"] as! [String]
+                session.key = value?["key"] as! String
+                session.sessionName = value?["sessionName"] as! String
+                session.paid = value?["paid"] as! Bool
+                session.weekNumber = value?["weekNumber"] as! String
+                session.clientName = value?["clientName"] as! String
+                session.year = value?["year"] as! String
+                self._sessions.append(session)
                 //self._sessions.sort()
                 completion()
+            }else{
+                completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -465,34 +481,75 @@ class DBService {
                     self.sortClients()
                     completion()
                 }
+            }else{
+                completion()
             }
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     
-    func retrieveExercisesForClient(completion:@escaping ()-> Void){
-        _exercisesForClient.removeAll()
+    func checkSessionNumber(completion: @escaping () -> Void){
+        _sessionsCount = 0
         
-        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
-                for exercise in exercisesVal {
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(currentDay).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let sessions = snapshot.value as? NSDictionary{
+                let keys = sessions.allKeys
+                for _ in keys{
+                    self._sessionsCount += 1
+                }
+                completion()
+            }else{
+                completion()
+            }
+        }){(error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveExerciseFromKey(keyStr:String){
+        _exercisesForClient.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(keyStr).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let exercise = snapshot.value as? NSDictionary
+            if exercise != nil{
                     let tempExercise = Exercise()
-                    tempExercise.year = exercise.value["year"] as! String
-                    tempExercise.week = exercise.value["week"] as! String
-                    tempExercise.name = exercise.value["name"] as! String
-                    tempExercise.exerciseDescription = exercise.value["description"] as! String
-                    tempExercise.result = exercise.value["result"] as! String
-                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
-                    tempExercise.date = exercise.value["date"] as! String
-                    tempExercise.client = exercise.value["client"] as! String
-                    tempExercise.opponent = exercise.value["opponent"] as! String
-                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
-                    tempExercise.creatorID = exercise.value["creatorID"] as! String
-                    tempExercise.category = exercise.value["category"] as! String
-                    tempExercise.type = exercise.value["type"] as! String
+//                    tempExercise.year = exercise.value["year"] as! String
+//                    tempExercise.week = exercise.value["week"] as! String
+//                    tempExercise.name = exercise.value["name"] as! String
+//                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+//                    tempExercise.result = exercise.value["result"] as! String
+//                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+//                    tempExercise.date = exercise.value["date"] as! String
+//                    tempExercise.client = exercise.value["client"] as! String
+//                    tempExercise.opponent = exercise.value["opponent"] as! String
+//                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+//                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+//                    tempExercise.category = exercise.value["category"] as! String
+//                    tempExercise.type = exercise.value["type"] as! String
                     self._exercisesForClient.append(tempExercise)
-                    completion()
+   //                 completion()
+//            }else{
+//                self._exercisesForClient.removeAll()
+//                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveSessionsForClient(completion:@escaping ()-> Void){
+        _sessions.removeAll()
+        
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let exercisesVal = snapshot.value as? NSDictionary {
+               let days = exercisesVal.allKeys as! [String]
+                for day in days{
+                    let keys = exercisesVal[day] as? NSDictionary
+                    for key in keys!{
+                        self.retrieveSessionInfo(key: key.key as! String, completion: {completion()})
+                    }
                 }
             }else{
                 self._exercisesForClient.removeAll()
@@ -581,6 +638,24 @@ class DBService {
                 print("error \(String(describing: error))")
             }
         }
+    }
+    
+    func deleteSessionForClient(session:Session, completion: @escaping () -> Void){
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(session.year).child(session.weekNumber).child(session.day).child(session.key).removeValue { (error, ref) in
+            
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+        
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(session.key).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+        
+        completion()
+        
     }
     
     func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
@@ -827,6 +902,12 @@ class DBService {
         }
     }
     
+    var currentDay:String{
+        get{
+            return _currentDay
+        }
+    }
+    
     var selectedDate:String{
         get{
             return _selectedDate
@@ -839,9 +920,15 @@ class DBService {
         }
     }
     
-    var sessions:[String]{
+    var sessions:[Session]{
         get{
             return _sessions
+        }
+    }
+    
+    var sessionsCount:Int{
+        get{
+            return _sessionsCount
         }
     }
 }

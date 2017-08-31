@@ -11,14 +11,27 @@ import UIKit
 class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var sessionName: UILabel!
     
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     var dateStrPassed = ""
+    var sessionNumber = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        sessionName.alpha = 0
+        DBService.shared.setCurrentDay(day:days[0])
+        //check session count
+        DBService.shared.checkSessionNumber(){
+            self.sessionNumber = -1
+            self.sessionNumber = DBService.shared.sessionsCount
+            self.sessionName.text = "Session " + String(self.sessionNumber + 1)
+            self.sessionName.alpha = 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +40,21 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func create(_ sender: UIButton) {
-        let sessionKey = DBService.shared.createSessionKey()
         let index = pickerView.selectedRow(inComponent: 0)
+        let sessionKey = DBService.shared.createSessionKey()
         var sessionDictionary = [String:Any]()
         sessionDictionary["day"] = days[index]
-        sessionDictionary["sessionKey"] = sessionKey
+        sessionDictionary["key"] = sessionKey
+        sessionDictionary["sessionName"] = sessionName.text
+        sessionDictionary["duration"] = 0
+        sessionDictionary["paid"] = false
+        sessionDictionary["exercises"] = [""]
+        sessionDictionary["year"] = DBService.shared.currentYear
+        sessionDictionary["weekNumber"] = DBService.shared.currentWeekNumber
+        sessionDictionary["clientName"] = (DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName)
         DBService.shared.createSessionForClient(sessionDictionary: sessionDictionary)
-        
-        self.dismiss(animated: true, completion: nil)
+        let presenter = self.presentingViewController?.childViewControllers.last
+        self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
     }
     
     func passDate(dateStr:String){
@@ -53,6 +73,18 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
         return days[row]
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        DBService.shared.setCurrentDay(day:days[row])
+        //check session count
+        DBService.shared.checkSessionNumber(){
+            self.sessionNumber = -1
+            self.sessionNumber = DBService.shared.sessionsCount
+            self.sessionName.text = "Session " + String(self.sessionNumber + 1)
+            self.sessionName.alpha = 1
+        }
+    }
+
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = days[row]

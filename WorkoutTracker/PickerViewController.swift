@@ -36,7 +36,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var tempMinutes = ""
     var tempSeconds = ""
     var tempResult = ""
-    var sessions = [String]()
+    var sessions = [Session]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +79,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         if tagPassed == 0{
-            DBService.shared.retrieveSessions(completion: {
-                self.sessions = DBService.shared.sessions
-                self.pickerView.reloadAllComponents()
-            })
+//            DBService.shared.retrieveClien(completion: {
+//                self.sessions = DBService.shared.sessions
+//                self.pickerView.reloadAllComponents()
+//            })
         }
     }
     
@@ -139,7 +139,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if tagPassed == 0{
-            return sessions[row]
+            return sessions[row].sessionName
         }else if tagPassed == 1{
             return namesPassed[row]
         }else if tagPassed == 2{
@@ -170,7 +170,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if tagPassed == 0{
-           tempResult = sessions[row]
+           tempResult = sessions[row].sessionName
         }else if tagPassed == 1{
             let pickerName = namesPassed[row]
             tempResult = pickerName
@@ -255,7 +255,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         milesLabel.alpha = 0
         metersLabel.alpha = 0
         if tagPassed == 0{
-            label.text = sessions[row]
+            label.text = sessions[row].sessionName
         }else if tagPassed == 1{
             label.text = namesPassed[row]
         }else if tagPassed == 2{

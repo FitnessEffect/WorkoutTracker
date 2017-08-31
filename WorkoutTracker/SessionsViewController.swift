@@ -9,14 +9,14 @@
 import UIKit
 import Firebase
 
-class ExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
+class SessionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     @IBOutlet weak var dateBtn: UIButton!
     
     var selectedRow:Int = 0
     var clientPassed = Client()
-    var exerciseArray = [Exercise]()
+    var sessionsArray = [Session]()
     var ref:FIRDatabaseReference!
     var tempKey:String!
     var user:FIRUser!
@@ -60,17 +60,17 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         spinner.startAnimating()
         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
         DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveExercisesForClient(completion: {
+            DBService.shared.retrieveSessionsForClient(completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
-                self.exerciseArray.removeAll()
-                self.exerciseArray = DBService.shared.exercisesForClient
-                self.exerciseArray.sort(by: {a, b in
-                    if a.date > b.date {
-                        return true
-                    }
-                    return false
-                })
+                self.sessionsArray.removeAll()
+                self.sessionsArray = DBService.shared.sessions
+//                self.sessionsArray.sort(by: {a, b in
+//                    if a.date > b.date {
+//                        return true
+//                    }
+//                    return false
+//                })
                 self.refreshTableViewData()
             })
         }
@@ -114,15 +114,16 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         displaySelectedWeek(date: datePassed as Date)
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: datePassed)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: datePassed)))
-        DBService.shared.retrieveExercisesForClient{
-            self.exerciseArray.removeAll()
-            self.exerciseArray = DBService.shared.exercisesForClient
-            self.exerciseArray.sort(by: {a, b in
-                if a.date > b.date {
-                    return true
-                }
-                return false
-            })
+        
+        DBService.shared.retrieveSessionsForClient{
+            self.sessionsArray.removeAll()
+            self.sessionsArray = DBService.shared.sessions
+//            self.exerciseArray.sort(by: {a, b in
+//                if a.date > b.date {
+//                    return true
+//                }
+//                return false
+//            })
             self.refreshTableViewData()
         }
     }
@@ -144,7 +145,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 330)
+        popController.preferredContentSize = CGSize(width: 300, height: 370)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         // present the popover
@@ -209,7 +210,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func refreshTableViewData(){
-        self.daysSections = self.groupExercisesByDay(exercisesPassed: self.exerciseArray) as! [String : Any]
+        self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
         tableViewOutlet.reloadData()
     }
     
@@ -248,12 +249,12 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
-        var tempArray = [Exercise]()
+        var tempArray = [Session]()
         
         switch(section){
         case 0:
             if daysSections["Sunday"] != nil{
-                tempArray = daysSections["Sunday"] as! [Exercise]
+                tempArray = daysSections["Sunday"] as! [Session]
                 if tempArray.count == 0{
                     
                 }else{
@@ -262,7 +263,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         case 1:
             if daysSections["Monday"] != nil{
-                tempArray = daysSections["Monday"] as! [Exercise]
+                tempArray = daysSections["Monday"] as! [Session]
                 if tempArray.count == 0{
                     
                 }else{
@@ -271,7 +272,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         case 2:
             if daysSections["Tuesday"] != nil{
-                tempArray = daysSections["Tuesday"] as! [Exercise]
+                tempArray = daysSections["Tuesday"] as! [Session]
                 if tempArray.count == 0{
                     
                 }else{
@@ -281,7 +282,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             
         case 3:
             if daysSections["Wednesday"] != nil{
-                tempArray = daysSections["Wednesday"] as! [Exercise]
+                tempArray = daysSections["Wednesday"] as! [Session]
                 if tempArray.count == 0{
                     
                 }else{
@@ -290,7 +291,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         case 4:
             if daysSections["Thursday"] != nil{
-                tempArray = daysSections["Thursday"] as! [Exercise]
+                tempArray = daysSections["Thursday"] as! [Session]
                 if tempArray.count == 0{
                     
                 }else{
@@ -299,7 +300,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         case 5:
             if daysSections["Friday"] != nil{
-                tempArray = daysSections["Friday"] as! [Exercise]
+                tempArray = daysSections["Friday"] as! [Session]
                 if tempArray.count == 0{
                 }else{
                     sectionTitle = "Friday"
@@ -307,7 +308,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         case 6:
             if daysSections["Saturday"] != nil{
-                tempArray = daysSections["Saturday"] as! [Exercise]
+                tempArray = daysSections["Saturday"] as! [Session]
                 if tempArray.count == 0{
                 }else{
                     sectionTitle = "Saturday"
@@ -319,24 +320,24 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         return sectionTitle
     }
     
-    func getExercisesForDayAtIndexPath(indexPath:NSIndexPath) -> [Exercise]{
-        var array = [Exercise]()
+    func getSessionsForDayAtIndexPath(indexPath:NSIndexPath) -> [Session]{
+        var array = [Session]()
         
         switch(indexPath.section){
         case 0:
-            array = daysSections["Sunday"] as! [Exercise]
+            array = daysSections["Sunday"] as! [Session]
         case 1:
-            array = daysSections["Monday"] as! [Exercise]
+            array = daysSections["Monday"] as! [Session]
         case 2:
-            array = daysSections["Tuesday"] as! [Exercise]
+            array = daysSections["Tuesday"] as! [Session]
         case 3:
-            array = daysSections["Wednesday"] as! [Exercise]
+            array = daysSections["Wednesday"] as! [Session]
         case 4:
-            array = daysSections["Thursday"] as! [Exercise]
+            array = daysSections["Thursday"] as! [Session]
         case 5:
-            array = daysSections["Friday"] as! [Exercise]
+            array = daysSections["Friday"] as! [Session]
         case 6:
-            array = daysSections["Saturday"] as! [Exercise]
+            array = daysSections["Saturday"] as! [Session]
         default:
             return []
         }
@@ -352,53 +353,60 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionCustomCell
         
-        let tempArr = getExercisesForDayAtIndexPath(indexPath: indexPath as NSIndexPath)
+        let tempArr = getSessionsForDayAtIndexPath(indexPath: indexPath as NSIndexPath)
         if tempArr.count != 0{
-            let exercise = tempArr[indexPath.row]
-            cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-            cell.numberOutlet.text = String(indexPath.row + 1)
-            cell.setExerciseKey(key: exercise.exerciseKey)
+            let session = tempArr[indexPath.row]
+            if session.paid == false{
+                cell.paidOutlet.text = "✗"
+            cell.paidOutlet.textColor = UIColor.red
+            }else{
+                cell.paidOutlet.text = "✓"
+                cell.paidOutlet.textColor = UIColor(red: 0, green: 131, blue: 0, alpha: 1)
+            }
+            
+            cell.number.text = String(indexPath.row + 1)
+            cell.setSessionKey(key: session.key)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        var array = [Exercise]()
+        var array = [Session]()
         
         switch(indexPath.section){
         case 0:
-            array = daysSections["Sunday"] as! [Exercise]
+            array = daysSections["Sunday"] as! [Session]
         case 1:
-            array = daysSections["Monday"] as! [Exercise]
+            array = daysSections["Monday"] as! [Session]
         case 2:
-            array = daysSections["Tuesday"] as! [Exercise]
+            array = daysSections["Tuesday"] as! [Session]
         case 3:
-            array = daysSections["Wednesday"] as! [Exercise]
+            array = daysSections["Wednesday"] as! [Session]
         case 4:
-            array = daysSections["Thursday"] as! [Exercise]
+            array = daysSections["Thursday"] as! [Session]
         case 5:
-            array = daysSections["Friday"] as! [Exercise]
+            array = daysSections["Friday"] as! [Session]
         case 6:
-            array = daysSections["Saturday"] as! [Exercise]
+            array = daysSections["Saturday"] as! [Session]
         default:
             array = []
         }
         
-        let selectedExercise = array[indexPath.row]
+        let selectedSession = array[indexPath.row]
         
         if editingStyle == .delete {
             let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                DBService.shared.deleteExerciseForClient(exercise: selectedExercise, completion: {
-                    for i in 0...self.exerciseArray.count{
-                        if self.exerciseArray[i].exerciseKey == selectedExercise.exerciseKey{
-                            self.exerciseArray.remove(at: i)
+                DBService.shared.deleteSessionForClient(session: selectedSession, completion: {
+                    for i in 0...self.sessionsArray.count{
+                        if self.sessionsArray[i].key == selectedSession.key{
+                            self.sessionsArray.remove(at: i)
                             break
                         }
                     }
-                    self.daysSections = self.groupExercisesByDay(exercisesPassed: self.exerciseArray) as! [String : Any]
+                    self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
                     
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                     tableView.reloadData()
@@ -409,15 +417,15 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func groupExercisesByDay(exercisesPassed:[Exercise])-> NSDictionary{
-        var dict = [String:[Exercise]]()
-        let sunday = [Exercise]()
-        let monday = [Exercise]()
-        let tuesday = [Exercise]()
-        let wednesday = [Exercise]()
-        let thursday = [Exercise]()
-        let friday = [Exercise]()
-        let saturday = [Exercise]()
+    func groupSessionsByDay(sessionsPassed:[Session])-> NSDictionary{
+        var dict = [String:[Session]]()
+        let sunday = [Session]()
+        let monday = [Session]()
+        let tuesday = [Session]()
+        let wednesday = [Session]()
+        let thursday = [Session]()
+        let friday = [Session]()
+        let saturday = [Session]()
         
         dict["Sunday"] = sunday
         dict["Monday"] = monday
@@ -427,9 +435,9 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
         dict["Friday"] = friday
         dict["Saturday"] = saturday
         
-        for exercise in exercisesPassed{
-            let dayName = DateConverter.getNameForDay(exerciseDate: exercise.date as String)
-            var temp:[Exercise]{
+        for session in sessionsPassed{
+            let dayName = session.day
+            var temp:[Session]{
                 get{
                     return dict[dayName]!
                 }
@@ -437,7 +445,7 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
                     dict[dayName] = newValue
                 }
             }
-            temp.append(exercise)
+            temp.append(session)
         }
         return dict as NSDictionary
     }
@@ -451,9 +459,9 @@ class ExercisesViewController: UIViewController, UITableViewDelegate, UITableVie
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
             let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! ExerciseCustomCell
             
-            for i in 0...self.exerciseArray.count{
-                if self.exerciseArray[i].exerciseKey == cell.exerciseKey{
-                    DBService.shared.setPassedExercise(exercise: exerciseArray[i])
+            for i in 0...self.sessionsArray.count{
+                if self.sessionsArray[i].key == cell.exerciseKey{
+                    //DBService.shared.setPassedSession(session: sessionsArray[i])
                     break
                 }
             }

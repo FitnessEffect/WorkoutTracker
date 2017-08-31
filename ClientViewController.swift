@@ -180,7 +180,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "exercisesSegue"){
             let s = sender as! UITapGestureRecognizer
-            let evc:ExercisesViewController = segue.destination as! ExercisesViewController
+            let evc:SessionsViewController = segue.destination as! SessionsViewController
             let selectedRow = tableViewOutlet.indexPathForRow(at:s.location(in: tableViewOutlet))?.row
             evc.clientPassed = clientArray[selectedRow!]
             DBService.shared.setPassedClient(client: clientArray[selectedRow!])
