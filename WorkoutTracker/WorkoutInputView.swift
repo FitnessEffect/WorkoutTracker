@@ -172,8 +172,22 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     func setupClientSave(completion: () -> Void){
         if sessionsNames.count != 0{
             challenge.setTitle(sessionsNames.first, for: .normal)
-            completion()
+            challenge.isUserInteractionEnabled = true
+            //check if session > 1
+            if sessionsNames.count > 1
+            {
+                challenge.isUserInteractionEnabled = true
+                challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                completion()
+            }else{
+                completion()
+            }
+            
+            
+            
         }else{
+            challenge.isUserInteractionEnabled = true
+            challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
             challenge.setTitle("Create Session", for: .normal)
         }
     }
@@ -415,7 +429,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.saveButton.frame = CGRect(x: 0, y: (self.saveStartPosition + self.translation1 + self.translation2), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-                if DBService.shared.exSessionEdit == true{
+                
+                if DBService.shared.exSessionEdit == true || self.sessionsNames.count == 1{
                     self.challenge.isUserInteractionEnabled = false
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
                 }else{

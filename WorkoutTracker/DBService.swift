@@ -254,6 +254,11 @@ class DBService {
         _passedClient = client
     }
     
+    func setPassedClient(client:Client, completion:()->Void){
+        _passedClient = client
+        completion()
+    }
+    
     func setCategory(category:String){
         _categoryPassed = category
     }
@@ -603,7 +608,8 @@ class DBService {
     
     func retrieveSessionsForDateForClient(dateStr:String, completion:@escaping ()-> Void){
         _sessions.removeAll()
-        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(String(DateConverter.getYearFromDate(dateStr: dateStr))).child(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr))).child(DateConverter.getNameForDay(dateStr: dateStr)).observeSingleEvent(of: .value, with: { (snapshot) in
+        print(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr)))
+        _ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Calendar").child(String(DateConverter.getYearFromDate(dateStr: dateStr))).child(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr))).child(DateConverter.getNameForDay(dateStr: dateStr)).observeSingleEvent(of: .value, with: { (snapshot) in
             let exercisesVal = snapshot.value as? NSDictionary
             if exercisesVal != nil{
                 let keys = exercisesVal?.allKeys as! [String]

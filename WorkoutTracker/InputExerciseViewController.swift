@@ -394,9 +394,18 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    func savePickerName(name:String){
       self.title = name
       if name != "Personal"{
-         DBService.shared.setPassedClient(client:getClientFromName(n:name))
-         checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+         /////////
+         DBService.shared.retrieveClients {
+            DBService.shared.setPassedClient(client:self.getClientFromName(n:name), completion:{
+            print(DBService.shared.passedClient)
+         self.checkSessions(dateStr: (self.workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+         })
+         }
       }else{
+         workoutInputView.challenge.isUserInteractionEnabled = false
+         workoutInputView.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+         workoutInputView.challenge.setTitle("Challenge", for: .normal)
+         
          DBService.shared.clearPassedClient()
       }
       
