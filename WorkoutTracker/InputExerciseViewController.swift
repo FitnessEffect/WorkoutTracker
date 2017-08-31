@@ -149,8 +149,10 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         //clear passedExercise
         DBService.shared.clearExercisePassed()
         DBService.shared.setPassedClientToPersonal()
+      DBService.shared.setEdit(bool: false)
+      DBService.shared.setExSessionEdit(bool: false)
     }
-    
+   
     func presentAlert(){
         let alert = UIAlertController(title: "Error", message: "No registered User with that email!", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
