@@ -366,7 +366,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         dict["Saturday"] = saturday
         
         for exercise in exercisesPassed{
-            let dayName = DateConverter.getNameForDay(exerciseDate: exercise.date as String)
+            let dayName = DateConverter.getNameForDay(dateStr: exercise.date as String)
             var temp:[Exercise]{
                 get{
                     return dict[dayName]!

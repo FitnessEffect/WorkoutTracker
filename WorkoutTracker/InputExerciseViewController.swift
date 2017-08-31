@@ -86,7 +86,12 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        workoutInputView.setCurrentDate()
+        if DBService.shared.passedDate != ""{
+            workoutInputView.setPassedDate()
+            checkSessions(dateStr:DBService.shared.passedDate , completion: {})
+        }else{
+            workoutInputView.setCurrentDate()
+        }
         
         UserDefaults.standard.set(nil, forKey: "supersetDescription")
         
@@ -128,6 +133,10 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         }else{
             fillInExercisePassed()
         }
+        
+        if title != "Personal"{
+            workoutInputView.setupClientSave()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -165,7 +174,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             workoutInputView.notificationNumber.alpha = 1
             workoutInputView.notificationNumber.text = String(DBService.shared.notificationCount)
         }
-
     }
     
     func getExercise(_ notification: Notification){
@@ -339,17 +347,42 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setNewDate(dateStr:String){
-        workoutInputView.setNewDate(dateStr: dateStr)
+        workoutInputView.setDateOnBtn(dateStr: dateStr, completion: {
+            checkSessions(dateStr: dateStr, completion: {})})
+    }
+    
+    func checkSessions(dateStr:String, completion: () ->Void){
+        //retrieve session for day
+        workoutInputView.sessionsNames.removeAll()
+        DBService.shared.retrieveSessionsForDateForClient(dateStr: (dateStr), completion: {
+            var tempStrings = [String]()
+            for session in DBService.shared.sessions{
+                tempStrings.append(session.sessionName)
+                self.workoutInputView.setSessionNames(names: tempStrings)
+                self.workoutInputView.setupClientSave()
+            }
+        })
+        self.workoutInputView.setupClientSave()
     }
     
     func savePickerName(name:String){
         self.title = name
+        if name != "Personal"{
         DBService.shared.setPassedClient(client:getClientFromName(n:name))
-        setupClientSave()
-    }
-    
-    func setupClientSave(){
-        workoutInputView.setupClientSave()
+            
+            //retrieve session for day
+            DBService.shared.retrieveSessionsForDateForClient(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {
+                var tempStrings = [String]()
+                for session in DBService.shared.sessions{
+                    tempStrings.append(session.sessionName)
+                    self.workoutInputView.setSessionNames(names: tempStrings)
+                    self.workoutInputView.setupClientSave()
+                }
+            })
+            self.workoutInputView.setupClientSave()
+        }else{
+            DBService.shared.clearPassedClient()
+        }
     }
     
     @IBAction func selectClient(_ sender: UIBarButtonItem) {

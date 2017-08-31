@@ -456,6 +456,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "sessionDetailSegue"){
             DBService.shared.setPassedClient(client: clientPassed)
+            DBService.shared.setDateRange(dateRange:(dateBtn.titleLabel?.text)!)
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
             let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! SessionCustomCell
             

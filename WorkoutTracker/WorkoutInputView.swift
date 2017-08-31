@@ -41,6 +41,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     var saveStartPosition:CGFloat = 0
     var dateStartPosition:CGFloat = 0
     var dateSelected:String!
+    var sessionsNames = [String]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -153,9 +154,17 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         super.init(coder: aDecoder)
     }
     
+    func setSessionNames(names:[String]){
+        sessionsNames = names
+    }
+    
     
     func setupClientSave(){
-        challenge.setTitle("Session", for: .normal)
+        if sessionsNames.count != 0{
+            challenge.setTitle(sessionsNames.last, for: .normal)
+        }else{
+            challenge.setTitle("Create Session", for: .normal)
+        }
     }
     
     @IBAction func save(_ sender: UIButton) {
@@ -163,9 +172,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             DBService.shared.checkOpponentEmail(email:Formatter.formateEmail(email:emailTxtView.text), completion: {
                 if DBService.shared.emailCheckBoolean == true{
                     var exerciseDictionary = [String:String]()
-                    
-                    
-                    
+                
                     let strDate = self.dateBtn.titleLabel!.text!
                     let tempDate = DateConverter.stringToDate(dateStr:strDate)
                     
@@ -312,6 +319,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             popController.preferredContentSize = CGSize(width: 300, height: 200)
             popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
             popController.setTag(tag: 0)
+            popController.setSessionNames(names:sessionsNames)
             
             // present the popover
             currentController?.present(popController, animated: true, completion: nil)
@@ -345,9 +353,16 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         dateBtn.setTitle(dateSelected, for: .normal)
     }
     
-    func setNewDate(dateStr:String){
+    func setPassedDate(){
+        dateBtn.setTitle(DBService.shared.passedDate, for: .normal)
+    }
+    
+    func setDateOnBtn(dateStr:String, completion: () -> Void){
         dateSelected = dateStr
-        dateBtn.setTitle(dateSelected,for: .normal)
+        dateBtn.setTitle(dateStr,for: .normal)
+        if DBService.shared.passedClient.clientKey != ""{
+        completion()
+        }
     }
     
     func saveResult(str:String){

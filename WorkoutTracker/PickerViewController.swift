@@ -36,7 +36,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var tempMinutes = ""
     var tempSeconds = ""
     var tempResult = ""
-    var sessions = [Session]()
+    var sessionNames = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,16 +79,13 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         if tagPassed == 0{
-//            DBService.shared.retrieveClien(completion: {
-//                self.sessions = DBService.shared.sessions
-//                self.pickerView.reloadAllComponents()
-//            })
+            milesLabel.alpha = 0
+            metersLabel.alpha = 0
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setSessionNames(names:[String]){
+        sessionNames = names
     }
     
     func setClients(clients:[String]){
@@ -109,7 +106,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if tagPassed == 0{
-            return sessions.count
+            return sessionNames.count
         }else if tagPassed == 1{
             return namesPassed.count
         }else if tagPassed == 2{
@@ -139,7 +136,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if tagPassed == 0{
-            return sessions[row].sessionName
+            return sessionNames[row]
         }else if tagPassed == 1{
             return namesPassed[row]
         }else if tagPassed == 2{
@@ -169,9 +166,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if tagPassed == 0{
-           tempResult = sessions[row].sessionName
-        }else if tagPassed == 1{
+        if tagPassed == 1{
             let pickerName = namesPassed[row]
             tempResult = pickerName
         }else if tagPassed == 2{
@@ -255,7 +250,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         milesLabel.alpha = 0
         metersLabel.alpha = 0
         if tagPassed == 0{
-            label.text = sessions[row].sessionName
+            label.text = sessionNames[row]
         }else if tagPassed == 1{
             label.text = namesPassed[row]
         }else if tagPassed == 2{

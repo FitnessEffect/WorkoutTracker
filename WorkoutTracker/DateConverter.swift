@@ -114,9 +114,9 @@ class DateConverter{
         return date!
     }
     
-    static func getNameForDay(exerciseDate:String)->String{
+    static func getNameForDay(dateStr:String)->String{
         //convert string to correct date
-        let tempDate = stringToDate(dateStr: exerciseDate)
+        let tempDate = stringToDate(dateStr: dateStr)
         
         //get date name
         let dateFormatter = DateFormatter()
@@ -173,6 +173,22 @@ class DateConverter{
         return year
     }
     
+    static func getYearFromDate(dateStr:String)->Int{
+        let calendar = Calendar.current
+        let tempDate = self.stringToDate(dateStr: dateStr)
+        let year = calendar.component(.year, from: tempDate)
+        print(year)
+        return year
+    }
+    
+    static func getWeekNumberFromDate(dateStr:String)->Int{
+        let calendar = Calendar.current
+        let tempDate = self.stringToDate(dateStr: dateStr)
+        let weekNumber = calendar.component(.weekOfYear, from: tempDate)
+        print(weekNumber)
+        return weekNumber
+    }
+    
     static func getPreviousSundayForWeek(selectedDate:NSDate) -> NSDate{
         let calendar = NSCalendar.current
         let weekDay = calendar.component(.weekday, from: selectedDate as Date)
@@ -192,5 +208,14 @@ class DateConverter{
 
         let saturday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilSaturday*60*60*24))
         return saturday
+    }
+    
+    static func getDaysInMonth(monthNum:Int, year:Int) -> Int{
+        let calendar = NSCalendar.current
+        let dateComponents = DateComponents(year:year, month: monthNum)
+        let date = calendar.date(from: dateComponents)
+        let range = calendar.range(of: .day, in: .month, for: date!)
+        let numOfDays = (range?.count)! as Int
+        return numOfDays
     }
 }

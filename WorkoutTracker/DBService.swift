@@ -46,6 +46,8 @@ class DBService {
     private var _sessions = [Session]()
     private var _sessionsCount = 0
     private var _passedSession = Session()
+    private var _passedDate = ""
+    private var _dateRange = ""
     
     private init() {
         initDatabase()
@@ -570,7 +572,23 @@ class DBService {
                     }
                 }
             }else{
-                self._exercisesForClient.removeAll()
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveSessionsForDateForClient(dateStr:String, completion:@escaping ()-> Void){
+        _sessions.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(String(DateConverter.getYearFromDate(dateStr: dateStr))).child(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr))).child(DateConverter.getNameForDay(dateStr: dateStr)).observeSingleEvent(of: .value, with: { (snapshot) in
+            let exercisesVal = snapshot.value as? NSDictionary
+            if exercisesVal != nil{
+                let keys = exercisesVal?.allKeys as! [String]
+                for key in keys{
+                        self.retrieveSessionInfo(key: key, completion: {completion()})
+                }
+            }else{
                 completion()
             }
         }) { (error) in
@@ -745,12 +763,24 @@ class DBService {
         _supersetExercises.removeAll()
     }
     
+    func clearPassedClient(){
+        _passedClient.clientKey = ""
+    }
+    
     func clearExercisePassed(){
         _passedExercise?.exerciseKey = ""
     }
     
     func setPassedClientToPersonal(){
         _passedClient.firstName = "Personal"
+    }
+    
+    func setDateRange(dateRange:String){
+        _dateRange = dateRange
+    }
+    
+    func setPassedDate(dateStr:String){
+        _passedDate = dateStr
     }
     
     func initializeData(){
@@ -953,6 +983,18 @@ class DBService {
     var passedSession:Session{
         get{
             return _passedSession
+        }
+    }
+    
+    var dateRange:String{
+        get{
+            return _dateRange
+        }
+    }
+    
+    var passedDate:String{
+        get{
+            return _passedDate
         }
     }
 }
