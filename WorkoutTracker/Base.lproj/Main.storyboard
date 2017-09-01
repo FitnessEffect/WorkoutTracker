@@ -1879,13 +1879,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
-                                <rect key="frame" x="127" y="198" width="232" height="65"/>
+                                <rect key="frame" x="110" y="201" width="249" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="hEn-RH-7h3"/>
-                                    <constraint firstAttribute="width" constant="232" id="nY1-Ru-d9A"/>
+                                    <constraint firstAttribute="width" constant="249" id="nY1-Ru-d9A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright"/>
+                                <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="durationBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="4ev-zw-0db"/>
                                 </connections>
@@ -1901,9 +1903,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
-                                <rect key="frame" x="127" y="128" width="232" height="65"/>
+                                <rect key="frame" x="110" y="131" width="249" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="232" id="sjd-UG-Vi4"/>
+                                    <constraint firstAttribute="width" constant="249" id="sjd-UG-Vi4"/>
                                     <constraint firstAttribute="height" constant="65" id="ywR-Ui-Do5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="46"/>
@@ -1913,23 +1915,23 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ro-Tl-OPI">
-                                <rect key="frame" x="16" y="139" width="103" height="43"/>
+                                <rect key="frame" x="7" y="139" width="103" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="7h7-jI-Rv6"/>
                                     <constraint firstAttribute="width" constant="103" id="Ynq-TG-f15"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-Vd-9zN">
-                                <rect key="frame" x="16" y="209" width="103" height="43"/>
+                                <rect key="frame" x="7" y="211" width="103" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="fq1-ux-RiL"/>
                                     <constraint firstAttribute="width" constant="103" id="l8Z-3w-qlc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyH-Ag-oPe">
@@ -1996,8 +1998,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="148" id="3f5-Il-791"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="leading" secondItem="3ro-Tl-OPI" secondAttribute="trailing" constant="8" id="7NP-cK-jEX"/>
+                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="145" id="3f5-Il-791"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="leading" secondItem="3ro-Tl-OPI" secondAttribute="trailing" id="7NP-cK-jEX"/>
                             <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="5" id="82q-Nh-Uha"/>
                             <constraint firstAttribute="trailing" secondItem="QZq-qU-6ZB" secondAttribute="trailing" id="AdT-C0-8J4"/>
                             <constraint firstItem="1Z1-5x-73S" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="FKm-rb-rwb"/>
@@ -2005,19 +2007,19 @@
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="1Z1-5x-73S" secondAttribute="bottom" id="FuE-P9-jwJ"/>
                             <constraint firstItem="MyH-Ag-oPe" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="IYA-z1-DRr"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
-                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="top" secondItem="3ro-Tl-OPI" secondAttribute="bottom" constant="27" id="TM4-5u-Xi4"/>
-                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="12" id="bzz-pk-QNh"/>
+                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="top" secondItem="3ro-Tl-OPI" secondAttribute="bottom" constant="29" id="TM4-5u-Xi4"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="9" id="bzz-pk-QNh"/>
                             <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="55.5" id="dc2-g8-gsN"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="10" id="eJZ-QA-HLH"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="47" id="dc2-g8-gsN"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="13" id="eJZ-QA-HLH"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="h5s-Sv-hMq"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="top" secondItem="nJX-56-Njm" secondAttribute="top" id="iIB-M5-J91"/>
-                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" id="jd9-Gx-tad"/>
+                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="-9" id="jd9-Gx-tad"/>
                             <constraint firstItem="3ro-Tl-OPI" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="21" id="kSe-qW-jUg"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="QZq-qU-6ZB" secondAttribute="bottom" id="nxZ-De-HtO"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="55.5" id="smD-uD-yIb"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="leading" secondItem="b6D-Vd-9zN" secondAttribute="trailing" constant="8" id="tic-EY-0rj"/>
-                            <constraint firstItem="3ro-Tl-OPI" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" id="wV7-jP-RXp"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="47" id="smD-uD-yIb"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="leading" secondItem="b6D-Vd-9zN" secondAttribute="trailing" id="tic-EY-0rj"/>
+                            <constraint firstItem="3ro-Tl-OPI" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="-9" id="wV7-jP-RXp"/>
                         </constraints>
                     </view>
                     <connections>
