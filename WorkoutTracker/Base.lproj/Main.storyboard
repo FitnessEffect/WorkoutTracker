@@ -543,16 +543,22 @@
                                     <outlet property="delegate" destination="Usp-ID-Pa7" id="wuW-Ar-I5j"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45a-C0-8GA">
-                                <rect key="frame" x="119" y="69" width="25" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45a-C0-8GA">
+                                <rect key="frame" x="93" y="69" width="25" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="FUU-hM-ig9"/>
+                                    <constraint firstAttribute="width" constant="25" id="QhW-H7-Wda"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB6-K1-1Ah">
-                                <rect key="frame" x="223" y="69" width="49" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB6-K1-1Ah">
+                                <rect key="frame" x="230" y="69" width="38" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="GdJ-4b-pwQ"/>
+                                    <constraint firstAttribute="width" constant="38" id="eaa-Ee-N8N"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -560,11 +566,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DB6-K1-1Ah" firstAttribute="leading" secondItem="45a-C0-8GA" secondAttribute="trailing" constant="112" id="1XW-y9-1cC"/>
                             <constraint firstItem="WFm-gU-2VS" firstAttribute="leading" secondItem="8Xt-ad-qow" secondAttribute="leadingMargin" id="7On-ks-DWU"/>
+                            <constraint firstItem="45a-C0-8GA" firstAttribute="centerY" secondItem="WFm-gU-2VS" secondAttribute="centerY" id="O0r-ri-oiM"/>
                             <constraint firstItem="WFm-gU-2VS" firstAttribute="top" secondItem="1Nb-gR-SX4" secondAttribute="bottom" constant="4" id="TEB-Er-kmo"/>
                             <constraint firstItem="cHD-o2-YLE" firstAttribute="centerX" secondItem="8Xt-ad-qow" secondAttribute="centerX" id="Vrk-5b-rtg"/>
                             <constraint firstItem="cHD-o2-YLE" firstAttribute="top" secondItem="WFm-gU-2VS" secondAttribute="bottom" constant="20" id="j5b-RW-RoO"/>
+                            <constraint firstItem="45a-C0-8GA" firstAttribute="leading" secondItem="8Xt-ad-qow" secondAttribute="leadingMargin" constant="77" id="lWi-0G-iEH"/>
                             <constraint firstItem="WFm-gU-2VS" firstAttribute="trailing" secondItem="8Xt-ad-qow" secondAttribute="trailingMargin" id="qv1-ep-Cbw"/>
+                            <constraint firstItem="DB6-K1-1Ah" firstAttribute="centerY" secondItem="WFm-gU-2VS" secondAttribute="centerY" id="sHo-7r-ZUh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -1868,6 +1878,70 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QZq-qU-6ZB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
+                                <rect key="frame" x="127" y="198" width="232" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="hEn-RH-7h3"/>
+                                    <constraint firstAttribute="width" constant="232" id="nY1-Ru-d9A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright"/>
+                                <connections>
+                                    <action selector="durationBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="4ev-zw-0db"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-Up-6bZ">
+                                <rect key="frame" x="110" y="72" width="156" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="VH6-Gd-ofP"/>
+                                    <constraint firstAttribute="width" constant="156" id="hmp-Dp-8f3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
+                                <rect key="frame" x="127" y="128" width="232" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="sjd-UG-Vi4"/>
+                                    <constraint firstAttribute="height" constant="65" id="ywR-Ui-Do5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="46"/>
+                                <state key="normal" title="✗" backgroundImage="chalkBackgroundBright"/>
+                                <connections>
+                                    <action selector="paidBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="w6e-pz-A5C"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ro-Tl-OPI">
+                                <rect key="frame" x="16" y="139" width="103" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="7h7-jI-Rv6"/>
+                                    <constraint firstAttribute="width" constant="103" id="Ynq-TG-f15"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-Vd-9zN">
+                                <rect key="frame" x="16" y="209" width="103" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="fq1-ux-RiL"/>
+                                    <constraint firstAttribute="width" constant="103" id="l8Z-3w-qlc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyH-Ag-oPe">
+                                <rect key="frame" x="90" y="411" width="195" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="0sW-fs-fZJ"/>
+                                    <constraint firstAttribute="height" constant="37" id="yc2-Bk-R4e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-5x-73S">
                                 <rect key="frame" x="0.0" y="275" width="375" height="392"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1919,61 +1993,36 @@
                                     <outlet property="delegate" destination="3Jg-AE-1tA" id="xT3-z5-g6V"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
-                                <rect key="frame" x="41" y="191" width="295" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="hEn-RH-7h3"/>
-                                    <constraint firstAttribute="width" constant="295" id="nY1-Ru-d9A"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright"/>
-                                <connections>
-                                    <action selector="durationBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="4ev-zw-0db"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-Up-6bZ">
-                                <rect key="frame" x="110" y="72" width="156" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="VH6-Gd-ofP"/>
-                                    <constraint firstAttribute="width" constant="156" id="hmp-Dp-8f3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
-                                <rect key="frame" x="41" y="126" width="294" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="294" id="sjd-UG-Vi4"/>
-                                    <constraint firstAttribute="height" constant="57" id="ywR-Ui-Do5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <state key="normal" title="Paid" backgroundImage="chalkBackgroundBright"/>
-                                <connections>
-                                    <action selector="paidBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="w6e-pz-A5C"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="8" id="82q-Nh-Uha"/>
+                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="148" id="3f5-Il-791"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="leading" secondItem="3ro-Tl-OPI" secondAttribute="trailing" constant="8" id="7NP-cK-jEX"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="5" id="82q-Nh-Uha"/>
                             <constraint firstAttribute="trailing" secondItem="QZq-qU-6ZB" secondAttribute="trailing" id="AdT-C0-8J4"/>
                             <constraint firstItem="1Z1-5x-73S" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="FKm-rb-rwb"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="8" id="Fhh-Pf-N1r"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="1Z1-5x-73S" secondAttribute="bottom" id="FuE-P9-jwJ"/>
+                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="IYA-z1-DRr"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
-                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="27" id="bzz-pk-QNh"/>
+                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="top" secondItem="3ro-Tl-OPI" secondAttribute="bottom" constant="27" id="TM4-5u-Xi4"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="12" id="bzz-pk-QNh"/>
                             <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="1" id="dc2-g8-gsN"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="8" id="eJZ-QA-HLH"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="55.5" id="dc2-g8-gsN"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="10" id="eJZ-QA-HLH"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="h5s-Sv-hMq"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="top" secondItem="nJX-56-Njm" secondAttribute="top" id="iIB-M5-J91"/>
+                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" id="jd9-Gx-tad"/>
+                            <constraint firstItem="3ro-Tl-OPI" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="21" id="kSe-qW-jUg"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="QZq-qU-6ZB" secondAttribute="bottom" id="nxZ-De-HtO"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="smD-uD-yIb"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="55.5" id="smD-uD-yIb"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="leading" secondItem="b6D-Vd-9zN" secondAttribute="trailing" constant="8" id="tic-EY-0rj"/>
+                            <constraint firstItem="3ro-Tl-OPI" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" id="wV7-jP-RXp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="durationBtn" destination="V6S-nw-PD5" id="MvF-1B-org"/>
+                        <outlet property="noExerciseLabel" destination="MyH-Ag-oPe" id="RHV-g4-ww2"/>
                         <outlet property="paidBtn" destination="A8r-2E-dQR" id="ESP-Cd-gM8"/>
                         <outlet property="sessionName" destination="oT8-Up-6bZ" id="CB5-jz-uq1"/>
                         <outlet property="tableView" destination="1Z1-5x-73S" id="dFX-oa-yMG"/>

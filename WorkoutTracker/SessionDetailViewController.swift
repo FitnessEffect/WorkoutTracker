@@ -14,6 +14,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var paidBtn: UIButton!
     @IBOutlet weak var durationBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noExerciseLabel: UILabel!
     
     var exercises = [Exercise]()
     var session:Session!
@@ -21,6 +22,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        noExerciseLabel.alpha = 0
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -51,7 +53,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         //setup exercises in session
         DBService.shared.retrieveExerciseListFromSessionKey(keyStr: session.key, completion: {
             self.exercises = DBService.shared.exercisesForClient
-            self.tableView.reloadData()
+            if self.exercises.count == 0{
+                self.noExerciseLabel.alpha = 1
+            }else{
+                self.noExerciseLabel.alpha = 0
+                self.tableView.reloadData()
+            }
         })
         
         calculatedDateStr = calculateDate()
@@ -184,12 +191,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func setPaidBtnToTrue(){
-        paidBtn.setTitle("Paid", for: .normal)
+        paidBtn.setTitle("✓", for: .normal)
         paidBtn.setTitleColor(UIColor(red: 0.0/255.0, green: 131.0/255.0, blue: 0.0/255.0, alpha: 1.0), for: .normal)
     }
     
     func setPaidBtnToFalse(){
-        paidBtn.setTitle("No Payment", for: .normal)
+        paidBtn.setTitle("✗", for: .normal)
         paidBtn.setTitleColor(UIColor.red, for: .normal)
     }
     
@@ -208,7 +215,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 250)
+        popController.preferredContentSize = CGSize(width: 300, height: 230)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         // present the popover
         self.present(popController, animated: true, completion: nil)
@@ -222,7 +229,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func paidBtn(_ sender: UIButton) {
-        if paidBtn.titleLabel?.text == "No Payment"{
+        if paidBtn.titleLabel?.text == "✗"{
             DBService.shared.updatePaidForSession(boolean: true, completion: {self.setPaidBtnToTrue()
             })
         }else{
