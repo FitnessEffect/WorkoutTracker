@@ -86,9 +86,31 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
+      
+      //set title with client name or "Personal"
+      if DBService.shared.passedClient.clientKey != ""{
+         if DBService.shared.passedClient.firstName == "Personal"{
+            
+            title = DBService.shared.passedClient.firstName
+         }else{
+            title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
+         }
+      }else{
+         title = "Personal"
+      }
+      
+      //set date
         if DBService.shared.passedDate != ""{
             workoutInputView.setPassedDate()
-            checkSessions(dateStr:DBService.shared.passedDate , completion: {})
+         
+         if DBService.shared.passedExercise.exerciseKey == "" && title != "Personal"{
+            workoutInputView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
+            workoutInputView.challenge.isUserInteractionEnabled = false
+            workoutInputView.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+         }else{
+            workoutInputView.challenge.setTitle("Challenge", for: .normal)
+            workoutInputView.challenge.isUserInteractionEnabled = true
+         }
         }else{
             workoutInputView.setCurrentDate()
         }
@@ -113,16 +135,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             }
         }
         self.nameArray.insert("Personal", at: 0)
-        
-        if DBService.shared.passedClient.firstName != ""{
-            if DBService.shared.passedClient.firstName == "Personal"{
-                title = DBService.shared.passedClient.firstName
-            }else{
-                title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
-            }
-        }else{
-            title = "Personal"
-        }
         
         if DBService.shared.edit == true || DBService.shared.exSessionEdit == true{
             //set tempExercise from passedExercise
@@ -151,6 +163,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         DBService.shared.setPassedClientToPersonal()
       DBService.shared.setEdit(bool: false)
       DBService.shared.setExSessionEdit(bool: false)
+      DBService.shared.setPassedDate(dateStr: DateConverter.getCurrentDate())
     }
    
     func presentAlert(){

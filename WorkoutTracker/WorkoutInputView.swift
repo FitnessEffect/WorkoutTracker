@@ -436,13 +436,14 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 
-                if DBService.shared.exSessionEdit == true || self.sessionsNames.count == 1{
+                if DBService.shared.exSessionEdit == true || self.sessionsNames.count == 1 || DBService.shared.passedExercise.exerciseKey == ""{
                     self.challenge.isUserInteractionEnabled = false
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                    
                 }else{
                 self.challenge.isUserInteractionEnabled = true
-                self.saveButton.isUserInteractionEnabled = true
                 }
+                 self.saveButton.isUserInteractionEnabled = true
             })
         }))
     }

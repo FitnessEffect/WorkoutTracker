@@ -186,7 +186,6 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! InputExerciseViewController
         DBService.shared.setCurrentDay(day: title!)
         DBService.shared.setPassedDate(dateStr: calculatedDateStr)
-        
         self.navigationController?.pushViewController(popController, animated: true)
     }
 
