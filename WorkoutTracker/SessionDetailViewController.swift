@@ -15,6 +15,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var durationBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noExerciseLabel: UILabel!
+    @IBOutlet weak var exerciseLabel: UILabel!
     
     var exercises = [Exercise]()
     var session:Session!
@@ -55,8 +56,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             self.exercises = DBService.shared.exercisesForClient
             if self.exercises.count == 0{
                 self.noExerciseLabel.alpha = 1
+                self.exerciseLabel.alpha = 0
             }else{
                 self.noExerciseLabel.alpha = 0
+                self.exerciseLabel.alpha = 1
                 self.tableView.reloadData()
             }
         })
