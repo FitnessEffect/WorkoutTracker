@@ -655,6 +655,7 @@ class DBService {
                     tempExercise.category = exercise.value["category"] as! String
                     tempExercise.type = exercise.value["type"] as! String
                     tempExercise.viewed = exercise.value["viewed"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     self._challengeExercises.append(tempExercise)
                     completion()
                 }
