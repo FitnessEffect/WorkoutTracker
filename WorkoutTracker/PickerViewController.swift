@@ -19,6 +19,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var metersLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var durationHours: UILabel!
+    @IBOutlet weak var durationMinutes: UILabel!
     
     var namesPassed:[String]!
     var weights = [String]()

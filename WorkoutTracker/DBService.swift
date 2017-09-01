@@ -195,7 +195,7 @@ class DBService {
             if value != nil{
                 let session = Session()
                 session.day = value?["day"] as! String
-                session.duration = value?["duration"] as! Int
+                session.duration = value?["duration"] as! String
                 session.exercises = value?["exercises"] as? [String]
                 session.key = value?["key"] as! String
                 session.sessionName = value?["sessionName"] as! String
@@ -525,6 +525,10 @@ class DBService {
         }){(error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func saveDurationForSession(str:String){
+       self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
     }
     
     func updatePaidForSession(boolean:Bool, completion: @escaping () -> Void){

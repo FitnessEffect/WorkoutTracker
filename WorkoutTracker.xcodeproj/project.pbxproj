@@ -32,6 +32,7 @@
 		522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */; };
 		522CFAE21F57AC8F0037B371 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */; };
 		522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE31F58C31E0037B371 /* NavigationViewController.swift */; };
+		522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
@@ -119,6 +120,7 @@
 		522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		522CFAE31F58C31E0037B371 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
+				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
 				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
@@ -676,6 +679,7 @@
 			files = (
 				52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */,
 				526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */,
+				522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */,
 				5276517D1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift in Sources */,
 				5291C45E1CE144B900DF8C0C /* BodybuildingSelectionViewController.swift in Sources */,
 				523470681ED0E6480079D03E /* ExercisesHistoryViewController.swift in Sources */,

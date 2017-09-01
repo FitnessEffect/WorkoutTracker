@@ -465,6 +465,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return dict as NSDictionary
     }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }

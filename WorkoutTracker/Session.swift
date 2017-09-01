@@ -24,7 +24,7 @@ class Session: NSCoder {
     
     var exercises:[String]?
     var paid:Bool
-    var duration:Int
+    var duration:String
     var year:String
     var weekNumber:String
     var day:String
@@ -37,7 +37,7 @@ class Session: NSCoder {
     override init(){
         exercises = nil
         paid = false
-        duration = 0
+        duration = ""
         year = ""
         weekNumber = ""
         day = ""
@@ -48,7 +48,7 @@ class Session: NSCoder {
     }
     
     //overload initializer
-    init(exercises:[String], paid:Bool, client:Client, duration:Int, year:String, weekNumber:String, day:String, key:String, sessionName:String, sessionNumber:String, clientName:String){
+    init(exercises:[String], paid:Bool, client:Client, duration:String, year:String, weekNumber:String, day:String, key:String, sessionName:String, sessionNumber:String, clientName:String){
         self.exercises = exercises
         self.paid = paid
         self.duration = duration

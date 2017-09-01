@@ -50,7 +50,7 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
         sessionDictionary["key"] = sessionKey
         sessionDictionary["sessionName"] = sessionName.text
         sessionDictionary["sessionNumber"] = number
-        sessionDictionary["duration"] = 0
+        sessionDictionary["duration"] = "0 hour(s) 0 min(s)"
         sessionDictionary["paid"] = false
         sessionDictionary["exercises"] = nil
         sessionDictionary["year"] = DBService.shared.currentYear

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SessionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SessionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var sessionName: UILabel!
     @IBOutlet weak var paidBtn: UIButton!
@@ -95,7 +95,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         for _ in 0...100{
             if count == 1{
-                return String(firstDay)
+                return (firstMonth + "/" + String(firstDay) + "/" + firstYear)
             }else if count == 2{
                 var temp = 0
                 temp = firstDay + 1
@@ -168,8 +168,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                 }
             }else if count == 7{
-                return String(lastDay)
-                
+                return (lastMonth + "/" + String(lastDay) + "/" + lastYear)
             }
         }
        return ""
@@ -192,6 +191,34 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func setPaidBtnToFalse(){
         paidBtn.setTitle("No Payment", for: .normal)
         paidBtn.setTitleColor(UIColor.red, for: .normal)
+    }
+    
+    @IBAction func durationBtn(_ sender: UIButton) {
+        let xPosition = durationBtn.frame.minX + (durationBtn.frame.width/2)
+        let yPosition = durationBtn.frame.maxY - 10
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "durationVC") as! DurationPickerViewController
+        
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = self.view
+        popController.preferredContentSize = CGSize(width: 300, height: 250)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+
+    }
+    
+    func saveResult(result:String){
+        let formattedResult = Formatter.formatDurationResult(str:result)
+        durationBtn.setTitle(formattedResult, for: .normal)
+        DBService.shared.saveDurationForSession(str:formattedResult)
     }
     
     @IBAction func paidBtn(_ sender: UIButton) {
@@ -247,6 +274,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         if row != nil{
             performSegue(withIdentifier: "editExerciseForSessionSegue", sender: sender)
         }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

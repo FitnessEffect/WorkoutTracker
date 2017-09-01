@@ -42,6 +42,23 @@ class Formatter{
         return newString
     }
     
+    static func formatDurationResult(str:String)->String{
+        var formattedStr = ""
+        var arr = str.components(separatedBy: " ")
+        
+        if arr[0] == "0"{
+            if arr[2] == "0"{
+                formattedStr = "0 hour(s) 0 min(s)"
+            }else{
+            formattedStr = arr[2] + " " + arr[3]
+            }
+        }else if arr[2] == "0"{
+            formattedStr = arr[0] + " " + arr[1]
+        }
+        
+        return formattedStr
+    }
+    
     static func formatResult(str:String)->String{
         var formattedStr = ""
         var arr = str.components(separatedBy: " ")

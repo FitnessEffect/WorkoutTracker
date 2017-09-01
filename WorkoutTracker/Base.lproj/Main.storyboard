@@ -508,6 +508,70 @@
             </objects>
             <point key="canvasLocation" x="2104.8000000000002" y="-1397.4512743628186"/>
         </scene>
+        <!--Duration Picker View Controller-->
+        <scene sceneID="Dlh-Go-1fc">
+            <objects>
+                <viewController storyboardIdentifier="durationVC" id="Usp-ID-Pa7" customClass="DurationPickerViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Nb-gR-SX4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tv4-IS-72S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Xt-ad-qow">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHD-o2-YLE">
+                                <rect key="frame" x="92" y="160" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="dl9-dB-FgV"/>
+                                    <constraint firstAttribute="height" constant="50" id="q0U-pD-cw6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="saveBtn:" destination="Usp-ID-Pa7" eventType="touchUpInside" id="nEZ-CO-vhy"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFm-gU-2VS">
+                                <rect key="frame" x="16" y="24" width="343" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="ESg-77-HCl"/>
+                                    <constraint firstAttribute="width" constant="343" id="hOi-73-250"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Usp-ID-Pa7" id="gBw-UV-1SI"/>
+                                    <outlet property="delegate" destination="Usp-ID-Pa7" id="wuW-Ar-I5j"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45a-C0-8GA">
+                                <rect key="frame" x="119" y="69" width="25" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB6-K1-1Ah">
+                                <rect key="frame" x="223" y="69" width="49" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WFm-gU-2VS" firstAttribute="leading" secondItem="8Xt-ad-qow" secondAttribute="leadingMargin" id="7On-ks-DWU"/>
+                            <constraint firstItem="WFm-gU-2VS" firstAttribute="top" secondItem="1Nb-gR-SX4" secondAttribute="bottom" constant="4" id="TEB-Er-kmo"/>
+                            <constraint firstItem="cHD-o2-YLE" firstAttribute="centerX" secondItem="8Xt-ad-qow" secondAttribute="centerX" id="Vrk-5b-rtg"/>
+                            <constraint firstItem="cHD-o2-YLE" firstAttribute="top" secondItem="WFm-gU-2VS" secondAttribute="bottom" constant="20" id="j5b-RW-RoO"/>
+                            <constraint firstItem="WFm-gU-2VS" firstAttribute="trailing" secondItem="8Xt-ad-qow" secondAttribute="trailingMargin" id="qv1-ep-Cbw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UdL-Ps-Nau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3037.5999999999999" y="-1400.1499250374814"/>
+        </scene>
         <!--Clients-->
         <scene sceneID="5ma-vL-iKk">
             <objects>
@@ -1863,6 +1927,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
                                 <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright"/>
+                                <connections>
+                                    <action selector="durationBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="4ev-zw-0db"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-Up-6bZ">
                                 <rect key="frame" x="110" y="72" width="156" height="46"/>
@@ -1996,13 +2063,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
-                                <rect key="frame" x="163" y="55" width="36" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kms-oK-nZJ">
                                 <rect key="frame" x="165" y="55" width="62" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2012,6 +2072,13 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="meters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzW-WM-nXC">
                                 <rect key="frame" x="176" y="55" width="62" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYm-8o-cAH">
+                                <rect key="frame" x="163" y="55" width="36" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -2041,7 +2108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daZ-B1-ce6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3050" y="3143"/>
+            <point key="canvasLocation" x="3048.8000000000002" y="3142.5787106446778"/>
         </scene>
         <!--Exercises History View Controller-->
         <scene sceneID="dQ1-IF-9bJ">
