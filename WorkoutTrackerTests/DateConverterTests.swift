@@ -56,21 +56,10 @@ class DateConverterTests: XCTestCase {
     
     func testGetMonthFromDate(){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
+        dateFormatter.dateFormat = "MM-dd-yyyy" //Your date format
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00") //Current time zone
         let date = dateFormatter.date(from: "07-29-2017")
         let result = WorkoutTracker.DateConverter.getMonthFromDate(date: date!)
-        
         XCTAssertEqual(result, 7)
     }
-    
-    func testGetSaturdayForWeek(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00") //Current time zone
-        let date = dateFormatter.date(from: "07-29-2017")
-        let result = WorkoutTracker.DateConverter.getSaturdayForWeek(selectedDate: date as! NSDate)
-        
-    }
-    
 }
