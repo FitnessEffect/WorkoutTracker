@@ -751,12 +751,17 @@ class DBService {
     }
     
     func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
-            completion()
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
+                if error != nil {
+                    print("error \(String(describing: error))")
+                }
+        }
+        completion()
     }
     
     func deleteExerciseForUser(exercise:Exercise, completion: @escaping () -> Void){
