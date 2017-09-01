@@ -246,6 +246,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         exerciseDictionary["creatorEmail"] = user.email
         exerciseDictionary["creatorID"] = user.uid
         exerciseDictionary["clientKey"] = " "
+      exerciseDictionary["uploadTime"] = DateConverter.getCurrentTimeAndDate()
 
       if self.title != "Personal"{
          //look up clientKey from name

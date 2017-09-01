@@ -56,7 +56,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 self.exerciseArray.removeAll()
                 self.exerciseArray = DBService.shared.exercisesForUser
                 self.exerciseArray.sort(by: {a, b in
-                    if a.date > b.date {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                    let dateA = dateFormatter.date(from: a.uploadTime)!
+                    let dateB = dateFormatter.date(from: b.uploadTime)!
+                    if dateA > dateB {
                         return true
                     }
                     return false
@@ -105,7 +109,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             self.exerciseArray.removeAll()
             self.exerciseArray = DBService.shared.exercisesForUser
             self.exerciseArray.sort(by: {a, b in
-                if a.date > b.date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                let dateA = dateFormatter.date(from: a.uploadTime)!
+                let dateB = dateFormatter.date(from: b.uploadTime)!
+                if dateA > dateB {
                     return true
                 }
                 return false

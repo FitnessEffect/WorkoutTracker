@@ -68,9 +68,9 @@ class DBService {
             retrieveExercisesForUser(completion: {
                 self._exercisesForUser.sort(by: {a, b in
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yyyy"
-                    let dateA = dateFormatter.date(from: a.date)!
-                    let dateB = dateFormatter.date(from: b.date)!
+                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                    let dateA = dateFormatter.date(from: a.uploadTime)!
+                    let dateB = dateFormatter.date(from: b.uploadTime)!
                     if dateA > dateB {
                         return true
                     }
@@ -327,6 +327,7 @@ class DBService {
                     tempExercise.creatorID = exercise.value["creatorID"] as! String
                     tempExercise.category = exercise.value["category"] as! String
                     tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     self._exercisesForUser.append(tempExercise)
                     completion()
                 }
@@ -582,6 +583,7 @@ class DBService {
                 tempExercise.creatorID = exercise?["creatorID"] as! String
                 tempExercise.category = exercise?["category"] as! String
                 tempExercise.type = exercise?["type"] as! String
+                tempExercise.uploadTime = exercise?["uploadTime"] as! String
                 self._exercisesForClient.append(tempExercise)
                 completion()
             }else{

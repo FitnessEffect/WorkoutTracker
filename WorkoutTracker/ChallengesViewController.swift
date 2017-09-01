@@ -73,7 +73,11 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.spinner.stopAnimating()
                 self.exerciseArray = DBService.shared.challengeExercises
                 self.exerciseArray.sort(by: {a, b in
-                    if a.date > b.date {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                    let dateA = dateFormatter.date(from: a.uploadTime)!
+                    let dateB = dateFormatter.date(from: b.uploadTime)!
+                    if dateA > dateB {
                         return true
                     }
                     return false
