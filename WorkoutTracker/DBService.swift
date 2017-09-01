@@ -175,8 +175,9 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
+        print(_passedSession.key)
                 self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
     
@@ -613,7 +614,6 @@ class DBService {
     
     func retrieveSessionsForDateForClient(dateStr:String, completion:@escaping ()-> Void){
         _sessions.removeAll()
-        print(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr)))
         _ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Calendar").child(String(DateConverter.getYearFromDate(dateStr: dateStr))).child(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr))).child(DateConverter.getNameForDay(dateStr: dateStr)).observeSingleEvent(of: .value, with: { (snapshot) in
             let exercisesVal = snapshot.value as? NSDictionary
             if exercisesVal != nil{
@@ -709,12 +709,34 @@ class DBService {
         }
     }
     
+    func deleteExerciseFromKey(exerciseKey:String){
+        self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseKey).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func deleteSessionForClient(session:Session, completion: @escaping () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(session.year).child(session.weekNumber).child(session.day).child(session.key).removeValue { (error, ref) in
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Calendar").child(session.year).child(session.weekNumber).child(session.day).child(session.key).removeValue { (error, ref) in
             
             if error != nil {
                 print("error \(String(describing: error))")
             }
+        }
+        
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child("exercises").observeSingleEvent(of: .value, with: { (snapshot) in
+            let exercisesKey = snapshot.value as? NSDictionary
+            if exercisesKey != nil{
+                let keys = exercisesKey?.allKeys as! [String]
+                for key in keys{
+                    self.deleteExerciseFromKey(exerciseKey: key)
+                }
+            }else{
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
         }
         
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(session.key).removeValue { (error, ref) in
@@ -723,6 +745,7 @@ class DBService {
             }
         }
         
+                
         completion()
         
     }

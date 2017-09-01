@@ -180,6 +180,8 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 completion()
             }else{
+                challenge.isUserInteractionEnabled = false
+                challenge.setBackgroundImage(UIImage(named:""), for: .normal)
                 completion()
             }
             

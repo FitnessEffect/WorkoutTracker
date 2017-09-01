@@ -247,19 +247,21 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         exerciseDictionary["creatorID"] = user.uid
         exerciseDictionary["clientKey"] = " "
 
-      
-        if self.title != "Personal"{
+      if self.title != "Personal"{
          //look up clientKey from name
-            let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
-            exerciseDictionary["clientKey"] = tempClient.clientKey
-         //update session
-         for session in DBService.shared.sessions{
-            if workoutInputView.challenge.titleLabel?.text == session.sessionName{
-               DBService.shared.setPassedSession(session: session)
-               break
+         let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
+         exerciseDictionary["clientKey"] = tempClient.clientKey
+         
+         if DBService.shared.passedSession.key == ""{
+            //update session
+            for session in DBService.shared.sessions{
+               if workoutInputView.challenge.titleLabel?.text == session.sessionName{
+                  DBService.shared.setPassedSession(session: session)
+                  break
+               }
             }
          }
-        }
+      }
         if DBService.shared.edit == true || DBService.shared.exSessionEdit{
             //if user changes client while exercises is in edit mode
             if DBService.shared.passedExercise.client != title{

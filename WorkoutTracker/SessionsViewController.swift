@@ -476,10 +476,9 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             DBService.shared.setDateRange(dateRange:(dateBtn.titleLabel?.text)!)
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
             let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! SessionCustomCell
-            print(cell.sessionKey)
             for i in 0...self.sessionsArray.count{
                 if self.sessionsArray[i].key == cell.sessionKey{
-                    print(sessionsArray[i])
+                    print(sessionsArray[i].key)
                     DBService.shared.setPassedSession(session: sessionsArray[i])
                     break
                 }

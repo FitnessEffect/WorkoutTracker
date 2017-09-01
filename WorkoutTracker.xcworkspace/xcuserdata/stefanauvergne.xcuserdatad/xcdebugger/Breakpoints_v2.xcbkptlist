@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "598"
-            endingLineNumber = "598"
+            startingLineNumber = "599"
+            endingLineNumber = "599"
             landmarkName = "retrieveSessionsForWeekForClient(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "587"
+            endingLineNumber = "587"
             landmarkName = "retrieveExercisesForSession(exerciseStr:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "584"
-            endingLineNumber = "584"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "retrieveExercisesForSession(exerciseStr:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
             landmarkName = "retrieveExerciseListFromSessionKey(keyStr:completion:)"
             landmarkType = "7">
             <Locations>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "546"
-            endingLineNumber = "546"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
             landmarkName = "retrieveExerciseListFromSessionKey(keyStr:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "568"
-            endingLineNumber = "568"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "retrieveExercisesForSession(exerciseStr:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/WorkoutInputView.swift"
-            timestampString = "525906790.122094"
+            timestampString = "525982249.42245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "save(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "525930242.391241"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "handleSave(json:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,43 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "525930242.391241"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "checkSessions(dateStr:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "525923124.671482"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
-            landmarkName = "retrieveSessionsForDateForClient(dateStr:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "525930242.391241"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
             landmarkName = "savePickerName(name:)"
             landmarkType = "7">
             <Locations>
@@ -378,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "525930242.391241"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "savePickerName(name:)"
             landmarkType = "7">
             <Locations>
@@ -426,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "525930242.391241"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "savePickerName(name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,12 +426,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "525929688.295654"
+            timestampString = "525981705.302765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "checkSessions(dateStr:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/DBService.swift"
+            timestampString = "525981705.302765"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "retrieveSessionInfo(key:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/DBService.swift"
+            timestampString = "525981705.302765"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "retrieveSessionInfo(key:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/DBService.swift"
+            timestampString = "525982249.42245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "729"
+            endingLineNumber = "729"
+            landmarkName = "deleteSessionForClient(session:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/InputExerciseViewController.swift"
+            timestampString = "525981684.366367"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "handleSave(json:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/DBService.swift"
+            timestampString = "525982109.083971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "618"
+            endingLineNumber = "618"
+            landmarkName = "retrieveSessionsForDateForClient(dateStr:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
