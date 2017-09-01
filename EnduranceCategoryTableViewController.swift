@@ -102,7 +102,7 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this category?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Category?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.categories[x]

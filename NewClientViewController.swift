@@ -253,7 +253,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
             self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
         })
         }else{
-            let alert = UIAlertController(title: "Error", message: "Please enter client's first and last name", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: "Please enter first and last name", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

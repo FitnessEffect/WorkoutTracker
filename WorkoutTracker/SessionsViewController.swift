@@ -413,7 +413,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         let selectedSession = array[indexPath.row]
         
         if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete session?", message: "This will also delete its exercises", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Session?", message: "This will also delete its exercises", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 DBService.shared.deleteSessionForClient(session: selectedSession, completion: {
                     for i in 0...self.sessionsArray.count{

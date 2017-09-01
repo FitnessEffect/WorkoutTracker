@@ -325,7 +325,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         let selectedExercise = array[indexPath.row]
         
         if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 DBService.shared.deleteExerciseForUser(exercise: selectedExercise, completion: {
                     
