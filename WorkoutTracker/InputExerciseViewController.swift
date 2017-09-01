@@ -145,7 +145,9 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          if DBService.shared.exSessionEdit == true{
             workoutInputView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
          }else{
+            if title != "Personal"{
             checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+            }
          }
         }else{
             fillInExercisePassed()
