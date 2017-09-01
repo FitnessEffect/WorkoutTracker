@@ -54,6 +54,8 @@ class Formatter{
             }
         }else if arr[2] == "0"{
             formattedStr = arr[0] + " " + arr[1]
+        }else{
+            formattedStr = str
         }
         
         return formattedStr

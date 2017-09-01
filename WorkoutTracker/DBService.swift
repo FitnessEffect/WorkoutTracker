@@ -528,8 +528,9 @@ class DBService {
         }
     }
     
-    func saveDurationForSession(str:String){
-       self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
+    func saveDurationForSession(str:String, completion: @escaping (String) -> Void){
+       self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
+        completion(str)
     }
     
     func updatePaidForSession(boolean:Bool, completion: @escaping () -> Void){

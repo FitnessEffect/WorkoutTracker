@@ -40,6 +40,7 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func create(_ sender: UIButton) {
+        
         let index = pickerView.selectedRow(inComponent: 0)
         let sessionKey = DBService.shared.createSessionKey()
         let temp = sessionName.text?.components(separatedBy: "#")

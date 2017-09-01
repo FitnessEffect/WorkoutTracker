@@ -123,7 +123,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 2{
                 var temp = 0
                 temp = firstDay + 1
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
                     if String(temp).characters.count != 2{
@@ -138,7 +138,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 var temp = 0
                 temp = firstDay + 2
                 
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
                     if String(temp).characters.count != 2{
@@ -152,7 +152,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 4{
                 var temp = 0
                 temp = firstDay + 3
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
                     if String(temp).characters.count != 2{
@@ -166,7 +166,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 5{
                 var temp = 0
                 temp = firstDay + 4
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                    return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
                     if String(temp).characters.count != 2{
@@ -180,7 +180,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 6{
                 var temp = 0
                 temp = firstDay + 5
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
                     if String(temp).characters.count != 2{
@@ -240,8 +240,11 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func saveResult(result:String){
         let formattedResult = Formatter.formatDurationResult(str:result)
-        durationBtn.setTitle(formattedResult, for: .normal)
-        DBService.shared.saveDurationForSession(str:formattedResult)
+        
+        DBService.shared.saveDurationForSession(str:formattedResult, completion: {
+        str in
+            self.durationBtn.setTitle(str, for: .normal)
+        })
     }
     
     @IBAction func paidBtn(_ sender: UIButton) {
