@@ -1889,17 +1889,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itz-3j-0ng">
-                                                    <rect key="frame" x="38" y="8" width="139" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="HF1-h4-RM1"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title + Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itz-3j-0ng">
+                                                    <rect key="frame" x="38" y="8" width="296" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="7" y="8" width="23" height="29"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -1909,9 +1907,6 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Cha-cm-M28" firstAttribute="top" secondItem="itz-3j-0ng" secondAttribute="top" id="ET5-By-qcT"/>
-                                                <constraint firstItem="Cha-cm-M28" firstAttribute="bottom" secondItem="itz-3j-0ng" secondAttribute="bottom" id="R6E-Ok-jT7"/>
-                                                <constraint firstItem="itz-3j-0ng" firstAttribute="leading" secondItem="Cha-cm-M28" secondAttribute="trailing" constant="8" id="hjH-Jv-LFl"/>
                                                 <constraint firstItem="Cha-cm-M28" firstAttribute="top" secondItem="tQJ-gf-IYu" secondAttribute="topMargin" id="iZL-ku-H3J"/>
                                                 <constraint firstItem="Cha-cm-M28" firstAttribute="leading" secondItem="tQJ-gf-IYu" secondAttribute="leadingMargin" constant="-1" id="sFP-P7-NTd"/>
                                             </constraints>

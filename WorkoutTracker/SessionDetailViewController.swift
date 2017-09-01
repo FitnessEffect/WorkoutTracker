@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SessionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
@@ -21,9 +22,13 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var session:Session!
     var calculatedDateStr = ""
     var spinner = UIActivityIndicatorView()
+    var ref:FIRDatabaseReference!
+    var user:FIRUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user = FIRAuth.auth()?.currentUser
+        ref = FIRDatabase.database().reference()
         noExerciseLabel.alpha = 0
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
@@ -31,6 +36,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SessionDetailViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
@@ -47,6 +53,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
+        
         //setup session info
         session = DBService.shared.passedSession
         title = session.day
@@ -89,6 +98,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         calculatedDateStr = calculateDate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
+        
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
     
     //find day number from day name and return entire date
