@@ -20,6 +20,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var exercises = [Exercise]()
     var session:Session!
     var calculatedDateStr = ""
+    var spinner = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         let tableViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
         tableView.addGestureRecognizer(tableViewTapGesture)
+        
+        spinner.frame = CGRect(x:(self.tableView.frame.width/2)-25, y:(self.tableView.frame.height/2)-75, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.white
+        spinner.alpha = 0
+        tableView.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +58,14 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             setPaidBtnToTrue()
         }
         
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
         //setup exercises in session
-        DBService.shared.retrieveExerciseListFromSessionKey(keyStr: session.key, completion: {
+            DBService.shared.retrieveExerciseListFromSessionKey(keyStr: self.session.key, completion: {
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+            self.spinner.stopAnimating()
+            self.exercises.removeAll()
             self.exercises = DBService.shared.exercisesForClient
             if self.exercises.count == 0{
                 self.noExerciseLabel.alpha = 1
@@ -63,7 +76,8 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 self.tableView.reloadData()
             }
         })
-        
+        }
+
         calculatedDateStr = calculateDate()
     }
     
