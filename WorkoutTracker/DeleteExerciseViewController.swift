@@ -17,17 +17,45 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     var types = [String]()
     var categories = [String]()
     var exercises = [String]()
+    var spinnerType = UIActivityIndicatorView()
+    var spinnerCategory = UIActivityIndicatorView()
+    var spinnerExercise = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        
+        spinnerType.frame = CGRect(x:(self.typePickerView.frame.width/2)-25, y:(self.typePickerView.frame.height/2)-25, width:50, height:50)
+        spinnerType.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerType.color = UIColor.white
+        spinnerType.alpha = 0
+        typePickerView.addSubview(spinnerType)
+        
+        spinnerCategory.frame = CGRect(x:(self.categoryPickerView.frame.width/2)-25, y:(self.categoryPickerView.frame.height/2)-25, width:50, height:50)
+        spinnerCategory.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerCategory.color = UIColor.white
+        spinnerCategory.alpha = 0
+        categoryPickerView.addSubview(spinnerCategory)
+        
+        spinnerExercise.frame = CGRect(x:(self.exercisePickerView.frame.width/2)-25, y:(self.exercisePickerView.frame.height/2)-25, width:50, height:50)
+        spinnerExercise.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerExercise.color = UIColor.white
+        spinnerExercise.alpha = 0
+        exercisePickerView.addSubview(spinnerExercise)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveTypes {
-            self.types = DBService.shared.types
-            self.typePickerView.reloadAllComponents()
-            self.setCategoriesForType()
+        spinnerType.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveTypes {
+                UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 0})
+                self.spinnerType.stopAnimating()
+                self.types = DBService.shared.types
+                self.typePickerView.reloadAllComponents()
+                self.setCategoriesForType()
+            }
         }
     }
     
@@ -39,14 +67,20 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
         self.categories.removeAll()
         let index = typePickerView.selectedRow(inComponent: 0)
         if types[index] == "Bodybuilding"{
-            DBService.shared.retrieveBodybuildingCategories {
-                self.categories = DBService.shared.bodybuildingCategories
-                self.categoryPickerView.reloadAllComponents()
-                DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-                DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-                DBService.shared.retrieveBodybuildingCategoryExercises {
-                    self.exercises = DBService.shared.exercisesForBodybuildingCategory
-                    self.exercisePickerView.reloadAllComponents()
+            spinnerCategory.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveBodybuildingCategories {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
+                    self.spinnerCategory.stopAnimating()
+                    self.categories = DBService.shared.bodybuildingCategories
+                    self.categoryPickerView.reloadAllComponents()
+                    DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
+                    DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
+                    DBService.shared.retrieveBodybuildingCategoryExercises {
+                        self.exercises = DBService.shared.exercisesForBodybuildingCategory
+                        self.exercisePickerView.reloadAllComponents()
+                    }
                 }
             }
         }else if types[index] == "Crossfit"{
@@ -54,9 +88,16 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             self.categoryPickerView.reloadAllComponents()
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-            DBService.shared.retrieveCrossfitCategoryExercises {
-                self.exercises = DBService.shared.exercisesForCrossfitCategory
-                self.exercisePickerView.reloadAllComponents()
+            spinnerCategory.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveCrossfitCategoryExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
+                    self.spinnerCategory.stopAnimating()
+                    
+                    self.exercises = DBService.shared.exercisesForCrossfitCategory
+                    self.exercisePickerView.reloadAllComponents()
+                }
             }
         }else if types[index] == "Endurance"{
             self.categoryPickerView.reloadAllComponents()
@@ -71,15 +112,27 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             self.exercisePickerView.reloadAllComponents()
         }else if categories[index] == "1 Rep Max"{
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-            DBService.shared.retrieveCrossfitCategoryExercises {
-                self.exercises = DBService.shared.exercisesForCrossfitCategory
-                self.exercisePickerView.reloadAllComponents()
+            spinnerExercise.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveCrossfitCategoryExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                    self.spinnerExercise.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForCrossfitCategory
+                    self.exercisePickerView.reloadAllComponents()
+                }
             }
         }else{
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-            DBService.shared.retrieveBodybuildingCategoryExercises {
-                self.exercises = DBService.shared.exercisesForBodybuildingCategory
-                self.exercisePickerView.reloadAllComponents()
+            spinnerExercise.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveBodybuildingCategoryExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                    self.spinnerExercise.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForBodybuildingCategory
+                    self.exercisePickerView.reloadAllComponents()
+                }
             }
         }
     }
