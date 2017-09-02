@@ -1293,7 +1293,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-m0-D2A">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="83" width="375" height="584"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -1357,15 +1357,27 @@
                                     <outlet property="delegate" destination="nby-OB-F24" id="28X-yW-nCO"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Challenges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsr-5G-ekR">
+                                <rect key="frame" x="90" y="315" width="195" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="5Kh-tO-itx"/>
+                                    <constraint firstAttribute="width" constant="195" id="wNn-vN-0Gv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zoB-m0-D2A" secondAttribute="trailing" id="3ue-s2-dwg"/>
                             <constraint firstItem="JTP-Hd-qPw" firstAttribute="top" secondItem="Rue-YO-020" secondAttribute="top" id="KJE-1C-pCC"/>
+                            <constraint firstItem="rsr-5G-ekR" firstAttribute="centerY" secondItem="JTP-Hd-qPw" secondAttribute="centerY" id="Kep-VW-Bqv"/>
                             <constraint firstItem="JTP-Hd-qPw" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="aWF-uj-8Sn"/>
                             <constraint firstAttribute="trailing" secondItem="JTP-Hd-qPw" secondAttribute="trailing" id="lxi-mP-Ib2"/>
                             <constraint firstItem="NSF-NZ-bzU" firstAttribute="top" secondItem="JTP-Hd-qPw" secondAttribute="bottom" id="n60-lv-VaE"/>
-                            <constraint firstItem="zoB-m0-D2A" firstAttribute="top" secondItem="jtB-wB-Zbg" secondAttribute="bottom" constant="14" id="qTL-SD-0BG"/>
+                            <constraint firstItem="rsr-5G-ekR" firstAttribute="centerX" secondItem="JTP-Hd-qPw" secondAttribute="centerX" id="poo-4l-QeE"/>
+                            <constraint firstItem="zoB-m0-D2A" firstAttribute="top" secondItem="jtB-wB-Zbg" secondAttribute="bottom" constant="19" id="qTL-SD-0BG"/>
                             <constraint firstItem="zoB-m0-D2A" firstAttribute="leading" secondItem="Rue-YO-020" secondAttribute="leading" id="qYW-Bf-XJa"/>
                             <constraint firstItem="NSF-NZ-bzU" firstAttribute="top" secondItem="zoB-m0-D2A" secondAttribute="bottom" id="zz0-aN-yOp"/>
                         </constraints>
@@ -1378,12 +1390,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noChallengesLabel" destination="rsr-5G-ekR" id="BdV-Cl-R4x"/>
                         <outlet property="tableViewOutlet" destination="zoB-m0-D2A" id="bmI-8F-m0N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHL-4h-nAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="3143"/>
+            <point key="canvasLocation" x="704.79999999999995" y="3142.5787106446778"/>
         </scene>
         <!--Tabata View Controller-->
         <scene sceneID="hs6-xD-zH2">
