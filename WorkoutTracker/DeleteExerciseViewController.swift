@@ -127,9 +127,18 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView.tag == 0{
+            //block user selection while pickerView content is loading
+            categoryPickerView.isUserInteractionEnabled = false
+            exercisePickerView.isUserInteractionEnabled = false
             setCategoriesForType()
-        }else{
+            categoryPickerView.isUserInteractionEnabled = true
+            exercisePickerView.isUserInteractionEnabled = true
+        }else if pickerView.tag == 1{
+            exercisePickerView.isUserInteractionEnabled = false
             setExercisesForCategory()
+            exercisePickerView.isUserInteractionEnabled = true
+        }else{
+            //do nothing
         }
     }
     
