@@ -23,10 +23,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var passToNextVC = false
     
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var noClientsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        noClientsLabel.alpha = 0
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -62,7 +63,14 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
                 self.clientArray = DBService.shared.clients
-                self.tableViewOutlet.reloadData()
+                if self.clientArray.count == 0{
+                    self.noClientsLabel.alpha = 1
+                    self.tableViewOutlet.reloadData()
+                }else{
+                    self.noClientsLabel.alpha = 0
+                    self.tableViewOutlet.reloadData()
+                }
+                
                 if DBService.shared.passToNextVC == true{
                     for i in 0...self.clientArray.count-1{
                         if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{

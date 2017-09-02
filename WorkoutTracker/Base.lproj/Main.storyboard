@@ -597,8 +597,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="BlI-qQ-GWM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PhY-tN-TJF">
-                                <rect key="frame" x="0.0" y="89" width="375" height="578"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PhY-tN-TJF">
+                                <rect key="frame" x="0.0" y="316" width="375" height="351"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147435897441" green="0.83842147435897441" blue="0.83842147435897441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -630,6 +630,16 @@
                                     <outlet property="delegate" destination="U4l-CF-NEd" id="CXZ-Q8-wn1"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Clients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-5X-Ufy">
+                                <rect key="frame" x="90" y="315" width="195" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="1KW-5J-4xw"/>
+                                    <constraint firstAttribute="width" constant="195" id="N3T-aV-cSy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -637,11 +647,13 @@
                             <constraint firstItem="BlI-qQ-GWM" firstAttribute="top" secondItem="xlr-Eh-bU2" secondAttribute="top" id="0Mr-Lj-s2V"/>
                             <constraint firstAttribute="trailing" secondItem="PhY-tN-TJF" secondAttribute="trailing" id="4Ei-Ci-dzj"/>
                             <constraint firstItem="PhY-tN-TJF" firstAttribute="leading" secondItem="xlr-Eh-bU2" secondAttribute="leading" id="Dkq-fl-cnN"/>
+                            <constraint firstItem="Zjs-5X-Ufy" firstAttribute="centerY" secondItem="BlI-qQ-GWM" secondAttribute="centerY" id="NQl-C4-l20"/>
                             <constraint firstItem="BlI-qQ-GWM" firstAttribute="leading" secondItem="xlr-Eh-bU2" secondAttribute="leading" id="RrT-Hj-66D"/>
                             <constraint firstItem="2mZ-z5-4tz" firstAttribute="top" secondItem="PhY-tN-TJF" secondAttribute="bottom" id="cEc-cs-s8C"/>
                             <constraint firstAttribute="trailing" secondItem="BlI-qQ-GWM" secondAttribute="trailing" id="gYO-Tp-u0z"/>
                             <constraint firstItem="2mZ-z5-4tz" firstAttribute="top" secondItem="BlI-qQ-GWM" secondAttribute="bottom" id="hbd-Yc-Khm"/>
                             <constraint firstItem="PhY-tN-TJF" firstAttribute="top" secondItem="xlr-Eh-bU2" secondAttribute="top" constant="89" id="tbI-zI-3nX"/>
+                            <constraint firstItem="Zjs-5X-Ufy" firstAttribute="centerX" secondItem="BlI-qQ-GWM" secondAttribute="centerX" id="toy-Uu-oq5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Clients" id="j7O-hq-elu">
@@ -657,12 +669,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noClientsLabel" destination="Zjs-5X-Ufy" id="Fb0-fs-T7b"/>
                         <outlet property="tableViewOutlet" destination="PhY-tN-TJF" id="oFC-yc-uwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOI-mo-IRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="-685"/>
+            <point key="canvasLocation" x="1028" y="-685.00749625187416"/>
         </scene>
         <!--Exercise Type Table View Controller-->
         <scene sceneID="vuR-lo-XDL">
@@ -2265,7 +2278,7 @@
                                     <action selector="selectDate:" destination="y7H-dD-F6s" eventType="touchUpInside" id="fWZ-MU-uAT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmj-ha-3fR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Challenges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmj-ha-3fR">
                                 <rect key="frame" x="90" y="315" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="IOM-c8-0je"/>
