@@ -53,7 +53,6 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
         
         //setup session info
@@ -86,13 +85,14 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     return false
                 })
+                self.tableView.reloadData()
                 if self.exercises.count == 0{
                     self.noExerciseLabel.alpha = 1
                     self.exerciseLabel.alpha = 0
                 }else{
                     self.noExerciseLabel.alpha = 0
                     self.exerciseLabel.alpha = 1
-                    self.tableView.reloadData()
+                    
                 }
             })
         }
@@ -308,10 +308,17 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 let ex = self.exercises[indexPath.row]
                 DBService.shared.deleteExerciseForClient(exercise: ex, completion: {
                     tableView.reloadData()
+                    if self.exercises.count == 0{
+                       self.noExerciseLabel.alpha = 1
+                        self.exerciseLabel.alpha = 0
+                    }else{
+                        self.noExerciseLabel.alpha = 0
+                        self.exerciseLabel.alpha = 1
+                    }
                 })
                 self.exercises.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                DBService.shared.passedClient.firstName = "Personal"
+                self.tableView.reloadData()
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             

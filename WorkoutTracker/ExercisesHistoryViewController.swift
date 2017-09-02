@@ -67,14 +67,12 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     }
                     return false
                 })
+                self.refreshTableViewData()
                 if self.exerciseArray.count == 0{
-                    self.refreshTableViewData()
                     self.noExercisesLabel.alpha = 1
                 }else{
-                    self.refreshTableViewData()
                     self.noExercisesLabel.alpha = 0
                 }
-                
             })
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
@@ -356,6 +354,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                     tableView.reloadData()
+                    if self.exerciseArray.count == 0{
+                        self.noExercisesLabel.alpha = 1
+                    }else{
+                        self.noExercisesLabel.alpha = 0
+                    }
                 })
                 
             }))

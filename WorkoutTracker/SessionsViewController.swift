@@ -13,6 +13,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     @IBOutlet weak var dateBtn: UIButton!
+    @IBOutlet weak var noSessionsLabel: UILabel!
     
     var selectedRow:Int = 0
     var clientPassed = Client()
@@ -30,6 +31,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noSessionsLabel.alpha = 0
         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
@@ -67,13 +69,12 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.spinner.stopAnimating()
                 self.sessionsArray.removeAll()
                 self.sessionsArray = DBService.shared.sessions
-//                self.sessionsArray.sort(by: {a, b in
-//                    if a.date > b.date {
-//                        return true
-//                    }
-//                    return false
-//                })
                 self.refreshTableViewData()
+                if self.sessionsArray.count == 0{
+                    self.noSessionsLabel.alpha = 1
+                }else{
+                    self.noSessionsLabel.alpha = 0
+                }
             })
         }
         clientPassed = DBService.shared.retrieveClientInfo(clientKey: clientPassed.clientKey)
@@ -430,6 +431,11 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                     tableView.reloadData()
+                    if self.sessionsArray.count == 0{
+                        self.noSessionsLabel.alpha = 1
+                    }else{
+                        self.noSessionsLabel.alpha = 0
+                    }
                 })
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))

@@ -63,12 +63,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
                 self.clientArray = DBService.shared.clients
+                self.tableViewOutlet.reloadData()
                 if self.clientArray.count == 0{
                     self.noClientsLabel.alpha = 1
-                    self.tableViewOutlet.reloadData()
                 }else{
                     self.noClientsLabel.alpha = 0
-                    self.tableViewOutlet.reloadData()
                 }
                 
                 if DBService.shared.passToNextVC == true{
@@ -118,7 +117,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DBService.shared.deleteClient(id: id)
                 self.clientArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                DBService.shared.passedClient.firstName = "Personal"
+                if self.clientArray.count == 0{
+                    self.noClientsLabel.alpha = 1
+                }else{
+                    self.noClientsLabel.alpha = 0
+                }
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             

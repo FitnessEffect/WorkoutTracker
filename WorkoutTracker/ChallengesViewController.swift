@@ -84,14 +84,12 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                     return false
                 })
+                self.tableViewOutlet.reloadData()
                 if self.exerciseArray.count == 0{
-                    self.tableViewOutlet.reloadData()
                     self.noChallengesLabel.alpha = 1
                 }else{
-                    self.tableViewOutlet.reloadData()
                     self.noChallengesLabel.alpha = 0
                 }
-                
             }
         }
     }
@@ -166,6 +164,12 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 tableView.reloadData()
+                if self.exerciseArray.count == 0{
+                    self.noChallengesLabel.alpha = 1
+                }else{
+                    self.noChallengesLabel.alpha = 0
+                }
+                
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion:nil)
