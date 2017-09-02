@@ -233,7 +233,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func setPaidBtnToTrue(){
         paidBtn.setTitle("✓", for: .normal)
-        paidBtn.setTitleColor(UIColor(red: 0.0/255.0, green: 131.0/255.0, blue: 0.0/255.0, alpha: 1.0), for: .normal)
+        paidBtn.setTitleColor(UIColor(red: 0.0/255.0, green: 165.0/255.0, blue: 0.0/255.0, alpha: 1.0), for: .normal)
     }
     
     func setPaidBtnToFalse(){

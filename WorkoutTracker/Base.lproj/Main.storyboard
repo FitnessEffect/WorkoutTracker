@@ -1983,7 +1983,9 @@
                                     <constraint firstAttribute="height" constant="65" id="ywR-Ui-Do5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="46"/>
-                                <state key="normal" title="✗" backgroundImage="chalkBackgroundBright"/>
+                                <state key="normal" title="✗" backgroundImage="chalkBackgroundBright">
+                                    <color key="titleColor" red="0.0" green="0.64705403645833337" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="paidBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="w6e-pz-A5C"/>
                                 </connections>

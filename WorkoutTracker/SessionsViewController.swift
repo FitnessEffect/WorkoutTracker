@@ -384,7 +384,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.paidOutlet.textColor = UIColor.red
             }else{
                 cell.paidOutlet.text = "✓"
-                cell.paidOutlet.textColor = UIColor(red: 0, green: 131, blue: 0, alpha: 1)
+                cell.paidOutlet.textColor = UIColor(red: 0, green: 165, blue: 0, alpha: 1)
             }
             
             cell.number.text = String(indexPath.row + 1)
