@@ -13,6 +13,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     @IBOutlet weak var dateBtn: UIButton!
+    @IBOutlet weak var noExercisesLabel: UILabel!
     
     var selectedRow:Int = 0
     var exerciseArray = [Exercise]()
@@ -26,6 +27,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noExercisesLabel.alpha = 0
         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
@@ -65,7 +67,14 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                     }
                     return false
                 })
-                self.refreshTableViewData()
+                if self.exerciseArray.count == 0{
+                    self.refreshTableViewData()
+                    self.noExercisesLabel.alpha = 1
+                }else{
+                    self.refreshTableViewData()
+                    self.noExercisesLabel.alpha = 0
+                }
+                
             })
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)

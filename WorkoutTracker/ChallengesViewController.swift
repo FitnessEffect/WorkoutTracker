@@ -12,6 +12,7 @@ import Firebase
 class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var noChallengesLabel: UILabel!
     
     var selectedRow:Int = 0
     var client = Client()
@@ -26,6 +27,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Challenges"
+        noChallengesLabel.alpha = 0
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -82,7 +84,14 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                     return false
                 })
-                self.tableViewOutlet.reloadData()
+                if self.exerciseArray.count == 0{
+                    self.tableViewOutlet.reloadData()
+                    self.noChallengesLabel.alpha = 1
+                }else{
+                    self.tableViewOutlet.reloadData()
+                    self.noChallengesLabel.alpha = 0
+                }
+                
             }
         }
     }

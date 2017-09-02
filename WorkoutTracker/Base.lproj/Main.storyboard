@@ -2265,15 +2265,27 @@
                                     <action selector="selectDate:" destination="y7H-dD-F6s" eventType="touchUpInside" id="fWZ-MU-uAT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmj-ha-3fR">
+                                <rect key="frame" x="90" y="315" width="195" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="IOM-c8-0je"/>
+                                    <constraint firstAttribute="width" constant="195" id="p6l-J5-hwy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="E2F-4V-Eqz" firstAttribute="leading" secondItem="m0J-zD-DKp" secondAttribute="leading" id="6Gn-5O-ylS"/>
+                            <constraint firstItem="mmj-ha-3fR" firstAttribute="centerY" secondItem="E2F-4V-Eqz" secondAttribute="centerY" id="97M-VL-dgA"/>
                             <constraint firstItem="NDK-hQ-DLg" firstAttribute="top" secondItem="N8M-km-AUd" secondAttribute="bottom" id="KG5-d9-a6t"/>
                             <constraint firstItem="E2F-4V-Eqz" firstAttribute="top" secondItem="m0J-zD-DKp" secondAttribute="top" id="Orn-oc-pHX"/>
                             <constraint firstItem="NDK-hQ-DLg" firstAttribute="leading" secondItem="m0J-zD-DKp" secondAttribute="leading" id="SHs-y5-9Fw"/>
                             <constraint firstItem="N9g-ic-fAn" firstAttribute="top" secondItem="E2F-4V-Eqz" secondAttribute="bottom" id="Xqh-dz-BDP"/>
                             <constraint firstItem="Sf4-uq-5X3" firstAttribute="top" secondItem="NDK-hQ-DLg" secondAttribute="bottom" constant="8" id="aKl-2C-58D"/>
+                            <constraint firstItem="mmj-ha-3fR" firstAttribute="centerX" secondItem="E2F-4V-Eqz" secondAttribute="centerX" id="aaN-Yk-tiW"/>
                             <constraint firstItem="Sf4-uq-5X3" firstAttribute="leading" secondItem="m0J-zD-DKp" secondAttribute="leading" id="eSe-pr-JRQ"/>
                             <constraint firstAttribute="trailing" secondItem="NDK-hQ-DLg" secondAttribute="trailing" id="gxj-pI-q2z"/>
                             <constraint firstAttribute="bottom" secondItem="Sf4-uq-5X3" secondAttribute="bottom" id="phk-YI-Jdn"/>
@@ -2290,6 +2302,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateBtn" destination="NDK-hQ-DLg" id="tzR-pX-1Rm"/>
+                        <outlet property="noExercisesLabel" destination="mmj-ha-3fR" id="5HM-8L-C1s"/>
                         <outlet property="tableViewOutlet" destination="Sf4-uq-5X3" id="U59-16-NNM"/>
                     </connections>
                 </viewController>
@@ -3653,6 +3666,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuF-iy-fzI"/>
+        <segue reference="GJO-pp-3SY"/>
     </inferredMetricsTieBreakers>
 </document>
