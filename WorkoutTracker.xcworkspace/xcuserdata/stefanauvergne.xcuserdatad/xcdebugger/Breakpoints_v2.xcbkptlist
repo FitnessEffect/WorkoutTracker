@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526083972.133925"
+            timestampString = "526088471.443141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "handleSave(json:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -352,6 +352,22 @@
             startingLineNumber = "424"
             endingLineNumber = "424"
             landmarkName = "tableView(_:commit:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/WorkoutInputView.swift"
+            timestampString = "526088299.232403"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "setupClientSave(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
