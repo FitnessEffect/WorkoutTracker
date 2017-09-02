@@ -307,18 +307,17 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let ex = self.exercises[indexPath.row]
                 DBService.shared.deleteExerciseForClient(exercise: ex, completion: {
-                    tableView.reloadData()
+                    self.exercises.remove(at: (indexPath as NSIndexPath).row)
+                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    self.tableView.reloadData()
                     if self.exercises.count == 0{
-                       self.noExerciseLabel.alpha = 1
+                        self.noExerciseLabel.alpha = 1
                         self.exerciseLabel.alpha = 0
                     }else{
                         self.noExerciseLabel.alpha = 0
                         self.exerciseLabel.alpha = 1
                     }
                 })
-                self.exercises.remove(at: (indexPath as NSIndexPath).row)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                self.tableView.reloadData()
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
@@ -337,6 +336,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseForSessionSegue"){

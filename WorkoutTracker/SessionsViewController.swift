@@ -79,7 +79,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         clientPassed = DBService.shared.retrieveClientInfo(clientKey: clientPassed.clientKey)
         button.setTitle(clientPassed.firstName, for: .normal)
-
+        
         if DBService.shared.passToNextVC == true{
             callCreateSession()
             DBService.shared.setPassToNextVC(bool:false)
@@ -90,7 +90,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
-
+        
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
         
     }
@@ -128,18 +128,18 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         DBService.shared.retrieveSessionsForWeekForClient{
             self.sessionsArray.removeAll()
             self.sessionsArray = DBService.shared.sessions
-//            self.exerciseArray.sort(by: {a, b in
-//                if a.date > b.date {
-//                    return true
-//                }
-//                return false
-//            })
+            //            self.exerciseArray.sort(by: {a, b in
+            //                if a.date > b.date {
+            //                    return true
+            //                }
+            //                return false
+            //            })
             self.refreshTableViewData()
         }
     }
     
     @IBAction func createSession(_ sender: UIBarButtonItem) {
-       callCreateSession()
+        callCreateSession()
     }
     
     func callCreateSession(){
@@ -259,7 +259,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return array!.count;
     }
-
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
@@ -374,14 +374,14 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             if Int(a.sessionNumber)! > Int(b.sessionNumber)! {
                 return false
             }
-                return true
-            })
+            return true
+        })
         if tempArr.count != 0{
             let session = tempArr[indexPath.row]
-           
+            
             if session.paid == false{
                 cell.paidOutlet.text = "✗"
-            cell.paidOutlet.textColor = UIColor.red
+                cell.paidOutlet.textColor = UIColor.red
             }else{
                 cell.paidOutlet.text = "✓"
                 cell.paidOutlet.textColor = UIColor(red: 0, green: 131, blue: 0, alpha: 1)
@@ -424,17 +424,18 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
                     for i in 0...self.sessionsArray.count{
                         if self.sessionsArray[i].key == selectedSession.key{
                             self.sessionsArray.remove(at: i)
+                            self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
+                            
+                            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            tableView.reloadData()
+                            if self.sessionsArray.count == 0{
+                                self.noSessionsLabel.alpha = 1
+                            }else{
+                                self.noSessionsLabel.alpha = 0
+                            }
                             break
                         }
-                    }
-                    self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
-                    
-                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                    tableView.reloadData()
-                    if self.sessionsArray.count == 0{
-                        self.noSessionsLabel.alpha = 1
-                    }else{
-                        self.noSessionsLabel.alpha = 0
+                        break
                     }
                 })
             }))
