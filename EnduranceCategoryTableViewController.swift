@@ -32,7 +32,7 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         
-        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.frame = CGRect(x:125, y:125, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         spinner.alpha = 0
