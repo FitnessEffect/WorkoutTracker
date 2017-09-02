@@ -33,7 +33,7 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         }
         
-         spinner.frame = CGRect(x:(self.pickerOutlet.frame.width/2)-25, y:(self.pickerOutlet.frame.height/2)-25, width:50, height:50)
+         spinner.frame = CGRect(x:(self.pickerOutlet.frame.width/2)-75, y:(self.pickerOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         spinner.alpha = 0
@@ -61,9 +61,9 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             spinner.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             DispatchQueue.global(qos: .userInteractive).async {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
                 DBService.shared.retrieveHeroWods(completion:{
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
                     self.exercises = DBService.shared.crossfitHeroWods
                     self.pickerOutlet.reloadAllComponents()
                 })

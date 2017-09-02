@@ -182,15 +182,16 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             }else{
                 challenge.isUserInteractionEnabled = false
                 challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+                exerciseBtn.isUserInteractionEnabled = true
+                exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 completion()
             }
-            
-            
-            
         }else{
             challenge.isUserInteractionEnabled = true
             challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
             challenge.setTitle("Create Session", for: .normal)
+            exerciseBtn.isUserInteractionEnabled = false
+            exerciseBtn.setBackgroundImage(UIImage(named:""), for: .normal)
         }
     }
     
@@ -199,7 +200,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             DBService.shared.checkOpponentEmail(email:Formatter.formateEmail(email:emailTxtView.text), completion: {
                 if DBService.shared.emailCheckBoolean == true{
                     var exerciseDictionary = [String:String]()
-                
+                    
                     let strDate = self.dateBtn.titleLabel!.text!
                     let tempDate = DateConverter.stringToDate(dateStr:strDate)
                     
@@ -240,39 +241,38 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 
                 exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
                 exerciseDictionary["result"] =   self.resultTextView.text!
-                exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
-                exerciseDictionary["opponent"] = ""
+                    exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
+                    exerciseDictionary["opponent"] = ""
+                    exerciseDictionary["year"] = String(tempYear)
+                    exerciseDictionary["week"] = String(tempWeekNum)
+                    self.saveButton.isUserInteractionEnabled = false
+                    self.challenge.isUserInteractionEnabled = false
+                    self.resultBtn.isUserInteractionEnabled = false
+                    self.delegate?.handleSave(json: exerciseDictionary)
+                    self.eraseExerciseDescription()
+            }else{
+                var exerciseDictionary = [String:String]()
+                
+                let strDate = dateBtn.titleLabel!.text!
+                let tempDate = DateConverter.stringToDate(dateStr:strDate)
+                
+                let tempWeekNum = DateConverter.weekNumFromDate(date: tempDate as NSDate)
+                let tempYear = DateConverter.yearFromDate(date:tempDate as NSDate)
+                
+                DBService.shared.setCurrentWeekNumber(strWeek: String(tempWeekNum))
+                DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
+                
+                exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
+                exerciseDictionary["result"] =   self.resultTextView.text!
+                exerciseDictionary["opponent"] = self.emailTxtView.text
                 exerciseDictionary["year"] = String(tempYear)
                 exerciseDictionary["week"] = String(tempWeekNum)
                 self.saveButton.isUserInteractionEnabled = false
                 self.challenge.isUserInteractionEnabled = false
                 self.resultBtn.isUserInteractionEnabled = false
+                
                 self.delegate?.handleSave(json: exerciseDictionary)
                 self.eraseExerciseDescription()
-
-            }else{
-            var exerciseDictionary = [String:String]()
-            
-            let strDate = dateBtn.titleLabel!.text!
-            let tempDate = DateConverter.stringToDate(dateStr:strDate)
-            
-            let tempWeekNum = DateConverter.weekNumFromDate(date: tempDate as NSDate)
-            let tempYear = DateConverter.yearFromDate(date:tempDate as NSDate)
-            
-            DBService.shared.setCurrentWeekNumber(strWeek: String(tempWeekNum))
-            DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
-            
-            exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-            exerciseDictionary["result"] =   self.resultTextView.text!
-            exerciseDictionary["opponent"] = self.emailTxtView.text
-            exerciseDictionary["year"] = String(tempYear)
-            exerciseDictionary["week"] = String(tempWeekNum)
-            self.saveButton.isUserInteractionEnabled = false
-            self.challenge.isUserInteractionEnabled = false
-            self.resultBtn.isUserInteractionEnabled = false
-            
-            self.delegate?.handleSave(json: exerciseDictionary)
-            self.eraseExerciseDescription()
             }
         }
     }
@@ -360,8 +360,33 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         
         if challenge.titleLabel?.text != "Challenge"{
             if challenge.titleLabel?.text != "Create Session"{
+                // get a reference to the view controller for the popover
+                let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
+                
+                // set the presentation style
+                popController.modalPresentationStyle = UIModalPresentationStyle.popover
+                
+                // set up the popover presentation controller
+                popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+                popController.popoverPresentationController?.delegate = self
+                popController.popoverPresentationController?.sourceView = currentController?.view
+                popController.preferredContentSize = CGSize(width: 300, height: 200)
+                popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+                popController.setTag(tag: 0)
+                popController.setSessionNames(names:sessionsNames)
+                popController.setCurrentSessionName(currentSessionName:(challenge.titleLabel?.text)!)
+                
+                // present the popover
+                currentController?.present(popController, animated: true, completion: nil)
+            }else{
+                let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! NavigationViewController
+                popController.setPassToNextVC(bool: true)
+                currentController?.present(popController, animated: true, completion: nil)
+            }
+        }else{
+            
             // get a reference to the view controller for the popover
-            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerVC") as! PickerViewController
+            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
             
             // set the presentation style
             popController.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -372,34 +397,9 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
             popController.popoverPresentationController?.sourceView = currentController?.view
             popController.preferredContentSize = CGSize(width: 300, height: 200)
             popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-            popController.setTag(tag: 0)
-            popController.setSessionNames(names:sessionsNames)
-            popController.setCurrentSessionName(currentSessionName:(challenge.titleLabel?.text)!)
             
             // present the popover
             currentController?.present(popController, animated: true, completion: nil)
-            }else{
-                 let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! NavigationViewController
-                popController.setPassToNextVC(bool: true)
-                currentController?.present(popController, animated: true, completion: nil)
-            }
-        }else{
-        
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "emailSelectionID") as! EmailSelectionViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = currentController?.view
-        popController.preferredContentSize = CGSize(width: 300, height: 200)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        
-        // present the popover
-        currentController?.present(popController, animated: true, completion: nil)
         }
     }
     
@@ -421,7 +421,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         dateSelected = dateStr
         dateBtn.setTitle(dateStr,for: .normal)
         if DBService.shared.passedClient.clientKey != ""{
-        completion()
+            completion()
         }
     }
     
@@ -449,10 +449,10 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
                     
                 }else{
-                self.challenge.isUserInteractionEnabled = true
-                self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+                    self.challenge.isUserInteractionEnabled = true
+                    self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 }
-                 self.saveButton.isUserInteractionEnabled = true
+                self.saveButton.isUserInteractionEnabled = true
                 
                 if DBService.shared.passedClient.clientKey == ""{
                     self.challenge.isUserInteractionEnabled = true
@@ -557,7 +557,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         }else if sender.tag == 1{
             eraseResultDescription()
         }else if sender.tag == 2{
-           eraseEmailDescription()
+            eraseEmailDescription()
         }
     }
     

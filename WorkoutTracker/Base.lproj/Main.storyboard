@@ -844,7 +844,9 @@
                             <constraint firstItem="UVV-Cg-7EI" firstAttribute="centerY" secondItem="NOb-2P-INX" secondAttribute="centerY" constant="-1" id="EhB-XT-rWV"/>
                             <constraint firstItem="OUC-do-szN" firstAttribute="centerX" secondItem="rQ3-oo-kgh" secondAttribute="centerX" id="Gmp-qp-4Tx"/>
                             <constraint firstItem="UEb-te-LgN" firstAttribute="top" secondItem="NOb-2P-INX" secondAttribute="bottom" constant="14" id="Hbs-nM-2P1"/>
+                            <constraint firstAttribute="trailing" secondItem="P7K-bV-kuU" secondAttribute="trailing" constant="8" id="MSM-2a-UVZ"/>
                             <constraint firstItem="NOb-2P-INX" firstAttribute="leading" secondItem="rQ3-oo-kgh" secondAttribute="leading" constant="8" id="N8T-Ro-LNx"/>
+                            <constraint firstItem="P7K-bV-kuU" firstAttribute="leading" secondItem="rQ3-oo-kgh" secondAttribute="leading" constant="8" id="NeP-zM-ISh"/>
                             <constraint firstItem="j0t-5x-BwA" firstAttribute="centerY" secondItem="NOb-2P-INX" secondAttribute="centerY" constant="-1" id="WQF-cA-mi4"/>
                             <constraint firstItem="P7K-bV-kuU" firstAttribute="top" secondItem="o3Q-vA-gnP" secondAttribute="bottom" constant="-1" id="XJy-Aa-geE"/>
                             <constraint firstItem="UpM-3S-LpW" firstAttribute="centerY" secondItem="NOb-2P-INX" secondAttribute="centerY" constant="-1" id="b2W-HO-H5q"/>
@@ -3692,6 +3694,6 @@
         <image name="silverWritting" width="978" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuF-iy-fzI"/>
+        <segue reference="dgs-GC-2Lb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -266,124 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526001158.161361"
+            timestampString = "526083972.133925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "292"
             endingLineNumber = "292"
             landmarkName = "handleSave(json:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526001158.161361"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
-            landmarkName = "savePickerName(name:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WorkoutTracker.InputExerciseViewController.savePickerName (name : Swift.String) -&gt; ()"
-                  moduleName = "WorkoutTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/InputExerciseViewController.swift"
-                  timestampString = "525909102.728009"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "398"
-                  endingLineNumber = "398"
-                  offsetFromSymbolStart = "397">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WorkoutTracker.InputExerciseViewController.(savePickerName (name : Swift.String) -&gt; ()).(closure #1)"
-                  moduleName = "WorkoutTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/InputExerciseViewController.swift"
-                  timestampString = "525909102.729347"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "399"
-                  endingLineNumber = "399"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526001158.161361"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "savePickerName(name:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WorkoutTracker.InputExerciseViewController.savePickerName (name : Swift.String) -&gt; ()"
-                  moduleName = "WorkoutTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/InputExerciseViewController.swift"
-                  timestampString = "525909102.732698"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "398"
-                  endingLineNumber = "398"
-                  offsetFromSymbolStart = "397">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WorkoutTracker.InputExerciseViewController.(savePickerName (name : Swift.String) -&gt; ()).(closure #1)"
-                  moduleName = "WorkoutTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/InputExerciseViewController.swift"
-                  timestampString = "525909102.734077"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "399"
-                  endingLineNumber = "399"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526001158.161361"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "savePickerName(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -400,22 +288,6 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526001158.161361"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
-            landmarkName = "checkSessions(dateStr:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -480,22 +352,6 @@
             startingLineNumber = "424"
             endingLineNumber = "424"
             landmarkName = "tableView(_:commit:forRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "526082305.083714"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "handleSave(json:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
