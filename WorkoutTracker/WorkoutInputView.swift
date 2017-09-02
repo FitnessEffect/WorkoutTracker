@@ -435,6 +435,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                 self.eraseResult.alpha = 1
                 self.challenge.frame = CGRect(x: 0, y: (self.challengeStartPosition + self.translation1 + self.translation2), width: self.challenge.frame.width, height: self.challenge.frame.height)
                 self.saveButton.frame = CGRect(x: 0, y: (self.saveStartPosition + self.translation1 + self.translation2), width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+                
                 self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 self.saveButton.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 
@@ -443,7 +444,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
                     self.challenge.isUserInteractionEnabled = true
                     self.challenge.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
                 }
-                if DBService.shared.exSessionEdit == true || self.sessionsNames.count == 1 || DBService.shared.passedExercise.exerciseKey == ""{
+                if DBService.shared.exSessionEdit == true || self.sessionsNames.count == 1{
                     self.challenge.isUserInteractionEnabled = false
                     self.challenge.setBackgroundImage(UIImage(named:""), for: .normal)
                     
