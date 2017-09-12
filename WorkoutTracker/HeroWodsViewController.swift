@@ -45,28 +45,36 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if categoryPassed == "1 Rep Max"{
-            spinner.startAnimating()
-            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-            DispatchQueue.global(qos: .userInteractive).async {
-                DBService.shared.retrieveCrossfitCategoryExercises(completion: {
-                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                    self.spinner.stopAnimating()
-                    self.exercises = DBService.shared.exercisesForCrossfitCategory
-                    self.pickerOutlet.reloadAllComponents()
-                })
-            }
-            pickerOutlet.isUserInteractionEnabled = true
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         }else{
-            spinner.startAnimating()
-            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-            DispatchQueue.global(qos: .userInteractive).async {
-                DBService.shared.retrieveHeroWods(completion:{
-                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                    self.spinner.stopAnimating()
-                    self.exercises = DBService.shared.crossfitHeroWods
-                    self.pickerOutlet.reloadAllComponents()
-                })
+            if categoryPassed == "1 Rep Max"{
+                spinner.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+                DispatchQueue.global(qos: .userInteractive).async {
+                    DBService.shared.retrieveCrossfitCategoryExercises(completion: {
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                        self.exercises = DBService.shared.exercisesForCrossfitCategory
+                        self.pickerOutlet.reloadAllComponents()
+                    })
+                }
+                pickerOutlet.isUserInteractionEnabled = true
+            }else{
+                spinner.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+                DispatchQueue.global(qos: .userInteractive).async {
+                    DBService.shared.retrieveHeroWods(completion:{
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                        self.exercises = DBService.shared.crossfitHeroWods
+                        self.pickerOutlet.reloadAllComponents()
+                    })
+                }
             }
         }
     }

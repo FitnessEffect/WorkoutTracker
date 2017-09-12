@@ -31,17 +31,24 @@ class ExerciseTypeTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.clearSupersetExercises()
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInteractive).async {
-            DBService.shared.retrieveTypes(completion: {
-               UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.exerciseTypes = DBService.shared.types
-                self.tableView.reloadData()
-            })
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                DBService.shared.retrieveTypes(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exerciseTypes = DBService.shared.types
+                    self.tableView.reloadData()
+                })
+            }
         }
-       
     }
     
     override func didReceiveMemoryWarning() {

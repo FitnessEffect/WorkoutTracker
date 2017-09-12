@@ -32,27 +32,35 @@ class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UI
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveUserStats(){
-            if DBService.shared.userStats["age"] as! String != ""{
-                for index in 0...self.age.count-1{
-                    if self.age[index] == DBService.shared.userStats["age"] as! String{
-                        self.agePickerView.selectRow(index, inComponent: 0, animated: true)
-                        break
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            DBService.shared.retrieveUserStats(){
+                if DBService.shared.userStats["age"] as! String != ""{
+                    for index in 0...self.age.count-1{
+                        if self.age[index] == DBService.shared.userStats["age"] as! String{
+                            self.agePickerView.selectRow(index, inComponent: 0, animated: true)
+                            break
+                        }
                     }
-                }
-                for index in 0...self.weight.count-1{
-                    if self.weight[index] == DBService.shared.userStats["weight"] as! String{
-                        self.weightPickerView.selectRow(index, inComponent: 0, animated: true)
+                    for index in 0...self.weight.count-1{
+                        if self.weight[index] == DBService.shared.userStats["weight"] as! String{
+                            self.weightPickerView.selectRow(index, inComponent: 0, animated: true)
+                        }
                     }
-                }
-                for index in 0...self.feet.count-1{
-                    if self.feet[index] == DBService.shared.userStats["feet"] as! String{
-                        self.heightPickerView.selectRow(index, inComponent: 0, animated: true)
+                    for index in 0...self.feet.count-1{
+                        if self.feet[index] == DBService.shared.userStats["feet"] as! String{
+                            self.heightPickerView.selectRow(index, inComponent: 0, animated: true)
+                        }
                     }
-                }
-                for index in 0...self.inches.count-1{
-                    if self.inches[index] == DBService.shared.userStats["inches"] as! String{
-                        self.heightPickerView.selectRow(index, inComponent: 1, animated: true)
+                    for index in 0...self.inches.count-1{
+                        if self.inches[index] == DBService.shared.userStats["inches"] as! String{
+                            self.heightPickerView.selectRow(index, inComponent: 1, animated: true)
+                        }
                     }
                 }
             }
