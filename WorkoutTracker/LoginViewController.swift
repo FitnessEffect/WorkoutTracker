@@ -151,17 +151,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }else{
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
                 if success.0 == nil{
-                    let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    let internetCheck = Reachability.isInternetAvailable()
+                    if internetCheck == false{
+                        let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }else{
+                        let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }else{
                     self.prefs.set(self.emailTF.text, forKey: "email")
                     self.prefs.set(self.passwordTF.text, forKey:"password")
                     self.prefs.set(self.rememberMeSwitch.isOn, forKey:"switch")
                     self.setAuthListener()
                 }
-                
             })
         }
     }

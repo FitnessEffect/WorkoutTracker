@@ -23,6 +23,7 @@
 		52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */; };
 		52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalViewController.swift */; };
 		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
+		5229485A1F6823610095E6ED /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522948591F6823610095E6ED /* Reachability.swift */; };
 		522CFACD1F50F2D70037B371 /* WorkoutTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */; };
 		522CFAD51F50F32D0037B371 /* FormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD41F50F32D0037B371 /* FormatterTest.swift */; };
 		522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */; };
@@ -109,6 +110,7 @@
 		52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEnduranceCategoryViewController.swift; path = ../CreateEnduranceCategoryViewController.swift; sourceTree = "<group>"; };
 		52265E181F20F559009F3B27 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalStatsViewController.swift; sourceTree = "<group>"; };
+		522948591F6823610095E6ED /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		522CFACA1F50F2D70037B371 /* WorkoutTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerTests.swift; sourceTree = "<group>"; };
 		522CFACE1F50F2D70037B371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
+				522948591F6823610095E6ED /* Reachability.swift */,
 				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
 				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
@@ -713,6 +716,7 @@
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
+				5229485A1F6823610095E6ED /* Reachability.swift in Sources */,
 				525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */,
 				52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */,
 				5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */,
