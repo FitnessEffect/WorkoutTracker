@@ -42,38 +42,46 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
         spinner.alpha = 0
-        view.addSubview(spinner)
+        tableViewOutlet.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveExercisesForUser(completion:{
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.exerciseArray.removeAll()
-                self.exerciseArray = DBService.shared.exercisesForUser
-                self.exerciseArray.sort(by: {a, b in
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
-                    let dateA = dateFormatter.date(from: a.uploadTime)!
-                    let dateB = dateFormatter.date(from: b.uploadTime)!
-                    if dateA > dateB {
-                        return true
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveExercisesForUser(completion:{
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exerciseArray.removeAll()
+                    self.exerciseArray = DBService.shared.exercisesForUser
+                    self.exerciseArray.sort(by: {a, b in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                        let dateA = dateFormatter.date(from: a.uploadTime)!
+                        let dateB = dateFormatter.date(from: b.uploadTime)!
+                        if dateA > dateB {
+                            return true
+                        }
+                        return false
+                    })
+                    self.refreshTableViewData()
+                    if self.exerciseArray.count == 0{
+                        self.noExercisesLabel.alpha = 1
+                    }else{
+                        self.noExercisesLabel.alpha = 0
                     }
-                    return false
                 })
-                self.refreshTableViewData()
-                if self.exerciseArray.count == 0{
-                    self.noExercisesLabel.alpha = 1
-                }else{
-                    self.noExercisesLabel.alpha = 0
-                }
-            })
+            }
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }

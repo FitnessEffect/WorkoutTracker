@@ -51,42 +51,46 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
         spinner.alpha = 0
-        view.addSubview(spinner)
-    
+        tableViewOutlet.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveClients {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.clientArray = DBService.shared.clients
-                self.tableViewOutlet.reloadData()
-                if self.clientArray.count == 0{
-                    self.noClientsLabel.alpha = 1
-                }else{
-                    self.noClientsLabel.alpha = 0
-                }
-                
-                if DBService.shared.passToNextVC == true{
-                    for i in 0...self.clientArray.count-1{
-                        if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{
-                           let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sessionsVC") as! SessionsViewController
-                            nextVC.clientPassed = self.clientArray[self.selectedRow]
-                            DBService.shared.setPassedClient(client: self.clientArray[i])
-                            self.navigationController?.pushViewController(nextVC, animated: true)
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveClients {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.clientArray = DBService.shared.clients
+                    self.tableViewOutlet.reloadData()
+                    if self.clientArray.count == 0{
+                        self.noClientsLabel.alpha = 1
+                    }else{
+                        self.noClientsLabel.alpha = 0
+                    }
+                    
+                    if DBService.shared.passToNextVC == true{
+                        for i in 0...self.clientArray.count-1{
+                            if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{
+                                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sessionsVC") as! SessionsViewController
+                                nextVC.clientPassed = self.clientArray[self.selectedRow]
+                                DBService.shared.setPassedClient(client: self.clientArray[i])
+                                self.navigationController?.pushViewController(nextVC, animated: true)
+                            }
                         }
                     }
                 }
             }
         }
-        
-
     }
 
-    
     //TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -66,29 +66,37 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //notification center emits message to reset and hide challenge notification number
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        //download challenges from firebase on seperate thread
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveChallengesExercises {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.exerciseArray = DBService.shared.challengeExercises
-                self.exerciseArray.sort(by: {a, b in
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
-                    let dateA = dateFormatter.date(from: a.uploadTime)!
-                    let dateB = dateFormatter.date(from: b.uploadTime)!
-                    if dateA > dateB {
-                        return true
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            //download challenges from firebase on seperate thread
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveChallengesExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exerciseArray = DBService.shared.challengeExercises
+                    self.exerciseArray.sort(by: {a, b in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                        let dateA = dateFormatter.date(from: a.uploadTime)!
+                        let dateB = dateFormatter.date(from: b.uploadTime)!
+                        if dateA > dateB {
+                            return true
+                        }
+                        return false
+                    })
+                    self.tableViewOutlet.reloadData()
+                    if self.exerciseArray.count == 0{
+                        self.noChallengesLabel.alpha = 1
+                    }else{
+                        self.noChallengesLabel.alpha = 0
                     }
-                    return false
-                })
-                self.tableViewOutlet.reloadData()
-                if self.exerciseArray.count == 0{
-                    self.noChallengesLabel.alpha = 1
-                }else{
-                    self.noChallengesLabel.alpha = 0
                 }
             }
         }

@@ -65,38 +65,44 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }else{
             setPaidBtnToTrue()
         }
-        
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInitiated).async {
-            //setup exercises in session
-            DBService.shared.retrieveExerciseListFromSessionKey(keyStr: self.session.key, completion: {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.exercises.removeAll()
-                self.exercises = DBService.shared.exercisesForClient
-                self.exercises.sort(by: {a, b in
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
-                    let dateA = dateFormatter.date(from: a.uploadTime)!
-                    let dateB = dateFormatter.date(from: b.uploadTime)!
-                    if dateA < dateB {
-                        return true
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                //setup exercises in session
+                DBService.shared.retrieveExerciseListFromSessionKey(keyStr: self.session.key, completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exercises.removeAll()
+                    self.exercises = DBService.shared.exercisesForClient
+                    self.exercises.sort(by: {a, b in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                        let dateA = dateFormatter.date(from: a.uploadTime)!
+                        let dateB = dateFormatter.date(from: b.uploadTime)!
+                        if dateA < dateB {
+                            return true
+                        }
+                        return false
+                    })
+                    self.tableView.reloadData()
+                    if self.exercises.count == 0{
+                        self.noExerciseLabel.alpha = 1
+                        self.exerciseLabel.alpha = 0
+                    }else{
+                        self.noExerciseLabel.alpha = 0
+                        self.exerciseLabel.alpha = 1
+                        
                     }
-                    return false
                 })
-                self.tableView.reloadData()
-                if self.exercises.count == 0{
-                    self.noExerciseLabel.alpha = 1
-                    self.exerciseLabel.alpha = 0
-                }else{
-                    self.noExerciseLabel.alpha = 0
-                    self.exerciseLabel.alpha = 1
-                    
-                }
-            })
+            }
         }
-        
         calculatedDateStr = calculateDate()
     }
     
