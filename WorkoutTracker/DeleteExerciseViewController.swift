@@ -46,15 +46,23 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        spinnerType.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 1})
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveTypes {
-                UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 0})
-                self.spinnerType.stopAnimating()
-                self.types = DBService.shared.types
-                self.typePickerView.reloadAllComponents()
-                self.setCategoriesForType()
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinnerType.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveTypes {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 0})
+                    self.spinnerType.stopAnimating()
+                    self.types = DBService.shared.types
+                    self.typePickerView.reloadAllComponents()
+                    self.setCategoriesForType()
+                }
             }
         }
     }
