@@ -12,10 +12,8 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     var hours = [String]()
     var minutes = [String]()
-    
     var tempMinutes = ""
     var tempHours = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +37,6 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         }else{
             return minutes.count
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -71,7 +68,6 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         let tempResult = tempHours + " hour(s) " + tempMinutes + " min(s)"
         
         presenter.saveResult(result: tempResult)
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -83,7 +79,6 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         }else{
             label.text = minutes[row]
         }
-        
         
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
         label.attributedText = myTitle

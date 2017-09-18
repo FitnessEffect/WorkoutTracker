@@ -81,6 +81,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                     UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                     self.spinner.stopAnimating()
                     self.exerciseArray = DBService.shared.challengeExercises
+                    //sort exercises by date
                     self.exerciseArray.sort(by: {a, b in
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "y-M-d HH:mm:ss"
@@ -164,11 +165,9 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         if editingStyle == UITableViewCellEditingStyle.delete {
             let deleteAlert = UIAlertController(title: "Delete Challenge?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                let ex = self.exerciseArray[indexPath.row]
                 
                 //update firebase with deletion
-                DBService.shared.deleteChallengeExerciseForUser(exercise:ex)
-                
+                DBService.shared.deleteChallengeExerciseForUser(exercise:self.exerciseArray[indexPath.row])
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 tableView.reloadData()
@@ -177,7 +176,6 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
                 }else{
                     self.noChallengesLabel.alpha = 0
                 }
-                
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion:nil)

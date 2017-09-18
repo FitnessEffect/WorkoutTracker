@@ -239,6 +239,7 @@
 			children = (
 				52717FE31EE8DBA800DBD8DE /* DBService.swift */,
 				52717FE51EE8DBB100DBD8DE /* APIService.swift */,
+				522948591F6823610095E6ED /* Reachability.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -268,6 +269,7 @@
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
+				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -340,6 +342,7 @@
 				522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */,
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				526A3F101EC60D61001BF557 /* CalendarViewController.swift */,
+				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
 			);
 			name = Popovers;
 			sourceTree = "<group>";
@@ -394,9 +397,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				522948591F6823610095E6ED /* Reachability.swift */,
-				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
-				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
