@@ -84,4 +84,22 @@ class FormatterTest: XCTestCase {
         XCTAssertEqual(result6, "0 hour(s) 0 min(s) 0 sec(s)")
     }
     
+    func testFormateDurationResult(){
+        let duration = "1 hour(s) 1 min(s)"
+        let duration2 = "0 hour(s) 1 min(s)"
+        let duration3 = "1 hour(s) 0 min(s)"
+        let duration4 = "0 hour(s) 0 min(s)"
+        
+        let result = WorkoutTracker.Formatter.formatDurationResult(str: duration)
+        let result2 = WorkoutTracker.Formatter.formatDurationResult(str: duration2)
+        let result3 = WorkoutTracker.Formatter.formatDurationResult(str: duration3)
+        let result4 = WorkoutTracker.Formatter.formatDurationResult(str: duration4)
+        
+        XCTAssertEqual(result, "1 hour(s) 1 min(s)")
+        XCTAssertEqual(result2, "1 min(s)")
+        XCTAssertEqual(result3, "1 hour(s)")
+        XCTAssertEqual(result4, "0 hour(s) 0 min(s)")
+
+    }
+    
 }
