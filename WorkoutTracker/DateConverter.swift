@@ -166,12 +166,20 @@ class DateConverter{
         return year
     }
     
+    static func getCurrentMonth() -> Int{
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        let month = calendar.component(.month, from: date as Date)
+        return month
+    }
+    
     static func getCurrentYear()->Int{
         let calendar = Calendar.current
         let year = calendar.component(.year, from: Date.init(timeIntervalSinceNow: 0))
         print(year)
         return year
     }
+    
     
     static func getYearFromDate(dateStr:String)->Int{
         let calendar = Calendar.current
@@ -218,6 +226,7 @@ class DateConverter{
         let numOfDays = (range?.count)! as Int
         return numOfDays
     }
+    
     
     static func getCurrentTimeAndDate()->String{
     // Get today date as String

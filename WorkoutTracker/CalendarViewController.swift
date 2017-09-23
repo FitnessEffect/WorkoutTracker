@@ -30,8 +30,8 @@ class CalendarViewController:UIViewController{
         buttonArray = [UIButton]()
         calendarView.layer.cornerRadius = 10.0
         calendarView.clipsToBounds = true
-        let currentMonth = getCurrentMonth()
-        let currentYear = getCurrentYear()
+        let currentMonth = DateConverter.getCurrentMonth()
+        let currentYear = DateConverter.getCurrentYear()
         selectedYear = currentYear
         selectedMonth = currentMonth
         
@@ -56,13 +56,6 @@ class CalendarViewController:UIViewController{
                 }
             }
         }
-    }
-    
-    func getCurrentMonth() -> Int{
-        let date = NSDate()
-        let calendar = NSCalendar.current
-        let month = calendar.component(.month, from: date as Date)
-        return month
     }
     
     func getDaysInMonth(monthNum:Int, year:Int) -> Int{
@@ -90,13 +83,6 @@ class CalendarViewController:UIViewController{
         let myComponents = myCalendar.components(.weekday, from: todayDate)
         let weekDay = myComponents.weekday
         return weekDay!
-    }
-    
-    func getCurrentYear() -> Int{
-        let date = NSDate()
-        let calendar = NSCalendar.current
-        let year = calendar.component(.year, from: date as Date)
-        return year
     }
     
     @IBAction func nextBtn(_ sender: UIButton) {
