@@ -159,6 +159,16 @@ class DateConverter{
         return weekOfYear
     }
     
+    static func getDayOfWeek(today:String)->Int {
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = formatter.date(from: today)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let myComponents = myCalendar.components(.weekday, from: todayDate)
+        let weekDay = myComponents.weekday
+        return weekDay!
+    }
+    
     static func yearFromDate(date:NSDate)->Int{
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date as Date)
@@ -226,7 +236,6 @@ class DateConverter{
         let numOfDays = (range?.count)! as Int
         return numOfDays
     }
-    
     
     static func getCurrentTimeAndDate()->String{
     // Get today date as String
