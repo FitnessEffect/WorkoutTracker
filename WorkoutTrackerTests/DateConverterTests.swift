@@ -72,5 +72,10 @@ class DateConverterTests: XCTestCase {
         let result = WorkoutTracker.DateConverter.getMonthFromDate(date: date!)
         XCTAssertEqual(result, 7)
     }
+    
+    func testFindFirstDayOfMonth(){
+        let result = WorkoutTracker.DateConverter.findFirstDayOfMonth(monthNum: 9, year: 2017)
+        XCTAssertEqual(result, 6)
+    }
 
 }

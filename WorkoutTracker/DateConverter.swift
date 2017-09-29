@@ -236,7 +236,7 @@ class DateConverter{
             tempMonth = String(monthNum)
         }
         let tempStr = String(year) + "-" + tempMonth + "-01"
-        var firstDayOfMonth = DateConverter.getDayOfWeek(today: tempStr)
+        let firstDayOfMonth = DateConverter.getDayOfWeek(today: tempStr)
         return firstDayOfMonth
     }
     
