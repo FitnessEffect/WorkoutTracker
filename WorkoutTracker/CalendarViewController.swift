@@ -58,17 +58,6 @@ class CalendarViewController:UIViewController{
         }
     }
     
-    func findFirstDayOfMonth(monthNum:Int, year:Int){
-        var tempMonth = ""
-        if String(monthNum).characters.count == 1{
-            tempMonth = "0" + String(monthNum)
-        }else{
-            tempMonth = String(monthNum)
-        }
-        let tempStr = String(selectedYear) + "-" + tempMonth + "-01"
-        firstDayOfMonth = DateConverter.getDayOfWeek(today: tempStr)
-    }
-    
     @IBAction func nextBtn(_ sender: UIButton) {
         nextBtn()
     }
@@ -142,7 +131,7 @@ class CalendarViewController:UIViewController{
         var yPosition = 47
         
         let numOfdays = DateConverter.getDaysInMonth(monthNum: month, year: selectedYear)
-        findFirstDayOfMonth(monthNum: month, year: selectedYear)
+        firstDayOfMonth = DateConverter.findFirstDayOfMonth(monthNum: month, year: selectedYear)
         if firstDayOfMonth == 1{
             xPosition = 0
         }else if firstDayOfMonth == 2{

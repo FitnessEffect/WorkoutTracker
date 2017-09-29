@@ -228,6 +228,18 @@ class DateConverter{
         return saturday
     }
     
+    static func findFirstDayOfMonth(monthNum:Int, year:Int)->Int{
+        var tempMonth = ""
+        if String(monthNum).characters.count == 1{
+            tempMonth = "0" + String(monthNum)
+        }else{
+            tempMonth = String(monthNum)
+        }
+        let tempStr = String(year) + "-" + tempMonth + "-01"
+        var firstDayOfMonth = DateConverter.getDayOfWeek(today: tempStr)
+        return firstDayOfMonth
+    }
+    
     static func getDaysInMonth(monthNum:Int, year:Int) -> Int{
         let calendar = NSCalendar.current
         let dateComponents = DateComponents(year:year, month: monthNum)
