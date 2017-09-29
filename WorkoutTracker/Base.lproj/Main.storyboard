@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GxJ-gv-iux">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GxJ-gv-iux">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
         <array key="DJB Chalk It Up.ttf">
             <string>DJBCHALKITUP</string>
         </array>
@@ -695,14 +698,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dqH-WC-U1r">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
+                                            <rect key="frame" x="56" y="0.0" width="284" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="eDP-ww-SPW">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
+                                            <rect key="frame" x="16" y="0.0" width="25" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1007,7 +1010,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qdp-ta-dCh">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
+                                            <rect key="frame" x="56" y="0.0" width="284" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
@@ -1015,7 +1018,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="LEs-I2-OSX">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
+                                            <rect key="frame" x="16" y="0.0" width="25" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1158,14 +1161,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXs-RF-QdH">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
+                                            <rect key="frame" x="56" y="0.0" width="284" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" highlightedImage="Background1" id="gro-i0-mEf">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
+                                            <rect key="frame" x="16" y="0.0" width="25" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1558,7 +1561,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="208.5" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -2078,7 +2081,7 @@
                 <navigationController storyboardIdentifier="exerciseNavID" automaticallyAdjustsScrollViewInsets="NO" id="bAR-Af-Bzn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gql-r2-aGv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2333,7 +2336,7 @@
                 <navigationController storyboardIdentifier="inputNavID" automaticallyAdjustsScrollViewInsets="NO" id="ubk-nh-pMx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFa-KB-lpl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2468,7 +2471,7 @@
                 <navigationController storyboardIdentifier="clientNavID" automaticallyAdjustsScrollViewInsets="NO" id="eOA-Kw-WaG" customClass="NavigationViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xhw-3y-dWu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2609,7 +2612,7 @@
                 <navigationController storyboardIdentifier="challengesNavID" automaticallyAdjustsScrollViewInsets="NO" id="X8U-Tw-LmN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Uq7-Rw-d5f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2761,7 +2764,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hro-li-TDX">
-                                            <rect key="frame" x="55" y="0.0" width="285" height="44"/>
+                                            <rect key="frame" x="56" y="0.0" width="284" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
@@ -2769,7 +2772,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background1" id="Fkg-ia-f1Q">
-                                            <rect key="frame" x="15" y="0.0" width="25" height="44"/>
+                                            <rect key="frame" x="16" y="0.0" width="25" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -2993,50 +2996,33 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="zy9-0r-k53">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-pe-rTa">
-                                <rect key="frame" x="0.0" y="91" width="375" height="576"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="576" id="b6Q-C6-y9D"/>
-                                </constraints>
-                                <color key="separatorColor" red="0.83842147440000003" green="0.83842147440000003" blue="0.83842147440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="taQ-TW-NUi" rowHeight="55" style="IBUITableViewCellStyleDefault" id="vfE-8E-Kak">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vfE-8E-Kak" id="M6w-qu-s0u">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="55"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="taQ-TW-NUi">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="55"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxe-bZ-T9Z">
+                                <rect key="frame" x="33" y="122" width="309" height="75"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
+                                <state key="normal" title="History" backgroundImage="chalkBackgroundBright">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eas-2t-eSA">
+                                <rect key="frame" x="33" y="225" width="309" height="75"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
+                                <state key="normal" title="Delete Exercise" backgroundImage="chalkBackgroundBright">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <outlet property="dataSource" destination="BB7-6R-HUh" id="2HJ-UA-lNK"/>
-                                    <outlet property="delegate" destination="BB7-6R-HUh" id="hvb-Xc-jO7"/>
+                                    <action selector="btnPressed:" destination="BB7-6R-HUh" eventType="touchUpInside" id="9FG-Ie-rBj"/>
                                 </connections>
-                            </tableView>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zy9-0r-k53" firstAttribute="leading" secondItem="3M7-mY-aIQ" secondAttribute="leading" id="0tH-TO-tzP"/>
-                            <constraint firstItem="0ph-pe-rTa" firstAttribute="top" secondItem="3M7-mY-aIQ" secondAttribute="top" constant="91" id="HRt-3W-2do"/>
-                            <constraint firstAttribute="trailing" secondItem="0ph-pe-rTa" secondAttribute="trailing" id="MIc-LL-9lH"/>
                             <constraint firstItem="zy9-0r-k53" firstAttribute="top" secondItem="3M7-mY-aIQ" secondAttribute="top" id="RJe-Jd-YkY"/>
                             <constraint firstAttribute="trailing" secondItem="zy9-0r-k53" secondAttribute="trailing" id="W5P-nA-0sY"/>
-                            <constraint firstItem="IKm-HT-bep" firstAttribute="top" secondItem="0ph-pe-rTa" secondAttribute="bottom" id="ab6-Qy-0Jg"/>
                             <constraint firstItem="IKm-HT-bep" firstAttribute="top" secondItem="zy9-0r-k53" secondAttribute="bottom" id="hUZ-V3-UJQ"/>
-                            <constraint firstItem="0ph-pe-rTa" firstAttribute="leading" secondItem="3M7-mY-aIQ" secondAttribute="leading" id="xTU-yH-JJF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lOA-PF-mh0">
@@ -3047,9 +3033,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="blankIcon" id="YCH-Gy-UVt"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableViewOutlet" destination="0ph-pe-rTa" id="huU-FH-Olc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8u-9K-So4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3061,7 +3044,7 @@
                 <navigationController storyboardIdentifier="profileNavID" automaticallyAdjustsScrollViewInsets="NO" id="CSd-EX-vQ6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nom-5R-TMC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

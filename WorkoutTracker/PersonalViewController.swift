@@ -5,21 +5,18 @@
 //  Created by Stefan Auvergne on 7/20/17.
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
+
 import UIKit
 import Firebase
 
-class PersonalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
+class PersonalViewController: UIViewController, UIPopoverPresentationControllerDelegate{
     
-    var optionsArray:[String] = ["History", "Delete Exercises"]
-    var selectedRow:Int = 0
     var currentClient:Client!
     var menuView:MenuView!
     var overlayView: OverlayView!
     var challengeOverlay = true
     var menuShowing = false
     var button:UIButton!
-    
-    @IBOutlet weak var tableViewOutlet: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +34,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         button.setTitle("Personal", for: .normal)
         button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
         self.navigationItem.titleView = button
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
-        tableViewOutlet.addGestureRecognizer(tapGesture)
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
@@ -75,21 +69,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         self.present(popController, animated: true, completion: nil)
     }
     
-    //TableView
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return optionsArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = optionsArray[indexPath.row]
-        return cell
-    }
-    
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
     }
@@ -113,17 +92,13 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
-        let touchPoint = sender.location(in: tableViewOutlet)
-        let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
-        if row != nil{
-            if row == 0{
-                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseHistoryVC") as! ExercisesHistoryViewController
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            }else if row == 1{
-                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteExerciseVC") as! DeleteExerciseViewController
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            }
+    @IBAction func btnPressed(_ sender: UIButton) {
+        if sender.titleLabel?.text == "History"{
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseHistoryVC") as! ExercisesHistoryViewController
+           self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if sender.titleLabel?.text == "Delete Exercise"{
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteExerciseVC") as! DeleteExerciseViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
     
@@ -135,10 +110,6 @@ class PersonalViewController: UIViewController, UITableViewDelegate, UITableView
                 self.overlayView.alpha = 0
             })
             menuShowing = false
-        }else{
-            if tableViewOutlet.frame.contains(sender.location(in: view)){
-                performSegue(withIdentifier: "historySegue", sender: sender)
-            }
         }
     }
     
