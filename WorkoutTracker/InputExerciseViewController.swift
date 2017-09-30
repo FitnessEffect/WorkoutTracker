@@ -52,7 +52,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         print(user.email!)
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
         
         NotificationCenter.default.addObserver(self, selector: #selector(InputExerciseViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.hideNotificationOnExit(_:)), name: NSNotification.Name(rawValue: "hideNotif"), object: nil)
@@ -172,18 +172,18 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         self.present(alert, animated: true, completion: nil)
     }
     
-    func hideNotificationOnExit(_ notification: Notification){
+    @objc func hideNotificationOnExit(_ notification: Notification){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
         DBService.shared.resetNotificationCount()
         workoutInputView.notificationNumber.alpha = 0
     }
     
-    func setNotifAlphaToZero(_:Notification){
+    @objc func setNotifAlphaToZero(_:Notification){
         workoutInputView.notificationNumber.alpha = 0
     }
     
-    func setNotifAlphaToOne(_:Notification){
+    @objc func setNotifAlphaToOne(_:Notification){
         workoutInputView.notificationNumber.alpha = 1
         if DBService.shared.notificationCount == 0{
             workoutInputView.notificationNumber.alpha = 0
@@ -193,7 +193,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         }
     }
     
-    func getExercise(_ notification: Notification){
+    @objc func getExercise(_ notification: Notification){
         let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
         tempExercise = info["exerciseKey"]!
         //format response
@@ -360,7 +360,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         }
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
             UIView.animate(withDuration: 0.3, animations: {
@@ -459,11 +459,11 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         return .none
     }
     
-    func keyboardWasShown(notification: NSNotification){
+    @objc func keyboardWasShown(notification: NSNotification){
         keyboardActive = true
     }
     
-    func keyboardWillBeHidden(notification: NSNotification){
+    @objc func keyboardWillBeHidden(notification: NSNotification){
         keyboardActive = false
     }
     

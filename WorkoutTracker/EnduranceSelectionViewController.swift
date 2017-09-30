@@ -51,8 +51,8 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
         }else{
             milesLabel.alpha = 1
         }
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-        segmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
+        segmentedControl.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -176,7 +176,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
                 label.text = seconds[row]
             }
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

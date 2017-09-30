@@ -31,12 +31,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         ref = FIRDatabase.database().reference()
         noExerciseLabel.alpha = 0
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
         
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SessionDetailViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
@@ -107,7 +107,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
         
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
@@ -229,7 +229,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         return ""
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! InputExerciseViewController
         DBService.shared.setCurrentDay(day: title!)
@@ -331,7 +331,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+    @objc func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableView)
         let row = tableView.indexPathForRow(at: touchPoint)?.row
         if row != nil{

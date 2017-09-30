@@ -23,7 +23,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
         
         spinnerType.frame = CGRect(x:(self.typePickerView.frame.width/2)-25, y:(self.typePickerView.frame.height/2)-25, width:50, height:50)
         spinnerType.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
@@ -68,7 +68,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
     }
     
     func setCategoriesForType(){
@@ -213,7 +213,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
         }else{
             label.text = exercises[row]
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "DJB Chalk It Up", size: 28.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "DJB Chalk It Up", size: 28.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

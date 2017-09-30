@@ -28,7 +28,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         title = "Challenges"
         noChallengesLabel.alpha = 0
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -123,7 +123,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     //tap gesture recognizer for tableView
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+    @objc func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
         if row != nil{
@@ -132,7 +132,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     //tap gesture to exit menu
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
             UIView.animate(withDuration: 0.3, animations: {

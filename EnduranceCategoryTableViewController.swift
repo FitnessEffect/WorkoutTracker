@@ -20,7 +20,7 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
         typePassed = "Endurance"
         title = typePassed
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         
@@ -64,14 +64,14 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
         }
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createEnduranceCategoryID") as! CreateEnduranceCategoryViewController
         popController.typePassed = "Endurance"
         self.navigationController?.pushViewController(popController, animated: true)
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if tableView.frame.contains(sender.location(in: view)){
             cellClicked(x: sender.location(in: view))
         }

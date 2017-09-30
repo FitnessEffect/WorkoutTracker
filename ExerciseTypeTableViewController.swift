@@ -72,7 +72,7 @@ class ExerciseTypeTableViewController: UITableViewController{
         return cell
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if tableView.frame.contains(sender.location(in: view)){
             cellClicked(x: sender.location(in: view))
         }

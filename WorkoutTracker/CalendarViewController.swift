@@ -82,7 +82,7 @@ class CalendarViewController:UIViewController{
         createButtonDays(month: selectedMonth)
     }
     
-    func pressedDay(sender: UIButton!) -> String{
+    @objc func pressedDay(sender: UIButton!) -> String{
         let btnNum = sender.tag
         var monthStr = ""
         var btnStr = ""

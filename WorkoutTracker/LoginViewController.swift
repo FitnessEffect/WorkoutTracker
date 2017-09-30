@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         registerView.isHidden = true
     }
     
-    func swipe(_ sender:UISwipeGestureRecognizer){
+    @objc func swipe(_ sender:UISwipeGestureRecognizer){
         self.view.endEditing(true)
         let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         if registerView.isHidden == true{
@@ -105,7 +105,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }) as? UInt
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTF.frame.contains(sender.location(in: view)){
             if emailTF.isEditing{
                 self.view.endEditing(true)

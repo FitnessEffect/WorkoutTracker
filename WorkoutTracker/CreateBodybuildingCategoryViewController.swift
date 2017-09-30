@@ -35,7 +35,7 @@ class CreateBodybuildingCategoryViewController: UIViewController, UITextFieldDel
         super.didReceiveMemoryWarning()
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !categoryName.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }

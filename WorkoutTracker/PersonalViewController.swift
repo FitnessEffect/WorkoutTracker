@@ -20,7 +20,7 @@ class PersonalViewController: UIViewController, UIPopoverPresentationControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -45,7 +45,7 @@ class PersonalViewController: UIViewController, UIPopoverPresentationControllerD
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
     }
     
-    func clickOnButton(button: UIButton) {
+    @objc func clickOnButton(button: UIButton) {
         var xPosition:CGFloat = 0
         var yPosition:CGFloat = 0
         
@@ -102,7 +102,7 @@ class PersonalViewController: UIViewController, UIPopoverPresentationControllerD
         }
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
             UIView.animate(withDuration: 0.3, animations: {
