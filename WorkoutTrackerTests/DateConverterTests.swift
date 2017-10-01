@@ -46,6 +46,9 @@ class DateConverterTests: XCTestCase {
     
     func testGetCurrentDate(){
         let currentDate = WorkoutTracker.DateConverter.getCurrentDate()
+        // grab current day, grab month, format..
+        // basically rewriting your getCurrentDate method here
+        // your poject code changes often, but this won't
         XCTAssertEqual(currentDate, "08/29/2017")
     }
     

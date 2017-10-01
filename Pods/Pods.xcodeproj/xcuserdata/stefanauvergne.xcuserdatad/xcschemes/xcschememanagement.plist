@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GTMSessionFetcher-iOS11.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher-iOS9.2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>GoogleToolboxForMac-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac-iOS11.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,39 +44,13 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-WorkoutTrackerUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>10304AC7D5FEF8568C2EA24F29010065</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>229DC7E147F7F45AE64B0F1B5BA02465</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>25E4CFC9D899E877EEF96E469D639F98</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3C9DD507F90A43853B025C22BFFB902B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D905B0ABC0CF27D818B6192F9ADE8028</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E34AF8647741C2F63D48BC9DF5C72F37</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

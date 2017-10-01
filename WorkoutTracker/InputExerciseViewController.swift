@@ -278,7 +278,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         if self.title == "Personal"{
             DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
                     self.refreshNotifications()
                 })})
@@ -288,7 +288,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             
             DBService.shared.updateExerciseForClient(exerciseDictionary: self.exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
-                self.present(alert, animated: true, completion: {success in DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                self.present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                     self.dismiss(animated: true, completion: nil)
                     self.refreshNotifications()
                 })})

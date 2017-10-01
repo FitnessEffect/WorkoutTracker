@@ -149,8 +149,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
-            FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
-                if success.0 == nil{
+            FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(user, error) in
+                if user == nil{
                     let internetCheck = Reachability.isInternetAvailable()
                     if internetCheck == false{
                         let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)

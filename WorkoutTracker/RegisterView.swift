@@ -54,8 +54,8 @@ class RegisterView: UIView, UITextFieldDelegate{
                     else {
                         print("Real Device")
                         if UIDevice.current.modelName == "iPhone 6s"{
-                            FIRAuth.auth()?.signIn(withEmail: self.emailTxtField.text!, password: self.passwordTxtField.text!, completion:{(success) in
-                                if success.0 == nil{
+                            FIRAuth.auth()?.signIn(withEmail: self.emailTxtField.text!, password: self.passwordTxtField.text!, completion:{(user, error) in
+                                if user == nil{
                                     let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
                                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                                     alertController.addAction(defaultAction)
