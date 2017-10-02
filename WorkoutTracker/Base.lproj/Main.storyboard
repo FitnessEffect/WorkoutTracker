@@ -1561,7 +1561,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="209" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1777,7 +1777,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1909,8 +1909,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QZq-qU-6ZB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticky" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Ak-3xr">
+                                <rect key="frame" x="63" y="67" width="248" height="222"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="Xaw-Ns-VHX"/>
+                                    <constraint firstAttribute="height" constant="222" id="hpp-d7-sNT"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-5x-73S">
-                                <rect key="frame" x="0.0" y="330" width="375" height="337"/>
+                                <rect key="frame" x="0.0" y="348" width="375" height="319"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exerciseCell" id="Huf-7w-y4f" customClass="ExerciseCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
@@ -1928,7 +1935,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="7" y="8" width="23" height="23.5"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -1956,13 +1963,13 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
-                                <rect key="frame" x="110" y="201" width="249" height="65"/>
+                                <rect key="frame" x="90" y="222" width="195" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="hEn-RH-7h3"/>
-                                    <constraint firstAttribute="width" constant="249" id="nY1-Ru-d9A"/>
+                                    <constraint firstAttribute="height" constant="48" id="hEn-RH-7h3"/>
+                                    <constraint firstAttribute="width" constant="195" id="nY1-Ru-d9A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
-                                <state key="normal" title="Duration" backgroundImage="chalkBackgroundBright">
+                                <state key="normal" title="Duration" backgroundImage="markerBox">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1980,41 +1987,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
-                                <rect key="frame" x="110" y="131" width="249" height="65"/>
+                                <rect key="frame" x="110" y="147" width="164" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="249" id="sjd-UG-Vi4"/>
-                                    <constraint firstAttribute="height" constant="65" id="ywR-Ui-Do5"/>
+                                    <constraint firstAttribute="width" constant="164" id="sjd-UG-Vi4"/>
+                                    <constraint firstAttribute="height" constant="45" id="ywR-Ui-Do5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="46"/>
-                                <state key="normal" title="✗" backgroundImage="chalkBackgroundBright">
+                                <state key="normal" title="✗" backgroundImage="markerBox">
                                     <color key="titleColor" red="0.0" green="0.64705403645833337" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="paidBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="w6e-pz-A5C"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ro-Tl-OPI">
-                                <rect key="frame" x="7" y="139" width="103" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="7h7-jI-Rv6"/>
-                                    <constraint firstAttribute="width" constant="103" id="Ynq-TG-f15"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-Vd-9zN">
-                                <rect key="frame" x="7" y="211" width="103" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="fq1-ux-RiL"/>
-                                    <constraint firstAttribute="width" constant="103" id="l8Z-3w-qlc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyH-Ag-oPe">
-                                <rect key="frame" x="90" y="419" width="195" height="37"/>
+                                <rect key="frame" x="90" y="423" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="195" id="0sW-fs-fZJ"/>
                                     <constraint firstAttribute="height" constant="37" id="yc2-Bk-R4e"/>
@@ -2024,7 +2011,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-Kl-BNN">
-                                <rect key="frame" x="90" y="283" width="195" height="37"/>
+                                <rect key="frame" x="90" y="301" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="195" id="Ll4-9r-HMk"/>
                                     <constraint firstAttribute="height" constant="37" id="T1o-cz-lq6"/>
@@ -2037,8 +2024,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="153" id="3f5-Il-791"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="leading" secondItem="3ro-Tl-OPI" secondAttribute="trailing" id="7NP-cK-jEX"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="5" id="82q-Nh-Uha"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="30" id="82q-Nh-Uha"/>
                             <constraint firstAttribute="trailing" secondItem="QZq-qU-6ZB" secondAttribute="trailing" id="AdT-C0-8J4"/>
                             <constraint firstItem="qh5-Kl-BNN" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="ENd-kS-9CW"/>
                             <constraint firstItem="1Z1-5x-73S" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="FKm-rb-rwb"/>
@@ -2046,20 +2032,19 @@
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="1Z1-5x-73S" secondAttribute="bottom" id="FuE-P9-jwJ"/>
                             <constraint firstItem="MyH-Ag-oPe" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="IYA-z1-DRr"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
-                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="top" secondItem="3ro-Tl-OPI" secondAttribute="bottom" constant="29" id="TM4-5u-Xi4"/>
-                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="64" id="bzz-pk-QNh"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="3" id="MfL-zj-Uge"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="48" id="Z8P-YQ-fDc"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="78" id="bzz-pk-QNh"/>
                             <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="47" id="dc2-g8-gsN"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="13" id="eJZ-QA-HLH"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="dc2-g8-gsN"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="29" id="eJZ-QA-HLH"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="h5s-Sv-hMq"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="top" secondItem="nJX-56-Njm" secondAttribute="top" id="iIB-M5-J91"/>
-                            <constraint firstItem="b6D-Vd-9zN" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="-9" id="jd9-Gx-tad"/>
-                            <constraint firstItem="3ro-Tl-OPI" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="21" id="kSe-qW-jUg"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="QZq-qU-6ZB" secondAttribute="bottom" id="nxZ-De-HtO"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="47" id="smD-uD-yIb"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="leading" secondItem="b6D-Vd-9zN" secondAttribute="trailing" id="tic-EY-0rj"/>
-                            <constraint firstItem="3ro-Tl-OPI" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="-9" id="wV7-jP-RXp"/>
-                            <constraint firstItem="qh5-Kl-BNN" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="17" id="zX6-mv-TmB"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="47" id="opk-IR-xqp"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="3" id="sIp-pA-Z09"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="4.5" id="smD-uD-yIb"/>
+                            <constraint firstItem="qh5-Kl-BNN" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="31" id="zX6-mv-TmB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3678,8 +3663,9 @@
         <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
+        <image name="sticky" width="616" height="726"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJO-pp-3SY"/>
+        <segue reference="dgs-GC-2Lb"/>
     </inferredMetricsTieBreakers>
 </document>
