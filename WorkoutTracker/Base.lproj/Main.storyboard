@@ -1561,7 +1561,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1968,9 +1968,9 @@
                                     <constraint firstAttribute="height" constant="48" id="hEn-RH-7h3"/>
                                     <constraint firstAttribute="width" constant="195" id="nY1-Ru-d9A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <state key="normal" title="Duration" backgroundImage="markerBox">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="durationBtn:" destination="3Jg-AE-1tA" eventType="touchUpInside" id="4ev-zw-0db"/>
@@ -1992,8 +1992,8 @@
                                     <constraint firstAttribute="width" constant="164" id="sjd-UG-Vi4"/>
                                     <constraint firstAttribute="height" constant="45" id="ywR-Ui-Do5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="46"/>
-                                <state key="normal" title="✗" backgroundImage="markerBox">
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Paid" backgroundImage="markerBox">
                                     <color key="titleColor" red="0.0" green="0.64705403645833337" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -3663,7 +3663,7 @@
         <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
-        <image name="sticky" width="616" height="726"/>
+        <image name="sticky" width="628" height="726"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dgs-GC-2Lb"/>

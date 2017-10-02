@@ -238,12 +238,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func setPaidBtnToTrue(){
-        paidBtn.setTitle("✓", for: .normal)
+        paidBtn.setTitle("Paid", for: .normal)
         paidBtn.setTitleColor(UIColor(red: 0.0/255.0, green: 165.0/255.0, blue: 0.0/255.0, alpha: 1.0), for: .normal)
     }
     
     func setPaidBtnToFalse(){
-        paidBtn.setTitle("✗", for: .normal)
+        paidBtn.setTitle("No Payment", for: .normal)
         paidBtn.setTitleColor(UIColor.red, for: .normal)
     }
     
@@ -279,7 +279,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func paidBtn(_ sender: UIButton) {
-        if paidBtn.titleLabel?.text == "✗"{
+        if paidBtn.titleLabel?.text == "No Payment"{
             DBService.shared.updatePaidForSession(boolean: true, completion: {self.setPaidBtnToTrue()
             })
         }else{
