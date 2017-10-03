@@ -120,6 +120,8 @@ class MenuView: UIView {
         if sender.tag == 1{
             let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
             let currentController = self.getCurrentViewController()
+            //removes passed client
+            DBService.shared.passedClient.clientKey = ""
             currentController?.present(inputVC, animated: false, completion: nil)
             
         }else if sender.tag == 2{
