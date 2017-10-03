@@ -518,6 +518,9 @@
                             <constraint firstItem="DB6-K1-1Ah" firstAttribute="centerY" secondItem="WFm-gU-2VS" secondAttribute="centerY" id="sHo-7r-ZUh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerViewOutlet" destination="WFm-gU-2VS" id="ISQ-0m-lv7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdL-Ps-Nau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1513,7 +1516,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>

@@ -258,6 +258,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         popController.popoverPresentationController?.sourceView = self.view
         popController.preferredContentSize = CGSize(width: 300, height: 230)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        popController.setDuration(duration:(durationBtn.titleLabel?.text)!)
         // present the popover
         self.present(popController, animated: true, completion: nil)
         

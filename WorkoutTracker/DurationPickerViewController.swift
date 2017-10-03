@@ -10,10 +10,13 @@ import UIKit
 
 class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var pickerViewOutlet: UIPickerView!
+    
     var hours = [String]()
     var minutes = [String]()
     var tempMinutes = ""
     var tempHours = ""
+    var passedDuration = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,26 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         for x in 0...59{
             minutes.append(String(x))
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if passedDuration != ""{
+            let tempArr = passedDuration.components(separatedBy: " ")
+            if tempArr.count == 2{
+                if tempArr[1] == "hour(s)"{
+                    pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 0, animated: true)
+                }else if tempArr[1] == "min(s)"{
+                    pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 1, animated: true)
+                }
+            }else{
+                pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 0, animated: true)
+                pickerViewOutlet.selectRow(Int(tempArr[2])!, inComponent: 1, animated: true)
+            }
+        }
+    }
+    
+    func setDuration(duration:String){
+        passedDuration = duration
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
