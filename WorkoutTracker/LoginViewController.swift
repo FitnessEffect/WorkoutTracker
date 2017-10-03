@@ -96,6 +96,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                         let formattedEmail = Formatter.formateEmail(email: (u?.email)!)
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
+                    //remove stored passed client if it exist
+                    DBService.shared.passedClient.clientKey = ""
                     //called only for login
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc =   storyboard.instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
