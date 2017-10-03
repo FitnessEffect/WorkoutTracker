@@ -144,8 +144,7 @@ class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UI
         userDictionary["weight"] = tempWeight
         
         DBService.shared.updateProfileStats(newStats: userDictionary, completion: {
-            let presenter = self.presentingViewController?.childViewControllers.last
-            self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
+            self.navigationController?.popViewController(animated: true)
         })
     }
 }

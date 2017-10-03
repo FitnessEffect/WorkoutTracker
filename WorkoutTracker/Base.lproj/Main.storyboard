@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2964,6 +2963,9 @@
                                 <state key="normal" title="Profile" backgroundImage="longTwoSticky">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnPressed:" destination="BB7-6R-HUh" eventType="touchUpInside" id="VWE-W1-3iE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3018,111 +3020,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-PZ-X1b">
-                                <rect key="frame" x="92" y="402.5" width="190" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="60O-oB-OkQ"/>
-                                    <constraint firstAttribute="height" constant="50" id="eDc-E9-VV7"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8ah-dL-Oin">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="largePaper" translatesAutoresizingMaskIntoConstraints="NO" id="XSg-c7-qDh">
+                                <rect key="frame" x="16" y="89" width="344" height="477"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-PZ-X1b">
+                                <rect key="frame" x="92" y="462.5" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
                                 <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
                                     <action selector="createClient:" destination="J9C-oa-BSl" eventType="touchUpInside" id="Bqd-hx-pQP"/>
                                 </connections>
                             </button>
-                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-XI-k2P">
-                                <rect key="frame" x="72" y="167" width="230" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="EXC-3P-XCy"/>
-                                    <constraint firstAttribute="height" constant="100" id="ec2-Wh-4Oe"/>
-                                </constraints>
+                            <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-XI-k2P">
+                                <rect key="frame" x="72" y="226" width="230" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="74L-ES-ep6"/>
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="DqV-Oy-Dbr"/>
                                 </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkw-hI-IWn">
-                                <rect key="frame" x="72" y="49" width="230" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VVx-jx-2On"/>
-                                    <constraint firstAttribute="width" constant="230" id="blJ-yp-p0T"/>
-                                </constraints>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mkw-hI-IWn">
+                                <rect key="frame" x="72" y="109" width="230" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="6mq-1k-Ist"/>
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="bTf-R3-18l"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVr-ch-u2n">
-                                <rect key="frame" x="160" y="86" width="33" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="MHy-8E-b7b"/>
-                                    <constraint firstAttribute="height" constant="27" id="pOS-xD-Ejn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-Lr-dU6">
-                                <rect key="frame" x="100" y="203" width="42" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="hph-LR-VLa"/>
-                                    <constraint firstAttribute="width" constant="42" id="umK-Af-eVn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xk-Ri-n3F">
-                                <rect key="frame" x="220" y="203" width="22" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="lHC-uC-and"/>
-                                    <constraint firstAttribute="height" constant="27" id="rKT-j6-ahA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTx-3s-o5T">
-                                <rect key="frame" x="240" y="322" width="27" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="Ene-J0-4DP"/>
-                                    <constraint firstAttribute="width" constant="27" id="glb-i0-8up"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I62-mY-MHa">
-                                <rect key="frame" x="72" y="285" width="230" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="nM4-h1-wmP"/>
-                                    <constraint firstAttribute="height" constant="100" id="yyT-gc-z6G"/>
-                                </constraints>
+                            <pickerView tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I62-mY-MHa">
+                                <rect key="frame" x="72" y="345" width="230" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="dQE-qf-Sj7"/>
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="AGg-o0-bqF"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVr-ch-u2n">
+                                <rect key="frame" x="195" y="146" width="33" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-Lr-dU6">
+                                <rect key="frame" x="138" y="263" width="42" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xk-Ri-n3F">
+                                <rect key="frame" x="256" y="263" width="22" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTx-3s-o5T">
+                                <rect key="frame" x="202" y="382" width="27" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="e8m-PZ-X1b" firstAttribute="top" secondItem="I62-mY-MHa" secondAttribute="bottom" constant="17.5" id="0sw-AE-Jbr"/>
-                            <constraint firstItem="3gR-XI-k2P" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="4SY-cx-sHu"/>
-                            <constraint firstItem="fVr-ch-u2n" firstAttribute="trailing" secondItem="2Xk-Ri-n3F" secondAttribute="trailing" constant="-49" id="5s1-5o-BSL"/>
-                            <constraint firstItem="fVr-ch-u2n" firstAttribute="centerY" secondItem="mkw-hI-IWn" secondAttribute="centerY" id="BIy-kb-Tbu"/>
-                            <constraint firstItem="2Xk-Ri-n3F" firstAttribute="leading" secondItem="fXX-Lr-dU6" secondAttribute="trailing" constant="78" id="E24-RY-a8D"/>
-                            <constraint firstItem="3gR-XI-k2P" firstAttribute="top" secondItem="fVr-ch-u2n" secondAttribute="bottom" constant="54" id="HFu-e5-4lx"/>
-                            <constraint firstItem="e8m-PZ-X1b" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="Hwc-o0-b1Q"/>
-                            <constraint firstItem="2Xk-Ri-n3F" firstAttribute="firstBaseline" secondItem="fXX-Lr-dU6" secondAttribute="firstBaseline" id="Nf6-kb-s4d"/>
-                            <constraint firstItem="fXX-Lr-dU6" firstAttribute="leading" secondItem="ne2-2a-r4I" secondAttribute="leadingMargin" constant="84" id="OAA-cN-AuQ"/>
-                            <constraint firstItem="rTx-3s-o5T" firstAttribute="centerY" secondItem="I62-mY-MHa" secondAttribute="centerY" constant="0.5" id="aLD-VT-fnf"/>
-                            <constraint firstItem="mkw-hI-IWn" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="ao5-8b-4qz"/>
-                            <constraint firstItem="fXX-Lr-dU6" firstAttribute="centerY" secondItem="3gR-XI-k2P" secondAttribute="centerY" id="dBf-gK-klR"/>
-                            <constraint firstItem="I62-mY-MHa" firstAttribute="centerX" secondItem="ne2-2a-r4I" secondAttribute="centerX" id="iFH-y3-xux"/>
-                            <constraint firstItem="rTx-3s-o5T" firstAttribute="top" secondItem="3gR-XI-k2P" secondAttribute="bottom" constant="55" id="rDr-RL-hfG"/>
-                            <constraint firstItem="fVr-ch-u2n" firstAttribute="top" secondItem="bCb-zB-Vs7" secondAttribute="bottom" constant="66" id="uxv-Q6-Phd"/>
-                            <constraint firstAttribute="trailing" secondItem="rTx-3s-o5T" secondAttribute="trailing" constant="108" id="zFg-DA-T8g"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="agePickerView" destination="mkw-hI-IWn" id="cXc-LR-g3Y"/>
@@ -3132,7 +3100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfg-4m-Eho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="2412"/>
+            <point key="canvasLocation" x="-290.39999999999998" y="2411.2443778110946"/>
         </scene>
         <!--Delete Exercise View Controller-->
         <scene sceneID="aKa-Tz-80s">
