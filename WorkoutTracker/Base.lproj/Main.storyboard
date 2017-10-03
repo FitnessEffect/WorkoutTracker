@@ -271,12 +271,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyLarge" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-IX-wH9">
-                                <rect key="frame" x="-11" y="70" width="408" height="597"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="largePaper" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-IX-wH9">
+                                <rect key="frame" x="-11" y="70" width="398" height="597"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y2X-D8-kp6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="y2X-D8-kp6">
                                 <rect key="frame" x="45" y="161" width="139" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -292,7 +292,7 @@
                                     <outlet property="delegate" destination="NzR-rV-E32" id="h0G-wI-gIU"/>
                                 </connections>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-69-P6d">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-69-P6d">
                                 <rect key="frame" x="192" y="161" width="139" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -544,24 +544,28 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.83842147435897441" green="0.83842147435897441" blue="0.83842147435897441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClientCell" rowHeight="56" id="dIm-N0-Ih3" customClass="ClientCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="56"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClientCell" rowHeight="65" id="dIm-N0-Ih3" customClass="ClientCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dIm-N0-Ih3" id="hQO-DR-DrM">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="56"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLQ-DC-gRT">
-                                                    <rect key="frame" x="63" y="3" width="271" height="45"/>
+                                                    <rect key="frame" x="67" y="8" width="267" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sN9-Pw-KzY">
-                                                    <rect key="frame" x="21" y="14" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chalkBackgroundBright" translatesAutoresizingMaskIntoConstraints="NO" id="nDh-IR-XIl">
+                                                    <rect key="frame" x="8" y="5" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" backgroundImage="sticky"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sN9-Pw-KzY">
+                                                    <rect key="frame" x="22" y="19" width="22" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="stickyNoteBtn:" destination="U4l-CF-NEd" eventType="touchUpInside" id="s8H-tM-eYl"/>
                                                     </connections>
@@ -1858,9 +1862,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickyNote" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Ak-3xr">
-                                <rect key="frame" x="41" y="75" width="265" height="237"/>
+                                <rect key="frame" x="41" y="75" width="296" height="237"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="265" id="Xaw-Ns-VHX"/>
+                                    <constraint firstAttribute="width" constant="296" id="Xaw-Ns-VHX"/>
                                     <constraint firstAttribute="height" constant="237" id="hpp-d7-sNT"/>
                                 </constraints>
                             </imageView>
@@ -1912,6 +1916,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
                                 <rect key="frame" x="110" y="206" width="165" height="40"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hEn-RH-7h3"/>
                                     <constraint firstAttribute="width" constant="165" id="nY1-Ru-d9A"/>
@@ -1936,6 +1941,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
                                 <rect key="frame" x="119" y="147" width="148" height="39"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="148" id="sjd-UG-Vi4"/>
                                     <constraint firstAttribute="height" constant="39" id="ywR-Ui-Do5"/>
@@ -1981,7 +1987,7 @@
                             <constraint firstItem="MyH-Ag-oPe" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="IYA-z1-DRr"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
                             <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="11" id="MfL-zj-Uge"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="53" id="Z8P-YQ-fDc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="22" id="Z8P-YQ-fDc"/>
                             <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="102" id="bzz-pk-QNh"/>
                             <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
                             <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="5" id="dc2-g8-gsN"/>
@@ -3606,14 +3612,13 @@
         <image name="chalkBackground" width="277" height="135"/>
         <image name="chalkBackgroundBright" width="254" height="127"/>
         <image name="clientIcon" width="44" height="44"/>
+        <image name="largePaper" width="781" height="1082"/>
         <image name="lighterBackground" width="375" height="667"/>
         <image name="markerBackground" width="363" height="265"/>
         <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
-        <image name="sticky" width="628" height="726"/>
-        <image name="stickyLarge" width="799" height="1088"/>
-        <image name="stickyNote" width="686" height="761"/>
+        <image name="stickyNote" width="754" height="761"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dgs-GC-2Lb"/>
