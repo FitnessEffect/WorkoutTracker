@@ -29,6 +29,9 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstNameOutlet.delegate = self
+        lastNameOutlet.delegate = self
+        
         for x in 0...120{
             age.append(String(x))
         }

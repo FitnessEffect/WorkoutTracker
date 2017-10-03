@@ -338,7 +338,6 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         return .none
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseForSessionSegue"){
             let s = sender as! UITapGestureRecognizer
