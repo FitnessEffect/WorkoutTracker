@@ -29,6 +29,7 @@ class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UI
         for x in 0...700{
             weight.append(String(x))
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
