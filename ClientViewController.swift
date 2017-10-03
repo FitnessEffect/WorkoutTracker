@@ -21,6 +21,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var menuShowing = false
     var spinner = UIActivityIndicatorView()
     var passToNextVC = false
+    var clientStickyNoteVC:ClientStickyNoteViewController!
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     @IBOutlet weak var noClientsLabel: UILabel!
@@ -41,11 +42,17 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
+        //clientStickyView = ClientStickyNoteView.instanceFromNib() as! ClientStickyNoteView
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        clientStickyNoteVC = storyboard.instantiateViewController(withIdentifier: "clientStickyNoteVC") as! ClientStickyNoteViewController
         view.addSubview(overlayView)
         view.addSubview(menuView)
+        //view.addSubview(clientStickyView)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
+        //clientStickyView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
+         //clientStickyView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         
         spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
@@ -104,6 +111,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCustomCell
         let client = clientArray[(indexPath as NSIndexPath).row]
         cell.nameOutlet.text = client.firstName + " " + client.lastName
+        cell.clientDetailBtnOutlet.tag = indexPath.row
         if client.gender == "Male" {
             cell.nameOutlet.textColor = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         }else if client.gender == "Female" {
@@ -134,31 +142,19 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func createClient(_ sender: UIBarButtonItem) {
-        var xPosition:CGFloat = 0
-        var yPosition:CGFloat = 0
         
-        xPosition = self.view.frame.width/2
-        yPosition = self.view.frame.minY + 60
-        
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 580)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
+       clientStickyNoteVC.removeClient()
+        self.navigationController?.pushViewController(self.clientStickyNoteVC, animated: true)
     }
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
+    }
+    
+    @IBAction func stickyNoteBtn(_ sender: UIButton) {
+        let client = clientArray[sender.tag]
+        clientStickyNoteVC.setClient(client: client)
+        self.navigationController?.pushViewController(self.clientStickyNoteVC, animated: true)
     }
     
     func addSelector() {
@@ -176,7 +172,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
-            menuShowing = false
+            menuShowing = true
         }
     }
     

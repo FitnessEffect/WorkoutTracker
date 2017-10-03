@@ -36,6 +36,9 @@
 		522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE31F58C31E0037B371 /* NavigationViewController.swift */; };
 		522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
+		522D9EC81F82E41900F38C77 /* ClientStickyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9EC71F82E41900F38C77 /* ClientStickyNoteView.swift */; };
+		522D9ECA1F82E43200F38C77 /* ClientStickyNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522D9EC91F82E43200F38C77 /* ClientStickyNoteView.xib */; };
+		522D9ECC1F831F1200F38C77 /* ClientStickyNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
@@ -136,6 +139,9 @@
 		522CFAE31F58C31E0037B371 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
+		522D9EC71F82E41900F38C77 /* ClientStickyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStickyNoteView.swift; sourceTree = "<group>"; };
+		522D9EC91F82E43200F38C77 /* ClientStickyNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientStickyNoteView.xib; sourceTree = "<group>"; };
+		522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStickyNoteViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -363,6 +369,7 @@
 			children = (
 				522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
+				522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */,
 				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
 				5283E07E1C890E6200FB716B /* SessionsViewController.swift */,
 				522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */,
@@ -398,6 +405,8 @@
 				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
 				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
 				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
+				522D9EC71F82E41900F38C77 /* ClientStickyNoteView.swift */,
+				522D9EC91F82E43200F38C77 /* ClientStickyNoteView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -627,6 +636,7 @@
 				52CB16B31F10D9A600F4232D /* Have a Great Day.ttf in Resources */,
 				52F6A8A61C5F0036000FD7B0 /* Assets.xcassets in Resources */,
 				52F6A8A41C5F0036000FD7B0 /* Main.storyboard in Resources */,
+				522D9ECA1F82E43200F38C77 /* ClientStickyNoteView.xib in Resources */,
 				523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -856,6 +866,7 @@
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
 				5229485A1F6823610095E6ED /* Reachability.swift in Sources */,
 				525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */,
+				522D9ECC1F831F1200F38C77 /* ClientStickyNoteViewController.swift in Sources */,
 				52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */,
 				5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */,
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
@@ -865,6 +876,7 @@
 				526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */,
 				522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */,
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,
+				522D9EC81F82E41900F38C77 /* ClientStickyNoteView.swift in Sources */,
 				5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */,
 				52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */,
 				525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */,

@@ -1,20 +1,15 @@
 //
-//  NewClientViewController.swift
+//  ClientStickyNoteViewController.swift
 //  WorkoutTracker
 //
-//  Created by Stefan Auvergne on 3/3/16.
-//  Copyright © 2016 Stefan Auvergne. All rights reserved.
+//  Created by Stefan Auvergne on 10/2/17.
+//  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
 import UIKit
-import Firebase
 
-protocol createClientDelegate{
-    func addClient(_ client:Client)
-}
+class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
 
-class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate {
-    
     @IBOutlet weak var agePickerView: UIPickerView!
     @IBOutlet weak var weightPickerView: UIPickerView!
     @IBOutlet weak var heightPickerView: UIPickerView!
@@ -35,8 +30,7 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameOutlet.delegate = self
-        lastNameOutlet.delegate = self
+        
         
         for x in 0...120{
             age.append(String(x))
@@ -44,7 +38,6 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         for x in 0...700{
             weight.append(String(x))
         }
-        
         genderSegmentedControl.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 21)!], for: UIControlState.normal)
         activitySegmentedControl.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 21)!], for: UIControlState.normal)
         
@@ -62,12 +55,16 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         lastNameOutlet.layer.borderColor = UIColor.white.cgColor
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x>0 {
-            scrollView.contentOffset.x = 0
-        }
-        if scrollView.contentOffset.x<0 {
-            scrollView.contentOffset.x = 0
+    override func viewWillAppear(_ animated: Bool) {
+        if clientPassed.firstName == ""{
+            genderSegmentedControl.selectedSegmentIndex =  0
+            firstNameOutlet.text?.removeAll()
+            lastNameOutlet.text?.removeAll()
+            agePickerView.selectRow(0, inComponent: 0, animated: true)
+            activitySegmentedControl.selectedSegmentIndex = 0
+            weightPickerView.selectRow(0, inComponent: 0, animated: true)
+            heightPickerView.selectRow(0, inComponent: 0, animated: true)
+            heightPickerView.selectRow(0, inComponent: 1, animated: true)
         }
     }
     
@@ -118,23 +115,16 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         edit = false
     }
     
-    @IBAction func genderSelection(_ sender: UISegmentedControl) {
-        if genderSegmentedControl.selectedSegmentIndex == 0 {
-            
-        }else if genderSegmentedControl.selectedSegmentIndex == 1{
-            
-        }
-    }
-    
     func setClient(client:Client){
         clientPassed = client
         edit = true
     }
-//    func setEdit(ed:Bool){
-//        edit = ed
-//    }
     
-    @objc func hitTest(_ sender:UITapGestureRecognizer){
+    func removeClient(){
+        clientPassed.firstName = ""
+    }
+    
+    func hitTest(_ sender:UITapGestureRecognizer){
         if !firstNameOutlet.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }
@@ -194,71 +184,71 @@ class NewClientViewController: UIViewController,  UIPickerViewDataSource, UIPick
         label.textAlignment = NSTextAlignment.center
         return label
     }
-    
-    @IBAction func createClient(_ sender: UIButton) {
+
+    @IBAction func saveBtn(_ sender: UIButton) {
         if firstNameOutlet.text != "" && lastNameOutlet.text != ""{
-        if edit == false{
-            myClient.clientKey = DBService.shared.createClientID()
-        }else{
-            myClient.clientKey = clientPassed.clientKey
-        }
-        
-        if genderSegmentedControl.selectedSegmentIndex == 0{
-            myClient.gender = "Male"
-        }else if genderSegmentedControl.selectedSegmentIndex == 1{
-            myClient.gender = "Female"
-        }
-        
-        var activityLvl = ""
-        if activitySegmentedControl.selectedSegmentIndex == 0{
-            activityLvl = "inactive"
-        }else if activitySegmentedControl.selectedSegmentIndex == 1{
-            activityLvl = "casual"
-        }else if activitySegmentedControl.selectedSegmentIndex == 2{
-            activityLvl = "active"
-        }
-        
-        let ageId:Int = agePickerView.selectedRow(inComponent: 0)
-        let tempAge = self.age[ageId]
-        
-        let ftId:Int = heightPickerView.selectedRow(inComponent: 0)
-        let tempFeet = feet[ftId]
-        let inId:Int = heightPickerView.selectedRow(inComponent: 1)
-        let tempInches = inches[inId]
-        
-        let lbsId:Int = weightPickerView.selectedRow(inComponent: 0)
-        let tempWeight = weight[lbsId]
-        
-        myClient.weight = tempWeight
-        myClient.feet = tempFeet
-        myClient.inches = tempInches
-        myClient.age = tempAge
-        myClient.activityLevel = activityLvl
-        myClient.firstName = (firstNameOutlet.text?.capitalized.trimmingCharacters(in: .whitespacesAndNewlines))!
-        myClient.lastName = (lastNameOutlet.text?.capitalized.trimmingCharacters(in: .whitespacesAndNewlines))!
-        
-        var clientDictionary = [String:Any]()
-        clientDictionary["firstName"] = myClient.firstName
-        clientDictionary["lastName"] = myClient.lastName
-        clientDictionary["age"] = myClient.age
-        clientDictionary["activityLevel"] = myClient.activityLevel
-        clientDictionary["feet"] = myClient.feet
-        clientDictionary["inches"] = myClient.inches
-        clientDictionary["weight"] = myClient.weight
-        clientDictionary["gender"] = myClient.gender
-        clientDictionary["clientKey"] = myClient.clientKey
-        
-        DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
-            let presenter = self.presentingViewController?.childViewControllers.last
-            self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
-        })
+            if edit == false{
+                myClient.clientKey = DBService.shared.createClientID()
+            }else{
+                myClient.clientKey = clientPassed.clientKey
+            }
+            
+            if genderSegmentedControl.selectedSegmentIndex == 0{
+                myClient.gender = "Male"
+            }else if genderSegmentedControl.selectedSegmentIndex == 1{
+                myClient.gender = "Female"
+            }
+            
+            var activityLvl = ""
+            if activitySegmentedControl.selectedSegmentIndex == 0{
+                activityLvl = "inactive"
+            }else if activitySegmentedControl.selectedSegmentIndex == 1{
+                activityLvl = "casual"
+            }else if activitySegmentedControl.selectedSegmentIndex == 2{
+                activityLvl = "active"
+            }
+            
+            let ageId:Int = agePickerView.selectedRow(inComponent: 0)
+            let tempAge = self.age[ageId]
+            
+            let ftId:Int = heightPickerView.selectedRow(inComponent: 0)
+            let tempFeet = feet[ftId]
+            let inId:Int = heightPickerView.selectedRow(inComponent: 1)
+            let tempInches = inches[inId]
+            
+            let lbsId:Int = weightPickerView.selectedRow(inComponent: 0)
+            let tempWeight = weight[lbsId]
+            
+            myClient.weight = tempWeight
+            myClient.feet = tempFeet
+            myClient.inches = tempInches
+            myClient.age = tempAge
+            myClient.activityLevel = activityLvl
+            myClient.firstName = (firstNameOutlet.text?.capitalized.trimmingCharacters(in: .whitespacesAndNewlines))!
+            myClient.lastName = (lastNameOutlet.text?.capitalized.trimmingCharacters(in: .whitespacesAndNewlines))!
+            
+            var clientDictionary = [String:Any]()
+            clientDictionary["firstName"] = myClient.firstName
+            clientDictionary["lastName"] = myClient.lastName
+            clientDictionary["age"] = myClient.age
+            clientDictionary["activityLevel"] = myClient.activityLevel
+            clientDictionary["feet"] = myClient.feet
+            clientDictionary["inches"] = myClient.inches
+            clientDictionary["weight"] = myClient.weight
+            clientDictionary["gender"] = myClient.gender
+            clientDictionary["clientKey"] = myClient.clientKey
+            
+            DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
+                let presenter = self.presentingViewController?.childViewControllers.last
+                self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
+            })
         }else{
             let alert = UIAlertController(title: "Error", message: "Please enter first and last name", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
