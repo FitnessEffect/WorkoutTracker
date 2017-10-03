@@ -41,15 +41,6 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
-        button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
-        button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
-        button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-        button.setTitle(clientPassed.firstName, for: .normal)
-        button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
-        self.navigationItem.titleView = button
-        
         spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
@@ -86,7 +77,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         clientPassed = DBService.shared.retrieveClientInfo(clientKey: clientPassed.clientKey)
-        button.setTitle(clientPassed.firstName, for: .normal)
+        title = clientPassed.firstName
         
         if DBService.shared.passToNextVC == true{
             callCreateSession()
