@@ -29,9 +29,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         noClientsLabel.alpha = 0
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
@@ -42,18 +40,13 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
-        //clientStickyView = ClientStickyNoteView.instanceFromNib() as! ClientStickyNoteView
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         clientStickyNoteVC = storyboard.instantiateViewController(withIdentifier: "clientStickyNoteVC") as! ClientStickyNoteViewController
         view.addSubview(overlayView)
         view.addSubview(menuView)
-        //view.addSubview(clientStickyView)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
-        //clientStickyView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-         //clientStickyView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-        
         spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
@@ -62,6 +55,9 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         let internetCheck = Reachability.isInternetAvailable()
         if internetCheck == false{
             let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)

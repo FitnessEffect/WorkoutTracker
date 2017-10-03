@@ -35,9 +35,9 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+        //UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
@@ -90,7 +90,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
+        //UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
         
     }
     

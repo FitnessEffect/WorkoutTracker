@@ -30,9 +30,16 @@ class PersonalStatsViewController: UIViewController,  UIPickerViewDataSource, UI
             weight.append(String(x))
         }
         
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = .clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         let internetCheck = Reachability.isInternetAvailable()
         if internetCheck == false{
             let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)

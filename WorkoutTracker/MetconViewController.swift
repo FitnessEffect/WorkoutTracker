@@ -33,7 +33,7 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationItem.setHidesBackButton(true, animated:true)
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
+        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)

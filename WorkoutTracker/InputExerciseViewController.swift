@@ -52,7 +52,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         print(user.email!)
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
         
         NotificationCenter.default.addObserver(self, selector: #selector(InputExerciseViewController.getExercise(_:)), name: NSNotification.Name(rawValue: "getExerciseID"), object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.hideNotificationOnExit(_:)), name: NSNotification.Name(rawValue: "hideNotif"), object: nil)
@@ -86,7 +85,8 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+      self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+      
         //set title with client name or "Personal"
         if DBService.shared.passedClient.clientKey != ""{
             if DBService.shared.passedClient.firstName == "Personal"{

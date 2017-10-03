@@ -19,7 +19,7 @@ class CrossfitCategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         typePassed = "Crossfit"
         title = typePassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
+        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         

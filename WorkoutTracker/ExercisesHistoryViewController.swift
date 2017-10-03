@@ -32,12 +32,12 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
         self.title = "History"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        //UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
         spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
@@ -88,7 +88,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
+        //UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
     }
     
     func displayCurrentWeek(){

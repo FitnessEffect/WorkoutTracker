@@ -30,6 +30,8 @@ class ExerciseTypeTableViewController: UITableViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
+        
         DBService.shared.clearSupersetExercises()
         let internetCheck = Reachability.isInternetAvailable()
         if internetCheck == false{
