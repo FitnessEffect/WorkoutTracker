@@ -1513,7 +1513,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -3492,8 +3492,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="vbK-gm-pnf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="NBN-h4-wGq">
-                                <rect key="frame" x="22" y="54" width="331" height="35"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longPaperWhite" translatesAutoresizingMaskIntoConstraints="NO" id="ESH-pY-v8Y">
+                                <rect key="frame" x="1" y="23" width="373" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyNoteMain" translatesAutoresizingMaskIntoConstraints="NO" id="PB5-z7-5Jj">
+                                <rect key="frame" x="85" y="102" width="208" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="NBN-h4-wGq">
+                                <rect key="frame" x="22" y="63" width="331" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="331" id="CtM-mC-hIu"/>
@@ -3501,7 +3509,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="p8Y-VP-CC2">
-                                <rect key="frame" x="0.0" y="272" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="305" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Password"/>
@@ -3515,7 +3523,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sf3-xm-Xjo">
-                                <rect key="frame" x="0.0" y="195" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="228" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3528,7 +3536,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0h-9t-Zvy">
-                                <rect key="frame" x="53" y="373" width="270" height="70"/>
+                                <rect key="frame" x="53" y="392" width="270" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                                 <state key="normal" title="Login" backgroundImage="chalkBackground">
@@ -3538,19 +3546,8 @@
                                     <action selector="login:" destination="GxJ-gv-iux" eventType="touchUpInside" id="Da9-cz-LcV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbE-GD-Jxq">
-                                <rect key="frame" x="85" y="97" width="203" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="203" id="0xg-DP-p5U"/>
-                                    <constraint firstAttribute="height" constant="35" id="ajR-rW-t5Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="03G-Oj-QpE">
-                                <rect key="frame" x="85" y="488" width="51" height="31"/>
+                                <rect key="frame" x="85" y="501" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3559,7 +3556,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGB-bP-FhA">
-                                <rect key="frame" x="157" y="492" width="136" height="23"/>
+                                <rect key="frame" x="157" y="505" width="136" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3578,6 +3575,16 @@
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbE-GD-Jxq">
+                                <rect key="frame" x="102" y="138" width="172" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="0xg-DP-p5U"/>
+                                    <constraint firstAttribute="height" constant="35" id="ajR-rW-t5Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="25"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3614,11 +3621,13 @@
         <image name="clientIcon" width="44" height="44"/>
         <image name="largePaper" width="781" height="1082"/>
         <image name="lighterBackground" width="375" height="667"/>
+        <image name="longPaperWhite" width="1066" height="399"/>
         <image name="markerBackground" width="363" height="265"/>
         <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
         <image name="stickyNote" width="754" height="761"/>
+        <image name="stickyNoteMain" width="754" height="793"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dgs-GC-2Lb"/>
