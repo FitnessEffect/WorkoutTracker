@@ -124,7 +124,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
         clientPassed.firstName = ""
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !firstNameOutlet.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }
@@ -239,8 +239,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
             clientDictionary["clientKey"] = myClient.clientKey
             
             DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
-                let presenter = self.presentingViewController?.childViewControllers.last
-                self.dismiss(animated: true, completion: {presenter?.viewWillAppear(true)})
+                self.navigationController?.popViewController(animated: true)
             })
         }else{
             let alert = UIAlertController(title: "Error", message: "Please enter first and last name", preferredStyle: UIAlertControllerStyle.alert)
