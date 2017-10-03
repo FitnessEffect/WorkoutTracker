@@ -18,7 +18,6 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     @IBOutlet weak var firstNameOutlet: UITextField!
     @IBOutlet weak var lastNameOutlet: UITextField!
     
-    var delegate:createClientDelegate! = nil
     var myClient = Client()
     var clientPassed = Client()
     var edit = false
@@ -30,8 +29,6 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         for x in 0...120{
             age.append(String(x))
         }

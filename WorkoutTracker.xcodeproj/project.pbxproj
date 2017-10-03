@@ -62,7 +62,6 @@
 		527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E51CE11E2E00F46B57 /* HeroWodsViewController.swift */; };
 		527D07E81CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E71CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift */; };
 		5283E0751C7E37CB00FB716B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0741C7E37CB00FB716B /* Client.swift */; };
-		5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0781C88E09E00FB716B /* NewClientViewController.swift */; };
 		5283E07F1C890E6200FB716B /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E07E1C890E6200FB716B /* SessionsViewController.swift */; };
 		5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0831C89F53200FB716B /* ClientViewController.swift */; };
 		5283E0881C8B998600FB716B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0871C8B998600FB716B /* Exercise.swift */; };
@@ -168,7 +167,6 @@
 		527D07E51CE11E2E00F46B57 /* HeroWodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroWodsViewController.swift; sourceTree = "<group>"; };
 		527D07E71CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodybuildingCategoryTableViewController.swift; sourceTree = "<group>"; };
 		5283E0741C7E37CB00FB716B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		5283E0781C88E09E00FB716B /* NewClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientViewController.swift; path = ../NewClientViewController.swift; sourceTree = "<group>"; };
 		5283E07E1C890E6200FB716B /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		5283E0831C89F53200FB716B /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientViewController.swift; path = ../ClientViewController.swift; sourceTree = "<group>"; };
 		5283E0871C8B998600FB716B /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 				522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
 				522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */,
-				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
 				5283E07E1C890E6200FB716B /* SessionsViewController.swift */,
 				522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */,
 			);
@@ -872,7 +869,6 @@
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
 				527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */,
 				522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */,
-				5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */,
 				526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */,
 				522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */,
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,

@@ -197,30 +197,30 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         self.present(popController, animated: true, completion: nil)
     }
     
-    @objc func clickOnButton(button: UIButton) {
-        var xPosition:CGFloat = 0
-        var yPosition:CGFloat = 0
-        
-        xPosition = self.view.frame.width/2
-        yPosition = self.view.frame.minY + 60
-        
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 500)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        popController.setClient(client: clientPassed)
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
-    }
+//    @objc func clickOnButton(button: UIButton) {
+//        var xPosition:CGFloat = 0
+//        var yPosition:CGFloat = 0
+//        
+//        xPosition = self.view.frame.width/2
+//        yPosition = self.view.frame.minY + 60
+//        
+//        // get a reference to the view controller for the popover
+//        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
+//        
+//        // set the presentation style
+//        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+//        
+//        // set up the popover presentation controller
+//        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+//        popController.popoverPresentationController?.delegate = self
+//        popController.popoverPresentationController?.sourceView = self.view
+//        popController.preferredContentSize = CGSize(width: 300, height: 500)
+//        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+//        popController.setClient(client: clientPassed)
+//        
+//        // present the popover
+//        self.present(popController, animated: true, completion: nil)
+//    }
     
     func refreshTableViewData(){
         self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]

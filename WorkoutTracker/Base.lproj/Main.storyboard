@@ -268,15 +268,16 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="LS4-tU-c3g">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="largeSticky" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-IX-wH9">
-                                <rect key="frame" x="20" y="67" width="334" height="560"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyLarge" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-IX-wH9">
+                                <rect key="frame" x="-11" y="70" width="408" height="597"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y2X-D8-kp6">
-                                <rect key="frame" x="45" y="141" width="139" height="35"/>
+                                <rect key="frame" x="45" y="161" width="139" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,7 +293,7 @@
                                 </connections>
                             </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-69-P6d">
-                                <rect key="frame" x="192" y="141" width="139" height="35"/>
+                                <rect key="frame" x="192" y="161" width="139" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -300,7 +301,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EkX-6h-bts">
-                                <rect key="frame" x="77" y="285" width="230" height="29"/>
+                                <rect key="frame" x="72" y="304" width="230" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="inactive"/>
@@ -316,7 +317,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuw-Q4-aQI">
-                                <rect key="frame" x="72" y="173" width="230" height="100"/>
+                                <rect key="frame" x="72" y="198" width="230" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="NzR-rV-E32" id="rgS-8i-XMs"/>
@@ -324,7 +325,7 @@
                                 </connections>
                             </pickerView>
                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3BQ-oH-wfX">
-                                <rect key="frame" x="73" y="331" width="230" height="100"/>
+                                <rect key="frame" x="72" y="340" width="230" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="NzR-rV-E32" id="gBw-SR-Es3"/>
@@ -332,14 +333,14 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3R-N9-GBc">
-                                <rect key="frame" x="137" y="368" width="42" height="26"/>
+                                <rect key="frame" x="136" y="377" width="42" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-8w-cSY">
-                                <rect key="frame" x="104" y="97" width="169" height="29"/>
+                                <rect key="frame" x="104" y="106" width="169" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
@@ -348,14 +349,14 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr0-yR-OPF">
-                                <rect key="frame" x="257" y="368" width="16" height="26"/>
+                                <rect key="frame" x="256" y="377" width="16" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1J-PI-Ppv">
-                                <rect key="frame" x="196" y="210" width="33" height="27"/>
+                                <rect key="frame" x="196" y="235" width="33" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -386,201 +387,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbD-QA-FBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="88.799999999999997" y="-1414.5427286356824"/>
-        </scene>
-        <!--New Client View Controller-->
-        <scene sceneID="obZ-7F-rcF">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PrW-6C-DOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="newClientVC" id="BiS-Xy-g6B" customClass="NewClientViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="V1L-Bf-IQo"/>
-                        <viewControllerLayoutGuide type="bottom" id="42R-ve-Ddf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SZh-ov-VPS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HL-uU-OMV">
-                                <rect key="frame" x="1" y="1" width="374" height="666"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-yI-eKo">
-                                        <rect key="frame" x="72" y="98" width="230" height="35"/>
-                                        <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="230" id="G6c-4B-nii"/>
-                                            <constraint firstAttribute="height" constant="35" id="gES-NM-Qbg"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                    </textField>
-                                    <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGy-VF-C4Q">
-                                        <rect key="frame" x="72" y="475" width="230" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="230" id="6IH-Yh-L9S"/>
-                                            <constraint firstAttribute="height" constant="100" id="9fc-rd-qpH"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="BiS-Xy-g6B" id="YgV-Ye-wDd"/>
-                                            <outlet property="delegate" destination="BiS-Xy-g6B" id="PaR-qv-zGS"/>
-                                        </connections>
-                                    </pickerView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vU0-WF-gNw">
-                                        <rect key="frame" x="72" y="149" width="230" height="35"/>
-                                        <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="230" id="3dY-eR-kz6"/>
-                                            <constraint firstAttribute="height" constant="35" id="95T-O5-jU8"/>
-                                        </constraints>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                    </textField>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gr6-Gu-YZc">
-                                        <rect key="frame" x="72" y="322" width="230" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="GgV-8b-onC"/>
-                                            <constraint firstAttribute="width" constant="230" id="xlH-fs-YXJ"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="inactive"/>
-                                            <segment title="casual"/>
-                                            <segment title="active"/>
-                                        </segments>
-                                    </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz0-Fi-V2k">
-                                        <rect key="frame" x="202" y="512" width="27" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="27" id="0l3-3A-7VE"/>
-                                            <constraint firstAttribute="height" constant="26" id="dga-AL-IRA"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-SC-J5t">
-                                        <rect key="frame" x="72" y="204" width="230" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="230" id="IfS-nQ-s1B"/>
-                                            <constraint firstAttribute="height" constant="100" id="KIp-4g-4Py"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="BiS-Xy-g6B" id="FIn-c9-1rf"/>
-                                            <outlet property="delegate" destination="BiS-Xy-g6B" id="vdN-xn-Eu6"/>
-                                        </connections>
-                                    </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lla-uv-X9k">
-                                        <rect key="frame" x="92" y="593" width="190" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="j4h-r3-Hay"/>
-                                            <constraint firstAttribute="width" constant="190" id="v3E-oT-d7o"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
-                                        <state key="normal" title="Save" backgroundImage="markerBackground"/>
-                                        <connections>
-                                            <action selector="createClient:" destination="BiS-Xy-g6B" eventType="touchUpInside" id="OpL-vA-Znh"/>
-                                        </connections>
-                                    </button>
-                                    <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1d-A2-fG5">
-                                        <rect key="frame" x="72" y="371" width="230" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="9x5-na-yT8"/>
-                                            <constraint firstAttribute="width" constant="230" id="DYb-eM-0m5"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="BiS-Xy-g6B" id="7kh-8t-USN"/>
-                                            <outlet property="delegate" destination="BiS-Xy-g6B" id="BTg-AE-bzt"/>
-                                        </connections>
-                                    </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNy-Bj-Y7B">
-                                        <rect key="frame" x="100" y="408" width="42" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-pf-AUz">
-                                        <rect key="frame" x="72" y="43" width="230" height="29"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="49P-Tm-xKO"/>
-                                            <constraint firstAttribute="width" constant="230" id="aSu-7h-Eak"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Male"/>
-                                            <segment title="Female"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="genderSelection:" destination="BiS-Xy-g6B" eventType="valueChanged" id="dvP-Z7-ID0"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZ2-L6-Q8U">
-                                        <rect key="frame" x="220" y="408" width="16" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXW-yD-9UB">
-                                        <rect key="frame" x="161" y="241" width="33" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="27" id="0zR-DE-cjP"/>
-                                            <constraint firstAttribute="width" constant="33" id="AWb-rh-WS7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Lhu-SC-J5t" secondAttribute="trailing" constant="72" id="5C6-w6-2rT"/>
-                                    <constraint firstItem="Lhu-SC-J5t" firstAttribute="top" secondItem="vU0-WF-gNw" secondAttribute="bottom" constant="20" id="6GN-pi-rMw"/>
-                                    <constraint firstItem="lla-uv-X9k" firstAttribute="top" secondItem="YGy-VF-C4Q" secondAttribute="bottom" constant="18" id="7Da-Sj-l9w"/>
-                                    <constraint firstItem="lla-uv-X9k" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="7lt-74-GlL"/>
-                                    <constraint firstItem="3DZ-pf-AUz" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="9Jh-6s-IPu"/>
-                                    <constraint firstItem="Vz0-Fi-V2k" firstAttribute="centerY" secondItem="YGy-VF-C4Q" secondAttribute="centerY" id="HUe-SM-4dF"/>
-                                    <constraint firstItem="E1d-A2-fG5" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="Hcg-s8-dE9"/>
-                                    <constraint firstItem="8pZ-yI-eKo" firstAttribute="top" secondItem="3DZ-pf-AUz" secondAttribute="bottom" constant="27" id="PBL-JG-IMS"/>
-                                    <constraint firstItem="8pZ-yI-eKo" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="aLF-B9-sCA"/>
-                                    <constraint firstItem="3DZ-pf-AUz" firstAttribute="top" secondItem="4HL-uU-OMV" secondAttribute="top" constant="43" id="ajf-NO-aUK"/>
-                                    <constraint firstItem="E1d-A2-fG5" firstAttribute="top" secondItem="Gr6-Gu-YZc" secondAttribute="bottom" constant="21" id="avm-dX-naO"/>
-                                    <constraint firstItem="Lhu-SC-J5t" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="bhJ-YC-hKt"/>
-                                    <constraint firstItem="YGy-VF-C4Q" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="cht-ay-xJN"/>
-                                    <constraint firstItem="Gr6-Gu-YZc" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="eJf-xJ-8AC"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vz0-Fi-V2k" secondAttribute="trailing" constant="145" id="iq8-fd-9SU"/>
-                                    <constraint firstAttribute="bottom" secondItem="lla-uv-X9k" secondAttribute="bottom" constant="23" id="loG-02-wDG"/>
-                                    <constraint firstItem="Gr6-Gu-YZc" firstAttribute="top" secondItem="Lhu-SC-J5t" secondAttribute="bottom" constant="18" id="nae-Ba-BJO"/>
-                                    <constraint firstItem="vU0-WF-gNw" firstAttribute="top" secondItem="8pZ-yI-eKo" secondAttribute="bottom" constant="16" id="o9c-6S-ZtP"/>
-                                    <constraint firstItem="jXW-yD-9UB" firstAttribute="leading" secondItem="4HL-uU-OMV" secondAttribute="leading" constant="161" id="uWP-u6-YFD"/>
-                                    <constraint firstItem="vU0-WF-gNw" firstAttribute="centerX" secondItem="4HL-uU-OMV" secondAttribute="centerX" id="um2-zG-nU2"/>
-                                    <constraint firstItem="jXW-yD-9UB" firstAttribute="centerY" secondItem="Lhu-SC-J5t" secondAttribute="centerY" constant="0.5" id="vzc-1s-8gf"/>
-                                    <constraint firstItem="YGy-VF-C4Q" firstAttribute="top" secondItem="E1d-A2-fG5" secondAttribute="bottom" constant="4" id="xPm-UU-sOR"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="BiS-Xy-g6B" id="btL-7u-sVk"/>
-                                </connections>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="4HL-uU-OMV" firstAttribute="leading" secondItem="SZh-ov-VPS" secondAttribute="leadingMargin" constant="-15" id="FEX-jX-Wqm"/>
-                            <constraint firstItem="4HL-uU-OMV" firstAttribute="top" secondItem="V1L-Bf-IQo" secondAttribute="bottom" constant="-19" id="LPG-xD-FoR"/>
-                            <constraint firstItem="42R-ve-Ddf" firstAttribute="top" secondItem="4HL-uU-OMV" secondAttribute="bottom" id="mU5-HO-6jF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4HL-uU-OMV" secondAttribute="trailing" constant="-16" id="nzn-gb-5d4"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="activitySegmentedControl" destination="Gr6-Gu-YZc" id="cHb-Ih-BwC"/>
-                        <outlet property="agePickerView" destination="Lhu-SC-J5t" id="6Np-s4-Dcg"/>
-                        <outlet property="firstNameOutlet" destination="8pZ-yI-eKo" id="4vJ-xS-fOW"/>
-                        <outlet property="genderSegmentedControl" destination="3DZ-pf-AUz" id="dae-Wk-ZNe"/>
-                        <outlet property="heightPickerView" destination="E1d-A2-fG5" id="o1h-ln-x3N"/>
-                        <outlet property="lastNameOutlet" destination="vU0-WF-gNw" id="w3t-oj-1IH"/>
-                        <outlet property="weightPickerView" destination="YGy-VF-C4Q" id="isG-ZD-nVM"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1028" y="-1417"/>
         </scene>
         <!--Create Session View Controller-->
         <scene sceneID="1Ld-dJ-DYr">
@@ -1703,7 +1509,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -2051,11 +1857,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QZq-qU-6ZB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticky" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Ak-3xr">
-                                <rect key="frame" x="63" y="67" width="248" height="222"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickyNote" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Ak-3xr">
+                                <rect key="frame" x="41" y="75" width="265" height="237"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="Xaw-Ns-VHX"/>
-                                    <constraint firstAttribute="height" constant="222" id="hpp-d7-sNT"/>
+                                    <constraint firstAttribute="width" constant="265" id="Xaw-Ns-VHX"/>
+                                    <constraint firstAttribute="height" constant="237" id="hpp-d7-sNT"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-5x-73S">
@@ -2105,10 +1911,10 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
-                                <rect key="frame" x="90" y="222" width="195" height="48"/>
+                                <rect key="frame" x="110" y="206" width="165" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="hEn-RH-7h3"/>
-                                    <constraint firstAttribute="width" constant="195" id="nY1-Ru-d9A"/>
+                                    <constraint firstAttribute="height" constant="40" id="hEn-RH-7h3"/>
+                                    <constraint firstAttribute="width" constant="165" id="nY1-Ru-d9A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
                                 <state key="normal" title="Duration" backgroundImage="markerBox">
@@ -2119,7 +1925,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-Up-6bZ">
-                                <rect key="frame" x="110" y="72" width="156" height="46"/>
+                                <rect key="frame" x="110" y="78" width="156" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="VH6-Gd-ofP"/>
                                     <constraint firstAttribute="width" constant="156" id="hmp-Dp-8f3"/>
@@ -2129,10 +1935,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
-                                <rect key="frame" x="110" y="147" width="164" height="45"/>
+                                <rect key="frame" x="119" y="147" width="148" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="sjd-UG-Vi4"/>
-                                    <constraint firstAttribute="height" constant="45" id="ywR-Ui-Do5"/>
+                                    <constraint firstAttribute="width" constant="148" id="sjd-UG-Vi4"/>
+                                    <constraint firstAttribute="height" constant="39" id="ywR-Ui-Do5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
                                 <state key="normal" title="Paid" backgroundImage="markerBox">
@@ -2165,28 +1971,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="153" id="3f5-Il-791"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="30" id="82q-Nh-Uha"/>
+                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="177" id="3f5-Il-791"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="20" id="82q-Nh-Uha"/>
                             <constraint firstAttribute="trailing" secondItem="QZq-qU-6ZB" secondAttribute="trailing" id="AdT-C0-8J4"/>
                             <constraint firstItem="qh5-Kl-BNN" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="ENd-kS-9CW"/>
                             <constraint firstItem="1Z1-5x-73S" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="FKm-rb-rwb"/>
-                            <constraint firstItem="oT8-Up-6bZ" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="8" id="Fhh-Pf-N1r"/>
+                            <constraint firstItem="oT8-Up-6bZ" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="14" id="Fhh-Pf-N1r"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="1Z1-5x-73S" secondAttribute="bottom" id="FuE-P9-jwJ"/>
                             <constraint firstItem="MyH-Ag-oPe" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="IYA-z1-DRr"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
-                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="3" id="MfL-zj-Uge"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="48" id="Z8P-YQ-fDc"/>
-                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="78" id="bzz-pk-QNh"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="11" id="MfL-zj-Uge"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="53" id="Z8P-YQ-fDc"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="102" id="bzz-pk-QNh"/>
                             <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="dc2-g8-gsN"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="29" id="eJZ-QA-HLH"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="5" id="dc2-g8-gsN"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="23" id="eJZ-QA-HLH"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="h5s-Sv-hMq"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="top" secondItem="nJX-56-Njm" secondAttribute="top" id="iIB-M5-J91"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="QZq-qU-6ZB" secondAttribute="bottom" id="nxZ-De-HtO"/>
-                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="47" id="opk-IR-xqp"/>
-                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="3" id="sIp-pA-Z09"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="4.5" id="smD-uD-yIb"/>
-                            <constraint firstItem="qh5-Kl-BNN" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="31" id="zX6-mv-TmB"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="25" id="opk-IR-xqp"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="11" id="sIp-pA-Z09"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="5.5" id="smD-uD-yIb"/>
+                            <constraint firstItem="qh5-Kl-BNN" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="55" id="zX6-mv-TmB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3800,13 +3606,14 @@
         <image name="chalkBackground" width="277" height="135"/>
         <image name="chalkBackgroundBright" width="254" height="127"/>
         <image name="clientIcon" width="44" height="44"/>
-        <image name="largeSticky" width="675" height="1024"/>
         <image name="lighterBackground" width="375" height="667"/>
         <image name="markerBackground" width="363" height="265"/>
         <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
         <image name="sticky" width="628" height="726"/>
+        <image name="stickyLarge" width="799" height="1088"/>
+        <image name="stickyNote" width="686" height="761"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dgs-GC-2Lb"/>
