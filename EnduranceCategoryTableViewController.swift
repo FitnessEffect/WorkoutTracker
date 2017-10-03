@@ -19,8 +19,7 @@ class EnduranceCategoryTableViewController: UITableViewController, UIPopoverPres
         super.viewDidLoad()
         typePassed = "Endurance"
         title = typePassed
-        
-        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
+
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         

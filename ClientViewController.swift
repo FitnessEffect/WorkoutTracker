@@ -29,7 +29,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         noClientsLabel.alpha = 0
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
@@ -93,7 +93,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-
+    
     //TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -138,8 +138,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func createClient(_ sender: UIBarButtonItem) {
-        
-       clientStickyNoteVC.removeClient()
+        clientStickyNoteVC.removeClient()
         self.navigationController?.pushViewController(self.clientStickyNoteVC, animated: true)
     }
     

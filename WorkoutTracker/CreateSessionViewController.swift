@@ -19,7 +19,6 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +39,6 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func create(_ sender: UIButton) {
-        
         let index = pickerView.selectedRow(inComponent: 0)
         let sessionKey = DBService.shared.createSessionKey()
         let temp = sessionName.text?.components(separatedBy: "#")
@@ -102,6 +100,4 @@ class CreateSessionViewController: UIViewController, UIPickerViewDelegate, UIPic
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30.0
     }
-
-
 }

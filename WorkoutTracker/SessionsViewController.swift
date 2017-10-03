@@ -35,9 +35,6 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
-        //UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
-        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
@@ -83,15 +80,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             callCreateSession()
             DBService.shared.setPassToNextVC(bool:false)
         }
-        
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
-        
-        //UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
-        
     }
     
     func displayCurrentWeek(){
@@ -197,31 +186,6 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         self.present(popController, animated: true, completion: nil)
     }
     
-//    @objc func clickOnButton(button: UIButton) {
-//        var xPosition:CGFloat = 0
-//        var yPosition:CGFloat = 0
-//        
-//        xPosition = self.view.frame.width/2
-//        yPosition = self.view.frame.minY + 60
-//        
-//        // get a reference to the view controller for the popover
-//        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
-//        
-//        // set the presentation style
-//        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-//        
-//        // set up the popover presentation controller
-//        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-//        popController.popoverPresentationController?.delegate = self
-//        popController.popoverPresentationController?.sourceView = self.view
-//        popController.preferredContentSize = CGSize(width: 300, height: 500)
-//        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-//        popController.setClient(client: clientPassed)
-//        
-//        // present the popover
-//        self.present(popController, animated: true, completion: nil)
-//    }
-    
     func refreshTableViewData(){
         self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
         tableViewOutlet.reloadData()
@@ -258,7 +222,6 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return array!.count;
     }
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""

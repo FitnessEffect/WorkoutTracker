@@ -51,7 +51,6 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
         }else{
             milesLabel.alpha = 1
         }
-        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
         segmentedControl.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
     }
     

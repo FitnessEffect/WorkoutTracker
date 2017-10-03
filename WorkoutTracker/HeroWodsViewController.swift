@@ -24,7 +24,6 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
         
         title = categoryPassed
-        //self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 22)!,NSAttributedStringKey.foregroundColor: UIColor.darkText]
         
         if categoryPassed == "1 Rep Max"{
             let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))

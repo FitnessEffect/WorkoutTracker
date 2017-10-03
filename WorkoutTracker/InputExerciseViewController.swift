@@ -284,8 +284,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
                 })})
             })
         }else{
-            
-            
             DBService.shared.updateExerciseForClient(exerciseDictionary: self.exerciseDictionary, completion: {
                 let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
                 self.present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
@@ -293,8 +291,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
                     self.refreshNotifications()
                 })})
             })
-            
-            
         }
         //post request for notification if challenge is on!!!
         if ((exerciseDictionary["opponent"] as! String).characters.contains("@")){
