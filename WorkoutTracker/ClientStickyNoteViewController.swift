@@ -41,19 +41,22 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         
-        firstNameOutlet.layer.cornerRadius = 5.0
-        firstNameOutlet.clipsToBounds = true
-        firstNameOutlet.layer.borderWidth = 1
-        firstNameOutlet.layer.borderColor = UIColor.white.cgColor
+//        firstNameOutlet.layer.cornerRadius = 5.0
+//        firstNameOutlet.clipsToBounds = true
+//        firstNameOutlet.layer.borderWidth = 1
+//        firstNameOutlet.layer.borderColor = UIColor.white.cgColor
         
-        lastNameOutlet.layer.cornerRadius = 5.0
-        lastNameOutlet.clipsToBounds = true
-        lastNameOutlet.layer.borderWidth = 1
-        lastNameOutlet.layer.borderColor = UIColor.white.cgColor
+//        lastNameOutlet.layer.cornerRadius = 5.0
+//        lastNameOutlet.clipsToBounds = true
+//        lastNameOutlet.layer.borderWidth = 1
+//        lastNameOutlet.layer.borderColor = UIColor.white.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if clientPassed.firstName == ""{
+        if clientPassed.firstName != ""{
+            firstNameOutlet.text = clientPassed.firstName
+            lastNameOutlet.text = clientPassed.lastName
+        }else{
             genderSegmentedControl.selectedSegmentIndex =  0
             firstNameOutlet.text?.removeAll()
             lastNameOutlet.text?.removeAll()
@@ -73,8 +76,6 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
                 genderSegmentedControl.selectedSegmentIndex =  1
             }
             
-            firstNameOutlet.text = clientPassed.firstName
-            lastNameOutlet.text = clientPassed.lastName
             for index in 0...age.count-1{
                 if age[index] == clientPassed.age{
                     agePickerView.selectRow(index, inComponent: 0, animated: true)
