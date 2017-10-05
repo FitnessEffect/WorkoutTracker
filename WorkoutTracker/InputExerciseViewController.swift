@@ -381,6 +381,8 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func checkSessions(dateStr:String, completion: () ->Void){
+      let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
+      DBService.shared.setPassedClient(client: tempClient)
         //retrieve session for day
         workoutInputView.sessionsNames.removeAll()
         DBService.shared.retrieveSessionsForDateForClient(dateStr: dateStr, completion: {
@@ -396,12 +398,12 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
     func savePickerName(name:String){
         self.title = name
         if name != "Personal"{
-            DBService.shared.retrieveClients {
-                DBService.shared.setPassedClient(client:self.getClientFromName(n:name), completion:{
-                    print(DBService.shared.passedClient)
-                    self.checkSessions(dateStr: (self.workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+            //DBService.shared.retrieveClients {
+                DBService.shared.setPassedClient(client:DBService.shared.retrieveClientInfoByFullName(fullName: name), completion:{
+                  self.checkSessions(dateStr: (self.workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
                 })
-            }
+         
+           // }
         }else{
             DBService.shared.clearPassedClient()
          checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
@@ -441,16 +443,16 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
         self.present(popController, animated: true, completion: nil)
     }
     
-    func getClientFromName(n:String) -> Client{
-        for client in DBService.shared.clients{
-            if n == client.firstName + " " + client.lastName{
-                return client
-            }
-        }
-        //should never reach this statement
-        return Client()
-    }
-    
+//    func getClientFromName(n:String) -> Client{
+//        for client in DBService.shared.clients{
+//            if n == client.firstName + " " + client.lastName{
+//                return client
+//            }
+//        }
+//        //should never reach this statement
+//        return Client()
+//    }
+   
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
