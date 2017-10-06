@@ -147,7 +147,6 @@ class MenuView: UIView {
             UserDefaults.standard.set(false, forKey: "switch")
             do{
                 try FIRAuth.auth()?.signOut()
-                
             }catch{
                 
             }

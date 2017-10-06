@@ -168,8 +168,68 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
         sessionsNames = names
     }
     
+    func resetAllFields(){
+        saveButton.setBackgroundImage(UIImage(named:""), for: .normal)
+        
+        //erase email
+        UIView.animate(withDuration: 0.5, animations: {
+            self.emailTxtView.text = ""
+            self.emailTxtView.alpha = 0
+            self.eraseEmail.alpha = 0
+            self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1 + self.translation2, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1 + self.translation2, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.challenge.alpha = 1
+        })
+        
+            
+        //erase result
+        UIView.animate(withDuration: 0.5, animations: {
+            self.resultTextView.text = ""
+            self.resultTextView.alpha = 0
+            self.emailTxtView.text = ""
+            self.emailTxtView.alpha = 0
+            self.eraseResult.alpha = 0
+            self.eraseEmail.alpha = 0
+            self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition + self.translation1, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition + self.translation1, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition + self.translation1, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.resultBtn.alpha = 1
+            self.resultBtn.setBackgroundImage(UIImage(named:""), for: .normal)
+        })
+        
+        //erase exercise
+        UIView.animate(withDuration: 0.5, animations: {
+            UserDefaults.standard.set(nil, forKey: "supersetDescription")
+            DBService.shared.setEdit(bool:false)
+            DBService.shared.clearExercisePassed()
+            self.descriptionTextView.text = ""
+            self.descriptionTextView.alpha = 0
+            self.erase.alpha = 0
+            self.resultTextView.text = ""
+            self.resultTextView.alpha = 0
+            self.emailTxtView.text = ""
+            self.emailTxtView.alpha = 0
+            self.eraseResult.alpha = 0
+            self.eraseEmail.alpha = 0
+            self.resultBtn.frame = CGRect(x: 0, y: self.resultStartPosition, width: self.resultBtn.frame.width, height: self.resultBtn.frame.height)
+            self.challenge.frame = CGRect(x: 0, y: self.challengeStartPosition, width: self.challenge.frame.width, height: self.challenge.frame.height)
+            self.saveButton.frame = CGRect(x: 0, y: self.saveStartPosition, width: self.saveButton.frame.width, height: self.saveButton.frame.height)
+            self.dateBtn.frame = CGRect(x: 0, y: self.dateStartPosition, width: self.dateBtn.frame.width, height: self.dateBtn.frame.height)
+            self.exerciseBtn.alpha = 1
+        })
+    }
+    
+    func setupPersonalSave(){
+        resetAllFields()
+        challenge.setTitle("Challenge", for: .normal)
+        challenge.isUserInteractionEnabled = false
+        challenge.setBackgroundImage(UIImage(named:""), for: .normal)
+        exerciseBtn.isUserInteractionEnabled = true
+        exerciseBtn.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
+    }
     
     func setupClientSave(completion: () -> Void){
+        resetAllFields()
         if sessionsNames.count != 0{
             challenge.setTitle(sessionsNames.first, for: .normal)
             challenge.isUserInteractionEnabled = true
