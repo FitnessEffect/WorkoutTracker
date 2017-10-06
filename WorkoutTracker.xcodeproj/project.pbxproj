@@ -37,6 +37,7 @@
 		522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522D9ECC1F831F1200F38C77 /* ClientStickyNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */; };
+		522D9ED01F87027600F38C77 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9ECF1F87027600F38C77 /* GraphViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
@@ -137,6 +138,7 @@
 		522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStickyNoteViewController.swift; sourceTree = "<group>"; };
+		522D9ECF1F87027600F38C77 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -405,6 +407,7 @@
 		52F6A8921C5F0036000FD7B0 = {
 			isa = PBXGroup;
 			children = (
+				522D9ECF1F87027600F38C77 /* GraphViewController.swift */,
 				52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */,
 				522CFACB1F50F2D70037B371 /* WorkoutTrackerTests */,
 				52778FE51F8009D3008B6398 /* WorkoutTrackerUITests */,
@@ -661,11 +664,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-iOS9.2/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-iOS9.2/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
@@ -846,6 +851,7 @@
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* SessionsViewController.swift in Sources */,
+				522D9ED01F87027600F38C77 /* GraphViewController.swift in Sources */,
 				52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
