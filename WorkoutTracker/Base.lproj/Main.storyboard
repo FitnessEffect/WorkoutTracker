@@ -1515,7 +1515,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1933,7 +1933,7 @@
                                     <constraint firstAttribute="width" constant="131" id="sjd-UG-Vi4"/>
                                     <constraint firstAttribute="height" constant="35" id="ywR-Ui-Do5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="22"/>
                                 <state key="normal" title="Paid" backgroundImage="markerBox">
                                     <color key="titleColor" red="0.0" green="0.64705403645833337" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1968,7 +1968,7 @@
                                     <constraint firstAttribute="height" constant="35" id="hEn-RH-7h3"/>
                                     <constraint firstAttribute="width" constant="156" id="nY1-Ru-d9A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="20"/>
                                 <state key="normal" title="Duration" backgroundImage="markerBox">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
