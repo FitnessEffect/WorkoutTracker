@@ -270,10 +270,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="largePaper" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-IX-wH9">
-                                <rect key="frame" x="-11" y="70" width="398" height="597"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longPaperOneTape" translatesAutoresizingMaskIntoConstraints="NO" id="mqC-Tc-0eE">
+                                <rect key="frame" x="-11" y="54" width="398" height="605"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="markerBox" translatesAutoresizingMaskIntoConstraints="NO" id="y2X-D8-kp6">
                                 <rect key="frame" x="45" y="161" width="139" height="35"/>
@@ -308,13 +307,6 @@
                                     <segment title="active"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGn-GW-uBQ">
-                                <rect key="frame" x="202" y="476" width="27" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuw-Q4-aQI">
                                 <rect key="frame" x="72" y="198" width="230" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -331,15 +323,8 @@
                                     <outlet property="delegate" destination="NzR-rV-E32" id="lXz-9y-sGJ"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3R-N9-GBc">
-                                <rect key="frame" x="136" y="377" width="42" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-8w-cSY">
-                                <rect key="frame" x="104" y="106" width="169" height="29"/>
+                                <rect key="frame" x="104" y="111" width="169" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
@@ -348,21 +333,21 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr0-yR-OPF">
-                                <rect key="frame" x="256" y="377" width="16" height="26"/>
+                                <rect key="frame" x="254" y="377" width="16" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1J-PI-Ppv">
-                                <rect key="frame" x="196" y="235" width="33" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="201" y="235" width="33" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGQ-xi-Dr4">
-                                <rect key="frame" x="93" y="544" width="190" height="50"/>
+                                <rect key="frame" x="93" y="547" width="190" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
                                 <state key="normal" title="Save" backgroundImage="markerBackground"/>
@@ -370,6 +355,20 @@
                                     <action selector="saveBtn:" destination="NzR-rV-E32" eventType="touchUpInside" id="RCR-5Z-MLr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGn-GW-uBQ">
+                                <rect key="frame" x="207" y="475" width="27" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3R-N9-GBc">
+                                <rect key="frame" x="136" y="377" width="42" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -1516,7 +1515,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1864,11 +1863,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QZq-qU-6ZB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickyNote" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Ak-3xr">
-                                <rect key="frame" x="49" y="80" width="270" height="203"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickyNoteTape" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Ak-3xr">
+                                <rect key="frame" x="53" y="114" width="261" height="194"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="Xaw-Ns-VHX"/>
-                                    <constraint firstAttribute="height" constant="203" id="hpp-d7-sNT"/>
+                                    <constraint firstAttribute="width" constant="261" id="Xaw-Ns-VHX"/>
+                                    <constraint firstAttribute="height" constant="194" id="hpp-d7-sNT"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-5x-73S">
@@ -1918,7 +1917,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-Up-6bZ">
-                                <rect key="frame" x="110" y="78" width="156" height="46"/>
+                                <rect key="frame" x="110" y="70" width="156" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="VH6-Gd-ofP"/>
                                     <constraint firstAttribute="width" constant="156" id="hmp-Dp-8f3"/>
@@ -1928,7 +1927,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8r-2E-dQR">
-                                <rect key="frame" x="118" y="143" width="131" height="35"/>
+                                <rect key="frame" x="118" y="171" width="131" height="35"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="131" id="sjd-UG-Vi4"/>
@@ -1963,11 +1962,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-nw-PD5">
-                                <rect key="frame" x="103" y="195" width="163" height="35"/>
+                                <rect key="frame" x="105" y="223" width="156" height="35"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="hEn-RH-7h3"/>
-                                    <constraint firstAttribute="width" constant="163" id="nY1-Ru-d9A"/>
+                                    <constraint firstAttribute="width" constant="156" id="nY1-Ru-d9A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <state key="normal" title="Duration" backgroundImage="markerBox">
@@ -1980,28 +1979,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="193" id="3f5-Il-791"/>
+                            <constraint firstItem="MyH-Ag-oPe" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="165" id="3f5-Il-791"/>
                             <constraint firstItem="V6S-nw-PD5" firstAttribute="top" secondItem="A8r-2E-dQR" secondAttribute="bottom" constant="17" id="82q-Nh-Uha"/>
                             <constraint firstAttribute="trailing" secondItem="QZq-qU-6ZB" secondAttribute="trailing" id="AdT-C0-8J4"/>
                             <constraint firstItem="qh5-Kl-BNN" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="ENd-kS-9CW"/>
                             <constraint firstItem="1Z1-5x-73S" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="FKm-rb-rwb"/>
-                            <constraint firstItem="oT8-Up-6bZ" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="14" id="Fhh-Pf-N1r"/>
+                            <constraint firstItem="oT8-Up-6bZ" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="6" id="Fhh-Pf-N1r"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="1Z1-5x-73S" secondAttribute="bottom" id="FuE-P9-jwJ"/>
                             <constraint firstItem="MyH-Ag-oPe" firstAttribute="centerX" secondItem="QZq-qU-6ZB" secondAttribute="centerX" id="IYA-z1-DRr"/>
                             <constraint firstItem="oT8-Up-6bZ" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" id="L55-wF-3a2"/>
-                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="16" id="MfL-zj-Uge"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="40" id="Z8P-YQ-fDc"/>
-                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="118" id="bzz-pk-QNh"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="50" id="MfL-zj-Uge"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hPC-Ak-3xr" secondAttribute="trailing" constant="45" id="Z8P-YQ-fDc"/>
+                            <constraint firstItem="1Z1-5x-73S" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="90" id="bzz-pk-QNh"/>
                             <constraint firstAttribute="trailing" secondItem="1Z1-5x-73S" secondAttribute="trailing" id="cn5-HM-kS2"/>
-                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="-3" id="dc2-g8-gsN"/>
-                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="19" id="eJZ-QA-HLH"/>
+                            <constraint firstItem="V6S-nw-PD5" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="-4.5" id="dc2-g8-gsN"/>
+                            <constraint firstItem="A8r-2E-dQR" firstAttribute="top" secondItem="oT8-Up-6bZ" secondAttribute="bottom" constant="55" id="eJZ-QA-HLH"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leading" id="h5s-Sv-hMq"/>
                             <constraint firstItem="QZq-qU-6ZB" firstAttribute="top" secondItem="nJX-56-Njm" secondAttribute="top" id="iIB-M5-J91"/>
                             <constraint firstItem="T1c-eM-aG9" firstAttribute="top" secondItem="QZq-qU-6ZB" secondAttribute="bottom" id="nxZ-De-HtO"/>
-                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="33" id="opk-IR-xqp"/>
-                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="16" id="sIp-pA-Z09"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="leading" secondItem="nJX-56-Njm" secondAttribute="leadingMargin" constant="37" id="opk-IR-xqp"/>
+                            <constraint firstItem="hPC-Ak-3xr" firstAttribute="top" secondItem="0n3-tp-H00" secondAttribute="bottom" constant="50" id="sIp-pA-Z09"/>
                             <constraint firstItem="A8r-2E-dQR" firstAttribute="centerX" secondItem="nJX-56-Njm" secondAttribute="centerX" constant="-4" id="smD-uD-yIb"/>
-                            <constraint firstItem="qh5-Kl-BNN" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="71" id="zX6-mv-TmB"/>
+                            <constraint firstItem="qh5-Kl-BNN" firstAttribute="top" secondItem="V6S-nw-PD5" secondAttribute="bottom" constant="43" id="zX6-mv-TmB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2941,8 +2940,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxe-bZ-T9Z">
                                 <rect key="frame" x="33" y="202" width="309" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
-                                <state key="normal" title="History" backgroundImage="longTwoSticky">
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="27"/>
+                                <state key="normal" title="History" backgroundImage="longStickyTape">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2952,8 +2951,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eas-2t-eSA">
                                 <rect key="frame" x="33" y="300" width="309" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
-                                <state key="normal" title="Delete Exercise" backgroundImage="longTwoSticky">
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="27"/>
+                                <state key="normal" title="Delete Exercise" backgroundImage="longStickyTape">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2963,8 +2962,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6B-d6-m9J">
                                 <rect key="frame" x="33" y="103" width="309" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
-                                <state key="normal" title="Profile" backgroundImage="longTwoSticky">
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="27"/>
+                                <state key="normal" title="Profile" backgroundImage="longStickyTape">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3028,13 +3027,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="largePaper" translatesAutoresizingMaskIntoConstraints="NO" id="XSg-c7-qDh">
-                                <rect key="frame" x="16" y="89" width="344" height="477"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longPaperOneTape" translatesAutoresizingMaskIntoConstraints="NO" id="XSg-c7-qDh">
+                                <rect key="frame" x="0.0" y="73" width="375" height="502"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-PZ-X1b">
-                                <rect key="frame" x="92" y="462.5" width="190" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="92" y="464.5" width="190" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
                                 <state key="normal" title="Save" backgroundImage="markerBackground"/>
                                 <connections>
@@ -3043,7 +3042,7 @@
                             </button>
                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-XI-k2P">
                                 <rect key="frame" x="72" y="226" width="230" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="74L-ES-ep6"/>
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="DqV-Oy-Dbr"/>
@@ -3051,7 +3050,7 @@
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mkw-hI-IWn">
                                 <rect key="frame" x="72" y="109" width="230" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="6mq-1k-Ist"/>
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="bTf-R3-18l"/>
@@ -3059,36 +3058,36 @@
                             </pickerView>
                             <pickerView tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I62-mY-MHa">
                                 <rect key="frame" x="72" y="345" width="230" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="J9C-oa-BSl" id="dQE-qf-Sj7"/>
                                     <outlet property="delegate" destination="J9C-oa-BSl" id="AGg-o0-bqF"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVr-ch-u2n">
-                                <rect key="frame" x="195" y="146" width="33" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="205" y="147" width="33" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-Lr-dU6">
-                                <rect key="frame" x="138" y="263" width="42" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="147" y="263" width="42" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xk-Ri-n3F">
                                 <rect key="frame" x="256" y="263" width="22" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTx-3s-o5T">
-                                <rect key="frame" x="202" y="382" width="27" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="212" y="381" width="27" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3475,17 +3474,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="vbK-gm-pnf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longPaperWhite" translatesAutoresizingMaskIntoConstraints="NO" id="ESH-pY-v8Y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longStickyTape" translatesAutoresizingMaskIntoConstraints="NO" id="ESH-pY-v8Y">
                                 <rect key="frame" x="0.0" y="22" width="375" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyNoteMain" translatesAutoresizingMaskIntoConstraints="NO" id="PB5-z7-5Jj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyNoteTape" translatesAutoresizingMaskIntoConstraints="NO" id="PB5-z7-5Jj">
                                 <rect key="frame" x="75" y="104" width="228" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="NBN-h4-wGq">
-                                <rect key="frame" x="39" y="60" width="298" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="40" y="60" width="295" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="p8Y-VP-CC2">
@@ -3593,16 +3592,14 @@
         <image name="chalkBackground" width="277" height="135"/>
         <image name="chalkBackgroundBright" width="254" height="127"/>
         <image name="clientIcon" width="44" height="44"/>
-        <image name="largePaper" width="781" height="1082"/>
         <image name="lighterBackground" width="375" height="667"/>
-        <image name="longPaperWhite" width="1066" height="399"/>
-        <image name="longTwoSticky" width="1066" height="399"/>
+        <image name="longPaperOneTape" width="1219" height="1555"/>
+        <image name="longStickyTape" width="1066" height="399"/>
         <image name="markerBackground" width="363" height="265"/>
         <image name="markerBox" width="1400" height="140"/>
         <image name="menuIcon" width="44" height="44"/>
         <image name="silverWritting" width="978" height="95"/>
-        <image name="stickyNote" width="754" height="761"/>
-        <image name="stickyNoteMain" width="754" height="793"/>
+        <image name="stickyNoteTape" width="754" height="793"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dgs-GC-2Lb"/>
