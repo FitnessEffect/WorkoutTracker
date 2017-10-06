@@ -36,12 +36,16 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
             if tempArr.count == 2{
                 if tempArr[1] == "hour(s)"{
                     pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 0, animated: true)
+                    tempHours = tempArr[0]
                 }else if tempArr[1] == "min(s)"{
                     pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 1, animated: true)
+                    tempMinutes = tempArr[0]
                 }
             }else{
                 pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 0, animated: true)
+                tempHours = tempArr[0]
                 pickerViewOutlet.selectRow(Int(tempArr[2])!, inComponent: 1, animated: true)
+                tempMinutes = tempArr[2]
             }
         }
     }
