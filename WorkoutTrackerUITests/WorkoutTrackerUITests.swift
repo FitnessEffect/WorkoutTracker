@@ -30,6 +30,15 @@ class WorkoutTrackerUITests: XCTestCase {
         super.tearDown()
     }
     
+    func testSelectFirstExercise(){
+        testLogin()
+        app.buttons["Exercise"].tap()
+        app.tables.cells["Type0"].tap()
+        app.tables.cells["Category0"].tap()
+        app.buttons["selectionAID"].tap()
+        XCTAssertFalse(app.buttons["Exercise"].exists)
+    }
+    
     func testLogin() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -38,11 +47,10 @@ class WorkoutTrackerUITests: XCTestCase {
         app.textFields["Email"].typeText("stefan@gmail.com")
         app.keyboards.buttons["Return"].tap()
         app.secureTextFields["Password"].tap()
-        app.secureTextFields["Password"].typeText("testtest")
-        app.keyboards.buttons["Return"].tap()
+        app.secureTextFields["Password"].typeText("testtest\n")
+        let exists = NSPredicate(format: "exists == true")
         app.buttons["Login"].tap()
         let exerciseBtn = app.buttons["Exercise"]
-        let exists = NSPredicate(format: "exists == true")
         expectation(for: exists, evaluatedWith: exerciseBtn, handler: nil)
         waitForExpectations(timeout: 5,handler: nil)
         XCTAssertTrue(exerciseBtn.exists)

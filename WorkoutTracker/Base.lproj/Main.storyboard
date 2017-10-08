@@ -180,7 +180,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xQl-sG-j9a">
-                        <barButtonItem key="leftBarButtonItem" image="menuIcon" style="done" id="3dG-Ah-Hc1">
+                        <barButtonItem key="leftBarButtonItem" image="menuIcon" largeContentSizeImage="menuIcon" style="done" id="3dG-Ah-Hc1">
                             <connections>
                                 <action selector="openMenu:" destination="pzd-PZ-fvb" id="7Qv-vn-Kdc"/>
                             </connections>
@@ -193,6 +193,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="menuBtnOutlet" destination="3dG-Ah-Hc1" id="z6P-X6-c9n"/>
                         <outlet property="workoutInputView" destination="ELO-R3-AfS" id="jGr-Y5-fkn"/>
                     </connections>
                 </viewController>
@@ -705,6 +706,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-do-szN">
                                 <rect key="frame" x="92" y="290" width="190" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="selectionAID"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="ET0-Yb-VIP"/>
                                     <constraint firstAttribute="height" constant="50" id="hE0-NZ-NDE"/>
@@ -1515,7 +1517,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -3602,6 +3604,6 @@
         <image name="stickyNoteTape" width="754" height="793"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dgs-GC-2Lb"/>
+        <segue reference="TQo-Nm-LIR"/>
     </inferredMetricsTieBreakers>
 </document>

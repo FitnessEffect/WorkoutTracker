@@ -70,6 +70,7 @@ class ExerciseTypeTableViewController: UITableViewController{
         cell.textLabel?.text = self.exerciseTypes[indexPath.row]
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
+        cell.accessibilityIdentifier = "Type" + String(indexPath.row)
         
         return cell
     }

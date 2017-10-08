@@ -90,6 +90,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         cell.textLabel?.text = self.categories[indexPath.row]
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
+        cell.accessibilityIdentifier = "Category" + String(indexPath.row)
         return cell
     }
     

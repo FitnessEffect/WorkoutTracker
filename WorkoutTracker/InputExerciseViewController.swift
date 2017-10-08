@@ -16,7 +16,8 @@ protocol PresentAlertDelegate{
 
 class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate, PresentAlertDelegate{
    
-   @IBOutlet var workoutInputView: WorkoutInputView!
+    @IBOutlet weak var menuBtnOutlet: UIBarButtonItem!
+    @IBOutlet var workoutInputView: WorkoutInputView!
    
    var menuShowing = false
    var bodybuildingExercises = [String]()
@@ -45,6 +46,8 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          DBService.shared.initializeData()
          UserDefaults.standard.set(false, forKey: "newUser")
       }
+    
+    menuBtnOutlet.accessibilityIdentifier = "menuButton"
       
       let barButtonItem = self.navigationItem.rightBarButtonItem!
       buttonItemView = barButtonItem.value(forKey: "view")
