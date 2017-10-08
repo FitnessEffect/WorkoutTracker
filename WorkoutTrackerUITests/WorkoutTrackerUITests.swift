@@ -39,6 +39,16 @@ class WorkoutTrackerUITests: XCTestCase {
         XCTAssertFalse(app.buttons["Exercise"].exists)
     }
     
+    func testPresentChallengeViewController(){
+        testLogin()
+        app.navigationBars.buttons["menuButton"].tap()
+        let filteredElements = app.otherElements.matching(identifier: "menuViewID")
+        XCTAssertTrue(filteredElements.count == 1)
+        print(filteredElements.count)
+        app.buttons["challengesButtonID"].tap()
+        
+    }
+    
     func testLogin() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
