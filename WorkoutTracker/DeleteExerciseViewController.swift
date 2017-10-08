@@ -143,9 +143,14 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             let indexT = typePickerView.selectedRow(inComponent: 0)
             let indexC = categoryPickerView.selectedRow(inComponent: 0)
             let indexE = exercisePickerView.selectedRow(inComponent: 0)
-            DBService.shared.deleteExerciseForCategoryForType(exercise: exercises[indexE], category: categories[indexC], type: types[indexT], completion: {
+            
+            let alert = UIAlertController(title: "Delete " + exercises[indexE] + "?", message:"" , preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {success in DBService.shared.deleteExerciseForCategoryForType(exercise: self.exercises[indexE], category: self.categories[indexC], type: self.types[indexT], completion: {
                 self.setExercisesForCategory()
             })
+            }))
+            self.present(alert, animated: true, completion: nil)
         }else{
             let alert = UIAlertController(title: "Error", message: "No exercises selected", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
