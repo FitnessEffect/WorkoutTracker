@@ -26,11 +26,11 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bNM-t9-1iC">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longPaperWhite" translatesAutoresizingMaskIntoConstraints="NO" id="20f-u0-UUE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longStickyTape" translatesAutoresizingMaskIntoConstraints="NO" id="20f-u0-UUE">
                     <rect key="frame" x="0.0" y="22" width="375" height="116"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyNoteMain" translatesAutoresizingMaskIntoConstraints="NO" id="DF7-le-5Nh">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stickyNoteTape" translatesAutoresizingMaskIntoConstraints="NO" id="DF7-le-5Nh">
                     <rect key="frame" x="75" y="104" width="228" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -135,8 +135,8 @@
     <resources>
         <image name="chalkBackground" width="277" height="135"/>
         <image name="lighterBackground" width="375" height="667"/>
-        <image name="longPaperWhite" width="1066" height="399"/>
+        <image name="longStickyTape" width="1066" height="399"/>
         <image name="silverWritting" width="978" height="95"/>
-        <image name="stickyNoteMain" width="754" height="793"/>
+        <image name="stickyNoteTape" width="754" height="793"/>
     </resources>
 </document>

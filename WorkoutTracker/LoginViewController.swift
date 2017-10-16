@@ -139,6 +139,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         self.prefs.set(sender.isOn, forKey: "switch")
     }
     
+    @IBAction func recoverPasswordBtn(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Recover Password", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
+
+        alertController.addTextField{ (textField : UITextField!) -> Void in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            if alertController.textFields![0].text != ""{
+                FIRAuth.auth()?.sendPasswordReset(withEmail: alertController.textFields![0].text!) { error in
+                    
+                    if error != nil
+                    {
+                        // Error - Unidentified Email
+                        let errorAlert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(errorAlert, animated: true, completion:nil)
+                    }
+                    else
+                    {
+                        // Success - Sent recovery email
+                        let alert = UIAlertController(title: "Success", message: "Password Sent!", preferredStyle: UIAlertControllerStyle.alert)
+                        self.present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                            self.dismiss(animated: true, completion: nil)
+                        })})
+                    }
+                }
+            }else{
+                let alert = UIAlertController(title: "Error", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion:nil)
+    }
+    
+    
     @IBAction func login(_ sender: UIButton) {
         if (passwordTF.text?.characters.count) == 0{
             print("Invalid Password")
