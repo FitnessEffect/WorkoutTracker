@@ -146,7 +146,8 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             
             let alert = UIAlertController(title: "Delete " + exercises[indexE] + "?", message:"" , preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {success in DBService.shared.deleteExerciseForCategoryForType(exercise: self.exercises[indexE], category: self.categories[indexC], type: self.types[indexT], completion: {
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {_ in
+                DBService.shared.deleteExerciseForCategoryForType(exercise: self.exercises[indexE], category: self.categories[indexC], type: self.types[indexT], completion: {
                 self.setExercisesForCategory()
             })
             }))
