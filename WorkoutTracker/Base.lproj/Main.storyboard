@@ -1517,7 +1517,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1733,7 +1733,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1891,7 +1891,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="7" y="8" width="23" height="23.5"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -3013,6 +3013,35 @@
             </objects>
             <point key="canvasLocation" x="-1233" y="1636"/>
         </scene>
+        <!--Progress Chart View Controller-->
+        <scene sceneID="eXP-jo-D2f">
+            <objects>
+                <viewController id="iM1-sg-qkU" customClass="ProgressChartViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C7J-2P-ZRM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Feh-21-Xn8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q3i-Jy-ct9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="GZe-6p-Wjo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="GZe-6p-Wjo" secondAttribute="bottom" id="gMT-Ms-jZ7"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Q3i-Jy-ct9" secondAttribute="top" id="mr6-lA-4lK"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leading" id="qMF-V1-gen"/>
+                            <constraint firstAttribute="trailing" secondItem="GZe-6p-Wjo" secondAttribute="trailing" id="t1L-2B-jIn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hs-ZX-MTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1149" y="2414"/>
+        </scene>
         <!--Personal Stats View Controller-->
         <scene sceneID="fR8-5h-UJt">
             <objects>
@@ -3025,9 +3054,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8ah-dL-Oin">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8ah-dL-Oin">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="longPaperOneTape" translatesAutoresizingMaskIntoConstraints="NO" id="XSg-c7-qDh">
                                 <rect key="frame" x="0.0" y="73" width="375" height="502"/>
@@ -3096,6 +3124,12 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8ah-dL-Oin" firstAttribute="top" secondItem="ne2-2a-r4I" secondAttribute="top" id="IoN-TM-IjO"/>
+                            <constraint firstItem="Ha4-tc-jVW" firstAttribute="top" secondItem="8ah-dL-Oin" secondAttribute="bottom" id="Tpu-sm-ufy"/>
+                            <constraint firstAttribute="trailing" secondItem="8ah-dL-Oin" secondAttribute="trailing" id="YFD-ga-BWQ"/>
+                            <constraint firstItem="8ah-dL-Oin" firstAttribute="leading" secondItem="ne2-2a-r4I" secondAttribute="leading" id="lQp-JZ-j7J"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="agePickerView" destination="mkw-hI-IWn" id="cXc-LR-g3Y"/>
