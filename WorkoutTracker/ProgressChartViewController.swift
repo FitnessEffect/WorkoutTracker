@@ -54,7 +54,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                 })
             }
         }
-//        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
     func createChart(values:[(key: String, value: String)]){

@@ -168,11 +168,6 @@ class DBService {
         })
     }
     
-    func updateProfileStats(newStats: [String:Any], completion:@escaping ()->Void) {
-        _ref.child("users").child(_user.uid).child("Profile").updateChildValues(newStats)
-        completion()
-    }
-    
     func addDataToPersonalProgress(selection:String, newData: [String:String], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Progress").child(selection).updateChildValues(newData)
         completion()

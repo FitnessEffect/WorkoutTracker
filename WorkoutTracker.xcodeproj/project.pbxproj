@@ -23,7 +23,6 @@
 		52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */; };
 		52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */; };
 		52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalViewController.swift */; };
-		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
 		5229485A1F6823610095E6ED /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522948591F6823610095E6ED /* Reachability.swift */; };
 		522CFACD1F50F2D70037B371 /* WorkoutTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */; };
 		522CFAD51F50F32D0037B371 /* FormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD41F50F32D0037B371 /* FormatterTest.swift */; };
@@ -124,7 +123,6 @@
 		52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSelectionViewController.swift; sourceTree = "<group>"; };
 		52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEnduranceCategoryViewController.swift; path = ../CreateEnduranceCategoryViewController.swift; sourceTree = "<group>"; };
 		52265E181F20F559009F3B27 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
-		52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalStatsViewController.swift; sourceTree = "<group>"; };
 		522948591F6823610095E6ED /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		522CFACA1F50F2D70037B371 /* WorkoutTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerTests.swift; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
-				52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */,
 				52265E181F20F559009F3B27 /* PersonalViewController.swift */,
 			);
 			name = "Personal ";
@@ -829,7 +826,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */,
 				526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */,
 				522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */,
 				5276517D1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift in Sources */,
