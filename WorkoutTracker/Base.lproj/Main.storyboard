@@ -387,6 +387,52 @@
             </objects>
             <point key="canvasLocation" x="88.799999999999997" y="-1414.5427286356824"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="B71-i4-b2M">
+            <objects>
+                <viewController id="62D-n1-DtZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0PF-Or-0dW"/>
+                        <viewControllerLayoutGuide type="bottom" id="ee6-7B-MpT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gmr-Iw-d0B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Yek-B1-pbw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vh-ry-QKc">
+                                <rect key="frame" x="33" y="202" width="309" height="75"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="27"/>
+                                <state key="normal" title="Progress" backgroundImage="longStickyTape">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnPressed:" destination="BB7-6R-HUh" eventType="touchUpInside" id="zDD-Pd-lTF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1k-FL-43I">
+                                <rect key="frame" x="33" y="103" width="309" height="75"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="27"/>
+                                <state key="normal" title="Client Profile" backgroundImage="longStickyTape">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnPressed:" destination="BB7-6R-HUh" eventType="touchUpInside" id="5FN-FP-n2M"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dt3-Xc-R27" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="-1415"/>
+        </scene>
         <!--Create Session View Controller-->
         <scene sceneID="1Ld-dJ-DYr">
             <objects>
@@ -1517,7 +1563,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="209" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1733,7 +1779,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1891,7 +1937,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="7" y="8" width="23" height="23.5"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -2986,10 +3032,10 @@
             </objects>
             <point key="canvasLocation" x="6172" y="-2035.2323838080961"/>
         </scene>
-        <!--Personal View Controller-->
+        <!--Personal Menu View Controller-->
         <scene sceneID="AC0-Ua-G6S">
             <objects>
-                <viewController storyboardIdentifier="ProfileID" id="BB7-6R-HUh" customClass="PersonalViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileID" id="BB7-6R-HUh" customClass="PersonalMenuViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ref-ye-aTi"/>
                         <viewControllerLayoutGuide type="bottom" id="IKm-HT-bep"/>

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class PersonalViewController: UIViewController, UIPopoverPresentationControllerDelegate{
+class PersonalMenuViewController: UIViewController, UIPopoverPresentationControllerDelegate{
     
     var currentClient:Client!
     var menuView:MenuView!
