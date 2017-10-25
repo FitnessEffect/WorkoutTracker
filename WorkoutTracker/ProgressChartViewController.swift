@@ -41,8 +41,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         }else{
             spinner.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            let btnTitle = dataInputBtn.titleLabel?.text
             DispatchQueue.global(qos: .userInitiated).async {
-                DBService.shared.retrieveProgressData(selection:(self.dataInputBtn.titleLabel?.text)! ,completion:{
+                DBService.shared.retrieveProgressData(selection:btnTitle!,completion:{
                     UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                     self.spinner.stopAnimating()
                     //self.exerciseArray.removeAll()
