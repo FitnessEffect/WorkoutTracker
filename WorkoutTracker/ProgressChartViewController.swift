@@ -9,34 +9,26 @@
 import UIKit
 import Charts
 
-class ProgressChartViewController: UIViewController {
+class ProgressChartViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var chartView: LineChartView!
-    
-    //weak var axisFormatDelegate: IAxisValueFormatter?
-    //weak var yAxisFormatDelegate: IAxisValueFormatter?
+    @IBOutlet weak var dataInputBtn: UIButton!
     
     var weightValues = [210,200,215,220]
     var lineChartEntry = [ChartDataEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        axisFormatDelegate = self
         
         if weightValues.count == 0{
             chartView.noDataText = "No Values"
             chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
-            
         }else{
             createChart(weightValues: weightValues)
         }
-
-        // Do any additional setup after loading the view.
     }
     
     func createChart(weightValues:[Int]){
-        
-        
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawLabelsEnabled = false
@@ -60,21 +52,47 @@ class ProgressChartViewController: UIViewController {
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 10))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
-        
-        //let xaxis = chartView.xAxis
-        //xaxis.labelCount = weightValues.count
-        
-       // chartView.chartDescription?.text = "Weight"
-//
-//        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Duration")
-//        chartDataSet.colors = [UIColor(red: 255/255, green: 122/255, blue: 21/255, alpha: 1)]
-//        let chartData = BarChartData(dataSet: chartDataSet)
-//        barChartView.data = chartData
-//        let xaxis = barChartView.xAxis
-//        xaxis.valueFormatter = axisFormatDelegate
     }
 
     @IBAction func inputData(_ sender: UIButton) {
+        let xPosition = dataInputBtn.frame.minX + (dataInputBtn.frame.width/2)
+        let yPosition = dataInputBtn.frame.maxY - 25
         
+        let currentController = self.getCurrentViewController()
+        
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressPickerVC") as! ProgressPickerViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = currentController?.view
+        popController.preferredContentSize = CGSize(width: 300, height: 210)
+        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        
+        if dataInputBtn.titleLabel?.text == "Weight"{
+            popController.setTag(tag: 1)
+        }
+        
+        // present the popover
+        currentController?.present(popController, animated: true, completion: nil)
+    }
+    
+    func getCurrentViewController() -> UIViewController? {
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }

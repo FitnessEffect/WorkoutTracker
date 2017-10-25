@@ -1517,7 +1517,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -2549,6 +2549,68 @@
             </objects>
             <point key="canvasLocation" x="2104.8000000000002" y="-685.00749625187416"/>
         </scene>
+        <!--Progress Picker View Controller-->
+        <scene sceneID="jdg-ng-PWu">
+            <objects>
+                <viewController storyboardIdentifier="progressPickerVC" id="niy-SW-lyM" customClass="ProgressPickerViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kiw-V1-rbF"/>
+                        <viewControllerLayoutGuide type="bottom" id="bBs-l3-Lpv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c5L-4x-wWN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx7-fp-qO7">
+                                <rect key="frame" x="92" y="143" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4xV-Rr-AfQ"/>
+                                    <constraint firstAttribute="width" constant="190" id="syb-Qo-Vrg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Save" backgroundImage="markerBackground"/>
+                                <connections>
+                                    <action selector="saveBtn:" destination="niy-SW-lyM" eventType="touchUpInside" id="YYs-bd-TB6"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sw4-oP-tLg">
+                                <rect key="frame" x="8" y="7" width="359" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="ulo-sh-Jb8"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="niy-SW-lyM" id="VIL-g6-enf"/>
+                                    <outlet property="delegate" destination="niy-SW-lyM" id="TUM-Nl-O98"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IN5-Dc-xV0">
+                                <rect key="frame" x="168" y="52" width="31" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Sw4-oP-tLg" secondAttribute="trailing" constant="8" id="6Wh-sX-Gle"/>
+                            <constraint firstItem="zx7-fp-qO7" firstAttribute="centerX" secondItem="c5L-4x-wWN" secondAttribute="centerX" id="Gkv-3u-PFc"/>
+                            <constraint firstItem="zx7-fp-qO7" firstAttribute="top" secondItem="Sw4-oP-tLg" secondAttribute="bottom" constant="20" id="ouc-3u-rFG"/>
+                            <constraint firstItem="Sw4-oP-tLg" firstAttribute="top" secondItem="c5L-4x-wWN" secondAttribute="top" constant="7" id="p5s-xb-Iud"/>
+                            <constraint firstItem="Sw4-oP-tLg" firstAttribute="leading" secondItem="c5L-4x-wWN" secondAttribute="leading" constant="8" id="pHs-ra-r5n"/>
+                            <constraint firstItem="Sw4-oP-tLg" firstAttribute="top" secondItem="c5L-4x-wWN" secondAttribute="top" constant="7" id="ria-es-LqC"/>
+                            <constraint firstAttribute="trailing" secondItem="Sw4-oP-tLg" secondAttribute="trailing" constant="8" id="rlm-A3-MQG"/>
+                            <constraint firstItem="Sw4-oP-tLg" firstAttribute="leading" secondItem="c5L-4x-wWN" secondAttribute="leading" constant="8" id="wy3-td-y0W"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lbsLabel" destination="IN5-Dc-xV0" id="sqz-gs-3lg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cE1-Vg-WHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1181" y="3175"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="flZ-Xt-z4e">
             <objects>
@@ -3029,7 +3091,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-qa-LKY">
-                                <rect key="frame" x="68" y="28" width="240" height="80"/>
+                                <rect key="frame" x="36" y="66" width="302" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
@@ -3041,7 +3103,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-Cw-b0E" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="237" width="375" height="430"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -3056,6 +3118,7 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="QIn-Cw-b0E" id="s4k-eR-DdG"/>
+                        <outlet property="dataInputBtn" destination="Dh0-qa-LKY" id="qCe-B5-d8I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hs-ZX-MTA" userLabel="First Responder" sceneMemberID="firstResponder"/>

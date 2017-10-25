@@ -75,6 +75,7 @@
 		52E86BED1F4BE3410047A927 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E86BEC1F4BE3410047A927 /* RegisterView.xib */; };
 		52E86BEF1F4BE3660047A927 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E86BEE1F4BE3660047A927 /* RegisterView.swift */; };
 		52EA8F461F9FFDBC00FA6FF3 /* ProgressChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */; };
+		52EA8F481FA014CF00FA6FF3 /* ProgressPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F471FA014CF00FA6FF3 /* ProgressPickerViewController.swift */; };
 		52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */; };
 		52EB1DED1ECA77A2004CA561 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EB1DEC1ECA77A2004CA561 /* MenuView.xib */; };
 		52EB1DEF1ECA77F2004CA561 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DEE1ECA77F2004CA561 /* MenuView.swift */; };
@@ -180,6 +181,7 @@
 		52E86BEC1F4BE3410047A927 /* RegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		52E86BEE1F4BE3660047A927 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartViewController.swift; sourceTree = "<group>"; };
+		52EA8F471FA014CF00FA6FF3 /* ProgressPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPickerViewController.swift; sourceTree = "<group>"; };
 		52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		52EB1DEC1ECA77A2004CA561 /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		52EB1DEE1ECA77F2004CA561 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
 				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
+				52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				526A3F101EC60D61001BF557 /* CalendarViewController.swift */,
 				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
+				52EA8F471FA014CF00FA6FF3 /* ProgressPickerViewController.swift */,
 			);
 			name = Popovers;
 			sourceTree = "<group>";
@@ -438,7 +442,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
@@ -863,6 +866,7 @@
 				52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */,
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
+				52EA8F481FA014CF00FA6FF3 /* ProgressPickerViewController.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
 				5229485A1F6823610095E6ED /* Reachability.swift in Sources */,
 				525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */,
