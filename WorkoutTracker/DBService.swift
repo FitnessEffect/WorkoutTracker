@@ -50,7 +50,7 @@ class DBService {
     private var _dateRange = ""
     private var _exSessionEdit = false
     private var _passToNextVC = false
-    private var _weightProgressData = [Int]()
+    private var _weightProgressData = [String:String]()
     
     private init() {
         initDatabase()
@@ -711,6 +711,17 @@ class DBService {
         })
     }
     
+    func retrieveProgressData(selection:String, completion:@escaping()->Void){
+        _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let values = snapshot.value as? [String:String]{
+                if selection == "Weight"{
+                    self._weightProgressData = values
+                }
+                completion()
+            }
+        })
+    }
+    
     func deleteClient(id:String){
         self._ref.child("users").child(user.uid).child("Clients").child(id).removeValue { (error, ref) in
             if error != nil {
@@ -1085,7 +1096,7 @@ class DBService {
         }
     }
     
-    var weightProgressData:[Int]{
+    var weightProgressData:[String:String]{
         get{
             return _weightProgressData
         }

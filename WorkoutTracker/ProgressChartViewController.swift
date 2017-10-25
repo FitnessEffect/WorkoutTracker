@@ -15,6 +15,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var dataInputBtn: UIButton!
     
     var weightValues = [Int]()
+    var dataValues = [String:String]()
     var lineChartEntry = [ChartDataEntry]()
     var spinner = UIActivityIndicatorView()
     
@@ -41,26 +42,28 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             spinner.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             DispatchQueue.global(qos: .userInitiated).async {
-                DBService.shared.retrieveExercisesForUser(completion:{
+                DBService.shared.retrieveProgressData(selection:(self.dataInputBtn.titleLabel?.text)! ,completion:{
                     UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                     self.spinner.stopAnimating()
                     //self.exerciseArray.removeAll()
-                    self.weightValues = DBService.shared.weightProgressData
-                    self.weightValues.sort(by: {a, b in
+                    self.dataValues = DBService.shared.weightProgressData
+                    self.dataValues.sorted(by: {a, b in
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "y-M-d HH:mm:ss"
-                        //let dateA = dateFormatter.date(from: a.uploadTime)!
-                        //let dateB = dateFormatter.date(from: b.uploadTime)!
-                        //if dateA > dateB {
-                        //    return true
-                        //}
+                        
+                        
+                        let dateA = dateFormatter.date(from: a.key)!
+                        let dateB = dateFormatter.date(from: b.key)!
+                        if dateA > dateB {
+                            return true
+                        }
                         return false
                     })
-                    if self.weightValues.count == 0{
+                    if self.dataValues.count == 0{
                         self.chartView.noDataText = "No Values"
                         self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
                     }else{
-                        self.createChart(weightValues: self.weightValues)
+                        self.createChart(values: self.dataValues)
                     }
                     //self.refreshTableViewData()
 //                    if self.exerciseArray.count == 0{
@@ -74,7 +77,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 //        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
-    func createChart(weightValues:[Int]){
+    func createChart(values:[String:String]){
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawLabelsEnabled = false
@@ -84,9 +87,14 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 10)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 10)!
 
-        for i in 0..<weightValues.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(weightValues[i]))
+        let keys = dataValues.keys
+        var count = 0
+        for key in keys{
+            print(dataValues[key]!)
+            let lbsNum = dataValues[key]?.components(separatedBy: " ")
+            let dataEntry = ChartDataEntry(x: Double(count), y: Double(lbsNum![0])!)
             lineChartEntry.append(dataEntry)
+            count += 1
         }
         
         let line1 = LineChartDataSet(values: lineChartEntry, label: "Weight")
