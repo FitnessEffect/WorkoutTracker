@@ -14,18 +14,64 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var dataInputBtn: UIButton!
     
-    var weightValues = [210,200,215,220]
+    var weightValues = [Int]()
     var lineChartEntry = [ChartDataEntry]()
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if weightValues.count == 0{
-            chartView.noDataText = "No Values"
-            chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
+        spinner.frame = CGRect(x:(chartView.frame.width/2)-25, y:(chartView.frame.height/2)-25, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.white
+        spinner.alpha = 0
+        chartView.addSubview(spinner)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
+        DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
+        DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         }else{
-            createChart(weightValues: weightValues)
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveExercisesForUser(completion:{
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    //self.exerciseArray.removeAll()
+                    self.weightValues = DBService.shared.weightProgressData
+                    self.weightValues.sort(by: {a, b in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                        //let dateA = dateFormatter.date(from: a.uploadTime)!
+                        //let dateB = dateFormatter.date(from: b.uploadTime)!
+                        //if dateA > dateB {
+                        //    return true
+                        //}
+                        return false
+                    })
+                    if self.weightValues.count == 0{
+                        self.chartView.noDataText = "No Values"
+                        self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
+                    }else{
+                        self.createChart(weightValues: self.weightValues)
+                    }
+                    //self.refreshTableViewData()
+//                    if self.exerciseArray.count == 0{
+//                        self.noExercisesLabel.alpha = 1
+//                    }else{
+//                        self.noExercisesLabel.alpha = 0
+//                    }
+                })
+            }
         }
+//        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
     
     func createChart(weightValues:[Int]){

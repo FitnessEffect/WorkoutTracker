@@ -66,15 +66,15 @@ class PersonalViewController: UIViewController, UIPopoverPresentationControllerD
     }
     
     @IBAction func btnPressed(_ sender: UIButton) {
-        if sender.titleLabel?.text == "History"{
+        if sender.titleLabel?.text == "Exercise History"{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseHistoryVC") as! ExercisesHistoryViewController
            self.navigationController?.pushViewController(nextVC, animated: true)
         }else if sender.titleLabel?.text == "Delete Exercise"{
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteExerciseVC") as! DeleteExerciseViewController
             self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if sender.titleLabel?.text == "Profile"{
-           let personalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "personalStatsVC") as! PersonalStatsViewController
-            self.navigationController?.pushViewController(personalVC, animated: true)
+        }else if sender.titleLabel?.text == "Progress"{
+           let progressVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressChartVC") as! ProgressChartViewController
+            self.navigationController?.pushViewController(progressVC, animated: true)
         }
     }
     

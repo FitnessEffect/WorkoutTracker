@@ -50,6 +50,7 @@ class DBService {
     private var _dateRange = ""
     private var _exSessionEdit = false
     private var _passToNextVC = false
+    private var _weightProgressData = [Int]()
     
     private init() {
         initDatabase()
@@ -1081,6 +1082,12 @@ class DBService {
     var passToNextVC:Bool{
         get{
             return _passToNextVC
+        }
+    }
+    
+    var weightProgressData:[Int]{
+        get{
+            return _weightProgressData
         }
     }
 }
