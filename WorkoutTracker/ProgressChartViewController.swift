@@ -58,6 +58,7 @@ class ProgressChartViewController: UIViewController {
         
         data.addDataSet(line1)
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 10))
+        data.setValueTextColor(NSUIColor.white)
         chartView.data = data
         
         //let xaxis = chartView.xAxis
@@ -73,20 +74,7 @@ class ProgressChartViewController: UIViewController {
 //        xaxis.valueFormatter = axisFormatDelegate
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func inputData(_ sender: UIButton) {
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
