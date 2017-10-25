@@ -155,6 +155,11 @@ class DBService {
         completion()
     }
     
+    func addDataToPersonalProgress(selection:String, newData: [String:String], completion:@escaping ()->Void) {
+        _ref.child("users").child(_user.uid).child("Progress").child(selection).updateChildValues(newData)
+        completion()
+    }
+    
     func retrieveUserStats(completion:@escaping ()->Void){
         _ref.child("users").child(_user.uid).child("Profile").observeSingleEvent(of: .value, with: { (snapshot) in
             

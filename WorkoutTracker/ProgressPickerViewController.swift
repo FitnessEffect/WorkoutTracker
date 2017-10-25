@@ -15,6 +15,7 @@ class ProgressPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     var tagPassed = 0
     var weights = [String]()
     var tempResult = ""
+    var newNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,10 @@ class ProgressPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func setTag(tag: Int){
         tagPassed = tag
+    }
+    
+    func setNewNumber(num:Int){
+        newNumber = num + 1
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -49,16 +54,16 @@ class ProgressPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
-        let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
+        //let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
         if tagPassed == 1{
             //first value force selection
             if tempResult == ""{
                 tempResult = "0 lb(s)"
             }
         }
-        presenter.saveResult(str: tempResult)
+        //presenter.saveResult(str: tempResult)
+        DBService.shared.addDataToPersonalProgress(selection: "Weight", newData: [String(newNumber):tempResult], completion: {self.dismiss(animated: true, completion: nil)})
         
-        dismiss(animated: true, completion: nil)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
