@@ -50,7 +50,8 @@ class DBService {
     private var _dateRange = ""
     private var _exSessionEdit = false
     private var _passToNextVC = false
-    private var _weightProgressData = [String:String]()
+    private var _progressData = [(key: String, value: String)]()
+    
     
     private init() {
         initDatabase()
@@ -98,6 +99,22 @@ class DBService {
                 return true
             }
             return false
+        })
+    }
+    
+    func sortDataByDate(){
+       _progressData = self._progressData.sorted(by: {a, b in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+            
+            
+            let dateA = dateFormatter.date(from: a.key)!
+            let dateB = dateFormatter.date(from: b.key)!
+            if dateA < dateB {
+                return true
+            }
+            return false
+            
         })
     }
     
@@ -689,7 +706,7 @@ class DBService {
     func retrieveHeroWods(completion: @escaping () -> Void){
         _crossfitHeroWods.removeAll()
         
-        self._ref.child("hero wods").observeSingleEvent(of: .value, with: { (snapshot) in
+        self._ref.child("herowods").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil{
@@ -712,12 +729,13 @@ class DBService {
     }
     
     func retrieveProgressData(selection:String, completion:@escaping()->Void){
-        _weightProgressData = [:]
+        _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let values = snapshot.value as? [String:String]{
+            if let values = snapshot.value as? [(key: String, value: String)]{
                 if selection == "Weight"{
-                    self._weightProgressData = values
+                    self._progressData = values
                 }
+                self.sortDataByDate()
                 completion()
             }
         })
@@ -1097,9 +1115,9 @@ class DBService {
         }
     }
     
-    var weightProgressData:[String:String]{
+    var progressData:[(key: String, value: String)]{
         get{
-            return _weightProgressData
+            return _progressData
         }
     }
 }
