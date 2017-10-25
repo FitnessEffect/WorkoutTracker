@@ -49,7 +49,7 @@ class ProgressPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
-        //let presenter = self.presentingViewController?.childViewControllers.last as! InputExerciseViewController
+        let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
         if tagPassed == 1{
             //first value force selection
             if tempResult == ""{
@@ -58,7 +58,9 @@ class ProgressPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
         //presenter.saveResult(str: tempResult)
         let uploadTime = DateConverter.getCurrentTimeAndDate()
-        DBService.shared.addDataToPersonalProgress(selection: "Weight", newData: [uploadTime:tempResult], completion: {self.dismiss(animated: true, completion: nil)})
+        DBService.shared.addDataToPersonalProgress(selection: "Weight", newData: [uploadTime:tempResult], completion: {self.dismiss(animated: true, completion: nil)
+            presenter.viewWillAppear(true)
+        })
         
     }
     

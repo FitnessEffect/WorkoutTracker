@@ -14,7 +14,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var dataInputBtn: UIButton!
     
-    var weightValues = [Int]()
+    //var weightValues = [Int]()
     var dataValues = [String:String]()
     var lineChartEntry = [ChartDataEntry]()
     var spinner = UIActivityIndicatorView()
@@ -29,9 +29,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
-        DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
-        DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
+        //let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
+        //DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
+        //DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
         let internetCheck = Reachability.isInternetAvailable()
         if internetCheck == false{
             let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
@@ -40,6 +40,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             self.present(alertController, animated: true, completion: nil)
         }else{
             spinner.startAnimating()
+            dataValues = [:]
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             let btnTitle = dataInputBtn.titleLabel?.text
             DispatchQueue.global(qos: .userInitiated).async {
@@ -79,6 +80,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func createChart(values:[String:String]){
+        lineChartEntry.removeAll()
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawLabelsEnabled = false

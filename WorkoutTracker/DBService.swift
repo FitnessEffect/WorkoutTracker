@@ -712,6 +712,7 @@ class DBService {
     }
     
     func retrieveProgressData(selection:String, completion:@escaping()->Void){
+        _weightProgressData = [:]
         _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
             if let values = snapshot.value as? [String:String]{
                 if selection == "Weight"{
