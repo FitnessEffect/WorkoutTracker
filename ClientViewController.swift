@@ -139,7 +139,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func createClient(_ sender: UIBarButtonItem) {
-        clientStickyNoteVC.removeClient()
         self.navigationController?.pushViewController(self.clientStickyNoteVC, animated: true)
     }
     

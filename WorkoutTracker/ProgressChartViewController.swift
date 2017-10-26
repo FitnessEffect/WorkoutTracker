@@ -40,18 +40,34 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             let btnTitle = dataInputBtn.titleLabel?.text
             DispatchQueue.global(qos: .userInitiated).async {
-                DBService.shared.retrieveProgressData(selection:btnTitle!,completion:{
-                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                    self.spinner.stopAnimating()
-                    self.dataValues = DBService.shared.progressData
-            
-                    if self.dataValues.count == 0{
-                        self.chartView.noDataText = "No Values"
-                        self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
-                    }else{
-                        self.createChart(values: self.dataValues)
-                    }
-                })
+                
+                if DBService.shared.passedClient.firstName != ""{
+                    DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                        self.dataValues = DBService.shared.progressData
+                        
+                        if self.dataValues.count == 0{
+                            self.chartView.noDataText = "No Values"
+                            self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
+                        }else{
+                            self.createChart(values: self.dataValues)
+                        }
+                    })
+                }else{
+                    DBService.shared.retrieveProgressData(selection:btnTitle!,completion:{
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                        self.dataValues = DBService.shared.progressData
+                        
+                        if self.dataValues.count == 0{
+                            self.chartView.noDataText = "No Values"
+                            self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
+                        }else{
+                            self.createChart(values: self.dataValues)
+                        }
+                    })
+                }
             }
         }
     }

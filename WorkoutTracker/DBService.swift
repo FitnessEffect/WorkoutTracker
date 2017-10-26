@@ -723,6 +723,19 @@ class DBService {
         })
     }
     
+    func retrieveProgressDataForClient(selection:String, completion:@escaping()->Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(DBService.shared.passedClient.clientKey).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let values = snapshot.value as? [(key: String, value: String)]{
+                if selection == "Weight"{
+                    self._progressData = values
+                }
+                self.sortDataByDate()
+                completion()
+            }
+        })
+    }
+    
     func retrieveProgressData(selection:String, completion:@escaping()->Void){
         _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
