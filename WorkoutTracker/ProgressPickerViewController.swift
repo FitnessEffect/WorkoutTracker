@@ -58,9 +58,16 @@ class ProgressPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
         //presenter.saveResult(str: tempResult)
         let uploadTime = DateConverter.getCurrentTimeAndDate()
+        
+        if DBService.shared.passedClient.firstName != ""{
+            DBService.shared.addDataToClientProgress(selection: "Weight", newData: [uploadTime:tempResult], completion: {self.dismiss(animated: true, completion: nil)
+                presenter.viewWillAppear(true)
+            })
+        }else{
         DBService.shared.addDataToPersonalProgress(selection: "Weight", newData: [uploadTime:tempResult], completion: {self.dismiss(animated: true, completion: nil)
             presenter.viewWillAppear(true)
         })
+        }
         
     }
     
