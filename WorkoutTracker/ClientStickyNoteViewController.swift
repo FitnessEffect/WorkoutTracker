@@ -19,8 +19,8 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     @IBOutlet weak var lastNameOutlet: UITextField!
     
     var myClient = Client()
-    var clientPassed = Client()
-    var edit = false
+    //var clientPassed = Client()
+    //var edit = false
     var age = [String]()
     var inches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
     var feet = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
@@ -46,9 +46,9 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if clientPassed.firstName != ""{
-            firstNameOutlet.text = clientPassed.firstName
-            lastNameOutlet.text = clientPassed.lastName
+        if DBService.shared.passedClient.firstName != ""{
+            firstNameOutlet.text = DBService.shared.passedClient.firstName
+            lastNameOutlet.text = DBService.shared.passedClient.lastName
         }else{
             genderSegmentedControl.selectedSegmentIndex =  0
             firstNameOutlet.text?.removeAll()
@@ -62,39 +62,39 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if clientPassed.firstName != ""{
-            if clientPassed.gender == "Male"{
+        if DBService.shared.passedClient.firstName != ""{
+            if DBService.shared.passedClient.gender == "Male"{
                 genderSegmentedControl.selectedSegmentIndex =  0
             }else{
                 genderSegmentedControl.selectedSegmentIndex =  1
             }
             
             for index in 0...age.count-1{
-                if age[index] == clientPassed.age{
+                if age[index] == DBService.shared.passedClient.age{
                     agePickerView.selectRow(index, inComponent: 0, animated: true)
                     break
                 }
             }
-            if clientPassed.activityLevel == "active"{
+            if DBService.shared.passedClient.activityLevel == "active"{
                 activitySegmentedControl.selectedSegmentIndex = 2
-            }else if clientPassed.activityLevel == "casual"{
+            }else if DBService.shared.passedClient.activityLevel == "casual"{
                 activitySegmentedControl.selectedSegmentIndex = 1
             }else{
                 activitySegmentedControl.selectedSegmentIndex = 0
             }
             
             for index in 0...weight.count-1{
-                if weight[index] == clientPassed.weight{
+                if weight[index] == DBService.shared.passedClient.weight{
                     weightPickerView.selectRow(index, inComponent: 0, animated: true)
                 }
             }
             for index in 0...feet.count-1{
-                if feet[index] == clientPassed.feet{
+                if feet[index] == DBService.shared.passedClient.feet{
                     heightPickerView.selectRow(index, inComponent: 0, animated: true)
                 }
             }
             for index in 0...inches.count-1{
-                if inches[index] == clientPassed.inches{
+                if inches[index] == DBService.shared.passedClient.inches{
                     heightPickerView.selectRow(index, inComponent: 1, animated: true)
                 }
             }
@@ -103,17 +103,18 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        edit = false
+        //edit = false
+        DBService.shared.clearPassedClient()
     }
     
-    func setClient(client:Client){
-        clientPassed = client
-        edit = true
-    }
+//    func setClient(client:Client){
+//        clientPassed = client
+//        edit = true
+//    }
     
-    func removeClient(){
-        clientPassed.firstName = ""
-    }
+//    func removeClient(){
+//        clientPassed.firstName = ""
+//    }
     
     @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !firstNameOutlet.frame.contains(sender.location(in: view)){
@@ -178,10 +179,10 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
 
     @IBAction func saveBtn(_ sender: UIButton) {
         if firstNameOutlet.text != "" && lastNameOutlet.text != ""{
-            if edit == false{
+            if DBService.shared.passedClient.firstName != ""{
                 myClient.clientKey = DBService.shared.createClientID()
             }else{
-                myClient.clientKey = clientPassed.clientKey
+                myClient.clientKey = DBService.shared.passedClient.clientKey
             }
             
             if genderSegmentedControl.selectedSegmentIndex == 0{

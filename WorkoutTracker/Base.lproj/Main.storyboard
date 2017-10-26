@@ -385,12 +385,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbD-QA-FBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88.799999999999997" y="-1414.5427286356824"/>
+            <point key="canvasLocation" x="-727" y="-1415"/>
         </scene>
-        <!--View Controller-->
+        <!--Client Menu View Controller-->
         <scene sceneID="B71-i4-b2M">
             <objects>
-                <viewController id="62D-n1-DtZ" sceneMemberID="viewController">
+                <viewController id="62D-n1-DtZ" customClass="ClientMenuViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0PF-Or-0dW"/>
                         <viewControllerLayoutGuide type="bottom" id="ee6-7B-MpT"/>
@@ -428,10 +428,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ITA-4L-nAI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dt3-Xc-R27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="-1415"/>
+            <point key="canvasLocation" x="1412" y="-1415.4422788605698"/>
         </scene>
         <!--Create Session View Controller-->
         <scene sceneID="1Ld-dJ-DYr">
@@ -493,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsS-WB-gta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2104.8000000000002" y="-1397.4512743628186"/>
+            <point key="canvasLocation" x="2444" y="-1397.4512743628186"/>
         </scene>
         <!--Duration Picker View Controller-->
         <scene sceneID="Dlh-Go-1fc">
@@ -570,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdL-Ps-Nau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3037.5999999999999" y="-1400.1499250374814"/>
+            <point key="canvasLocation" x="3376.8000000000002" y="-1400.1499250374814"/>
         </scene>
         <!--Clients-->
         <scene sceneID="5ma-vL-iKk">
@@ -616,7 +617,7 @@
                                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" image="bustIcon"/>
                                                     <connections>
-                                                        <action selector="stickyNoteBtn:" destination="U4l-CF-NEd" eventType="touchUpInside" id="s8H-tM-eYl"/>
+                                                        <action selector="ClientMenuBtn:" destination="U4l-CF-NEd" eventType="touchUpInside" id="cRv-92-jrg"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -2841,7 +2842,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6m1-yM-5iC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6172" y="-1237"/>
+            <point key="canvasLocation" x="6511.1999999999998" y="-1237.3313343328336"/>
         </scene>
         <!--Endurance Selection View Controller-->
         <scene sceneID="3AR-Ou-eAG">
@@ -2977,7 +2978,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRY-2f-gql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7028" y="-1238.2308845577213"/>
+            <point key="canvasLocation" x="7367.1999999999998" y="-1238.2308845577213"/>
         </scene>
         <!--Create Endurance Category View Controller-->
         <scene sceneID="hP4-uJ-UNb">
@@ -3030,7 +3031,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqo-pn-O1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6172" y="-2035.2323838080961"/>
+            <point key="canvasLocation" x="6511.1999999999998" y="-2035.2323838080961"/>
         </scene>
         <!--Personal Menu View Controller-->
         <scene sceneID="AC0-Ua-G6S">
@@ -3657,6 +3658,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qvx-W9-LcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-727.20000000000005" y="823.53823088455783"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vm3-uQ-lGa">
+            <objects>
+                <navigationController storyboardIdentifier="ClientMenuNavID" automaticallyAdjustsScrollViewInsets="NO" id="lHz-ul-8VO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l39-Ed-Pdv">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="62D-n1-DtZ" kind="relationship" relationship="rootViewController" id="pdx-cg-NNy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vG9-45-Web" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="-1415"/>
         </scene>
     </scenes>
     <resources>

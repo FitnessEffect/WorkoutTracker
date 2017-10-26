@@ -22,6 +22,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var spinner = UIActivityIndicatorView()
     var passToNextVC = false
     var clientStickyNoteVC:ClientStickyNoteViewController!
+    var clientMenuVC:ClientMenuViewController!
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     @IBOutlet weak var noClientsLabel: UILabel!
@@ -146,10 +147,14 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         addSelector()
     }
     
-    @IBAction func stickyNoteBtn(_ sender: UIButton) {
+    @IBAction func ClientMenuBtn(_ sender: UIButton) {
+       
+        let clientMenuVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ClientMenuNavID") as! UINavigationController
         let client = clientArray[sender.tag]
-        clientStickyNoteVC.setClient(client: client)
-        self.navigationController?.pushViewController(self.clientStickyNoteVC, animated: true)
+        DBService.shared.setPassedClient(client: client)
+        let currentController = self.getCurrentViewController()
+        
+        currentController?.present(clientMenuVC, animated: false, completion: nil)
     }
     
     func addSelector() {
@@ -196,6 +201,17 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func getCurrentViewController() -> UIViewController? {
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

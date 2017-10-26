@@ -16,6 +16,7 @@ class ClientMenuViewController: UIViewController, UIPopoverPresentationControlle
     var challengeOverlay = true
     var menuShowing = false
     var button:UIButton!
+    var clientPassed = Client()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,15 +64,12 @@ class ClientMenuViewController: UIViewController, UIPopoverPresentationControlle
     }
     
     @IBAction func btnPressed(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Exercise History"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exerciseHistoryVC") as! ExercisesHistoryViewController
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if sender.titleLabel?.text == "Delete Exercise"{
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteExerciseVC") as! DeleteExerciseViewController
+        if sender.titleLabel?.text == "Client Profile"{
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientStickyNoteVC") as! ClientStickyNoteViewController
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if sender.titleLabel?.text == "Progress"{
-            let progressVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressChartVC") as! ProgressChartViewController
-            self.navigationController?.pushViewController(progressVC, animated: true)
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressChartVC") as! ProgressChartViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
     
