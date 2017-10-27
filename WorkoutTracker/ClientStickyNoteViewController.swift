@@ -108,21 +108,6 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        //edit = false
-        DBService.shared.clearPassedClient()
-    }
-    
-//    func setClient(client:Client){
-//        clientPassed = client
-//        edit = true
-//    }
-    
-//    func removeClient(){
-//        clientPassed.firstName = ""
-//    }
-    
     @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !firstNameOutlet.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
