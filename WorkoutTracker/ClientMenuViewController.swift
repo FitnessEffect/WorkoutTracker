@@ -24,7 +24,7 @@ class ClientMenuViewController: UIViewController, UIPopoverPresentationControlle
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        title = "Personal"
+        title = DBService.shared.passedClient.firstName + " " + DBService.shared.passedClient.lastName
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
