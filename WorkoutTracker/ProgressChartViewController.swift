@@ -59,7 +59,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
                         
-                        if self.dataValues.count == 0{
+                        if self.dataValues.count != 0{
                             self.createChart(values: self.dataValues)
                         }
                     })
@@ -94,6 +94,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         let data = LineChartData()
         
         data.addDataSet(line1)
+        
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 10))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
