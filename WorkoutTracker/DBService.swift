@@ -502,6 +502,39 @@ class DBService {
         return c
     }
     
+    func updateClientPassed(completion: @escaping () -> Void){
+        //_clients.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+               // let client = value?.allKeys as! [String]
+//                self._clients.removeAll()
+               // for key in keyArray{
+                    let client = value as? NSDictionary
+                    let c = Client()
+                    c.firstName = client?["firstName"] as! String
+                    c.lastName = client?["lastName"] as! String
+                    c.gender = client?["gender"] as! String
+                    c.age = client?["age"] as! String
+                    c.clientKey = client?["clientKey"] as! String
+                    c.activityLevel = client?["activityLevel"] as! String
+                    c.weight = client?["weight"] as! String
+                    c.feet = client?["feet"] as! String
+                    c.inches = client?["inches"] as! String
+                    self._passedClient = c
+                    //self._clients.append(c)
+                    //self.sortClients()
+                    completion()
+               // }
+            }else{
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func retrieveClients(completion: @escaping () -> Void){
         _clients.removeAll()
         _ref.child("users").child(user.uid).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in

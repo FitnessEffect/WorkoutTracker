@@ -21,6 +21,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     var myClient = Client()
     //var clientPassed = Client()
     //var edit = false
+    var spinner = UIActivityIndicatorView()
     var age = [String]()
     var inches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
     var feet = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
@@ -43,13 +44,16 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
+        
+        spinner.frame = CGRect(x:(self.view.frame.width/2)-25, y:(self.view.frame.height/2)-25, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.blue
+        spinner.alpha = 0
+        view.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if DBService.shared.passedClient.firstName != ""{
-            firstNameOutlet.text = DBService.shared.passedClient.firstName
-            lastNameOutlet.text = DBService.shared.passedClient.lastName
-        }else{
             genderSegmentedControl.selectedSegmentIndex =  0
             firstNameOutlet.text?.removeAll()
             lastNameOutlet.text?.removeAll()
@@ -62,7 +66,10 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         if DBService.shared.passedClient.firstName != ""{
+            firstNameOutlet.text = DBService.shared.passedClient.firstName
+            lastNameOutlet.text = DBService.shared.passedClient.lastName
             if DBService.shared.passedClient.gender == "Male"{
                 genderSegmentedControl.selectedSegmentIndex =  0
             }else{
@@ -179,7 +186,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
 
     @IBAction func saveBtn(_ sender: UIButton) {
         if firstNameOutlet.text != "" && lastNameOutlet.text != ""{
-            if DBService.shared.passedClient.firstName != ""{
+            if DBService.shared.passedClient.firstName == ""{
                 myClient.clientKey = DBService.shared.createClientID()
             }else{
                 myClient.clientKey = DBService.shared.passedClient.clientKey
@@ -230,9 +237,19 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
             clientDictionary["gender"] = myClient.gender
             clientDictionary["clientKey"] = myClient.clientKey
             
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
             DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
-                self.navigationController?.popViewController(animated: true)
+                DBService.shared.retrieveClients {
+                    DBService.shared.updateClientPassed{
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                    self.navigationController?.popViewController(animated: true)
+                    }
+                }
             })
+            }
         }else{
             let alert = UIAlertController(title: "Error", message: "Please enter first and last name", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
