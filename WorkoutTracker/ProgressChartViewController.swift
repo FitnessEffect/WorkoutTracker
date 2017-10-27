@@ -25,6 +25,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         spinner.color = UIColor.white
         spinner.alpha = 0
         chartView.addSubview(spinner)
+        self.chartView.noDataText = "No Data"
+        self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,10 +49,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
                         
-                        if self.dataValues.count == 0{
-                            self.chartView.noDataText = "No Values"
-                            self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
-                        }else{
+                        if self.dataValues.count != 0{
                             self.createChart(values: self.dataValues)
                         }
                     })
@@ -61,9 +60,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.dataValues = DBService.shared.progressData
                         
                         if self.dataValues.count == 0{
-                            self.chartView.noDataText = "No Values"
-                            self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
-                        }else{
                             self.createChart(values: self.dataValues)
                         }
                     })
@@ -101,6 +97,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 10))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
+        
+        self.chartView.noDataText = "No Values"
+        self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
     }
 
     @IBAction func inputData(_ sender: UIButton) {

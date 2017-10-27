@@ -372,6 +372,7 @@
 				522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */,
 				5283E07E1C890E6200FB716B /* SessionsViewController.swift */,
 				522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */,
+				5203DE501FA1568400AF751D /* ClientMenuViewController.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -441,7 +442,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				5203DE501FA1568400AF751D /* ClientMenuViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
