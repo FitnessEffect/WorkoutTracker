@@ -147,7 +147,6 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func ClientMenuBtn(_ sender: UIButton) {
-       
         let clientMenuVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ClientMenuNavID") as! UINavigationController
         let client = clientArray[sender.tag]
         DBService.shared.setPassedClient(client: client)
