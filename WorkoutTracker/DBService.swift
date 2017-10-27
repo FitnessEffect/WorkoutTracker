@@ -764,7 +764,7 @@ class DBService {
     func retrieveProgressDataForClient(selection:String, completion:@escaping()->Void){
         _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(DBService.shared.passedClient.clientKey).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let values = snapshot.value as? [(key: String, value: String)]{
+            if let values = snapshot.value as? [String:String]{
                 
                 var formatedValues = [(key:String, value:String)]()
                 for element in values{
