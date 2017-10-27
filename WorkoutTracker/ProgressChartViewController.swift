@@ -41,7 +41,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             let btnTitle = dataInputBtn.titleLabel?.text
             DispatchQueue.global(qos: .userInitiated).async {
                 
-                if DBService.shared.passedClient.firstName != ""{
+                if DBService.shared.passedClient.clientKey != ""{
                     DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
                         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                         self.spinner.stopAnimating()

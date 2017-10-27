@@ -119,9 +119,8 @@ class MenuView: UIView {
     @IBAction func btnAction(_ sender: UIButton) {
         if sender.tag == 1{
             let inputVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
+            DBService.shared.clearPassedClient()
             let currentController = self.getCurrentViewController()
-            //removes passed client
-            DBService.shared.passedClient.clientKey = ""
             currentController?.present(inputVC, animated: false, completion: nil)
             
         }else if sender.tag == 2{
@@ -131,17 +130,19 @@ class MenuView: UIView {
             
         }else if sender.tag == 3{
             let clientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! UINavigationController
+            DBService.shared.clearPassedClient()
             let currentController = self.getCurrentViewController()
             currentController?.present(clientVC, animated: false, completion: nil)
             
         }else if sender.tag == 4{
             let challengesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengesNavID") as! UINavigationController
+            DBService.shared.clearPassedClient()
             let currentController = self.getCurrentViewController()
             currentController?.present(challengesVC, animated: false, completion: nil)
             
         }else if sender.tag == 5{
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-            
+            DBService.shared.clearPassedClient()
             let currentController = self.getCurrentViewController()
             NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
             UserDefaults.standard.set(false, forKey: "switch")

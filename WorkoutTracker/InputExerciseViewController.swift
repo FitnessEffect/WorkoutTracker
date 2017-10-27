@@ -88,7 +88,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    }
    
    override func viewWillAppear(_ animated: Bool) {
-      self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+    self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
       
       //set title with client name or "Personal"
       if DBService.shared.passedClient.clientKey != ""{

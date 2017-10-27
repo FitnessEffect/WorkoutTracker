@@ -777,11 +777,19 @@ class DBService {
     func retrieveProgressData(selection:String, completion:@escaping()->Void){
         _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let values = snapshot.value as? [(key: String, value: String)]{
+            if let values = snapshot.value as? [String:String]{
+                print(values)
+                var formatedValues = [(key:String, value:String)]()
+                for element in values{
+                    formatedValues.append((element.key, element.value))
+                }
+                
                 if selection == "Weight"{
-                    self._progressData = values
+                    self._progressData = formatedValues
                 }
                 self.sortDataByDate()
+                completion()
+            }else{
                 completion()
             }
         })
