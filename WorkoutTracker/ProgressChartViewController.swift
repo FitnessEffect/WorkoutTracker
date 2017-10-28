@@ -159,30 +159,12 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
-        //self.view.endEditing(true)
-        //let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
-//        if registerView.isHidden == true{
         if sender.direction == .right{
         let deleteProgressDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteProgressDataVC") as! DeleteProgressDataViewController
             deleteProgressDataVC.passDataValues(passedData:dataValues)
             deleteProgressDataVC.passSelection(passedSelection:(dataInputBtn.titleLabel?.text)!)
             self.navigationController?.pushViewController(deleteProgressDataVC, animated: true)
         }
-         //self.present(deleteProgressDataVC, animated: true, completion: nil)
-        
-//            UIView.transition(with: deleteProgressDataVC.view, duration: 1.0, options: transitionOptions, animations: {
-//                //self.registerView.isHidden = false
-//               
-//            })
-//            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
-//            })
-//        }else{
-//            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
-//            })
-//            UIView.transition(with: registerView, duration: 1.0, options: transitionOptions, animations: {
-//                self.registerView.isHidden = true
-//            })
-//        }
     }
 }
 

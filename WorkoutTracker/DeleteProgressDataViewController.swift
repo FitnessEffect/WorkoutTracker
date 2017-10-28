@@ -70,7 +70,11 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
 
                 self.dataValues.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                DBService.shared.deleteProgressDataForPersonal(data:data, selection:self.selection)
+                if DBService.shared.passedClient.clientKey != ""{
+                    DBService.shared.deleteProgressDataForClient(data:data, selection:self.selection)
+                }else{
+                    DBService.shared.deleteProgressDataForPersonal(data:data, selection:self.selection)
+                }
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
