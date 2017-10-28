@@ -83,8 +83,9 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     }
     
     @objc func tapTableView(_ sender:UITapGestureRecognizer){
-        tableView(tableView, commit: .delete, forRowAt: tableView.indexPathForRow(at: sender.location(in: tableView))!)
-        
+        if tableView.indexPathForRow(at: sender.location(in: tableView)) != nil{
+            tableView(tableView, commit: .delete, forRowAt: tableView.indexPathForRow(at: sender.location(in: tableView))!)
+        }
     }
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
