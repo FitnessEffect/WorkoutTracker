@@ -3149,7 +3149,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-qa-LKY">
-                                <rect key="frame" x="16" y="66" width="343" height="80"/>
+                                <rect key="frame" x="16" y="50" width="343" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="DKU-Po-TTa"/>
@@ -3164,17 +3164,31 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-Cw-b0E" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="7" y="189" width="359" height="478"/>
+                                <rect key="frame" x="7" y="141" width="359" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&gt; &gt; &gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdx-oj-9g3">
+                                <rect key="frame" x="264" y="618" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe to delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myK-YZ-LJV">
+                                <rect key="frame" x="44" y="611" width="191" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-146" id="7bz-il-0Wr"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-130" id="7bz-il-0Wr"/>
                             <constraint firstAttribute="trailing" secondItem="QIn-Cw-b0E" secondAttribute="trailing" constant="9" id="QPq-4D-zYE"/>
-                            <constraint firstItem="QIn-Cw-b0E" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="43" id="Ten-KH-LTH"/>
+                            <constraint firstItem="QIn-Cw-b0E" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="11" id="Ten-KH-LTH"/>
                             <constraint firstItem="QIn-Cw-b0E" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leading" constant="7" id="UwF-fr-W0z"/>
-                            <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="QIn-Cw-b0E" secondAttribute="bottom" id="Vq3-NJ-TT4"/>
+                            <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="QIn-Cw-b0E" secondAttribute="bottom" constant="65" id="Vq3-NJ-TT4"/>
                             <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="GZe-6p-Wjo" secondAttribute="bottom" id="gMT-Ms-jZ7"/>
                             <constraint firstItem="Dh0-qa-LKY" firstAttribute="centerX" secondItem="GZe-6p-Wjo" secondAttribute="centerX" id="jbU-WV-VyM"/>
                             <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Q3i-Jy-ct9" secondAttribute="top" id="mr6-lA-4lK"/>
@@ -3189,7 +3203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hs-ZX-MTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1618" y="2412"/>
+            <point key="canvasLocation" x="-1618.4000000000001" y="2411.2443778110946"/>
         </scene>
         <!--Delete Progress Data View Controller-->
         <scene sceneID="q6i-YT-aMS">
