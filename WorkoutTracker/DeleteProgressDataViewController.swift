@@ -10,6 +10,9 @@ import UIKit
 
 class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var arrowLabel1: UILabel!
+    @IBOutlet weak var arrowLabel2: UILabel!
+    @IBOutlet weak var arrowLabel3: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var dataValues = [(key: String, value: String)]()
@@ -17,7 +20,16 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        arrowLabel1.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        arrowLabel2.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        arrowLabel3.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +53,13 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
         cell.accessibilityIdentifier = "Type" + String(indexPath.row)
         
         return cell
+    }
+    
+    @objc func swipe(_ sender:UISwipeGestureRecognizer){
+        
+        if sender.direction == .left{
+        self.navigationController?.popViewController(animated: true)
+        }
     }
 
     /*

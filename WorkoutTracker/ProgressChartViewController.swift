@@ -11,6 +11,10 @@ import Charts
 
 class ProgressChartViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
+    @IBOutlet weak var arrowLabel1: UILabel!
+    @IBOutlet weak var arrowLabel2: UILabel!
+    @IBOutlet weak var arrowLabel3: UILabel!
+    
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var dataInputBtn: UIButton!
     
@@ -21,6 +25,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //arrowLabel1.transform = CGAffineTransform(rotationAngle: 3*CGFloat.pi / 2)
+        //arrowLabel2.transform = CGAffineTransform(rotationAngle: 3*CGFloat.pi / 2)
+        //arrowLabel3.transform = CGAffineTransform(rotationAngle: 3*CGFloat.pi / 2)
         xAxisFormatDelegate = self
         spinner.frame = CGRect(x:(chartView.frame.width/2)-25, y:(chartView.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
@@ -31,6 +38,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
         let xaxis = chartView.xAxis
         xaxis.valueFormatter = xAxisFormatDelegate
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
+        self.view.addGestureRecognizer(swipe)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +114,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         
         self.chartView.noDataText = "No Values"
         self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
-        
     }
 
     @IBAction func inputData(_ sender: UIButton) {
@@ -148,6 +156,31 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    @objc func swipe(_ sender:UISwipeGestureRecognizer){
+        //self.view.endEditing(true)
+        //let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+//        if registerView.isHidden == true{
+        if sender.direction == .right{
+        let deleteProgressDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteProgressDataVC") as! DeleteProgressDataViewController
+        self.navigationController?.pushViewController(deleteProgressDataVC, animated: true)
+        }
+         //self.present(deleteProgressDataVC, animated: true, completion: nil)
+        
+//            UIView.transition(with: deleteProgressDataVC.view, duration: 1.0, options: transitionOptions, animations: {
+//                //self.registerView.isHidden = false
+//               
+//            })
+//            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
+//            })
+//        }else{
+//            UIView.transition(with: loginView, duration: 1.0, options: transitionOptions, animations: {
+//            })
+//            UIView.transition(with: registerView, duration: 1.0, options: transitionOptions, animations: {
+//                self.registerView.isHidden = true
+//            })
+//        }
     }
 }
 
