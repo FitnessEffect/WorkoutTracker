@@ -14,9 +14,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var arrowLabel1: UILabel!
     @IBOutlet weak var arrowLabel2: UILabel!
     @IBOutlet weak var arrowLabel3: UILabel!
-    
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var dataInputBtn: UIButton!
+    @IBOutlet weak var noValuesLabel: UILabel!
     
     var dataValues = [(key: String, value: String)]()
     var lineChartEntry = [ChartDataEntry]()
@@ -25,9 +25,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //arrowLabel1.transform = CGAffineTransform(rotationAngle: 3*CGFloat.pi / 2)
-        //arrowLabel2.transform = CGAffineTransform(rotationAngle: 3*CGFloat.pi / 2)
-        //arrowLabel3.transform = CGAffineTransform(rotationAngle: 3*CGFloat.pi / 2)
+        noValuesLabel.alpha = 0
         xAxisFormatDelegate = self
         spinner.frame = CGRect(x:(chartView.frame.width/2)-25, y:(chartView.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
@@ -43,6 +41,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        noValuesLabel.alpha = 0
+        self.chartView.alpha = 1
         let internetCheck = Reachability.isInternetAvailable()
         if internetCheck == false{
             let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
@@ -55,15 +55,18 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             let btnTitle = dataInputBtn.titleLabel?.text
             DispatchQueue.global(qos: .userInitiated).async {
-                
                 if DBService.shared.passedClient.clientKey != ""{
                     DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
                         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
-                        
-                        if self.dataValues.count != 0{
+                        self.chartView.reloadInputViews()
+                        //if self.dataValues.count != 0{
                             self.createChart(values: self.dataValues)
+                        //}
+                        if self.dataValues.count == 0{
+                            self.chartView.alpha = 0
+                            self.noValuesLabel.alpha = 1
                         }
                     })
                 }else{
@@ -72,8 +75,12 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
                         
-                        if self.dataValues.count != 0{
+                        //if self.dataValues.count != 0{
                             self.createChart(values: self.dataValues)
+                        //}
+                        if self.dataValues.count == 0{
+                            self.chartView.alpha = 0
+                            self.noValuesLabel.alpha = 1
                         }
                     })
                 }
@@ -84,6 +91,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     func createChart(values:[(key: String, value: String)]){
         lineChartEntry.removeAll()
         
+        chartView.pinchZoomEnabled = false
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawLabelsEnabled = true
@@ -95,6 +103,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
+        
         var count = 1
         for element in values{
             let lbsNum = element.value.components(separatedBy: " ")
@@ -112,8 +121,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
         
-        self.chartView.noDataText = "No Values"
-        self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
     }
 
     @IBAction func inputData(_ sender: UIButton) {
@@ -170,7 +177,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 
 // MARK: axisFormatDelegate
 extension ProgressChartViewController: IAxisValueFormatter {
-    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if value == 0.0 || value == Double(dataValues.count) + 1{
             return ""

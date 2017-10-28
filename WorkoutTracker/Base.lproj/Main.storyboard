@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -3195,6 +3195,13 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Values" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-06-40o">
+                                <rect key="frame" x="112" y="356" width="149" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3216,11 +3223,12 @@
                         <outlet property="arrowLabel3" destination="Jxo-4l-daA" id="FZk-eh-pxj"/>
                         <outlet property="chartView" destination="QIn-Cw-b0E" id="s4k-eR-DdG"/>
                         <outlet property="dataInputBtn" destination="Dh0-qa-LKY" id="qCe-B5-d8I"/>
+                        <outlet property="noValuesLabel" destination="N5C-06-40o" id="GAi-Wz-9xw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hs-ZX-MTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1234" y="2412"/>
+            <point key="canvasLocation" x="-1234.4000000000001" y="2411.2443778110946"/>
         </scene>
         <!--Delete Progress Data View Controller-->
         <scene sceneID="q6i-YT-aMS">
@@ -3262,31 +3270,31 @@
                                 <rect key="frame" x="0.0" y="97" width="375" height="481"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gB9-DQ-nky" customClass="ProgressDataCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="65" id="gB9-DQ-nky" customClass="ProgressDataCustomCell" customModule="WorkoutTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gB9-DQ-nky" id="9Nb-j2-5gR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-za-TTJ">
-                                                    <rect key="frame" x="78" y="11" width="101" height="21"/>
+                                                    <rect key="frame" x="92" y="18" width="101" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKH-Yv-u4d">
-                                                    <rect key="frame" x="204" y="11" width="109" height="21"/>
+                                                    <rect key="frame" x="225" y="17" width="109" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLI-e2-Tl8">
-                                                    <rect key="frame" x="29" y="7" width="23" height="29"/>
+                                                    <rect key="frame" x="23" y="18" width="23" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3313,12 +3321,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chart Values" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-ke-bur">
-                                <rect key="frame" x="125" y="43" width="124.5" height="27"/>
+                                <rect key="frame" x="97" y="47" width="180" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="124.5" id="aEH-y7-uNP"/>
-                                    <constraint firstAttribute="height" constant="27" id="ypw-Jo-SQV"/>
+                                    <constraint firstAttribute="width" constant="180" id="aEH-y7-uNP"/>
+                                    <constraint firstAttribute="height" constant="42" id="ypw-Jo-SQV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3332,10 +3340,10 @@
                             <constraint firstItem="yko-eX-h0p" firstAttribute="top" secondItem="rg2-6V-Pgt" secondAttribute="bottom" id="JRZ-In-8ql"/>
                             <constraint firstItem="5QP-Np-dGN" firstAttribute="leading" secondItem="QMZ-ii-biA" secondAttribute="leading" id="OC7-sz-gX3"/>
                             <constraint firstItem="yko-eX-h0p" firstAttribute="top" secondItem="rg2-6V-Pgt" secondAttribute="bottom" id="R4i-Nw-suc"/>
-                            <constraint firstItem="5QP-Np-dGN" firstAttribute="top" secondItem="Zg6-ke-bur" secondAttribute="bottom" constant="27" id="YN7-Y0-59O"/>
+                            <constraint firstItem="5QP-Np-dGN" firstAttribute="top" secondItem="Zg6-ke-bur" secondAttribute="bottom" constant="8" id="YN7-Y0-59O"/>
                             <constraint firstItem="rg2-6V-Pgt" firstAttribute="leading" secondItem="QMZ-ii-biA" secondAttribute="leading" id="k6c-mO-hy6"/>
                             <constraint firstItem="rg2-6V-Pgt" firstAttribute="top" secondItem="QMZ-ii-biA" secondAttribute="top" id="kVA-sw-edX"/>
-                            <constraint firstItem="rg2-6V-Pgt" firstAttribute="top" secondItem="Zg6-ke-bur" secondAttribute="bottom" constant="-70" id="p3q-GJ-yiX"/>
+                            <constraint firstItem="rg2-6V-Pgt" firstAttribute="top" secondItem="Zg6-ke-bur" secondAttribute="bottom" constant="-89" id="p3q-GJ-yiX"/>
                             <constraint firstAttribute="trailing" secondItem="rg2-6V-Pgt" secondAttribute="trailing" id="qPc-Qf-8Ry"/>
                             <constraint firstItem="Zg6-ke-bur" firstAttribute="centerX" secondItem="rg2-6V-Pgt" secondAttribute="centerX" id="yT0-WQ-kWw"/>
                             <constraint firstAttribute="trailing" secondItem="5QP-Np-dGN" secondAttribute="trailing" id="zoY-CW-YdZ"/>
@@ -3350,7 +3358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fep-1b-hpX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="2411"/>
+            <point key="canvasLocation" x="-290.39999999999998" y="2410.344827586207"/>
         </scene>
         <!--Delete Exercise View Controller-->
         <scene sceneID="aKa-Tz-80s">

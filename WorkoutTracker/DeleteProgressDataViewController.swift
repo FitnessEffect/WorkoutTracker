@@ -89,7 +89,6 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     }
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
-        
         if sender.direction == .left{
         self.navigationController?.popViewController(animated: true)
         }
