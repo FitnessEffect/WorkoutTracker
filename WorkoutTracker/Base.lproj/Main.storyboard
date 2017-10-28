@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
+                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1791,7 +1791,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="26" height="26"/>
+                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1949,7 +1949,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="7" y="8" width="23" height="26.5"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="23.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -3271,17 +3271,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-za-TTJ">
-                                                    <rect key="frame" x="26" y="11" width="101" height="21"/>
+                                                    <rect key="frame" x="78" y="11" width="101" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKH-Yv-u4d">
-                                                    <rect key="frame" x="147" y="11" width="199" height="21"/>
+                                                    <rect key="frame" x="204" y="11" width="109" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLI-e2-Tl8">
+                                                    <rect key="frame" x="29" y="7" width="23" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -3289,6 +3296,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateOutlet" destination="MKH-Yv-u4d" id="ekx-3A-28y"/>
+                                            <outlet property="numberOutlet" destination="XLI-e2-Tl8" id="p8c-iq-NpA"/>
                                             <outlet property="weightOutlet" destination="a4K-za-TTJ" id="f0A-ac-AvD"/>
                                         </connections>
                                     </tableViewCell>
@@ -3303,6 +3311,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chart Values" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-ke-bur">
+                                <rect key="frame" x="98" y="44" width="180" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

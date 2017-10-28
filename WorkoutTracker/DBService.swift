@@ -803,6 +803,14 @@ class DBService {
         })
     }
     
+    func deleteProgressDataForPersonal(data:(key: String, value: String), selection:String){
+        self._ref.child("users").child(user.uid).child("Progress").child(selection).child(data.key).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func deleteClient(id:String){
         self._ref.child("users").child(user.uid).child("Clients").child(id).removeValue { (error, ref) in
             if error != nil {

@@ -12,6 +12,7 @@ class ProgressDataCustomCell: UITableViewCell {
 
     @IBOutlet weak var weightOutlet: UILabel!
     @IBOutlet weak var dateOutlet: UILabel!
+    @IBOutlet weak var numberOutlet: UILabel!
     
     
     override func awakeFromNib() {

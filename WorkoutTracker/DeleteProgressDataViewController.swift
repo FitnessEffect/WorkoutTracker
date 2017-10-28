@@ -16,11 +16,15 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     @IBOutlet weak var tableView: UITableView!
     
     var dataValues = [(key: String, value: String)]()
+    var selection:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector (self.tapTableView(_:)))
+        tableView.addGestureRecognizer(tap)
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
+        
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
         
@@ -48,7 +52,10 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as! ProgressDataCustomCell
         cell.weightOutlet.text = self.dataValues[indexPath.row].value
-        cell.dateOutlet.text = self.dataValues[indexPath.row].key
+        let tempDate = self.dataValues[indexPath.row].key
+        let tempDateArr = tempDate.components(separatedBy: " ")
+        cell.dateOutlet.text = tempDateArr[0]
+        cell.numberOutlet.text = String(indexPath.row + 1)
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
         return cell
@@ -56,23 +63,24 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete Client?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let deleteAlert = UIAlertController(title: "Delete \(dataValues[indexPath.row].value)?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-//                let x = indexPath.row
-//                let id = self.clientArray[x].clientKey
-//                DBService.shared.deleteClient(id: id)
-//                self.clientArray.remove(at: (indexPath as NSIndexPath).row)
-//                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-//                if self.clientArray.count == 0{
-//                    self.noClientsLabel.alpha = 1
-//                }else{
-//                    self.noClientsLabel.alpha = 0
-//                }
+                let data = self.dataValues[indexPath.row]
+
+                self.dataValues.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                DBService.shared.deleteProgressDataForPersonal(data:data, selection:self.selection)
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
             self.present(deleteAlert, animated: true, completion: nil)
         }
+    }
+    
+    @objc func tapTableView(_ sender:UITapGestureRecognizer){
+        tableView(tableView, commit: .delete, forRowAt: tableView.indexPathForRow(at: sender.location(in: tableView))!)
+        
     }
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
@@ -82,18 +90,11 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    func passSelection(passedSelection:String){
+        selection = passedSelection
+    }
+    
     func passDataValues(passedData:[(key: String, value: String)]){
         dataValues = passedData
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
