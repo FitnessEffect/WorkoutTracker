@@ -164,7 +164,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 //        if registerView.isHidden == true{
         if sender.direction == .right{
         let deleteProgressDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteProgressDataVC") as! DeleteProgressDataViewController
-        self.navigationController?.pushViewController(deleteProgressDataVC, animated: true)
+            deleteProgressDataVC.passDataValues(passedData:dataValues)
+            self.navigationController?.pushViewController(deleteProgressDataVC, animated: true)
         }
          //self.present(deleteProgressDataVC, animated: true, completion: nil)
         

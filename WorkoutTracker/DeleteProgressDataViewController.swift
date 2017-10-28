@@ -46,13 +46,33 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = self.dataValues[indexPath.row].key
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as! ProgressDataCustomCell
+        cell.weightOutlet.text = self.dataValues[indexPath.row].value
+        cell.dateOutlet.text = self.dataValues[indexPath.row].key
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
-        cell.accessibilityIdentifier = "Type" + String(indexPath.row)
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteAlert = UIAlertController(title: "Delete Client?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
+//                let x = indexPath.row
+//                let id = self.clientArray[x].clientKey
+//                DBService.shared.deleteClient(id: id)
+//                self.clientArray.remove(at: (indexPath as NSIndexPath).row)
+//                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+//                if self.clientArray.count == 0{
+//                    self.noClientsLabel.alpha = 1
+//                }else{
+//                    self.noClientsLabel.alpha = 0
+//                }
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
     }
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
@@ -60,6 +80,10 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
         if sender.direction == .left{
         self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func passDataValues(passedData:[(key: String, value: String)]){
+        dataValues = passedData
     }
 
     /*
