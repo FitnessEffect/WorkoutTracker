@@ -32,8 +32,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         spinner.color = UIColor.white
         spinner.alpha = 0
         chartView.addSubview(spinner)
-        self.chartView.noDataText = "No Data"
-        self.chartView.noDataFont = UIFont(name: "DJBCHALKITUP", size: 23)
         let xaxis = chartView.xAxis
         xaxis.valueFormatter = xAxisFormatDelegate
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
@@ -61,9 +59,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
                         self.chartView.reloadInputViews()
-                        //if self.dataValues.count != 0{
                             self.createChart(values: self.dataValues)
-                        //}
                         if self.dataValues.count == 0{
                             self.chartView.alpha = 0
                             self.noValuesLabel.alpha = 1
@@ -75,9 +71,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
                         
-                        //if self.dataValues.count != 0{
                             self.createChart(values: self.dataValues)
-                        //}
                         if self.dataValues.count == 0{
                             self.chartView.alpha = 0
                             self.noValuesLabel.alpha = 1
@@ -100,8 +94,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.xAxis.labelCount = values.count
         chartView.legend.enabled = false
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-        chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
-        chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
+        chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 18)!
+        chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 18)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         
         var count = 1
@@ -117,7 +111,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         
         let data = LineChartData()
         data.addDataSet(line1)
-        data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 15))
+        data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 18))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
         

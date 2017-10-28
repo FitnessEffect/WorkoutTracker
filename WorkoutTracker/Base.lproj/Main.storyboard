@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="209" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1791,7 +1791,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1949,7 +1949,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="7" y="8" width="23" height="23.5"/>
+                                                    <rect key="frame" x="7" y="8" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -3149,7 +3149,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-qa-LKY">
-                                <rect key="frame" x="16" y="53" width="343" height="80"/>
+                                <rect key="frame" x="16" y="61" width="343" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="DKU-Po-TTa"/>
@@ -3164,7 +3164,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-Cw-b0E" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="7" y="148" width="359" height="438"/>
+                                <rect key="frame" x="7" y="150" width="359" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdx-oj-9g3">
@@ -3196,7 +3196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Values" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-06-40o">
-                                <rect key="frame" x="112" y="356" width="149" height="21"/>
+                                <rect key="frame" x="112" y="358" width="149" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -3205,11 +3205,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-133" id="7bz-il-0Wr"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-141" id="7bz-il-0Wr"/>
                             <constraint firstAttribute="trailing" secondItem="QIn-Cw-b0E" secondAttribute="trailing" constant="9" id="QPq-4D-zYE"/>
-                            <constraint firstItem="QIn-Cw-b0E" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="15" id="Ten-KH-LTH"/>
+                            <constraint firstItem="QIn-Cw-b0E" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="9" id="Ten-KH-LTH"/>
                             <constraint firstItem="QIn-Cw-b0E" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leading" constant="7" id="UwF-fr-W0z"/>
-                            <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="QIn-Cw-b0E" secondAttribute="bottom" constant="81" id="Vq3-NJ-TT4"/>
+                            <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="QIn-Cw-b0E" secondAttribute="bottom" constant="79" id="Vq3-NJ-TT4"/>
                             <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="GZe-6p-Wjo" secondAttribute="bottom" id="gMT-Ms-jZ7"/>
                             <constraint firstItem="Dh0-qa-LKY" firstAttribute="centerX" secondItem="GZe-6p-Wjo" secondAttribute="centerX" id="jbU-WV-VyM"/>
                             <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Q3i-Jy-ct9" secondAttribute="top" id="mr6-lA-4lK"/>
@@ -3280,21 +3280,21 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-za-TTJ">
                                                     <rect key="frame" x="92" y="18" width="101" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="23"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKH-Yv-u4d">
                                                     <rect key="frame" x="225" y="17" width="109" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLI-e2-Tl8">
                                                     <rect key="frame" x="23" y="18" width="23" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3313,7 +3313,7 @@
                                     <outlet property="delegate" destination="gZN-bk-vH2" id="XrH-EA-pl8"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe to chart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jb-gN-Wli">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe for chart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jb-gN-Wli">
                                 <rect key="frame" x="133" y="601" width="200" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="24"/>
@@ -3326,7 +3326,7 @@
                                     <constraint firstAttribute="width" constant="180" id="aEH-y7-uNP"/>
                                     <constraint firstAttribute="height" constant="42" id="ypw-Jo-SQV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
