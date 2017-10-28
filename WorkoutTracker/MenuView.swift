@@ -125,6 +125,7 @@ class MenuView: UIView {
             
         }else if sender.tag == 2{
             let historyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileNavID") as! UINavigationController
+             DBService.shared.clearPassedClient()
             let currentController = self.getCurrentViewController()
             currentController?.present(historyVC, animated: false, completion: nil)
             
