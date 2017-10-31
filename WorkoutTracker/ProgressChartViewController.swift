@@ -84,8 +84,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     
     func createChart(values:[(key: String, value: String)]){
         lineChartEntry.removeAll()
-        
-        chartView.pinchZoomEnabled = false
+
+        //chartView.pinchZoomEnabled = false
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawLabelsEnabled = true
@@ -175,6 +175,6 @@ extension ProgressChartViewController: IAxisValueFormatter {
         if value == 0.0 || value == Double(dataValues.count) + 1{
             return ""
         }
-        return String(Int(value))
+        return String(value)
     }
 }
