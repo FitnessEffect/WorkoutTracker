@@ -1,5 +1,5 @@
 //
-//  WorkoutInputView.swift
+//  InputExerciseView.swift
 //  WorkoutTracker
 //
 //  Created by Stefan Auvergne on 6/7/17.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol WorkoutInputViewDelegate {
+protocol ExerciseInputViewDelegate {
     func handleSave(json:[String:Any])
     func handleResultPickerChoice()->Int
 }
 
-class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
+class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var resultTextView: UITextView!
@@ -29,7 +29,7 @@ class WorkoutInputView: UIView, UITextViewDelegate, UIPopoverPresentationControl
     @IBOutlet weak var emailTxtView: UITextView!
     @IBOutlet weak var notificationNumber: UILabel!
     
-    var delegate: WorkoutInputViewDelegate?
+    var delegate: ExerciseInputViewDelegate?
     var del: PresentAlertDelegate?
     var name: String = ""
     var date: Date = Date()

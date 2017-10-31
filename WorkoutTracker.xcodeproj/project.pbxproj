@@ -37,7 +37,6 @@
 		522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
 		522D9ECC1F831F1200F38C77 /* ClientStickyNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */; };
-		522D9ED01F87027600F38C77 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9ECF1F87027600F38C77 /* GraphViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
 		522F75831FA4D30B00D0382D /* DeleteProgressDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */; };
 		522F75851FA5067200D0382D /* ProgressDataCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F75841FA5067200D0382D /* ProgressDataCustomCell.swift */; };
@@ -54,7 +53,7 @@
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
 		52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE31EE8DBA800DBD8DE /* DBService.swift */; };
 		52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE51EE8DBB100DBD8DE /* APIService.swift */; };
-		52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */; };
+		52717FEA1EE8E33500DBD8DE /* InputExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE91EE8E33500DBD8DE /* InputExerciseView.swift */; };
 		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
 		527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */; };
 		5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */; };
@@ -142,7 +141,6 @@
 		522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
 		522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStickyNoteViewController.swift; sourceTree = "<group>"; };
-		522D9ECF1F87027600F38C77 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
 		522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProgressDataViewController.swift; sourceTree = "<group>"; };
 		522F75841FA5067200D0382D /* ProgressDataCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDataCustomCell.swift; sourceTree = "<group>"; };
@@ -160,7 +158,7 @@
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		52717FE31EE8DBA800DBD8DE /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		52717FE51EE8DBB100DBD8DE /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputView.swift; sourceTree = "<group>"; };
+		52717FE91EE8E33500DBD8DE /* InputExerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputExerciseView.swift; sourceTree = "<group>"; };
 		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
 		527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBodybuildingCategoryViewController.swift; sourceTree = "<group>"; };
 		5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateBodybuildingExerciseViewController.swift; path = ../CreateBodybuildingExerciseViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +268,40 @@
 			path = WorkoutTrackerTests;
 			sourceTree = "<group>";
 		};
+		522F75861FA8C0C700D0382D /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */,
+				522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
+		522F75871FA8C0F300D0382D /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
+			);
+			name = Challenge;
+			sourceTree = "<group>";
+		};
+		522F75881FA8C14D00D0382D /* Input Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				52717FE91EE8E33500DBD8DE /* InputExerciseView.swift */,
+			);
+			name = "Input Exercise";
+			sourceTree = "<group>";
+		};
+		522F75891FA8C18000D0382D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
+				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		52717FE21EE8DB7A00DBD8DE /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +333,8 @@
 		5283E0801C89130500FB716B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				522F75871FA8C0F300D0382D /* Challenge */,
+				522F75861FA8C0C700D0382D /* Progress */,
 				5291C4551CE13ECB00DF8C0C /* Crossfit */,
 				5291C4561CE13EED00DF8C0C /* Bodybuilding  */,
 				52265E111F203BF6009F3B27 /* Endurance */,
@@ -309,13 +343,10 @@
 				52CB16A71EFBFBD500F4232D /* Popovers */,
 				529FC7C41F21673A00C16203 /* Personal  */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
-				522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */,
 				522F4F4F1F2AE7360053009C /* SupersetViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
-				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
 				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
-				52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +396,7 @@
 			children = (
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
 				52265E181F20F559009F3B27 /* PersonalMenuViewController.swift */,
+				522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */,
 			);
 			name = "Personal ";
 			sourceTree = "<group>";
@@ -406,11 +438,10 @@
 		52EB1DEB1ECA778C004CA561 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				522F75891FA8C18000D0382D /* Register */,
+				522F75881FA8C14D00D0382D /* Input Exercise */,
 				52192ACC1CD5452100A311A1 /* CustomCells */,
 				529FC7C31F2166E500C16203 /* Menu */,
-				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
-				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
-				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -418,7 +449,6 @@
 		52F6A8921C5F0036000FD7B0 = {
 			isa = PBXGroup;
 			children = (
-				522D9ECF1F87027600F38C77 /* GraphViewController.swift */,
 				52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */,
 				522CFACB1F50F2D70037B371 /* WorkoutTrackerTests */,
 				52778FE51F8009D3008B6398 /* WorkoutTrackerUITests */,
@@ -447,7 +477,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
@@ -853,7 +882,7 @@
 				52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */,
 				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
-				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
+				52717FEA1EE8E33500DBD8DE /* InputExerciseView.swift in Sources */,
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
 				522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */,
 				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
@@ -864,7 +893,6 @@
 				52192AC91CC1962A00A311A1 /* MetconViewController.swift in Sources */,
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* SessionsViewController.swift in Sources */,
-				522D9ED01F87027600F38C77 /* GraphViewController.swift in Sources */,
 				52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,

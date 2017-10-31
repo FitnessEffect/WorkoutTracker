@@ -52,7 +52,6 @@ class DBService {
     private var _passToNextVC = false
     private var _progressData = [(key: String, value: String)]()
     
-    
     private init() {
         initDatabase()
     }
@@ -103,7 +102,7 @@ class DBService {
     }
     
     func sortDataByDate(){
-       _progressData = self._progressData.sorted(by: {a, b in
+        _progressData = self._progressData.sorted(by: {a, b in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "y-M-d HH:mm:ss"
             
@@ -199,7 +198,7 @@ class DBService {
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
         print(_passedSession.key)
-                self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         completion()
     }
@@ -212,7 +211,6 @@ class DBService {
     
     func retrieveSessionInfo(key:String, completion: @escaping () -> Void){
         _sessions.removeAll()
-        
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -229,7 +227,6 @@ class DBService {
                 session.clientName = value?["clientName"] as! String
                 session.year = value?["year"] as! String
                 self._sessions.append(session)
-                //self._sessions.sort()
                 completion()
             }else{
                 completion()
@@ -238,7 +235,6 @@ class DBService {
             print(error.localizedDescription)
         }
     }
-    
     
     func createExerciseKey() -> String{
         let str = _ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
@@ -266,7 +262,7 @@ class DBService {
     func setNewDate(dateString:String){
         _selectedDate = dateString
     }
-
+    
     func clearCurrentKey(){
         _currentKey = ""
     }
@@ -330,7 +326,6 @@ class DBService {
     
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
-        
         _ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Get user value
@@ -355,8 +350,8 @@ class DBService {
                     completion()
                 }
             }else{
-            self._exercisesForUser.removeAll()
-            completion()
+                self._exercisesForUser.removeAll()
+                completion()
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -365,7 +360,6 @@ class DBService {
     
     func retrieveBodybuildingCategoryExercises(completion: @escaping () -> Void){
         _exercisesForBodybuildingCategory.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -382,7 +376,6 @@ class DBService {
     
     func retrieveCrossfitCategories(completion: @escaping () -> Void){
         _crossfitCategories.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Crossfit").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -405,10 +398,8 @@ class DBService {
             let value = snapshot.value as? NSDictionary
             if value != nil{
                 let keyArray = value?.allKeys as! [String]
-                
                 self._exercisesForCrossfitCategory = keyArray
                 self._exercisesForCrossfitCategory.sort()
-                
                 completion()
             }
         }) { (error) in
@@ -459,7 +450,6 @@ class DBService {
                 self._enduranceCategories.sort()
                 completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -503,30 +493,23 @@ class DBService {
     }
     
     func updateClientPassed(completion: @escaping () -> Void){
-        //_clients.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil{
-               // let client = value?.allKeys as! [String]
-//                self._clients.removeAll()
-               // for key in keyArray{
-                    let client = value as? NSDictionary
-                    let c = Client()
-                    c.firstName = client?["firstName"] as! String
-                    c.lastName = client?["lastName"] as! String
-                    c.gender = client?["gender"] as! String
-                    c.age = client?["age"] as! String
-                    c.clientKey = client?["clientKey"] as! String
-                    c.activityLevel = client?["activityLevel"] as! String
-                    c.weight = client?["weight"] as! String
-                    c.feet = client?["feet"] as! String
-                    c.inches = client?["inches"] as! String
-                    self._passedClient = c
-                    //self._clients.append(c)
-                    //self.sortClients()
-                    completion()
-               // }
+                let client = value
+                let c = Client()
+                c.firstName = client?["firstName"] as! String
+                c.lastName = client?["lastName"] as! String
+                c.gender = client?["gender"] as! String
+                c.age = client?["age"] as! String
+                c.clientKey = client?["clientKey"] as! String
+                c.activityLevel = client?["activityLevel"] as! String
+                c.weight = client?["weight"] as! String
+                c.feet = client?["feet"] as! String
+                c.inches = client?["inches"] as! String
+                self._passedClient = c
+                completion()
             }else{
                 completion()
             }
@@ -586,7 +569,7 @@ class DBService {
     }
     
     func saveDurationForSession(str:String, completion: @escaping (String) -> Void){
-       self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
+        self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
         completion(str)
     }
     
@@ -652,11 +635,10 @@ class DBService {
     
     func retrieveSessionsForWeekForClient(completion:@escaping ()-> Void){
         _sessions.removeAll()
-        
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let exercisesVal = snapshot.value as? NSDictionary {
-               let days = exercisesVal.allKeys as! [String]
+                let days = exercisesVal.allKeys as! [String]
                 for day in days{
                     let keys = exercisesVal[day] as? NSDictionary
                     for key in keys!{
@@ -678,7 +660,7 @@ class DBService {
             if exercisesVal != nil{
                 let keys = exercisesVal?.allKeys as! [String]
                 for key in keys{
-                        self.retrieveSessionInfo(key: key, completion: {completion()})
+                    self.retrieveSessionInfo(key: key, completion: {completion()})
                 }
             }else{
                 completion()
@@ -729,7 +711,7 @@ class DBService {
             self._notificationCount = 0
             for exercise in self.challengeExercises{
                 if exercise.viewed == "false"{
-                   self._notificationCount += 1
+                    self._notificationCount += 1
                 }
             }
             completion()
@@ -842,7 +824,6 @@ class DBService {
                 print("error \(String(describing: error))")
             }
         }
-        
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child("exercises").observeSingleEvent(of: .value, with: { (snapshot) in
             let exercisesKey = snapshot.value as? NSDictionary
             if exercisesKey != nil{
@@ -856,16 +837,12 @@ class DBService {
         }) { (error) in
             print(error.localizedDescription)
         }
-        
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(session.key).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
-        
-                
         completion()
-        
     }
     
     func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
@@ -875,9 +852,9 @@ class DBService {
             }
         }
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
-                if error != nil {
-                    print("error \(String(describing: error))")
-                }
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
         }
         completion()
     }
@@ -923,9 +900,7 @@ class DBService {
             completion()
         }
     }
-
-
-
+    
     func setChallengesToViewed(){
         retrieveChallengesExercises {
             for exercise in self._challengeExercises{

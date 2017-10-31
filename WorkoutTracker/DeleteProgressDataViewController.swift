@@ -9,7 +9,7 @@
 import UIKit
 
 class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var arrowLabel1: UILabel!
     @IBOutlet weak var arrowLabel2: UILabel!
     @IBOutlet weak var arrowLabel3: UILabel!
@@ -20,7 +20,7 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector (self.tapTableView(_:)))
         tableView.addGestureRecognizer(tap)
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector (self.swipe(_:)))
@@ -34,11 +34,6 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
         
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,7 +62,7 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
             let deleteAlert = UIAlertController(title: "Delete \(dataValues[indexPath.row].value)?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let data = self.dataValues[indexPath.row]
-
+                
                 self.dataValues.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 if DBService.shared.passedClient.clientKey != ""{
@@ -90,7 +85,7 @@ class DeleteProgressDataViewController: UIViewController, UITableViewDelegate, U
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
         if sender.direction == .left{
-        self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

@@ -14,10 +14,10 @@ protocol PresentAlertDelegate{
    func presentAlert()
 }
 
-class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, WorkoutInputViewDelegate, PresentAlertDelegate{
+class InputExerciseViewController: UIViewController, UIPopoverPresentationControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate, MenuViewDelegate, ExerciseInputViewDelegate, PresentAlertDelegate{
    
     @IBOutlet weak var menuBtnOutlet: UIBarButtonItem!
-    @IBOutlet var workoutInputView: WorkoutInputView!
+    @IBOutlet var inputExerciseView: InputExerciseView!
    
    var menuShowing = false
    var bodybuildingExercises = [String]()
@@ -37,8 +37,8 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      workoutInputView.delegate = self
-      workoutInputView.del = self
+      inputExerciseView.delegate = self
+      inputExerciseView.del = self
       
       let tempBool = UserDefaults.standard.object(forKey: "newUser") as! Bool
       if tempBool == true{
@@ -61,15 +61,15 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.setNotifAlphaToZero(_:)), name: NSNotification.Name(rawValue: "notifAlphaToZero"), object: nil)
       NotificationCenter.default.addObserver(self, selector:#selector(InputExerciseViewController.setNotifAlphaToOne(_:)), name: NSNotification.Name(rawValue: "notifAlphaToOne"), object: nil)
       
-      workoutInputView.initializeView()
-      workoutInputView.setNotifications(num:UIApplication.shared.applicationIconBadgeNumber)
+      inputExerciseView.initializeView()
+      inputExerciseView.setNotifications(num:UIApplication.shared.applicationIconBadgeNumber)
       
       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
       self.navigationController?.navigationBar.shadowImage = UIImage()
       self.navigationController?.navigationBar.isTranslucent = true
       self.navigationController?.view.backgroundColor = .clear
       
-      UIApplication.shared.keyWindow?.addSubview(workoutInputView.notificationNumber)
+      UIApplication.shared.keyWindow?.addSubview(inputExerciseView.notificationNumber)
       
       registerForKeyboardNotifications()
       
@@ -104,16 +104,16 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       
       //set date
       if DBService.shared.passedDate != ""{
-         workoutInputView.setPassedDate()
+         inputExerciseView.setPassedDate()
          
          if DBService.shared.passedExercise.exerciseKey == "" && title != "Personal"{
-            checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+            checkSessions(dateStr: (inputExerciseView.dateBtn.titleLabel?.text)!, completion: {})
          }else{
-            workoutInputView.challenge.setTitle("Challenge", for: .normal)
-            workoutInputView.challenge.isUserInteractionEnabled = true
+            inputExerciseView.challenge.setTitle("Challenge", for: .normal)
+            inputExerciseView.challenge.isUserInteractionEnabled = true
          }
       }else{
-         workoutInputView.setCurrentDate()
+         inputExerciseView.setCurrentDate()
       }
       
       UserDefaults.standard.set(nil, forKey: "supersetDescription")
@@ -142,17 +142,16 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          tempExercise = DBService.shared.passedExercise
          tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
          tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
-         workoutInputView.fillInExercisePassed(exercise: tempExercise)
+         inputExerciseView.fillInExercisePassed(exercise: tempExercise)
          if DBService.shared.exSessionEdit == true{
-            workoutInputView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
+            inputExerciseView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
          }else{
             if title != "Personal"{
-               checkSessions(dateStr: (workoutInputView.dateBtn.titleLabel?.text)!, completion: {})
+               checkSessions(dateStr: (inputExerciseView.dateBtn.titleLabel?.text)!, completion: {})
             }
          }
       }else{
          fillInExercisePassed()
-         
       }
    }
    
@@ -179,20 +178,20 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       appDelegate.resetBadgeNumber()
       DBService.shared.resetNotificationCount()
-      workoutInputView.notificationNumber.alpha = 0
+      inputExerciseView.notificationNumber.alpha = 0
    }
    
    @objc func setNotifAlphaToZero(_:Notification){
-      workoutInputView.notificationNumber.alpha = 0
+      inputExerciseView.notificationNumber.alpha = 0
    }
    
    @objc func setNotifAlphaToOne(_:Notification){
-      workoutInputView.notificationNumber.alpha = 1
+      inputExerciseView.notificationNumber.alpha = 1
       if DBService.shared.notificationCount == 0{
-         workoutInputView.notificationNumber.alpha = 0
+         inputExerciseView.notificationNumber.alpha = 0
       }else{
-         workoutInputView.notificationNumber.alpha = 1
-         workoutInputView.notificationNumber.text = String(DBService.shared.notificationCount)
+         inputExerciseView.notificationNumber.alpha = 1
+         inputExerciseView.notificationNumber.text = String(DBService.shared.notificationCount)
       }
    }
    
@@ -203,7 +202,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       let desStr:String = tempExercise.exerciseDescription
       let formatExerciseDesStr = Formatter.formatExerciseDescription(desStr: desStr)
       let formattedStr = tempExercise.name + formatExerciseDesStr
-      workoutInputView.saveExercise(exStr: formattedStr)
+      inputExerciseView.saveExercise(exStr: formattedStr)
    }
    
    func handleResultPickerChoice() -> Int{
@@ -259,7 +258,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          if DBService.shared.passedSession.key == ""{
             //update session
             for session in DBService.shared.sessions{
-               if workoutInputView.challenge.titleLabel?.text == session.sessionName{
+               if inputExerciseView.challenge.titleLabel?.text == session.sessionName{
                   DBService.shared.setPassedSession(session: session)
                   break
                }
@@ -311,7 +310,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    func refreshNotifications(){
       //update notification
       DBService.shared.notificationCheck(completion: {
-         self.workoutInputView.setNotifications(num: DBService.shared.notificationCount)
+         self.inputExerciseView.setNotifications(num: DBService.shared.notificationCount)
          self.menuView.setNotifications(num:DBService.shared.notificationCount)
          let appDelegate = UIApplication.shared.delegate as! AppDelegate
          appDelegate.setBadgeNumber(DBService.shared.notificationCount)
@@ -354,7 +353,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       if ex.exerciseKey != ""{
          ex.exerciseDescription = Formatter.formatExerciseDescription(desStr: ex.exerciseDescription)
          ex.exerciseDescription = ex.name + ex.exerciseDescription
-         workoutInputView.fillInExercisePassed(exercise: ex)
+         inputExerciseView.fillInExercisePassed(exercise: ex)
          ex.exerciseKey = ""
       }
    }
@@ -371,19 +370,19 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    }
    
    func saveEmail(emailStr:String){
-      workoutInputView.saveEmail(emailStr: emailStr)
+      inputExerciseView.saveEmail(emailStr: emailStr)
    }
    
    func saveResult(str:String){
-      workoutInputView.saveResult(str: str)
+      inputExerciseView.saveResult(str: str)
    }
    
    func setNewDate(dateStr:String){
       if title != "Personal"{
-         workoutInputView.setDateOnBtn(dateStr: dateStr, completion: {
+         inputExerciseView.setDateOnBtn(dateStr: dateStr, completion: {
             checkSessions(dateStr: dateStr, completion: {})})
       }else{
-         workoutInputView.setDateOnBtn(dateStr: dateStr, completion: {})
+         inputExerciseView.setDateOnBtn(dateStr: dateStr, completion: {})
       }
    }
    
@@ -391,14 +390,14 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       let tempClient = DBService.shared.retrieveClientInfoByFullName(fullName: self.title!)
       DBService.shared.setPassedClient(client: tempClient)
       //retrieve session for day
-      workoutInputView.sessionsNames.removeAll()
+      inputExerciseView.sessionsNames.removeAll()
       DBService.shared.retrieveSessionsForDateForClient(dateStr: dateStr, completion: {
          var tempStrings = [String]()
          for session in DBService.shared.sessions{
             tempStrings.append(session.sessionName)
-            self.workoutInputView.setSessionNames(names: tempStrings)
+            self.inputExerciseView.setSessionNames(names: tempStrings)
          }
-         self.workoutInputView.setupClientSave(completion: {})
+         self.inputExerciseView.setupClientSave(completion: {})
       })
    }
    
@@ -406,16 +405,16 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       self.title = name
       //reset date to current day when knew user is selected
       let currentDate = DateConverter.getCurrentDate()
-      workoutInputView.saveButton.setTitle(currentDate, for: .normal)
+      inputExerciseView.saveButton.setTitle(currentDate, for: .normal)
          if name != "Personal"{
             self.checkSessions(dateStr: currentDate, completion: {})
          }else{
-            self.workoutInputView.setupPersonalSave()
+            self.inputExerciseView.setupPersonalSave()
          }
    }
    
    func savePickerSessionName(name:String){
-      workoutInputView.challenge.setTitle(name, for: .normal)
+      inputExerciseView.challenge.setTitle(name, for: .normal)
    }
    
    @IBAction func selectClient(_ sender: UIBarButtonItem) {
