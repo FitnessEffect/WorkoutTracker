@@ -171,6 +171,11 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 // MARK: axisFormatDelegate
 extension ProgressChartViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let strValue = String(value)
+        if strValue.contains(".0"){
+            var tempArr = strValue.components(separatedBy: ".")
+            return tempArr[0]
+        }
         if value == 0.0 || value == Double(dataValues.count) + 1{
             return ""
         }
