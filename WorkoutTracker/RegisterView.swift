@@ -12,8 +12,8 @@ import Firebase
 
 class RegisterView: UIView, UITextFieldDelegate{
     
-    @IBOutlet weak var emailTxtField: UITextField!
-    @IBOutlet weak var passwordTxtField: UITextField!
+    @IBOutlet weak var emailTxtField: TextFieldAnimations!
+    @IBOutlet weak var passwordTxtField: TextFieldAnimations!
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "RegisterView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RegisterView
@@ -30,19 +30,12 @@ class RegisterView: UIView, UITextFieldDelegate{
         }
     }
     
-    
     @IBAction func register(_ sender: UIButton) {
         self.endEditing(true)
         if emailTxtField.text == "" {
-            let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            emailTxtField.shake()
         }else if passwordTxtField.text == ""{
-            let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            passwordTxtField.shake()
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
                 if error == nil {

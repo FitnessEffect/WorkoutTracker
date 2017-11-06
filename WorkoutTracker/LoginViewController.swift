@@ -173,10 +173,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     
     @IBAction func login(_ sender: UIButton) {
-        if (passwordTF.text?.characters.count) == 0{
-            passwordTF.shake()
-        }else if (emailTF.text?.characters.count)! == 0{
+        if (emailTF.text?.characters.count) == 0{
             emailTF.shake()
+        }else if (passwordTF.text?.characters.count)! == 0{
+            passwordTF.shake()
         }else{
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(user, error) in
                 if user == nil{
