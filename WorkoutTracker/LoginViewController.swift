@@ -11,8 +11,8 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var emailTF: TextFieldAnimations!
+    @IBOutlet weak var passwordTF: TextFieldAnimations!
     @IBOutlet weak var rememberMeSwitch: UISwitch!
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var rememberMeLabel: UILabel!
@@ -174,15 +174,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func login(_ sender: UIButton) {
         if (passwordTF.text?.characters.count) == 0{
-            print("Invalid Password")
-            let alert = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            passwordTF.shake()
         }else if (emailTF.text?.characters.count)! == 0{
-            print("Invalid Eamil")
-            let alert = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            emailTF.shake()
         }else{
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(user, error) in
                 if user == nil{
