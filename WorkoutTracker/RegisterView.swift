@@ -32,9 +32,9 @@ class RegisterView: UIView, UITextFieldDelegate{
     
     @IBAction func register(_ sender: UIButton) {
         self.endEditing(true)
-        if emailTxtField.text == "" {
+        if emailTxtField.text?.count == 0 {
             emailTxtField.shake()
-        }else if passwordTxtField.text == ""{
+        }else if passwordTxtField.text?.count == 0{
             passwordTxtField.shake()
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
