@@ -261,7 +261,7 @@ class DBService {
         
         //update firebase all branch
         
-        self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         
         completion()
     }
@@ -867,7 +867,7 @@ class DBService {
     }
     
     func deleteExerciseForUser(exercise:Exercise, completion: @escaping () -> Void){
-        
+        self._ref.child("users").child(self.user.uid).child("Exercises").child("All").child(exercise.type).child(exercise.category).child(exercise.name).child(exercise.exerciseKey).removeValue()
         
         self._ref.child("users").child(self.user.uid).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
             completion()
