@@ -93,6 +93,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.xAxis.labelCount = values.count
         chartView.legend.enabled = false
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+        let x = chartView.xAxis.entries
+        print(x)
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 18)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 18)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
@@ -171,11 +173,16 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 // MARK: axisFormatDelegate
 extension ProgressChartViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        if value == axis?.entries.last || value == axis?.entries.first{
+            return ""
+        }
+        
         let strValue = String(value)
         if strValue.contains(".0"){
             var tempArr = strValue.components(separatedBy: ".")
             return tempArr[0]
         }
+
         if value == 0.0 || value == Double(dataValues.count) + 1{
             return ""
         }

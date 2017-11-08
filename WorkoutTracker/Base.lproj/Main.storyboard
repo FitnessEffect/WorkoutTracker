@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="208.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1791,7 +1791,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1949,7 +1949,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="14" y="11" width="23" height="23.5"/>
+                                                    <rect key="frame" x="14" y="11" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -3148,12 +3148,36 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="GZe-6p-Wjo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiT-w4-X4Z">
+                                <rect key="frame" x="326" y="74" width="40" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="ObK-7N-YYC"/>
+                                    <constraint firstAttribute="height" constant="50" id="udT-np-7Cl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="75"/>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="rightArrowBtn:" destination="nyg-zS-dKd" eventType="touchUpInside" id="6lP-8S-clA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-qR-Q4W">
+                                <rect key="frame" x="7" y="77" width="40" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="UTJ-Rj-jRM"/>
+                                    <constraint firstAttribute="height" constant="50" id="olg-Fz-Lho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="75"/>
+                                <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="leftArrowBtn:" destination="nyg-zS-dKd" eventType="touchUpInside" id="xEh-CV-pan"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-qa-LKY">
-                                <rect key="frame" x="16" y="61" width="343" height="80"/>
+                                <rect key="frame" x="48" y="59" width="277" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="DKU-Po-TTa"/>
-                                    <constraint firstAttribute="width" constant="343" id="r5e-fQ-tlO"/>
+                                    <constraint firstAttribute="width" constant="277" id="r5e-fQ-tlO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="28"/>
                                 <state key="normal" title="Weight" backgroundImage="chalkBackground">
@@ -3205,16 +3229,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-141" id="7bz-il-0Wr"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-139" id="7bz-il-0Wr"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="LiT-w4-X4Z" secondAttribute="bottom" constant="-124" id="8bs-XN-l71"/>
                             <constraint firstAttribute="trailing" secondItem="QIn-Cw-b0E" secondAttribute="trailing" constant="9" id="QPq-4D-zYE"/>
-                            <constraint firstItem="QIn-Cw-b0E" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="9" id="Ten-KH-LTH"/>
+                            <constraint firstItem="Dh0-qa-LKY" firstAttribute="leading" secondItem="RyL-qR-Q4W" secondAttribute="trailing" constant="1" id="T0Q-V4-zrA"/>
+                            <constraint firstItem="QIn-Cw-b0E" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="11" id="Ten-KH-LTH"/>
                             <constraint firstItem="QIn-Cw-b0E" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leading" constant="7" id="UwF-fr-W0z"/>
                             <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="QIn-Cw-b0E" secondAttribute="bottom" constant="79" id="Vq3-NJ-TT4"/>
                             <constraint firstItem="Feh-21-Xn8" firstAttribute="top" secondItem="GZe-6p-Wjo" secondAttribute="bottom" id="gMT-Ms-jZ7"/>
-                            <constraint firstItem="Dh0-qa-LKY" firstAttribute="centerX" secondItem="GZe-6p-Wjo" secondAttribute="centerX" id="jbU-WV-VyM"/>
+                            <constraint firstItem="Dh0-qa-LKY" firstAttribute="centerX" secondItem="GZe-6p-Wjo" secondAttribute="centerX" constant="-1" id="jbU-WV-VyM"/>
                             <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Q3i-Jy-ct9" secondAttribute="top" id="mr6-lA-4lK"/>
+                            <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="RyL-qR-Q4W" secondAttribute="bottom" constant="-127" id="msJ-1d-1zw"/>
                             <constraint firstItem="GZe-6p-Wjo" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leading" id="qMF-V1-gen"/>
                             <constraint firstAttribute="trailing" secondItem="GZe-6p-Wjo" secondAttribute="trailing" id="t1L-2B-jIn"/>
+                            <constraint firstItem="LiT-w4-X4Z" firstAttribute="leading" secondItem="Dh0-qa-LKY" secondAttribute="trailing" constant="1" id="uVb-K3-x0S"/>
                         </constraints>
                     </view>
                     <connections>
