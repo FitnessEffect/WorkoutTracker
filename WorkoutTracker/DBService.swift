@@ -51,6 +51,8 @@ class DBService {
     private var _exSessionEdit = false
     private var _passToNextVC = false
     private var _progressData = [(key: String, value: String)]()
+    private var _progressTypes = [String]()
+    private var _progressCategories = [String]()
     
     private init() {
         initDatabase()
@@ -329,6 +331,26 @@ class DBService {
     
     func createEnduranceCategories(dictionary:[String:Any]){
         self._ref.child("users").child(user.uid).child("Types").child(_typePassed).updateChildValues(dictionary)
+    }
+    
+    func retrieveUserProgressTypesAndCategories(completion: @escaping () -> Void){
+       _progressTypes.removeAll()
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempTypes = snapshot.value as? NSDictionary{
+                for type in tempTypes{
+                    self._progressTypes.append(type.key as! String)
+                }
+                completion()
+                
+            }else{
+                self._progressTypes.removeAll()
+                self._progressCategories.removeAll()
+                completion()
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
     }
     
     func retrieveExercisesForUser(completion: @escaping () -> Void){
@@ -1180,6 +1202,18 @@ class DBService {
     var progressData:[(key: String, value: String)]{
         get{
             return _progressData
+        }
+    }
+    
+    var progressTypes:[String]{
+        get{
+            return _progressTypes
+        }
+    }
+    
+    var progressCategories:[String]{
+        get{
+            return _progressCategories
         }
     }
 }

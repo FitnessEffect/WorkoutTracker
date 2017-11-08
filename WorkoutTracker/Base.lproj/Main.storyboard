@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -3148,7 +3148,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="GZe-6p-Wjo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiT-w4-X4Z">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiT-w4-X4Z">
                                 <rect key="frame" x="326" y="74" width="40" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="ObK-7N-YYC"/>
@@ -3157,6 +3157,7 @@
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="75"/>
                                 <state key="normal" title="&gt;"/>
                                 <connections>
+                                    <action selector="arrowBtns:" destination="iM1-sg-qkU" eventType="touchUpInside" id="Xhr-3V-ZXf"/>
                                     <action selector="rightArrowBtn:" destination="nyg-zS-dKd" eventType="touchUpInside" id="6lP-8S-clA"/>
                                 </connections>
                             </button>
@@ -3169,6 +3170,7 @@
                                 <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="75"/>
                                 <state key="normal" title="&lt;"/>
                                 <connections>
+                                    <action selector="arrowBtns:" destination="iM1-sg-qkU" eventType="touchUpInside" id="w1c-Ws-du7"/>
                                     <action selector="leftArrowBtn:" destination="nyg-zS-dKd" eventType="touchUpInside" id="xEh-CV-pan"/>
                                 </connections>
                             </button>

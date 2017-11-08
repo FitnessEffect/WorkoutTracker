@@ -22,6 +22,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     var lineChartEntry = [ChartDataEntry]()
     var spinner = UIActivityIndicatorView()
     weak var xAxisFormatDelegate: IAxisValueFormatter?
+    var types = [String]()
+    var categories = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,11 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             let btnTitle = dataInputBtn.titleLabel?.text
             DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
+                    self.types = DBService.shared.progressTypes
+                    self.types.insert("Weight", at: 0)
+                })
+                
                 if DBService.shared.passedClient.clientKey != ""{
                     DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
                         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
@@ -144,6 +151,24 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         // present the popover
         currentController?.present(popController, animated: true, completion: nil)
     }
+    
+    @IBAction func arrowBtns(_ sender: UIButton) {
+        let currentIndex = types.index(of: (dataInputBtn.titleLabel?.text)!)
+        if sender.tag == 0{
+            if currentIndex == 0{
+              dataInputBtn.setTitle(types[types.count-1], for: .normal)
+            }else{
+                dataInputBtn.setTitle(types[currentIndex!-1], for: .normal)
+            }
+        }else{
+            if currentIndex == types.count-1{
+                dataInputBtn.setTitle(types[0], for: .normal)
+            }else{
+                dataInputBtn.setTitle(types[currentIndex!+1], for: .normal)
+            }
+        }
+    }
+    
     
     func getCurrentViewController() -> UIViewController? {
         if let rootController = UIApplication.shared.keyWindow?.rootViewController {

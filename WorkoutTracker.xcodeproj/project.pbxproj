@@ -308,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				52717FE31EE8DBA800DBD8DE /* DBService.swift */,
-				52717FE51EE8DBB100DBD8DE /* APIService.swift */,
 				522948591F6823610095E6ED /* Reachability.swift */,
 			);
 			name = Services;
@@ -474,6 +473,7 @@
 		52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */ = {
 			isa = PBXGroup;
 			children = (
+				52717FE51EE8DBB100DBD8DE /* APIService.swift */,
 				52717FE21EE8DB7A00DBD8DE /* Services */,
 				52FCD5C21CB59F87008B0472 /* Models */,
 				52EB1DEB1ECA778C004CA561 /* Views */,
