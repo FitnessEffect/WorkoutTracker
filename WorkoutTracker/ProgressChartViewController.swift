@@ -11,12 +11,13 @@ import Charts
 
 class ProgressChartViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
-    @IBOutlet weak var arrowLabel1: UILabel!
-    @IBOutlet weak var arrowLabel2: UILabel!
-    @IBOutlet weak var arrowLabel3: UILabel!
+
+    @IBOutlet weak var swipeToDeleteLabel: UILabel!
+    @IBOutlet weak var arrowsLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var dataInputBtn: UIButton!
     @IBOutlet weak var noValuesLabel: UILabel!
+    @IBOutlet weak var chartTitleLabel: UILabel!
     
     var dataValues = [(key: String, value: String)]()
     var lineChartEntry = [ChartDataEntry]()
@@ -41,6 +42,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        chartTitleLabel.text = ""
+        types.removeAll()
+        categories.removeAll()
         noValuesLabel.alpha = 0
         self.chartView.alpha = 1
         let internetCheck = Reachability.isInternetAvailable()
@@ -73,20 +77,53 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         }
                     })
                 }else{
-                    DBService.shared.retrieveProgressData(selection:btnTitle!,completion:{
-                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                        self.spinner.stopAnimating()
+                    if btnTitle == "Weight"{
+                        self.setWeightGraph()
+                        self.chartTitleLabel.text = ""
+                    }else{
+                        //UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        //self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
-                        
-                            self.createChart(values: self.dataValues)
+                        self.createChart(values: self.dataValues)
                         if self.dataValues.count == 0{
                             self.chartView.alpha = 0
                             self.noValuesLabel.alpha = 1
                         }
-                    })
+                    }
                 }
             }
         }
+    }
+    
+    func setWeightGraph(){
+        swipeToDeleteLabel.alpha = 1
+        arrowsLabel.alpha = 1
+        DBService.shared.retrieveProgressData(selection:(dataInputBtn.titleLabel?.text!)!,completion:{
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+            self.spinner.stopAnimating()
+            self.dataValues = DBService.shared.progressData
+            
+            self.createChart(values: self.dataValues)
+            if self.dataValues.count == 0{
+                self.chartView.alpha = 0
+                self.noValuesLabel.alpha = 1
+            }
+        })
+    }
+    
+    func setDefaultGraph(){
+        swipeToDeleteLabel.alpha = 0
+        arrowsLabel.alpha = 0
+        DBService.shared.retrieveFirstExerciseData(type:(dataInputBtn.titleLabel?.text)!, completion: {
+            self.chartTitleLabel.text = DBService.shared.defaultChartTitle
+            self.dataValues = DBService.shared.progressData
+            
+            self.createChart(values: self.dataValues)
+            if self.dataValues.count == 0{
+                self.chartView.alpha = 0
+                self.noValuesLabel.alpha = 1
+            }
+        })
     }
     
     func createChart(values:[(key: String, value: String)]){
@@ -124,6 +161,10 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.data = data
         
     }
+    
+    func setChartTitle(title:String){
+        chartTitleLabel.text = title
+    }
 
     @IBAction func inputData(_ sender: UIButton) {
         let xPosition = dataInputBtn.frame.minX + (dataInputBtn.frame.width/2)
@@ -154,7 +195,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             
         }else{
             // get a reference to the view controller for the popover
-            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressPickerVC") as! ProgressPickerViewController
+            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerSelectionVC") as! ProgressPickerSelectionViewController
             
             // set the presentation style
             popController.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -163,7 +204,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
             popController.popoverPresentationController?.delegate = self
             popController.popoverPresentationController?.sourceView = currentController?.view
-            popController.preferredContentSize = CGSize(width: 300, height: 210)
+            popController.preferredContentSize = CGSize(width: 300, height: 360)
+            
+            popController.setType(type:(dataInputBtn.titleLabel?.text)!)
             popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
             
             // present the popover
@@ -175,16 +218,27 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         let currentIndex = types.index(of: (dataInputBtn.titleLabel?.text)!)
         if sender.tag == 0{
             if currentIndex == 0{
+                dataInputBtn.titleLabel?.text = types[types.count-1]
               dataInputBtn.setTitle(types[types.count-1], for: .normal)
             }else{
+                dataInputBtn.titleLabel?.text = types[currentIndex!-1]
                 dataInputBtn.setTitle(types[currentIndex!-1], for: .normal)
             }
         }else{
             if currentIndex == types.count-1{
+                dataInputBtn.titleLabel?.text = types[0]
                 dataInputBtn.setTitle(types[0], for: .normal)
             }else{
+                dataInputBtn.titleLabel?.text = types[currentIndex!+1]
                 dataInputBtn.setTitle(types[currentIndex!+1], for: .normal)
             }
+        }
+        
+        if dataInputBtn.titleLabel?.text == "Weight"{
+            setWeightGraph()
+            chartTitleLabel.text = ""
+        }else{
+            setDefaultGraph()
         }
     }
     
@@ -205,11 +259,13 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     @objc func swipe(_ sender:UISwipeGestureRecognizer){
-        if sender.direction == .right{
-        let deleteProgressDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteProgressDataVC") as! DeleteProgressDataViewController
-            deleteProgressDataVC.passDataValues(passedData:dataValues)
-            deleteProgressDataVC.passSelection(passedSelection:(dataInputBtn.titleLabel?.text)!)
-            self.navigationController?.pushViewController(deleteProgressDataVC, animated: true)
+        if dataInputBtn.titleLabel?.text == "Weight"{
+            if sender.direction == .right{
+                let deleteProgressDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deleteProgressDataVC") as! DeleteProgressDataViewController
+                deleteProgressDataVC.passDataValues(passedData:dataValues)
+                deleteProgressDataVC.passSelection(passedSelection:(dataInputBtn.titleLabel?.text)!)
+                self.navigationController?.pushViewController(deleteProgressDataVC, animated: true)
+            }
         }
     }
 }

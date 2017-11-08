@@ -16,6 +16,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     var categories = [String]()
     var exerciseNames = [String]()
+    var typePassed:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,25 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveCategoriesForType()
+        DBService.shared.retrieveProgressCategoriesForType(type:typePassed, completion: {
+            self.categories = DBService.shared.progressCategories
+            self.categoryPicker.reloadAllComponents()
+            self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
+        })
+    }
+    
+    func setType(type:String){
+        typePassed = type
     }
 
+    func setExerciseNamesForCategory(categoryPassed:String){
+       exerciseNames.removeAll()
+        DBService.shared.retrieveProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
+            self.exerciseNames = DBService.shared.progressExerciseNames
+            self.exercisePicker.reloadAllComponents()
+        })
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -49,21 +66,34 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-//        if tagPassed == 1{
-//            let tempWeight = weights[row] + " lb(s)"
-//            tempResult = tempWeight
-//        }
+        setExerciseNamesForCategory(categoryPassed: categories[categoryPicker.selectedRow(inComponent: 0)])
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
+       
+        if pickerView.tag == 0{
+            label.text = categories[row]
+        }else{
+            label.text = exerciseNames[row]
+        }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label
     }
     
-
+    @IBAction func selectBtn(_ sender: UIButton) {
+        
+        DBService.shared.retrieveProgressResultsForExerciseName(type:typePassed, category:categories[categoryPicker.selectedRow(inComponent: 0)], exerciseName:exerciseNames[exercisePicker.selectedRow(inComponent: 0)], completion: {
+            
+            let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
+            self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)
+                presenter.setChartTitle(title:self.exerciseNames[self.exercisePicker.selectedRow(inComponent: 0)])
+            })
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
