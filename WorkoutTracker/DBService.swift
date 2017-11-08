@@ -255,7 +255,14 @@ class DBService {
     }
     
     func updateExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
+       
+        //update firebase date branch
         self._ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        
+        //update firebase all branch
+        
+        self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        
         completion()
     }
     
@@ -860,6 +867,8 @@ class DBService {
     }
     
     func deleteExerciseForUser(exercise:Exercise, completion: @escaping () -> Void){
+        
+        
         self._ref.child("users").child(self.user.uid).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
             completion()
             if error != nil {

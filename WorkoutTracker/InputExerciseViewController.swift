@@ -278,6 +278,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       DBService.shared.setEdit(bool:false)
       DBService.shared.setExSessionEdit(bool:false)
       if self.title == "Personal"{
+        
          DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
             let alert = UIAlertController(title: "Success", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
             present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
