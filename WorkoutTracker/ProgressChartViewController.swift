@@ -131,25 +131,44 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         
         let currentController = self.getCurrentViewController()
         
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressPickerVC") as! ProgressPickerViewController
         
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = currentController?.view
-        popController.preferredContentSize = CGSize(width: 300, height: 210)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
         
         if dataInputBtn.titleLabel?.text == "Weight"{
+            // get a reference to the view controller for the popover
+            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressPickerVC") as! ProgressPickerViewController
+            
+            // set the presentation style
+            popController.modalPresentationStyle = UIModalPresentationStyle.popover
+            
+            // set up the popover presentation controller
+            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+            popController.popoverPresentationController?.delegate = self
+            popController.popoverPresentationController?.sourceView = currentController?.view
+            popController.preferredContentSize = CGSize(width: 300, height: 210)
+            popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+            
             popController.setTag(tag: 1)
+            
+            // present the popover
+            currentController?.present(popController, animated: true, completion: nil)
+            
+        }else{
+            // get a reference to the view controller for the popover
+            let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "progressPickerVC") as! ProgressPickerViewController
+            
+            // set the presentation style
+            popController.modalPresentationStyle = UIModalPresentationStyle.popover
+            
+            // set up the popover presentation controller
+            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+            popController.popoverPresentationController?.delegate = self
+            popController.popoverPresentationController?.sourceView = currentController?.view
+            popController.preferredContentSize = CGSize(width: 300, height: 210)
+            popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+            
+            // present the popover
+            currentController?.present(popController, animated: true, completion: nil)
         }
-        
-        // present the popover
-        currentController?.present(popController, animated: true, completion: nil)
     }
     
     @IBAction func arrowBtns(_ sender: UIButton) {

@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1791,7 +1791,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1949,7 +1949,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="14" y="11" width="23" height="23.5"/>
+                                                    <rect key="frame" x="14" y="11" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -2606,6 +2606,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgO-R7-Zvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2104.8000000000002" y="-685.00749625187416"/>
+        </scene>
+        <!--Progress Picker Selection View Controller-->
+        <scene sceneID="byi-6q-5wB">
+            <objects>
+                <viewController id="xOo-0S-jXp" customClass="ProgressPickerSelectionViewController" customModule="WorkoutTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vb3-yw-FAj"/>
+                        <viewControllerLayoutGuide type="bottom" id="6fS-Lm-5ch"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y74-gy-FNR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZA7-0U-Plz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="DkV-6I-Att"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="xOo-0S-jXp" id="czT-7J-wLn"/>
+                                    <outlet property="delegate" destination="xOo-0S-jXp" id="bLa-2m-PoG"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHe-wD-HJh">
+                                <rect key="frame" x="0.0" y="170" width="375" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="W4b-MG-5b1"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="xOo-0S-jXp" id="2oA-12-9xv"/>
+                                    <outlet property="delegate" destination="xOo-0S-jXp" id="19z-Jq-tbq"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUr-Nt-1zH">
+                                <rect key="frame" x="92" y="340" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="2gW-lm-giV"/>
+                                    <constraint firstAttribute="height" constant="50" id="I92-RH-474"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="28"/>
+                                <state key="normal" title="Select" backgroundImage="markerBackground"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fHe-wD-HJh" secondAttribute="trailing" id="0rp-Fp-7bW"/>
+                            <constraint firstItem="lUr-Nt-1zH" firstAttribute="top" secondItem="fHe-wD-HJh" secondAttribute="bottom" constant="8" id="1dh-oz-J0b"/>
+                            <constraint firstItem="ZA7-0U-Plz" firstAttribute="top" secondItem="Y74-gy-FNR" secondAttribute="top" id="Gbn-lp-Jc1"/>
+                            <constraint firstAttribute="trailing" secondItem="ZA7-0U-Plz" secondAttribute="trailing" id="ZXw-kn-XDl"/>
+                            <constraint firstItem="fHe-wD-HJh" firstAttribute="leading" secondItem="Y74-gy-FNR" secondAttribute="leading" id="cxo-xi-t7u"/>
+                            <constraint firstItem="lUr-Nt-1zH" firstAttribute="centerX" secondItem="Y74-gy-FNR" secondAttribute="centerX" id="ece-ha-cMo"/>
+                            <constraint firstItem="fHe-wD-HJh" firstAttribute="top" secondItem="ZA7-0U-Plz" secondAttribute="bottom" constant="8" id="hG0-OB-Dbm"/>
+                            <constraint firstItem="ZA7-0U-Plz" firstAttribute="leading" secondItem="Y74-gy-FNR" secondAttribute="leading" id="q7y-6m-3sd"/>
+                            <constraint firstItem="fHe-wD-HJh" firstAttribute="top" secondItem="ZA7-0U-Plz" secondAttribute="bottom" constant="8" id="zW0-Mn-cLX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="categoryPicker" destination="ZA7-0U-Plz" id="HZr-V7-dYD"/>
+                        <outlet property="exercisePicker" destination="fHe-wD-HJh" id="flW-ja-aGP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XqI-eK-SS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1986.4000000000001" y="3142.5787106446778"/>
         </scene>
         <!--Progress Picker View Controller-->
         <scene sceneID="jdg-ng-PWu">
