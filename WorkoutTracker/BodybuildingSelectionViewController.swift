@@ -181,7 +181,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     @IBAction func addExercise(_ sender: UIButton) {
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         
-        myExercise.name = categoryPassed
+        myExercise.name = exercises[id]
         myExercise.category = categoryPassed
         myExercise.type = "Bodybuilding"
         
@@ -194,14 +194,14 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             if selectionBtn.titleLabel?.text == "Superset"{
                 let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
                 let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
-                myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
+                myExercise.exerciseDescription = lbs[idPounds] + " lbs" + " " + reps[idReps] + " rep(s)"
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
                 DBService.shared.setSupersetExercise(exercise: myExercise)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
                 let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
-                myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
+                myExercise.exerciseDescription = reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 
