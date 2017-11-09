@@ -523,7 +523,7 @@ class DBService {
                 }
                 //remove types that cannot be displayed on graph
                 if self._progressTypes.contains("Endurance"){
-                    self._progressCategories.remove(at:self._progressCategories.index(of: "Endurance")!)
+                    self._progressCategories.remove(at:self._progressTypes.index(of: "Endurance")!)
                 }
                 completion()
                 
@@ -934,7 +934,7 @@ class DBService {
     func retrieveHeroWods(completion: @escaping () -> Void){
         _crossfitHeroWods.removeAll()
         
-        self._ref.child("herowods").observeSingleEvent(of: .value, with: { (snapshot) in
+        self._ref.child("hero wods").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil{
