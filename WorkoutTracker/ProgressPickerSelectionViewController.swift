@@ -17,19 +17,48 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     var categories = [String]()
     var exerciseNames = [String]()
     var typePassed:String!
+    var spinnerCategory = UIActivityIndicatorView()
+    var spinnerExercise = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        spinnerCategory.frame = CGRect(x:(categoryPicker.frame.width/2)-60, y:(categoryPicker.frame.height/2)-25, width:50, height:50)
+        spinnerCategory.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerCategory.color = UIColor.blue
+        spinnerCategory.alpha = 0
+        categoryPicker.addSubview(spinnerCategory)
+        
+        spinnerExercise.frame = CGRect(x:(exercisePicker.frame.width/2)-60, y:(exercisePicker.frame.height/2)-25, width:50, height:50)
+        spinnerExercise.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerExercise.color = UIColor.blue
+        spinnerExercise.alpha = 0
+        exercisePicker.addSubview(spinnerExercise)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveProgressCategoriesForType(type:typePassed, completion: {
-            self.categories = DBService.shared.progressCategories
-            self.categoryPicker.reloadAllComponents()
-            self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
-        })
+        if DBService.shared.passedClient.clientKey != ""{
+            spinnerCategory.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 1})
+            DBService.shared.retrieveClientProgressCategoriesForType(type:typePassed, completion: {
+                UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
+                self.spinnerCategory.stopAnimating()
+                self.categories = DBService.shared.progressCategories
+                self.categoryPicker.reloadAllComponents()
+                self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
+            })
+        }else{
+            spinnerCategory.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 1})
+            DBService.shared.retrieveProgressCategoriesForType(type:typePassed, completion: {
+                UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
+                self.spinnerCategory.stopAnimating()
+                self.categories = DBService.shared.progressCategories
+                self.categoryPicker.reloadAllComponents()
+                self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
+            })
+        }
+        
     }
     
     func setType(type:String){
@@ -38,10 +67,25 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
 
     func setExerciseNamesForCategory(categoryPassed:String){
        exerciseNames.removeAll()
-        DBService.shared.retrieveProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
-            self.exerciseNames = DBService.shared.progressExerciseNames
-            self.exercisePicker.reloadAllComponents()
-        })
+        if DBService.shared.passedClient.clientKey != ""{
+            spinnerExercise.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
+            DBService.shared.retrieveClientProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
+                UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                self.spinnerExercise.stopAnimating()
+                self.exerciseNames = DBService.shared.progressExerciseNames
+                self.exercisePicker.reloadAllComponents()
+            })
+        }else{
+            spinnerExercise.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
+            DBService.shared.retrieveProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
+                UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                self.spinnerExercise.stopAnimating()
+                self.exerciseNames = DBService.shared.progressExerciseNames
+                self.exercisePicker.reloadAllComponents()
+            })
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

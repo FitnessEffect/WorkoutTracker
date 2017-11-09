@@ -340,6 +340,20 @@ class DBService {
         self._ref.child("users").child(user.uid).child("Types").child(_typePassed).updateChildValues(dictionary)
     }
     
+    func retrieveClientProgressCategoriesForType(type:String, completion: @escaping () -> Void){
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempCategories = snapshot.value as? NSDictionary{
+                for category in tempCategories{
+                    self._progressCategories.append(category.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func retrieveProgressCategoriesForType(type:String, completion: @escaping () -> Void){
         _progressCategories.removeAll()
         _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -352,6 +366,39 @@ class DBService {
         }){ (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func retrieveClientProgressResultsForExerciseName(type:String, category:String, exerciseName:String, completion: @escaping () -> Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(category).child(exerciseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let exerciseKeys = snapshot.value as? [String: [String: AnyObject]]{
+                var tempExercises = [Exercise]()
+                for exercise in exerciseKeys{
+                    let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
+                    tempExercises.append(tempExercise)
+                    
+                }
+                
+                for exercise in tempExercises{
+                    self._progressData.append((key:exercise.date, value:exercise.result))
+                }
+                completion()
+            }
+        })
     }
     
     func retrieveProgressResultsForExerciseName(type:String, category:String, exerciseName:String, completion: @escaping () -> Void){
@@ -385,6 +432,20 @@ class DBService {
                 completion()
             }
         })
+    }
+    
+    func retrieveClientProgressExercisesForCategory(type:String, category:String, completion: @escaping () -> Void){
+        _progressExerciseNames.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempExercises = snapshot.value as? NSDictionary{
+                for exercise in tempExercises{
+                    self._progressExerciseNames.append(exercise.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
     }
     
     func retrieveProgressExercisesForCategory(type:String, category:String, completion: @escaping () -> Void){
@@ -857,6 +918,17 @@ class DBService {
             let value = snapshot.value as? NSDictionary
             let str = value?["description"] as! String
             completion(str)
+        })
+    }
+    
+    func retrieveClientFirstExerciseData(type:String,completion:@escaping ()->Void){
+        self.retrieveClientProgressCategoriesForType(type: type, completion: {
+            self.retrieveClientProgressExercisesForCategory(type: type, category: self._progressCategories[0], completion: {
+                self.retrieveClientProgressResultsForExerciseName(type: type, category: self._progressCategories[0], exerciseName: self._progressExerciseNames[0], completion: {self._defaultChartTitle = self.progressExerciseNames[0]
+                    completion()
+                })
+                
+            })
         })
     }
     

@@ -89,7 +89,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
                 self.dataValues = DBService.shared.progressData
-                self.chartView.reloadInputViews()
                 self.createChart(values: self.dataValues)
                 if self.dataValues.count == 0{
                     self.chartView.alpha = 0
@@ -110,6 +109,27 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             DBService.shared.retrieveProgressData(selection:btnLabel!,completion:{
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
+                self.dataValues = DBService.shared.progressData
+                self.createChart(values: self.dataValues)
+                if self.dataValues.count == 0{
+                    self.chartView.alpha = 0
+                    self.noValuesLabel.alpha = 1
+                }
+            })
+        }
+    }
+    
+    func setClientDefaultGraph(){
+        swipeToDeleteLabel.alpha = 0
+        arrowsLabel.alpha = 0
+        let btnLabel = dataInputBtn.titleLabel?.text
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveClientFirstExerciseData(type:btnLabel!, completion: {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.chartTitleLabel.text = DBService.shared.defaultChartTitle
                 self.dataValues = DBService.shared.progressData
                 
                 self.createChart(values: self.dataValues)
@@ -247,10 +267,18 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         }
         
         if dataInputBtn.titleLabel?.text == "Weight"{
-            setWeightGraph()
             chartTitleLabel.text = ""
+            if DBService.shared.passedClient.clientKey != ""{
+                setClientWeightGraph()
+            }else{
+                 setWeightGraph()
+            }
         }else{
-            setDefaultGraph()
+            if DBService.shared.passedClient.clientKey != ""{
+                setClientDefaultGraph()
+            }else{
+                setDefaultGraph()
+            }
         }
     }
     
