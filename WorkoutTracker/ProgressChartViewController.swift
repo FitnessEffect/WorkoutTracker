@@ -56,21 +56,15 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         }else{
             spinner.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-            let btnTitle = dataInputBtn.titleLabel?.text
+           
             if DBService.shared.passedClient.clientKey != ""{
                 DispatchQueue.global(qos: .userInitiated).async {
-                    DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
-                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                        self.spinner.stopAnimating()
-                        self.dataValues = DBService.shared.progressData
-                        self.chartView.reloadInputViews()
-                        self.createChart(values: self.dataValues)
-                        if self.dataValues.count == 0{
-                            self.chartView.alpha = 0
-                            self.noValuesLabel.alpha = 1
-                        }
+                    DBService.shared.retrieveClientProgressTypesAndCategories(completion: {
+                        self.types = DBService.shared.progressTypes
+                        self.types.insert("Weight", at: 0)
                     })
                 }
+                setClientWeightGraph()
             }else{
                 DispatchQueue.global(qos: .userInitiated).async {
                     DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
@@ -80,6 +74,28 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                 }
                 self.setWeightGraph()
             }
+        }
+    }
+    
+    func setClientWeightGraph(){
+        chartTitleLabel.text = ""
+        swipeToDeleteLabel.alpha = 1
+        arrowsLabel.alpha = 1
+         let btnTitle = dataInputBtn.titleLabel?.text
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.dataValues = DBService.shared.progressData
+                self.chartView.reloadInputViews()
+                self.createChart(values: self.dataValues)
+                if self.dataValues.count == 0{
+                    self.chartView.alpha = 0
+                    self.noValuesLabel.alpha = 1
+                }
+            })
         }
     }
     

@@ -397,6 +397,26 @@ class DBService {
         }
     }
     
+    func retrieveClientProgressTypesAndCategories(completion: @escaping () -> Void){
+        _progressTypes.removeAll()
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempTypes = snapshot.value as? NSDictionary{
+                for type in tempTypes{
+                    self._progressTypes.append(type.key as! String)
+                }
+                completion()
+                
+            }else{
+                self._progressTypes.removeAll()
+                self._progressCategories.removeAll()
+                completion()
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func retrieveUserProgressTypesAndCategories(completion: @escaping () -> Void){
        _progressTypes.removeAll()
         _progressCategories.removeAll()
