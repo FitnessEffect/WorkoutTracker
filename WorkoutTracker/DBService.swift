@@ -498,8 +498,8 @@ class DBService {
                     self._progressTypes.append(type.key as! String)
                 }
                 //remove types that cannot be displayed on graph
-                if self._progressCategories.contains("Endurance"){
-                    self._progressCategories.remove(at:self._progressCategories.index(of: "Endurance")!)
+                if self._progressTypes.contains("Endurance"){
+                    self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
                 }
                 completion()
                 
@@ -523,7 +523,7 @@ class DBService {
                 }
                 //remove types that cannot be displayed on graph
                 if self._progressTypes.contains("Endurance"){
-                    self._progressCategories.remove(at:self._progressTypes.index(of: "Endurance")!)
+                    self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
                 }
                 completion()
                 
