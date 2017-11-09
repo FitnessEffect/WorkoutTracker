@@ -56,6 +56,8 @@ class DBService {
     private var _progressTypePassed:String!
     private var _progressExerciseNames = [String]()
     private var _defaultChartTitle = ""
+    private var _selectedProgressCategory = ""
+    private var _selectedProgressExercise = ""
     
     private init() {
         initDatabase()
@@ -921,9 +923,16 @@ class DBService {
         })
     }
     
-    func retrieveClientFirstExerciseData(type:String,completion:@escaping ()->Void){
+    func retrieveClientExerciseData(type:String,completion:@escaping ()->Void){
         self.retrieveClientProgressCategoriesForType(type: type, completion: {
+            //select value if empty
+            if self._selectedProgressCategory == ""{
+                self._selectedProgressCategory = self._progressCategories[0]
+            }
             self.retrieveClientProgressExercisesForCategory(type: type, category: self._progressCategories[0], completion: {
+                if self._selectedProgressExercise == ""{
+                    self._selectedProgressExercise = self._progressExerciseNames[0]
+                }
                 self.retrieveClientProgressResultsForExerciseName(type: type, category: self._progressCategories[0], exerciseName: self._progressExerciseNames[0], completion: {self._defaultChartTitle = self.progressExerciseNames[0]
                     completion()
                 })
@@ -932,10 +941,17 @@ class DBService {
         })
     }
     
-    func retrieveFirstExerciseData(type:String,completion:@escaping ()->Void){
+    func retrieveExerciseData(type:String,completion:@escaping ()->Void){
         self.retrieveProgressCategoriesForType(type: type, completion: {
-            self.retrieveProgressExercisesForCategory(type: type, category: self._progressCategories[0], completion: {
-                self.retrieveProgressResultsForExerciseName(type: type, category: self._progressCategories[0], exerciseName: self._progressExerciseNames[0], completion: {self._defaultChartTitle = self.progressExerciseNames[0]
+            //select value if empty
+            if self._selectedProgressCategory == ""{
+                self._selectedProgressCategory = self._progressCategories[0]
+            }
+            self.retrieveProgressExercisesForCategory(type: type, category: self._selectedProgressCategory, completion: {
+                if self._selectedProgressExercise == ""{
+                    self._selectedProgressExercise = self._progressExerciseNames[0]
+                }
+                self.retrieveProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._progressExerciseNames[0], completion: {self._defaultChartTitle = self.progressExerciseNames[0]
                     completion()
                 })
                 
@@ -943,6 +959,7 @@ class DBService {
         })
     }
     
+    //retrieve client weight
     func retrieveProgressDataForClient(selection:String, completion:@escaping()->Void){
         _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(DBService.shared.passedClient.clientKey).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -964,6 +981,7 @@ class DBService {
         })
     }
     
+    //retrieve weight
     func retrieveProgressData(selection:String, completion:@escaping()->Void){
         _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -1141,6 +1159,14 @@ class DBService {
     
     func setPassToNextVC(bool:Bool){
         _passToNextVC = bool
+    }
+    
+    func setSelectedProgressCategory(categoryStr:String){
+        _selectedProgressCategory = categoryStr
+    }
+    
+    func setSelectedProgressExercise(exerciseStr:String){
+        _selectedProgressExercise = exerciseStr
     }
     
     func initializeData(){
@@ -1403,6 +1429,18 @@ class DBService {
     var defaultChartTitle:String{
         get{
             return _defaultChartTitle
+        }
+    }
+    
+    var selectedProgressCategory:String{
+        get{
+            return _selectedProgressCategory
+        }
+    }
+    
+    var selectedProgressExercise:String{
+        get{
+            return _selectedProgressExercise
         }
     }
     

@@ -129,13 +129,17 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     @IBAction func selectBtn(_ sender: UIButton) {
         
-        DBService.shared.retrieveProgressResultsForExerciseName(type:typePassed, category:categories[categoryPicker.selectedRow(inComponent: 0)], exerciseName:exerciseNames[exercisePicker.selectedRow(inComponent: 0)], completion: {
-            
+    DBService.shared.setSelectedProgressCategory(categoryStr:categories[categoryPicker.selectedRow(inComponent: 0)])
+        
+        DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
+        
+//        DBService.shared.retrieveProgressResultsForExerciseName(type:typePassed, category:categories[categoryPicker.selectedRow(inComponent: 0)], exerciseName:exerciseNames[exercisePicker.selectedRow(inComponent: 0)], completion: {
+        
             let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
             self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)
                 presenter.setChartTitle(title:self.exerciseNames[self.exercisePicker.selectedRow(inComponent: 0)])
             })
-        })
+  //      })
     }
     
     /*

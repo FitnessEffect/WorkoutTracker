@@ -350,6 +350,7 @@
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
 				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
+				521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -482,7 +483,6 @@
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,

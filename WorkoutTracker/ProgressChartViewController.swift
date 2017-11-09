@@ -24,6 +24,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     weak var xAxisFormatDelegate: IAxisValueFormatter?
     var types = [String]()
     var categories = [String]()
+    var unit = "lb(s)"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        chartTitleLabel.text = ""
+        chartTitleLabel.text = unit
         dataValues.removeAll()
         types.removeAll()
         categories.removeAll()
@@ -64,7 +65,12 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.types.insert("Weight", at: 0)
                     })
                 }
-                setClientWeightGraph()
+                if dataInputBtn.titleLabel?.text == "Weight"{
+                  setClientWeightGraph()
+                }else{
+                    setClientDefaultGraph()
+                }
+                
             }else{
                 DispatchQueue.global(qos: .userInitiated).async {
                     DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
@@ -72,13 +78,18 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                         self.types.insert("Weight", at: 0)
                     })
                 }
-                self.setWeightGraph()
+                if dataInputBtn.titleLabel?.text == "Weight"{
+                    self.setWeightGraph()
+                }else{
+                    self.setDefaultGraph()
+                }
+                
             }
         }
     }
     
     func setClientWeightGraph(){
-        chartTitleLabel.text = ""
+        chartTitleLabel.text = unit
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
          let btnTitle = dataInputBtn.titleLabel?.text
@@ -99,7 +110,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setWeightGraph(){
-        chartTitleLabel.text = ""
+        chartTitleLabel.text = unit
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -129,7 +140,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             DBService.shared.retrieveClientFirstExerciseData(type:btnLabel!, completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
-                self.chartTitleLabel.text = DBService.shared.defaultChartTitle
+                self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
                 self.dataValues = DBService.shared.progressData
                 
                 self.createChart(values: self.dataValues)
@@ -148,10 +159,10 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         spinner.startAnimating()
         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
         DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveFirstExerciseData(type:btnLabel!, completion: {
+            DBService.shared.retrieveExerciseData(type:btnLabel!, completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
-                self.chartTitleLabel.text = DBService.shared.defaultChartTitle
+                self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
                 self.dataValues = DBService.shared.progressData
                 
                 self.createChart(values: self.dataValues)
@@ -181,8 +192,9 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         
         var count = 1
         for element in values{
-            let lbsNum = element.value.components(separatedBy: " ")
-            let dataEntry = ChartDataEntry(x: Double(count), y: Double(lbsNum[0])!)
+            let elementWithoutUnit = element.value.components(separatedBy: " ")
+            unit = elementWithoutUnit[1]
+            let dataEntry = ChartDataEntry(x: Double(count), y: Double(elementWithoutUnit[0])!)
             lineChartEntry.append(dataEntry)
             count += 1
         }
@@ -267,7 +279,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         }
         
         if dataInputBtn.titleLabel?.text == "Weight"{
-            chartTitleLabel.text = ""
             if DBService.shared.passedClient.clientKey != ""{
                 setClientWeightGraph()
             }else{
