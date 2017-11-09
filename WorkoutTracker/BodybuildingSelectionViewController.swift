@@ -103,7 +103,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         repsSetsOutlet.reloadAllComponents()
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createExerciseID") as! CreateBodybuildingExerciseViewController
         popController.setCategory(category:categoryPassed)

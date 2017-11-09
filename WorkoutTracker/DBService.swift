@@ -354,14 +354,24 @@ class DBService {
             //remove categories that cannot be displayed on graph
             if self._progressCategories.contains("Amrap"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
-            }else if self._progressCategories.contains("Emom"){
+            }
+            if self._progressCategories.contains("Emom"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Emom")!)
-            }else if self._progressCategories.contains("For Time"){
+            }
+            if self._progressCategories.contains("For Time"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "For Time")!)
-            }else if self._progressCategories.contains("Metcon"){
+            }
+            if self._progressCategories.contains("Metcon"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Metcon")!)
-            }else if self._progressCategories.contains("Tabata"){
+            }
+            if self._progressCategories.contains("Tabata"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
+            }
+            if self._progressCategories.contains("Hero Wods"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
+            }
+            if self._progressCategories.contains("Superset"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
             }
             completion()
         }){ (error) in
@@ -380,14 +390,24 @@ class DBService {
             //remove categories that cannot be displayed on graph
             if self._progressCategories.contains("Amrap"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
-            }else if self._progressCategories.contains("Emom"){
+            }
+            if self._progressCategories.contains("Emom"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Emom")!)
-            }else if self._progressCategories.contains("For Time"){
+            }
+            if self._progressCategories.contains("For Time"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "For Time")!)
-            }else if self._progressCategories.contains("Metcon"){
+            }
+            if self._progressCategories.contains("Metcon"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Metcon")!)
-            }else if self._progressCategories.contains("Tabata"){
+            }
+            if self._progressCategories.contains("Tabata"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
+            }
+            if self._progressCategories.contains("Hero Wods"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
+            }
+            if self._progressCategories.contains("Superset"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
             }
             completion()
         }){ (error) in
