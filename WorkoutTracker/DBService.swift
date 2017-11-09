@@ -350,6 +350,19 @@ class DBService {
                     self._progressCategories.append(category.key as! String)
                 }
             }
+            
+            //remove categories that cannot be displayed on graph
+            if self._progressCategories.contains("Amrap"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
+            }else if self._progressCategories.contains("Emom"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Emom")!)
+            }else if self._progressCategories.contains("For Time"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "For Time")!)
+            }else if self._progressCategories.contains("Metcon"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Metcon")!)
+            }else if self._progressCategories.contains("Tabata"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
+            }
             completion()
         }){ (error) in
             print(error.localizedDescription)
@@ -363,6 +376,18 @@ class DBService {
                 for category in tempCategories{
                     self._progressCategories.append(category.key as! String)
                 }
+            }
+            //remove categories that cannot be displayed on graph
+            if self._progressCategories.contains("Amrap"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
+            }else if self._progressCategories.contains("Emom"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Emom")!)
+            }else if self._progressCategories.contains("For Time"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "For Time")!)
+            }else if self._progressCategories.contains("Metcon"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Metcon")!)
+            }else if self._progressCategories.contains("Tabata"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
             }
             completion()
         }){ (error) in
@@ -472,6 +497,10 @@ class DBService {
                 for type in tempTypes{
                     self._progressTypes.append(type.key as! String)
                 }
+                //remove types that cannot be displayed on graph
+                if self._progressCategories.contains("Endurance"){
+                    self._progressCategories.remove(at:self._progressCategories.index(of: "Endurance")!)
+                }
                 completion()
                 
             }else{
@@ -491,6 +520,10 @@ class DBService {
             if let tempTypes = snapshot.value as? NSDictionary{
                 for type in tempTypes{
                     self._progressTypes.append(type.key as! String)
+                }
+                //remove types that cannot be displayed on graph
+                if self._progressTypes.contains("Endurance"){
+                    self._progressCategories.remove(at:self._progressCategories.index(of: "Endurance")!)
                 }
                 completion()
                 

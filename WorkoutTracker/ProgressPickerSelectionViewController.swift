@@ -44,6 +44,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
                 self.spinnerCategory.stopAnimating()
                 self.categories = DBService.shared.progressCategories
+
                 self.categoryPicker.reloadAllComponents()
                 self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
             })
@@ -54,6 +55,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
                 self.spinnerCategory.stopAnimating()
                 self.categories = DBService.shared.progressCategories
+                
                 self.categoryPicker.reloadAllComponents()
                 self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
             })
@@ -133,13 +135,10 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
         
         DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
         
-//        DBService.shared.retrieveProgressResultsForExerciseName(type:typePassed, category:categories[categoryPicker.selectedRow(inComponent: 0)], exerciseName:exerciseNames[exercisePicker.selectedRow(inComponent: 0)], completion: {
-        
             let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
             self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)
                 presenter.setChartTitle(title:self.exerciseNames[self.exercisePicker.selectedRow(inComponent: 0)])
             })
-  //      })
     }
     
     /*

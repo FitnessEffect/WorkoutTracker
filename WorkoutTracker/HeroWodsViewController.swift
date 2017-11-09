@@ -117,9 +117,9 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             })
         }else{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-            myExercise.name = "1 Rep Max"
+            myExercise.name = exercises[id]
             myExercise.category = "1 Rep Max"
-            myExercise.exerciseDescription = exercises[id]
+            myExercise.exerciseDescription = "1 Rep Max"
             myExercise.type = "Crossfit"
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         }

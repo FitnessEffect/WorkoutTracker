@@ -76,6 +76,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                     DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
                         self.types = DBService.shared.progressTypes
                         self.types.insert("Weight", at: 0)
+                        
                     })
                 }
                 if dataInputBtn.titleLabel?.text == "Weight"{
@@ -140,7 +141,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             DBService.shared.retrieveClientExerciseData(type:btnLabel!, completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
-                self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
+                //self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
                 self.dataValues = DBService.shared.progressData
                 
                 self.createChart(values: self.dataValues)
@@ -162,7 +163,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             DBService.shared.retrieveExerciseData(type:btnLabel!, completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
-                self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
+                //self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
                 self.dataValues = DBService.shared.progressData
                 
                 self.createChart(values: self.dataValues)
@@ -207,6 +208,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 18))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
+        self.chartTitleLabel.text = DBService.shared.defaultChartTitle + " " + self.unit
     }
     
     func setChartTitle(title:String){
