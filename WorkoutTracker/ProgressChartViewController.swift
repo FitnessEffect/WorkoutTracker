@@ -10,8 +10,7 @@ import UIKit
 import Charts
 
 class ProgressChartViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-
-
+    
     @IBOutlet weak var swipeToDeleteLabel: UILabel!
     @IBOutlet weak var arrowsLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
@@ -43,6 +42,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     
     override func viewWillAppear(_ animated: Bool) {
         chartTitleLabel.text = ""
+        dataValues.removeAll()
         types.removeAll()
         categories.removeAll()
         noValuesLabel.alpha = 0
@@ -55,80 +55,80 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             self.present(alertController, animated: true, completion: nil)
         }else{
             spinner.startAnimating()
-            dataValues.removeAll()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             let btnTitle = dataInputBtn.titleLabel?.text
-            DispatchQueue.global(qos: .userInitiated).async {
-                DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
-                    self.types = DBService.shared.progressTypes
-                    self.types.insert("Weight", at: 0)
-                })
-                
-                if DBService.shared.passedClient.clientKey != ""{
+            if DBService.shared.passedClient.clientKey != ""{
+                DispatchQueue.global(qos: .userInitiated).async {
                     DBService.shared.retrieveProgressDataForClient(selection:btnTitle!,completion:{
                         UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                         self.spinner.stopAnimating()
                         self.dataValues = DBService.shared.progressData
                         self.chartView.reloadInputViews()
-                            self.createChart(values: self.dataValues)
-                        if self.dataValues.count == 0{
-                            self.chartView.alpha = 0
-                            self.noValuesLabel.alpha = 1
-                        }
-                    })
-                }else{
-                    if btnTitle == "Weight"{
-                        self.setWeightGraph()
-                        self.chartTitleLabel.text = ""
-                    }else{
-                        //UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                        //self.spinner.stopAnimating()
-                        self.dataValues = DBService.shared.progressData
                         self.createChart(values: self.dataValues)
                         if self.dataValues.count == 0{
                             self.chartView.alpha = 0
                             self.noValuesLabel.alpha = 1
                         }
-                    }
+                    })
                 }
+            }else{
+                DispatchQueue.global(qos: .userInitiated).async {
+                    DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
+                        self.types = DBService.shared.progressTypes
+                        self.types.insert("Weight", at: 0)
+                    })
+                }
+                self.setWeightGraph()
             }
         }
     }
     
     func setWeightGraph(){
+        chartTitleLabel.text = ""
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
-        DBService.shared.retrieveProgressData(selection:(dataInputBtn.titleLabel?.text!)!,completion:{
-            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-            self.spinner.stopAnimating()
-            self.dataValues = DBService.shared.progressData
-            
-            self.createChart(values: self.dataValues)
-            if self.dataValues.count == 0{
-                self.chartView.alpha = 0
-                self.noValuesLabel.alpha = 1
-            }
-        })
+        let btnLabel = dataInputBtn.titleLabel?.text
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveProgressData(selection:btnLabel!,completion:{
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.dataValues = DBService.shared.progressData
+                
+                self.createChart(values: self.dataValues)
+                if self.dataValues.count == 0{
+                    self.chartView.alpha = 0
+                    self.noValuesLabel.alpha = 1
+                }
+            })
+        }
     }
     
     func setDefaultGraph(){
         swipeToDeleteLabel.alpha = 0
         arrowsLabel.alpha = 0
-        DBService.shared.retrieveFirstExerciseData(type:(dataInputBtn.titleLabel?.text)!, completion: {
-            self.chartTitleLabel.text = DBService.shared.defaultChartTitle
-            self.dataValues = DBService.shared.progressData
-            
-            self.createChart(values: self.dataValues)
-            if self.dataValues.count == 0{
-                self.chartView.alpha = 0
-                self.noValuesLabel.alpha = 1
-            }
-        })
+        let btnLabel = dataInputBtn.titleLabel?.text
+        spinner.startAnimating()
+        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+        DispatchQueue.global(qos: .userInitiated).async {
+            DBService.shared.retrieveFirstExerciseData(type:btnLabel!, completion: {
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                self.spinner.stopAnimating()
+                self.chartTitleLabel.text = DBService.shared.defaultChartTitle
+                self.dataValues = DBService.shared.progressData
+                
+                self.createChart(values: self.dataValues)
+                if self.dataValues.count == 0{
+                    self.chartView.alpha = 0
+                    self.noValuesLabel.alpha = 1
+                }
+            })
+        }
     }
     
     func createChart(values:[(key: String, value: String)]){
         lineChartEntry.removeAll()
-
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawLabelsEnabled = true
@@ -159,20 +159,16 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 18))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
-        
     }
     
     func setChartTitle(title:String){
         chartTitleLabel.text = title
     }
-
+    
     @IBAction func inputData(_ sender: UIButton) {
         let xPosition = dataInputBtn.frame.minX + (dataInputBtn.frame.width/2)
-        let yPosition = dataInputBtn.frame.maxY - 25
-        
+        let yPosition = dataInputBtn.frame.maxY - 15
         let currentController = self.getCurrentViewController()
-        
-        
         
         if dataInputBtn.titleLabel?.text == "Weight"{
             // get a reference to the view controller for the popover
@@ -219,7 +215,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         if sender.tag == 0{
             if currentIndex == 0{
                 dataInputBtn.titleLabel?.text = types[types.count-1]
-              dataInputBtn.setTitle(types[types.count-1], for: .normal)
+                dataInputBtn.setTitle(types[types.count-1], for: .normal)
             }else{
                 dataInputBtn.titleLabel?.text = types[currentIndex!-1]
                 dataInputBtn.setTitle(types[currentIndex!-1], for: .normal)
@@ -241,7 +237,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             setDefaultGraph()
         }
     }
-    
     
     func getCurrentViewController() -> UIViewController? {
         if let rootController = UIApplication.shared.keyWindow?.rootViewController {
@@ -282,7 +277,7 @@ extension ProgressChartViewController: IAxisValueFormatter {
             var tempArr = strValue.components(separatedBy: ".")
             return tempArr[0]
         }
-
+        
         if value == 0.0 || value == Double(dataValues.count) + 1{
             return ""
         }
