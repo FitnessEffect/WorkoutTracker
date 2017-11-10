@@ -1120,6 +1120,8 @@ class DBService {
     }
     
     func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
+        
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("All").child(exercise.type).child(exercise.category).child(exercise.name).child(exercise.exerciseKey).removeValue()
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")

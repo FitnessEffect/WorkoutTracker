@@ -151,7 +151,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -166,7 +166,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -180,7 +180,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -194,7 +194,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -208,7 +208,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)

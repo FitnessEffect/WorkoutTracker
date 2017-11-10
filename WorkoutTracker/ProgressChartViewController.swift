@@ -18,6 +18,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var noValuesLabel: UILabel!
     @IBOutlet weak var chartTitleLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
+    @IBOutlet weak var leftArrow: UIButton!
+    @IBOutlet weak var rightArrow: UIButton!
     
     var dataValues = [(key: String, value: String)]()
     var lineChartEntry = [ChartDataEntry]()
@@ -43,6 +45,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        leftArrow.alpha = 0
+        rightArrow.alpha = 0
         DBService.shared.clearDefautChartTitle()
         unitLabel.text = unit
         dataValues.removeAll()
@@ -65,6 +69,10 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                     DBService.shared.retrieveClientProgressTypesAndCategories(completion: {
                         self.types = DBService.shared.progressTypes
                         self.types.insert("Weight", at: 0)
+                        if self.types.count > 1{
+                            self.leftArrow.alpha = 1
+                            self.rightArrow.alpha = 1
+                        }
                     })
                 }
                 if dataInputBtn.titleLabel?.text == "Weight"{
@@ -77,6 +85,10 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                     DBService.shared.retrieveUserProgressTypesAndCategories(completion: {
                         self.types = DBService.shared.progressTypes
                         self.types.insert("Weight", at: 0)
+                        if self.types.count > 1{
+                            self.leftArrow.alpha = 1
+                            self.rightArrow.alpha = 1
+                        }
                     })
                 }
                 if dataInputBtn.titleLabel?.text == "Weight"{
