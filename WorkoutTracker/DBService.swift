@@ -1201,6 +1201,10 @@ class DBService {
         _passedExercise?.exerciseKey = ""
     }
     
+    func clearDefautChartTitle(){
+        _defaultChartTitle = ""
+    }
+    
     func setPassedClientToPersonal(){
         _passedClient.firstName = "Personal"
     }

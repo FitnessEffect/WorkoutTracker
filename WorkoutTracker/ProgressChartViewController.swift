@@ -43,6 +43,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        DBService.shared.clearDefautChartTitle()
         unitLabel.text = unit
         dataValues.removeAll()
         types.removeAll()
