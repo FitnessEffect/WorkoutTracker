@@ -545,6 +545,9 @@ class DBService {
                 if self._progressTypes.contains("Endurance"){
                     self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
                 }
+                if self._progressTypes.contains("Crossfit"){
+                    self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
+                }
                 completion()
                 
             }else{
