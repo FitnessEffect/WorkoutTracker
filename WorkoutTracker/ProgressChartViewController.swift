@@ -186,6 +186,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func createChart(values:[(key: String, value: String)]){
+        var mutableValues = values
         lineChartEntry.removeAll()
         chartView.chartDescription?.text = ""
         chartView.xAxis.labelPosition = .bottom
@@ -201,8 +202,20 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         
+        //sort values by time
+        mutableValues = mutableValues.sorted(by: {a, b in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+            let dateA = dateFormatter.date(from: a.key)!
+            let dateB = dateFormatter.date(from: b.key)!
+            if dateA < dateB {
+                return true
+            }
+            return false
+        })
+        
         var count = 1
-        for element in values{
+        for element in mutableValues{
             let elementWithoutUnit = element.value.components(separatedBy: " ")
             unit = elementWithoutUnit[1]
             let dataEntry = ChartDataEntry(x: Double(count), y: Double(elementWithoutUnit[0])!)
