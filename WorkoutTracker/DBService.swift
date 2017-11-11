@@ -521,6 +521,50 @@ class DBService {
                 if self._progressTypes.contains("Endurance"){
                     self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
                 }
+                if self._progressTypes.contains("Crossfit"){
+                    let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Amrap"){
+                        tempExercise.remove(at: tempExercise.index(of: "Amrap")!)
+                    }
+                    if tempExercise.contains("For Time"){
+                        tempExercise.remove(at: tempExercise.index(of: "For Time")!)
+                    }
+                    if tempExercise.contains("Tabata"){
+                        tempExercise.remove(at: tempExercise.index(of: "Tabata")!)
+                    }
+                    if tempExercise.contains("Emom"){
+                        tempExercise.remove(at: tempExercise.index(of: "Emom")!)
+                    }
+                    if tempExercise.contains("Metcon"){
+                        tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
+                    }
+                    if tempExercise.contains("Hero Wods"){
+                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
+                    }
+                    if tempExercise.count == 0{
+                        self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
+                    }
+                }
+                if self._progressTypes.contains("Bodybuilding"){
+                    //retrieve categories for bodybuilding
+                    let tempProgressCategories = tempTypes["Bodybuilding"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Superset"){
+                        tempExercise.remove(at: tempExercise.index(of: "Superset")!)
+                        
+                        //remove bodybuilding type if superset is the only bodybuilding exercise
+                        if tempExercise.count == 0{
+                            self._progressTypes.remove(at: self._progressTypes.index(of: "Bodybuilding")!)
+                        }
+                    }
+                }
                 completion()
                 
             }else{
@@ -546,7 +590,48 @@ class DBService {
                     self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
                 }
                 if self._progressTypes.contains("Crossfit"){
-                    self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
+                   let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Amrap"){
+                        tempExercise.remove(at: tempExercise.index(of: "Amrap")!)
+                    }
+                    if tempExercise.contains("For Time"){
+                        tempExercise.remove(at: tempExercise.index(of: "For Time")!)
+                    }
+                    if tempExercise.contains("Tabata"){
+                        tempExercise.remove(at: tempExercise.index(of: "Tabata")!)
+                    }
+                    if tempExercise.contains("Emom"){
+                        tempExercise.remove(at: tempExercise.index(of: "Emom")!)
+                    }
+                    if tempExercise.contains("Metcon"){
+                        tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
+                    }
+                    if tempExercise.contains("Hero Wods"){
+                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
+                    }
+                    if tempExercise.count == 0{
+                        self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
+                    }
+                }
+                if self._progressTypes.contains("Bodybuilding"){
+                    //retrieve categories for bodybuilding
+                    let tempProgressCategories = tempTypes["Bodybuilding"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Superset"){
+                        tempExercise.remove(at: tempExercise.index(of: "Superset")!)
+                        
+                        //remove bodybuilding type if superset is the only bodybuilding exercise
+                        if tempExercise.count == 0{
+                            self._progressTypes.remove(at: self._progressTypes.index(of: "Bodybuilding")!)
+                        }
+                    }
                 }
                 completion()
                 
