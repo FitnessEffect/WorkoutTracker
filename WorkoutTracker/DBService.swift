@@ -441,7 +441,7 @@ class DBService {
                 }
                 
                 for exercise in tempExercises{
-                    self._progressData.append((key:exercise.date, value:exercise.result))
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
                 completion()
             }
@@ -474,7 +474,7 @@ class DBService {
                 }
                 
                 for exercise in tempExercises{
-                    self._progressData.append((key:exercise.date, value:exercise.result))
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
                 completion()
             }
