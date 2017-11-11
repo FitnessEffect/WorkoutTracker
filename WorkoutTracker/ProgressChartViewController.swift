@@ -271,6 +271,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     @IBAction func arrowBtns(_ sender: UIButton) {
+        DBService.shared.clearDefautChartTitle()
         //clear selected progress category
         DBService.shared.setSelectedProgressCategory(categoryStr: "")
         //clear selected progress exercise
