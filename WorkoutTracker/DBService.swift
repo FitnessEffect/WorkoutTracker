@@ -1074,7 +1074,7 @@ class DBService {
                 if self._selectedProgressExercise == ""{
                     self._selectedProgressExercise = self._progressExerciseNames[0]
                 }
-                self.retrieveClientProgressResultsForExerciseName(type: type, category: self._progressCategories[0], exerciseName: self._progressExerciseNames[0], completion: {self._defaultChartTitle = self.progressExerciseNames[0]
+                self.retrieveClientProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, completion: {self._defaultChartTitle = self.selectedProgressExercise
                     completion()
                 })
                 
@@ -1092,7 +1092,7 @@ class DBService {
                 if self._selectedProgressExercise == ""{
                     self._selectedProgressExercise = self._progressExerciseNames[0]
                 }
-                self.retrieveProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._progressExerciseNames[0], completion: {self._defaultChartTitle = self.progressExerciseNames[0]
+                self.retrieveProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, completion: {self._defaultChartTitle = self._selectedProgressExercise
                     completion()
                 })
                 
@@ -1122,7 +1122,7 @@ class DBService {
         })
     }
     
-    //retrieve weight
+    //retrieve user weight
     func retrieveProgressData(selection:String, completion:@escaping()->Void){
         _progressData.removeAll()
         _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
