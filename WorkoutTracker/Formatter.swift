@@ -118,4 +118,20 @@ class Formatter{
         
         return formattedStr
     }
+    
+//    static func changeTimeToMinutes(timeStr:String)->String{
+//        var minuteTime = timeStr
+//        let tempArr = timeStr.components(separatedBy: " ")
+//        if tempArr.contains("hour(s)"){
+//            minuteTime = String(Int(tempArr[0])!*60)
+//        }
+//        if tempArr.contains("min(s)"){
+//            
+//            minuteTime = Int(tempArr[2]) + Int(minuteTime)
+//        }
+//        if tempArr.contains("sec(s)"){
+//            minuteTime = String()
+//        }
+//        return minuteTime
+//    }
 }

@@ -102,4 +102,14 @@ class FormatterTest: XCTestCase {
 
     }
     
+    func testChangeTimeToMinutes(timeStr:String)->String{
+        var minuteTime = ""
+        
+        return minuteTime
+    }
+    
+    func testChangeTimeToDisplayFormat(){
+        
+    }
+    
 }

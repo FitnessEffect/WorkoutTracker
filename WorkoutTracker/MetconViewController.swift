@@ -104,7 +104,6 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         categoryPassed = category
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -114,7 +113,6 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetCustomCell
         cell.descriptionTextField.text = self.exercises[indexPath.row].exerciseDescription
         cell.numLabel.text = String(indexPath.row + 1)

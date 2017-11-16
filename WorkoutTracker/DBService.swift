@@ -437,7 +437,6 @@ class DBService {
                     tempExercise.type = exercise.value["type"] as! String
                     tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     tempExercises.append(tempExercise)
-                    
                 }
                 
                 for exercise in tempExercises{

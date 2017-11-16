@@ -74,7 +74,7 @@ class SelectExerciseForMetconViewController: UIViewController, UIPickerViewDeleg
         categoryPassed = category
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCrossfitExerciseID") as! CreateCrossfitExerciseViewController
         popController.setCategory(category:categoryPassed)
