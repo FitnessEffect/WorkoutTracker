@@ -218,6 +218,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         for element in mutableValues{
             let elementWithoutUnit = element.value.components(separatedBy: " ")
             unit = elementWithoutUnit[1]
+            // remainder seconda / 60 = decimal out of 1
+            // minutes.decimal
             let dataEntry = ChartDataEntry(x: Double(count), y: Double(elementWithoutUnit[0])!)
             lineChartEntry.append(dataEntry)
             count += 1
@@ -282,6 +284,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             currentController?.present(popController, animated: true, completion: nil)
         }
     }
+
     
     @IBAction func arrowBtns(_ sender: UIButton) {
         DBService.shared.clearDefautChartTitle()

@@ -271,11 +271,11 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                     DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
                     
                     exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                    if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
-//                        exerciseDictionary["result"] = Formatter.changeTimeToMinutes(timeStr: self.resultTextView.text)
-                    }else{
+//                    if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
+////                        exerciseDictionary["result"] = Formatter.changeTimeToMinutes(timeStr: self.resultTextView.text)
+//                    }else{
                          exerciseDictionary["result"] = self.resultTextView.text!
-                    }
+//                    }
                     exerciseDictionary["opponent"] = self.emailTxtView.text
                     exerciseDictionary["year"] = String(tempYear)
                     exerciseDictionary["week"] = String(tempWeekNum)
@@ -304,11 +304,11 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
                 
                 exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
-//                    exerciseDictionary["result"] = Formatter.changeTimeToMinutes(timeStr: self.resultTextView.text)
-                }else{
+//                if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
+////                    exerciseDictionary["result"] = Formatter.changeTimeToMinutes(timeStr: self.resultTextView.text)
+//                }else{
                     exerciseDictionary["result"] = self.resultTextView.text!
-                }
+//                }
                     exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
                     exerciseDictionary["opponent"] = ""
                     exerciseDictionary["year"] = String(tempYear)
@@ -331,11 +331,11 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
                 
                 exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
-//                    exerciseDictionary["result"] = Formatter.changeTimeToMinutes(timeStr: self.resultTextView.text)
-                }else{
+//                if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
+////                    exerciseDictionary["result"] = Formatter.changeTimeToMinutes(timeStr: self.resultTextView.text)
+//                }else{
                     exerciseDictionary["result"] = self.resultTextView.text!
-                }
+//                }
                 exerciseDictionary["opponent"] = self.emailTxtView.text
                 exerciseDictionary["year"] = String(tempYear)
                 exerciseDictionary["week"] = String(tempWeekNum)

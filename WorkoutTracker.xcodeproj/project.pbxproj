@@ -19,7 +19,7 @@
 		52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */; };
 		52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */; };
 		52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */; };
-		521ECCE51FB0EE5F001FDE2B /* TextFieldAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ECCE41FB0EE5F001FDE2B /* TextFieldAnimations.swift */; };
+		521ECCE51FB0EE5F001FDE2B /* AnimatableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */; };
 		521ECCE71FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */; };
 		52265E0C1F1D04AE009F3B27 /* ForTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */; };
 		52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */; };
@@ -123,7 +123,7 @@
 		52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCustomCell.swift; sourceTree = "<group>"; };
 		52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabataCustomCell.swift; sourceTree = "<group>"; };
 		52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCustomCell.swift; sourceTree = "<group>"; };
-		521ECCE41FB0EE5F001FDE2B /* TextFieldAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAnimations.swift; sourceTree = "<group>"; };
+		521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableLayer.swift; sourceTree = "<group>"; };
 		521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPickerSelectionViewController.swift; sourceTree = "<group>"; };
 		52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForTimeViewController.swift; path = ../ForTimeViewController.swift; sourceTree = "<group>"; };
 		52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnduranceCategoryTableViewController.swift; path = ../EnduranceCategoryTableViewController.swift; sourceTree = "<group>"; };
@@ -453,7 +453,7 @@
 		52F6A8921C5F0036000FD7B0 = {
 			isa = PBXGroup;
 			children = (
-				521ECCE41FB0EE5F001FDE2B /* TextFieldAnimations.swift */,
+				521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */,
 				52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */,
 				522CFACB1F50F2D70037B371 /* WorkoutTrackerTests */,
 				52778FE51F8009D3008B6398 /* WorkoutTrackerUITests */,
@@ -922,7 +922,7 @@
 				526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */,
 				522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */,
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,
-				521ECCE51FB0EE5F001FDE2B /* TextFieldAnimations.swift in Sources */,
+				521ECCE51FB0EE5F001FDE2B /* AnimatableLayer.swift in Sources */,
 				5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */,
 				52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */,
 				525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */,

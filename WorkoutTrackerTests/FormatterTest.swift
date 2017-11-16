@@ -104,7 +104,11 @@ class FormatterTest: XCTestCase {
     
     func testChangeTimeToMinutes(timeStr:String)->String{
         var minuteTime = ""
-        
+        let expectedMinutes = 10
+        let seconds = 600
+        let testMinutes = 0
+        // someFunction(seconds) -> minutes
+        XCTAssertEqual(expectedMinutes, testMinutes)
         return minuteTime
     }
     

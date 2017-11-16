@@ -11,8 +11,8 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     
-    @IBOutlet weak var emailTF: TextFieldAnimations!
-    @IBOutlet weak var passwordTF: TextFieldAnimations!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var rememberMeSwitch: UISwitch!
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var rememberMeLabel: UILabel!
@@ -171,12 +171,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         self.present(alertController, animated: true, completion:nil)
     }
     
+    func setAnimations(txtField:UITextField) {
+        let animationLayer = AnimatableLayer()
+        txtField.layer.addSublayer(animationLayer)
+        let anim = animationLayer.shake(from: CGPoint(x:txtField.center.x - 4, y: txtField.center.y), to: CGPoint(x:txtField.center.x + 4, y: txtField.center.y))
+        txtField.layer.add(anim, forKey: "position")
+    }
+    
     
     @IBAction func login(_ sender: UIButton) {
         if (emailTF.text?.count) == 0{
-            emailTF.shake()
+            setAnimations(txtField: emailTF)
         }else if (passwordTF.text?.count)! == 0{
-            passwordTF.shake()
+            setAnimations(txtField: passwordTF)
         }else{
             FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(user, error) in
                 if user == nil{

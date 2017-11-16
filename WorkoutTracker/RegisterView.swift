@@ -12,8 +12,8 @@ import Firebase
 
 class RegisterView: UIView, UITextFieldDelegate{
     
-    @IBOutlet weak var emailTxtField: TextFieldAnimations!
-    @IBOutlet weak var passwordTxtField: TextFieldAnimations!
+    @IBOutlet weak var emailTxtField: UITextField!
+    @IBOutlet weak var passwordTxtField: UITextField!
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "RegisterView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RegisterView
@@ -30,12 +30,19 @@ class RegisterView: UIView, UITextFieldDelegate{
         }
     }
     
+    func setAnimations(txtField:UITextField) {
+        let animationLayer = AnimatableLayer()
+        txtField.layer.addSublayer(animationLayer)
+        let anim = animationLayer.shake(from: CGPoint(x:txtField.center.x - 4, y: txtField.center.y), to: CGPoint(x:txtField.center.x + 4, y: txtField.center.y))
+        txtField.layer.add(anim, forKey: "position")
+    }
+    
     @IBAction func register(_ sender: UIButton) {
         self.endEditing(true)
         if emailTxtField.text?.count == 0 {
-            emailTxtField.shake()
+            setAnimations(txtField: emailTxtField)
         }else if passwordTxtField.text?.count == 0{
-            passwordTxtField.shake()
+            setAnimations(txtField: passwordTxtField)
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
                 if error == nil {
