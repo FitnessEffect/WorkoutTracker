@@ -119,19 +119,19 @@ class Formatter{
         return formattedStr
     }
     
-//    static func changeTimeToMinutes(timeStr:String)->String{
-//        var minuteTime = timeStr
-//        let tempArr = timeStr.components(separatedBy: " ")
-//        if tempArr.contains("hour(s)"){
-//            minuteTime = String(Int(tempArr[0])!*60)
-//        }
-//        if tempArr.contains("min(s)"){
-//            
-//            minuteTime = Int(tempArr[2]) + Int(minuteTime)
-//        }
-//        if tempArr.contains("sec(s)"){
-//            minuteTime = String()
-//        }
-//        return minuteTime
-//    }
+    static func changeTimeToSeconds(timeStr:String)->Int{
+        var secondsTime = 0
+        let tempArr = timeStr.components(separatedBy: " ")
+        if tempArr.contains("hour(s)"){
+            secondsTime = Int(tempArr[tempArr.index(of: "hour(s)")!-1])!*60*60
+        }
+        if tempArr.contains("min(s)"){
+
+            secondsTime = Int(tempArr[tempArr.index(of: "min(s)")!-1])!*60 + secondsTime
+        }
+        if tempArr.contains("sec(s)"){
+            secondsTime = secondsTime + Int(tempArr[tempArr.index(of: "sec(s)")!-1])!
+        }
+        return secondsTime
+    }
 }

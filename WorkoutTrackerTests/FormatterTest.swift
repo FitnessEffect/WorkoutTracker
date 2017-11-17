@@ -102,14 +102,16 @@ class FormatterTest: XCTestCase {
 
     }
     
-    func testChangeTimeToMinutes(timeStr:String)->String{
-        var minuteTime = ""
-        let expectedMinutes = 10
-        let seconds = 600
-        let testMinutes = 0
-        // someFunction(seconds) -> minutes
-        XCTAssertEqual(expectedMinutes, testMinutes)
-        return minuteTime
+    func testChangeTimeToSeconds(){
+        let time1 = "1 hour(s) 3 min(s) 15 sec(s)"
+        let time2 = "1 min(s) 10 sec(s)"
+        let time3 = "59 sec(s)"
+        let result1 = WorkoutTracker.Formatter.changeTimeToSeconds(timeStr: time1)
+        let result2 = WorkoutTracker.Formatter.changeTimeToSeconds(timeStr: time2)
+        let result3 = WorkoutTracker.Formatter.changeTimeToSeconds(timeStr: time3)
+        XCTAssertEqual(result1, 3795)
+        XCTAssertEqual(result2, 70)
+        XCTAssertEqual(result3, 59)
     }
     
     func testChangeTimeToDisplayFormat(){
