@@ -282,7 +282,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
             popController.popoverPresentationController?.delegate = self
             popController.popoverPresentationController?.sourceView = currentController?.view
-            popController.preferredContentSize = CGSize(width: 300, height: 360)
+            popController.preferredContentSize = CGSize(width: 300, height: 480)
             
             popController.setType(type:(dataInputBtn.titleLabel?.text)!)
             popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)

@@ -11,14 +11,15 @@ import UIKit
 class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var categoryPicker: UIPickerView!
-    
     @IBOutlet weak var exercisePicker: UIPickerView!
+    @IBOutlet weak var detailPicker: UIPickerView!
     
     var categories = [String]()
     var exerciseNames = [String]()
     var typePassed:String!
     var spinnerCategory = UIActivityIndicatorView()
     var spinnerExercise = UIActivityIndicatorView()
+    var details = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
             })
         }
-        
     }
     
     func setType(type:String){
@@ -69,6 +69,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
 
     func setExerciseNamesForCategory(categoryPassed:String){
        exerciseNames.removeAll()
+        DBService.shared.setSelectedProgressCategory(categoryStr: categoryPassed)
         if DBService.shared.passedClient.clientKey != ""{
             spinnerExercise.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
@@ -81,13 +82,43 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
         }else{
             spinnerExercise.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
-            DBService.shared.retrieveProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
-                UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
-                self.spinnerExercise.stopAnimating()
-                self.exerciseNames = DBService.shared.progressExerciseNames
-                self.exercisePicker.reloadAllComponents()
-            })
+           
+            if typePassed == "Endurance"{
+                
+                DBService.shared.retrieveProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                    self.spinnerExercise.stopAnimating()
+                    self.exerciseNames = DBService.shared.progressExerciseNames
+                    if self.exerciseNames.count != 0{
+                        self.setDetailsForExerciseName(exerciseName: DBService.shared.selectedProgressExercise, completion: {
+                            self.exercisePicker.reloadAllComponents()
+                        })
+                    }
+                    self.exercisePicker.reloadAllComponents()
+                })
+            }else{
+                DBService.shared.retrieveProgressExercisesForCategory(type:self.typePassed, category:categoryPassed, completion:{
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                    self.spinnerExercise.stopAnimating()
+                    self.exerciseNames = DBService.shared.progressExerciseNames
+                    self.exercisePicker.reloadAllComponents()
+                })
+                
+            }
+            
         }
+    }
+    
+    func setDetailsForExerciseName(exerciseName:String, completion:@escaping ()->Void){
+        self.details.removeAll()
+        DBService.shared.retrieveProgressDetailExercisesForExerciseName(type: self.typePassed, exerciseName:exerciseName, completion: {
+            self.details = DBService.shared.progressDetailExercises
+            DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: DBService.shared.selectedProgressDetail, completion: {
+                
+                self.detailPicker.reloadAllComponents()
+            })
+            completion()
+        })
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -97,16 +128,20 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0{
             return categories.count
-        }else{
+        }else if pickerView.tag == 1{
           return exerciseNames.count
+        }else{
+            return details.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0{
             return categories[row]
-        }else{
+        }else if pickerView.tag == 1{
             return exerciseNames[row]
+        }else{
+            return details[row]
         }
     }
     
@@ -120,8 +155,10 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
        
         if pickerView.tag == 0{
             label.text = categories[row]
-        }else{
+        }else if pickerView.tag == 1{
             label.text = exerciseNames[row]
+        }else{
+            label.text = details[row]
         }
         let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
@@ -130,7 +167,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     }
     
     @IBAction func selectBtn(_ sender: UIButton) {
-        
     DBService.shared.setSelectedProgressCategory(categoryStr:categories[categoryPicker.selectedRow(inComponent: 0)])
         
         DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])

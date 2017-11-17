@@ -6,6 +6,8 @@
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
+//Firebase Endurance Exercise Hierarchy: Type > Category > Name > Detail > exerciseKey
+
 import Foundation
 import Firebase
 
@@ -58,6 +60,8 @@ class DBService {
     private var _defaultChartTitle = ""
     private var _selectedProgressCategory = ""
     private var _selectedProgressExercise = ""
+    private var _progressDetailExercises = [String]()
+    private var _selectedProgressDetail = ""
     
     private init() {
         initDatabase()
@@ -489,6 +493,39 @@ class DBService {
         })
     }
     
+    func retrieveProgressResultsForExerciseDetail(type:String, category:String, exerciseName:String, detail:String, completion: @escaping () -> Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(category).child(exerciseName).child(detail).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let exerciseKeys = snapshot.value as? [String: [String: AnyObject]]{
+                var tempExercises = [Exercise]()
+                for exercise in exerciseKeys{
+                    let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
+                    tempExercises.append(tempExercise)
+                    
+                }
+                
+                for exercise in tempExercises{
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
+                }
+                completion()
+            }
+        })
+    }
+    
     func retrieveClientProgressExercisesForCategory(type:String, category:String, completion: @escaping () -> Void){
         _progressExerciseNames.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -515,6 +552,21 @@ class DBService {
         }){ (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func retrieveProgressDetailExercisesForExerciseName(type:String, exerciseName:String, completion: @escaping () -> Void){
+        _progressDetailExercises.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(_selectedProgressCategory).child(exerciseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempExercises = snapshot.value as? NSDictionary{
+                for exercise in tempExercises{
+                    self._progressDetailExercises.append(exercise.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
     func retrieveClientProgressTypesAndCategories(completion: @escaping () -> Void){
@@ -1100,9 +1152,22 @@ class DBService {
                 if self._selectedProgressExercise == ""{
                     self._selectedProgressExercise = self._progressExerciseNames[0]
                 }
-                self.retrieveProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, completion: {self._defaultChartTitle = self._selectedProgressExercise
-                    completion()
-                })
+                
+                if type == "Endurance"{
+                    self.retrieveProgressDetailExercisesForExerciseName(type: type, exerciseName: self._selectedProgressExercise, completion: {
+                        if self._selectedProgressDetail == ""{
+                            self._selectedProgressDetail = self._progressDetailExercises[0]
+                        }
+                        self.retrieveProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                            completion()
+                        })
+                    })
+                }else{
+                    self.retrieveProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, completion: {self._defaultChartTitle = self._selectedProgressExercise
+                        completion()
+                    })
+                }
+                
                 
             })
         })
@@ -1596,6 +1661,18 @@ class DBService {
     var selectedProgressExercise:String{
         get{
             return _selectedProgressExercise
+        }
+    }
+    
+    var progressDetailExercises:[String]{
+        get{
+            return _progressDetailExercises
+        }
+    }
+    
+    var selectedProgressDetail:String{
+        get{
+            return _selectedProgressDetail
         }
     }
     
