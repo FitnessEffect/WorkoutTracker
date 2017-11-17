@@ -128,13 +128,13 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        myExercise.name = self.title!
+        myExercise.category = self.title!
         myExercise.type = "Endurance"
         
         if segmentedControl.selectedSegmentIndex == 0{
-            myExercise.category = "Distance"
+            myExercise.name = "Distance"
         }else{
-            myExercise.category = "Time"
+            myExercise.name = "Time"
         }
         
         if segmentedControl.selectedSegmentIndex == 0{

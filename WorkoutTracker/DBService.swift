@@ -517,9 +517,9 @@ class DBService {
                     self._progressTypes.append(type.key as! String)
                 }
                 //remove types that cannot be displayed on graph
-                if self._progressTypes.contains("Endurance"){
-                    self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
-                }
+//                if self._progressTypes.contains("Endurance"){
+//                    self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
+//                }
                 if self._progressTypes.contains("Crossfit"){
                     let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
                     var tempExercise = [String]()
@@ -585,9 +585,9 @@ class DBService {
                     self._progressTypes.append(type.key as! String)
                 }
                 //remove types that cannot be displayed on graph
-                if self._progressTypes.contains("Endurance"){
-                    self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
-                }
+//                if self._progressTypes.contains("Endurance"){
+//                    self._progressTypes.remove(at:self._progressTypes.index(of: "Endurance")!)
+//                }
                 if self._progressTypes.contains("Crossfit"){
                    let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
                     var tempExercise = [String]()
