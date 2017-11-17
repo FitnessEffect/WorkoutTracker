@@ -115,7 +115,18 @@ class FormatterTest: XCTestCase {
     }
     
     func testChangeTimeToDisplayFormat(){
-        
+        let time1 = "3795"
+        let time2 = "70"
+        let time3 = "59"
+        let time4 = "3660"
+        let result1 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time1)
+                let result2 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time2)
+                let result3 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time3)
+                let result4 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time4)
+        XCTAssertEqual(result1, "1 hour(s) 3 min(s) 15 sec(s)")
+        XCTAssertEqual(result2, "1 min(s) 10 sec(s)")
+        XCTAssertEqual(result3, "59 sec(s)")
+        XCTAssertEqual(result4, "1 hour(s) 1 min(s)")
     }
     
 }
