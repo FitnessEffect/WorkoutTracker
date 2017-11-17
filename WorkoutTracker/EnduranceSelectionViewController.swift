@@ -144,7 +144,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }else{
-                myExercise.exerciseDescription = "For " +  miles[id] + " mile(s) "
+                myExercise.exerciseDescription = miles[id] + " mile(s) "
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }
@@ -152,7 +152,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
             let idHours:Int = pickerOutlet.selectedRow(inComponent: 0)
             let idMinutes:Int = pickerOutlet.selectedRow(inComponent: 1)
             let idSeconds:Int = pickerOutlet.selectedRow(inComponent: 2)
-            myExercise.exerciseDescription = "For " + hours[idHours] + " hour(s) " + minutes[idMinutes] + " minute(s) " + seconds[idSeconds] + " second(s) "
+            myExercise.exerciseDescription = hours[idHours] + " hour(s) " + minutes[idMinutes] + " minute(s) " + seconds[idSeconds] + " second(s) "
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
             dismiss(animated: true, completion: nil)
         }
