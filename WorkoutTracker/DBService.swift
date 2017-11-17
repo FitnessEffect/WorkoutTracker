@@ -210,11 +210,11 @@ class DBService {
         
         //update firebase client all branch
         
-//        if exerciseDictionary["type"] as! String == "Endurance"{
-//            self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
-//        }else{
+        if exerciseDictionary["type"] as! String == "Endurance"{
+            self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }else{
         self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
-    //    }
+       }
         
         completion()
     }
