@@ -296,11 +296,15 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         if exercises.count != 0{
             let exercise = exercises[(indexPath as NSIndexPath).row]
             //check if exercise.result is a time in seconds
-            if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete"){
+            if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)"){
                 cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
             }else{
                 let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
-                cell.titleOutlet.text = exercise.name + " (" + resultFormated + ")"
+                if exercise.type == "Endurance"{
+                    cell.titleOutlet.text = exercise.category + " (" + resultFormated + ")"
+                }else{
+                    cell.titleOutlet.text = exercise.name + " (" + resultFormated + ")"
+                }
                 
             }
             cell.numberOutlet.text = String(indexPath.row + 1)
