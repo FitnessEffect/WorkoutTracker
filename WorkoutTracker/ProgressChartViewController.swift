@@ -102,7 +102,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setClientWeightGraph(){
-        unitLabel.text = unit
+        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
          let btnTitle = dataInputBtn.titleLabel?.text
@@ -123,7 +123,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setWeightGraph(){
-        unitLabel.text = unit
+        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -144,6 +144,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setClientDefaultGraph(){
+        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 0
         arrowsLabel.alpha = 0
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -165,6 +166,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setDefaultGraph(){
+        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 0
         arrowsLabel.alpha = 0
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -216,10 +218,14 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         
         var count = 1
         for element in mutableValues{
-            let elementWithoutUnit = element.value.components(separatedBy: " ")
+            var elementWithoutUnit = element.value.components(separatedBy: " ")
+            if elementWithoutUnit.count == 1{
+                unit = "minutes"
+                elementWithoutUnit[0] = String(Int(elementWithoutUnit[0])!/60)
+            }else{
             unit = elementWithoutUnit[1]
-            // remainder seconda / 60 = decimal out of 1
-            // minutes.decimal
+            }
+
             let dataEntry = ChartDataEntry(x: Double(count), y: Double(elementWithoutUnit[0])!)
             lineChartEntry.append(dataEntry)
             count += 1
@@ -234,6 +240,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
         self.chartTitleLabel.text = DBService.shared.defaultChartTitle
+        unitLabel.text = unit
     }
     
     func setChartTitle(title:String){
