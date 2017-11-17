@@ -98,7 +98,13 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 dateBtn.setTitle(exercise.date, for: .normal)
                 saveExercise(exStr: exercise.exerciseDescription)
                 exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
-                saveResult(str: (exercise.result))
+                //check if exercise.result is a time in seconds
+                if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete"){
+                    saveResult(str: (exercise.result))
+                }else{
+                    let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
+                    saveResult(str: (resultFormated))
+                }
                 challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
                 challenge.setBackgroundImage(nil, for: .normal)
                 challenge.isUserInteractionEnabled = false
@@ -112,7 +118,6 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 }else{
                     let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
                     saveResult(str: (resultFormated))
-                    
                 }
                 
                 if exercise.opponent != ""{
@@ -279,7 +284,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                     DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
                     
                     exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                    if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
+                    if self.resultTextView.text.contains("hour(s)") || self.resultTextView.text.contains("min(s)") || self.resultTextView.text.contains("sec(s)"){
                         exerciseDictionary["result"] = String(Formatter.changeTimeToSeconds(timeStr: self.resultTextView.text))
                     }else{
                          exerciseDictionary["result"] = self.resultTextView.text!
@@ -312,7 +317,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
                 
                 exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
+                if self.resultTextView.text.contains("hour(s)") || self.resultTextView.text.contains("min(s)") || self.resultTextView.text.contains("sec(s)"){
                     exerciseDictionary["result"] = String(Formatter.changeTimeToSeconds(timeStr: self.resultTextView.text))
                 }else{
                     exerciseDictionary["result"] = self.resultTextView.text!
@@ -339,7 +344,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 DBService.shared.setCurrentYearNumber(strYear: String(tempYear))
                 
                 exerciseDictionary["date"] =  (self.dateBtn.titleLabel?.text!)!
-                if self.resultTextView.text.contains("hour") || self.resultTextView.text.contains("hr") || self.resultTextView.text.contains("hour(s)"){
+                if self.resultTextView.text.contains("hour(s)") || self.resultTextView.text.contains("min(s)") || self.resultTextView.text.contains("sec(s)"){
                     exerciseDictionary["result"] = String(Formatter.changeTimeToSeconds(timeStr: self.resultTextView.text))
                 }else{
                     exerciseDictionary["result"] = self.resultTextView.text!
