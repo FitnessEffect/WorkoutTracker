@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="209" width="86" height="21"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -3306,8 +3306,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5y-PN-axj">
-                                <rect key="frame" x="24" y="147" width="333" height="35"/>
-                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="20"/>
+                                <rect key="frame" x="0.0" y="147" width="375" height="35"/>
+                                <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3325,8 +3325,8 @@
                             <constraint firstItem="RyL-qR-Q4W" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leadingMargin" id="4OS-1m-eme"/>
                             <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="Dh0-qa-LKY" secondAttribute="bottom" constant="-139" id="7bz-il-0Wr"/>
                             <constraint firstItem="GZe-6p-Wjo" firstAttribute="top" secondItem="LiT-w4-X4Z" secondAttribute="bottom" constant="-124" id="8bs-XN-l71"/>
-                            <constraint firstItem="d5y-PN-axj" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leadingMargin" constant="8" id="CJv-9Q-e27"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="d5y-PN-axj" secondAttribute="trailing" constant="2" id="LDg-on-2fa"/>
+                            <constraint firstItem="d5y-PN-axj" firstAttribute="leading" secondItem="Q3i-Jy-ct9" secondAttribute="leadingMargin" constant="-16" id="CJv-9Q-e27"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d5y-PN-axj" secondAttribute="trailing" constant="-16" id="LDg-on-2fa"/>
                             <constraint firstAttribute="trailing" secondItem="QIn-Cw-b0E" secondAttribute="trailing" constant="16" id="QPq-4D-zYE"/>
                             <constraint firstItem="LiT-w4-X4Z" firstAttribute="trailing" secondItem="Q3i-Jy-ct9" secondAttribute="trailingMargin" id="Qsl-S1-XE8"/>
                             <constraint firstItem="Dh0-qa-LKY" firstAttribute="leading" secondItem="RyL-qR-Q4W" secondAttribute="trailing" constant="-1" id="T0Q-V4-zrA"/>

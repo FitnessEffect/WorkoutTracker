@@ -90,9 +90,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                     self.spinnerExercise.stopAnimating()
                     self.exerciseNames = DBService.shared.progressExerciseNames
                     if self.exerciseNames.count != 0{
-                        self.setDetailsForExerciseName(exerciseName: DBService.shared.selectedProgressExercise, completion: {
-                            self.exercisePicker.reloadAllComponents()
-                        })
+                        self.setDetailsForExerciseName(exerciseName: DBService.shared.selectedProgressExercise)
                     }
                     self.exercisePicker.reloadAllComponents()
                 })
@@ -109,7 +107,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
         }
     }
     
-    func setDetailsForExerciseName(exerciseName:String, completion:@escaping ()->Void){
+    func setDetailsForExerciseName(exerciseName:String){
         self.details.removeAll()
         DBService.shared.retrieveProgressDetailExercisesForExerciseName(type: self.typePassed, exerciseName:exerciseName, completion: {
             self.details = DBService.shared.progressDetailExercises
@@ -117,7 +115,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 
                 self.detailPicker.reloadAllComponents()
             })
-            completion()
         })
     }
     
@@ -147,7 +144,11 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        setExerciseNamesForCategory(categoryPassed: categories[categoryPicker.selectedRow(inComponent: 0)])
+        if pickerView.tag == 0{
+            setExerciseNamesForCategory(categoryPassed: categories[categoryPicker.selectedRow(inComponent: 0)])
+        }else{
+            setDetailsForExerciseName(exerciseName: exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -168,7 +169,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     @IBAction func selectBtn(_ sender: UIButton) {
     DBService.shared.setSelectedProgressCategory(categoryStr:categories[categoryPicker.selectedRow(inComponent: 0)])
-        
         DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
         
             let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
