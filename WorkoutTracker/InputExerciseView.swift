@@ -106,7 +106,15 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 dateBtn.setTitle(exercise.date, for: .normal)
                 saveExercise(exStr: exercise.exerciseDescription)
                 exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
-                saveResult(str: (exercise.result))
+                //check if exercise.result is a time in seconds
+                if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete"){
+                    saveResult(str: (exercise.result))
+                }else{
+                    let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
+                    saveResult(str: (resultFormated))
+                    
+                }
+                
                 if exercise.opponent != ""{
                     //if exercise comes from history do not set creator as the challenger
                     if exercise.creatorEmail == DBService.shared.user.email{

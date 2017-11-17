@@ -155,7 +155,14 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell", for: indexPath) as! ChallengeCustomCell
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
-        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+        //check if exercise.result is a time in seconds
+        if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete"){
+            cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+        }else{
+            let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
+            cell.titleOutlet.text = exercise.name + " (" + resultFormated + ")"
+            
+        }
         cell.challenger.text = exercise.creatorEmail
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
         return cell

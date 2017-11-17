@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/ProgressChartViewController.swift"
-            timestampString = "532577724.495921"
+            timestampString = "532578872.245005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/ProgressChartViewController.swift"
-            timestampString = "532577724.496206"
+            timestampString = "532578872.24531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "236"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/TabataViewController.swift"
-            timestampString = "532577724.496672"
+            timestampString = "532578872.245768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/LoginViewController.swift"
-            timestampString = "532577724.496877"
+            timestampString = "532578872.245981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
@@ -474,12 +474,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimatableLayer.swift"
-            timestampString = "532577724.497073"
+            timestampString = "532578872.246182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12"
             endingLineNumber = "12"
             landmarkName = "shake(from:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/ExercisesHistoryViewController.swift"
+            timestampString = "532578872.246379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
