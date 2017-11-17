@@ -224,10 +224,10 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       }else if tempExercise.name == "Tabata"{
          return 6
       }else if tempExercise.type == "Endurance"{
-         if tempExercise.category == "Distance"{
+         if tempExercise.name == "Distance"{
             return 2
          }else{
-            if tempExercise.name == "Rowing"{
+            if tempExercise.category == "Rowing"{
                return 8
             }else{
                return 9

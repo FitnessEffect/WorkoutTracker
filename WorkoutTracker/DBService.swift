@@ -209,7 +209,12 @@ class DBService {
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         
         //update firebase client all branch
+        
+//        if exerciseDictionary["type"] as! String == "Endurance"{
+//            self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+//        }else{
         self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+    //    }
         
         completion()
     }
@@ -272,7 +277,11 @@ class DBService {
         
         //update firebase all branch
         
+        if exerciseDictionary["type"] as! String == "Endurance"{
+        self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }else{
         self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }
         
         completion()
     }
