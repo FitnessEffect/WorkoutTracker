@@ -19,6 +19,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     var typePassed:String!
     var spinnerCategory = UIActivityIndicatorView()
     var spinnerExercise = UIActivityIndicatorView()
+    var spinnerDetail = UIActivityIndicatorView()
     var details = [String]()
     
     override func viewDidLoad() {
@@ -35,6 +36,12 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
         spinnerExercise.color = UIColor.blue
         spinnerExercise.alpha = 0
         exercisePicker.addSubview(spinnerExercise)
+        
+        spinnerDetail.frame = CGRect(x:(detailPicker.frame.width/2)-60, y:(detailPicker.frame.height/2)-25, width:50, height:50)
+        spinnerDetail.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerDetail.color = UIColor.blue
+        spinnerDetail.alpha = 0
+        detailPicker.addSubview(spinnerDetail)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,7 +116,11 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     func setDetailsForExerciseName(exerciseName:String){
         self.details.removeAll()
+        UIView.animate(withDuration: 0.2, animations: {self.spinnerDetail.alpha = 1})
+        self.spinnerDetail.startAnimating()
         DBService.shared.retrieveProgressDetailExercisesForExerciseName(type: self.typePassed, exerciseName:exerciseName, completion: {
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerDetail.alpha = 0})
+            self.spinnerDetail.stopAnimating()
             self.details = DBService.shared.progressDetailExercises
             DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: DBService.shared.selectedProgressDetail, completion: {
                 
