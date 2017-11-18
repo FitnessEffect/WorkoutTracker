@@ -380,9 +380,9 @@ class DBService {
             if self._progressCategories.contains("Tabata"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
             }
-            if self._progressCategories.contains("Hero Wods"){
-                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
-            }
+//            if self._progressCategories.contains("Hero Wods"){
+//                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
+//            }
             if self._progressCategories.contains("Superset"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
             }
@@ -416,9 +416,9 @@ class DBService {
             if self._progressCategories.contains("Tabata"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
             }
-            if self._progressCategories.contains("Hero Wods"){
-                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
-            }
+//            if self._progressCategories.contains("Hero Wods"){
+//                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
+//            }
             if self._progressCategories.contains("Superset"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
             }
@@ -651,9 +651,9 @@ class DBService {
                     if tempExercise.contains("Metcon"){
                         tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
                     }
-                    if tempExercise.contains("Hero Wods"){
-                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
-                    }
+//                    if tempExercise.contains("Hero Wods"){
+//                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
+//                    }
                     if tempExercise.count == 0{
                         self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
                     }
@@ -715,9 +715,9 @@ class DBService {
                     if tempExercise.contains("Metcon"){
                         tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
                     }
-                    if tempExercise.contains("Hero Wods"){
-                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
-                    }
+//                    if tempExercise.contains("Hero Wods"){
+//                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
+//                    }
                     if tempExercise.count == 0{
                         self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
                     }
