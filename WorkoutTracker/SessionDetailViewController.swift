@@ -305,7 +305,6 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 }else{
                     cell.titleOutlet.text = exercise.name + " (" + resultFormated + ")"
                 }
-                
             }
             cell.numberOutlet.text = String(indexPath.row + 1)
             cell.setExerciseKey(key: exercise.exerciseKey)
