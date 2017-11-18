@@ -77,7 +77,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     func setExerciseNamesForCategory(categoryPassed:String){
        exerciseNames.removeAll()
         DBService.shared.setSelectedProgressCategory(categoryStr: categoryPassed)
-        print(DBService.shared.selectedProgressExercise)
         if DBService.shared.passedClient.clientKey != ""{
             spinnerExercise.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
@@ -134,39 +133,38 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 UIView.animate(withDuration: 0.2, animations: {self.spinnerDetail.alpha = 0})
                 self.spinnerDetail.stopAnimating()
                 self.details = DBService.shared.progressDetailExercises
-                if self.details.count != 0{
-                    DBService.shared.setSelectedProgressDetail(detail: self.details[0])
-                    self.setClientProgressResultsFromDetail(detailPassed: DBService.shared.selectedProgressDetail)
-                }else{
-                    DBService.shared.setSelectedProgressDetail(detail: "")
-                }
+                self.detailPicker.reloadAllComponents()
+                //if self.details.count != 0{
+                    //DBService.shared.setSelectedProgressDetail(detail: self.details[0])
+                    //self.setProgressResultsFromDetail(detailPassed: DBService.shared.selectedProgressDetail)
+                //}
             })
         }else{
             DBService.shared.retrieveProgressDetailExercisesForExerciseName(type: self.typePassed, exerciseName:exerciseName, completion: {
                 UIView.animate(withDuration: 0.2, animations: {self.spinnerDetail.alpha = 0})
                 self.spinnerDetail.stopAnimating()
                 self.details = DBService.shared.progressDetailExercises
-                if self.details.count != 0{
-                    DBService.shared.setSelectedProgressDetail(detail: self.details[0])
-                    self.setProgressResultsFromDetail(detailPassed: DBService.shared.selectedProgressDetail)
-                }else{
-                    DBService.shared.setSelectedProgressDetail(detail: "")
-                }
+                self.detailPicker.reloadAllComponents()
+                //if self.details.count != 0{
+                    //DBService.shared.setSelectedProgressDetail(detail: self.details[0])
+                    //self.setProgressResultsFromDetail(detailPassed: DBService.shared.selectedProgressDetail)
+                //}
             })
         }
     }
     
     func setProgressResultsFromDetail(detailPassed:String){
-        DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
-            self.detailPicker.reloadAllComponents()
-        })
+        if DBService.shared.passedClient.clientKey != ""{
+            DBService.shared.retrieveClientProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
+                //self.detailPicker.reloadAllComponents()
+            })
+        }else{
+            DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
+                self.detailPicker.reloadAllComponents()
+            })
+        }
     }
-    
-    func setClientProgressResultsFromDetail(detailPassed:String){
-        DBService.shared.retrieveClientProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
-            self.detailPicker.reloadAllComponents()
-        })
-    }
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -195,9 +193,17 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView.tag == 0{
+            let category = categories[categoryPicker.selectedRow(inComponent: 0)]
             setExerciseNamesForCategory(categoryPassed: categories[categoryPicker.selectedRow(inComponent: 0)])
-        }else{
+            DBService.shared.setSelectedProgressCategory(categoryStr: category)
+        }else if pickerView.tag == 1{
+            let exName = exerciseNames[exercisePicker.selectedRow(inComponent: 0)]
             setDetailsForExerciseName(exerciseName: exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
+            DBService.shared.setSelectedProgressExercise(exerciseStr: exName)
+        }else{
+            //let detail = details[detailPicker.selectedRow(inComponent: 0)]
+            //setProgressResultsFromDetail(detailPassed: details[detailPicker.selectedRow(inComponent: 0)])
+            DBService.shared.setSelectedProgressDetail(detail: details[detailPicker.selectedRow(inComponent: 0)])
         }
     }
     
@@ -218,8 +224,8 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     }
     
     @IBAction func selectBtn(_ sender: UIButton) {
-    DBService.shared.setSelectedProgressCategory(categoryStr:categories[categoryPicker.selectedRow(inComponent: 0)])
-        DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
+    //DBService.shared.setSelectedProgressCategory(categoryStr:categories[categoryPicker.selectedRow(inComponent: 0)])
+        //DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
         
             let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
             self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)

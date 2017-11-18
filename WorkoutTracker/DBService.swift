@@ -522,6 +522,8 @@ class DBService {
                     self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
                 completion()
+            }else{
+                completion()
             }
         })
     }
@@ -554,6 +556,8 @@ class DBService {
                 for exercise in tempExercises{
                     self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
+                completion()
+            }else{
                 completion()
             }
         })

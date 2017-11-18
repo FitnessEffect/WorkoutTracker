@@ -248,6 +248,12 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     @IBAction func inputData(_ sender: UIButton) {
+        //clear selected progress category
+        DBService.shared.setSelectedProgressCategory(categoryStr: "")
+        //clear selected progress exercise
+        DBService.shared.setSelectedProgressExercise(exerciseStr: "")
+        //clear selected progress detail
+        DBService.shared.setSelectedProgressDetail(detail: "")
         let xPosition = dataInputBtn.frame.minX + (dataInputBtn.frame.width/2)
         let yPosition = dataInputBtn.frame.maxY - 15
         let currentController = self.getCurrentViewController()
@@ -299,6 +305,8 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         DBService.shared.setSelectedProgressCategory(categoryStr: "")
         //clear selected progress exercise
         DBService.shared.setSelectedProgressExercise(exerciseStr: "")
+        //clear selected progress detail
+        DBService.shared.setSelectedProgressDetail(detail: "")
         
         let currentIndex = types.index(of: (dataInputBtn.titleLabel?.text)!)
         if sender.tag == 0{
