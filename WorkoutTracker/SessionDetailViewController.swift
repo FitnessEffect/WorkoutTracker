@@ -82,7 +82,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                         dateFormatter.dateFormat = "y-M-d HH:mm:ss"
                         let dateA = dateFormatter.date(from: a.uploadTime)!
                         let dateB = dateFormatter.date(from: b.uploadTime)!
-                        if dateA < dateB {
+                        if dateA > dateB {
                             return true
                         }
                         return false
@@ -266,7 +266,6 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func saveResult(result:String){
         let formattedResult = Formatter.formatDurationResult(str:result)
-        
         DBService.shared.saveDurationForSession(str:formattedResult, completion: {
             str in
             self.durationBtn.setTitle(str, for: .normal)
