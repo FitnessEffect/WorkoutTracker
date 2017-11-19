@@ -100,7 +100,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 saveExercise(exStr: exercise.exerciseDescription)
                 exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                 //check if exercise.result is a time in seconds
-                if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete"){
+                if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
                     saveResult(str: (exercise.result))
                 }else{
                     let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
@@ -114,7 +114,9 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 saveExercise(exStr: exercise.exerciseDescription)
                 exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                 //check if exercise.result is a time in seconds
-                if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete"){
+                if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
+                    saveExercise(exStr: exercise.exerciseDescription)
+                    exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                     saveResult(str: (exercise.result))
                 }else{
                     let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
