@@ -201,8 +201,14 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       //format response
       let desStr:String = tempExercise.exerciseDescription
       let formatExerciseDesStr = Formatter.formatExerciseDescription(desStr: desStr)
+    if tempExercise.type == "Endurance"{
+        let formattedStr = tempExercise.category + formatExerciseDesStr
+         inputExerciseView.saveExercise(exStr: formattedStr)
+    }else{
       let formattedStr = tempExercise.name + formatExerciseDesStr
-      inputExerciseView.saveExercise(exStr: formattedStr)
+         inputExerciseView.saveExercise(exStr: formattedStr)
+    }
+    
    }
    
    func handleResultPickerChoice() -> Int{
