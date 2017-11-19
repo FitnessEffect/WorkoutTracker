@@ -9,7 +9,7 @@
 import UIKit
 
 class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var exercisePicker: UIPickerView!
     @IBOutlet weak var detailPicker: UIPickerView!
@@ -24,7 +24,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         spinnerCategory.frame = CGRect(x:(categoryPicker.frame.width/2)-60, y:(categoryPicker.frame.height/2)-25, width:50, height:50)
         spinnerCategory.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinnerCategory.color = UIColor.blue
@@ -52,7 +52,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
                 self.spinnerCategory.stopAnimating()
                 self.categories = DBService.shared.progressCategories
-
+                
                 self.categoryPicker.reloadAllComponents()
                 self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
             })
@@ -73,9 +73,9 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     func setType(type:String){
         typePassed = type
     }
-
+    
     func setExerciseNamesForCategory(categoryPassed:String){
-       exerciseNames.removeAll()
+        exerciseNames.removeAll()
         DBService.shared.setSelectedProgressCategory(categoryStr: categoryPassed)
         if DBService.shared.passedClient.clientKey != ""{
             spinnerExercise.startAnimating()
@@ -162,11 +162,10 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
             })
         }else{
             DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
-                self.detailPicker.reloadAllComponents()
+                //self.detailPicker.reloadAllComponents()
             })
         }
     }
-
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -176,7 +175,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
         if pickerView.tag == 0{
             return categories.count
         }else if pickerView.tag == 1{
-          return exerciseNames.count
+            return exerciseNames.count
         }else{
             return details.count
         }
@@ -203,15 +202,13 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
             setDetailsForExerciseName(exerciseName: exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
             DBService.shared.setSelectedProgressExercise(exerciseStr: exName)
         }else{
-            //let detail = details[detailPicker.selectedRow(inComponent: 0)]
-            //setProgressResultsFromDetail(detailPassed: details[detailPicker.selectedRow(inComponent: 0)])
             DBService.shared.setSelectedProgressDetail(detail: details[detailPicker.selectedRow(inComponent: 0)])
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-       
+        
         if pickerView.tag == 0{
             label.text = categories[row]
         }else if pickerView.tag == 1{
@@ -226,23 +223,9 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     }
     
     @IBAction func selectBtn(_ sender: UIButton) {
-    //DBService.shared.setSelectedProgressCategory(categoryStr:categories[categoryPicker.selectedRow(inComponent: 0)])
-        //DBService.shared.setSelectedProgressExercise(exerciseStr:exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
-        
-            let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
-            self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)
-                presenter.setChartTitle(title:self.exerciseNames[self.exercisePicker.selectedRow(inComponent: 0)])
-            })
+        let presenter = self.presentingViewController?.childViewControllers.last as! ProgressChartViewController
+        self.dismiss(animated: true, completion: {presenter.viewWillAppear(true)
+            presenter.setChartTitle(title:self.exerciseNames[self.exercisePicker.selectedRow(inComponent: 0)])
+        })
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

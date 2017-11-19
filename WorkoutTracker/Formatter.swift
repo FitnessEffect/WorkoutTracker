@@ -159,8 +159,33 @@ class Formatter{
                 finalStr.append(char)
             }
         }
+        return finalStr
+    }
+    
+    static func changeTimeToSmallDisplayFormat(minutes:Double)->String{
+        var finalStr = ""
+        let secondsInt = Int(minutes*60)
+        let hours = Int(secondsInt/60/60)
+        if hours != 0{
+            finalStr.append("\(hours)hr ")
+        }
+        let minutes = (secondsInt % 3600) / 60
+        if minutes != 0{
+            finalStr.append("\(minutes)m ")
+        }
+        let seconds =  (secondsInt % 3600) % 60
+        if seconds != 0{
+            finalStr.append("\(seconds)s")
+        }
         
-       
+        var chars = Array(finalStr)
+        if chars.last == " "{
+            finalStr.removeAll()
+            chars.removeLast()
+            for char in chars{
+                finalStr.append(char)
+            }
+        }
         return finalStr
     }
 }

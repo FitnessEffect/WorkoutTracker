@@ -177,7 +177,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                 UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                 self.spinner.stopAnimating()
                 self.dataValues = DBService.shared.progressData
-                
                 self.createChart(values: self.dataValues)
                 if self.dataValues.count == 0{
                     self.chartView.alpha = 0
@@ -203,7 +202,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
-        
+        //chartView.lineData?.setValueFormatter(MyValueFormatter())
         //sort values by time
         mutableValues = mutableValues.sorted(by: {a, b in
             let dateFormatter = DateFormatter()
@@ -220,11 +219,12 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         for element in mutableValues{
             var elementWithoutUnit = element.value.components(separatedBy: " ")
             if elementWithoutUnit.count == 1{
-                unit = "minutes"
-                elementWithoutUnit[0] = String(Int(elementWithoutUnit[0])!/60)
+                unit = "minute(s)"
+                elementWithoutUnit[0] = String(Double(elementWithoutUnit[0])!/60)
             }else{
             unit = elementWithoutUnit[1]
             }
+            
 
             let dataEntry = ChartDataEntry(x: Double(count), y: Double(elementWithoutUnit[0])!)
             lineChartEntry.append(dataEntry)
@@ -236,11 +236,14 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         
         let data = LineChartData()
         data.addDataSet(line1)
+        
         data.setValueFont(NSUIFont(name: "DJBCHALKITUP", size: 18))
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
         self.chartTitleLabel.text = DBService.shared.defaultChartTitle
         unitLabel.text = unit
+        data.setValueFormatter(MyValueFormatter(unitStr:unit))
+        
     }
     
     func setChartTitle(title:String){
@@ -298,7 +301,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         }
     }
 
-    
     @IBAction func arrowBtns(_ sender: UIButton) {
         DBService.shared.clearDefautChartTitle()
         //clear selected progress category
@@ -375,16 +377,38 @@ extension ProgressChartViewController: IAxisValueFormatter {
         if value == axis?.entries.last || value == axis?.entries.first{
             return ""
         }
-        
         let strValue = String(value)
         if strValue.contains(".0"){
             var tempArr = strValue.components(separatedBy: ".")
             return tempArr[0]
         }
-        
         if value == 0.0 || value == Double(dataValues.count) + 1{
             return ""
         }
         return String(value)
+    }
+}
+
+class MyValueFormatter:NSObject, IValueFormatter{
+    var unit:String!
+    
+    init(unitStr:String){
+        unit = unitStr
+    }
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        var newValue = ""
+        if unit == "minute(s)"{
+            newValue = Formatter.changeTimeToSmallDisplayFormat(minutes: value)
+        }else{
+            if String(value).contains("."){
+                let tempArr = String(value).components(separatedBy: ".")
+                newValue = tempArr[0]
+            }else{
+                newValue = String(value)
+            }
+           
+            
+        }
+        return newValue
     }
 }
