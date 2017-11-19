@@ -46,13 +46,13 @@ class FormatterTest: XCTestCase {
         XCTAssertEqual(formattedEmail, "test%40gmail%2Ecom")
     }
     
-    func testUnFormatExerciseDescription(){
-        let desStr = "Legs\nSquat 1 set(s) 1 rep(s)\n"
-        
-        let unFormattedString = WorkoutTracker.Formatter.unFormatExerciseDescription(desStr: desStr)
-        
-        XCTAssertEqual(unFormattedString, "Squat 1 set(s) 1 rep(s)")
-    }
+//    func testUnFormatExerciseDescription(){
+//        let desStr = "Legs\nSquat 1 set(s) 1 rep(s)\n"
+//        
+//        let unFormattedString = WorkoutTracker.Formatter.unFormatExerciseDescription(desStr: desStr)
+//        
+//        XCTAssertEqual(unFormattedString, "Squat 1 set(s) 1 rep(s)")
+//    }
     
     func testFormatExerciseDescription(){
         let desStr = "Squat 1 set(s) 1 rep(s)"

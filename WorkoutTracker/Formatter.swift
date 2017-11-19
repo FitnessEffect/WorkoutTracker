@@ -17,19 +17,19 @@ class Formatter{
         return tempEmail
     }
     
-    static func unFormatExerciseDescription(desStr:String) -> String{
-        var stringParts = desStr.components(separatedBy: "\n")
-        var newString:String = ""
-        stringParts.removeFirst()
-        stringParts.removeLast()
-        for index in 0...stringParts.count-1{
-            newString.append(stringParts[index])
-            if index != stringParts.count - 1{
-                newString.append("|")
-            }
-        }
-        return newString
-    }
+//    static func unFormatExerciseDescription(desStr:String) -> String{
+//        var stringParts = desStr.components(separatedBy: "\n")
+//        var newString:String = ""
+//        stringParts.removeFirst()
+//        stringParts.removeLast()
+//        for index in 0...stringParts.count-1{
+//            newString.append(stringParts[index])
+//            if index != stringParts.count - 1{
+//                newString.append("|")
+//            }
+//        }
+//        return newString
+//    }
     
     static func formatExerciseDescription(desStr:String) -> String{
         let stringParts = desStr.components(separatedBy: " | ")

@@ -153,6 +153,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
             let idMinutes:Int = pickerOutlet.selectedRow(inComponent: 1)
             let idSeconds:Int = pickerOutlet.selectedRow(inComponent: 2)
             myExercise.exerciseDescription = hours[idHours] + " hour(s) " + minutes[idMinutes] + " minute(s) " + seconds[idSeconds] + " second(s) "
+            myExercise.exerciseDescription = Formatter.formatResult(str: myExercise.exerciseDescription)
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
             dismiss(animated: true, completion: nil)
         }

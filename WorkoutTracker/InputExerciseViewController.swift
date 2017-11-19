@@ -190,10 +190,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       let info:[String:Exercise] = (notification as NSNotification).userInfo as! [String:Exercise]
       tempExercise = info["exerciseKey"]!
       //format response
-      var desStr:String = tempExercise.exerciseDescription
-      if desStr.contains("hour(s)") || desStr.contains("minute(s)") || desStr.contains("second(s)"){
-         desStr = Formatter.formatResult(str: desStr)
-      }
+      let desStr:String = tempExercise.exerciseDescription
       let formatExerciseDesStr = Formatter.formatExerciseDescription(desStr: desStr)
       if tempExercise.type == "Endurance"{
          let formattedStr = tempExercise.category + formatExerciseDesStr
