@@ -78,12 +78,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }else{
                         self.noClientsLabel.alpha = 0
                     }
-                    
                     if DBService.shared.passToNextVC == true{
                         for i in 0...self.clientArray.count-1{
                             if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{
                                 let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sessionsVC") as! SessionsViewController
-                                nextVC.clientPassed = self.clientArray[self.selectedRow]
+                                nextVC.clientPassed = self.clientArray[i]
                                 DBService.shared.setPassedClient(client: self.clientArray[i])
                                 self.navigationController?.pushViewController(nextVC, animated: true)
                             }

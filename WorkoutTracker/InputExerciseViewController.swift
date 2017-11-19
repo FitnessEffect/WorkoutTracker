@@ -403,6 +403,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    
    func savePickerName(name:String){
       self.title = name
+      inputExerciseView.setTitleView(titleStr:name)
       //reset date to current day when knew user is selected
       let currentDate = DateConverter.getCurrentDate()
       inputExerciseView.saveButton.setTitle(currentDate, for: .normal)

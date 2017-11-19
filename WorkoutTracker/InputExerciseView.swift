@@ -42,6 +42,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
     var dateStartPosition:CGFloat = 0
     var dateSelected:String!
     var sessionsNames = [String]()
+    var titleView = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -466,6 +467,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
             }else{
                 let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientNavID") as! NavigationViewController
                 popController.setPassToNextVC(bool: true)
+                DBService.shared.setPassedClient(client: DBService.shared.retrieveClientInfoByFullName(fullName: self.titleView))
                 currentController?.present(popController, animated: true, completion: nil)
             }
         }else{
@@ -486,11 +488,6 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
             // present the popover
             currentController?.present(popController, animated: true, completion: nil)
         }
-    }
-    
-    func getTitle() -> String{
-        let n = DBService.shared.passedExercise.client
-        return n
     }
     
     func setCurrentDate(){
@@ -644,6 +641,10 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
         }else if sender.tag == 2{
             eraseEmailDescription()
         }
+    }
+    
+    func setTitleView(titleStr:String){
+        titleView = titleStr
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
