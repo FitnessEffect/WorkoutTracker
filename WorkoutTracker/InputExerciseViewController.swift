@@ -219,8 +219,10 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          return 2
       }else if tempExercise.name == "Amrap"{
          return 4
-      }else if tempExercise.name == "Emom" || tempExercise.name == "Cindy"{
+      }else if tempExercise.name == "Emom"{
          return 5
+      }else if tempExercise.name == "Cindy"{
+         return 11
       }else if tempExercise.name == "Tabata"{
          return 6
       }else if tempExercise.type == "Endurance"{

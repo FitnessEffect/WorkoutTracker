@@ -2177,6 +2177,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="round(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOT-gd-fqF">
+                                <rect key="frame" x="167" y="55" width="89" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HaveaGreatDay" family="Have a Great Day" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2195,6 +2202,7 @@
                         <outlet property="minLabel" destination="bYm-8o-cAH" id="IKT-by-hj4"/>
                         <outlet property="pickerView" destination="FaO-rX-9dF" id="DyF-EU-kZB"/>
                         <outlet property="repsLabel" destination="oGI-bm-bWQ" id="RU9-Vo-SfW"/>
+                        <outlet property="roundsLabel" destination="zOT-gd-fqF" id="EPE-pe-2vt"/>
                         <outlet property="saveBtn" destination="RWt-x7-kbS" id="mvg-B1-jaT"/>
                         <outlet property="secLabel" destination="JFW-Kj-Teg" id="xX5-1X-14s"/>
                     </connections>

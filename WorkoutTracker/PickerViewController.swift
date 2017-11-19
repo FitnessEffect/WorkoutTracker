@@ -21,6 +21,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var durationHours: UILabel!
     @IBOutlet weak var durationMinutes: UILabel!
+    @IBOutlet weak var roundsLabel: UILabel!
     
     var namesPassed:[String]!
     var weights = [String]()
@@ -39,6 +40,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var tempSeconds = ""
     var tempResult = ""
     var sessionNames = [String]()
+    var rounds = [String]()
     var currentSessName = ""
     
     override func viewDidLoad() {
@@ -49,6 +51,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         minLabel.alpha = 0
         lbsLabel.alpha = 0
         repsLabel.alpha = 0
+        roundsLabel.alpha = 0
         
         for i in 0...1500{
             weights.append(String(i))
@@ -63,6 +66,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         for i in 0...59{
             minutes.append(String(i))
             seconds.append(String(i))
+        }
+        
+        for i in 0...100{
+            rounds.append(String(i))
         }
         
         if tagPassed == 5{
@@ -148,6 +155,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return meters.count
         }else if tagPassed == 9{
             return miles.count
+        }else if tagPassed == 11{
+            return rounds.count
         }else{
             return supersetSets.count
         }
@@ -178,6 +187,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return meters[row]
         }else if tagPassed == 9{
             return miles[row]
+        }else if tagPassed == 11{
+            return rounds[row]
         }else{
             return supersetSets[row]
         }
@@ -221,6 +232,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 8{
             let temp = meters[row] + " meter(s)"
             tempResult = temp
+        }else if tagPassed == 11{
+            let temp = rounds[row] + " round(s)"
+            tempResult = temp
         }else{
             let temp = miles[row] + " mile(s)"
             tempResult = temp
@@ -258,6 +272,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     tempResult = "0 meter(s)"
                 }else if tagPassed == 7{
                     tempResult = "Completed"
+                }else if tagPassed == 11{
+                    tempResult = "0 round(s)"
                 }else{
                     tempResult = "0 mile(s)"
                 }
@@ -279,6 +295,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         repsLabel.alpha = 0
         milesLabel.alpha = 0
         metersLabel.alpha = 0
+        roundsLabel.alpha = 0
         if tagPassed == 0{
             label.text = sessionNames[row]
         }else if tagPassed == 1{
@@ -311,6 +328,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if tagPassed == 8{
             metersLabel.alpha = 1
             label.text = meters[row]
+        }else if tagPassed == 11{
+            roundsLabel.alpha = 1
+            label.text = rounds[row]
         }else{
             milesLabel.alpha = 1
             label.text = miles[row]
