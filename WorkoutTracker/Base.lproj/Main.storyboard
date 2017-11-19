@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="207.5" width="86" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -3282,7 +3282,7 @@
                                 <rect key="frame" x="16" y="196" width="343" height="392"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lb(s)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcj-Qx-YqE">
-                                        <rect key="frame" x="34" y="347" width="115" height="21"/>
+                                        <rect key="frame" x="39" y="347" width="115" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="zab-bu-44s"/>
                                         </constraints>
@@ -3293,9 +3293,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="mcj-Qx-YqE" firstAttribute="leading" secondItem="QIn-Cw-b0E" secondAttribute="leading" constant="34" id="SYu-eY-BEi"/>
-                                    <constraint firstAttribute="trailing" secondItem="mcj-Qx-YqE" secondAttribute="trailing" constant="194" id="VLl-Ao-47y"/>
-                                    <constraint firstItem="mcj-Qx-YqE" firstAttribute="leading" secondItem="QIn-Cw-b0E" secondAttribute="leading" constant="34" id="Y7c-Yv-suX"/>
+                                    <constraint firstItem="mcj-Qx-YqE" firstAttribute="leading" secondItem="QIn-Cw-b0E" secondAttribute="leading" constant="39" id="SYu-eY-BEi"/>
+                                    <constraint firstAttribute="trailing" secondItem="mcj-Qx-YqE" secondAttribute="trailing" constant="189" id="VLl-Ao-47y"/>
+                                    <constraint firstItem="mcj-Qx-YqE" firstAttribute="leading" secondItem="QIn-Cw-b0E" secondAttribute="leading" constant="39" id="Y7c-Yv-suX"/>
                                     <constraint firstAttribute="bottom" secondItem="mcj-Qx-YqE" secondAttribute="bottom" constant="24" id="yCc-1B-xyO"/>
                                 </constraints>
                             </view>

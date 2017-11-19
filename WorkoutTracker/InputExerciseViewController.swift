@@ -192,7 +192,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       //format response
       var desStr:String = tempExercise.exerciseDescription
       if desStr.contains("hour(s)") || desStr.contains("minute(s)") || desStr.contains("second(s)"){
-         desStr = Formatter.formatDurationResult(str: desStr)
+         desStr = Formatter.formatResult(str: desStr)
       }
       let formatExerciseDesStr = Formatter.formatExerciseDescription(desStr: desStr)
       if tempExercise.type == "Endurance"{
