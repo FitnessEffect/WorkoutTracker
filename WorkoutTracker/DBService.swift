@@ -166,7 +166,7 @@ class DBService {
         _passedSession = session
     }
     
-    func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
+    func updateClient(newClient: [String:Any], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
             completion()

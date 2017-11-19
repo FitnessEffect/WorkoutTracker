@@ -19,8 +19,6 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     @IBOutlet weak var lastNameOutlet: UITextField!
     
     var myClient = Client()
-    //var clientPassed = Client()
-    //var edit = false
     var spinner = UIActivityIndicatorView()
     var age = [String]()
     var inches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
@@ -53,7 +51,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if DBService.shared.passedClient.firstName != ""{
+        if DBService.shared.passedClient.clientKey != ""{
             genderSegmentedControl.selectedSegmentIndex =  0
             firstNameOutlet.text?.removeAll()
             lastNameOutlet.text?.removeAll()
@@ -67,7 +65,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if DBService.shared.passedClient.firstName != ""{
+        if DBService.shared.passedClient.clientKey != ""{
             firstNameOutlet.text = DBService.shared.passedClient.firstName
             lastNameOutlet.text = DBService.shared.passedClient.lastName
             if DBService.shared.passedClient.gender == "Male"{
@@ -171,7 +169,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
 
     @IBAction func saveBtn(_ sender: UIButton) {
         if firstNameOutlet.text != "" && lastNameOutlet.text != ""{
-            if DBService.shared.passedClient.firstName == ""{
+            if DBService.shared.passedClient.clientKey == ""{
                 myClient.clientKey = DBService.shared.createClientID()
             }else{
                 myClient.clientKey = DBService.shared.passedClient.clientKey
@@ -225,14 +223,17 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
             spinner.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.updateNewClient(newClient: clientDictionary, completion: {
-                DBService.shared.retrieveClients {
-                    DBService.shared.updateClientPassed{
-                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                        self.spinner.stopAnimating()
+            DBService.shared.updateClient(newClient: clientDictionary, completion: {
+                //DBService.shared.retrieveClients {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
                     self.navigationController?.popViewController(animated: true)
-                    }
-                }
+//                    DBService.shared.updateClientPassed{
+//                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+//                        self.spinner.stopAnimating()
+//                    self.navigationController?.popViewController(animated: true)
+//                    }
+                //}
             })
             }
         }else{
