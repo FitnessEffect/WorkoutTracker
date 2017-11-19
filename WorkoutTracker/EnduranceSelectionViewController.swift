@@ -140,7 +140,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
         if segmentedControl.selectedSegmentIndex == 0{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             if categoryPassed == "Rowing"{
-                myExercise.exerciseDescription = "For " + meters[id] + " meter(s) "
+                myExercise.exerciseDescription = meters[id] + " meter(s) "
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }else{
