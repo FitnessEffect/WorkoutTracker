@@ -97,12 +97,16 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
         if exercise.exerciseKey != ""{
             if DBService.shared.passedExercise.client != "Personal"{
                 dateBtn.setTitle(exercise.date, for: .normal)
-                saveExercise(exStr: exercise.exerciseDescription)
+                //saveExercise(exStr: exercise.exerciseDescription)
                 //exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                 //check if exercise.result is a time in seconds
                 if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
+                    saveExercise(exStr: exercise.exerciseDescription)
                     saveResult(str: (exercise.result))
                 }else{
+                    if exercise.type == "Endurance"{
+                        saveExercise(exStr: exercise.category + "\n" + exercise.exerciseDescription)
+                    }
                     let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
                     saveResult(str: (resultFormated))
                 }
@@ -111,7 +115,6 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 challenge.isUserInteractionEnabled = false
             }else{
                 dateBtn.setTitle(exercise.date, for: .normal)
-                saveExercise(exStr: exercise.exerciseDescription)
                 //exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                 //check if exercise.result is a time in seconds
                 if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
@@ -119,6 +122,9 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                     //exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                     saveResult(str: (exercise.result))
                 }else{
+                    if exercise.type == "Endurance"{
+                        saveExercise(exStr: exercise.category + "\n" + exercise.exerciseDescription)
+                    }
                     let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
                     saveResult(str: (resultFormated))
                 }

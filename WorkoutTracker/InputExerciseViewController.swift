@@ -130,10 +130,10 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       self.nameArray.insert("Personal", at: 0)
       if DBService.shared.edit == true || DBService.shared.exSessionEdit == true{
          //set tempExercise from passedExercise
-         tempExercise = DBService.shared.passedExercise
-         tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
-         tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
-         inputExerciseView.fillInExercisePassed(exercise: tempExercise)
+         //tempExercise = DBService.shared.passedExercise
+         //tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
+         //tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
+         inputExerciseView.fillInExercisePassed(exercise: DBService.shared.passedExercise)
          if DBService.shared.exSessionEdit == true{
             inputExerciseView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
          }else{
@@ -346,12 +346,13 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    }
    
    func fillInExercisePassed(){
-      let ex = DBService.shared.passedExercise
-      if ex.exerciseKey != ""{
-         ex.exerciseDescription = Formatter.formatExerciseDescription(desStr: ex.exerciseDescription)
-         ex.exerciseDescription = ex.name + ex.exerciseDescription
-         inputExerciseView.fillInExercisePassed(exercise: ex)
-         ex.exerciseKey = ""
+      //let ex = DBService.shared.passedExercise
+      if DBService.shared.passedExercise.exerciseKey != ""{
+         //ex.exerciseDescription = Formatter.formatExerciseDescription(desStr: ex.exerciseDescription)
+         
+         //ex.exerciseDescription = ex.name + ex.exerciseDescription
+         inputExerciseView.fillInExercisePassed(exercise: DBService.shared.passedExercise)
+         //ex.exerciseKey = ""
       }
    }
    
