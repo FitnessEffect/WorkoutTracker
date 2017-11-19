@@ -346,6 +346,7 @@
 				52CB16A71EFBFBD500F4232D /* Popovers */,
 				529FC7C41F21673A00C16203 /* Personal  */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
+				521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */,
 				522F4F4F1F2AE7360053009C /* SupersetViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
@@ -453,7 +454,6 @@
 		52F6A8921C5F0036000FD7B0 = {
 			isa = PBXGroup;
 			children = (
-				521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */,
 				52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */,
 				522CFACB1F50F2D70037B371 /* WorkoutTrackerTests */,
 				52778FE51F8009D3008B6398 /* WorkoutTrackerUITests */,

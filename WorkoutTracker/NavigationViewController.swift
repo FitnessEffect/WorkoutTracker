@@ -19,7 +19,6 @@ class NavigationViewController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         if passToNextVC == true{
             passToNextVC = false
-            
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientID") as! ClientViewController
             DBService.shared.setPassToNextVC(bool: true)
             self.navigationController?.pushViewController(nextVC, animated: true)
@@ -28,10 +27,5 @@ class NavigationViewController: UINavigationController {
 
     func setPassToNextVC(bool:Bool){
         passToNextVC = bool
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

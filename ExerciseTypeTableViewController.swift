@@ -71,7 +71,6 @@ class ExerciseTypeTableViewController: UITableViewController{
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
         cell.accessibilityIdentifier = "Type" + String(indexPath.row)
-        
         return cell
     }
     

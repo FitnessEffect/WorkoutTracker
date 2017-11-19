@@ -24,7 +24,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         spinnerCategory.frame = CGRect(x:(categoryPicker.frame.width/2)-60, y:(categoryPicker.frame.height/2)-25, width:50, height:50)
         spinnerCategory.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinnerCategory.color = UIColor.blue
@@ -52,7 +51,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                 UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
                 self.spinnerCategory.stopAnimating()
                 self.categories = DBService.shared.progressCategories
-                
                 self.categoryPicker.reloadAllComponents()
                 self.setExerciseNamesForCategory(categoryPassed: self.categories[0])
             })
@@ -157,13 +155,11 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     func setProgressResultsFromDetail(detailPassed:String){
         if DBService.shared.passedClient.clientKey != ""{
-            DBService.shared.retrieveClientProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
-                //self.detailPicker.reloadAllComponents()
-            })
+            DBService.shared.retrieveClientProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {}
+            )
         }else{
-            DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {
-                //self.detailPicker.reloadAllComponents()
-            })
+            DBService.shared.retrieveProgressResultsForExerciseDetail(type: self.typePassed, category: DBService.shared.selectedProgressCategory, exerciseName: DBService.shared.selectedProgressExercise, detail: detailPassed, completion: {}
+            )
         }
     }
     
@@ -208,7 +204,6 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        
         if pickerView.tag == 0{
             label.text = categories[row]
         }else if pickerView.tag == 1{

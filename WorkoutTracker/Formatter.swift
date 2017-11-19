@@ -9,7 +9,7 @@
 import Foundation
 
 class Formatter{
-
+    
     static func formateEmail(email:String) -> String{
         var tempEmail = ""
         tempEmail = email.replacingOccurrences(of: "@", with: "%40")
@@ -50,7 +50,7 @@ class Formatter{
             if arr[2] == "0"{
                 formattedStr = "0 hour(s) 0 min(s)"
             }else{
-            formattedStr = arr[2] + " " + arr[3]
+                formattedStr = arr[2] + " " + arr[3]
             }
         }else if arr[2] == "0"{
             formattedStr = arr[0] + " " + arr[1]
@@ -89,7 +89,7 @@ class Formatter{
             }else{
                 if arr[4] == "0"{
                     //only min
-                   formattedStr = arr[2] + " " + arr[3]
+                    formattedStr = arr[2] + " " + arr[3]
                 }else{
                     //only hour
                     formattedStr = arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5]
@@ -110,9 +110,9 @@ class Formatter{
                     formattedStr = arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3]
                 }else{
                     formattedStr = arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5]
-
+                    
                 }
-               
+                
             }
         }
         
@@ -126,7 +126,7 @@ class Formatter{
             secondsTime = Int(tempArr[tempArr.index(of: "hour(s)")!-1])!*60*60
         }
         if tempArr.contains("min(s)"){
-
+            
             secondsTime = Int(tempArr[tempArr.index(of: "min(s)")!-1])!*60 + secondsTime
         }
         if tempArr.contains("sec(s)"){

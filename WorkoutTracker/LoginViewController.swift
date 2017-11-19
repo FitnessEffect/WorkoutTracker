@@ -178,7 +178,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         txtField.layer.add(anim, forKey: "position")
     }
     
-    
     @IBAction func login(_ sender: UIButton) {
         if (emailTF.text?.count) == 0{
             setAnimations(txtField: emailTF)

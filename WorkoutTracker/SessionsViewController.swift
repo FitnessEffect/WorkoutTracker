@@ -384,20 +384,22 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 DBService.shared.deleteSessionForClient(session: selectedSession, completion: {
                     for i in 0...self.sessionsArray.count{
-                        if self.sessionsArray[i].key == selectedSession.key{
-                            self.sessionsArray.remove(at: i)
-                            self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
-                            
-                            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                            tableView.reloadData()
-                            if self.sessionsArray.count == 0{
-                                self.noSessionsLabel.alpha = 1
-                            }else{
-                                self.noSessionsLabel.alpha = 0
+                        if self.sessionsArray.count != 0{
+                            if self.sessionsArray[i].key == selectedSession.key{
+                                self.sessionsArray.remove(at: i)
+                                self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
+                                
+                                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                                tableView.reloadData()
+                                if self.sessionsArray.count == 0{
+                                    self.noSessionsLabel.alpha = 1
+                                }else{
+                                    self.noSessionsLabel.alpha = 0
+                                }
+                                break
                             }
                             break
                         }
-                        break
                     }
                 })
             }))

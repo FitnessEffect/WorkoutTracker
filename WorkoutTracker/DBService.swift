@@ -116,22 +116,17 @@ class DBService {
         _progressData = self._progressData.sorted(by: {a, b in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "y-M-d HH:mm:ss"
-            
-            
             let dateA = dateFormatter.date(from: a.key)!
             let dateB = dateFormatter.date(from: b.key)!
             if dateA < dateB {
                 return true
             }
             return false
-            
         })
     }
     
     func checkOpponentEmail(email:String, completion:@escaping ()->Void){
-        
         _ref.child("emails").observeSingleEvent(of: .value, with: { (snapshot) in
-            
             // Get user value
             let value = snapshot.value as! NSDictionary
             let keys = value.allKeys as! [String]
@@ -208,24 +203,21 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-            //update firebase client session and client date branch
+        //update firebase client session and client date branch
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         
         //update firebase client all branch
-        
         if exerciseDictionary["type"] as! String == "Endurance"{
             self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         }else{
-        self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
-       }
-        
+            self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }
         completion()
     }
     
     func createSessionForClient(sessionDictionary:[String:Any]){
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(currentDay).updateChildValues([sessionDictionary["key"] as! String:true])
-        
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(sessionDictionary["key"] as! String).updateChildValues(sessionDictionary)
     }
     
@@ -275,18 +267,15 @@ class DBService {
     }
     
     func updateExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
-       
         //update firebase date branch
         self._ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         
         //update firebase all branch
-        
         if exerciseDictionary["type"] as! String == "Endurance"{
-        self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+            self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         }else{
-        self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+            self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
         }
-        
         completion()
     }
     
@@ -363,7 +352,6 @@ class DBService {
                     self._progressCategories.append(category.key as! String)
                 }
             }
-            
             //remove categories that cannot be displayed on graph
             if self._progressCategories.contains("Amrap"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
@@ -380,9 +368,6 @@ class DBService {
             if self._progressCategories.contains("Tabata"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
             }
-//            if self._progressCategories.contains("Hero Wods"){
-//                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
-//            }
             if self._progressCategories.contains("Superset"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
             }
@@ -416,9 +401,6 @@ class DBService {
             if self._progressCategories.contains("Tabata"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
             }
-//            if self._progressCategories.contains("Hero Wods"){
-//                self._progressCategories.remove(at:self._progressCategories.index(of: "Hero Wods")!)
-//            }
             if self._progressCategories.contains("Superset"){
                 self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
             }
@@ -451,7 +433,6 @@ class DBService {
                     tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     tempExercises.append(tempExercise)
                 }
-                
                 for exercise in tempExercises{
                     self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
@@ -482,9 +463,7 @@ class DBService {
                     tempExercise.type = exercise.value["type"] as! String
                     tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     tempExercises.append(tempExercise)
-                    
                 }
-                
                 for exercise in tempExercises{
                     self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
@@ -515,9 +494,7 @@ class DBService {
                     tempExercise.type = exercise.value["type"] as! String
                     tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     tempExercises.append(tempExercise)
-                    
                 }
-                
                 for exercise in tempExercises{
                     self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
@@ -550,9 +527,7 @@ class DBService {
                     tempExercise.type = exercise.value["type"] as! String
                     tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     tempExercises.append(tempExercise)
-                    
                 }
-                
                 for exercise in tempExercises{
                     self._progressData.append((key:exercise.uploadTime, value:exercise.result))
                 }
@@ -578,7 +553,7 @@ class DBService {
     }
     
     func retrieveProgressExercisesForCategory(type:String, category:String, completion: @escaping () -> Void){
-       _progressExerciseNames.removeAll()
+        _progressExerciseNames.removeAll()
         _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
             if let tempExercises = snapshot.value as? NSDictionary{
                 for exercise in tempExercises{
@@ -603,7 +578,6 @@ class DBService {
         }){ (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     func retrieveProgressDetailExercisesForExerciseName(type:String, exerciseName:String, completion: @escaping () -> Void){
@@ -618,7 +592,6 @@ class DBService {
         }){ (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     func retrieveClientProgressTypesAndCategories(completion: @escaping () -> Void){
@@ -651,9 +624,6 @@ class DBService {
                     if tempExercise.contains("Metcon"){
                         tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
                     }
-//                    if tempExercise.contains("Hero Wods"){
-//                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
-//                    }
                     if tempExercise.count == 0{
                         self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
                     }
@@ -667,7 +637,6 @@ class DBService {
                     }
                     if tempExercise.contains("Superset"){
                         tempExercise.remove(at: tempExercise.index(of: "Superset")!)
-                        
                         //remove bodybuilding type if superset is the only bodybuilding exercise
                         if tempExercise.count == 0{
                             self._progressTypes.remove(at: self._progressTypes.index(of: "Bodybuilding")!)
@@ -675,7 +644,6 @@ class DBService {
                     }
                 }
                 completion()
-                
             }else{
                 self._progressTypes.removeAll()
                 self._progressCategories.removeAll()
@@ -687,7 +655,7 @@ class DBService {
     }
     
     func retrieveUserProgressTypesAndCategories(completion: @escaping () -> Void){
-       _progressTypes.removeAll()
+        _progressTypes.removeAll()
         _progressCategories.removeAll()
         _ref.child("users").child(user.uid).child("Exercises").child("All").observeSingleEvent(of: .value, with: { (snapshot) in
             if let tempTypes = snapshot.value as? NSDictionary{
@@ -695,7 +663,7 @@ class DBService {
                     self._progressTypes.append(type.key as! String)
                 }
                 if self._progressTypes.contains("Crossfit"){
-                   let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
+                    let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
                     var tempExercise = [String]()
                     for ex in tempProgressCategories{
                         tempExercise.append(ex.key as! String)
@@ -715,9 +683,6 @@ class DBService {
                     if tempExercise.contains("Metcon"){
                         tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
                     }
-//                    if tempExercise.contains("Hero Wods"){
-//                        tempExercise.remove(at: tempExercise.index(of: "Hero Wods")!)
-//                    }
                     if tempExercise.count == 0{
                         self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
                     }
@@ -739,7 +704,6 @@ class DBService {
                     }
                 }
                 completion()
-                
             }else{
                 self._progressTypes.removeAll()
                 self._progressCategories.removeAll()
@@ -753,7 +717,6 @@ class DBService {
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
         _ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             // Get user value
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
@@ -978,7 +941,6 @@ class DBService {
     
     func checkSessionNumber(completion: @escaping () -> Void){
         _sessionsCount = 0
-        
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(currentDay).observeSingleEvent(of: .value, with: { (snapshot) in
             if let sessions = snapshot.value as? NSDictionary{
                 let keys = sessions.allKeys
@@ -1008,7 +970,6 @@ class DBService {
         print(keyStr)
         _exercisesForClient.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(keyStr).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             let session = snapshot.value as? NSDictionary
             if session != nil{
                 if let exerciseStrings = session?["exercises"] as? NSDictionary{
@@ -1030,9 +991,7 @@ class DBService {
     }
     
     func retrieveExercisesForSession(exerciseStr:String, completion: @escaping () -> Void){
-        print(passedClient.clientKey)
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseStr).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             let exercise = snapshot.value as? [String:Any]
             if exercise != nil{
                 let tempExercise = Exercise()
@@ -1146,7 +1105,6 @@ class DBService {
     
     func retrieveHeroWods(completion: @escaping () -> Void){
         _crossfitHeroWods.removeAll()
-        
         self._ref.child("hero wods").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -1193,8 +1151,6 @@ class DBService {
                         completion()
                     })
                 }
-                
-                
             })
         })
     }
@@ -1209,7 +1165,6 @@ class DBService {
                 if self._selectedProgressExercise == ""{
                     self._selectedProgressExercise = self._progressExerciseNames[0]
                 }
-                
                 if type == "Endurance"{
                     self.retrieveProgressDetailExercisesForExerciseName(type: type, exerciseName: self._selectedProgressExercise, completion: {
                         if self._selectedProgressDetail == ""{
@@ -1333,7 +1288,6 @@ class DBService {
     }
     
     func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
-        
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("All").child(exercise.type).child(exercise.category).child(exercise.name).child(exercise.exerciseKey).removeValue()
         self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
@@ -1734,5 +1688,4 @@ class DBService {
             return _selectedProgressDetail
         }
     }
-    
 }
