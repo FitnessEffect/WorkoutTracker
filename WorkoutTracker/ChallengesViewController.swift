@@ -157,7 +157,11 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
         //check if exercise.result is a time in seconds
         if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
-            cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+            if exercise.type == "Endurance"{
+                cell.titleOutlet.text = exercise.category + " (" + exercise.result + ")"
+            }else{
+                cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+            }
         }else{
             let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
             if exercise.type == "Endurance"{

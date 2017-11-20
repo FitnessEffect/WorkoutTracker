@@ -115,8 +115,13 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 dateBtn.setTitle(exercise.date, for: .normal)
                 //check if exercise.result is a time in seconds
                 if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
+                    
+                    if exercise.type == "Endurance"{
+                        saveExercise(exStr: exercise.category + "\n" + exercise.exerciseDescription)
+                    }else{
                     saveExercise(exStr: exercise.name + "\n" + exercise.exerciseDescription)
                     saveResult(str: (exercise.result))
+                    }
                 }else{
                     if exercise.type == "Endurance"{
                         saveExercise(exStr: exercise.category + "\n" + exercise.exerciseDescription)
