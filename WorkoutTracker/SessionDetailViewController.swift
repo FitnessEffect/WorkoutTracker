@@ -79,13 +79,24 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                     self.exercises = DBService.shared.exercisesForClient
                     self.exercises.sort(by: {a, b in
                         let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "y-M-d HH:mm:ss"
-                        let dateA = dateFormatter.date(from: a.uploadTime)!
-                        let dateB = dateFormatter.date(from: b.uploadTime)!
-                        if dateA > dateB {
+                        dateFormatter.dateFormat = "M/d/y"
+                        let dateA = dateFormatter.date(from: a.date)!
+                        let dateB = dateFormatter.date(from: b.date)!
+                        if dateA == dateB{
+                            let dateFormatter2 = DateFormatter()
+                            dateFormatter2.dateFormat = "y-M-d HH:mm:ss"
+                            let uploadA = dateFormatter2.date(from:a.uploadTime)!
+                            let uploadB = dateFormatter2.date(from:b.uploadTime)!
+                            if uploadA > uploadB {
+                                return true
+                            }else{
+                                return false
+                            }
+                        }else if dateA > dateB {
                             return true
+                        }else{
+                            return false
                         }
-                        return false
                     })
                     self.tableView.reloadData()
                     if self.exercises.count == 0{
