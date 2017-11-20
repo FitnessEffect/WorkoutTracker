@@ -275,6 +275,14 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       DBService.shared.setEdit(bool:false)
       DBService.shared.setExSessionEdit(bool:false)
       if self.title == "Personal"{
+         if DBService.shared.passedExercise.exerciseKey != ""{
+            //check if week number was changed when date was modified if so remove old copy
+            if DBService.shared.passedExercise.week != exerciseDictionary["week"] as! String{
+               var oldExercise = exerciseDictionary
+               oldExercise["week"]  = DBService.shared.passedExercise.week
+               DBService.shared.deleteOldExerciseFromCalendar(exercise:oldExercise)
+            }
+         }
          DBService.shared.updateExerciseForUser(exerciseDictionary: exerciseDictionary, completion: {
             let alert = UIAlertController(title: "Success", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
             present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -283,6 +291,14 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
             })})
          })
       }else{
+         if DBService.shared.passedExercise.exerciseKey != ""{
+            //check if week number was changed when date was modified if so remove old copy
+            if DBService.shared.passedExercise.week != exerciseDictionary["week"] as! String{
+               var oldExercise = exerciseDictionary
+               oldExercise["week"]  = DBService.shared.passedExercise.week
+               DBService.shared.deleteOldExerciseFromCalendar(exercise:oldExercise)
+            }
+         }
          DBService.shared.updateExerciseForClient(exerciseDictionary: self.exerciseDictionary, completion: {
             let alert = UIAlertController(title: "Success!", message: "Your exercise was saved", preferredStyle: UIAlertControllerStyle.alert)
             self.present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -341,7 +357,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    }
    
    func fillInExercisePassed(){
-
       if DBService.shared.passedExercise.exerciseKey != ""{
          inputExerciseView.fillInExercisePassed(exercise: DBService.shared.passedExercise)
       }
@@ -435,7 +450,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       // present the popover
       self.present(popController, animated: true, completion: nil)
    }
-   
    
    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
       return .none

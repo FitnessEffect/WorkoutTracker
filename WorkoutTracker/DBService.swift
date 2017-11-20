@@ -1251,6 +1251,14 @@ class DBService {
         }
     }
     
+    func deleteOldExerciseFromCalendar(exercise:[String:Any]){
+        self._ref.child("users").child(self.user.uid).child("Exercises").child(exercise["year"] as! String).child(exercise["week"] as! String).child(exercise["exerciseKey"] as! String).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func deleteExerciseFromKey(exerciseKey:String){
         self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseKey).removeValue { (error, ref) in
             if error != nil {
