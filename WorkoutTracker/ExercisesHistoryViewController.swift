@@ -133,6 +133,11 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                 return false
             })
             self.refreshTableViewData()
+            if self.exerciseArray.count == 0{
+                self.noExercisesLabel.alpha = 1
+            }else{
+                self.noExercisesLabel.alpha = 0
+            }
         }
     }
     
