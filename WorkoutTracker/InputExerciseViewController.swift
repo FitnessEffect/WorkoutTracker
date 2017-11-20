@@ -64,7 +64,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       self.navigationController?.navigationBar.shadowImage = UIImage()
       self.navigationController?.navigationBar.isTranslucent = true
       self.navigationController?.view.backgroundColor = .clear
-    
+      
       UIApplication.shared.keyWindow?.addSubview(inputExerciseView.notificationNumber)
       
       registerForKeyboardNotifications()
@@ -235,7 +235,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    func handleSave(json: [String : Any]) {
       exerciseDictionary = json
       if tempExercise.type == ""{
-      tempExercise = DBService.shared.passedExercise
+         tempExercise = DBService.shared.passedExercise
       }
       exerciseDictionary["description"] = tempExercise.exerciseDescription
       exerciseDictionary["name"] =  tempExercise.name
@@ -329,7 +329,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          appDelegate.setBadgeNumber(DBService.shared.notificationCount)
       })
    }
-
+   
    @IBAction func openMenu(_ sender: UIBarButtonItem) {
       addSelector()
    }

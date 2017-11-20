@@ -17,20 +17,6 @@ class Formatter{
         return tempEmail
     }
     
-//    static func unFormatExerciseDescription(desStr:String) -> String{
-//        var stringParts = desStr.components(separatedBy: "\n")
-//        var newString:String = ""
-//        stringParts.removeFirst()
-//        stringParts.removeLast()
-//        for index in 0...stringParts.count-1{
-//            newString.append(stringParts[index])
-//            if index != stringParts.count - 1{
-//                newString.append("|")
-//            }
-//        }
-//        return newString
-//    }
-    
     static func formatExerciseDescription(desStr:String) -> String{
         let stringParts = desStr.components(separatedBy: " | ")
         var newString:String = ""
@@ -45,7 +31,7 @@ class Formatter{
     static func formatDurationResult(str:String)->String{
         var formattedStr = ""
         var arr = str.components(separatedBy: " ")
-
+        
         if arr[0] == "0"{
             if arr[2] == "0"{
                 formattedStr = "0 hour(s) 0 min(s)"
@@ -64,26 +50,26 @@ class Formatter{
         var formattedStr = ""
         var arr = str.components(separatedBy: " ")
         
-            if !str.contains("hour(s)") && !str.contains("hr(s)"){
-                if !str.contains("min(s)"){
-                    arr.insert("minute(s)", at:0)
-                    arr.insert("0", at:0)
-                }
-                arr.insert("hour(s)", at:0)
+        if !str.contains("hour(s)") && !str.contains("hr(s)"){
+            if !str.contains("min(s)"){
+                arr.insert("minute(s)", at:0)
                 arr.insert("0", at:0)
-            }else if !str.contains("min(s)") && !str.contains("minute(s)"){
-                if !str.contains("second(s)"){
-                    arr.insert("second(s)", at:2)
-                    arr.insert("0", at:2)
-                    arr.insert("minute(s)", at:2)
-                    arr.insert("0", at:2)
-                }
+            }
+            arr.insert("hour(s)", at:0)
+            arr.insert("0", at:0)
+        }else if !str.contains("min(s)") && !str.contains("minute(s)"){
+            if !str.contains("second(s)"){
+                arr.insert("second(s)", at:2)
+                arr.insert("0", at:2)
                 arr.insert("minute(s)", at:2)
                 arr.insert("0", at:2)
-            }else if !str.contains("sec(s)") && !str.contains("second(s)"){
-                arr.insert("second(s)", at:4)
-                arr.insert("0", at:4)
             }
+            arr.insert("minute(s)", at:2)
+            arr.insert("0", at:2)
+        }else if !str.contains("sec(s)") && !str.contains("second(s)"){
+            arr.insert("second(s)", at:4)
+            arr.insert("0", at:4)
+        }
         
         //fill in zeros
         if arr[0] == ""{
@@ -131,12 +117,9 @@ class Formatter{
                     formattedStr = arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3]
                 }else{
                     formattedStr = arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5]
-                    
                 }
-                
             }
         }
-        
         return formattedStr
     }
     
@@ -147,7 +130,6 @@ class Formatter{
             secondsTime = Int(tempArr[tempArr.index(of: "hour(s)")!-1])!*60*60
         }
         if tempArr.contains("min(s)"){
-            
             secondsTime = Int(tempArr[tempArr.index(of: "min(s)")!-1])!*60 + secondsTime
         }
         if tempArr.contains("sec(s)"){
@@ -157,7 +139,6 @@ class Formatter{
     }
     
     static func changeTimeToDisplayFormat(secondsStr:String)->String{
-
         var finalStr = ""
         let secondsInt = Int(secondsStr)
         let hours = Int(secondsInt!/60/60)
@@ -181,7 +162,6 @@ class Formatter{
                 finalStr.append(char)
             }
         }
-        
         return finalStr
     }
     

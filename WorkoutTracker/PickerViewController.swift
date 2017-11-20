@@ -26,7 +26,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var namesPassed:[String]!
     var weights = [String]()
     var reps = [String]()
-    var hours = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+    var hours = [String]()
     var supersetSets = ["Completed", "Incomplete"]
     var minutes = [String]()
     var seconds = [String]()
@@ -52,6 +52,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         lbsLabel.alpha = 0
         repsLabel.alpha = 0
         roundsLabel.alpha = 0
+        
+        for i in 0...24{
+            hours.append(String(i))
+        }
         
         for i in 0...1500{
             weights.append(String(i))

@@ -119,8 +119,8 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                     if exercise.type == "Endurance"{
                         saveExercise(exStr: exercise.category + "\n" + exercise.exerciseDescription)
                     }else{
-                    saveExercise(exStr: exercise.name + "\n" + exercise.exerciseDescription)
-                    saveResult(str: (exercise.result))
+                        saveExercise(exStr: exercise.name + "\n" + exercise.exerciseDescription)
+                        saveResult(str: (exercise.result))
                     }
                 }else{
                     if exercise.type == "Endurance"{
@@ -204,7 +204,6 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
             self.challenge.alpha = 1
         })
         
-            
         //erase result
         UIView.animate(withDuration: 0.5, animations: {
             self.resultTextView.text = ""
@@ -340,15 +339,15 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                         exerciseDictionary["result"] = self.resultTextView.text!
                     }
                 }
-                    exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
-                    exerciseDictionary["opponent"] = ""
-                    exerciseDictionary["year"] = String(tempYear)
-                    exerciseDictionary["week"] = String(tempWeekNum)
-                    self.saveButton.isUserInteractionEnabled = false
-                    self.challenge.isUserInteractionEnabled = false
-                    self.resultBtn.isUserInteractionEnabled = false
-                    self.delegate?.handleSave(json: exerciseDictionary)
-                    self.eraseExerciseDescription()
+                exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
+                exerciseDictionary["opponent"] = ""
+                exerciseDictionary["year"] = String(tempYear)
+                exerciseDictionary["week"] = String(tempWeekNum)
+                self.saveButton.isUserInteractionEnabled = false
+                self.challenge.isUserInteractionEnabled = false
+                self.resultBtn.isUserInteractionEnabled = false
+                self.delegate?.handleSave(json: exerciseDictionary)
+                self.eraseExerciseDescription()
             }else{
                 var exerciseDictionary = [String:String]()
                 
@@ -368,7 +367,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                     if self.resultTextView.text == ""{
                         exerciseDictionary["result"] = "0"
                     }else{
-                    exerciseDictionary["result"] = self.resultTextView.text!
+                        exerciseDictionary["result"] = self.resultTextView.text!
                     }
                 }
                 exerciseDictionary["opponent"] = self.emailTxtView.text
@@ -581,6 +580,9 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
     }
     
     func eraseExerciseDescription(){
+        //creates new exercise if existing exercise description is erased
+        DBService.shared.setEdit(bool:false)
+        DBService.shared.setExSessionEdit(bool: false)
         UIView.animate(withDuration: 0.5, animations: {
             UserDefaults.standard.set(nil, forKey: "supersetDescription")
             DBService.shared.setEdit(bool:false)
