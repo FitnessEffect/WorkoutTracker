@@ -424,7 +424,6 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editExerciseSegue"){
@@ -434,6 +433,7 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
             for i in 0...self.exerciseArray.count{
                 if self.exerciseArray[i].exerciseKey == cell.exerciseKey{
                     DBService.shared.setPassedExercise(exercise: exerciseArray[i])
+                    print(DBService.shared.passedExercise.date)
                     break
                 }
             }

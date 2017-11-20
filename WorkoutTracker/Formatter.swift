@@ -157,6 +157,7 @@ class Formatter{
     }
     
     static func changeTimeToDisplayFormat(secondsStr:String)->String{
+
         var finalStr = ""
         let secondsInt = Int(secondsStr)
         let hours = Int(secondsInt!/60/60)
@@ -180,6 +181,7 @@ class Formatter{
                 finalStr.append(char)
             }
         }
+        
         return finalStr
     }
     

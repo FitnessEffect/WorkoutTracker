@@ -97,11 +97,9 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
         if exercise.exerciseKey != ""{
             if DBService.shared.passedExercise.client != "Personal"{
                 dateBtn.setTitle(exercise.date, for: .normal)
-                //saveExercise(exStr: exercise.exerciseDescription)
-                //exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                 //check if exercise.result is a time in seconds
                 if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
-                    saveExercise(exStr: exercise.exerciseDescription)
+                    saveExercise(exStr: exercise.name + "\n" + exercise.exerciseDescription)
                     saveResult(str: (exercise.result))
                 }else{
                     if exercise.type == "Endurance"{
@@ -115,11 +113,9 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 challenge.isUserInteractionEnabled = false
             }else{
                 dateBtn.setTitle(exercise.date, for: .normal)
-                //exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
                 //check if exercise.result is a time in seconds
                 if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
-                    saveExercise(exStr: exercise.exerciseDescription)
-                    //exercise.exerciseDescription = Formatter.unFormatExerciseDescription(desStr: exercise.exerciseDescription)
+                    saveExercise(exStr: exercise.name + "\n" + exercise.exerciseDescription)
                     saveResult(str: (exercise.result))
                 }else{
                     if exercise.type == "Endurance"{
@@ -296,7 +292,11 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                     if self.resultTextView.text.contains("hour(s)") || self.resultTextView.text.contains("min(s)") || self.resultTextView.text.contains("sec(s)"){
                         exerciseDictionary["result"] = String(Formatter.changeTimeToSeconds(timeStr: self.resultTextView.text))
                     }else{
-                         exerciseDictionary["result"] = self.resultTextView.text!
+                        if self.resultTextView.text == ""{
+                            exerciseDictionary["result"] = "0"
+                        }else{
+                            exerciseDictionary["result"] = self.resultTextView.text!
+                        }
                     }
                     exerciseDictionary["opponent"] = self.emailTxtView.text
                     exerciseDictionary["year"] = String(tempYear)
@@ -329,7 +329,11 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 if self.resultTextView.text.contains("hour(s)") || self.resultTextView.text.contains("min(s)") || self.resultTextView.text.contains("sec(s)"){
                     exerciseDictionary["result"] = String(Formatter.changeTimeToSeconds(timeStr: self.resultTextView.text))
                 }else{
-                    exerciseDictionary["result"] = self.resultTextView.text!
+                    if self.resultTextView.text == ""{
+                        exerciseDictionary["result"] = "0"
+                    }else{
+                        exerciseDictionary["result"] = self.resultTextView.text!
+                    }
                 }
                     exerciseDictionary["sessionName"] = self.challenge.titleLabel?.text
                     exerciseDictionary["opponent"] = ""
@@ -356,7 +360,11 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
                 if self.resultTextView.text.contains("hour(s)") || self.resultTextView.text.contains("min(s)") || self.resultTextView.text.contains("sec(s)"){
                     exerciseDictionary["result"] = String(Formatter.changeTimeToSeconds(timeStr: self.resultTextView.text))
                 }else{
+                    if self.resultTextView.text == ""{
+                        exerciseDictionary["result"] = "0"
+                    }else{
                     exerciseDictionary["result"] = self.resultTextView.text!
+                    }
                 }
                 exerciseDictionary["opponent"] = self.emailTxtView.text
                 exerciseDictionary["year"] = String(tempYear)
@@ -504,7 +512,7 @@ class InputExerciseView: UIView, UITextViewDelegate, UIPopoverPresentationContro
     }
     
     func setPassedDate(){
-        dateBtn.setTitle(DBService.shared.passedDate, for: .normal)
+        dateBtn.setTitle(DBService.shared.passedExercise.date, for: .normal)
     }
     
     func setDateOnBtn(dateStr:String, completion: () -> Void){

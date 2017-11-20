@@ -84,6 +84,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    }
    
    override func viewWillAppear(_ animated: Bool) {
+      print(DBService.shared.passedExercise.date)
       self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
       //set title with client name or "Personal"
       if DBService.shared.passedClient.clientKey != ""{
@@ -96,7 +97,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          title = "Personal"
       }
       //set date
-      if DBService.shared.passedDate != ""{
+      if DBService.shared.passedExercise.date != ""{
          inputExerciseView.setPassedDate()
          
          if DBService.shared.passedExercise.exerciseKey == "" && title != "Personal"{
@@ -129,10 +130,6 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       }
       self.nameArray.insert("Personal", at: 0)
       if DBService.shared.edit == true || DBService.shared.exSessionEdit == true{
-         //set tempExercise from passedExercise
-         //tempExercise = DBService.shared.passedExercise
-         //tempExercise.exerciseDescription = Formatter.formatExerciseDescription(desStr: tempExercise.exerciseDescription)
-         //tempExercise.exerciseDescription = tempExercise.name + tempExercise.exerciseDescription
          inputExerciseView.fillInExercisePassed(exercise: DBService.shared.passedExercise)
          if DBService.shared.exSessionEdit == true{
             inputExerciseView.challenge.setTitle(DBService.shared.passedSession.sessionName, for: .normal)
@@ -237,6 +234,9 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    
    func handleSave(json: [String : Any]) {
       exerciseDictionary = json
+      if tempExercise.type == ""{
+      tempExercise = DBService.shared.passedExercise
+      }
       exerciseDictionary["description"] = tempExercise.exerciseDescription
       exerciseDictionary["name"] =  tempExercise.name
       exerciseDictionary["type"] = tempExercise.type
@@ -313,12 +313,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
          appDelegate.setBadgeNumber(DBService.shared.notificationCount)
       })
    }
-   
-   override func didReceiveMemoryWarning() {
-      super.didReceiveMemoryWarning()
-      // Dispose of any resources that can be recreated.
-   }
-   
+
    @IBAction func openMenu(_ sender: UIBarButtonItem) {
       addSelector()
    }
@@ -346,13 +341,9 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
    }
    
    func fillInExercisePassed(){
-      //let ex = DBService.shared.passedExercise
+
       if DBService.shared.passedExercise.exerciseKey != ""{
-         //ex.exerciseDescription = Formatter.formatExerciseDescription(desStr: ex.exerciseDescription)
-         
-         //ex.exerciseDescription = ex.name + ex.exerciseDescription
          inputExerciseView.fillInExercisePassed(exercise: DBService.shared.passedExercise)
-         //ex.exerciseKey = ""
       }
    }
    

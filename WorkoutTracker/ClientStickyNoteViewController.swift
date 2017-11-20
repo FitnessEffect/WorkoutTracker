@@ -9,7 +9,7 @@
 import UIKit
 
 class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
-
+    
     @IBOutlet weak var agePickerView: UIPickerView!
     @IBOutlet weak var weightPickerView: UIPickerView!
     @IBOutlet weak var heightPickerView: UIPickerView!
@@ -166,7 +166,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
         label.textAlignment = NSTextAlignment.center
         return label
     }
-
+    
     @IBAction func saveBtn(_ sender: UIButton) {
         if firstNameOutlet.text != "" && lastNameOutlet.text != ""{
             if DBService.shared.passedClient.clientKey == ""{
@@ -223,18 +223,11 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
             spinner.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
             DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.updateClient(newClient: clientDictionary, completion: {
-                //DBService.shared.retrieveClients {
+                DBService.shared.updateClient(newClient: clientDictionary, completion: {
                     UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
                     self.spinner.stopAnimating()
                     self.navigationController?.popViewController(animated: true)
-//                    DBService.shared.updateClientPassed{
-//                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-//                        self.spinner.stopAnimating()
-//                    self.navigationController?.popViewController(animated: true)
-//                    }
-                //}
-            })
+                })
             }
         }else{
             let alert = UIAlertController(title: "Error", message: "Please enter first and last name", preferredStyle: UIAlertControllerStyle.alert)
@@ -242,7 +235,7 @@ class ClientStickyNoteViewController: UIViewController, UIPickerViewDataSource, 
             self.present(alert, animated: true, completion: nil)
         }
     }
-
+    
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
