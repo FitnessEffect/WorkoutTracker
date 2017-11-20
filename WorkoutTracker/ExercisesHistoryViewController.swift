@@ -81,8 +81,9 @@ class ExercisesHistoryViewController: UIViewController, UITableViewDelegate, UIT
                             }
                         }else if dateA > dateB {
                             return true
+                        }else{
+                            return false
                         }
-                        return false
                     })
                     self.refreshTableViewData()
                     if self.exerciseArray.count == 0{
