@@ -135,7 +135,7 @@ class SelectExerciseForAmrapViewController: UIViewController, UIPickerViewDelega
         }else{
             let idReps = repsWeightPicker.selectedRow(inComponent: 0)
             let idPounds = repsWeightPicker.selectedRow(inComponent: 1)
-            myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
+            myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lb(s)" + ")" + " " + reps[idReps] + " rep(s)"
             if categoryPassed == "Amrap" || categoryPassed == "Emom"{
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "amrapVC") as! AmrapViewController
                 DBService.shared.setSupersetExercise(exercise: myExercise)

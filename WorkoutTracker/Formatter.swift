@@ -62,8 +62,33 @@ class Formatter{
     }
     
     static func formatResult(str:String)->String{
+        
         var formattedStr = ""
         var arr = str.components(separatedBy: " ")
+        
+        if !str.contains("hour(s)") || !str.contains("minute(s)") || !str.contains("second(s)"){
+            if !str.contains("hour(s)"){
+                if !str.contains("min(s)"){
+                    arr.insert("minute(s)", at:0)
+                    arr.insert("0", at:0)
+                }
+                arr.insert("hour(s)", at:0)
+                arr.insert("0", at:0)
+            }else if !str.contains("minute(s)"){
+                if !str.contains("second(s)"){
+                    arr.insert("second(s)", at:2)
+                    arr.insert("0", at:2)
+                    arr.insert("minute(s)", at:2)
+                    arr.insert("0", at:2)
+                }
+                arr.insert("minute(s)", at:2)
+                arr.insert("0", at:2)
+            }else if !str.contains("second(s)"){
+                arr.insert("second(s)", at:4)
+                arr.insert("0", at:4)
+            }
+        }
+        
         //fill in zeros
         if arr[0] == ""{
             arr.insert("0", at: 1)

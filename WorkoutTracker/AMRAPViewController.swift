@@ -109,7 +109,6 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             let alert = UIAlertController(title: "Error", message: "Please create an exercise", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
         }else{
             if categoryPassed == "Amrap"{
                 let myExercise = Exercise()
@@ -119,47 +118,36 @@ class AmrapViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 myExercise.name = "Amrap"
                 myExercise.category = "Amrap"
                 myExercise.type = "Crossfit"
+                
+                myExercise.exerciseDescription = minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)"
+                myExercise.exerciseDescription = Formatter.formatResult(str: myExercise.exerciseDescription)
+                
                 for exercise in exercises{
-                    if myExercise.exerciseDescription == ""{
-                        myExercise.exerciseDescription = exercise.exerciseDescription
-                        
-                    }else{
-                        myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
-                    }
+                    myExercise.exerciseDescription = exercise.exerciseDescription + " | " + myExercise.exerciseDescription
                 }
-                myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + minutes[idMin] + " min(s) " + seconds[idSec] + " sec(s)"
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-                
                 self.navigationItem.setHidesBackButton(true, animated:true)
-                
                 DBService.shared.clearSupersetExercises()
-                
                 self.dismiss(animated: true, completion: nil)
                 
             }else{
                 let myExercise = Exercise()
                 let idMin:Int = pickerOutlet.selectedRow(inComponent: 0)
-                
                 myExercise.name = "Emom"
                 myExercise.category = "Emom"
                 myExercise.type = "Crossfit"
                 for exercise in exercises{
                     if myExercise.exerciseDescription == ""{
                         myExercise.exerciseDescription = exercise.exerciseDescription
-                        
                     }else{
                         myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
                     }
                 }
                 myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + emomTime[idMin] + " min(s)"
-                
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
-                
                 DBService.shared.setEmomTime(time: emomTime[idMin])
-                
                 DBService.shared.clearSupersetExercises()
-                
                 self.dismiss(animated: true, completion: nil)
             }
         }
