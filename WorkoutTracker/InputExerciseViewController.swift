@@ -64,7 +64,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       self.navigationController?.navigationBar.shadowImage = UIImage()
       self.navigationController?.navigationBar.isTranslucent = true
       self.navigationController?.view.backgroundColor = .clear
-      
+    
       UIApplication.shared.keyWindow?.addSubview(inputExerciseView.notificationNumber)
       
       registerForKeyboardNotifications()

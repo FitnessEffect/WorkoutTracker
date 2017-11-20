@@ -82,6 +82,7 @@ class MetconViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             myExercise.name = "Metcon"
             myExercise.category = "Metcon"
             myExercise.type = "Crossfit"
+            
             for exercise in exercises{
                 if myExercise.exerciseDescription == ""{
                     myExercise.exerciseDescription = exercise.exerciseDescription
