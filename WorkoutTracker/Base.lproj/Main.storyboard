@@ -1575,7 +1575,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-aI-KUz">
-                                <rect key="frame" x="162" y="207" width="86" height="24.5"/>
+                                <rect key="frame" x="162" y="209.5" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="GjS-YR-1cm"/>
                                 </constraints>
@@ -1791,7 +1791,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLL-Dc-Wra">
-                                <rect key="frame" x="233" y="206" width="33.5" height="26"/>
+                                <rect key="frame" x="233" y="206" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="yTQ-Op-3tj"/>
                                 </constraints>
@@ -1949,7 +1949,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-cm-M28">
-                                                    <rect key="frame" x="14" y="11" width="23" height="23.5"/>
+                                                    <rect key="frame" x="14" y="11" width="23" height="26.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="23" id="esK-IM-WS4"/>
                                                     </constraints>
@@ -3280,24 +3280,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-Cw-b0E" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="16" y="196" width="343" height="392"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lb(s)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcj-Qx-YqE">
-                                        <rect key="frame" x="39" y="347" width="115" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="zab-bu-44s"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="mcj-Qx-YqE" firstAttribute="leading" secondItem="QIn-Cw-b0E" secondAttribute="leading" constant="39" id="SYu-eY-BEi"/>
-                                    <constraint firstAttribute="trailing" secondItem="mcj-Qx-YqE" secondAttribute="trailing" constant="189" id="VLl-Ao-47y"/>
-                                    <constraint firstItem="mcj-Qx-YqE" firstAttribute="leading" secondItem="QIn-Cw-b0E" secondAttribute="leading" constant="39" id="Y7c-Yv-suX"/>
-                                    <constraint firstAttribute="bottom" secondItem="mcj-Qx-YqE" secondAttribute="bottom" constant="24" id="yCc-1B-xyO"/>
-                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe to delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myK-YZ-LJV">
                                 <rect key="frame" x="44" y="604" width="191" height="46"/>
@@ -3360,7 +3343,6 @@
                         <outlet property="noValuesLabel" destination="N5C-06-40o" id="GAi-Wz-9xw"/>
                         <outlet property="rightArrow" destination="LiT-w4-X4Z" id="Gza-yQ-45b"/>
                         <outlet property="swipeToDeleteLabel" destination="myK-YZ-LJV" id="S8N-ha-uue"/>
-                        <outlet property="unitLabel" destination="mcj-Qx-YqE" id="mSv-My-gGt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hs-ZX-MTA" userLabel="First Responder" sceneMemberID="firstResponder"/>

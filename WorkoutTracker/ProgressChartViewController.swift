@@ -17,7 +17,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var dataInputBtn: UIButton!
     @IBOutlet weak var noValuesLabel: UILabel!
     @IBOutlet weak var chartTitleLabel: UILabel!
-    @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var leftArrow: UIButton!
     @IBOutlet weak var rightArrow: UIButton!
     
@@ -48,7 +47,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         leftArrow.alpha = 0
         rightArrow.alpha = 0
         DBService.shared.clearDefautChartTitle()
-        unitLabel.text = unit
         dataValues.removeAll()
         types.removeAll()
         categories.removeAll()
@@ -96,13 +94,11 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
                 }else{
                     self.setDefaultGraph()
                 }
-                
             }
         }
     }
     
     func setClientWeightGraph(){
-        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
          let btnTitle = dataInputBtn.titleLabel?.text
@@ -123,7 +119,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setWeightGraph(){
-        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 1
         arrowsLabel.alpha = 1
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -144,7 +139,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setClientDefaultGraph(){
-        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 0
         arrowsLabel.alpha = 0
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -166,7 +160,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
     }
     
     func setDefaultGraph(){
-        //unitLabel.text = unit
         swipeToDeleteLabel.alpha = 0
         arrowsLabel.alpha = 0
         let btnLabel = dataInputBtn.titleLabel?.text
@@ -197,8 +190,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.xAxis.labelCount = values.count
         chartView.legend.enabled = false
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-        let x = chartView.xAxis.entries
-        print(x)
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
@@ -219,13 +210,12 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         for element in mutableValues{
             var elementWithoutUnit = element.value.components(separatedBy: " ")
             if elementWithoutUnit.count == 1{
-                unit = "minute(s)"
+                unit = "min(s)"
                 elementWithoutUnit[0] = String(Double(elementWithoutUnit[0])!/60)
             }else{
-            unit = elementWithoutUnit[1]
+                unit = elementWithoutUnit[1]
             }
             
-
             let dataEntry = ChartDataEntry(x: Double(count), y: Double(elementWithoutUnit[0])!)
             lineChartEntry.append(dataEntry)
             count += 1
@@ -241,9 +231,7 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         data.setValueTextColor(NSUIColor.white)
         chartView.data = data
         self.chartTitleLabel.text = DBService.shared.defaultChartTitle
-        unitLabel.text = unit
         data.setValueFormatter(MyValueFormatter(unitStr:unit))
-        
     }
     
     func setChartTitle(title:String){
@@ -279,7 +267,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
             
             // present the popover
             currentController?.present(popController, animated: true, completion: nil)
-            
         }else{
             // get a reference to the view controller for the popover
             let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickerSelectionVC") as! ProgressPickerSelectionViewController
@@ -395,19 +382,18 @@ class MyValueFormatter:NSObject, IValueFormatter{
     init(unitStr:String){
         unit = unitStr
     }
+    
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
         var newValue = ""
-        if unit == "minute(s)"{
+        if unit == "min(s)"{
             newValue = Formatter.changeTimeToSmallDisplayFormat(minutes: value)
         }else{
             if String(value).contains("."){
                 let tempArr = String(value).components(separatedBy: ".")
-                newValue = tempArr[0]
+                    newValue = tempArr[0] + " " + unit
             }else{
                 newValue = String(value)
             }
-           
-            
         }
         return newValue
     }
