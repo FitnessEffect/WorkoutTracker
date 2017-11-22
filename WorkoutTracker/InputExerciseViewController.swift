@@ -410,7 +410,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       inputExerciseView.setTitleView(titleStr:name)
       //reset date to current day when knew user is selected
       let currentDate = DateConverter.getCurrentDate()
-      inputExerciseView.saveButton.setTitle(currentDate, for: .normal)
+      inputExerciseView.dateBtn.setTitle(currentDate, for: .normal)
       if name != "Personal"{
          self.checkSessions(dateStr: currentDate, completion: {})
       }else{
