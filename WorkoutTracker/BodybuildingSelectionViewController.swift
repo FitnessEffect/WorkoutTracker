@@ -194,7 +194,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             if selectionBtn.titleLabel?.text == "Superset"{
                 let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
                 let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
-                myExercise.exerciseDescription = lbs[idPounds] + " lbs" + " " + reps[idReps] + " rep(s)"
+                myExercise.exerciseDescription = lbs[idPounds] + " lb(s)" + " " + reps[idReps] + " rep(s)"
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
                 DBService.shared.setSupersetExercise(exercise: myExercise)
                 self.navigationController?.pushViewController(vc, animated: true)

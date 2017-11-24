@@ -233,22 +233,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/BodybuildingSelectionViewController.swift"
-            timestampString = "532045097.733156"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "addExercise(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/HeroWodsViewController.swift"
             timestampString = "532045097.733506"
             startingColumnNumber = "9223372036854775807"
@@ -346,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.854987"
+            timestampString = "533235172.750513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1163"
-            endingLineNumber = "1163"
+            startingLineNumber = "1160"
+            endingLineNumber = "1160"
             landmarkName = "retrieveExerciseData(type:completion:)"
             landmarkType = "7">
             <Locations>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.855454"
+            timestampString = "533235172.750584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1169"
-            endingLineNumber = "1169"
+            startingLineNumber = "1166"
+            endingLineNumber = "1166"
             landmarkName = "retrieveExerciseData(type:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.855718"
+            timestampString = "533235172.750663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1145"
-            endingLineNumber = "1145"
+            startingLineNumber = "1142"
+            endingLineNumber = "1142"
             landmarkName = "retrieveClientExerciseData(type:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.856034"
+            timestampString = "533235172.750822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "890"
-            endingLineNumber = "890"
+            startingLineNumber = "887"
+            endingLineNumber = "887"
             landmarkName = "updateClientPassed(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,7 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "533233191.464145"
+            timestampString = "533235172.750876"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -666,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "533233191.464212"
+            timestampString = "533235172.750921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
@@ -682,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "533233191.464271"
+            timestampString = "533235172.750963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -714,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Formatter.swift"
-            timestampString = "533234168.223766"
+            timestampString = "533235172.75103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -730,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Formatter.swift"
-            timestampString = "533234168.224217"
+            timestampString = "533235172.751071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -746,7 +730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/Formatter.swift"
-            timestampString = "533234168.224439"
+            timestampString = "533235172.751113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -778,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "533233191.464395"
+            timestampString = "533235172.751188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -793,24 +777,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WorkoutTracker/InputExerciseView.swift"
-            timestampString = "533072327.690373"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "fillInExercisePassed(exercise:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/InputExerciseViewController.swift"
-            timestampString = "533233191.464553"
+            timestampString = "533235172.751229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -826,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.856366"
+            timestampString = "533235172.75127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1150"
-            endingLineNumber = "1150"
+            startingLineNumber = "1147"
+            endingLineNumber = "1147"
             landmarkName = "retrieveClientExerciseData(type:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.856594"
+            timestampString = "533235172.751311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1148"
-            endingLineNumber = "1148"
+            startingLineNumber = "1145"
+            endingLineNumber = "1145"
             landmarkName = "retrieveClientExerciseData(type:completion:)"
             landmarkType = "7">
             <Locations>
@@ -858,11 +826,11 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "533234168.440193"
+                  timestampString = "533235172.977915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1148"
-                  endingLineNumber = "1148"
+                  startingLineNumber = "1145"
+                  endingLineNumber = "1145"
                   offsetFromSymbolStart = "432">
                </Location>
                <Location
@@ -873,11 +841,11 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "533234168.44169"
+                  timestampString = "533235172.979962"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1149"
-                  endingLineNumber = "1149"
+                  startingLineNumber = "1146"
+                  endingLineNumber = "1146"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -890,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.856818"
+            timestampString = "533235172.751354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1134"
-            endingLineNumber = "1134"
+            startingLineNumber = "1131"
+            endingLineNumber = "1131"
             landmarkName = "retrieveClientExerciseData(type:completion:)"
             landmarkType = "7">
             <Locations>
@@ -906,11 +874,11 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "533234168.445333"
+                  timestampString = "533235172.983491"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1134"
-                  endingLineNumber = "1134"
+                  startingLineNumber = "1131"
+                  endingLineNumber = "1131"
                   offsetFromSymbolStart = "40">
                </Location>
                <Location
@@ -921,11 +889,11 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift%20Files/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "533234168.447271"
+                  timestampString = "533235172.985033"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1136"
-                  endingLineNumber = "1136"
+                  startingLineNumber = "1133"
+                  endingLineNumber = "1133"
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
@@ -954,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533233827.857053"
+            timestampString = "533235172.751411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "718"
@@ -970,12 +938,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkoutTracker/DBService.swift"
-            timestampString = "533234176.951575"
+            timestampString = "533235172.751658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "741"
-            endingLineNumber = "741"
+            startingLineNumber = "738"
+            endingLineNumber = "738"
             landmarkName = "retrieveExercisesForUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupersetViewController.swift"
+            timestampString = "533235172.751702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkoutTracker/InputExerciseViewController.swift"
+            timestampString = "533235172.752035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "getExercise(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupersetViewController.swift"
+            timestampString = "533235172.752079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "selectBtn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

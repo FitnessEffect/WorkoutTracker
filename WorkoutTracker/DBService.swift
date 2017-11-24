@@ -716,9 +716,6 @@ class DBService {
     
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
-        print(user.uid)
-        print(currentYear)
-        print(currentWeekNumber)
         _ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {

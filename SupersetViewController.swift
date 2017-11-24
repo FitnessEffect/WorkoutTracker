@@ -61,7 +61,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetCustomCell
-        cell.descriptionTextField.text = self.exercises[indexPath.row].exerciseDescription
+        cell.descriptionTextField.text = self.exercises[indexPath.row].name + " " + self.exercises[indexPath.row].exerciseDescription
         cell.numLabel.text = String(indexPath.row + 1)
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
@@ -120,9 +120,9 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
             myExercise.type = "Bodybuilding"
             for exercise in exercises{
                 if myExercise.exerciseDescription == ""{
-                    myExercise.exerciseDescription = exercise.exerciseDescription
+                    myExercise.exerciseDescription = exercise.name + " " + exercise.exerciseDescription
                 }else{
-                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.name + " " + exercise.exerciseDescription
                 }
             }
             myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + sets[idSets] + " set(s)"
