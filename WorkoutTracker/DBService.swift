@@ -716,6 +716,9 @@ class DBService {
     
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
+        print(user.uid)
+        print(currentYear)
+        print(currentWeekNumber)
         _ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
@@ -1142,7 +1145,8 @@ class DBService {
                         if self._selectedProgressDetail == ""{
                             self._selectedProgressDetail = self._progressDetailExercises[0]
                         }
-                        self.retrieveClientProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                        self.retrieveClientProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {
+                            self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
                             completion()
                         })
                     })
@@ -1170,7 +1174,8 @@ class DBService {
                         if self._selectedProgressDetail == ""{
                             self._selectedProgressDetail = self._progressDetailExercises[0]
                         }
-                        self.retrieveProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                        self.retrieveProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {
+                            self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
                             completion()
                         })
                     })

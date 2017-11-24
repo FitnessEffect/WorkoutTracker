@@ -140,27 +140,31 @@ class Formatter{
     
     static func changeTimeToDisplayFormat(secondsStr:String)->String{
         var finalStr = ""
-        let secondsInt = Int(secondsStr)
-        let hours = Int(secondsInt!/60/60)
-        if hours != 0{
-            finalStr.append("\(hours) hour(s) ")
-        }
-        let minutes = (secondsInt! % 3600) / 60
-        if minutes != 0{
-            finalStr.append("\(minutes) min(s) ")
-        }
-        let seconds =  (secondsInt! % 3600) % 60
-        if seconds != 0{
-            finalStr.append("\(seconds) sec(s)")
-        }
-        
-        var chars = Array(finalStr)
-        if chars.last == " "{
-            finalStr.removeAll()
-            chars.removeLast()
-            for char in chars{
-                finalStr.append(char)
+        if !secondsStr.contains("completed"){
+            let secondsInt = Int(secondsStr)
+            let hours = Int(secondsInt!/60/60)
+            if hours != 0{
+                finalStr.append("\(hours) hour(s) ")
             }
+            let minutes = (secondsInt! % 3600) / 60
+            if minutes != 0{
+                finalStr.append("\(minutes) min(s) ")
+            }
+            let seconds =  (secondsInt! % 3600) % 60
+            if seconds != 0{
+                finalStr.append("\(seconds) sec(s)")
+            }
+            
+            var chars = Array(finalStr)
+            if chars.last == " "{
+                finalStr.removeAll()
+                chars.removeLast()
+                for char in chars{
+                    finalStr.append(char)
+                }
+            }
+        }else{
+            finalStr = secondsStr
         }
         return finalStr
     }

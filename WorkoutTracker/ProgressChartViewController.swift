@@ -193,7 +193,6 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
-        //chartView.lineData?.setValueFormatter(MyValueFormatter())
         //sort values by time
         mutableValues = mutableValues.sorted(by: {a, b in
             let dateFormatter = DateFormatter()
