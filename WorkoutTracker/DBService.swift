@@ -1172,8 +1172,13 @@ class DBService {
                             self._selectedProgressDetail = self._progressDetailExercises[0]
                         }
                         self.retrieveProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {
-                            self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
-                            completion()
+                            if self._selectedProgressCategory == "Rowing" || self._selectedProgressCategory == "Cycling" || self._selectedProgressCategory == "Running"{
+                                self._defaultChartTitle = self._selectedProgressCategory + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                                completion()
+                            }else{
+                                self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                                completion()
+                            }
                         })
                     })
                 }else{
