@@ -153,7 +153,7 @@ class InputExerciseViewController: UIViewController, UIPopoverPresentationContro
       DBService.shared.setPassedClientToPersonal()
       DBService.shared.setEdit(bool: false)
       DBService.shared.setExSessionEdit(bool: false)
-      DBService.shared.setPassedDate(dateStr: DateConverter.getCurrentDate())
+      DBService.shared.passedDate = DateConverter.getCurrentDate()
    }
    
    func presentAlert(){

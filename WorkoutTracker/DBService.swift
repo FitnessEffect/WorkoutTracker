@@ -1393,29 +1393,29 @@ class DBService {
         _passedClient.firstName = "Personal"
     }
     
-    func setDateRange(dateRange:String){
-        _dateRange = dateRange
-    }
+//    func setDateRange(dateRange:String){
+//        _dateRange = dateRange
+//    }
     
-    func setPassedDate(dateStr:String){
-        _passedDate = dateStr
-    }
+//    func setPassedDate(dateStr:String){
+//        _passedDate = dateStr
+//    }
     
-    func setPassToNextVC(bool:Bool){
-        _passToNextVC = bool
-    }
+//    func setPassToNextVC(bool:Bool){
+//        _passToNextVC = bool
+//    }
     
-    func setSelectedProgressCategory(categoryStr:String){
-        _selectedProgressCategory = categoryStr
-    }
+//    func setSelectedProgressCategory(categoryStr:String){
+//        _selectedProgressCategory = categoryStr
+//    }
     
-    func setSelectedProgressExercise(exerciseStr:String){
-        _selectedProgressExercise = exerciseStr
-    }
+//    func setSelectedProgressExercise(exerciseStr:String){
+//        _selectedProgressExercise = exerciseStr
+//    }
     
-    func setSelectedProgressDetail(detail:String){
-        _selectedProgressDetail = detail
-    }
+//    func setSelectedProgressDetail(detail:String){
+//        _selectedProgressDetail = detail
+//    }
     
     func initializeData(){
         self._ref.child("types").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -1624,11 +1624,16 @@ class DBService {
         get{
             return _dateRange
         }
+        set(dateRange){
+            _dateRange = dateRange
+        }
     }
     
     var passedDate:String{
         get{
             return _passedDate
+        }set(dateStr){
+            _passedDate = dateStr
         }
     }
     
@@ -1641,6 +1646,9 @@ class DBService {
     var passToNextVC:Bool{
         get{
             return _passToNextVC
+        }
+        set(bool){
+            _passToNextVC = bool
         }
     }
     
@@ -1684,11 +1692,17 @@ class DBService {
         get{
             return _selectedProgressCategory
         }
+        set(categoryStr){
+            _selectedProgressCategory = categoryStr
+        }
     }
     
     var selectedProgressExercise:String{
         get{
             return _selectedProgressExercise
+        }
+        set(exerciseStr){
+             _selectedProgressExercise = exerciseStr
         }
     }
     
@@ -1701,6 +1715,9 @@ class DBService {
     var selectedProgressDetail:String{
         get{
             return _selectedProgressDetail
+        }
+        set(detail){
+            _selectedProgressDetail = detail
         }
     }
 }

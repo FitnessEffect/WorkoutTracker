@@ -238,7 +238,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! InputExerciseViewController
         DBService.shared.setCurrentDay(day: title!)
-        DBService.shared.setPassedDate(dateStr: calculatedDateStr)
+        DBService.shared.passedDate = calculatedDateStr
         self.navigationController?.pushViewController(popController, animated: true)
     }
     

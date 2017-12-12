@@ -20,7 +20,7 @@ class NavigationViewController: UINavigationController {
         if passToNextVC == true{
             passToNextVC = false
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "clientID") as! ClientViewController
-            DBService.shared.setPassToNextVC(bool: true)
+            DBService.shared.passToNextVC = true
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }

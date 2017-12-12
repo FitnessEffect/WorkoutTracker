@@ -78,7 +78,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if DBService.shared.passToNextVC == true{
             callCreateSession()
-            DBService.shared.setPassToNextVC(bool:false)
+            DBService.shared.passToNextVC = false
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
     }
@@ -448,7 +448,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "sessionDetailSegue"){
             DBService.shared.setPassedClient(client: clientPassed)
-            DBService.shared.setDateRange(dateRange:(dateBtn.titleLabel?.text)!)
+            DBService.shared.dateRange = (dateBtn.titleLabel?.text)!
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
             let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! SessionCustomCell
             for i in 0...self.sessionsArray.count{

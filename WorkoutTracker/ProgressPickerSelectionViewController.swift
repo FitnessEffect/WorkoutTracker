@@ -74,7 +74,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
     
     func setExerciseNamesForCategory(categoryPassed:String){
         exerciseNames.removeAll()
-        DBService.shared.setSelectedProgressCategory(categoryStr: categoryPassed)
+        DBService.shared.selectedProgressCategory = categoryPassed
         if DBService.shared.passedClient.clientKey != ""{
             spinnerExercise.startAnimating()
             UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
@@ -84,7 +84,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                     self.spinnerExercise.stopAnimating()
                     self.exerciseNames = DBService.shared.progressExerciseNames
                     if self.exerciseNames.count != 0{
-                        DBService.shared.setSelectedProgressExercise(exerciseStr: self.exerciseNames[0])
+                        DBService.shared.selectedProgressExercise = self.exerciseNames[0]
                         self.setDetailsForExerciseName(exerciseName: DBService.shared.selectedProgressExercise)
                     }
                     self.exercisePicker.reloadAllComponents()
@@ -106,7 +106,7 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
                     self.spinnerExercise.stopAnimating()
                     self.exerciseNames = DBService.shared.progressExerciseNames
                     if self.exerciseNames.count != 0{
-                        DBService.shared.setSelectedProgressExercise(exerciseStr: self.exerciseNames[0])
+                        DBService.shared.selectedProgressExercise = self.exerciseNames[0]
                         self.setDetailsForExerciseName(exerciseName: DBService.shared.selectedProgressExercise)
                     }
                     self.exercisePicker.reloadAllComponents()
@@ -192,13 +192,13 @@ class ProgressPickerSelectionViewController: UIViewController, UIPickerViewDeleg
         if pickerView.tag == 0{
             let category = categories[categoryPicker.selectedRow(inComponent: 0)]
             setExerciseNamesForCategory(categoryPassed: categories[categoryPicker.selectedRow(inComponent: 0)])
-            DBService.shared.setSelectedProgressCategory(categoryStr: category)
+            DBService.shared.selectedProgressCategory = category
         }else if pickerView.tag == 1{
             let exName = exerciseNames[exercisePicker.selectedRow(inComponent: 0)]
             setDetailsForExerciseName(exerciseName: exerciseNames[exercisePicker.selectedRow(inComponent: 0)])
-            DBService.shared.setSelectedProgressExercise(exerciseStr: exName)
+            DBService.shared.selectedProgressExercise = exName
         }else{
-            DBService.shared.setSelectedProgressDetail(detail: details[detailPicker.selectedRow(inComponent: 0)])
+            DBService.shared.selectedProgressDetail = details[detailPicker.selectedRow(inComponent: 0)]
         }
     }
     
