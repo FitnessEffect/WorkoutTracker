@@ -187,12 +187,15 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
         chartView.xAxis.drawLabelsEnabled = true
         chartView.xAxis.axisMinimum = 0.0
         chartView.xAxis.axisMaximum = Double(values.count+1)
-        chartView.xAxis.labelCount = values.count
+        chartView.xAxis.labelCount = 4
         chartView.legend.enabled = false
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
         chartView.leftAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.rightAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
         chartView.xAxis.labelFont = UIFont(name: "DJBCHALKITUP", size: 15)!
+        chartView.xAxis.granularityEnabled = true
+        chartView.xAxis.granularity = 1
+        
         //sort values by time
         mutableValues = mutableValues.sorted(by: {a, b in
             let dateFormatter = DateFormatter()
@@ -360,25 +363,20 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 // MARK: axisFormatDelegate
 extension ProgressChartViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-//        if value == axis?.entries.last || value == axis?.entries.first{
-//            return ""
-//        }
-//        let strValue = String(value)
-//        if strValue.contains(".0"){
-//            var tempArr = strValue.components(separatedBy: ".")
-//            return tempArr[0]
-//        }
-//        if value == 0.0 || value == Double(dataValues.count) + 1{
-//            return ""
-//        }
-//        return String(value)
         let valuePassed = value
         if Int(valuePassed) == 0 || Int(valuePassed) > dataValues.count{
+            if dataValues.count == 1{
+                let dataTuple = dataValues[Int(valuePassed)-1]
+                let date = dataTuple.key
+                let formattedDate = DateConverter.formatFullDateForGraphDisplay(date:date)
+                return formattedDate
+            }
             return ""
         }else{
             let dataTuple = dataValues[Int(valuePassed)-1]
             let date = dataTuple.key
-            return date
+            let formattedDate = DateConverter.formatFullDateForGraphDisplay(date:date)
+            return formattedDate
         }
     }
 }

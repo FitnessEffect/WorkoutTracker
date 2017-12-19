@@ -63,9 +63,9 @@ class DateConverter{
             let tempArray = dateString.components(separatedBy: "(")
             originalDate = Int64(tempArray[1])!
             let gmt = array1[1]
-            var convertedDate = gmt.replacingOccurrences(of: ")", with: "")
+            let convertedDate = gmt.replacingOccurrences(of: ")", with: "")
             
-            if convertedDate.characters.first == "0"{
+            if convertedDate.first == "0"{
                 let index = convertedDate.index(convertedDate.startIndex, offsetBy: 1)
                 hours = Int(convertedDate.substring(from: index))!/100
             }else{
@@ -78,8 +78,8 @@ class DateConverter{
                 originalDate = Int64(tempArray[1])!
                 
                 let gmt = array2[1]
-                var convertedDate = gmt.replacingOccurrences(of: ")", with: "")
-                if convertedDate.characters.first == "0"{
+                let convertedDate = gmt.replacingOccurrences(of: ")", with: "")
+                if convertedDate.first == "0"{
                     let index = convertedDate.index(convertedDate.startIndex, offsetBy: 1)
                     hours = (Int(convertedDate.substring(from: index))!/100) * -1
                 }else{
@@ -265,5 +265,14 @@ class DateConverter{
         let today_string = String(year!) + "-" + String(month!) + "-" + String(day!) + " " + String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
         
         return today_string
+    }
+    
+    static func formatFullDateForGraphDisplay(date:String)->String{
+        let tempArr = date.components(separatedBy: " ")
+        var tempArr2 = tempArr[0].components(separatedBy: "-")
+        tempArr2[0].removeFirst()
+        tempArr2[0].removeFirst()
+        let newDate = tempArr2[1] + "/" + tempArr2[2] + "/" + tempArr2[0]
+        return newDate
     }
 }
