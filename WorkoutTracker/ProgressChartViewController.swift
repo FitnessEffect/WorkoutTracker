@@ -360,18 +360,26 @@ class ProgressChartViewController: UIViewController, UIPopoverPresentationContro
 // MARK: axisFormatDelegate
 extension ProgressChartViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        if value == axis?.entries.last || value == axis?.entries.first{
+//        if value == axis?.entries.last || value == axis?.entries.first{
+//            return ""
+//        }
+//        let strValue = String(value)
+//        if strValue.contains(".0"){
+//            var tempArr = strValue.components(separatedBy: ".")
+//            return tempArr[0]
+//        }
+//        if value == 0.0 || value == Double(dataValues.count) + 1{
+//            return ""
+//        }
+//        return String(value)
+        let valuePassed = value
+        if Int(valuePassed) == 0 || Int(valuePassed) > dataValues.count{
             return ""
+        }else{
+            let dataTuple = dataValues[Int(valuePassed)-1]
+            let date = dataTuple.key
+            return date
         }
-        let strValue = String(value)
-        if strValue.contains(".0"){
-            var tempArr = strValue.components(separatedBy: ".")
-            return tempArr[0]
-        }
-        if value == 0.0 || value == Double(dataValues.count) + 1{
-            return ""
-        }
-        return String(value)
     }
 }
 

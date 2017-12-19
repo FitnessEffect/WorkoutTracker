@@ -1393,30 +1393,6 @@ class DBService {
         _passedClient.firstName = "Personal"
     }
     
-//    func setDateRange(dateRange:String){
-//        _dateRange = dateRange
-//    }
-    
-//    func setPassedDate(dateStr:String){
-//        _passedDate = dateStr
-//    }
-    
-//    func setPassToNextVC(bool:Bool){
-//        _passToNextVC = bool
-//    }
-    
-//    func setSelectedProgressCategory(categoryStr:String){
-//        _selectedProgressCategory = categoryStr
-//    }
-    
-//    func setSelectedProgressExercise(exerciseStr:String){
-//        _selectedProgressExercise = exerciseStr
-//    }
-    
-//    func setSelectedProgressDetail(detail:String){
-//        _selectedProgressDetail = detail
-//    }
-    
     func initializeData(){
         self._ref.child("types").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
