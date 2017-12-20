@@ -365,7 +365,7 @@ extension ProgressChartViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let valuePassed = value
         if Int(valuePassed) == 0 || Int(valuePassed) > dataValues.count{
-            if dataValues.count == 1{
+            if Int(value) == 1{
                 let dataTuple = dataValues[Int(valuePassed)-1]
                 let date = dataTuple.key
                 let formattedDate = DateConverter.formatFullDateForGraphDisplay(date:date)
