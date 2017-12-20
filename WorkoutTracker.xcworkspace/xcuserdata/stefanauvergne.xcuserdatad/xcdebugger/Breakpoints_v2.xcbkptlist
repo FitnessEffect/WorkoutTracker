@@ -826,12 +826,12 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "535344337.81182"
+                  timestampString = "535429247.597117"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1145"
                   endingLineNumber = "1145"
-                  offsetFromSymbolStart = "592">
+                  offsetFromSymbolStart = "432">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -841,12 +841,12 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "535344337.813317"
+                  timestampString = "535429247.598509"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1146"
                   endingLineNumber = "1146"
-                  offsetFromSymbolStart = "25">
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -874,12 +874,12 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "535344337.816807"
+                  timestampString = "535429247.602018"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1131"
                   endingLineNumber = "1131"
-                  offsetFromSymbolStart = "34">
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -889,7 +889,7 @@
                   moduleName = "WorkoutTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stefanauvergne/Desktop/Swift/WorkoutTracker%20/WorkoutTracker/DBService.swift"
-                  timestampString = "535344337.818207"
+                  timestampString = "535429247.60342"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1133"
@@ -1039,8 +1039,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
             endingLineNumber = "390"
-            landmarkName = "stringForValue(_:axis:)"
-            landmarkType = "7">
+            landmarkName = "MyValueFormatter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
