@@ -24,7 +24,6 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
         
         title = categoryPassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         
         if categoryPassed == "1 Rep Max"{
             let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
@@ -33,11 +32,11 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         }
         
-        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+         spinner.frame = CGRect(x:(self.pickerOutlet.frame.width/2)-75, y:(self.pickerOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         spinner.alpha = 0
-        view.addSubview(spinner)
+        pickerOutlet.addSubview(spinner)
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,28 +44,36 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if categoryPassed == "1 Rep Max"{
-            spinner.startAnimating()
-            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-            DispatchQueue.global(qos: .userInteractive).async {
-                DBService.shared.retrieveCrossfitCategoryExercises(completion: {
-                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                    self.spinner.stopAnimating()
-                    self.exercises = DBService.shared.exercisesForCrossfitCategory
-                    self.pickerOutlet.reloadAllComponents()
-                })
-            }
-            pickerOutlet.isUserInteractionEnabled = true
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         }else{
-            spinner.startAnimating()
-            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-            DispatchQueue.global(qos: .userInteractive).async {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                DBService.shared.retrieveHeroWods(completion:{
-                    self.exercises = DBService.shared.crossfitHeroWods
-                    self.pickerOutlet.reloadAllComponents()
-                })
+            if categoryPassed == "1 Rep Max"{
+                spinner.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+                DispatchQueue.global(qos: .userInteractive).async {
+                    DBService.shared.retrieveCrossfitCategoryExercises(completion: {
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                        self.exercises = DBService.shared.exercisesForCrossfitCategory
+                        self.pickerOutlet.reloadAllComponents()
+                    })
+                }
+                pickerOutlet.isUserInteractionEnabled = true
+            }else{
+                spinner.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+                DispatchQueue.global(qos: .userInteractive).async {
+                    DBService.shared.retrieveHeroWods(completion:{
+                        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                        self.spinner.stopAnimating()
+                        self.exercises = DBService.shared.crossfitHeroWods
+                        self.pickerOutlet.reloadAllComponents()
+                    })
+                }
             }
         }
     }
@@ -110,9 +117,9 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             })
         }else{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
-            myExercise.name = "1 Rep Max"
+            myExercise.name = exercises[id]
             myExercise.category = "1 Rep Max"
-            myExercise.exerciseDescription = exercises[id]
+            myExercise.exerciseDescription = "1 Rep Max"
             myExercise.type = "Crossfit"
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
         }
@@ -122,7 +129,7 @@ class HeroWodsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = exercises[row]
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 28.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 28.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

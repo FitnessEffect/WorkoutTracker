@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         registerView.isHidden = true
     }
     
-    func swipe(_ sender:UISwipeGestureRecognizer){
+    @objc func swipe(_ sender:UISwipeGestureRecognizer){
         self.view.endEditing(true)
         let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         if registerView.isHidden == true{
@@ -72,11 +72,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 self.registerView.isHidden = true
             })
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setAuthListener() {
@@ -96,6 +91,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                         let formattedEmail = Formatter.formateEmail(email: (u?.email)!)
                         self.ref.child("emails").updateChildValues([formattedEmail:user!.uid])
                     }
+                    //remove stored passed client if it exist
+                    DBService.shared.passedClient.clientKey = ""
                     //called only for login
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc =   storyboard.instantiateViewController(withIdentifier: "inputNavID") as! UINavigationController
@@ -105,7 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }) as? UInt
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTF.frame.contains(sender.location(in: view)){
             if emailTF.isEditing{
                 self.view.endEditing(true)
@@ -137,31 +134,76 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         self.prefs.set(sender.isOn, forKey: "switch")
     }
     
+    @IBAction func recoverPasswordBtn(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Recover Password", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
+
+        alertController.addTextField{ (textField : UITextField!) -> Void in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            if alertController.textFields![0].text != ""{
+                FIRAuth.auth()?.sendPasswordReset(withEmail: alertController.textFields![0].text!) { error in
+                    
+                    if error != nil
+                    {
+                        // Error - Unidentified Email
+                        let errorAlert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(errorAlert, animated: true, completion:nil)
+                    }
+                    else
+                    {
+                        // Success - Sent recovery email
+                        let alert = UIAlertController(title: "Success", message: "Password Sent!", preferredStyle: UIAlertControllerStyle.alert)
+                        self.present(alert, animated: true, completion: {DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                            self.dismiss(animated: true, completion: nil)
+                        })})
+                    }
+                }
+            }else{
+                let alert = UIAlertController(title: "Error", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion:nil)
+    }
+    
+    func setAnimations(txtField:UITextField) {
+        let animationLayer = AnimatableLayer()
+        txtField.layer.addSublayer(animationLayer)
+        let anim = animationLayer.shake(from: CGPoint(x:txtField.center.x - 4, y: txtField.center.y), to: CGPoint(x:txtField.center.x + 4, y: txtField.center.y))
+        txtField.layer.add(anim, forKey: "position")
+    }
+    
     @IBAction func login(_ sender: UIButton) {
-        if (passwordTF.text?.characters.count) == 0{
-            print("Invalid Password")
-            let alert = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }else if (emailTF.text?.characters.count)! == 0{
-            print("Invalid Eamil")
-            let alert = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        if (emailTF.text?.count) == 0{
+            setAnimations(txtField: emailTF)
+        }else if (passwordTF.text?.count)! == 0{
+            setAnimations(txtField: passwordTF)
         }else{
-            FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(success) in
-                if success.0 == nil{
-                    let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
+            FIRAuth.auth()?.signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion:{(user, error) in
+                if user == nil{
+                    let internetCheck = Reachability.isInternetAvailable()
+                    if internetCheck == false{
+                        let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }else{
+                        let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }else{
                     self.prefs.set(self.emailTF.text, forKey: "email")
                     self.prefs.set(self.passwordTF.text, forKey:"password")
                     self.prefs.set(self.rememberMeSwitch.isOn, forKey:"switch")
                     self.setAuthListener()
                 }
-                
             })
         }
     }

@@ -18,6 +18,7 @@ class SelectExerciseForMetconViewController: UIViewController, UIPickerViewDeleg
     var lbs = [String]()
     var exercises = [String]()
     var categoryPassed = ""
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +35,34 @@ class SelectExerciseForMetconViewController: UIViewController, UIPickerViewDeleg
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
+        
+        spinner.frame = CGRect(x:(self.exercisePicker.frame.width/2)-65, y:(self.exercisePicker.frame.height/2)-25, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        spinner.alpha = 0
+        exercisePicker.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DBService.shared.setCategory(category: "1 Rep Max")
-        DBService.shared.retrieveCrossfitCategoryExercises(completion: {
-            self.exercises = DBService.shared.exercisesForCrossfitCategory
-            self.exercisePicker.reloadAllComponents()
-        })
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                DBService.shared.retrieveCrossfitCategoryExercises(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForCrossfitCategory
+                    self.exercisePicker.reloadAllComponents()
+                })
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,7 +74,7 @@ class SelectExerciseForMetconViewController: UIViewController, UIPickerViewDeleg
         categoryPassed = category
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCrossfitExerciseID") as! CreateCrossfitExerciseViewController
         popController.setCategory(category:categoryPassed)
@@ -127,7 +148,7 @@ class SelectExerciseForMetconViewController: UIViewController, UIPickerViewDeleg
                 label.text = lbs[row]
             }
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

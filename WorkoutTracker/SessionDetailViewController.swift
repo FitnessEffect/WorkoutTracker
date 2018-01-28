@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SessionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
@@ -14,17 +15,22 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var paidBtn: UIButton!
     @IBOutlet weak var durationBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noExerciseLabel: UILabel!
+    @IBOutlet weak var exerciseLabel: UILabel!
     
     var exercises = [Exercise]()
     var session:Session!
     var calculatedDateStr = ""
-
+    var spinner = UIActivityIndicatorView()
+    var ref:FIRDatabaseReference!
+    var user:FIRUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        user = FIRAuth.auth()?.currentUser
+        ref = FIRDatabase.database().reference()
+        noExerciseLabel.alpha = 0
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
@@ -34,27 +40,81 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         let tableViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnTableView(_:)))
         tableView.addGestureRecognizer(tableViewTapGesture)
+        
+        spinner.frame = CGRect(x:(self.tableView.frame.width/2)-25, y:(self.tableView.frame.height/2)-75, width:50, height:50)
+        spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinner.color = UIColor.white
+        spinner.alpha = 0
+        tableView.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
+        
         //setup session info
-       session = DBService.shared.passedSession
+        session = DBService.shared.passedSession
         title = session.day
         sessionName.text = session.sessionName
         durationBtn.setTitle(String(session.duration), for: .normal)
         if session.paid == false{
-           setPaidBtnToFalse()
+            setPaidBtnToFalse()
         }else{
             setPaidBtnToTrue()
         }
-        
-        //setup exercises in session
-        DBService.shared.retrieveExerciseListFromSessionKey(keyStr: session.key, completion: {
-            self.exercises = DBService.shared.exercisesForClient
-            self.tableView.reloadData()
-        })
-        
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                //setup exercises in session
+                DBService.shared.retrieveExerciseListFromSessionKey(keyStr: self.session.key, completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exercises.removeAll()
+                    self.exercises = DBService.shared.exercisesForClient
+                    self.exercises.sort(by: {a, b in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "M/d/y"
+                        let dateA = dateFormatter.date(from: a.date)!
+                        let dateB = dateFormatter.date(from: b.date)!
+                        if dateA == dateB{
+                            let dateFormatter2 = DateFormatter()
+                            dateFormatter2.dateFormat = "y-M-d HH:mm:ss"
+                            let uploadA = dateFormatter2.date(from:a.uploadTime)!
+                            let uploadB = dateFormatter2.date(from:b.uploadTime)!
+                            if uploadA > uploadB {
+                                return true
+                            }else{
+                                return false
+                            }
+                        }else if dateA > dateB {
+                            return true
+                        }else{
+                            return false
+                        }
+                    })
+                    self.tableView.reloadData()
+                    if self.exercises.count == 0{
+                        self.noExerciseLabel.alpha = 1
+                        self.exerciseLabel.alpha = 0
+                    }else{
+                        self.noExerciseLabel.alpha = 0
+                        self.exerciseLabel.alpha = 1
+                        
+                    }
+                })
+            }
+        }
         calculatedDateStr = calculateDate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
     
     //find day number from day name and return entire date
@@ -91,7 +151,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         let lastDay = Int(tempArrLastDate[1])!
         let lastYear = tempArrLastDate[2]
         
-         let daysInMonth = DateConverter.getDaysInMonth(monthNum: Int(firstMonth)!, year: Int(firstYear)!)
+        let daysInMonth = DateConverter.getDaysInMonth(monthNum: Int(firstMonth)!, year: Int(firstYear)!)
         
         for _ in 0...100{
             if count == 1{
@@ -99,10 +159,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 2{
                 var temp = 0
                 temp = firstDay + 1
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -114,10 +174,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 var temp = 0
                 temp = firstDay + 2
                 
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -128,10 +188,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 4{
                 var temp = 0
                 temp = firstDay + 3
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -142,10 +202,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 5{
                 var temp = 0
                 temp = firstDay + 4
-                if temp == daysInMonth{
-                   return String(lastMonth) + "/01/" + String(lastYear)
+                if temp == daysInMonth + 1{
+                    return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -156,10 +216,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }else if count == 6{
                 var temp = 0
                 temp = firstDay + 5
-                if temp == daysInMonth{
+                if temp == daysInMonth + 1{
                     return String(lastMonth) + "/01/" + String(lastYear)
                 }else{
-                    if String(temp).characters.count != 2{
+                    if String(temp).count != 2{
                         let strTemp = "0" + String(temp)
                         
                         return String(firstMonth) + "/" + String(strTemp) + "/" + String(firstYear)
@@ -171,21 +231,20 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 return (lastMonth + "/" + String(lastDay) + "/" + lastYear)
             }
         }
-       return ""
+        return ""
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputVC") as! InputExerciseViewController
         DBService.shared.setCurrentDay(day: title!)
-        DBService.shared.setPassedDate(dateStr: calculatedDateStr)
-        
+        DBService.shared.passedDate = calculatedDateStr
         self.navigationController?.pushViewController(popController, animated: true)
     }
-
+    
     func setPaidBtnToTrue(){
         paidBtn.setTitle("Paid", for: .normal)
-        paidBtn.setTitleColor(UIColor(red: 0.0/255.0, green: 131.0/255.0, blue: 0.0/255.0, alpha: 1.0), for: .normal)
+        paidBtn.setTitleColor(UIColor(red: 0.0/255.0, green: 165.0/255.0, blue: 0.0/255.0, alpha: 1.0), for: .normal)
     }
     
     func setPaidBtnToFalse(){
@@ -208,17 +267,20 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 250)
+        popController.preferredContentSize = CGSize(width: 300, height: 230)
         popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
+        popController.setDuration(duration:(durationBtn.titleLabel?.text)!)
         // present the popover
         self.present(popController, animated: true, completion: nil)
-
+        
     }
     
     func saveResult(result:String){
         let formattedResult = Formatter.formatDurationResult(str:result)
-        durationBtn.setTitle(formattedResult, for: .normal)
-        DBService.shared.saveDurationForSession(str:formattedResult)
+        DBService.shared.saveDurationForSession(str:formattedResult, completion: {
+            str in
+            self.durationBtn.setTitle(str, for: .normal)
+        })
     }
     
     @IBAction func paidBtn(_ sender: UIButton) {
@@ -226,7 +288,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
             DBService.shared.updatePaidForSession(boolean: true, completion: {self.setPaidBtnToTrue()
             })
         }else{
-             DBService.shared.updatePaidForSession(boolean: false, completion: {self.setPaidBtnToFalse()})
+            DBService.shared.updatePaidForSession(boolean: false, completion: {self.setPaidBtnToFalse()})
         }
     }
     
@@ -242,25 +304,45 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseCustomCell
         if exercises.count != 0{
-        let exercise = exercises[(indexPath as NSIndexPath).row]
-        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
-        cell.numberOutlet.text = String(indexPath.row + 1)
-        cell.setExerciseKey(key: exercise.exerciseKey)
+            let exercise = exercises[(indexPath as NSIndexPath).row]
+            //check if exercise.result is a time in seconds
+            if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
+                if exercise.type == "Endurance"{
+                    cell.titleOutlet.text = exercise.category + " (" + exercise.result + ")"
+                }else{
+                    cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+                }
+            }else{
+                let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
+                if exercise.type == "Endurance"{
+                    cell.titleOutlet.text = exercise.category + " (" + resultFormated + ")"
+                }else{
+                    cell.titleOutlet.text = exercise.name + " (" + resultFormated + ")"
+                }
+            }
+            cell.numberOutlet.text = String(indexPath.row + 1)
+            cell.setExerciseKey(key: exercise.exerciseKey)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this client?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Exercise?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let ex = self.exercises[indexPath.row]
                 DBService.shared.deleteExerciseForClient(exercise: ex, completion: {
-                tableView.reloadData()
+                    self.exercises.remove(at: (indexPath as NSIndexPath).row)
+                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    self.tableView.reloadData()
+                    if self.exercises.count == 0{
+                        self.noExerciseLabel.alpha = 1
+                        self.exerciseLabel.alpha = 0
+                    }else{
+                        self.noExerciseLabel.alpha = 0
+                        self.exerciseLabel.alpha = 1
+                    }
                 })
-                self.exercises.remove(at: (indexPath as NSIndexPath).row)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                DBService.shared.passedClient.firstName = "Personal"
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
@@ -268,7 +350,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+    @objc func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableView)
         let row = tableView.indexPathForRow(at: touchPoint)?.row
         if row != nil{

@@ -19,14 +19,13 @@ class CrossfitCategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         typePassed = "Crossfit"
         title = typePassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         
-        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.frame = CGRect(x:125, y:125, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         spinner.alpha = 0
@@ -38,19 +37,27 @@ class CrossfitCategoryTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInteractive).async {
-            DBService.shared.retrieveCrossfitCategories(completion: {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.categories = DBService.shared.crossfitCategories
-                self.tableView.reloadData()
-            })
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                DBService.shared.retrieveCrossfitCategories(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.categories = DBService.shared.crossfitCategories
+                    self.tableView.reloadData()
+                })
+            }
         }
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if tableView.frame.contains(sender.location(in: view)){
             cellClicked(x: sender.location(in: view))
         }

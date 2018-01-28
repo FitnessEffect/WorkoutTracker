@@ -19,8 +19,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         super.viewDidLoad()
         typePassed = "Bodybuilding"
         title = typePassed
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
+
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Background.png"))
         self.tableView.backgroundView?.alpha = 0.1
         
@@ -33,7 +32,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         
-        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+        spinner.frame = CGRect(x:125, y:125, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         spinner.alpha = 0
@@ -45,26 +44,34 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInteractive).async {
-            DBService.shared.retrieveBodybuildingCategories(completion: {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.categories = DBService.shared.bodybuildingCategories
-                self.tableView.reloadData()
-            })
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                DBService.shared.retrieveBodybuildingCategories(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.categories = DBService.shared.bodybuildingCategories
+                    self.tableView.reloadData()
+                })
+            }
         }
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createCategoryID") as! CreateBodybuildingCategoryViewController
         popController.typePassed = "Bodybuilding"
         self.navigationController?.pushViewController(popController, animated: true)
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if tableView.frame.contains(sender.location(in: view)){
             cellClicked(x: sender.location(in: view))
         }
@@ -83,6 +90,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
         cell.textLabel?.text = self.categories[indexPath.row]
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
+        cell.accessibilityIdentifier = "Category" + String(indexPath.row)
         return cell
     }
     
@@ -111,7 +119,7 @@ class BodybuildingCategoryTableViewController: UITableViewController, UIPopoverP
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this category?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Category?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.categories[x]

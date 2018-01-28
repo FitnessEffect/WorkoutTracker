@@ -51,8 +51,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
         }else{
             milesLabel.alpha = 1
         }
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-        segmentedControl.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
+        segmentedControl.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "Have a Great Day", size: 20)!], for: UIControlState.normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -129,23 +128,23 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
     }
     
     @IBAction func addExercise(_ sender: UIButton) {
-        myExercise.name = self.title!
+        myExercise.category = self.title!
         myExercise.type = "Endurance"
         
         if segmentedControl.selectedSegmentIndex == 0{
-            myExercise.category = "Distance"
+            myExercise.name = "Distance"
         }else{
-            myExercise.category = "Time"
+            myExercise.name = "Time"
         }
         
         if segmentedControl.selectedSegmentIndex == 0{
             let id:Int = pickerOutlet.selectedRow(inComponent: 0)
             if categoryPassed == "Rowing"{
-                myExercise.exerciseDescription = "For " + meters[id] + " meter(s) "
+                myExercise.exerciseDescription = meters[id] + " meter(s) "
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }else{
-                myExercise.exerciseDescription = "For " +  miles[id] + " mile(s) "
+                myExercise.exerciseDescription = miles[id] + " mile(s) "
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 dismiss(animated: true, completion: nil)
             }
@@ -153,7 +152,8 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
             let idHours:Int = pickerOutlet.selectedRow(inComponent: 0)
             let idMinutes:Int = pickerOutlet.selectedRow(inComponent: 1)
             let idSeconds:Int = pickerOutlet.selectedRow(inComponent: 2)
-            myExercise.exerciseDescription = "For " + hours[idHours] + " hour(s) " + minutes[idMinutes] + " minute(s) " + seconds[idSeconds] + " second(s) "
+            myExercise.exerciseDescription = hours[idHours] + " hour(s) " + minutes[idMinutes] + " minute(s) " + seconds[idSeconds] + " second(s) "
+            myExercise.exerciseDescription = Formatter.formatResult(str: myExercise.exerciseDescription)
             NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
             dismiss(animated: true, completion: nil)
         }
@@ -176,7 +176,7 @@ class EnduranceSelectionViewController: UIViewController, UIPickerViewDataSource
                 label.text = seconds[row]
             }
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

@@ -6,6 +6,8 @@
 //  Copyright © 2017 Stefan Auvergne. All rights reserved.
 //
 
+//Firebase Endurance Exercise Hierarchy: Type > Category > Name > Detail > exerciseKey
+
 import Foundation
 import Firebase
 
@@ -50,6 +52,16 @@ class DBService {
     private var _dateRange = ""
     private var _exSessionEdit = false
     private var _passToNextVC = false
+    private var _progressData = [(key: String, value: String)]()
+    private var _progressTypes = [String]()
+    private var _progressCategories = [String]()
+    private var _progressTypePassed:String!
+    private var _progressExerciseNames = [String]()
+    private var _defaultChartTitle = ""
+    private var _selectedProgressCategory = ""
+    private var _selectedProgressExercise = ""
+    private var _progressDetailExercises = [String]()
+    private var _selectedProgressDetail = ""
     
     private init() {
         initDatabase()
@@ -68,9 +80,9 @@ class DBService {
             retrieveExercisesForUser(completion: {
                 self._exercisesForUser.sort(by: {a, b in
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yyyy"
-                    let dateA = dateFormatter.date(from: a.date)!
-                    let dateB = dateFormatter.date(from: b.date)!
+                    dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+                    let dateA = dateFormatter.date(from: a.uploadTime)!
+                    let dateB = dateFormatter.date(from: b.uploadTime)!
                     if dateA > dateB {
                         return true
                     }
@@ -100,10 +112,21 @@ class DBService {
         })
     }
     
+    func sortDataByDate(){
+        _progressData = self._progressData.sorted(by: {a, b in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-M-d HH:mm:ss"
+            let dateA = dateFormatter.date(from: a.key)!
+            let dateB = dateFormatter.date(from: b.key)!
+            if dateA < dateB {
+                return true
+            }
+            return false
+        })
+    }
+    
     func checkOpponentEmail(email:String, completion:@escaping ()->Void){
-        
         _ref.child("emails").observeSingleEvent(of: .value, with: { (snapshot) in
-            
             // Get user value
             let value = snapshot.value as! NSDictionary
             let keys = value.allKeys as! [String]
@@ -143,15 +166,20 @@ class DBService {
         _passedSession = session
     }
     
-    func updateNewClient(newClient: [String:Any], completion:@escaping ()->Void) {
+    func updateClient(newClient: [String:Any], completion:@escaping ()->Void) {
         _ref.child("users").child(_user.uid).child("Clients").child(newClient["clientKey"] as! String).updateChildValues(newClient)
         retrieveClients(completion: {
             completion()
         })
     }
     
-    func updateProfileStats(newStats: [String:Any], completion:@escaping ()->Void) {
-        _ref.child("users").child(_user.uid).child("Profile").updateChildValues(newStats)
+    func addDataToPersonalProgress(selection:String, newData: [String:String], completion:@escaping ()->Void) {
+        _ref.child("users").child(_user.uid).child("Progress").child(selection).updateChildValues(newData)
+        completion()
+    }
+    
+    func addDataToClientProgress(selection:String, newData: [String:String], completion:@escaping ()->Void) {
+        _ref.child("users").child(_user.uid).child("Clients").child(_passedClient.clientKey).child("Progress").child(selection).updateChildValues(newData)
         completion()
     }
     
@@ -175,20 +203,26 @@ class DBService {
     }
     
     func updateExerciseForClient(exerciseDictionary:[String:Any], completion: () -> Void){
-                self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        //update firebase client session and client date branch
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").updateChildValues([exerciseDictionary["exerciseKey"]as! String:true])
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        
+        //update firebase client all branch
+        if exerciseDictionary["type"] as! String == "Endurance"{
+            self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }else{
+            self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }
         completion()
     }
     
     func createSessionForClient(sessionDictionary:[String:Any]){
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(currentDay).updateChildValues([sessionDictionary["key"] as! String:true])
-        
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(sessionDictionary["key"] as! String).updateChildValues(sessionDictionary)
     }
     
     func retrieveSessionInfo(key:String, completion: @escaping () -> Void){
         _sessions.removeAll()
-        
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -205,7 +239,6 @@ class DBService {
                 session.clientName = value?["clientName"] as! String
                 session.year = value?["year"] as! String
                 self._sessions.append(session)
-                //self._sessions.sort()
                 completion()
             }else{
                 completion()
@@ -214,7 +247,6 @@ class DBService {
             print(error.localizedDescription)
         }
     }
-    
     
     func createExerciseKey() -> String{
         let str = _ref.child("users").child(user.uid).child("Exercises").childByAutoId().key
@@ -235,14 +267,22 @@ class DBService {
     }
     
     func updateExerciseForUser(exerciseDictionary:[String:Any], completion: () -> Void) {
+        //update firebase date branch
         self._ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        
+        //update firebase all branch
+        if exerciseDictionary["type"] as! String == "Endurance"{
+            self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["description"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }else{
+            self._ref.child("users").child(user.uid).child("Exercises").child("All").child(exerciseDictionary["type"] as! String).child(exerciseDictionary["category"] as! String).child(exerciseDictionary["name"] as! String).child(exerciseDictionary["exerciseKey"] as! String).updateChildValues(exerciseDictionary)
+        }
         completion()
     }
     
     func setNewDate(dateString:String){
         _selectedDate = dateString
     }
-
+    
     func clearCurrentKey(){
         _currentKey = ""
     }
@@ -304,11 +344,379 @@ class DBService {
         self._ref.child("users").child(user.uid).child("Types").child(_typePassed).updateChildValues(dictionary)
     }
     
+    func retrieveClientProgressCategoriesForType(type:String, completion: @escaping () -> Void){
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempCategories = snapshot.value as? NSDictionary{
+                for category in tempCategories{
+                    self._progressCategories.append(category.key as! String)
+                }
+            }
+            //remove categories that cannot be displayed on graph
+            if self._progressCategories.contains("Amrap"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
+            }
+            if self._progressCategories.contains("Emom"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Emom")!)
+            }
+            if self._progressCategories.contains("For Time"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "For Time")!)
+            }
+            if self._progressCategories.contains("Metcon"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Metcon")!)
+            }
+            if self._progressCategories.contains("Tabata"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
+            }
+            if self._progressCategories.contains("Superset"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveProgressCategoriesForType(type:String, completion: @escaping () -> Void){
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempCategories = snapshot.value as? NSDictionary{
+                for category in tempCategories{
+                    self._progressCategories.append(category.key as! String)
+                }
+            }
+            //remove categories that cannot be displayed on graph
+            if self._progressCategories.contains("Amrap"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Amrap")!)
+            }
+            if self._progressCategories.contains("Emom"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Emom")!)
+            }
+            if self._progressCategories.contains("For Time"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "For Time")!)
+            }
+            if self._progressCategories.contains("Metcon"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Metcon")!)
+            }
+            if self._progressCategories.contains("Tabata"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Tabata")!)
+            }
+            if self._progressCategories.contains("Superset"){
+                self._progressCategories.remove(at:self._progressCategories.index(of: "Superset")!)
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveClientProgressResultsForExerciseName(type:String, category:String, exerciseName:String, completion: @escaping () -> Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(category).child(exerciseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let exerciseKeys = snapshot.value as? [String: [String: AnyObject]]{
+                var tempExercises = [Exercise]()
+                for exercise in exerciseKeys{
+                    let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
+                    tempExercises.append(tempExercise)
+                }
+                for exercise in tempExercises{
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
+                }
+                completion()
+            }
+        })
+    }
+    
+    func retrieveProgressResultsForExerciseName(type:String, category:String, exerciseName:String, completion: @escaping () -> Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(category).child(exerciseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let exerciseKeys = snapshot.value as? [String: [String: AnyObject]]{
+                var tempExercises = [Exercise]()
+                for exercise in exerciseKeys{
+                    let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
+                    tempExercises.append(tempExercise)
+                }
+                for exercise in tempExercises{
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
+                }
+                completion()
+            }
+        })
+    }
+    
+    func retrieveClientProgressResultsForExerciseDetail(type:String, category:String, exerciseName:String, detail:String, completion: @escaping () -> Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(category).child(exerciseName).child(detail).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let exerciseKeys = snapshot.value as? [String: [String: AnyObject]]{
+                var tempExercises = [Exercise]()
+                for exercise in exerciseKeys{
+                    let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
+                    tempExercises.append(tempExercise)
+                }
+                for exercise in tempExercises{
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
+                }
+                completion()
+            }else{
+                completion()
+            }
+        })
+    }
+    
+    func retrieveProgressResultsForExerciseDetail(type:String, category:String, exerciseName:String, detail:String, completion: @escaping () -> Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(category).child(exerciseName).child(detail).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let exerciseKeys = snapshot.value as? [String: [String: AnyObject]]{
+                var tempExercises = [Exercise]()
+                for exercise in exerciseKeys{
+                    let tempExercise = Exercise()
+                    tempExercise.year = exercise.value["year"] as! String
+                    tempExercise.week = exercise.value["week"] as! String
+                    tempExercise.name = exercise.value["name"] as! String
+                    tempExercise.exerciseDescription = exercise.value["description"] as! String
+                    tempExercise.result = exercise.value["result"] as! String
+                    tempExercise.exerciseKey = exercise.value["exerciseKey"] as! String
+                    tempExercise.date = exercise.value["date"] as! String
+                    tempExercise.client = exercise.value["client"] as! String
+                    tempExercise.opponent = exercise.value["opponent"] as! String
+                    tempExercise.creatorEmail = exercise.value["creatorEmail"] as! String
+                    tempExercise.creatorID = exercise.value["creatorID"] as! String
+                    tempExercise.category = exercise.value["category"] as! String
+                    tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
+                    tempExercises.append(tempExercise)
+                }
+                for exercise in tempExercises{
+                    self._progressData.append((key:exercise.uploadTime, value:exercise.result))
+                }
+                completion()
+            }else{
+                completion()
+            }
+        })
+    }
+    
+    func retrieveClientProgressExercisesForCategory(type:String, category:String, completion: @escaping () -> Void){
+        _progressExerciseNames.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempExercises = snapshot.value as? NSDictionary{
+                for exercise in tempExercises{
+                    self._progressExerciseNames.append(exercise.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveProgressExercisesForCategory(type:String, category:String, completion: @escaping () -> Void){
+        _progressExerciseNames.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempExercises = snapshot.value as? NSDictionary{
+                for exercise in tempExercises{
+                    self._progressExerciseNames.append(exercise.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveClientProgressDetailExercisesForExerciseName(type:String, exerciseName:String, completion: @escaping () -> Void){
+        _progressDetailExercises.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").child(type).child(_selectedProgressCategory).child(exerciseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempExercises = snapshot.value as? NSDictionary{
+                for exercise in tempExercises{
+                    self._progressDetailExercises.append(exercise.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveProgressDetailExercisesForExerciseName(type:String, exerciseName:String, completion: @escaping () -> Void){
+        _progressDetailExercises.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").child(type).child(_selectedProgressCategory).child(exerciseName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempExercises = snapshot.value as? NSDictionary{
+                for exercise in tempExercises{
+                    self._progressDetailExercises.append(exercise.key as! String)
+                }
+            }
+            completion()
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveClientProgressTypesAndCategories(completion: @escaping () -> Void){
+        _progressTypes.removeAll()
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("All").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempTypes = snapshot.value as? NSDictionary{
+                for type in tempTypes{
+                    self._progressTypes.append(type.key as! String)
+                }
+                //remove types that cannot be displayed on graph
+                if self._progressTypes.contains("Crossfit"){
+                    let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Amrap"){
+                        tempExercise.remove(at: tempExercise.index(of: "Amrap")!)
+                    }
+                    if tempExercise.contains("For Time"){
+                        tempExercise.remove(at: tempExercise.index(of: "For Time")!)
+                    }
+                    if tempExercise.contains("Tabata"){
+                        tempExercise.remove(at: tempExercise.index(of: "Tabata")!)
+                    }
+                    if tempExercise.contains("Emom"){
+                        tempExercise.remove(at: tempExercise.index(of: "Emom")!)
+                    }
+                    if tempExercise.contains("Metcon"){
+                        tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
+                    }
+                    if tempExercise.count == 0{
+                        self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
+                    }
+                }
+                if self._progressTypes.contains("Bodybuilding"){
+                    //retrieve categories for bodybuilding
+                    let tempProgressCategories = tempTypes["Bodybuilding"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Superset"){
+                        tempExercise.remove(at: tempExercise.index(of: "Superset")!)
+                        //remove bodybuilding type if superset is the only bodybuilding exercise
+                        if tempExercise.count == 0{
+                            self._progressTypes.remove(at: self._progressTypes.index(of: "Bodybuilding")!)
+                        }
+                    }
+                }
+                completion()
+            }else{
+                self._progressTypes.removeAll()
+                self._progressCategories.removeAll()
+                completion()
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func retrieveUserProgressTypesAndCategories(completion: @escaping () -> Void){
+        _progressTypes.removeAll()
+        _progressCategories.removeAll()
+        _ref.child("users").child(user.uid).child("Exercises").child("All").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tempTypes = snapshot.value as? NSDictionary{
+                for type in tempTypes{
+                    self._progressTypes.append(type.key as! String)
+                }
+                if self._progressTypes.contains("Crossfit"){
+                    let tempProgressCategories = tempTypes["Crossfit"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Amrap"){
+                        tempExercise.remove(at: tempExercise.index(of: "Amrap")!)
+                    }
+                    if tempExercise.contains("For Time"){
+                        tempExercise.remove(at: tempExercise.index(of: "For Time")!)
+                    }
+                    if tempExercise.contains("Tabata"){
+                        tempExercise.remove(at: tempExercise.index(of: "Tabata")!)
+                    }
+                    if tempExercise.contains("Emom"){
+                        tempExercise.remove(at: tempExercise.index(of: "Emom")!)
+                    }
+                    if tempExercise.contains("Metcon"){
+                        tempExercise.remove(at: tempExercise.index(of: "Metcon")!)
+                    }
+                    if tempExercise.count == 0{
+                        self._progressTypes.remove(at:self._progressTypes.index(of: "Crossfit")!)
+                    }
+                }
+                if self._progressTypes.contains("Bodybuilding"){
+                    //retrieve categories for bodybuilding
+                    let tempProgressCategories = tempTypes["Bodybuilding"] as! NSDictionary
+                    var tempExercise = [String]()
+                    for ex in tempProgressCategories{
+                        tempExercise.append(ex.key as! String)
+                    }
+                    if tempExercise.contains("Superset"){
+                        tempExercise.remove(at: tempExercise.index(of: "Superset")!)
+                        
+                        //remove bodybuilding type if superset is the only bodybuilding exercise
+                        if tempExercise.count == 0{
+                            self._progressTypes.remove(at: self._progressTypes.index(of: "Bodybuilding")!)
+                        }
+                    }
+                }
+                completion()
+            }else{
+                self._progressTypes.removeAll()
+                self._progressCategories.removeAll()
+                completion()
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func retrieveExercisesForUser(completion: @escaping () -> Void){
         _exercisesForUser.removeAll()
-        
         _ref.child("users").child(user.uid).child("Exercises").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             // Get user value
             if let exercisesVal = snapshot.value as? [String: [String: AnyObject]] {
                 for exercise in exercisesVal {
@@ -326,12 +734,13 @@ class DBService {
                     tempExercise.creatorID = exercise.value["creatorID"] as! String
                     tempExercise.category = exercise.value["category"] as! String
                     tempExercise.type = exercise.value["type"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     self._exercisesForUser.append(tempExercise)
                     completion()
                 }
             }else{
-            self._exercisesForUser.removeAll()
-            completion()
+                self._exercisesForUser.removeAll()
+                completion()
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -340,7 +749,6 @@ class DBService {
     
     func retrieveBodybuildingCategoryExercises(completion: @escaping () -> Void){
         _exercisesForBodybuildingCategory.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Bodybuilding").child(categoryPassed).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -357,7 +765,6 @@ class DBService {
     
     func retrieveCrossfitCategories(completion: @escaping () -> Void){
         _crossfitCategories.removeAll()
-        
         _ref.child("users").child(user.uid).child("Types").child("Crossfit").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -380,10 +787,8 @@ class DBService {
             let value = snapshot.value as? NSDictionary
             if value != nil{
                 let keyArray = value?.allKeys as! [String]
-                
                 self._exercisesForCrossfitCategory = keyArray
                 self._exercisesForCrossfitCategory.sort()
-                
                 completion()
             }
         }) { (error) in
@@ -434,7 +839,6 @@ class DBService {
                 self._enduranceCategories.sort()
                 completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -477,6 +881,32 @@ class DBService {
         return c
     }
     
+    func updateClientPassed(completion: @escaping () -> Void){
+        _ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil{
+                let client = value
+                let c = Client()
+                c.firstName = client?["firstName"] as! String
+                c.lastName = client?["lastName"] as! String
+                c.gender = client?["gender"] as! String
+                c.age = client?["age"] as! String
+                c.clientKey = client?["clientKey"] as! String
+                c.activityLevel = client?["activityLevel"] as! String
+                c.weight = client?["weight"] as! String
+                c.feet = client?["feet"] as! String
+                c.inches = client?["inches"] as! String
+                self._passedClient = c
+                completion()
+            }else{
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func retrieveClients(completion: @escaping () -> Void){
         _clients.removeAll()
         _ref.child("users").child(user.uid).child("Clients").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -511,7 +941,6 @@ class DBService {
     
     func checkSessionNumber(completion: @escaping () -> Void){
         _sessionsCount = 0
-        
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).child(currentDay).observeSingleEvent(of: .value, with: { (snapshot) in
             if let sessions = snapshot.value as? NSDictionary{
                 let keys = sessions.allKeys
@@ -527,8 +956,9 @@ class DBService {
         }
     }
     
-    func saveDurationForSession(str:String){
-       self._ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
+    func saveDurationForSession(str:String, completion: @escaping (String) -> Void){
+        self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).updateChildValues(["duration":str])
+        completion(str)
     }
     
     func updatePaidForSession(boolean:Bool, completion: @escaping () -> Void){
@@ -540,7 +970,6 @@ class DBService {
         print(keyStr)
         _exercisesForClient.removeAll()
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(keyStr).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             let session = snapshot.value as? NSDictionary
             if session != nil{
                 if let exerciseStrings = session?["exercises"] as? NSDictionary{
@@ -562,9 +991,7 @@ class DBService {
     }
     
     func retrieveExercisesForSession(exerciseStr:String, completion: @escaping () -> Void){
-        print(passedClient.clientKey)
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exerciseStr).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             let exercise = snapshot.value as? [String:Any]
             if exercise != nil{
                 let tempExercise = Exercise()
@@ -580,6 +1007,7 @@ class DBService {
                 tempExercise.creatorID = exercise?["creatorID"] as! String
                 tempExercise.category = exercise?["category"] as! String
                 tempExercise.type = exercise?["type"] as! String
+                tempExercise.uploadTime = exercise?["uploadTime"] as! String
                 self._exercisesForClient.append(tempExercise)
                 completion()
             }else{
@@ -592,11 +1020,10 @@ class DBService {
     
     func retrieveSessionsForWeekForClient(completion:@escaping ()-> Void){
         _sessions.removeAll()
-        
         _ref.child("users").child(user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(currentYear).child(currentWeekNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let exercisesVal = snapshot.value as? NSDictionary {
-               let days = exercisesVal.allKeys as! [String]
+                let days = exercisesVal.allKeys as! [String]
                 for day in days{
                     let keys = exercisesVal[day] as? NSDictionary
                     for key in keys!{
@@ -613,13 +1040,12 @@ class DBService {
     
     func retrieveSessionsForDateForClient(dateStr:String, completion:@escaping ()-> Void){
         _sessions.removeAll()
-        print(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr)))
         _ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Calendar").child(String(DateConverter.getYearFromDate(dateStr: dateStr))).child(String(DateConverter.getWeekNumberFromDate(dateStr: dateStr))).child(DateConverter.getNameForDay(dateStr: dateStr)).observeSingleEvent(of: .value, with: { (snapshot) in
             let exercisesVal = snapshot.value as? NSDictionary
             if exercisesVal != nil{
                 let keys = exercisesVal?.allKeys as! [String]
                 for key in keys{
-                        self.retrieveSessionInfo(key: key, completion: {completion()})
+                    self.retrieveSessionInfo(key: key, completion: {completion()})
                 }
             }else{
                 completion()
@@ -652,6 +1078,7 @@ class DBService {
                     tempExercise.category = exercise.value["category"] as! String
                     tempExercise.type = exercise.value["type"] as! String
                     tempExercise.viewed = exercise.value["viewed"] as! String
+                    tempExercise.uploadTime = exercise.value["uploadTime"] as! String
                     self._challengeExercises.append(tempExercise)
                     completion()
                 }
@@ -669,7 +1096,7 @@ class DBService {
             self._notificationCount = 0
             for exercise in self.challengeExercises{
                 if exercise.viewed == "false"{
-                   self._notificationCount += 1
+                    self._notificationCount += 1
                 }
             }
             completion()
@@ -678,7 +1105,6 @@ class DBService {
     
     func retrieveHeroWods(completion: @escaping () -> Void){
         _crossfitHeroWods.removeAll()
-        
         self._ref.child("hero wods").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -701,6 +1127,129 @@ class DBService {
         })
     }
     
+    func retrieveClientExerciseData(type:String,completion:@escaping ()->Void){
+        self.retrieveClientProgressCategoriesForType(type: type, completion: {
+            //select value if empty
+            if self._selectedProgressCategory == ""{
+                self._selectedProgressCategory = self._progressCategories[0]
+            }
+            self.retrieveClientProgressExercisesForCategory(type: type, category: self._progressCategories[0], completion: {
+                if self._selectedProgressExercise == ""{
+                    self._selectedProgressExercise = self._progressExerciseNames[0]
+                }
+                if type == "Endurance"{
+                    self.retrieveClientProgressDetailExercisesForExerciseName(type: type, exerciseName: self._selectedProgressExercise, completion: {
+                        if self._selectedProgressDetail == ""{
+                            self._selectedProgressDetail = self._progressDetailExercises[0]
+                        }
+                        self.retrieveClientProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {
+                            self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                            completion()
+                        })
+                    })
+                }else{
+                    self.retrieveClientProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, completion: {self._defaultChartTitle = self.selectedProgressExercise
+                        completion()
+                    })
+                }
+            })
+        })
+    }
+    
+    func retrieveExerciseData(type:String,completion:@escaping ()->Void){
+        self.retrieveProgressCategoriesForType(type: type, completion: {
+            //select value if empty
+            if self._selectedProgressCategory == ""{
+                self._selectedProgressCategory = self._progressCategories[0]
+            }
+            self.retrieveProgressExercisesForCategory(type: type, category: self._selectedProgressCategory, completion: {
+                if self._selectedProgressExercise == ""{
+                    self._selectedProgressExercise = self._progressExerciseNames[0]
+                }
+                if type == "Endurance"{
+                    self.retrieveProgressDetailExercisesForExerciseName(type: type, exerciseName: self._selectedProgressExercise, completion: {
+                        if self._selectedProgressDetail == ""{
+                            self._selectedProgressDetail = self._progressDetailExercises[0]
+                        }
+                        self.retrieveProgressResultsForExerciseDetail(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, detail: self._selectedProgressDetail, completion: {
+                            if self._selectedProgressCategory == "Rowing" || self._selectedProgressCategory == "Cycling" || self._selectedProgressCategory == "Running"{
+                                self._defaultChartTitle = self._selectedProgressCategory + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                                completion()
+                            }else{
+                                self._defaultChartTitle = self._selectedProgressExercise + " " + self._selectedProgressDetail.trimmingCharacters(in: .whitespaces)
+                                completion()
+                            }
+                        })
+                    })
+                }else{
+                    self.retrieveProgressResultsForExerciseName(type: type, category: self._selectedProgressCategory, exerciseName: self._selectedProgressExercise, completion: {self._defaultChartTitle = self._selectedProgressExercise
+                        completion()
+                    })
+                }
+            })
+        })
+    }
+    
+    //retrieve client weight
+    func retrieveProgressDataForClient(selection:String, completion:@escaping()->Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Clients").child(DBService.shared.passedClient.clientKey).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let values = snapshot.value as? [String:String]{
+                
+                var formatedValues = [(key:String, value:String)]()
+                for element in values{
+                    formatedValues.append((element.key, element.value))
+                }
+                
+                if selection == "Weight"{
+                    self._progressData = formatedValues
+                }
+                self.sortDataByDate()
+                completion()
+            }else{
+                completion()
+            }
+        })
+    }
+    
+    //retrieve user weight
+    func retrieveProgressData(selection:String, completion:@escaping()->Void){
+        _progressData.removeAll()
+        _ref.child("users").child(user.uid).child("Progress").child(selection).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let values = snapshot.value as? [String:String]{
+                
+                var formatedValues = [(key:String, value:String)]()
+                for element in values{
+                    formatedValues.append((element.key, element.value))
+                }
+                
+                if selection == "Weight"{
+                    self._progressData = formatedValues
+                }
+                self.sortDataByDate()
+                completion()
+            }else{
+                completion()
+            }
+        })
+    }
+    
+    func deleteProgressDataForPersonal(data:(key: String, value: String), selection:String){
+        self._ref.child("users").child(user.uid).child("Progress").child(selection).child(data.key).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
+    func deleteProgressDataForClient(data:(key: String, value: String), selection:String){
+        self._ref.child("users").child(user.uid).child("Clients").child(DBService.shared.passedClient.clientKey).child("Progress").child(selection).child(data.key).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func deleteClient(id:String){
         self._ref.child("users").child(user.uid).child("Clients").child(id).removeValue { (error, ref) in
             if error != nil {
@@ -709,34 +1258,68 @@ class DBService {
         }
     }
     
+    func deleteOldExerciseFromCalendar(exercise:[String:Any]){
+        self._ref.child("users").child(self.user.uid).child("Exercises").child(exercise["year"] as! String).child(exercise["week"] as! String).child(exercise["exerciseKey"] as! String).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
+    func deleteExerciseFromKey(exerciseKey:String){
+        self._ref.child("users").child(user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exerciseKey).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+    
     func deleteSessionForClient(session:Session, completion: @escaping () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Calendar").child(session.year).child(session.weekNumber).child(session.day).child(session.key).removeValue { (error, ref) in
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Calendar").child(session.year).child(session.weekNumber).child(session.day).child(session.key).removeValue { (error, ref) in
             
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
-        
+        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child("exercises").observeSingleEvent(of: .value, with: { (snapshot) in
+            let exercisesKey = snapshot.value as? NSDictionary
+            if exercisesKey != nil{
+                let keys = exercisesKey?.allKeys as! [String]
+                for key in keys{
+                    self.deleteExerciseFromKey(exerciseKey: key)
+                }
+            }else{
+                completion()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Sessions").child(session.key).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
-        
         completion()
-        
     }
     
     func deleteExerciseForClient(exercise:Exercise, completion: @escaping () -> Void){
-        self._ref.child("users").child(self.user.uid).child("Clients").child(passedClient.clientKey).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
-            completion()
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("All").child(exercise.type).child(exercise.category).child(exercise.name).child(exercise.exerciseKey).removeValue()
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
             if error != nil {
                 print("error \(String(describing: error))")
             }
         }
+        self._ref.child("users").child(self.user.uid).child("Clients").child(_passedClient.clientKey).child("Sessions").child(_passedSession.key).child("exercises").child(exercise.exerciseKey).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+        completion()
     }
     
     func deleteExerciseForUser(exercise:Exercise, completion: @escaping () -> Void){
+        self._ref.child("users").child(self.user.uid).child("Exercises").child("All").child(exercise.type).child(exercise.category).child(exercise.name).child(exercise.exerciseKey).removeValue()
+        
         self._ref.child("users").child(self.user.uid).child("Exercises").child(exercise.year).child(exercise.week).child(exercise.exerciseKey).removeValue { (error, ref) in
             completion()
             if error != nil {
@@ -777,9 +1360,7 @@ class DBService {
             completion()
         }
     }
-
-
-
+    
     func setChallengesToViewed(){
         retrieveChallengesExercises {
             for exercise in self._challengeExercises{
@@ -804,20 +1385,12 @@ class DBService {
         _passedExercise?.exerciseKey = ""
     }
     
+    func clearDefautChartTitle(){
+        _defaultChartTitle = ""
+    }
+    
     func setPassedClientToPersonal(){
         _passedClient.firstName = "Personal"
-    }
-    
-    func setDateRange(dateRange:String){
-        _dateRange = dateRange
-    }
-    
-    func setPassedDate(dateStr:String){
-        _passedDate = dateStr
-    }
-    
-    func setPassToNextVC(bool:Bool){
-        _passToNextVC = bool
     }
     
     func initializeData(){
@@ -1027,11 +1600,16 @@ class DBService {
         get{
             return _dateRange
         }
+        set(dateRange){
+            _dateRange = dateRange
+        }
     }
     
     var passedDate:String{
         get{
             return _passedDate
+        }set(dateStr){
+            _passedDate = dateStr
         }
     }
     
@@ -1044,6 +1622,78 @@ class DBService {
     var passToNextVC:Bool{
         get{
             return _passToNextVC
+        }
+        set(bool){
+            _passToNextVC = bool
+        }
+    }
+    
+    var progressData:[(key: String, value: String)]{
+        get{
+            return _progressData
+        }
+    }
+    
+    var progressTypes:[String]{
+        get{
+            return _progressTypes
+        }
+    }
+    
+    var progressCategories:[String]{
+        get{
+            return _progressCategories
+        }
+    }
+    
+    var progressTypePassed:String{
+        get{
+            return _progressTypePassed
+        }
+    }
+    
+    var progressExerciseNames:[String]{
+        get{
+            return _progressExerciseNames
+        }
+    }
+    
+    var defaultChartTitle:String{
+        get{
+            return _defaultChartTitle
+        }
+    }
+    
+    var selectedProgressCategory:String{
+        get{
+            return _selectedProgressCategory
+        }
+        set(categoryStr){
+            _selectedProgressCategory = categoryStr
+        }
+    }
+    
+    var selectedProgressExercise:String{
+        get{
+            return _selectedProgressExercise
+        }
+        set(exerciseStr){
+             _selectedProgressExercise = exerciseStr
+        }
+    }
+    
+    var progressDetailExercises:[String]{
+        get{
+            return _progressDetailExercises
+        }
+    }
+    
+    var selectedProgressDetail:String{
+        get{
+            return _selectedProgressDetail
+        }
+        set(detail){
+            _selectedProgressDetail = detail
         }
     }
 }

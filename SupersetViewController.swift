@@ -36,7 +36,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         for vc in (self.navigationController?.viewControllers)!{
             if vc is BodybuildingCategoryTableViewController{
@@ -61,7 +61,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetCustomCell
-        cell.descriptionTextField.text = self.exercises[indexPath.row].exerciseDescription
+        cell.descriptionTextField.text = self.exercises[indexPath.row].name + " " + self.exercises[indexPath.row].exerciseDescription
         cell.numLabel.text = String(indexPath.row + 1)
         cell.backgroundColor = UIColor.clear
         cell.tag = indexPath.row
@@ -71,7 +71,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Exercise?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 self.exercises.remove(at: x)
@@ -100,7 +100,7 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = sets[row]
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label
@@ -120,9 +120,9 @@ class SupersetViewController: UIViewController, UITableViewDelegate, UITableView
             myExercise.type = "Bodybuilding"
             for exercise in exercises{
                 if myExercise.exerciseDescription == ""{
-                    myExercise.exerciseDescription = exercise.exerciseDescription
+                    myExercise.exerciseDescription = exercise.name + " " + exercise.exerciseDescription
                 }else{
-                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.exerciseDescription
+                    myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + exercise.name + " " + exercise.exerciseDescription
                 }
             }
             myExercise.exerciseDescription = myExercise.exerciseDescription + " | " + sets[idSets] + " set(s)"

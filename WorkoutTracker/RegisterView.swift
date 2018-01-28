@@ -30,19 +30,19 @@ class RegisterView: UIView, UITextFieldDelegate{
         }
     }
     
+    func setAnimations(txtField:UITextField) {
+        let animationLayer = AnimatableLayer()
+        txtField.layer.addSublayer(animationLayer)
+        let anim = animationLayer.shake(from: CGPoint(x:txtField.center.x - 4, y: txtField.center.y), to: CGPoint(x:txtField.center.x + 4, y: txtField.center.y))
+        txtField.layer.add(anim, forKey: "position")
+    }
     
     @IBAction func register(_ sender: UIButton) {
         self.endEditing(true)
-        if emailTxtField.text == "" {
-            let alertController = UIAlertController(title: "Invalid Email", message: "Please enter an email", preferredStyle: UIAlertControllerStyle.alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-        }else if passwordTxtField.text == ""{
-            let alertController = UIAlertController(title: "Invalid Password", message: "Please enter a password", preferredStyle: UIAlertControllerStyle.alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        if emailTxtField.text?.count == 0 {
+            setAnimations(txtField: emailTxtField)
+        }else if passwordTxtField.text?.count == 0{
+            setAnimations(txtField: passwordTxtField)
         }else{
             FIRAuth.auth()?.createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
                 if error == nil {
@@ -54,8 +54,8 @@ class RegisterView: UIView, UITextFieldDelegate{
                     else {
                         print("Real Device")
                         if UIDevice.current.modelName == "iPhone 6s"{
-                            FIRAuth.auth()?.signIn(withEmail: self.emailTxtField.text!, password: self.passwordTxtField.text!, completion:{(success) in
-                                if success.0 == nil{
+                            FIRAuth.auth()?.signIn(withEmail: self.emailTxtField.text!, password: self.passwordTxtField.text!, completion:{(user, error) in
+                                if user == nil{
                                     let alertController = UIAlertController(title: "Invalid Credentials", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
                                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                                     alertController.addAction(defaultAction)

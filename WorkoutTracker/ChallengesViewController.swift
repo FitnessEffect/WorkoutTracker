@@ -12,6 +12,7 @@ import Firebase
 class ChallengesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var noChallengesLabel: UILabel!
     
     var selectedRow:Int = 0
     var client = Client()
@@ -26,7 +27,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Challenges"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
+        noChallengesLabel.alpha = 0
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -55,6 +56,8 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         //set app icon badge number to 0
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetBadgeNumber()
@@ -64,21 +67,50 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //notification center emits message to reset and hide challenge notification number
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideNotif"), object: nil, userInfo: nil)
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        //download challenges from firebase on seperate thread
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveChallengesExercises {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.exerciseArray = DBService.shared.challengeExercises
-                self.exerciseArray.sort(by: {a, b in
-                    if a.date > b.date {
-                        return true
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            //download challenges from firebase on seperate thread
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveChallengesExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exerciseArray = DBService.shared.challengeExercises
+                    //sort exercises by date
+                    self.exerciseArray.sort(by: {a, b in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "M/d/y"
+                        let dateA = dateFormatter.date(from: a.date)!
+                        let dateB = dateFormatter.date(from: b.date)!
+                        if dateA == dateB{
+                            let dateFormatter2 = DateFormatter()
+                            dateFormatter2.dateFormat = "y-M-d HH:mm:ss"
+                            let uploadA = dateFormatter2.date(from:a.uploadTime)!
+                            let uploadB = dateFormatter2.date(from:b.uploadTime)!
+                            if uploadA > uploadB {
+                                return true
+                            }else{
+                                return false
+                            }
+                        }else if dateA > dateB {
+                            return true
+                        }else{
+                            return false
+                        }
+                    })
+                    self.tableViewOutlet.reloadData()
+                    if self.exerciseArray.count == 0{
+                        self.noChallengesLabel.alpha = 1
+                    }else{
+                        self.noChallengesLabel.alpha = 0
                     }
-                    return false
-                })
-                self.tableViewOutlet.reloadData()
+                }
             }
         }
     }
@@ -103,7 +135,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     //tap gesture recognizer for tableView
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+    @objc func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
         if row != nil{
@@ -112,7 +144,7 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     //tap gesture to exit menu
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
             UIView.animate(withDuration: 0.3, animations: {
@@ -134,7 +166,21 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell", for: indexPath) as! ChallengeCustomCell
         let exercise = exerciseArray[(indexPath as NSIndexPath).row]
-        cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+        //check if exercise.result is a time in seconds
+        if exercise.result.contains("lb(s)") || exercise.result.contains("rep(s)") || exercise.result.contains("Completed") || exercise.result.contains("Incomplete") || exercise.result.contains("mile(s)") || exercise.result.contains("meter(s)") || exercise.result.contains("round(s)"){
+            if exercise.type == "Endurance"{
+                cell.titleOutlet.text = exercise.category + " (" + exercise.result + ")"
+            }else{
+                cell.titleOutlet.text = exercise.name + " (" + exercise.result + ")"
+            }
+        }else{
+            let resultFormated = Formatter.changeTimeToDisplayFormat(secondsStr: exercise.result)
+            if exercise.type == "Endurance"{
+                cell.titleOutlet.text = exercise.category + " (" + resultFormated + ")"
+            }else{
+                cell.titleOutlet.text = exercise.name + " (" + resultFormated + ")"
+            }
+        }
         cell.challenger.text = exercise.creatorEmail
         cell.numberOutlet.text = String((indexPath as NSIndexPath).row + 1)
         return cell
@@ -143,16 +189,19 @@ class ChallengesViewController: UIViewController, UITableViewDelegate, UITableVi
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Challenge?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
-                let ex = self.exerciseArray[indexPath.row]
                 
                 //update firebase with deletion
-                DBService.shared.deleteChallengeExerciseForUser(exercise:ex)
-                
+                DBService.shared.deleteChallengeExerciseForUser(exercise:self.exerciseArray[indexPath.row])
                 self.exerciseArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 tableView.reloadData()
+                if self.exerciseArray.count == 0{
+                    self.noChallengesLabel.alpha = 1
+                }else{
+                    self.noChallengesLabel.alpha = 0
+                }
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(deleteAlert, animated: true, completion:nil)

@@ -13,6 +13,7 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     @IBOutlet weak var dateBtn: UIButton!
+    @IBOutlet weak var noSessionsLabel: UILabel!
     
     var selectedRow:Int = 0
     var clientPassed = Client()
@@ -30,64 +31,56 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noSessionsLabel.alpha = 0
         displayCurrentWeek()
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
-        button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
-        button.titleLabel!.font =  UIFont(name: "DJB Chalk It Up", size: 30)
-        button.setBackgroundImage(UIImage(named:"chalkBackground"), for: .normal)
-        button.setTitle(clientPassed.firstName, for: .normal)
-        button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
-        self.navigationItem.titleView = button
-        
         spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
         spinner.alpha = 0
-        view.addSubview(spinner)
+        tableViewOutlet.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let currentDate = DateConverter.stringToDate(dateStr: DateConverter.getCurrentDate())
         DBService.shared.setCurrentWeekNumber(strWeek: String(DateConverter.weekNumFromDate(date: currentDate as NSDate)))
         DBService.shared.setCurrentYearNumber(strYear: String(DateConverter.yearFromDate(date: currentDate as NSDate)))
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveSessionsForWeekForClient(completion: {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.sessionsArray.removeAll()
-                self.sessionsArray = DBService.shared.sessions
-//                self.sessionsArray.sort(by: {a, b in
-//                    if a.date > b.date {
-//                        return true
-//                    }
-//                    return false
-//                })
-                self.refreshTableViewData()
-            })
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveSessionsForWeekForClient(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.sessionsArray.removeAll()
+                    self.sessionsArray = DBService.shared.sessions
+                    self.refreshTableViewData()
+                    if self.sessionsArray.count == 0{
+                        self.noSessionsLabel.alpha = 1
+                    }else{
+                        self.noSessionsLabel.alpha = 0
+                    }
+                })
+            }
         }
         clientPassed = DBService.shared.retrieveClientInfo(clientKey: clientPassed.clientKey)
-        button.setTitle(clientPassed.firstName, for: .normal)
-
+        title = clientPassed.firstName
+        
         if DBService.shared.passToNextVC == true{
             callCreateSession()
-            DBService.shared.setPassToNextVC(bool:false)
+            DBService.shared.passToNextVC = false
         }
-        
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToZero"), object: nil, userInfo: nil)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "notifAlphaToOne"), object: nil, userInfo: nil)
     }
     
     func displayCurrentWeek(){
@@ -123,18 +116,18 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         DBService.shared.retrieveSessionsForWeekForClient{
             self.sessionsArray.removeAll()
             self.sessionsArray = DBService.shared.sessions
-//            self.exerciseArray.sort(by: {a, b in
-//                if a.date > b.date {
-//                    return true
-//                }
-//                return false
-//            })
+            //            self.exerciseArray.sort(by: {a, b in
+            //                if a.date > b.date {
+            //                    return true
+            //                }
+            //                return false
+            //            })
             self.refreshTableViewData()
         }
     }
     
     @IBAction func createSession(_ sender: UIBarButtonItem) {
-       callCreateSession()
+        callCreateSession()
     }
     
     func callCreateSession(){
@@ -193,31 +186,6 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         self.present(popController, animated: true, completion: nil)
     }
     
-    func clickOnButton(button: UIButton) {
-        var xPosition:CGFloat = 0
-        var yPosition:CGFloat = 0
-        
-        xPosition = self.view.frame.width/2
-        yPosition = self.view.frame.minY + 60
-        
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 500)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        popController.setClient(client: clientPassed)
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
-    }
-    
     func refreshTableViewData(){
         self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
         tableViewOutlet.reloadData()
@@ -254,7 +222,6 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return array!.count;
     }
-
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
@@ -369,17 +336,17 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
             if Int(a.sessionNumber)! > Int(b.sessionNumber)! {
                 return false
             }
-                return true
-            })
+            return true
+        })
         if tempArr.count != 0{
             let session = tempArr[indexPath.row]
-           
+            
             if session.paid == false{
                 cell.paidOutlet.text = "✗"
-            cell.paidOutlet.textColor = UIColor.red
+                cell.paidOutlet.textColor = UIColor.red
             }else{
                 cell.paidOutlet.text = "✓"
-                cell.paidOutlet.textColor = UIColor(red: 0, green: 131, blue: 0, alpha: 1)
+                cell.paidOutlet.textColor = UIColor(red: 0, green: 165, blue: 0, alpha: 1)
             }
             
             cell.number.text = String(indexPath.row + 1)
@@ -413,19 +380,27 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
         let selectedSession = array[indexPath.row]
         
         if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete this entry?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Session?", message: "This will also delete its exercises", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 DBService.shared.deleteSessionForClient(session: selectedSession, completion: {
                     for i in 0...self.sessionsArray.count{
-                        if self.sessionsArray[i].key == selectedSession.key{
-                            self.sessionsArray.remove(at: i)
+                        if self.sessionsArray.count != 0{
+                            if self.sessionsArray[i].key == selectedSession.key{
+                                self.sessionsArray.remove(at: i)
+                                self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
+                                
+                                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                                tableView.reloadData()
+                                if self.sessionsArray.count == 0{
+                                    self.noSessionsLabel.alpha = 1
+                                }else{
+                                    self.noSessionsLabel.alpha = 0
+                                }
+                                break
+                            }
                             break
                         }
                     }
-                    self.daysSections = self.groupSessionsByDay(sessionsPassed: self.sessionsArray) as! [String : Any]
-                    
-                    tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                    tableView.reloadData()
                 })
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
@@ -473,13 +448,12 @@ class SessionsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "sessionDetailSegue"){
             DBService.shared.setPassedClient(client: clientPassed)
-            DBService.shared.setDateRange(dateRange:(dateBtn.titleLabel?.text)!)
+            DBService.shared.dateRange = (dateBtn.titleLabel?.text)!
             let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow
             let cell = tableViewOutlet.cellForRow(at: selectedIndexPath!) as! SessionCustomCell
-            print(cell.sessionKey)
             for i in 0...self.sessionsArray.count{
                 if self.sessionsArray[i].key == cell.sessionKey{
-                    print(sessionsArray[i])
+                    print(sessionsArray[i].key)
                     DBService.shared.setPassedSession(session: sessionsArray[i])
                     break
                 }

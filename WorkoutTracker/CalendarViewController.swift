@@ -30,8 +30,8 @@ class CalendarViewController:UIViewController{
         buttonArray = [UIButton]()
         calendarView.layer.cornerRadius = 10.0
         calendarView.clipsToBounds = true
-        let currentMonth = getCurrentMonth()
-        let currentYear = getCurrentYear()
+        let currentMonth = DateConverter.getCurrentMonth()
+        let currentYear = DateConverter.getCurrentYear()
         selectedYear = currentYear
         selectedMonth = currentMonth
         
@@ -58,47 +58,6 @@ class CalendarViewController:UIViewController{
         }
     }
     
-    func getCurrentMonth() -> Int{
-        let date = NSDate()
-        let calendar = NSCalendar.current
-        let month = calendar.component(.month, from: date as Date)
-        return month
-    }
-    
-    func getDaysInMonth(monthNum:Int, year:Int) -> Int{
-        let calendar = NSCalendar.current
-        let dateComponents = DateComponents(year:selectedYear, month: monthNum)
-        let date = calendar.date(from: dateComponents)
-        let range = calendar.range(of: .day, in: .month, for: date!)
-        let numOfDays = (range?.count)! as Int
-        var tempMonth = ""
-        if String(monthNum).characters.count == 1{
-            tempMonth = "0" + String(monthNum)
-        }else{
-            tempMonth = String(monthNum)
-        }
-        let tempStr = String(selectedYear) + "-" + tempMonth + "-01"
-        firstDayOfMonth = getDayOfWeek(today: tempStr)
-        return numOfDays
-    }
-    
-    func getDayOfWeek(today:String)->Int {
-        let formatter  = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let todayDate = formatter.date(from: today)!
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
-        let myComponents = myCalendar.components(.weekday, from: todayDate)
-        let weekDay = myComponents.weekday
-        return weekDay!
-    }
-    
-    func getCurrentYear() -> Int{
-        let date = NSDate()
-        let calendar = NSCalendar.current
-        let year = calendar.component(.year, from: date as Date)
-        return year
-    }
-    
     @IBAction func nextBtn(_ sender: UIButton) {
         nextBtn()
     }
@@ -123,7 +82,7 @@ class CalendarViewController:UIViewController{
         createButtonDays(month: selectedMonth)
     }
     
-    func pressedDay(sender: UIButton!) -> String{
+    @objc func pressedDay(sender: UIButton!) -> String{
         let btnNum = sender.tag
         var monthStr = ""
         var btnStr = ""
@@ -171,7 +130,8 @@ class CalendarViewController:UIViewController{
         var xPosition = 0
         var yPosition = 47
         
-        let numOfdays = getDaysInMonth(monthNum: month, year: selectedYear)
+        let numOfdays = DateConverter.getDaysInMonth(monthNum: month, year: selectedYear)
+        firstDayOfMonth = DateConverter.findFirstDayOfMonth(monthNum: month, year: selectedYear)
         if firstDayOfMonth == 1{
             xPosition = 0
         }else if firstDayOfMonth == 2{

@@ -63,9 +63,9 @@ class DateConverter{
             let tempArray = dateString.components(separatedBy: "(")
             originalDate = Int64(tempArray[1])!
             let gmt = array1[1]
-            var convertedDate = gmt.replacingOccurrences(of: ")", with: "")
+            let convertedDate = gmt.replacingOccurrences(of: ")", with: "")
             
-            if convertedDate.characters.first == "0"{
+            if convertedDate.first == "0"{
                 let index = convertedDate.index(convertedDate.startIndex, offsetBy: 1)
                 hours = Int(convertedDate.substring(from: index))!/100
             }else{
@@ -78,8 +78,8 @@ class DateConverter{
                 originalDate = Int64(tempArray[1])!
                 
                 let gmt = array2[1]
-                var convertedDate = gmt.replacingOccurrences(of: ")", with: "")
-                if convertedDate.characters.first == "0"{
+                let convertedDate = gmt.replacingOccurrences(of: ")", with: "")
+                if convertedDate.first == "0"{
                     let index = convertedDate.index(convertedDate.startIndex, offsetBy: 1)
                     hours = (Int(convertedDate.substring(from: index))!/100) * -1
                 }else{
@@ -159,11 +159,28 @@ class DateConverter{
         return weekOfYear
     }
     
+    static func getDayOfWeek(today:String)->Int {
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = formatter.date(from: today)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let myComponents = myCalendar.components(.weekday, from: todayDate)
+        let weekDay = myComponents.weekday
+        return weekDay!
+    }
+    
     static func yearFromDate(date:NSDate)->Int{
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date as Date)
         print(year)
         return year
+    }
+    
+    static func getCurrentMonth() -> Int{
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        let month = calendar.component(.month, from: date as Date)
+        return month
     }
     
     static func getCurrentYear()->Int{
@@ -172,6 +189,7 @@ class DateConverter{
         print(year)
         return year
     }
+    
     
     static func getYearFromDate(dateStr:String)->Int{
         let calendar = Calendar.current
@@ -205,9 +223,21 @@ class DateConverter{
         let calendar = NSCalendar.current
         let weekDay = calendar.component(.weekday, from: selectedDate as Date)
         let daysUntilSaturday = 7-weekDay
-
+        
         let saturday:NSDate = selectedDate.addingTimeInterval(TimeInterval(daysUntilSaturday*60*60*24))
         return saturday
+    }
+    
+    static func findFirstDayOfMonth(monthNum:Int, year:Int)->Int{
+        var tempMonth = ""
+        if String(monthNum).characters.count == 1{
+            tempMonth = "0" + String(monthNum)
+        }else{
+            tempMonth = String(monthNum)
+        }
+        let tempStr = String(year) + "-" + tempMonth + "-01"
+        let firstDayOfMonth = DateConverter.getDayOfWeek(today: tempStr)
+        return firstDayOfMonth
     }
     
     static func getDaysInMonth(monthNum:Int, year:Int) -> Int{
@@ -217,5 +247,32 @@ class DateConverter{
         let range = calendar.range(of: .day, in: .month, for: date!)
         let numOfDays = (range?.count)! as Int
         return numOfDays
+    }
+    
+    static func getCurrentTimeAndDate()->String{
+        // Get today date as String
+        let date = Date()
+        let calender = Calendar.current
+        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        
+        let year = components.year
+        let month = components.month
+        let day = components.day
+        let hour = components.hour
+        let minute = components.minute
+        let second = components.second
+        
+        let today_string = String(year!) + "-" + String(month!) + "-" + String(day!) + " " + String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
+        
+        return today_string
+    }
+    
+    static func formatFullDateForGraphDisplay(date:String)->String{
+        let tempArr = date.components(separatedBy: " ")
+        var tempArr2 = tempArr[0].components(separatedBy: "-")
+        tempArr2[0].removeFirst()
+        tempArr2[0].removeFirst()
+        let newDate = tempArr2[1] + "/" + tempArr2[2] + "/" + tempArr2[0]
+        return newDate
     }
 }

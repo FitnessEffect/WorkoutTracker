@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3EA08C825BD7CF02C370AD17 /* Pods_WorkoutTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07802FCD9AD48CA2A09B8381 /* Pods_WorkoutTrackerTests.framework */; };
 		3F6690AAD9F34DC0E9AB0C15 /* Pods_WorkoutTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBD1F8CB1C946F17950D606 /* Pods_WorkoutTracker.framework */; };
+		5203DE511FA1568400AF751D /* ClientMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5203DE501FA1568400AF751D /* ClientMenuViewController.swift */; };
+		520DE3E01F801A9300DA20DD /* Pods_WorkoutTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520DE3E11F801A9300DA20DD /* Pods_WorkoutTrackerUITests.framework */; };
 		52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */; };
 		52192AC11CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192AC01CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift */; };
 		52192AC51CC186A300A311A1 /* TabataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192AC41CC186A300A311A1 /* TabataViewController.swift */; };
@@ -17,12 +19,14 @@
 		52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */; };
 		52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */; };
 		52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */; };
+		521ECCE51FB0EE5F001FDE2B /* AnimatableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */; };
+		521ECCE71FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */; };
 		52265E0C1F1D04AE009F3B27 /* ForTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */; };
 		52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */; };
 		52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */; };
 		52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */; };
-		52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalViewController.swift */; };
-		52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */; };
+		52265E191F20F559009F3B27 /* PersonalMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52265E181F20F559009F3B27 /* PersonalMenuViewController.swift */; };
+		5229485A1F6823610095E6ED /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522948591F6823610095E6ED /* Reachability.swift */; };
 		522CFACD1F50F2D70037B371 /* WorkoutTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */; };
 		522CFAD51F50F32D0037B371 /* FormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD41F50F32D0037B371 /* FormatterTest.swift */; };
 		522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */; };
@@ -34,7 +38,10 @@
 		522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE31F58C31E0037B371 /* NavigationViewController.swift */; };
 		522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */; };
 		522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */; };
+		522D9ECC1F831F1200F38C77 /* ClientStickyNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */; };
 		522F4F501F2AE7360053009C /* SupersetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F4F4F1F2AE7360053009C /* SupersetViewController.swift */; };
+		522F75831FA4D30B00D0382D /* DeleteProgressDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */; };
+		522F75851FA5067200D0382D /* ProgressDataCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F75841FA5067200D0382D /* ProgressDataCustomCell.swift */; };
 		523470641ED097950079D03E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523470631ED097950079D03E /* UserNotifications.framework */; };
 		523470661ED099F90079D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 523470651ED099F90079D03E /* GoogleService-Info.plist */; };
 		523470681ED0E6480079D03E /* ExercisesHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */; };
@@ -48,15 +55,15 @@
 		526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A3F121EC6165C001BF557 /* DateConverter.swift */; };
 		52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE31EE8DBA800DBD8DE /* DBService.swift */; };
 		52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE51EE8DBB100DBD8DE /* APIService.swift */; };
-		52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */; };
+		52717FEA1EE8E33500DBD8DE /* InputExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52717FE91EE8E33500DBD8DE /* InputExerciseView.swift */; };
 		5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */; };
 		527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */; };
 		5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */; };
 		5276517D1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */; };
+		52778FE71F8009D3008B6398 /* WorkoutTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52778FE61F8009D3008B6398 /* WorkoutTrackerUITests.swift */; };
 		527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E51CE11E2E00F46B57 /* HeroWodsViewController.swift */; };
 		527D07E81CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527D07E71CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift */; };
 		5283E0751C7E37CB00FB716B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0741C7E37CB00FB716B /* Client.swift */; };
-		5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0781C88E09E00FB716B /* NewClientViewController.swift */; };
 		5283E07F1C890E6200FB716B /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E07E1C890E6200FB716B /* SessionsViewController.swift */; };
 		5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0831C89F53200FB716B /* ClientViewController.swift */; };
 		5283E0881C8B998600FB716B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283E0871C8B998600FB716B /* Exercise.swift */; };
@@ -70,6 +77,8 @@
 		52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */; };
 		52E86BED1F4BE3410047A927 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E86BEC1F4BE3410047A927 /* RegisterView.xib */; };
 		52E86BEF1F4BE3660047A927 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E86BEE1F4BE3660047A927 /* RegisterView.swift */; };
+		52EA8F461F9FFDBC00FA6FF3 /* ProgressChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */; };
+		52EA8F481FA014CF00FA6FF3 /* ProgressPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F471FA014CF00FA6FF3 /* ProgressPickerViewController.swift */; };
 		52EB1DE81EC9FC64004CA561 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */; };
 		52EB1DED1ECA77A2004CA561 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EB1DEC1ECA77A2004CA561 /* MenuView.xib */; };
 		52EB1DEF1ECA77F2004CA561 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB1DEE1ECA77F2004CA561 /* MenuView.swift */; };
@@ -89,12 +98,23 @@
 			remoteGlobalIDString = 52F6A89A1C5F0036000FD7B0;
 			remoteInfo = WorkoutTracker;
 		};
+		52778FE91F8009D3008B6398 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52F6A8931C5F0036000FD7B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52F6A89A1C5F0036000FD7B0;
+			remoteInfo = WorkoutTracker;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010A00F4A982D12F902DB6F7 /* Pods_WorkoutTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07802FCD9AD48CA2A09B8381 /* Pods_WorkoutTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E36B3D414A56ED5D1E85E0F /* Pods-WorkoutTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTrackerTests/Pods-WorkoutTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3EEB5F1E333942879DC7210C /* Pods-WorkoutTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker.release.xcconfig"; sourceTree = "<group>"; };
+		5203DE501FA1568400AF751D /* ClientMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMenuViewController.swift; sourceTree = "<group>"; };
+		520DE3DF1F801A5300DA20DD /* Pods_WorkoutTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WorkoutTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		520DE3E11F801A9300DA20DD /* Pods_WorkoutTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WorkoutTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExerciseTypeTableViewController.swift; path = ../ExerciseTypeTableViewController.swift; sourceTree = "<group>"; };
 		52192AC01CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrossfitCategoryTableViewController.swift; path = ../CrossfitCategoryTableViewController.swift; sourceTree = "<group>"; };
 		52192AC41CC186A300A311A1 /* TabataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabataViewController.swift; sourceTree = "<group>"; };
@@ -103,12 +123,14 @@
 		52192ACA1CCE98EC00A311A1 /* ExerciseCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCustomCell.swift; sourceTree = "<group>"; };
 		52192ACD1CD7F78200A311A1 /* TabataCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabataCustomCell.swift; sourceTree = "<group>"; };
 		52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCustomCell.swift; sourceTree = "<group>"; };
+		521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableLayer.swift; sourceTree = "<group>"; };
+		521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPickerSelectionViewController.swift; sourceTree = "<group>"; };
 		52265E0B1F1D04AE009F3B27 /* ForTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForTimeViewController.swift; path = ../ForTimeViewController.swift; sourceTree = "<group>"; };
 		52265E0F1F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnduranceCategoryTableViewController.swift; path = ../EnduranceCategoryTableViewController.swift; sourceTree = "<group>"; };
 		52265E121F203D11009F3B27 /* EnduranceSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSelectionViewController.swift; sourceTree = "<group>"; };
 		52265E161F204154009F3B27 /* CreateEnduranceCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEnduranceCategoryViewController.swift; path = ../CreateEnduranceCategoryViewController.swift; sourceTree = "<group>"; };
-		52265E181F20F559009F3B27 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
-		52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalStatsViewController.swift; sourceTree = "<group>"; };
+		52265E181F20F559009F3B27 /* PersonalMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalMenuViewController.swift; sourceTree = "<group>"; };
+		522948591F6823610095E6ED /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		522CFACA1F50F2D70037B371 /* WorkoutTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		522CFACC1F50F2D70037B371 /* WorkoutTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerTests.swift; sourceTree = "<group>"; };
 		522CFACE1F50F2D70037B371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +144,10 @@
 		522CFAE31F58C31E0037B371 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSelectionViewController.swift; sourceTree = "<group>"; };
+		522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStickyNoteViewController.swift; sourceTree = "<group>"; };
 		522F4F4F1F2AE7360053009C /* SupersetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupersetViewController.swift; path = ../SupersetViewController.swift; sourceTree = "<group>"; };
+		522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProgressDataViewController.swift; sourceTree = "<group>"; };
+		522F75841FA5067200D0382D /* ProgressDataCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDataCustomCell.swift; sourceTree = "<group>"; };
 		523470621ED095340079D03E /* WorkoutTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutTracker.entitlements; sourceTree = "<group>"; };
 		523470631ED097950079D03E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		523470651ED099F90079D03E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -137,15 +162,17 @@
 		526A3F121EC6165C001BF557 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		52717FE31EE8DBA800DBD8DE /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		52717FE51EE8DBB100DBD8DE /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInputView.swift; sourceTree = "<group>"; };
+		52717FE91EE8E33500DBD8DE /* InputExerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputExerciseView.swift; sourceTree = "<group>"; };
 		5276515C1EDA62CB006814AD /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCustomCell.swift; sourceTree = "<group>"; };
 		527651781EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBodybuildingCategoryViewController.swift; sourceTree = "<group>"; };
 		5276517A1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateBodybuildingExerciseViewController.swift; path = ../CreateBodybuildingExerciseViewController.swift; sourceTree = "<group>"; };
 		5276517C1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCrossfitExerciseViewController.swift; sourceTree = "<group>"; };
+		52778FE41F8009D3008B6398 /* WorkoutTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52778FE61F8009D3008B6398 /* WorkoutTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerUITests.swift; sourceTree = "<group>"; };
+		52778FE81F8009D3008B6398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		527D07E51CE11E2E00F46B57 /* HeroWodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroWodsViewController.swift; sourceTree = "<group>"; };
 		527D07E71CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodybuildingCategoryTableViewController.swift; sourceTree = "<group>"; };
 		5283E0741C7E37CB00FB716B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		5283E0781C88E09E00FB716B /* NewClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientViewController.swift; path = ../NewClientViewController.swift; sourceTree = "<group>"; };
 		5283E07E1C890E6200FB716B /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		5283E0831C89F53200FB716B /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientViewController.swift; path = ../ClientViewController.swift; sourceTree = "<group>"; };
 		5283E0871C8B998600FB716B /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -159,6 +186,8 @@
 		52DFA3D01CEE3A7000E85264 /* AmrapCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmrapCustomCell.swift; path = ../AmrapCustomCell.swift; sourceTree = "<group>"; };
 		52E86BEC1F4BE3410047A927 /* RegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		52E86BEE1F4BE3660047A927 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartViewController.swift; sourceTree = "<group>"; };
+		52EA8F471FA014CF00FA6FF3 /* ProgressPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPickerViewController.swift; sourceTree = "<group>"; };
 		52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		52EB1DEC1ECA77A2004CA561 /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		52EB1DEE1ECA77F2004CA561 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -172,7 +201,9 @@
 		52F6A8AA1C5F0036000FD7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F0508673917170173DAAE8C /* Pods-WorkoutTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTrackerTests/Pods-WorkoutTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		9A9AE9780A33CCB231F00403 /* Pods-WorkoutTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		E6559CDC6B0C9D3227657458 /* Pods-WorkoutTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTrackerUITests/Pods-WorkoutTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ECBD1F8CB1C946F17950D606 /* Pods_WorkoutTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBC484CB1381C78B39B8039 /* Pods-WorkoutTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutTrackerUITests/Pods-WorkoutTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EA08C825BD7CF02C370AD17 /* Pods_WorkoutTrackerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52778FE11F8009D3008B6398 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				520DE3E01F801A9300DA20DD /* Pods_WorkoutTrackerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +246,7 @@
 				52192ACF1CDF783600A311A1 /* ClientCustomCell.swift */,
 				525D5D881F2BC07400F9F00F /* SupersetCustomCell.swift */,
 				522CFAE11F57AC8F0037B371 /* SessionTableViewCell.swift */,
+				522F75841FA5067200D0382D /* ProgressDataCustomCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -232,11 +272,45 @@
 			path = WorkoutTrackerTests;
 			sourceTree = "<group>";
 		};
+		522F75861FA8C0C700D0382D /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				52EA8F451F9FFDBC00FA6FF3 /* ProgressChartViewController.swift */,
+				522F75821FA4D30B00D0382D /* DeleteProgressDataViewController.swift */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
+		522F75871FA8C0F300D0382D /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
+			);
+			name = Challenge;
+			sourceTree = "<group>";
+		};
+		522F75881FA8C14D00D0382D /* Input Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				52717FE91EE8E33500DBD8DE /* InputExerciseView.swift */,
+			);
+			name = "Input Exercise";
+			sourceTree = "<group>";
+		};
+		522F75891FA8C18000D0382D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
+				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		52717FE21EE8DB7A00DBD8DE /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				52717FE31EE8DBA800DBD8DE /* DBService.swift */,
-				52717FE51EE8DBB100DBD8DE /* APIService.swift */,
+				522948591F6823610095E6ED /* Reachability.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -250,9 +324,20 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		52778FE51F8009D3008B6398 /* WorkoutTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				52778FE61F8009D3008B6398 /* WorkoutTrackerUITests.swift */,
+				52778FE81F8009D3008B6398 /* Info.plist */,
+			);
+			path = WorkoutTrackerUITests;
+			sourceTree = "<group>";
+		};
 		5283E0801C89130500FB716B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				522F75871FA8C0F300D0382D /* Challenge */,
+				522F75861FA8C0C700D0382D /* Progress */,
 				5291C4551CE13ECB00DF8C0C /* Crossfit */,
 				5291C4561CE13EED00DF8C0C /* Bodybuilding  */,
 				52265E111F203BF6009F3B27 /* Endurance */,
@@ -261,11 +346,12 @@
 				52CB16A71EFBFBD500F4232D /* Popovers */,
 				529FC7C41F21673A00C16203 /* Personal  */,
 				52192ABE1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift */,
-				522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */,
+				521ECCE41FB0EE5F001FDE2B /* AnimatableLayer.swift */,
 				522F4F4F1F2AE7360053009C /* SupersetViewController.swift */,
 				526A3F0D1EC52C64001BF557 /* InputExerciseViewController.swift */,
 				52C7D1611EC8BEAB00585964 /* LoginViewController.swift */,
-				52A3F8441EDA4017002589C2 /* ChallengesViewController.swift */,
+				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
+				521ECCE61FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -314,8 +400,8 @@
 			isa = PBXGroup;
 			children = (
 				523470671ED0E6480079D03E /* ExercisesHistoryViewController.swift */,
-				52265E1A1F20FB16009F3B27 /* PersonalStatsViewController.swift */,
-				52265E181F20F559009F3B27 /* PersonalViewController.swift */,
+				52265E181F20F559009F3B27 /* PersonalMenuViewController.swift */,
+				522CFAD61F53CB330037B371 /* DeleteExerciseViewController.swift */,
 			);
 			name = "Personal ";
 			sourceTree = "<group>";
@@ -325,9 +411,10 @@
 			children = (
 				522CFADF1F56736C0037B371 /* CreateSessionViewController.swift */,
 				5283E0831C89F53200FB716B /* ClientViewController.swift */,
-				5283E0781C88E09E00FB716B /* NewClientViewController.swift */,
+				522D9ECB1F831F1200F38C77 /* ClientStickyNoteViewController.swift */,
 				5283E07E1C890E6200FB716B /* SessionsViewController.swift */,
 				522CFADD1F56063B0037B371 /* SessionDetailViewController.swift */,
+				5203DE501FA1568400AF751D /* ClientMenuViewController.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -338,6 +425,8 @@
 				522D721B1ED4AB9A0048A939 /* EmailSelectionViewController.swift */,
 				52EB1DE71EC9FC64004CA561 /* PickerViewController.swift */,
 				526A3F101EC60D61001BF557 /* CalendarViewController.swift */,
+				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
+				52EA8F471FA014CF00FA6FF3 /* ProgressPickerViewController.swift */,
 			);
 			name = Popovers;
 			sourceTree = "<group>";
@@ -354,11 +443,10 @@
 		52EB1DEB1ECA778C004CA561 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				522F75891FA8C18000D0382D /* Register */,
+				522F75881FA8C14D00D0382D /* Input Exercise */,
 				52192ACC1CD5452100A311A1 /* CustomCells */,
 				529FC7C31F2166E500C16203 /* Menu */,
-				52717FE91EE8E33500DBD8DE /* WorkoutInputView.swift */,
-				52E86BEE1F4BE3660047A927 /* RegisterView.swift */,
-				52E86BEC1F4BE3410047A927 /* RegisterView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -368,6 +456,7 @@
 			children = (
 				52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */,
 				522CFACB1F50F2D70037B371 /* WorkoutTrackerTests */,
+				52778FE51F8009D3008B6398 /* WorkoutTrackerUITests */,
 				52F6A89C1C5F0036000FD7B0 /* Products */,
 				7FD06369F6DC76AEB56545EE /* Pods */,
 				C01818AFA428246932A92380 /* Frameworks */,
@@ -379,6 +468,7 @@
 			children = (
 				52F6A89B1C5F0036000FD7B0 /* WorkoutTracker.app */,
 				522CFACA1F50F2D70037B371 /* WorkoutTrackerTests.xctest */,
+				52778FE41F8009D3008B6398 /* WorkoutTrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -386,14 +476,13 @@
 		52F6A89D1C5F0036000FD7B0 /* WorkoutTracker */ = {
 			isa = PBXGroup;
 			children = (
+				52717FE51EE8DBB100DBD8DE /* APIService.swift */,
 				52717FE21EE8DB7A00DBD8DE /* Services */,
 				52FCD5C21CB59F87008B0472 /* Models */,
 				52EB1DEB1ECA778C004CA561 /* Views */,
 				5283E0801C89130500FB716B /* Controllers */,
 				52F6A89E1C5F0036000FD7B0 /* AppDelegate.swift */,
 				52F6A8A21C5F0036000FD7B0 /* Main.storyboard */,
-				522CFAE51F58D65C0037B371 /* DurationPickerViewController.swift */,
-				522CFAE31F58C31E0037B371 /* NavigationViewController.swift */,
 				527651721EDE5280006814AD /* Fonts */,
 				52F6A8A51C5F0036000FD7B0 /* Assets.xcassets */,
 				523470621ED095340079D03E /* WorkoutTracker.entitlements */,
@@ -421,6 +510,8 @@
 				3EEB5F1E333942879DC7210C /* Pods-WorkoutTracker.release.xcconfig */,
 				3E36B3D414A56ED5D1E85E0F /* Pods-WorkoutTrackerTests.debug.xcconfig */,
 				6F0508673917170173DAAE8C /* Pods-WorkoutTrackerTests.release.xcconfig */,
+				E6559CDC6B0C9D3227657458 /* Pods-WorkoutTrackerUITests.debug.xcconfig */,
+				EDBC484CB1381C78B39B8039 /* Pods-WorkoutTrackerUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -428,9 +519,12 @@
 		C01818AFA428246932A92380 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				520DE3E11F801A9300DA20DD /* Pods_WorkoutTrackerUITests.framework */,
+				520DE3DF1F801A5300DA20DD /* Pods_WorkoutTrackerUITests.framework */,
 				523470631ED097950079D03E /* UserNotifications.framework */,
 				ECBD1F8CB1C946F17950D606 /* Pods_WorkoutTracker.framework */,
 				07802FCD9AD48CA2A09B8381 /* Pods_WorkoutTrackerTests.framework */,
+				010A00F4A982D12F902DB6F7 /* Pods_WorkoutTrackerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -459,6 +553,27 @@
 			productReference = 522CFACA1F50F2D70037B371 /* WorkoutTrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		52778FE31F8009D3008B6398 /* WorkoutTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52778FEB1F8009D3008B6398 /* Build configuration list for PBXNativeTarget "WorkoutTrackerUITests" */;
+			buildPhases = (
+				B697B28120F0F769AF653EEB /* [CP] Check Pods Manifest.lock */,
+				52778FE01F8009D3008B6398 /* Sources */,
+				52778FE11F8009D3008B6398 /* Frameworks */,
+				52778FE21F8009D3008B6398 /* Resources */,
+				0A5609D3BFA0EF3457D52422 /* [CP] Embed Pods Frameworks */,
+				B88159B46C6C92582786B688 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52778FEA1F8009D3008B6398 /* PBXTargetDependency */,
+			);
+			name = WorkoutTrackerUITests;
+			productName = WorkoutTrackerUITests;
+			productReference = 52778FE41F8009D3008B6398 /* WorkoutTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52F6A8AD1C5F0036000FD7B0 /* Build configuration list for PBXNativeTarget "WorkoutTracker" */;
@@ -485,12 +600,19 @@
 		52F6A8931C5F0036000FD7B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0800;
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Stefan Auvergne";
 				TargetAttributes = {
 					522CFAC91F50F2D70037B371 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = JF325HQHWJ;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 52F6A89A1C5F0036000FD7B0;
+					};
+					52778FE31F8009D3008B6398 = {
+						CreatedOnToolsVersion = 9.0;
 						DevelopmentTeam = JF325HQHWJ;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 52F6A89A1C5F0036000FD7B0;
@@ -498,7 +620,7 @@
 					52F6A89A1C5F0036000FD7B0 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JF325HQHWJ;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -523,12 +645,20 @@
 			targets = (
 				52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */,
 				522CFAC91F50F2D70037B371 /* WorkoutTrackerTests */,
+				52778FE31F8009D3008B6398 /* WorkoutTrackerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		522CFAC81F50F2D70037B371 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52778FE21F8009D3008B6398 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -554,6 +684,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A5609D3BFA0EF3457D52422 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutTrackerUITests/Pods-WorkoutTrackerUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-iOS11.0/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-iOS11.0/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutTrackerUITests/Pods-WorkoutTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0E30ABEE63B02931AE085BB1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -561,11 +711,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutTracker/Pods-WorkoutTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-iOS9.2/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-iOS9.2/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
@@ -627,6 +779,39 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutTrackerTests/Pods-WorkoutTrackerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B697B28120F0F769AF653EEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WorkoutTrackerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B88159B46C6C92582786B688 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutTrackerUITests/Pods-WorkoutTrackerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DF0B4F140F11BF6D8DEABBA1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -673,11 +858,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52778FE01F8009D3008B6398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52778FE71F8009D3008B6398 /* WorkoutTrackerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F6A8971C5F0036000FD7B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52265E1B1F20FB16009F3B27 /* PersonalStatsViewController.swift in Sources */,
 				526A3F131EC6165C001BF557 /* DateConverter.swift in Sources */,
 				522CFAE61F58D65C0037B371 /* DurationPickerViewController.swift in Sources */,
 				5276517D1EE59F83006814AD /* CreateCrossfitExerciseViewController.swift in Sources */,
@@ -689,12 +881,14 @@
 				52192AC51CC186A300A311A1 /* TabataViewController.swift in Sources */,
 				5283E0841C89F53200FB716B /* ClientViewController.swift in Sources */,
 				52192AC11CC034CF00A311A1 /* CrossfitCategoryTableViewController.swift in Sources */,
+				5203DE511FA1568400AF751D /* ClientMenuViewController.swift in Sources */,
 				52265E0C1F1D04AE009F3B27 /* ForTimeViewController.swift in Sources */,
 				52E86BEF1F4BE3660047A927 /* RegisterView.swift in Sources */,
+				52EA8F461F9FFDBC00FA6FF3 /* ProgressChartViewController.swift in Sources */,
 				52265E101F203BEE009F3B27 /* EnduranceCategoryTableViewController.swift in Sources */,
 				52DFA3D11CEE3A7000E85264 /* AmrapCustomCell.swift in Sources */,
 				52DFA3CF1CEE382E00E85264 /* MetconCustomCell.swift in Sources */,
-				52717FEA1EE8E33500DBD8DE /* WorkoutInputView.swift in Sources */,
+				52717FEA1EE8E33500DBD8DE /* InputExerciseView.swift in Sources */,
 				52717FE61EE8DBB100DBD8DE /* APIService.swift in Sources */,
 				522CFAE01F56736C0037B371 /* CreateSessionViewController.swift in Sources */,
 				52265E171F204154009F3B27 /* CreateEnduranceCategoryViewController.swift in Sources */,
@@ -706,23 +900,29 @@
 				527D07E61CE11E2E00F46B57 /* HeroWodsViewController.swift in Sources */,
 				5283E07F1C890E6200FB716B /* SessionsViewController.swift in Sources */,
 				52265E131F203D11009F3B27 /* EnduranceSelectionViewController.swift in Sources */,
+				521ECCE71FB390A4001FDE2B /* ProgressPickerSelectionViewController.swift in Sources */,
 				52717FE41EE8DBA800DBD8DE /* DBService.swift in Sources */,
 				5283E0881C8B998600FB716B /* Exercise.swift in Sources */,
 				525D5D891F2BC07400F9F00F /* SupersetCustomCell.swift in Sources */,
+				522F75831FA4D30B00D0382D /* DeleteProgressDataViewController.swift in Sources */,
 				52CB16AA1EFBFD2D00F4232D /* Formatter.swift in Sources */,
 				52192ACE1CD7F78200A311A1 /* TabataCustomCell.swift in Sources */,
+				522F75851FA5067200D0382D /* ProgressDataCustomCell.swift in Sources */,
 				52EB1DF51ECA7949004CA561 /* OverlayView.swift in Sources */,
+				52EA8F481FA014CF00FA6FF3 /* ProgressPickerViewController.swift in Sources */,
 				52192AC71CC1929E00A311A1 /* AmrapViewController.swift in Sources */,
+				5229485A1F6823610095E6ED /* Reachability.swift in Sources */,
 				525D5D8F1F2BEF7D00F9F00F /* SelectExerciseForAmrapViewController.swift in Sources */,
+				522D9ECC1F831F1200F38C77 /* ClientStickyNoteViewController.swift in Sources */,
 				52A3F8451EDA4017002589C2 /* ChallengesViewController.swift in Sources */,
 				5276515D1EDA62CB006814AD /* ChallengeCustomCell.swift in Sources */,
 				52192ABF1CC02DAE00A311A1 /* ExerciseTypeTableViewController.swift in Sources */,
 				527651791EE231FF006814AD /* CreateBodybuildingCategoryViewController.swift in Sources */,
 				522CFAE41F58C31E0037B371 /* NavigationViewController.swift in Sources */,
-				5283E0791C88E09E00FB716B /* NewClientViewController.swift in Sources */,
 				526A3F0E1EC52C64001BF557 /* InputExerciseViewController.swift in Sources */,
 				522CFAD71F53CB330037B371 /* DeleteExerciseViewController.swift in Sources */,
 				522D721C1ED4AB9A0048A939 /* EmailSelectionViewController.swift in Sources */,
+				521ECCE51FB0EE5F001FDE2B /* AnimatableLayer.swift in Sources */,
 				5276517B1EE23694006814AD /* CreateBodybuildingExerciseViewController.swift in Sources */,
 				52C7D1621EC8BEAB00585964 /* LoginViewController.swift in Sources */,
 				525D5D8B1F2BE0C000F9F00F /* SelectExerciseForMetconViewController.swift in Sources */,
@@ -731,7 +931,7 @@
 				522CFADE1F56063B0037B371 /* SessionDetailViewController.swift in Sources */,
 				52192ACB1CCE98EC00A311A1 /* ExerciseCustomCell.swift in Sources */,
 				52192AD01CDF783600A311A1 /* ClientCustomCell.swift in Sources */,
-				52265E191F20F559009F3B27 /* PersonalViewController.swift in Sources */,
+				52265E191F20F559009F3B27 /* PersonalMenuViewController.swift in Sources */,
 				527D07E81CE12D4D00F46B57 /* BodybuildingCategoryTableViewController.swift in Sources */,
 				52F6A89F1C5F0036000FD7B0 /* AppDelegate.swift in Sources */,
 			);
@@ -744,6 +944,11 @@
 			isa = PBXTargetDependency;
 			target = 52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */;
 			targetProxy = 522CFACF1F50F2D70037B371 /* PBXContainerItemProxy */;
+		};
+		52778FEA1F8009D3008B6398 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52F6A89A1C5F0036000FD7B0 /* WorkoutTracker */;
+			targetProxy = 52778FE91F8009D3008B6398 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -783,7 +988,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-auvergne.stefan.WorkoutTrackerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkoutTracker.app/WorkoutTracker";
 			};
 			name = Debug;
@@ -802,8 +1008,58 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-auvergne.stefan.WorkoutTrackerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkoutTracker.app/WorkoutTracker";
+			};
+			name = Release;
+		};
+		52778FEC1F8009D3008B6398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6559CDC6B0C9D3227657458 /* Pods-WorkoutTrackerUITests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JF325HQHWJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = WorkoutTrackerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-auvergne.stefan.WorkoutTrackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WorkoutTracker;
+			};
+			name = Debug;
+		};
+		52778FED1F8009D3008B6398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDBC484CB1381C78B39B8039 /* Pods-WorkoutTrackerUITests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JF325HQHWJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = WorkoutTrackerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-auvergne.stefan.WorkoutTrackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WorkoutTracker;
 			};
 			name = Release;
 		};
@@ -815,14 +1071,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -830,6 +1092,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -862,14 +1125,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -877,6 +1146,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -910,7 +1180,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -929,7 +1200,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -941,6 +1213,15 @@
 			buildConfigurations = (
 				522CFAD11F50F2D70037B371 /* Debug */,
 				522CFAD21F50F2D70037B371 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52778FEB1F8009D3008B6398 /* Build configuration list for PBXNativeTarget "WorkoutTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52778FEC1F8009D3008B6398 /* Debug */,
+				52778FED1F8009D3008B6398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -43,18 +43,16 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         }
         
         title = categoryPassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
-        
         let rightBarButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BodybuildingCategoryTableViewController.rightSideBarButtonItemTapped(_:)))
         rightBarButton.image = UIImage(named:"addIcon")
         self.navigationItem.rightBarButtonItem = rightBarButton
         rightBarButton.imageInsets = UIEdgeInsets(top: 2, left: 1, bottom: 2, right: 1)
         
-        spinner.frame = CGRect(x:125, y:150, width:50, height:50)
+         spinner.frame = CGRect(x:(self.pickerOutlet.frame.width/2)-50, y:(self.pickerOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         spinner.alpha = 0
-        view.addSubview(spinner)
+        pickerOutlet.addSubview(spinner)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,16 +65,23 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             selectionBtn.setTitle("Superset", for: .normal)
             supersetSetup()
         }
-        
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInteractive).async {
-            DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.exercises = DBService.shared.exercisesForBodybuildingCategory
-                self.pickerOutlet.reloadAllComponents()
-            })
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInteractive).async {
+                DBService.shared.retrieveBodybuildingCategoryExercises(completion: {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForBodybuildingCategory
+                    self.pickerOutlet.reloadAllComponents()
+                })
+            }
         }
     }
     
@@ -98,7 +103,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
         repsSetsOutlet.reloadAllComponents()
     }
     
-    func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
+    @objc func rightSideBarButtonItemTapped(_ sender: UIBarButtonItem){
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createExerciseID") as! CreateBodybuildingExerciseViewController
         popController.setCategory(category:categoryPassed)
@@ -176,7 +181,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
     @IBAction func addExercise(_ sender: UIButton) {
         let id:Int = pickerOutlet.selectedRow(inComponent: 0)
         
-        myExercise.name = categoryPassed
+        myExercise.name = exercises[id]
         myExercise.category = categoryPassed
         myExercise.type = "Bodybuilding"
         
@@ -189,14 +194,14 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
             if selectionBtn.titleLabel?.text == "Superset"{
                 let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
                 let idPounds = repsSetsOutlet.selectedRow(inComponent: 1)
-                myExercise.exerciseDescription = exercises[id] + " " + "(" + lbs[idPounds] + " lbs)" + " " + reps[idReps] + " rep(s)"
+                myExercise.exerciseDescription = lbs[idPounds] + " lb(s)" + " " + reps[idReps] + " rep(s)"
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "supersetVC") as! SupersetViewController
                 DBService.shared.setSupersetExercise(exercise: myExercise)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 let idReps = repsSetsOutlet.selectedRow(inComponent: 0)
                 let idSets = repsSetsOutlet.selectedRow(inComponent: 1)
-                myExercise.exerciseDescription = exercises[id] + " " + reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
+                myExercise.exerciseDescription = reps[idReps] + " rep(s) " + sets[idSets] + " set(s)"
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "getExerciseID"), object: nil, userInfo: [exerciseKey:myExercise])
                 
@@ -225,7 +230,7 @@ class BodybuildingSelectionViewController: UIViewController, UIPickerViewDataSou
                 label.text = lbs[row]
             }
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

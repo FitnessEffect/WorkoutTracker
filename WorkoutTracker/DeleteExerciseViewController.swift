@@ -17,36 +17,71 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     var types = [String]()
     var categories = [String]()
     var exercises = [String]()
+    var spinnerType = UIActivityIndicatorView()
+    var spinnerCategory = UIActivityIndicatorView()
+    var spinnerExercise = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 22)!], for: .normal)
+        spinnerType.frame = CGRect(x:(self.typePickerView.frame.width/2)-25, y:(self.typePickerView.frame.height/2)-25, width:50, height:50)
+        spinnerType.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerType.color = UIColor.white
+        spinnerType.alpha = 0
+        typePickerView.addSubview(spinnerType)
+        
+        spinnerCategory.frame = CGRect(x:(self.categoryPickerView.frame.width/2)-25, y:(self.categoryPickerView.frame.height/2)-25, width:50, height:50)
+        spinnerCategory.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerCategory.color = UIColor.white
+        spinnerCategory.alpha = 0
+        categoryPickerView.addSubview(spinnerCategory)
+        
+        spinnerExercise.frame = CGRect(x:(self.exercisePickerView.frame.width/2)-25, y:(self.exercisePickerView.frame.height/2)-25, width:50, height:50)
+        spinnerExercise.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
+        spinnerExercise.color = UIColor.white
+        spinnerExercise.alpha = 0
+        exercisePickerView.addSubview(spinnerExercise)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DBService.shared.retrieveTypes {
-            self.types = DBService.shared.types
-            self.typePickerView.reloadAllComponents()
-            self.setCategoriesForType()
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinnerType.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveTypes {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerType.alpha = 0})
+                    self.spinnerType.stopAnimating()
+                    self.types = DBService.shared.types
+                    self.typePickerView.reloadAllComponents()
+                    self.setCategoriesForType()
+                }
+            }
         }
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!], for: .normal)
-    }
-    
+
     func setCategoriesForType(){
         self.categories.removeAll()
         let index = typePickerView.selectedRow(inComponent: 0)
         if types[index] == "Bodybuilding"{
-            DBService.shared.retrieveBodybuildingCategories {
-                self.categories = DBService.shared.bodybuildingCategories
-                self.categoryPickerView.reloadAllComponents()
-                DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-                DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-                DBService.shared.retrieveBodybuildingCategoryExercises {
-                    self.exercises = DBService.shared.exercisesForBodybuildingCategory
-                    self.exercisePickerView.reloadAllComponents()
+            spinnerCategory.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveBodybuildingCategories {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
+                    self.spinnerCategory.stopAnimating()
+                    self.categories = DBService.shared.bodybuildingCategories
+                    self.categoryPickerView.reloadAllComponents()
+                    DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
+                    DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
+                    DBService.shared.retrieveBodybuildingCategoryExercises {
+                        self.exercises = DBService.shared.exercisesForBodybuildingCategory
+                        self.exercisePickerView.reloadAllComponents()
+                    }
                 }
             }
         }else if types[index] == "Crossfit"{
@@ -54,9 +89,16 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             self.categoryPickerView.reloadAllComponents()
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-            DBService.shared.retrieveCrossfitCategoryExercises {
-                self.exercises = DBService.shared.exercisesForCrossfitCategory
-                self.exercisePickerView.reloadAllComponents()
+            spinnerCategory.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveCrossfitCategoryExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerCategory.alpha = 0})
+                    self.spinnerCategory.stopAnimating()
+                    
+                    self.exercises = DBService.shared.exercisesForCrossfitCategory
+                    self.exercisePickerView.reloadAllComponents()
+                }
             }
         }else if types[index] == "Endurance"{
             self.categoryPickerView.reloadAllComponents()
@@ -71,15 +113,27 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             self.exercisePickerView.reloadAllComponents()
         }else if categories[index] == "1 Rep Max"{
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-            DBService.shared.retrieveCrossfitCategoryExercises {
-                self.exercises = DBService.shared.exercisesForCrossfitCategory
-                self.exercisePickerView.reloadAllComponents()
+            spinnerExercise.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveCrossfitCategoryExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                    self.spinnerExercise.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForCrossfitCategory
+                    self.exercisePickerView.reloadAllComponents()
+                }
             }
         }else{
             DBService.shared.setCategory(category: self.categories[self.categoryPickerView.selectedRow(inComponent: 0)])
-            DBService.shared.retrieveBodybuildingCategoryExercises {
-                self.exercises = DBService.shared.exercisesForBodybuildingCategory
-                self.exercisePickerView.reloadAllComponents()
+            spinnerExercise.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveBodybuildingCategoryExercises {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinnerExercise.alpha = 0})
+                    self.spinnerExercise.stopAnimating()
+                    self.exercises = DBService.shared.exercisesForBodybuildingCategory
+                    self.exercisePickerView.reloadAllComponents()
+                }
             }
         }
     }
@@ -89,9 +143,15 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
             let indexT = typePickerView.selectedRow(inComponent: 0)
             let indexC = categoryPickerView.selectedRow(inComponent: 0)
             let indexE = exercisePickerView.selectedRow(inComponent: 0)
-            DBService.shared.deleteExerciseForCategoryForType(exercise: exercises[indexE], category: categories[indexC], type: types[indexT], completion: {
+            
+            let alert = UIAlertController(title: "Delete " + exercises[indexE] + "?", message:"" , preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {_ in
+                DBService.shared.deleteExerciseForCategoryForType(exercise: self.exercises[indexE], category: self.categories[indexC], type: self.types[indexT], completion: {
                 self.setExercisesForCategory()
             })
+            }))
+            self.present(alert, animated: true, completion: nil)
         }else{
             let alert = UIAlertController(title: "Error", message: "No exercises selected", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -127,12 +187,20 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView.tag == 0{
+            //block user selection while pickerView content is loading
+            categoryPickerView.isUserInteractionEnabled = false
+            exercisePickerView.isUserInteractionEnabled = false
             setCategoriesForType()
-        }else{
+            categoryPickerView.isUserInteractionEnabled = true
+            exercisePickerView.isUserInteractionEnabled = true
+        }else if pickerView.tag == 1{
+            exercisePickerView.isUserInteractionEnabled = false
             setExercisesForCategory()
+            exercisePickerView.isUserInteractionEnabled = true
+        }else{
+            //do nothing
         }
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
@@ -143,7 +211,7 @@ class DeleteExerciseViewController: UIViewController, UIPickerViewDelegate, UIPi
         }else{
             label.text = exercises[row]
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "DJB Chalk It Up", size: 28.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "DJB Chalk It Up", size: 28.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

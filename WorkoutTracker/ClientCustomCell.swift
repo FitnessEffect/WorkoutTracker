@@ -11,7 +11,8 @@ import UIKit
 class ClientCustomCell: UITableViewCell {
 
     @IBOutlet weak var nameOutlet: UILabel!
-
+    @IBOutlet weak var clientDetailBtnOutlet: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

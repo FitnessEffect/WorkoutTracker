@@ -26,7 +26,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         title = categoryPassed
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Have a Great Day", size: 22)!,NSForegroundColorAttributeName: UIColor.darkText]
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.hitTest(_:)))
         self.view.addGestureRecognizer(gesture)
         
@@ -56,7 +55,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.navigationController?.popViewController(animated: true)
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if tableView.frame.contains(sender.location(in: view)) {
             self.view.endEditing(true)
         }
@@ -149,7 +148,6 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "supersetCell")! as! SupersetCustomCell
         cell.descriptionTextField.text = self.exercises[indexPath.row].exerciseDescription
         cell.numLabel.text = String(indexPath.row + 1)
@@ -161,7 +159,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     //Allows exercise cell to be deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this exercise?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Exercise?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 self.exercises.remove(at: x)
@@ -183,7 +181,7 @@ class TabataViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }else{
             label.text = totalTime[row]
         }
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

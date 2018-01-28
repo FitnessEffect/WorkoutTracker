@@ -21,14 +21,15 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var menuShowing = false
     var spinner = UIActivityIndicatorView()
     var passToNextVC = false
+    var clientStickyNoteVC:ClientStickyNoteViewController!
+    var clientMenuVC:ClientMenuViewController!
     
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var noClientsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "DJB Chalk It Up", size: 30)!,NSForegroundColorAttributeName: UIColor.white]
-        
+        noClientsLabel.alpha = 0
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -40,45 +41,57 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.addGestureRecognizer(gesture)
         overlayView = OverlayView.instanceFromNib() as! OverlayView
         menuView = MenuView.instanceFromNib() as! MenuView
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        clientStickyNoteVC = storyboard.instantiateViewController(withIdentifier: "clientStickyNoteVC") as! ClientStickyNoteViewController
         view.addSubview(overlayView)
         view.addSubview(menuView)
         overlayView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         overlayView.alpha = 0
         menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
-        
         spinner.frame = CGRect(x:(self.tableViewOutlet.frame.width/2)-25, y:(self.tableViewOutlet.frame.height/2)-25, width:50, height:50)
         spinner.transform = CGAffineTransform(scaleX: 2.0, y: 2.0);
         spinner.color = UIColor.white
         spinner.alpha = 0
-        view.addSubview(spinner)
-    
+        tableViewOutlet.addSubview(spinner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        spinner.startAnimating()
-        UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
-        DispatchQueue.global(qos: .userInitiated).async {
-            DBService.shared.retrieveClients {
-                UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
-                self.spinner.stopAnimating()
-                self.clientArray = DBService.shared.clients
-                self.tableViewOutlet.reloadData()
-                if DBService.shared.passToNextVC == true{
-                    for i in 0...self.clientArray.count-1{
-                        if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{
-                           let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sessionsVC") as! SessionsViewController
-                            nextVC.clientPassed = self.clientArray[self.selectedRow]
-                            DBService.shared.setPassedClient(client: self.clientArray[i])
-                            self.navigationController?.pushViewController(nextVC, animated: true)
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "DJB Chalk It Up", size: 30)!,NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        let internetCheck = Reachability.isInternetAvailable()
+        if internetCheck == false{
+            let alertController = UIAlertController(title: "Error", message: "No Internet Connection", preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            spinner.startAnimating()
+            UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 1})
+            DispatchQueue.global(qos: .userInitiated).async {
+                DBService.shared.retrieveClients {
+                    UIView.animate(withDuration: 0.2, animations: {self.spinner.alpha = 0})
+                    self.spinner.stopAnimating()
+                    self.clientArray = DBService.shared.clients
+                    self.tableViewOutlet.reloadData()
+                    if self.clientArray.count == 0{
+                        self.noClientsLabel.alpha = 1
+                    }else{
+                        self.noClientsLabel.alpha = 0
+                    }
+                    if DBService.shared.passToNextVC == true{
+                        for i in 0...self.clientArray.count-1{
+                            if self.clientArray[i].clientKey == DBService.shared.passedClient.clientKey{
+                                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sessionsVC") as! SessionsViewController
+                                nextVC.clientPassed = self.clientArray[i]
+                                DBService.shared.setPassedClient(client: self.clientArray[i])
+                                self.navigationController?.pushViewController(nextVC, animated: true)
+                            }
                         }
                     }
                 }
             }
         }
-        
-
     }
-
     
     //TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -93,6 +106,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCustomCell
         let client = clientArray[(indexPath as NSIndexPath).row]
         cell.nameOutlet.text = client.firstName + " " + client.lastName
+        cell.clientDetailBtnOutlet.tag = indexPath.row
         if client.gender == "Male" {
             cell.nameOutlet.textColor = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         }else if client.gender == "Female" {
@@ -103,14 +117,18 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let deleteAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this client?", preferredStyle: UIAlertControllerStyle.alert)
+            let deleteAlert = UIAlertController(title: "Delete Client?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             deleteAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(controller) in
                 let x = indexPath.row
                 let id = self.clientArray[x].clientKey
                 DBService.shared.deleteClient(id: id)
                 self.clientArray.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                DBService.shared.passedClient.firstName = "Personal"
+                if self.clientArray.count == 0{
+                    self.noClientsLabel.alpha = 1
+                }else{
+                    self.noClientsLabel.alpha = 0
+                }
             }))
             deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             
@@ -119,31 +137,20 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func createClient(_ sender: UIBarButtonItem) {
-        var xPosition:CGFloat = 0
-        var yPosition:CGFloat = 0
-        
-        xPosition = self.view.frame.width/2
-        yPosition = self.view.frame.minY + 60
-        
-        // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newClientVC") as! NewClientViewController
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = self.view
-        popController.preferredContentSize = CGSize(width: 300, height: 580)
-        popController.popoverPresentationController?.sourceRect = CGRect(x: xPosition, y: yPosition, width: 0, height: 0)
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(self.clientStickyNoteVC, animated: true)
     }
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         addSelector()
+    }
+    
+    @IBAction func ClientMenuBtn(_ sender: UIButton) {
+        let clientMenuVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ClientMenuNavID") as! UINavigationController
+        let client = clientArray[sender.tag]
+        DBService.shared.setPassedClient(client: client)
+        let currentController = self.getCurrentViewController()
+        
+        currentController?.present(clientMenuVC, animated: false, completion: nil)
     }
     
     func addSelector() {
@@ -161,11 +168,11 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.menuView.frame = CGRect(x: -140, y: 0, width: 126, height: 500)
                 self.overlayView.alpha = 0
             })
-            menuShowing = false
+            menuShowing = true
         }
     }
     
-    func didTapOnTableView(_ sender: UITapGestureRecognizer){
+    @objc func didTapOnTableView(_ sender: UITapGestureRecognizer){
         let touchPoint = sender.location(in: tableViewOutlet)
         let row = tableViewOutlet.indexPathForRow(at: touchPoint)?.row
         if row != nil{
@@ -173,7 +180,7 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if menuShowing == true{
             //remove menu view
             UIView.animate(withDuration: 0.3, animations: {
@@ -190,6 +197,17 @@ class ClientViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func getCurrentViewController() -> UIViewController? {
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -46,13 +46,13 @@ class FormatterTest: XCTestCase {
         XCTAssertEqual(formattedEmail, "test%40gmail%2Ecom")
     }
     
-    func testUnFormatExerciseDescription(){
-        let desStr = "Legs\nSquat 1 set(s) 1 rep(s)\n"
-        
-        let unFormattedString = WorkoutTracker.Formatter.unFormatExerciseDescription(desStr: desStr)
-        
-        XCTAssertEqual(unFormattedString, "Squat 1 set(s) 1 rep(s)")
-    }
+//    func testUnFormatExerciseDescription(){
+//        let desStr = "Legs\nSquat 1 set(s) 1 rep(s)\n"
+//        
+//        let unFormattedString = WorkoutTracker.Formatter.unFormatExerciseDescription(desStr: desStr)
+//        
+//        XCTAssertEqual(unFormattedString, "Squat 1 set(s) 1 rep(s)")
+//    }
     
     func testFormatExerciseDescription(){
         let desStr = "Squat 1 set(s) 1 rep(s)"
@@ -82,6 +82,51 @@ class FormatterTest: XCTestCase {
         XCTAssertEqual(result4, "1 min(s) 1 sec(s)")
         XCTAssertEqual(result5, "1 hour(s) 1 min(s) 1 sec(s)")
         XCTAssertEqual(result6, "0 hour(s) 0 min(s) 0 sec(s)")
+    }
+    
+    func testFormateDurationResult(){
+        let duration = "1 hour(s) 1 min(s)"
+        let duration2 = "0 hour(s) 1 min(s)"
+        let duration3 = "1 hour(s) 0 min(s)"
+        let duration4 = "0 hour(s) 0 min(s)"
+        
+        let result = WorkoutTracker.Formatter.formatDurationResult(str: duration)
+        let result2 = WorkoutTracker.Formatter.formatDurationResult(str: duration2)
+        let result3 = WorkoutTracker.Formatter.formatDurationResult(str: duration3)
+        let result4 = WorkoutTracker.Formatter.formatDurationResult(str: duration4)
+        
+        XCTAssertEqual(result, "1 hour(s) 1 min(s)")
+        XCTAssertEqual(result2, "1 min(s)")
+        XCTAssertEqual(result3, "1 hour(s)")
+        XCTAssertEqual(result4, "0 hour(s) 0 min(s)")
+
+    }
+    
+    func testChangeTimeToSeconds(){
+        let time1 = "1 hour(s) 3 min(s) 15 sec(s)"
+        let time2 = "1 min(s) 10 sec(s)"
+        let time3 = "59 sec(s)"
+        let result1 = WorkoutTracker.Formatter.changeTimeToSeconds(timeStr: time1)
+        let result2 = WorkoutTracker.Formatter.changeTimeToSeconds(timeStr: time2)
+        let result3 = WorkoutTracker.Formatter.changeTimeToSeconds(timeStr: time3)
+        XCTAssertEqual(result1, 3795)
+        XCTAssertEqual(result2, 70)
+        XCTAssertEqual(result3, 59)
+    }
+    
+    func testChangeTimeToDisplayFormat(){
+        let time1 = "3795"
+        let time2 = "70"
+        let time3 = "59"
+        let time4 = "3660"
+        let result1 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time1)
+                let result2 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time2)
+                let result3 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time3)
+                let result4 = WorkoutTracker.Formatter.changeTimeToDisplayFormat(secondsStr:time4)
+        XCTAssertEqual(result1, "1 hour(s) 3 min(s) 15 sec(s)")
+        XCTAssertEqual(result2, "1 min(s) 10 sec(s)")
+        XCTAssertEqual(result3, "59 sec(s)")
+        XCTAssertEqual(result4, "1 hour(s) 1 min(s)")
     }
     
 }

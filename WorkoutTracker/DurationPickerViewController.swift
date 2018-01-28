@@ -10,12 +10,13 @@ import UIKit
 
 class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var pickerViewOutlet: UIPickerView!
+    
     var hours = [String]()
     var minutes = [String]()
-    
     var tempMinutes = ""
     var tempHours = ""
-    
+    var passedDuration = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,30 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if passedDuration != ""{
+            let tempArr = passedDuration.components(separatedBy: " ")
+            if tempArr.count == 2{
+                if tempArr[1] == "hour(s)"{
+                    pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 0, animated: true)
+                    tempHours = tempArr[0]
+                }else if tempArr[1] == "min(s)"{
+                    pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 1, animated: true)
+                    tempMinutes = tempArr[0]
+                }
+            }else{
+                pickerViewOutlet.selectRow(Int(tempArr[0])!, inComponent: 0, animated: true)
+                tempHours = tempArr[0]
+                pickerViewOutlet.selectRow(Int(tempArr[2])!, inComponent: 1, animated: true)
+                tempMinutes = tempArr[2]
+            }
+        }
+    }
+    
+    func setDuration(duration:String){
+        passedDuration = duration
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -39,7 +64,6 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         }else{
             return minutes.count
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -71,7 +95,6 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
         let tempResult = tempHours + " hour(s) " + tempMinutes + " min(s)"
         
         presenter.saveResult(result: tempResult)
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -84,8 +107,7 @@ class DurationPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
             label.text = minutes[row]
         }
         
-        
-        let myTitle = NSAttributedString(string: label.text!, attributes: [NSFontAttributeName:UIFont(name: "Have a Great Day", size: 24.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: label.text!, attributes: [NSAttributedStringKey.font:UIFont(name: "Have a Great Day", size: 24.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
         label.attributedText = myTitle
         label.textAlignment = NSTextAlignment.center
         return label

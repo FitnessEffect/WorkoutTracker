@@ -33,7 +33,7 @@ class EmailSelectionViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addEmail(_ sender: UIButton) {
         if !(emailTextField.text?.characters.contains("@"))! || !(emailTextField.text?.characters.contains("."))!{
-            let alert = UIAlertController(title: "Error", message: "Incorrect Email Address", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: "Incorrect email address", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
@@ -44,7 +44,7 @@ class EmailSelectionViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    func hitTest(_ sender:UITapGestureRecognizer){
+    @objc func hitTest(_ sender:UITapGestureRecognizer){
         if !emailTextField.frame.contains(sender.location(in: view)){
             self.view.endEditing(true)
         }

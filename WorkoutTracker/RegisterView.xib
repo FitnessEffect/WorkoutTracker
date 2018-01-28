@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,6 +23,13 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lighterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bNM-t9-1iC">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebp-97-6ZY">
+                    <rect key="frame" x="0.0" y="78" width="375" height="60"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="42"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe to Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efN-hQ-gBZ">
                     <rect key="frame" x="59" y="600" width="178" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -30,16 +37,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silverWritting" translatesAutoresizingMaskIntoConstraints="NO" id="hLA-4J-p91">
-                    <rect key="frame" x="21" y="54" width="333" height="35"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="333" id="IBc-cX-2bl"/>
-                        <constraint firstAttribute="height" constant="35" id="iyG-Jg-W76"/>
-                    </constraints>
-                </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="rnX-qU-lKQ">
-                    <rect key="frame" x="0.0" y="272" width="375" height="70"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="rnX-qU-lKQ" customClass="TextFieldAnimations" customModule="WorkoutTracker" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="291" width="375" height="70"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,8 +50,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="3Z0-H8-DjL">
-                    <rect key="frame" x="0.0" y="195" width="375" height="70"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="chalkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="3Z0-H8-DjL" customClass="TextFieldAnimations" customModule="WorkoutTracker" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="199" width="375" height="70"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,7 +64,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-Fb-bQa">
-                    <rect key="frame" x="53" y="373" width="270" height="70"/>
+                    <rect key="frame" x="53" y="412" width="270" height="70"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="25"/>
                     <state key="normal" title="Register" backgroundImage="chalkBackground">
@@ -75,26 +74,15 @@
                         <action selector="register:" destination="iN0-l3-epB" eventType="touchUpInside" id="ImR-LL-j9l"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-8g-naw">
-                    <rect key="frame" x="85" y="97" width="203" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="kax-mF-dSl"/>
-                        <constraint firstAttribute="width" constant="203" id="ux1-kV-GOb"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="27"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="By clicking Register you agree to the following" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="w7d-R5-gyP">
-                    <rect key="frame" x="9" y="464" width="356" height="67"/>
+                    <rect key="frame" x="9" y="482" width="356" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="22"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsR-hK-i55">
-                    <rect key="frame" x="94" y="532" width="188" height="41"/>
+                    <rect key="frame" x="94" y="547" width="188" height="41"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="DJBCHALKITUP" family="DJB CHALK IT UP" pointSize="22"/>
                     <state key="normal" title="terms of use"/>
@@ -115,15 +103,11 @@
                 <constraint firstAttribute="bottom" secondItem="bNM-t9-1iC" secondAttribute="bottom" id="0xa-Yc-BrD"/>
                 <constraint firstItem="bNM-t9-1iC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4VZ-C4-AFm"/>
                 <constraint firstItem="bNM-t9-1iC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IWw-Tk-tVq"/>
-                <constraint firstItem="hLA-4J-p91" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="54" id="MsO-Q9-mTb"/>
-                <constraint firstItem="Pvh-8g-naw" firstAttribute="top" secondItem="hLA-4J-p91" secondAttribute="bottom" constant="8" id="NBv-7a-3Mu"/>
                 <constraint firstAttribute="bottom" secondItem="bNM-t9-1iC" secondAttribute="bottom" id="TdM-Q3-CC9"/>
                 <constraint firstItem="bNM-t9-1iC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UFX-cY-blv"/>
-                <constraint firstItem="hLA-4J-p91" firstAttribute="centerX" secondItem="bNM-t9-1iC" secondAttribute="centerX" id="d1p-8j-LRv"/>
                 <constraint firstAttribute="trailing" secondItem="bNM-t9-1iC" secondAttribute="trailing" id="jiH-7v-1Ha"/>
                 <constraint firstItem="bNM-t9-1iC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="s1k-Cz-CCn"/>
                 <constraint firstAttribute="trailing" secondItem="bNM-t9-1iC" secondAttribute="trailing" id="vIC-zg-ZZB"/>
-                <constraint firstItem="Pvh-8g-naw" firstAttribute="centerX" secondItem="bNM-t9-1iC" secondAttribute="centerX" constant="-1" id="zhy-e6-UlH"/>
             </constraints>
             <connections>
                 <outlet property="emailTxtField" destination="3Z0-H8-DjL" id="jhH-Sx-91E"/>
@@ -135,6 +119,5 @@
     <resources>
         <image name="chalkBackground" width="277" height="135"/>
         <image name="lighterBackground" width="375" height="667"/>
-        <image name="silverWritting" width="978" height="95"/>
     </resources>
 </document>

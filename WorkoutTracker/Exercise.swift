@@ -22,6 +22,7 @@ let typeKey = "type"
 let viewedKey = "viewed"
 let weekKey = "week"
 let yearKey = "year"
+let uploadTimeKey = "time"
 
 class Exercise: NSCoder {
     
@@ -39,6 +40,7 @@ class Exercise: NSCoder {
     var viewed:String
     var week:String
     var year:String
+    var uploadTime:String
     
     //default initializer
     override init(){
@@ -56,10 +58,11 @@ class Exercise: NSCoder {
         viewed = ""
         year = ""
         week = ""
+        uploadTime = ""
     }
     
     //overload initializer
-    init(name:String, result:String, description:String, date:String, creatorEmail:String, client:String, exerciseKey:String, opponent:String, category:String, creatorID:String, type:String, viewed:String, year:String, week:String){
+    init(name:String, result:String, description:String, date:String, creatorEmail:String, client:String, exerciseKey:String, opponent:String, category:String, creatorID:String, type:String, viewed:String, year:String, week:String, uploadTime:String){
         self.name = name
         self.exerciseDescription = description
         self.result = result
@@ -74,6 +77,7 @@ class Exercise: NSCoder {
         self.viewed = viewed
         self.year = year
         self.week = week
+        self.uploadTime = uploadTime
     }
     
     func encodeWithCoder(_ aCoder: NSCoder!) {
@@ -91,6 +95,7 @@ class Exercise: NSCoder {
         aCoder.encode(viewed, forKey: "viewedKey")
         aCoder.encode(year, forKey: "year")
         aCoder.encode(week, forKey: "week")
+        aCoder.encode(time, forKey: "uploadTime")
     }
     
     init (coder aDecoder: NSCoder!) {
@@ -108,5 +113,6 @@ class Exercise: NSCoder {
         self.viewed = aDecoder.decodeObject(forKey: "viewed") as! String
         self.year = aDecoder.decodeObject(forKey: "year") as! String
         self.week = aDecoder.decodeObject(forKey: "week") as! String
+        self.uploadTime = aDecoder.decodeObject(forKey: "uploadTime") as! String
     }
 }

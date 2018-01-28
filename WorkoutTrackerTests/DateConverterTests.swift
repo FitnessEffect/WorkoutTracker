@@ -34,8 +34,21 @@ class DateConverterTests: XCTestCase {
         }
     }
     
+    func testGetDaysInMonth(){
+        let days = WorkoutTracker.DateConverter.getDaysInMonth(monthNum: 09, year: 2017)
+        XCTAssertEqual(days, 30)
+    }
+    
+    func testGetCurrentMonth(){
+        let currentMonth = WorkoutTracker.DateConverter.getCurrentMonth()
+        XCTAssertEqual(currentMonth, 9)
+    }
+    
     func testGetCurrentDate(){
         let currentDate = WorkoutTracker.DateConverter.getCurrentDate()
+        // grab current day, grab month, format..
+        // basically rewriting your getCurrentDate method here
+        // your poject code changes often, but this won't
         XCTAssertEqual(currentDate, "08/29/2017")
     }
     
@@ -62,4 +75,10 @@ class DateConverterTests: XCTestCase {
         let result = WorkoutTracker.DateConverter.getMonthFromDate(date: date!)
         XCTAssertEqual(result, 7)
     }
+    
+    func testFindFirstDayOfMonth(){
+        let result = WorkoutTracker.DateConverter.findFirstDayOfMonth(monthNum: 9, year: 2017)
+        XCTAssertEqual(result, 6)
+    }
+
 }
